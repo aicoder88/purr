@@ -65,26 +65,26 @@ export default function SeniorCatPageClient() {
     ];
 
     return (
-        <div className="min-h-screen bg-[#FFFFF5] bg-gray-900 transition-colors duration-300">
+        <div className="min-h-screen bg-[#FFFFF5] dark:bg-gray-900 transition-colors duration-300">
             <section className="py-20 px-4">
                 <div className="max-w-4xl mx-auto text-center">
-                    <h1 className="text-4xl md:text-6xl font-heading font-bold mb-6 text-gray-900 text-gray-100">
+                    <h1 className="text-4xl md:text-6xl font-heading font-bold mb-6 text-gray-900 dark:text-gray-100">
                         Senior Cat Litter Solutions
                     </h1>
-                    <p className="text-xl text-gray-700 text-gray-200 mb-8">
+                    <p className="text-xl text-gray-700 dark:text-gray-200 mb-8">
                         Your aging cat deserves comfort and dignity. Discover litter solutions designed for senior cats with arthritis, mobility issues, and sensitive health needs.
                     </p>
 
-                    <div className="bg-white/80 bg-gray-800/80 backdrop-blur-lg rounded-xl p-8 shadow-lg border border-electric-indigo/10 border-electric-indigo/20 max-w-2xl mx-auto">
-                        <h2 className="text-2xl font-heading font-bold mb-4 text-electric-indigo text-electric-indigo-400">Perfect for Senior Cats</h2>
-                        <p className="text-lg mb-6 text-gray-700 text-gray-200">Purrify offers low-dust, odor-eliminating care that&apos;s gentle on aging cats. No harsh fragrances, just pure activated carbon technology.</p>
+                    <div className="bg-white/80 dark:bg-gray-800/80 backdrop-blur-lg rounded-xl p-8 shadow-lg border border-electric-indigo/10 dark:border-electric-indigo/20 max-w-2xl mx-auto">
+                        <h2 className="text-2xl font-heading font-bold mb-4 text-electric-indigo dark:text-electric-indigo-400">Perfect for Senior Cats</h2>
+                        <p className="text-lg mb-6 text-gray-700 dark:text-gray-200">Purrify offers low-dust, odor-eliminating care that&apos;s gentle on aging cats. No harsh fragrances, just pure activated carbon technology.</p>
 
-                        <div className="bg-gray-50 bg-gray-700 rounded-lg p-6 mb-6 text-left">
-                            <h3 className="font-heading text-lg font-semibold mb-3 text-gray-900 text-gray-100">Why Senior Cats Need Special Care</h3>
-                            <p className="text-gray-700 text-gray-200 mb-3">
+                        <div className="bg-gray-50 dark:bg-gray-700 rounded-lg p-6 mb-6 text-left">
+                            <h3 className="font-heading text-lg font-semibold mb-3 text-gray-900 dark:text-gray-100">Why Senior Cats Need Special Care</h3>
+                            <p className="text-gray-700 dark:text-gray-200 mb-3">
                                 As cats age, they develop unique needs. Arthritis makes climbing difficult, kidney disease increases urination, and respiratory sensitivities require low-dust environments.
                             </p>
-                            <p className="text-gray-700 text-gray-200">
+                            <p className="text-gray-700 dark:text-gray-200">
                                 Senior cats deserve litter solutions that accommodate these changes while maintaining their comfort and dignity.
                             </p>
                         </div>
@@ -92,24 +92,24 @@ export default function SeniorCatPageClient() {
                         <div className="grid md:grid-cols-3 gap-4 mb-8">
                             <div className="text-center">
                                 <div className="text-3xl mb-2">🐱</div>
-                                <h3 className="font-heading font-bold text-gray-900 text-gray-100">Low Dust</h3>
-                                <p className="text-sm text-gray-600 text-gray-300">Gentle on sensitive respiratory systems</p>
+                                <h3 className="font-heading font-bold text-gray-900 dark:text-gray-100">Low Dust</h3>
+                                <p className="text-sm text-gray-600 dark:text-gray-300">Gentle on sensitive respiratory systems</p>
                             </div>
                             <div className="text-center">
                                 <div className="text-3xl mb-2">💚</div>
-                                <h3 className="font-heading font-bold text-gray-900 text-gray-100">100% Natural</h3>
-                                <p className="text-sm text-gray-600 text-gray-300">Safe for cats with health issues</p>
+                                <h3 className="font-heading font-bold text-gray-900 dark:text-gray-100">100% Natural</h3>
+                                <p className="text-sm text-gray-600 dark:text-gray-300">Safe for cats with health issues</p>
                             </div>
                             <div className="text-center">
                                 <div className="text-3xl mb-2">🌟</div>
-                                <h3 className="font-heading font-bold text-gray-900 text-gray-100">Superior Odor Control</h3>
-                                <p className="text-sm text-gray-600 text-gray-300">Handles increased waste from aging cats</p>
+                                <h3 className="font-heading font-bold text-gray-900 dark:text-gray-100">Superior Odor Control</h3>
+                                <p className="text-sm text-gray-600 dark:text-gray-300">Handles increased waste from aging cats</p>
                             </div>
                         </div>
 
                         <Link
                             href="/products/trial-size/"
-                            className="inline-block bg-gradient-to-r from-electric-indigo to-deep-coral text-white text-gray-100 font-bold py-3 px-8 rounded-lg hover:from-electric-indigo-600 hover:to-deep-coral-600 hover:scale-105 transition-all duration-300 shadow-lg"
+                            className="inline-block bg-gradient-to-r from-electric-indigo to-deep-coral text-white dark:text-gray-100 font-bold py-3 px-8 rounded-lg hover:from-electric-indigo-600 hover:to-deep-coral-600 hover:scale-105 transition-all duration-300 shadow-lg"
                         >
                             Try Purrify for Your Senior Cat
                         </Link>
@@ -129,7 +129,7 @@ export default function SeniorCatPageClient() {
                             className="w-full h-auto"
                         />
                         <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent flex items-end">
-                            <div className="p-8 text-white text-gray-100">
+                            <div className="p-8 text-white dark:text-gray-100">
                                 <h2 className="font-heading text-3xl font-bold mb-2">Comfort & Accessibility First</h2>
                                 <p className="text-xl opacity-90">Low-sided boxes make all the difference</p>
                             </div>
@@ -140,11 +140,11 @@ export default function SeniorCatPageClient() {
 
             <section className="py-16 px-4">
                 <div className="max-w-4xl mx-auto">
-                    <h2 className="text-3xl font-heading font-bold text-center mb-12 text-gray-900 text-gray-100">Understanding Senior Cat Needs</h2>
+                    <h2 className="text-3xl font-heading font-bold text-center mb-12 text-gray-900 dark:text-gray-100">Understanding Senior Cat Needs</h2>
 
-                    <div className="bg-white/80 bg-gray-800/80 backdrop-blur-lg rounded-xl p-8 mb-12 shadow-lg border border-electric-indigo/10 border-electric-indigo/20 hover:scale-105 transition-all duration-300">
-                        <h3 className="text-2xl font-heading font-semibold mb-6 text-gray-900 text-gray-100">Common Challenges for Aging Cats</h3>
-                        <div className="space-y-4 text-gray-700 text-gray-200">
+                    <div className="bg-white/80 dark:bg-gray-800/80 backdrop-blur-lg rounded-xl p-8 mb-12 shadow-lg border border-electric-indigo/10 dark:border-electric-indigo/20 hover:scale-105 transition-all duration-300">
+                        <h3 className="text-2xl font-heading font-semibold mb-6 text-gray-900 dark:text-gray-100">Common Challenges for Aging Cats</h3>
+                        <div className="space-y-4 text-gray-700 dark:text-gray-200">
                             <div>
                                 <h4 className="font-heading font-bold mb-2">Arthritis & Joint Pain</h4>
                                 <p>Up to 90% of cats over age 12 have arthritis. High litter box walls become painful obstacles. Every entry and exit causes discomfort.</p>
@@ -175,7 +175,7 @@ export default function SeniorCatPageClient() {
                                 className="w-full h-auto"
                             />
                             <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent flex items-end">
-                                <div className="p-8 text-white text-gray-100">
+                                <div className="p-8 text-white dark:text-gray-100">
                                     <h3 className="font-heading text-2xl font-bold mb-2">Understanding Mobility Challenges</h3>
                                     <p className="text-lg opacity-90">Arthritis affects how senior cats use litter boxes</p>
                                 </div>
@@ -184,9 +184,9 @@ export default function SeniorCatPageClient() {
                     </div>
 
                     <div className="grid md:grid-cols-2 gap-8">
-                        <div className="bg-white/80 bg-gray-800/80 backdrop-blur-lg rounded-xl p-6 shadow-lg border border-electric-indigo/10 border-electric-indigo/20 hover:scale-105 transition-all duration-300">
-                            <h3 className="text-xl font-heading font-semibold mb-4 text-gray-900 text-gray-100">Physical Accommodations</h3>
-                            <ul className="space-y-3 text-gray-700 text-gray-200">
+                        <div className="bg-white/80 dark:bg-gray-800/80 backdrop-blur-lg rounded-xl p-6 shadow-lg border border-electric-indigo/10 dark:border-electric-indigo/20 hover:scale-105 transition-all duration-300">
+                            <h3 className="text-xl font-heading font-semibold mb-4 text-gray-900 dark:text-gray-100">Physical Accommodations</h3>
+                            <ul className="space-y-3 text-gray-700 dark:text-gray-200">
                                 <li>✓ Low-sided entry (3-4 inches maximum)</li>
                                 <li>✓ Non-slip mats for stability</li>
                                 <li>✓ Larger box size for easier turning</li>
@@ -195,9 +195,9 @@ export default function SeniorCatPageClient() {
                             </ul>
                         </div>
 
-                        <div className="bg-white/80 bg-gray-800/80 backdrop-blur-lg rounded-xl p-6 shadow-lg border border-electric-indigo/10 border-electric-indigo/20 hover:scale-105 transition-all duration-300">
-                            <h3 className="text-xl font-heading font-semibold mb-4 text-gray-900 text-gray-100">Health Considerations</h3>
-                            <ul className="space-y-3 text-gray-700 text-gray-200">
+                        <div className="bg-white/80 dark:bg-gray-800/80 backdrop-blur-lg rounded-xl p-6 shadow-lg border border-electric-indigo/10 dark:border-electric-indigo/20 hover:scale-105 transition-all duration-300">
+                            <h3 className="text-xl font-heading font-semibold mb-4 text-gray-900 dark:text-gray-100">Health Considerations</h3>
+                            <ul className="space-y-3 text-gray-700 dark:text-gray-200">
                                 <li>✓ Low-dust formula for respiratory health</li>
                                 <li>✓ No harsh fragrances or chemicals</li>
                                 <li>✓ Superior odor control for kidney disease</li>
@@ -221,7 +221,7 @@ export default function SeniorCatPageClient() {
                             className="w-full h-auto"
                         />
                         <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent flex items-end">
-                            <div className="p-8 text-white text-gray-100">
+                            <div className="p-8 text-white dark:text-gray-100">
                                 <h3 className="font-heading text-2xl font-bold mb-2">The Perfect Senior-Friendly Setup</h3>
                                 <p className="text-lg opacity-90">Creating a comfortable environment for your aging cat</p>
                             </div>
@@ -230,17 +230,17 @@ export default function SeniorCatPageClient() {
                 </div>
             </section>
 
-            <section className="py-16 px-4 bg-white bg-gray-800">
+            <section className="py-16 px-4 bg-white dark:bg-gray-800">
                 <div className="max-w-4xl mx-auto">
                     <div className="text-center mb-12">
-                        <h2 className="text-3xl font-heading font-bold mb-8 text-gray-900 text-gray-100">How Purrify Helps Senior Cats</h2>
-                        <p className="text-xl mb-8 text-gray-700 text-gray-200">Designed with the unique needs of aging cats in mind</p>
+                        <h2 className="text-3xl font-heading font-bold mb-8 text-gray-900 dark:text-gray-100">How Purrify Helps Senior Cats</h2>
+                        <p className="text-xl mb-8 text-gray-700 dark:text-gray-200">Designed with the unique needs of aging cats in mind</p>
                     </div>
 
                     <div className="grid md:grid-cols-2 gap-8 mb-12">
-                        <div className="bg-white/80 bg-gray-800/80 backdrop-blur-lg rounded-xl p-6 shadow-lg border border-electric-indigo/10 border-electric-indigo/20 hover:scale-105 transition-all duration-300">
-                            <h3 className="text-xl font-heading font-semibold mb-4 text-gray-900 text-gray-100">Gentle on Sensitive Systems</h3>
-                            <ul className="space-y-3 text-gray-700 text-gray-200">
+                        <div className="bg-white/80 dark:bg-gray-800/80 backdrop-blur-lg rounded-xl p-6 shadow-lg border border-electric-indigo/10 dark:border-electric-indigo/20 hover:scale-105 transition-all duration-300">
+                            <h3 className="text-xl font-heading font-semibold mb-4 text-gray-900 dark:text-gray-100">Gentle on Sensitive Systems</h3>
+                            <ul className="space-y-3 text-gray-700 dark:text-gray-200">
                                 <li>✓ Virtually dust-free application</li>
                                 <li>✓ No artificial fragrances to irritate respiratory systems</li>
                                 <li>✓ 100% natural activated carbon</li>
@@ -249,9 +249,9 @@ export default function SeniorCatPageClient() {
                             </ul>
                         </div>
 
-                        <div className="bg-white/80 bg-gray-800/80 backdrop-blur-lg rounded-xl p-6 shadow-lg border border-electric-indigo/10 border-electric-indigo/20 hover:scale-105 transition-all duration-300">
-                            <h3 className="text-xl font-heading font-semibold mb-4 text-gray-900 text-gray-100">Superior Odor Control</h3>
-                            <ul className="space-y-3 text-gray-700 text-gray-200">
+                        <div className="bg-white/80 dark:bg-gray-800/80 backdrop-blur-lg rounded-xl p-6 shadow-lg border border-electric-indigo/10 dark:border-electric-indigo/20 hover:scale-105 transition-all duration-300">
+                            <h3 className="text-xl font-heading font-semibold mb-4 text-gray-900 dark:text-gray-100">Superior Odor Control</h3>
+                            <ul className="space-y-3 text-gray-700 dark:text-gray-200">
                                 <li>✓ Handles increased waste volume from kidney disease</li>
                                 <li>✓ Traps ammonia at the molecular level</li>
                                 <li>✓ Long-lasting effectiveness between cleanings</li>
@@ -261,23 +261,23 @@ export default function SeniorCatPageClient() {
                         </div>
                     </div>
 
-                    <div className="bg-gradient-to-br from-electric-indigo/10 to-deep-coral/10 from-electric-indigo/20 to-deep-coral/20 rounded-xl p-8 mb-12">
-                        <h3 className="text-2xl font-heading font-bold mb-4 text-center text-gray-900 text-gray-100">Why Senior Cat Owners Choose Purrify</h3>
+                    <div className="bg-gradient-to-br from-electric-indigo/10 to-deep-coral/10 dark:from-electric-indigo/20 dark:to-deep-coral/20 rounded-xl p-8 mb-12">
+                        <h3 className="text-2xl font-heading font-bold mb-4 text-center text-gray-900 dark:text-gray-100">Why Senior Cat Owners Choose Purrify</h3>
                         <div className="grid md:grid-cols-3 gap-6 text-center">
                             <div>
                                 <div className="text-4xl mb-3">🏥</div>
-                                <h4 className="font-heading font-bold mb-2 text-gray-900 text-gray-100">Vet-Recommended</h4>
-                                <p className="text-gray-700 text-gray-200">Safe for cats with health conditions</p>
+                                <h4 className="font-heading font-bold mb-2 text-gray-900 dark:text-gray-100">Vet-Recommended</h4>
+                                <p className="text-gray-700 dark:text-gray-200">Safe for cats with health conditions</p>
                             </div>
                             <div>
                                 <div className="text-4xl mb-3">👃</div>
-                                <h4 className="font-heading font-bold mb-2 text-gray-900 text-gray-100">Odor-Free Home</h4>
-                                <p className="text-gray-700 text-gray-200">Even with multiple senior cats</p>
+                                <h4 className="font-heading font-bold mb-2 text-gray-900 dark:text-gray-100">Odor-Free Home</h4>
+                                <p className="text-gray-700 dark:text-gray-200">Even with multiple senior cats</p>
                             </div>
                             <div>
                                 <div className="text-4xl mb-3">💙</div>
-                                <h4 className="font-heading font-bold mb-2 text-gray-900 text-gray-100">Comfort Focused</h4>
-                                <p className="text-gray-700 text-gray-200">Gentle care for aging companions</p>
+                                <h4 className="font-heading font-bold mb-2 text-gray-900 dark:text-gray-100">Comfort Focused</h4>
+                                <p className="text-gray-700 dark:text-gray-200">Gentle care for aging companions</p>
                             </div>
                         </div>
                     </div>
@@ -285,13 +285,13 @@ export default function SeniorCatPageClient() {
                     <div className="text-center">
                         <Link
                             href="/products/"
-                            className="inline-block bg-gradient-to-r from-electric-indigo to-deep-coral text-white text-gray-100 font-bold py-4 px-8 rounded-lg hover:from-electric-indigo-600 hover:to-deep-coral-600 hover:scale-105 transition-all duration-300 text-lg mr-4 shadow-lg"
+                            className="inline-block bg-gradient-to-r from-electric-indigo to-deep-coral text-white dark:text-gray-100 font-bold py-4 px-8 rounded-lg hover:from-electric-indigo-600 hover:to-deep-coral-600 hover:scale-105 transition-all duration-300 text-lg mr-4 shadow-lg"
                         >
                             Shop Purrify Now
                         </Link>
                         <Link
                             href="/learn/how-it-works/"
-                            className="inline-block bg-gray-200 bg-gray-600 text-gray-800 text-gray-200 font-bold py-4 px-8 rounded-lg hover:bg-gray-300 hover:bg-gray-500 transition-all text-lg"
+                            className="inline-block bg-gray-200 dark:bg-gray-600 text-gray-800 dark:text-gray-200 font-bold py-4 px-8 rounded-lg hover:bg-gray-300 dark:hover:bg-gray-500 transition-all text-lg"
                         >
                             Learn More
                         </Link>
@@ -312,7 +312,7 @@ export default function SeniorCatPageClient() {
             </section>
 
             {/* HowTo Section */}
-            <section className="py-12 px-4 bg-gray-50 bg-gray-800">
+            <section className="py-12 px-4 bg-gray-50 dark:bg-gray-800">
                 <div className="max-w-4xl mx-auto">
                     <HowToSection
                         title="How to Set Up a Litter Box for Senior Cats"
@@ -328,43 +328,43 @@ export default function SeniorCatPageClient() {
             {/* Related Senior Cat Content - Internal Linking */}
             <section className="py-12 px-4">
                 <div className="max-w-4xl mx-auto">
-                    <h2 className="text-2xl font-heading font-bold text-gray-900 text-gray-100 mb-6 text-center">
+                    <h2 className="text-2xl font-heading font-bold text-gray-900 dark:text-gray-100 mb-6 text-center">
                         More Senior Cat Care Resources
                     </h2>
                     <div className="grid md:grid-cols-3 gap-6">
                         <Link
                             href="/learn/solutions/litter-box-smell-elimination/"
-                            className="bg-white bg-gray-800 border border-gray-200 border-gray-700 rounded-xl p-6 hover:shadow-lg hover:border-[#FF3131] hover:border-[#FF5050] transition-all group"
+                            className="bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-xl p-6 hover:shadow-lg hover:border-[#FF3131] dark:hover:border-[#FF5050] transition-all group"
                         >
                             <div className="text-3xl mb-3">🚫</div>
-                            <h3 className="font-heading font-bold text-gray-900 text-gray-100 mb-2 group-hover:text-[#FF3131] group-hover:text-[#FF5050] transition-colors">
+                            <h3 className="font-heading font-bold text-gray-900 dark:text-gray-100 mb-2 group-hover:text-[#FF3131] dark:group-hover:text-[#FF5050] transition-colors">
                                 Litter Box Odor Elimination
                             </h3>
-                            <p className="text-sm text-gray-600 text-gray-300">
+                            <p className="text-sm text-gray-600 dark:text-gray-300">
                                 Complete guide to eliminating litter box smells permanently.
                             </p>
                         </Link>
                         <Link
                             href="/learn/solutions/multiple-cats-odor-control/"
-                            className="bg-white bg-gray-800 border border-gray-200 border-gray-700 rounded-xl p-6 hover:shadow-lg hover:border-[#FF3131] hover:border-[#FF5050] transition-all group"
+                            className="bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-xl p-6 hover:shadow-lg hover:border-[#FF3131] dark:hover:border-[#FF5050] transition-all group"
                         >
                             <div className="text-3xl mb-3">🐱🐱</div>
-                            <h3 className="font-heading font-bold text-gray-900 text-gray-100 mb-2 group-hover:text-[#FF3131] group-hover:text-[#FF5050] transition-colors">
+                            <h3 className="font-heading font-bold text-gray-900 dark:text-gray-100 mb-2 group-hover:text-[#FF3131] dark:group-hover:text-[#FF5050] transition-colors">
                                 Multiple Cats Odor Control
                             </h3>
-                            <p className="text-sm text-gray-600 text-gray-300">
+                            <p className="text-sm text-gray-600 dark:text-gray-300">
                                 Managing litter boxes for multiple senior cats.
                             </p>
                         </Link>
                         <Link
                             href="/blog/"
-                            className="bg-white bg-gray-800 border border-gray-200 border-gray-700 rounded-xl p-6 hover:shadow-lg hover:border-[#FF3131] hover:border-[#FF5050] transition-all group"
+                            className="bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-xl p-6 hover:shadow-lg hover:border-[#FF3131] dark:hover:border-[#FF5050] transition-all group"
                         >
                             <div className="text-3xl mb-3">📚</div>
-                            <h3 className="font-heading font-bold text-gray-900 text-gray-100 mb-2 group-hover:text-[#FF3131] group-hover:text-[#FF5050] transition-colors">
+                            <h3 className="font-heading font-bold text-gray-900 dark:text-gray-100 mb-2 group-hover:text-[#FF3131] dark:group-hover:text-[#FF5050] transition-colors">
                                 Cat Care Blog
                             </h3>
-                            <p className="text-sm text-gray-600 text-gray-300">
+                            <p className="text-sm text-gray-600 dark:text-gray-300">
                                 Expert tips and advice for cat health and wellness.
                             </p>
                         </Link>

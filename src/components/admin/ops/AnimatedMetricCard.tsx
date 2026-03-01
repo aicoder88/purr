@@ -49,9 +49,9 @@ function AnimatedNumber({
 function LoadingSkeleton() {
   return (
     <div className="animate-pulse">
-      <div className="h-4 bg-gray-200 bg-gray-700 rounded w-24 mb-3" />
-      <div className="h-8 bg-gray-200 bg-gray-700 rounded w-16 mb-2" />
-      <div className="h-3 bg-gray-200 bg-gray-700 rounded w-20" />
+      <div className="h-4 bg-gray-200 dark:bg-gray-700 rounded w-24 mb-3" />
+      <div className="h-8 bg-gray-200 dark:bg-gray-700 rounded w-16 mb-2" />
+      <div className="h-3 bg-gray-200 dark:bg-gray-700 rounded w-20" />
     </div>
   );
 }
@@ -72,7 +72,7 @@ export function AnimatedMetricCard({
 
   const CardContent = (
     <motion.div
-      className="bg-white bg-gray-800 rounded-xl border border-gray-200 border-gray-700 p-6 cursor-pointer overflow-hidden relative"
+      className="bg-white dark:bg-gray-800 rounded-xl border border-gray-200 dark:border-gray-700 p-6 cursor-pointer overflow-hidden relative"
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
       whileHover={{ 
@@ -101,37 +101,37 @@ export function AnimatedMetricCard({
         ) : (
           <div className="flex items-start justify-between">
             <div>
-              <p className="text-sm font-medium text-gray-600 text-gray-400">
+              <p className="text-sm font-medium text-gray-600 dark:text-gray-400">
                 {title}
               </p>
-              <p className="text-3xl font-bold text-gray-900 text-gray-50 mt-2">
+              <p className="text-3xl font-bold text-gray-900 dark:text-gray-50 mt-2">
                 <AnimatedNumber value={value} format={format} />
               </p>
               {change !== undefined && (
                 <div className="flex items-center mt-2 text-sm">
                   {isPositive && (
                     <>
-                      <ArrowUpRight className="w-4 h-4 text-green-500 text-green-400" />
-                      <span className="text-green-600 text-green-400 font-medium">
+                      <ArrowUpRight className="w-4 h-4 text-green-500 dark:text-green-400" />
+                      <span className="text-green-600 dark:text-green-400 font-medium">
                         +{change}%
                       </span>
                     </>
                   )}
                   {isNegative && (
                     <>
-                      <ArrowDownRight className="w-4 h-4 text-red-500 text-red-400" />
-                      <span className="text-red-600 text-red-400 font-medium">
+                      <ArrowDownRight className="w-4 h-4 text-red-500 dark:text-red-400" />
+                      <span className="text-red-600 dark:text-red-400 font-medium">
                         {change}%
                       </span>
                     </>
                   )}
                   {change === 0 && (
-                    <span className="text-gray-500 text-gray-400 font-medium">
+                    <span className="text-gray-500 dark:text-gray-400 font-medium">
                       0%
                     </span>
                   )}
                   {changeLabel && (
-                    <span className="text-gray-500 text-gray-400 ml-1">
+                    <span className="text-gray-500 dark:text-gray-400 ml-1">
                       {changeLabel}
                     </span>
                   )}
@@ -139,14 +139,14 @@ export function AnimatedMetricCard({
               )}
             </div>
             <motion.div
-              className="p-3 bg-teal-50 bg-teal-900/30 rounded-lg"
+              className="p-3 bg-teal-50 dark:bg-teal-900/30 rounded-lg"
               animate={{ 
                 scale: isHovered ? 1.1 : 1,
                 rotate: isHovered ? 5 : 0
               }}
               transition={{ type: 'spring', stiffness: 400, damping: 17 }}
             >
-              <Icon className="w-6 h-6 text-teal-600 text-teal-400" />
+              <Icon className="w-6 h-6 text-teal-600 dark:text-teal-400" />
             </motion.div>
           </div>
         )}

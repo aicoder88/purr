@@ -27,7 +27,7 @@ const SHARE_TEMPLATES: ShareTemplate[] = [
   {
     platform: 'email',
     icon: Mail,
-    color: 'text-blue-600 text-blue-400',
+    color: 'text-blue-600 dark:text-blue-400',
     title: 'Email',
     template: `Subject: Get your FREE Purrify trial - eliminates cat litter odor instantly!
 
@@ -49,21 +49,21 @@ Best!
   {
     platform: 'sms',
     icon: MessageSquare,
-    color: 'text-green-600 text-green-400',
+    color: 'text-green-600 dark:text-green-400',
     title: 'SMS',
     template: `Hey! Found this cat litter deodorizer that actually WORKS. No more embarrassing smell! Get a FREE trial with my code {code}: {url}`
   },
   {
     platform: 'whatsapp',
     icon: Send,
-    color: 'text-green-500 text-green-400',
+    color: 'text-green-500 dark:text-green-400',
     title: 'WhatsApp',
     template: `🐱 Finally found something that eliminates cat litter smell completely! I was so embarrassed before, but Purrify actually works. Get your FREE trial with my code {code}: {url} #CatParentLife`
   },
   {
     platform: 'facebook',
     icon: Facebook,
-    color: 'text-blue-700 text-blue-400',
+    color: 'text-blue-700 dark:text-blue-400',
     title: 'Facebook',
     template: `Cat parents - this is LIFE CHANGING! 🙌
 
@@ -77,7 +77,7 @@ My friend can get a FREE trial with code {code}. If you're tired of holding your
   {
     platform: 'linkedin',
     icon: Linkedin,
-    color: 'text-blue-800 text-blue-400',
+    color: 'text-blue-800 dark:text-blue-400',
     title: 'LinkedIn',
     template: `As a pet owner, I'm always looking for effective solutions that actually work.
 
@@ -214,7 +214,7 @@ export function SocialShareTools({ referralCode, shareUrl, referrerName, classNa
     <div className={cn("space-y-6", className)}>
       {/* Quick Share Buttons */}
       <Card className="p-6">
-        <h3 className="font-heading text-lg font-semibold text-gray-900 text-gray-100 mb-4 flex items-center">
+        <h3 className="font-heading text-lg font-semibold text-gray-900 dark:text-gray-100 mb-4 flex items-center">
           <Share2 className="w-5 h-5 mr-2" />
           Quick Share
         </h3>
@@ -225,7 +225,7 @@ export function SocialShareTools({ referralCode, shareUrl, referrerName, classNa
               key={template.platform}
               onClick={() => handleSocialShare(template)}
               variant="outline"
-              className="flex flex-col items-center p-4 h-auto hover:border-orange-500 hover:border-orange-400 transition-colors"
+              className="flex flex-col items-center p-4 h-auto hover:border-orange-500 dark:hover:border-orange-400 transition-colors"
             >
               <template.icon className={cn("w-6 h-6 mb-2", template.color)} />
               <span className="text-sm font-medium">{template.title}</span>
@@ -236,10 +236,10 @@ export function SocialShareTools({ referralCode, shareUrl, referrerName, classNa
 
       {/* Detailed Templates */}
       <Card className="p-6">
-        <h3 className="font-heading text-lg font-semibold text-gray-900 text-gray-100 mb-4">
+        <h3 className="font-heading text-lg font-semibold text-gray-900 dark:text-gray-100 mb-4">
           Personalized Templates
         </h3>
-        <p className="text-gray-600 text-gray-400 mb-4">
+        <p className="text-gray-600 dark:text-gray-400 mb-4">
           Use these pre-written messages optimized for maximum conversion rates
         </p>
 
@@ -247,12 +247,12 @@ export function SocialShareTools({ referralCode, shareUrl, referrerName, classNa
           {SHARE_TEMPLATES.map((template) => (
             <div
               key={template.platform}
-              className="border border-gray-200 border-gray-700 rounded-lg p-4 hover:border-orange-200 hover:border-orange-700 transition-colors"
+              className="border border-gray-200 dark:border-gray-700 rounded-lg p-4 hover:border-orange-200 dark:hover:border-orange-700 transition-colors"
             >
               <div className="flex items-center justify-between mb-3">
                 <div className="flex items-center space-x-2">
                   <template.icon className={cn("w-5 h-5", template.color)} />
-                  <h4 className="font-medium text-gray-900 text-gray-100">
+                  <h4 className="font-medium text-gray-900 dark:text-gray-100">
                     {template.title}
                   </h4>
                   <Badge variant="outline">Optimized</Badge>
@@ -282,8 +282,8 @@ export function SocialShareTools({ referralCode, shareUrl, referrerName, classNa
                         </DialogTitle>
                       </DialogHeader>
                       <div className="space-y-4">
-                        <div className="bg-gray-50 bg-gray-800 p-4 rounded-lg">
-                          <pre className="whitespace-pre-wrap text-sm text-gray-700 text-gray-300">
+                        <div className="bg-gray-50 dark:bg-gray-800 p-4 rounded-lg">
+                          <pre className="whitespace-pre-wrap text-sm text-gray-700 dark:text-gray-300">
                             {generatePersonalizedMessage(template.template)}
                           </pre>
                         </div>
@@ -310,7 +310,7 @@ export function SocialShareTools({ referralCode, shareUrl, referrerName, classNa
                 </div>
               </div>
 
-              <div className="bg-gray-50 bg-gray-800 p-3 rounded text-sm text-gray-600 text-gray-400">
+              <div className="bg-gray-50 dark:bg-gray-800 p-3 rounded text-sm text-gray-600 dark:text-gray-400">
                 <p className="line-clamp-3">
                   {generatePersonalizedMessage(template.template)}
                 </p>
@@ -324,11 +324,11 @@ export function SocialShareTools({ referralCode, shareUrl, referrerName, classNa
       <Card className="p-6">
         <div className="flex items-center justify-between mb-4">
           <div>
-            <h3 className="font-heading text-lg font-semibold text-gray-900 text-gray-100 flex items-center">
+            <h3 className="font-heading text-lg font-semibold text-gray-900 dark:text-gray-100 flex items-center">
               <QrCode className="w-5 h-5 mr-2" />
               QR Code
             </h3>
-            <p className="text-gray-600 text-gray-400">
+            <p className="text-gray-600 dark:text-gray-400">
               Perfect for in-person sharing at vet clinics, pet stores, or with neighbors
             </p>
           </div>
@@ -344,17 +344,17 @@ export function SocialShareTools({ referralCode, shareUrl, referrerName, classNa
         {showQR && (
           <div className="space-y-4">
             <div className="flex justify-center">
-              <div className="bg-white bg-gray-100 p-4 rounded-lg shadow-lg">
+              <div className="bg-white dark:bg-gray-100 p-4 rounded-lg shadow-lg">
                 <canvas
                   ref={qrCanvasRef}
                   width={200}
                   height={200}
-                  className="border border-gray-200 border-gray-700"
+                  className="border border-gray-200 dark:border-gray-700"
                   onLoad={generateQRCode}
                 />
                 <div className="text-center mt-2">
-                  <p className="text-sm text-gray-600 text-gray-400 font-mono">{referralCode}</p>
-                  <p className="text-xs text-gray-500 text-gray-400">Free Trial Code</p>
+                  <p className="text-sm text-gray-600 dark:text-gray-400 font-mono">{referralCode}</p>
+                  <p className="text-xs text-gray-500 dark:text-gray-400">Free Trial Code</p>
                 </div>
               </div>
             </div>
@@ -369,11 +369,11 @@ export function SocialShareTools({ referralCode, shareUrl, referrerName, classNa
               </Button>
             </div>
 
-            <div className="bg-blue-50 bg-blue-900/20 p-4 rounded-lg">
-              <h4 className="font-medium text-blue-800 text-blue-200 mb-2">
+            <div className="bg-blue-50 dark:bg-blue-900/20 p-4 rounded-lg">
+              <h4 className="font-medium text-blue-800 dark:text-blue-200 mb-2">
                 How to use your QR code:
               </h4>
-              <ul className="text-sm text-blue-700 text-blue-300 space-y-1">
+              <ul className="text-sm text-blue-700 dark:text-blue-300 space-y-1">
                 <li>• Print and display at your vet clinic or pet store</li>
                 <li>• Share digitally in local pet parent groups</li>
                 <li>• Add to your email signature</li>
@@ -385,15 +385,15 @@ export function SocialShareTools({ referralCode, shareUrl, referrerName, classNa
       </Card>
 
       {/* Performance Tips */}
-      <Card className="p-6 bg-gradient-to-r from-green-50 to-blue-50 from-green-900/20 to-blue-900/20">
-        <h3 className="font-heading text-lg font-semibold text-gray-900 text-gray-100 mb-4">
+      <Card className="p-6 bg-gradient-to-r from-green-50 to-blue-50 dark:from-green-900/20 dark:to-blue-900/20">
+        <h3 className="font-heading text-lg font-semibold text-gray-900 dark:text-gray-100 mb-4">
           💡 Sharing Tips for Better Results
         </h3>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
           <div>
-            <h4 className="font-medium text-gray-800 text-gray-200 mb-2">Best Times to Share:</h4>
-            <ul className="text-sm text-gray-600 text-gray-400 space-y-1">
+            <h4 className="font-medium text-gray-800 dark:text-gray-200 mb-2">Best Times to Share:</h4>
+            <ul className="text-sm text-gray-600 dark:text-gray-400 space-y-1">
               <li>• When friends complain about litter smell</li>
               <li>• After cleaning your litter box</li>
               <li>• In pet parent Facebook groups</li>
@@ -402,8 +402,8 @@ export function SocialShareTools({ referralCode, shareUrl, referrerName, classNa
           </div>
 
           <div>
-            <h4 className="font-medium text-gray-800 text-gray-200 mb-2">High-Converting Messages:</h4>
-            <ul className="text-sm text-gray-600 text-gray-400 space-y-1">
+            <h4 className="font-medium text-gray-800 dark:text-gray-200 mb-2">High-Converting Messages:</h4>
+            <ul className="text-sm text-gray-600 dark:text-gray-400 space-y-1">
               <li>• Focus on embarrassment/relief</li>
               <li>• Mention "actually works" vs other products</li>
               <li>• Emphasize the FREE trial</li>

@@ -121,8 +121,8 @@ export const ReviewSystem: React.FC<ReviewSystemProps> = ({
           <Star
             key={star}
             className={`${STAR_SIZE_CLASSES[size]} ${star <= rating
-              ? 'text-yellow-400 text-yellow-300 fill-current'
-              : 'text-gray-300 text-gray-600'
+              ? 'text-yellow-400 dark:text-yellow-300 fill-current'
+              : 'text-gray-300 dark:text-gray-600'
               }`}
           />
         ))}
@@ -136,11 +136,11 @@ export const ReviewSystem: React.FC<ReviewSystemProps> = ({
 
   if (totalReviews === 0) {
     return (
-      <div className="bg-white bg-gray-800 rounded-xl p-6 shadow-lg border border-[#E0EFC7] border-gray-700">
-        <h3 className="font-heading text-xl font-bold text-gray-900 text-gray-100 mb-2">
+      <div className="bg-white dark:bg-gray-800 rounded-xl p-6 shadow-lg border border-[#E0EFC7] dark:border-gray-700">
+        <h3 className="font-heading text-xl font-bold text-gray-900 dark:text-gray-100 mb-2">
           {t('reviewSystem.customerReviews')}
         </h3>
-        <p className="text-gray-600 text-gray-300 text-sm">
+        <p className="text-gray-600 dark:text-gray-300 text-sm">
           {t('reviewSystem.comingSoon')}
         </p>
       </div>
@@ -150,21 +150,21 @@ export const ReviewSystem: React.FC<ReviewSystemProps> = ({
   if (compact) {
     return (
       <>
-        <div className="bg-white bg-gray-800 rounded-xl p-6 shadow-lg border border-[#E0EFC7] border-gray-700">
+        <div className="bg-white dark:bg-gray-800 rounded-xl p-6 shadow-lg border border-[#E0EFC7] dark:border-gray-700">
           <div className="flex items-center justify-between mb-4">
-            <h3 className="font-heading text-xl font-bold text-gray-900 text-gray-100">
+            <h3 className="font-heading text-xl font-bold text-gray-900 dark:text-gray-100">
               {t('reviewSystem.customerReviews')}
             </h3>
           </div>
 
-          <p className="text-gray-600 text-gray-300 text-sm">
+          <p className="text-gray-600 dark:text-gray-300 text-sm">
             {t('reviewSystem.comingSoon')}
           </p>
 
-          <div className="mt-4 pt-4 border-t border-gray-100 border-gray-700">
+          <div className="mt-4 pt-4 border-t border-gray-100 dark:border-gray-700">
             <Button
               variant="outline"
-              className="w-full border-[#5B2EFF] text-[#5B2EFF] text-[#5B2EFF] hover:bg-[#5B2EFF] hover:text-white hover:text-gray-100"
+              className="w-full border-[#5B2EFF] text-[#5B2EFF] dark:text-[#5B2EFF] hover:bg-[#5B2EFF] hover:text-white dark:hover:text-gray-100"
             >
               {t('reviewSystem.viewAllReviews')}
             </Button>
@@ -178,12 +178,12 @@ export const ReviewSystem: React.FC<ReviewSystemProps> = ({
     <>
       <div className="space-y-8">
         {/* Review Summary */}
-        <div className="bg-white bg-gray-800 rounded-xl p-8 shadow-lg border border-[#E0EFC7] border-gray-700">
+        <div className="bg-white dark:bg-gray-800 rounded-xl p-8 shadow-lg border border-[#E0EFC7] dark:border-gray-700">
           <div>
-            <h3 className="font-heading text-2xl font-bold text-gray-900 text-gray-100 mb-2">
+            <h3 className="font-heading text-2xl font-bold text-gray-900 dark:text-gray-100 mb-2">
               {t('reviewSystem.customerReviews') || "Customer Reviews"}
             </h3>
-            <p className="text-gray-600 text-gray-300">
+            <p className="text-gray-600 dark:text-gray-300">
               {t('reviewSystem.comingSoon') || 'Customer reviews will appear here once our review system is live.'}
             </p>
           </div>
@@ -193,16 +193,16 @@ export const ReviewSystem: React.FC<ReviewSystemProps> = ({
 
         {/* Filters and Sorting */}
         {showFilters && (
-          <div className="bg-white bg-gray-800 rounded-xl p-6 shadow-lg border border-[#E0EFC7] border-gray-700">
+          <div className="bg-white dark:bg-gray-800 rounded-xl p-6 shadow-lg border border-[#E0EFC7] dark:border-gray-700">
             <div className="flex flex-col sm:flex-row gap-4 items-start sm:items-center justify-between">
               <div className="flex flex-wrap gap-4">
                 {/* Rating Filter */}
                 <div className="flex items-center space-x-2">
-                  <Filter className="w-4 h-4 text-gray-500 text-gray-400" />
+                  <Filter className="w-4 h-4 text-gray-500 dark:text-gray-400" />
                   <select
                     value={filterRating || ''}
                     onChange={(e) => setFilterRating(e.target.value ? parseInt(e.target.value) : null)}
-                    className="border border-gray-300 border-gray-600 rounded-lg px-3 py-2 text-sm bg-white bg-gray-700 text-gray-900 text-gray-100"
+                    className="border border-gray-300 dark:border-gray-600 rounded-lg px-3 py-2 text-sm bg-white dark:bg-gray-700 text-gray-900 dark:text-gray-100"
                   >
                     <option value="">{t('reviewSystem.filters.allRatings')}</option>
                     <option value="5">5 {t('reviewSystem.filters.stars')}</option>
@@ -217,7 +217,7 @@ export const ReviewSystem: React.FC<ReviewSystemProps> = ({
                 <select
                   value={filterSize || ''}
                   onChange={(e) => setFilterSize(e.target.value || null)}
-                  className="border border-gray-300 border-gray-600 rounded-lg px-3 py-2 text-sm bg-white bg-gray-700 text-gray-900 text-gray-100"
+                  className="border border-gray-300 dark:border-gray-600 rounded-lg px-3 py-2 text-sm bg-white dark:bg-gray-700 text-gray-900 dark:text-gray-100"
                 >
                   <option value="">{t('reviewSystem.filters.allSizes')}</option>
                   <option value="12g">{t('reviewSystem.filters.trial')}</option>
@@ -228,11 +228,11 @@ export const ReviewSystem: React.FC<ReviewSystemProps> = ({
 
               {/* Sort Options */}
               <div className="flex items-center space-x-2">
-                <SortAsc className="w-4 h-4 text-gray-500 text-gray-400" />
+                <SortAsc className="w-4 h-4 text-gray-500 dark:text-gray-400" />
                 <select
                   value={sortBy}
                   onChange={(e) => setSortBy(e.target.value as SortOption)}
-                  className="border border-gray-300 border-gray-600 rounded-lg px-3 py-2 text-sm bg-white bg-gray-700 text-gray-900 text-gray-100"
+                  className="border border-gray-300 dark:border-gray-600 rounded-lg px-3 py-2 text-sm bg-white dark:bg-gray-700 text-gray-900 dark:text-gray-100"
                 >
                   <option value="newest">{t('reviewSystem.sort.newestFirst')}</option>
                   <option value="oldest">{t('reviewSystem.sort.oldestFirst')}</option>
@@ -248,20 +248,20 @@ export const ReviewSystem: React.FC<ReviewSystemProps> = ({
         {/* Reviews List */}
         <div className="space-y-6">
           {filteredReviews.map((review) => (
-            <div key={review.id} className="bg-white bg-gray-800 rounded-xl p-6 shadow-lg border border-[#E0EFC7] border-gray-700">
+            <div key={review.id} className="bg-white dark:bg-gray-800 rounded-xl p-6 shadow-lg border border-[#E0EFC7] dark:border-gray-700">
               {/* Review Header */}
               <div className="flex items-start justify-between mb-4">
                 <div className="flex items-center space-x-3">
                   <div className="w-10 h-10 bg-[#5B2EFF] rounded-full flex items-center justify-center">
-                    <User className="w-5 h-5 text-white text-gray-100" />
+                    <User className="w-5 h-5 text-white dark:text-gray-100" />
                   </div>
                   <div>
                     <div className="flex items-center space-x-2">
-                      <span className="font-semibold text-gray-900 text-gray-100">
+                      <span className="font-semibold text-gray-900 dark:text-gray-100">
                         {review.userName}
                       </span>
                       {review.verified && (
-                        <div className="flex items-center space-x-1 text-green-600 text-green-400">
+                        <div className="flex items-center space-x-1 text-green-600 dark:text-green-400">
                           <CheckCircle className="w-4 h-4" />
                           <span className="text-xs">{t('reviewSystem.review.verifiedPurchase')}</span>
                         </div>
@@ -269,14 +269,14 @@ export const ReviewSystem: React.FC<ReviewSystemProps> = ({
                     </div>
                     <div className="flex items-center space-x-2 mt-1">
                       {renderStars(review.rating, 'sm')}
-                      <span className="text-sm text-gray-500 text-gray-400">
+                      <span className="text-sm text-gray-500 dark:text-gray-400">
                         {formatDate(review.date)}
                       </span>
                     </div>
                   </div>
                 </div>
 
-                <div className="text-right text-sm text-gray-500 text-gray-400">
+                <div className="text-right text-sm text-gray-500 dark:text-gray-400">
                   <div>{t('reviewSystem.review.size')}: {review.productSize}</div>
                   <div>{review.catCount} {review.catCount > 1 ? (t('reviewSystem.review.cats')) : (t('reviewSystem.review.cat'))}</div>
                   <div>{t('reviewSystem.review.usingFor')} {review.usageDuration}</div>
@@ -285,26 +285,26 @@ export const ReviewSystem: React.FC<ReviewSystemProps> = ({
 
               {/* Review Content */}
               <div className="mb-4">
-                <h4 className="font-semibold text-gray-900 text-gray-100 mb-2">
+                <h4 className="font-semibold text-gray-900 dark:text-gray-100 mb-2">
                   {review.title}
                 </h4>
-                <p className="text-gray-600 text-gray-300 leading-relaxed">
+                <p className="text-gray-600 dark:text-gray-300 leading-relaxed">
                   {review.content}
                 </p>
               </div>
 
               {/* Review Footer */}
-              <div className="flex items-center justify-between pt-4 border-t border-gray-100 border-gray-700">
+              <div className="flex items-center justify-between pt-4 border-t border-gray-100 dark:border-gray-700">
                 <div className="flex items-center space-x-4">
                   <button
-                    className="flex items-center space-x-1 text-gray-500 text-gray-400 hover:text-green-600 hover:text-green-400 transition-colors"
+                    className="flex items-center space-x-1 text-gray-500 dark:text-gray-400 hover:text-green-600 dark:hover:text-green-400 transition-colors"
                     aria-label={`Mark review as helpful (${review.helpful} votes)`}
                   >
                     <ThumbsUp className="w-4 h-4" />
                     <span className="text-sm">{t('reviewSystem.review.helpful')} ({review.helpful})</span>
                   </button>
                   <button
-                    className="flex items-center space-x-1 text-gray-500 text-gray-400 hover:text-red-600 hover:text-red-400 transition-colors"
+                    className="flex items-center space-x-1 text-gray-500 dark:text-gray-400 hover:text-red-600 dark:hover:text-red-400 transition-colors"
                     aria-label={`Mark review as not helpful (${review.notHelpful} votes)`}
                   >
                     <ThumbsDown className="w-4 h-4" />
@@ -313,7 +313,7 @@ export const ReviewSystem: React.FC<ReviewSystemProps> = ({
                 </div>
 
                 {review.wouldRecommend && (
-                  <div className="flex items-center space-x-1 text-green-600 text-green-400">
+                  <div className="flex items-center space-x-1 text-green-600 dark:text-green-400">
                     <CheckCircle className="w-4 h-4" />
                     <span className="text-sm font-medium">{t('reviewSystem.review.recommendsProduct')}</span>
                   </div>
@@ -328,7 +328,7 @@ export const ReviewSystem: React.FC<ReviewSystemProps> = ({
           <div className="text-center">
             <Button
               variant="outline"
-              className="border-[#5B2EFF] text-[#5B2EFF] text-[#5B2EFF] hover:bg-[#5B2EFF] hover:text-white hover:text-gray-100"
+              className="border-[#5B2EFF] text-[#5B2EFF] dark:text-[#5B2EFF] hover:bg-[#5B2EFF] hover:text-white dark:hover:text-gray-100"
             >
               {t('reviewSystem.loadMoreReviews')}
             </Button>

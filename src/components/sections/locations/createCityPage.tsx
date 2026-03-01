@@ -41,13 +41,13 @@ interface FAQItemProps {
 // ============================================================================
 
 const GRADIENTS = {
-  pageBackground: 'bg-gradient-to-br from-orange-50 to-pink-50 from-gray-900 to-gray-800',
+  pageBackground: 'bg-gradient-to-br from-orange-50 to-pink-50 dark:from-gray-900 dark:to-gray-800',
   ctaButton: 'bg-gradient-to-r from-orange-500 to-pink-500 hover:from-orange-600 hover:to-pink-600',
   headingText: 'bg-gradient-to-r from-orange-600 to-pink-600 bg-clip-text text-transparent',
-  blueSection: 'bg-gradient-to-br from-blue-50 to-purple-50 from-blue-900/20 to-purple-900/20',
-  purpleSection: 'bg-gradient-to-br from-purple-50 to-blue-50 from-purple-900/20 to-blue-900/20',
-  testimonialCard: 'bg-gradient-to-br from-gray-50 to-white from-gray-700/70 to-gray-700/50',
-  videoCta: 'bg-gradient-to-br from-orange-50 to-pink-50 from-orange-900/20 to-pink-900/20',
+  blueSection: 'bg-gradient-to-br from-blue-50 to-purple-50 dark:from-blue-900/20 dark:to-purple-900/20',
+  purpleSection: 'bg-gradient-to-br from-purple-50 to-blue-50 dark:from-purple-900/20 dark:to-blue-900/20',
+  testimonialCard: 'bg-gradient-to-br from-gray-50 to-white dark:from-gray-700/70 dark:to-gray-700/50',
+  videoCta: 'bg-gradient-to-br from-orange-50 to-pink-50 dark:from-orange-900/20 dark:to-pink-900/20',
 } as const;
 
 const HERO_IMAGES: Record<string, string> = {
@@ -66,7 +66,7 @@ const HERO_IMAGES: Record<string, string> = {
   'nu': '/optimized/locations/north.png',
 };
 
-const CTA_BUTTON_CLASSES = `inline-flex items-center justify-center ${GRADIENTS.ctaButton} text-white text-gray-100 font-bold py-3 px-6 rounded-lg transition-all`;
+const CTA_BUTTON_CLASSES = `inline-flex items-center justify-center ${GRADIENTS.ctaButton} text-white dark:text-gray-100 font-bold py-3 px-6 rounded-lg transition-all`;
 
 // ============================================================================
 // Subcomponents
@@ -77,45 +77,45 @@ function TestimonialCard({ testimonial, wasHelpfulText = 'Was this helpful?' }: 
   const hasHalfStar = testimonial.stars % 1 !== 0;
 
   return (
-    <div className={`${GRADIENTS.testimonialCard} p-6 rounded-xl border border-gray-200 border-gray-600 shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-1 flex flex-col`}>
+    <div className={`${GRADIENTS.testimonialCard} p-6 rounded-xl border border-gray-200 dark:border-gray-600 shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-1 flex flex-col`}>
       <div className="flex items-center justify-between mb-3">
         <div className="flex items-center gap-1">
           {[...Array(fullStars)].map((_, i) => (
-            <span key={i} className="text-yellow-400 text-yellow-300 text-lg">★</span>
+            <span key={i} className="text-yellow-400 dark:text-yellow-300 text-lg">★</span>
           ))}
           {hasHalfStar && (
-            <span className="text-yellow-400 text-yellow-300 text-lg">½</span>
+            <span className="text-yellow-400 dark:text-yellow-300 text-lg">½</span>
           )}
           {[...Array(5 - Math.ceil(testimonial.stars))].map((_, i) => (
-            <span key={`empty-${i}`} className="text-gray-300 text-gray-500 text-lg">★</span>
+            <span key={`empty-${i}`} className="text-gray-300 dark:text-gray-500 text-lg">★</span>
           ))}
         </div>
-        <span className="text-xs text-gray-500 text-gray-400">{testimonial.timeAgo}</span>
+        <span className="text-xs text-gray-500 dark:text-gray-400">{testimonial.timeAgo}</span>
       </div>
 
       <div className="mb-3">
-        <span className="inline-block px-3 py-1 text-xs font-semibold rounded-full bg-green-100 bg-green-900/30 text-green-700 text-green-300 border border-green-200 border-green-700">
+        <span className="inline-block px-3 py-1 text-xs font-semibold rounded-full bg-green-100 dark:bg-green-900/30 text-green-700 dark:text-green-300 border border-green-200 dark:border-green-700">
           ✓ {testimonial.badge}
         </span>
       </div>
 
-      <p className="italic mb-4 text-gray-700 text-gray-200 flex-grow leading-relaxed">
+      <p className="italic mb-4 text-gray-700 dark:text-gray-200 flex-grow leading-relaxed">
         “{testimonial.quote}”
       </p>
 
-      <div className="border-t border-gray-200 border-gray-600 pt-4 mt-auto">
-        <p className="font-semibold text-gray-900 text-gray-50 mb-3 text-sm">
+      <div className="border-t border-gray-200 dark:border-gray-600 pt-4 mt-auto">
+        <p className="font-semibold text-gray-900 dark:text-gray-50 mb-3 text-sm">
           {testimonial.author}
         </p>
 
         <div className="flex items-center justify-between text-sm">
-          <span className="text-gray-600 text-gray-400">{wasHelpfulText}</span>
+          <span className="text-gray-600 dark:text-gray-400">{wasHelpfulText}</span>
           <div className="flex items-center gap-3">
-            <button className="flex items-center gap-1 text-gray-600 text-gray-400 hover:text-green-600 hover:text-green-400 transition-colors">
+            <button className="flex items-center gap-1 text-gray-600 dark:text-gray-400 hover:text-green-600 dark:hover:text-green-400 transition-colors">
               <span>👍</span>
               <span className="text-xs font-medium">{testimonial.helpfulCount}</span>
             </button>
-            <button className="flex items-center gap-1 text-gray-600 text-gray-400 hover:text-red-600 hover:text-red-400 transition-colors">
+            <button className="flex items-center gap-1 text-gray-600 dark:text-gray-400 hover:text-red-600 dark:hover:text-red-400 transition-colors">
               <span>👎</span>
               <span className="text-xs font-medium">{Math.floor(testimonial.helpfulCount / 8)}</span>
             </button>
@@ -128,11 +128,11 @@ function TestimonialCard({ testimonial, wasHelpfulText = 'Was this helpful?' }: 
 
 function FAQItem({ question, answer }: FAQItemProps) {
   return (
-    <div className="bg-white bg-gray-800 p-6 rounded-lg shadow-lg border border-gray-200 border-gray-700">
-      <h3 className="font-heading text-xl font-bold mb-2 text-gray-900 text-gray-50">
+    <div className="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-lg border border-gray-200 dark:border-gray-700">
+      <h3 className="font-heading text-xl font-bold mb-2 text-gray-900 dark:text-gray-50">
         {question}
       </h3>
-      <p className="text-gray-700 text-gray-200">
+      <p className="text-gray-700 dark:text-gray-200">
         {answer}
       </p>
     </div>
@@ -329,13 +329,13 @@ export const CityPageTemplate = ({ citySlug, initialProfile }: CityPageTemplateP
   // Hydration safety check - show a targeted loading state if profile is missing
   if (!profile) {
     return (
-      <div className="min-h-screen flex flex-col items-center justify-center bg-gray-50 bg-gray-900 p-4 text-center">
-        <div className="w-12 h-12 border-4 border-orange-200 border-gray-700 border-t-orange-600 border-t-orange-400 rounded-full animate-spin mb-4 mx-auto"></div>
-        <h2 className="text-xl font-bold text-gray-900 text-gray-100 mb-2">{preparingCityGuideText}</h2>
-        <p className="text-gray-600 text-gray-400 max-w-sm">
-          {loadingTipsPrefix} <span className="font-semibold text-orange-600 text-orange-400 capitalize">{citySlug}</span>.
+      <div className="min-h-screen flex flex-col items-center justify-center bg-gray-50 dark:bg-gray-900 p-4 text-center">
+        <div className="w-12 h-12 border-4 border-orange-200 dark:border-gray-700 border-t-orange-600 dark:border-t-orange-400 rounded-full animate-spin mb-4 mx-auto"></div>
+        <h2 className="text-xl font-bold text-gray-900 dark:text-gray-100 mb-2">{preparingCityGuideText}</h2>
+        <p className="text-gray-600 dark:text-gray-400 max-w-sm">
+          {loadingTipsPrefix} <span className="font-semibold text-orange-600 dark:text-orange-400 capitalize">{citySlug}</span>.
         </p>
-        <div className="mt-8 text-xs text-gray-400 text-gray-500 uppercase tracking-widest">
+        <div className="mt-8 text-xs text-gray-400 dark:text-gray-500 uppercase tracking-widest">
           {locale === 'fr' ? 'Chargement en cours...' : 'Locating Purrify Resources...'}
         </div>
       </div>
@@ -348,7 +348,7 @@ export const CityPageTemplate = ({ citySlug, initialProfile }: CityPageTemplateP
         {breadcrumb && breadcrumb.items.length > 1 && (
           <nav
             aria-label={breadcrumbAriaLabel}
-            className="bg-white/50 bg-gray-800/50 border-b border-orange-100 border-gray-700"
+            className="bg-white/50 dark:bg-gray-800/50 border-b border-orange-100 dark:border-gray-700"
           >
             <div className="max-w-6xl mx-auto px-4">
               <ol className="flex items-center space-x-2 text-sm py-3">
@@ -357,19 +357,19 @@ export const CityPageTemplate = ({ citySlug, initialProfile }: CityPageTemplateP
                   return (
                     <li key={item.path} className="flex items-center">
                       {index > 0 && (
-                        <ChevronRight className="h-4 w-4 mx-2 text-gray-400 text-gray-500" />
+                        <ChevronRight className="h-4 w-4 mx-2 text-gray-400 dark:text-gray-500" />
                       )}
                       {index === 0 ? (
                         <Link
                           href={item.path}
-                          className="text-gray-600 text-gray-400 hover:text-orange-600 hover:text-orange-400 transition-colors"
+                          className="text-gray-600 dark:text-gray-400 hover:text-orange-600 dark:hover:text-orange-400 transition-colors"
                         >
                           <Home className="h-4 w-4" />
                           <span className="sr-only">{item.name}</span>
                         </Link>
                       ) : isLast ? (
                         <span
-                          className="font-medium text-gray-900 text-gray-100"
+                          className="font-medium text-gray-900 dark:text-gray-100"
                           aria-current="page"
                         >
                           {item.name}
@@ -377,7 +377,7 @@ export const CityPageTemplate = ({ citySlug, initialProfile }: CityPageTemplateP
                       ) : (
                         <Link
                           href={item.path}
-                          className="text-gray-600 text-gray-400 hover:text-orange-600 hover:text-orange-400 transition-colors"
+                          className="text-gray-600 dark:text-gray-400 hover:text-orange-600 dark:hover:text-orange-400 transition-colors"
                         >
                           {item.name}
                         </Link>
@@ -399,43 +399,43 @@ export const CityPageTemplate = ({ citySlug, initialProfile }: CityPageTemplateP
               alt={`${profile.name} background`}
               fill
               sizes="100vw"
-              className="object-cover opacity-20 opacity-30"
+              className="object-cover opacity-20 dark:opacity-30"
               priority
             />
-            <div className="absolute inset-0 bg-gradient-to-b from-transparent via-orange-50/50 to-orange-50 via-gray-900/50 to-gray-900" />
+            <div className="absolute inset-0 bg-gradient-to-b from-transparent via-orange-50/50 to-orange-50 dark:via-gray-900/50 dark:to-gray-900" />
           </div>
 
           <div className="relative z-10 max-w-6xl mx-auto px-4 text-center">
             <h1 className={`font-heading text-4xl md:text-6xl font-bold mb-6 ${GRADIENTS.headingText}`}>
               {interpolate(t('cityPage.hero.heading') ?? 'Best Cat Litter Odor Eliminator in {{city}}', { city: profile.name })}
             </h1>
-            <p className="text-xl md:text-2xl text-gray-700 text-gray-200 mb-8">
+            <p className="text-xl md:text-2xl text-gray-700 dark:text-gray-200 mb-8">
               {locale === 'fr'
                 ? `Aditif au charbon actif pour reduire les odeurs de litiere a ${profile.name}, ${provinceName}.`
                 : `Activated carbon additive to reduce litter box odor in ${profile.name}, ${provinceName}.`}
             </p>
 
-            <div className="bg-white bg-gray-800/90 rounded-lg p-6 shadow-lg max-w-3xl mx-auto">
-              <h2 className="font-heading text-2xl font-bold mb-4 text-gray-900 text-gray-50">
+            <div className="bg-white dark:bg-gray-800/90 rounded-lg p-6 shadow-lg max-w-3xl mx-auto">
+              <h2 className="font-heading text-2xl font-bold mb-4 text-gray-900 dark:text-gray-50">
                 {interpolate(t('cityPage.whyChoose.heading') ?? 'Why {{city}} Cat Parents Choose Purrify', { city: profile.name })}
               </h2>
-              <ul className="text-left space-y-2 text-gray-700 text-gray-200">
+              <ul className="text-left space-y-2 text-gray-700 dark:text-gray-200">
                 {keyFeatures.map((feature) => (
                   <li key={feature} className="flex items-start">
-                    <span className="text-green-500 text-green-400 mr-2 mt-1">✓</span>
+                    <span className="text-green-500 dark:text-green-400 mr-2 mt-1">✓</span>
                     <span>{interpolate(t('cityPage.whyChoose.perfectFor') ?? 'Perfect for {{feature}}', { feature: feature.toLowerCase() })}</span>
                   </li>
                 ))}
                 <li className="flex items-start">
-                  <span className="text-green-500 text-green-400 mr-2 mt-1">✓</span>
+                  <span className="text-green-500 dark:text-green-400 mr-2 mt-1">✓</span>
                   <span>{seasonalTip}</span>
                 </li>
                 <li className="flex items-start">
-                  <span className="text-green-500 text-green-400 mr-2 mt-1">✓</span>
+                  <span className="text-green-500 dark:text-green-400 mr-2 mt-1">✓</span>
                   <span>{interpolate(t('cityPage.whyChoose.fastShipping') ?? 'Fast shipping across {{province}}', { province: provinceName })}</span>
                 </li>
                 <li className="flex items-start">
-                  <span className="text-green-500 text-green-400 mr-2 mt-1">✓</span>
+                  <span className="text-green-500 dark:text-green-400 mr-2 mt-1">✓</span>
                   <span>{t('cityPage.whyChoose.worksWithAllBrands') ?? 'Works with every litter brand you already love'}</span>
                 </li>
               </ul>
@@ -456,7 +456,7 @@ export const CityPageTemplate = ({ citySlug, initialProfile }: CityPageTemplateP
                 />
                 <Link
                   href="/learn/faq"
-                  className="inline-flex items-center justify-center text-orange-600 text-orange-300 font-semibold"
+                  className="inline-flex items-center justify-center text-orange-600 dark:text-orange-300 font-semibold"
                 >
                   {t('cityPage.cta.seeHowItWorks') ?? 'See how the carbon technology works →'}
                 </Link>
@@ -476,26 +476,26 @@ export const CityPageTemplate = ({ citySlug, initialProfile }: CityPageTemplateP
           <div className="max-w-5xl mx-auto">
             <div className="grid gap-10 lg:grid-cols-2 items-start">
               <div className="order-2 lg:order-1">
-                <h2 className="font-heading text-3xl font-bold mb-6 text-gray-900 text-gray-50">
+                <h2 className="font-heading text-3xl font-bold mb-6 text-gray-900 dark:text-gray-50">
                   {interpolate(t('cityPage.whereToFind.heading') ?? 'Where to Find Purrify in {{city}}', { city: profile.name })}
                 </h2>
                 <div className="space-y-6">
-                  <div className="bg-white bg-gray-800 rounded-lg p-6 shadow-lg border border-gray-200 border-gray-700">
-                    <h3 className="font-heading text-xl font-bold mb-3 text-blue-900 text-blue-200">
+                  <div className="bg-white dark:bg-gray-800 rounded-lg p-6 shadow-lg border border-gray-200 dark:border-gray-700">
+                    <h3 className="font-heading text-xl font-bold mb-3 text-blue-900 dark:text-blue-200">
                       {t('cityPage.whereToFind.localStore.heading') ?? 'Ask Your Local Pet Store'}
                     </h3>
-                    <p className="text-gray-700 text-gray-200 mb-2">
+                    <p className="text-gray-700 dark:text-gray-200 mb-2">
                       {interpolate(t('cityPage.whereToFind.localStore.description') ?? 'Independent pet stores across {{city}} stock the odor eliminator cat parents talk about.', { city: profile.name })}
                     </p>
-                    <p className="text-sm text-gray-600 text-gray-300">
+                    <p className="text-sm text-gray-600 dark:text-gray-300">
                       {t('cityPage.whereToFind.localStore.tip') ?? 'Start with your favourite neighbourhood shop or tell them you want to see Purrify on the shelf.'}
                     </p>
                   </div>
-                  <div className="bg-purple-50 bg-purple-900/20 p-6 rounded-lg border border-purple-200 border-purple-700">
-                    <h3 className="font-heading text-xl font-bold mb-3 text-purple-900 text-purple-200">
+                  <div className="bg-purple-50 dark:bg-purple-900/20 p-6 rounded-lg border border-purple-200 dark:border-purple-700">
+                    <h3 className="font-heading text-xl font-bold mb-3 text-purple-900 dark:text-purple-200">
                       {t('cityPage.whereToFind.orderDirect.heading') ?? 'Order Direct With Fast Shipping'}
                     </h3>
-                    <p className="text-gray-700 text-gray-200 mb-4">
+                    <p className="text-gray-700 dark:text-gray-200 mb-4">
                       {interpolate(t('cityPage.whereToFind.orderDirect.description') ?? 'Prefer doorstep delivery? Order online and receive fresh air in 2-3 business days anywhere in {{province}}.', { province: provinceName })}
                     </p>
                     <Link
@@ -508,21 +508,21 @@ export const CityPageTemplate = ({ citySlug, initialProfile }: CityPageTemplateP
                 </div>
               </div>
               <div className="order-1 lg:order-2">
-                <div className="bg-white bg-gray-800 rounded-xl border border-gray-200 border-gray-700 shadow-xl p-6">
-                  <h3 className="font-heading text-xl font-semibold text-gray-900 text-gray-50 mb-4">
+                <div className="bg-white dark:bg-gray-800 rounded-xl border border-gray-200 dark:border-gray-700 shadow-xl p-6">
+                  <h3 className="font-heading text-xl font-semibold text-gray-900 dark:text-gray-50 mb-4">
                     {interpolate(t('cityPage.playbook.heading') ?? 'Fresh Air Playbook for {{city}}', { city: profile.name })}
                   </h3>
-                  <ol className="space-y-3 text-left text-gray-700 text-gray-200">
+                  <ol className="space-y-3 text-left text-gray-700 dark:text-gray-200">
                     <li className="flex items-start">
-                      <span className="text-orange-500 text-orange-300 font-semibold mr-3">1</span>
+                      <span className="text-orange-500 dark:text-orange-300 font-semibold mr-3">1</span>
                       <span>{t('cityPage.playbook.step1') ?? 'Sprinkle 2 tablespoons on top of your litter box after every scoop.'}</span>
                     </li>
                     <li className="flex items-start">
-                      <span className="text-orange-500 text-orange-300 font-semibold mr-3">2</span>
+                      <span className="text-orange-500 dark:text-orange-300 font-semibold mr-3">2</span>
                       <span>{interpolate(t('cityPage.playbook.step2') ?? 'Refresh every other day if your home deals with {{painPoint}}.', { painPoint: painPoint.toLowerCase() })}</span>
                     </li>
                     <li className="flex items-start">
-                      <span className="text-orange-500 text-orange-300 font-semibold mr-3">3</span>
+                      <span className="text-orange-500 dark:text-orange-300 font-semibold mr-3">3</span>
                       <span>{t('cityPage.playbook.step3') ?? 'Replace your litter box as usual—Purrify works with clumping, clay, and natural litters.'}</span>
                     </li>
                   </ol>
@@ -533,9 +533,9 @@ export const CityPageTemplate = ({ citySlug, initialProfile }: CityPageTemplateP
         </section>
 
         {testimonials.length > 0 && (
-          <section className="py-16 px-4 bg-white bg-gray-800">
+          <section className="py-16 px-4 bg-white dark:bg-gray-800">
             <div className="max-w-6xl mx-auto">
-              <h2 className="font-heading text-3xl font-bold text-center mb-12 text-gray-900 text-gray-50">
+              <h2 className="font-heading text-3xl font-bold text-center mb-12 text-gray-900 dark:text-gray-50">
                 {interpolate(t('cityPage.testimonials.heading') ?? 'What {{city}} Cat Owners Say', { city: profile.name })}
               </h2>
               <div className="grid md:grid-cols-3 gap-8">
@@ -550,27 +550,27 @@ export const CityPageTemplate = ({ citySlug, initialProfile }: CityPageTemplateP
         {/* Related City Success Stories */}
         <section className={`py-16 px-4 ${GRADIENTS.purpleSection}`}>
           <div className="max-w-4xl mx-auto text-center">
-            <h2 className="font-heading text-3xl font-bold mb-6 text-gray-900 text-gray-50">
+            <h2 className="font-heading text-3xl font-bold mb-6 text-gray-900 dark:text-gray-50">
               {provinceWidePills.heading}
             </h2>
-            <p className="text-gray-700 text-gray-200 mb-8">
+            <p className="text-gray-700 dark:text-gray-200 mb-8">
               {provinceWidePills.description}
             </p>
             <div className="flex flex-wrap gap-3 justify-center">
-              <span className="inline-block px-4 py-2 bg-white bg-gray-700 rounded-full text-sm font-medium text-gray-900 text-white shadow-sm">
+              <span className="inline-block px-4 py-2 bg-white dark:bg-gray-700 rounded-full text-sm font-medium text-gray-900 dark:text-white shadow-sm">
                 {provinceWidePills.pill1}
               </span>
-              <span className="inline-block px-4 py-2 bg-white bg-gray-700 rounded-full text-sm font-medium text-gray-900 text-gray-100 shadow-sm">
+              <span className="inline-block px-4 py-2 bg-white dark:bg-gray-700 rounded-full text-sm font-medium text-gray-900 dark:text-gray-100 shadow-sm">
                 {provinceWidePills.pill2}
               </span>
-              <span className="inline-block px-4 py-2 bg-white bg-gray-700 rounded-full text-sm font-medium text-gray-900 text-gray-100 shadow-sm">
+              <span className="inline-block px-4 py-2 bg-white dark:bg-gray-700 rounded-full text-sm font-medium text-gray-900 dark:text-gray-100 shadow-sm">
                 {provinceWidePills.pill3}
               </span>
             </div>
             <div className="mt-8">
               <Link
                 href={`/locations/${profile.provinceCode?.toLowerCase() || profile.province.toLowerCase().replaceAll(/\s+/g, '-')}`}
-                className="inline-flex items-center text-orange-600 text-orange-400 font-semibold hover:text-orange-700 hover:text-orange-300 transition-colors"
+                className="inline-flex items-center text-orange-600 dark:text-orange-400 font-semibold hover:text-orange-700 dark:hover:text-orange-300 transition-colors"
               >
                 {provinceWidePills.explore}
               </Link>
@@ -580,7 +580,7 @@ export const CityPageTemplate = ({ citySlug, initialProfile }: CityPageTemplateP
 
         <section className="py-16 px-4">
           <div className="max-w-4xl mx-auto">
-            <h2 className="font-heading text-3xl font-bold text-center mb-12 text-gray-900 text-gray-50">
+            <h2 className="font-heading text-3xl font-bold text-center mb-12 text-gray-900 dark:text-gray-50">
               {interpolate(t('cityPage.faq.heading') ?? '{{city}} FAQ', { city: profile.name })}
             </h2>
             <div className="space-y-6">

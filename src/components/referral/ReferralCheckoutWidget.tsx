@@ -96,15 +96,15 @@ export function ReferralCheckoutWidget({
   // If code is already applied, show success state
   if (appliedCode) {
     return (
-      <div className={`bg-green-50 bg-green-900/20 border border-green-200 border-green-800 rounded-lg p-4 ${className}`}>
+      <div className={`bg-green-50 dark:bg-green-900/20 border border-green-200 dark:border-green-800 rounded-lg p-4 ${className}`}>
         <div className="flex items-center justify-between">
           <div className="flex items-center gap-2">
-            <CheckCircleIcon className="h-5 w-5 text-green-600 text-green-400" />
+            <CheckCircleIcon className="h-5 w-5 text-green-600 dark:text-green-400" />
             <div>
-              <p className="font-medium text-green-800 text-green-200">
+              <p className="font-medium text-green-800 dark:text-green-200">
                 {t('referral.checkout.applied') || 'Referral code applied!'}
               </p>
-              <p className="text-sm text-green-600 text-green-400">
+              <p className="text-sm text-green-600 dark:text-green-400">
                 {referrerName
                   ? (t('referral.checkout.referredBy') || 'Referred by {name}').replace('{name}', referrerName)
                   : appliedCode}
@@ -117,7 +117,7 @@ export function ReferralCheckoutWidget({
             variant="ghost"
             size="sm"
             onClick={removeCode}
-            className="text-green-700 text-green-300 hover:text-green-900 hover:text-green-100 hover:bg-green-100 hover:bg-green-800"
+            className="text-green-700 dark:text-green-300 hover:text-green-900 dark:hover:text-green-100 hover:bg-green-100 dark:hover:bg-green-800"
           >
             {t('referral.checkout.remove') || 'Remove'}
           </Button>
@@ -131,7 +131,7 @@ export function ReferralCheckoutWidget({
     return (
       <button
         onClick={() => setShowInput(true)}
-        className={`text-left w-full text-sm text-purple-600 text-purple-400 hover:text-purple-700 hover:text-purple-300 underline cursor-pointer ${className}`}
+        className={`text-left w-full text-sm text-purple-600 dark:text-purple-400 hover:text-purple-700 dark:hover:text-purple-300 underline cursor-pointer ${className}`}
       >
         {t('referral.checkout.haveCode') || 'Have a referral code? Click here'}
       </button>
@@ -140,9 +140,9 @@ export function ReferralCheckoutWidget({
 
   // Show input form
   return (
-    <div className={`bg-gray-50 bg-gray-800 rounded-lg p-4 ${className}`}>
+    <div className={`bg-gray-50 dark:bg-gray-800 rounded-lg p-4 ${className}`}>
       <div className="flex items-center justify-between mb-3">
-        <label className="text-sm font-medium text-gray-700 text-gray-300">
+        <label className="text-sm font-medium text-gray-700 dark:text-gray-300">
           {t('referral.checkout.enterReferralCode') || 'Enter Referral Code'}
         </label>
         <button
@@ -151,7 +151,7 @@ export function ReferralCheckoutWidget({
             setError(null);
             setCode('');
           }}
-          className="text-gray-400 text-gray-500 hover:text-gray-600 hover:text-gray-300"
+          className="text-gray-400 dark:text-gray-500 hover:text-gray-600 dark:hover:text-gray-300"
         >
           <XIcon className="h-4 w-4" />
         </button>
@@ -165,7 +165,7 @@ export function ReferralCheckoutWidget({
             setError(null);
           }}
           placeholder={referralCodePlaceholder}
-          className="flex-1 font-mono uppercase bg-white bg-gray-900 text-gray-900 text-gray-50 border-gray-200 border-gray-700"
+          className="flex-1 font-mono uppercase bg-white dark:bg-gray-900 text-gray-900 dark:text-gray-50 border-gray-200 dark:border-gray-700"
           disabled={loading}
           onKeyDown={(e) => {
             if (e.key === 'Enter') {
@@ -184,13 +184,13 @@ export function ReferralCheckoutWidget({
       </div>
 
       {error && (
-        <p className="mt-2 text-sm text-red-600 text-red-400 flex items-center gap-1">
+        <p className="mt-2 text-sm text-red-600 dark:text-red-400 flex items-center gap-1">
           <ExclamationIcon className="h-4 w-4" />
           {error}
         </p>
       )}
 
-      <p className="mt-2 text-xs text-gray-500 text-gray-400">
+      <p className="mt-2 text-xs text-gray-500 dark:text-gray-400">
         {t('referral.checkout.discountNote') || 'Get $5 off your order with a friend\'s referral code'}
       </p>
     </div>

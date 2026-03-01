@@ -67,7 +67,7 @@ export default function LitterBoxSmellPageClient() {
   ];
 
   return (
-    <div className="min-h-screen bg-[#FFFFF5] bg-gray-900 transition-colors duration-300">
+    <div className="min-h-screen bg-[#FFFFF5] dark:bg-gray-900 transition-colors duration-300">
       {/* Hero Section */}
       <section className="py-20 px-4">
         <div className="max-w-6xl mx-auto">
@@ -79,18 +79,18 @@ export default function LitterBoxSmellPageClient() {
               height={675}
               className="w-full h-auto rounded-lg shadow-lg mb-8"
             />
-            <h1 className="text-4xl md:text-6xl font-heading font-bold mb-6 text-gray-900 text-gray-100">
+            <h1 className="text-4xl md:text-6xl font-heading font-bold mb-6 text-gray-900 dark:text-gray-100">
               Litter Box Stinks After Cleaning?
             </h1>
-            <p className="text-xl text-gray-700 text-gray-200 mb-8 max-w-3xl mx-auto">
+            <p className="text-xl text-gray-700 dark:text-gray-200 mb-8 max-w-3xl mx-auto">
               You just cleaned the litter box—why does it still smell? Bacteria create ammonia gas within hours of urination.
               Learn why traditional cleaning fails and how activated carbon eliminates odors at the molecular level.
             </p>
           </div>
 
           {/* Main Solution Card */}
-          <div className="bg-white/80 bg-gray-800/80 backdrop-blur-lg rounded-2xl p-8 shadow-lg border border-electric-indigo/10 border-electric-indigo/20 max-w-4xl mx-auto mb-16">
-            <h2 className="text-3xl font-heading font-bold mb-6 text-electric-indigo text-electric-indigo-400 text-center">The Science of Odor Elimination</h2>
+          <div className="bg-white/80 dark:bg-gray-800/80 backdrop-blur-lg rounded-2xl p-8 shadow-lg border border-electric-indigo/10 dark:border-electric-indigo/20 max-w-4xl mx-auto mb-16">
+            <h2 className="text-3xl font-heading font-bold mb-6 text-electric-indigo dark:text-electric-indigo-400 text-center">The Science of Odor Elimination</h2>
 
             <Image
               src={scienceImage}
@@ -100,7 +100,7 @@ export default function LitterBoxSmellPageClient() {
               className="w-full h-auto rounded-lg shadow-md mb-6"
             />
 
-            <p className="text-lg mb-8 text-gray-700 text-gray-200 text-center">
+            <p className="text-lg mb-8 text-gray-700 dark:text-gray-200 text-center">
               Unlike masking agents or fragrances, activated carbon actually removes odor molecules from the air.
               Each tiny pore traps ammonia, hydrogen sulfide, and other odor compounds permanently.
             </p>
@@ -109,17 +109,17 @@ export default function LitterBoxSmellPageClient() {
               <div className="text-center p-4">
                 <div className="text-4xl mb-3">🧪</div>
                 <h3 className="font-heading font-bold text-lg mb-2">Molecular Level</h3>
-                <p className="text-sm text-gray-600 text-gray-300">Eliminates odors at the source, not just masking</p>
+                <p className="text-sm text-gray-600 dark:text-gray-300">Eliminates odors at the source, not just masking</p>
               </div>
               <div className="text-center p-4">
                 <div className="text-4xl mb-3">🌿</div>
                 <h3 className="font-heading font-bold text-lg mb-2">100% Natural</h3>
-                <p className="text-sm text-gray-600 text-gray-300">Made from coconut shells - safe for cats and family</p>
+                <p className="text-sm text-gray-600 dark:text-gray-300">Made from coconut shells - safe for cats and family</p>
               </div>
               <div className="text-center p-4">
                 <div className="text-4xl mb-3">⏱️</div>
                 <h3 className="font-heading font-bold text-lg mb-2">Instant Results</h3>
-                <p className="text-sm text-gray-600 text-gray-300">Works within minutes of application</p>
+                <p className="text-sm text-gray-600 dark:text-gray-300">Works within minutes of application</p>
               </div>
             </div>
 
@@ -132,20 +132,20 @@ export default function LitterBoxSmellPageClient() {
             />
 
             <div className="text-center">
-              <h3 className="text-2xl font-heading font-bold mb-4 text-gray-900 text-gray-50">Ready to Eliminate Odors Forever?</h3>
-              <p className="text-gray-600 text-gray-300 mb-6">
+              <h3 className="text-2xl font-heading font-bold mb-4 text-gray-900 dark:text-gray-50">Ready to Eliminate Odors Forever?</h3>
+              <p className="text-gray-600 dark:text-gray-300 mb-6">
                 Join thousands of cat owners who&apos;ve solved their litter box odor problems with Purrify.
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
                 <Link
                   href="/products/trial-size/"
-                  className="inline-block bg-gradient-to-r from-electric-indigo to-deep-coral text-white text-gray-100 px-8 py-4 rounded-lg font-bold text-lg hover:from-electric-indigo-600 hover:to-deep-coral-600 hover:scale-105 transition-all duration-300 shadow-lg"
+                  className="inline-block bg-gradient-to-r from-electric-indigo to-deep-coral text-white dark:text-gray-100 px-8 py-4 rounded-lg font-bold text-lg hover:from-electric-indigo-600 hover:to-deep-coral-600 hover:scale-105 transition-all duration-300 shadow-lg"
                 >
                   Try Purrify Risk-Free
                 </Link>
                 <Link
                   href="/learn/how-it-works/"
-                  className="inline-block border-2 border-electric-indigo border-electric-indigo text-electric-indigo text-electric-indigo-400 px-8 py-4 rounded-lg font-bold text-lg hover:bg-electric-indigo/10 hover:bg-electric-indigo/20 hover:scale-105 transition-all duration-300"
+                  className="inline-block border-2 border-electric-indigo dark:border-electric-indigo text-electric-indigo dark:text-electric-indigo-400 px-8 py-4 rounded-lg font-bold text-lg hover:bg-electric-indigo/10 dark:hover:bg-electric-indigo/20 hover:scale-105 transition-all duration-300"
                 >
                   Learn the Science
                 </Link>
@@ -155,9 +155,9 @@ export default function LitterBoxSmellPageClient() {
 
           {/* Features Grid */}
           <div className="grid md:grid-cols-2 gap-8 mb-16">
-            <div className="bg-white/80 bg-gray-800/80 backdrop-blur-lg rounded-xl p-6 shadow-lg border border-electric-indigo/10 border-electric-indigo/20 hover:scale-105 transition-all duration-300">
-              <h3 className="text-xl font-heading font-bold mb-4 text-electric-indigo text-electric-indigo-400">Works with Any Litter</h3>
-              <ul className="space-y-2 text-gray-700 text-gray-200">
+            <div className="bg-white/80 dark:bg-gray-800/80 backdrop-blur-lg rounded-xl p-6 shadow-lg border border-electric-indigo/10 dark:border-electric-indigo/20 hover:scale-105 transition-all duration-300">
+              <h3 className="text-xl font-heading font-bold mb-4 text-electric-indigo dark:text-electric-indigo-400">Works with Any Litter</h3>
+              <ul className="space-y-2 text-gray-700 dark:text-gray-200">
                 <li>✅ Clay litter (clumping & non-clumping)</li>
                 <li>✅ Crystal/silica gel litter</li>
                 <li>✅ Natural/biodegradable litter</li>
@@ -166,9 +166,9 @@ export default function LitterBoxSmellPageClient() {
               </ul>
             </div>
 
-            <div className="bg-white/80 bg-gray-800/80 backdrop-blur-lg rounded-xl p-6 shadow-lg border border-deep-coral/10 border-deep-coral/20 hover:scale-105 transition-all duration-300">
-              <h3 className="text-xl font-heading font-bold mb-4 text-deep-coral text-deep-coral-400">Perfect For</h3>
-              <ul className="space-y-2 text-gray-700 text-gray-200">
+            <div className="bg-white/80 dark:bg-gray-800/80 backdrop-blur-lg rounded-xl p-6 shadow-lg border border-deep-coral/10 dark:border-deep-coral/20 hover:scale-105 transition-all duration-300">
+              <h3 className="text-xl font-heading font-bold mb-4 text-deep-coral dark:text-deep-coral-400">Perfect For</h3>
+              <ul className="space-y-2 text-gray-700 dark:text-gray-200">
                 <li>🏠 Small apartments & condos</li>
                 <li>🐱 Multiple cat households</li>
                 <li>👥 Sensitive family members</li>
@@ -179,12 +179,12 @@ export default function LitterBoxSmellPageClient() {
           </div>
 
           {/* Testimonial */}
-          <div className="bg-gradient-to-r from-electric-indigo to-deep-coral rounded-2xl p-8 text-white text-gray-100 text-center mb-16">
+          <div className="bg-gradient-to-r from-electric-indigo to-deep-coral rounded-2xl p-8 text-white dark:text-gray-100 text-center mb-16">
             <blockquote className="text-2xl font-medium mb-4">
               &quot;I was so embarrassed when guests came over. Now I actually invite people in!
               Purrify completely eliminated the smell in just one day.&quot;
             </blockquote>
-            <cite className="text-blue-100 text-gray-300">— Sarah M., Toronto</cite>
+            <cite className="text-blue-100 dark:text-gray-300">— Sarah M., Toronto</cite>
           </div>
 
           {/* AI Quotable Fact */}
@@ -223,7 +223,7 @@ export default function LitterBoxSmellPageClient() {
       <RelatedSolutions currentPath="/learn/solutions/litter-box-smell-elimination" />
 
       {/* Related Articles */}
-      <section className="py-16 border-t border-gray-200 border-gray-800">
+      <section className="py-16 border-t border-gray-200 dark:border-gray-800">
         <div className="max-w-6xl mx-auto px-4">
           <RelatedContent currentUrl="/learn/solutions/litter-box-smell-elimination" />
         </div>

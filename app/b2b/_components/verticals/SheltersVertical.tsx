@@ -71,7 +71,7 @@ export function SheltersVertical({ locale }: SheltersVerticalProps) {
           : 'Why Purrify for Shelters',
       items: [
         {
-          icon: <Shield className="h-6 w-6 text-emerald-600 text-emerald-400" />,
+          icon: <Shield className="h-6 w-6 text-emerald-600 dark:text-emerald-400" />,
           title: locale === 'fr' ? 'Naturel et Sans Danger' : 'Natural and Non-Toxic',
           description:
             locale === 'fr'
@@ -88,7 +88,7 @@ export function SheltersVertical({ locale }: SheltersVerticalProps) {
               : 'Significant volume pricing. Extends litter life.',
         },
         {
-          icon: <Heart className="h-6 w-6 text-pink-600 text-pink-400" />,
+          icon: <Heart className="h-6 w-6 text-pink-600 dark:text-pink-400" />,
           title:
             locale === 'fr'
               ? "Environnement d'Adoption"
@@ -176,76 +176,76 @@ export function SheltersVertical({ locale }: SheltersVerticalProps) {
     <div className="space-y-16">
       {/* Hero */}
       <section className="text-center">
-        <div className="inline-flex items-center gap-2 bg-pink-100 bg-pink-900/30 text-pink-800 text-pink-300 px-4 py-2 rounded-full text-sm font-medium mb-6">
+        <div className="inline-flex items-center gap-2 bg-pink-100 dark:bg-pink-900/30 text-pink-800 dark:text-pink-300 px-4 py-2 rounded-full text-sm font-medium mb-6">
           <Heart className="h-4 w-4" />
           {t.hero.badge}
         </div>
-        <h2 className="font-heading text-4xl md:text-5xl font-bold text-gray-900 text-white mb-6">
+        <h2 className="font-heading text-4xl md:text-5xl font-bold text-gray-900 dark:text-white mb-6">
           {t.hero.title}
         </h2>
-        <p className="text-xl text-pink-600 text-pink-400 mb-2 font-semibold">
+        <p className="text-xl text-pink-600 dark:text-pink-400 mb-2 font-semibold">
           {t.hero.subtitle}
         </p>
-        <p className="text-lg text-gray-500 text-gray-400 mb-8 max-w-3xl mx-auto">
+        <p className="text-lg text-gray-500 dark:text-gray-400 mb-8 max-w-3xl mx-auto">
           {t.hero.description}
         </p>
         {/* Stats */}
-        <div className="bg-pink-50 bg-pink-900/20 border border-pink-200 border-pink-800 rounded-lg p-6 max-w-2xl mx-auto">
+        <div className="bg-pink-50 dark:bg-pink-900/20 border border-pink-200 dark:border-pink-800 rounded-lg p-6 max-w-2xl mx-auto">
           <div className="grid grid-cols-3 gap-6 text-center">
             <div>
-              <div className="text-3xl font-bold text-pink-600 text-pink-400 mb-2">50%</div>
-              <div className="text-sm text-gray-700 text-gray-300">{t.stats.discount}</div>
+              <div className="text-3xl font-bold text-pink-600 dark:text-pink-400 mb-2">50%</div>
+              <div className="text-sm text-gray-700 dark:text-gray-300">{t.stats.discount}</div>
             </div>
             <div>
-              <div className="text-3xl font-bold text-pink-600 text-pink-400 mb-2">100+</div>
-              <div className="text-sm text-gray-700 text-gray-300">{t.stats.partners}</div>
+              <div className="text-3xl font-bold text-pink-600 dark:text-pink-400 mb-2">100+</div>
+              <div className="text-sm text-gray-700 dark:text-gray-300">{t.stats.partners}</div>
             </div>
             <div>
-              <div className="text-3xl font-bold text-pink-600 text-pink-400 mb-2">1:1</div>
-              <div className="text-sm text-gray-700 text-gray-300">{t.stats.matching}</div>
+              <div className="text-3xl font-bold text-pink-600 dark:text-pink-400 mb-2">1:1</div>
+              <div className="text-sm text-gray-700 dark:text-gray-300">{t.stats.matching}</div>
             </div>
           </div>
         </div>
       </section>
       {/* Challenges */}
       <section>
-        <h3 className="font-heading text-3xl font-bold text-gray-900 text-white mb-4 text-center">
+        <h3 className="font-heading text-3xl font-bold text-gray-900 dark:text-white mb-4 text-center">
           {t.challenges.title}
         </h3>
         <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
           {t.challenges.items.map((item, index) => (
             <div
               key={index}
-              className="bg-white bg-gray-800 border border-gray-200 border-gray-700 rounded-lg p-6 text-center shadow-sm"
+              className="bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-lg p-6 text-center shadow-sm"
             >
-              <div className="w-14 h-14 bg-pink-100 bg-pink-900/30 rounded-full flex items-center justify-center mx-auto mb-4 text-pink-600 text-pink-400">
+              <div className="w-14 h-14 bg-pink-100 dark:bg-pink-900/30 rounded-full flex items-center justify-center mx-auto mb-4 text-pink-600 dark:text-pink-400">
                 {item.icon}
               </div>
-              <h4 className="font-heading text-lg font-semibold text-gray-900 text-white mb-2">
+              <h4 className="font-heading text-lg font-semibold text-gray-900 dark:text-white mb-2">
                 {item.title}
               </h4>
-              <p className="text-sm text-gray-600 text-gray-300">{item.description}</p>
+              <p className="text-sm text-gray-600 dark:text-gray-300">{item.description}</p>
             </div>
           ))}
         </div>
       </section>
       {/* Benefits */}
-      <section className="bg-gradient-to-br from-pink-50 to-purple-50 from-gray-900 to-gray-800 rounded-2xl p-8">
-        <h3 className="font-heading text-3xl font-bold text-gray-900 text-white mb-8 text-center">
+      <section className="bg-gradient-to-br from-pink-50 to-purple-50 dark:from-gray-900 dark:to-gray-800 rounded-2xl p-8">
+        <h3 className="font-heading text-3xl font-bold text-gray-900 dark:text-white mb-8 text-center">
           {t.benefits.title}
         </h3>
         <div className="grid md:grid-cols-3 gap-6">
           {t.benefits.items.map((benefit, index) => (
             <div
               key={index}
-              className="bg-white bg-gray-800 rounded-xl p-6 shadow-lg flex gap-4"
+              className="bg-white dark:bg-gray-800 rounded-xl p-6 shadow-lg flex gap-4"
             >
               <div className="flex-shrink-0">{benefit.icon}</div>
               <div>
-                <h4 className="font-heading font-bold text-lg text-gray-900 text-white mb-2">
+                <h4 className="font-heading font-bold text-lg text-gray-900 dark:text-white mb-2">
                   {benefit.title}
                 </h4>
-                <p className="text-gray-600 text-gray-300 text-sm">
+                <p className="text-gray-600 dark:text-gray-300 text-sm">
                   {benefit.description}
                 </p>
               </div>
@@ -255,16 +255,16 @@ export function SheltersVertical({ locale }: SheltersVerticalProps) {
       </section>
       {/* Program Features */}
       <section>
-        <h3 className="font-heading text-3xl font-bold text-gray-900 text-white mb-8 text-center">
+        <h3 className="font-heading text-3xl font-bold text-gray-900 dark:text-white mb-8 text-center">
           {t.program.title}
         </h3>
         <div className="grid md:grid-cols-3 gap-6">
           {t.program.features.map((feature, index) => (
-            <div key={index} className="bg-white bg-gray-800 rounded-xl p-6 shadow-lg">
-              <h4 className="font-heading font-bold text-lg text-gray-900 text-white mb-2">
+            <div key={index} className="bg-white dark:bg-gray-800 rounded-xl p-6 shadow-lg">
+              <h4 className="font-heading font-bold text-lg text-gray-900 dark:text-white mb-2">
                 {feature.title}
               </h4>
-              <p className="text-gray-600 text-gray-300 text-sm">
+              <p className="text-gray-600 dark:text-gray-300 text-sm">
                 {feature.description}
               </p>
             </div>
@@ -272,25 +272,25 @@ export function SheltersVertical({ locale }: SheltersVerticalProps) {
         </div>
       </section>
       {/* Steps */}
-      <section className="bg-gray-50 bg-gray-800 rounded-2xl p-8">
-        <h3 className="font-heading text-3xl font-bold text-gray-900 text-white mb-8 text-center">
+      <section className="bg-gray-50 dark:bg-gray-800 rounded-2xl p-8">
+        <h3 className="font-heading text-3xl font-bold text-gray-900 dark:text-white mb-8 text-center">
           {t.steps.title}
         </h3>
         <div className="grid md:grid-cols-3 gap-8">
           {t.steps.items.map((step, index) => (
             <div key={index} className="text-center relative">
-              <div className="w-16 h-16 bg-pink-100 bg-pink-900/30 rounded-full flex items-center justify-center mx-auto mb-4">
-                <span className="text-2xl font-bold text-pink-600 text-pink-400">
+              <div className="w-16 h-16 bg-pink-100 dark:bg-pink-900/30 rounded-full flex items-center justify-center mx-auto mb-4">
+                <span className="text-2xl font-bold text-pink-600 dark:text-pink-400">
                   {step.number}
                 </span>
               </div>
-              <h4 className="font-heading text-xl font-semibold text-gray-900 text-white mb-2">
+              <h4 className="font-heading text-xl font-semibold text-gray-900 dark:text-white mb-2">
                 {step.title}
               </h4>
-              <p className="text-gray-600 text-gray-300">{step.description}</p>
+              <p className="text-gray-600 dark:text-gray-300">{step.description}</p>
               {index < t.steps.items.length - 1 && (
                 <div className="hidden md:block absolute right-0 top-1/2 transform translate-x-1/2 -translate-y-1/2">
-                  <Truck className="h-6 w-6 text-gray-300 text-gray-600" />
+                  <Truck className="h-6 w-6 text-gray-300 dark:text-gray-600" />
                 </div>
               )}
             </div>
@@ -304,7 +304,7 @@ export function SheltersVertical({ locale }: SheltersVerticalProps) {
           <h3 className="font-heading text-2xl font-bold mb-4">{t.contact.title}</h3>
           <a
             href={`mailto:${t.contact.email}`}
-            className="inline-block bg-white bg-gray-900 text-pink-600 text-pink-400 px-8 py-3 rounded-lg font-bold hover:bg-gray-100 hover:bg-gray-800 transition-colors"
+            className="inline-block bg-white dark:bg-gray-900 text-pink-600 dark:text-pink-400 px-8 py-3 rounded-lg font-bold hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors"
           >
             {t.contact.email}
           </a>

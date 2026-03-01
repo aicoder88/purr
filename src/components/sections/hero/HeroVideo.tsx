@@ -20,7 +20,7 @@ export const HeroVideo = ({ playLabel, posterAlt }: HeroVideoProps) => {
 
   return (
     <div className="relative w-full max-w-md lg:max-w-xl">
-      <div className="relative overflow-hidden rounded-3xl border border-gray-200 border-gray-700 bg-gray-100 bg-gray-800 aspect-[3/4] lg:aspect-[4/5]">
+      <div className="relative overflow-hidden rounded-3xl border border-gray-200 dark:border-gray-700 bg-gray-100 dark:bg-gray-800 aspect-[3/4] lg:aspect-[4/5]">
         {isVideoActive ? (
           <video
             ref={videoRef}
@@ -58,7 +58,7 @@ export const HeroVideo = ({ playLabel, posterAlt }: HeroVideoProps) => {
               />
             </picture>
             <span className="absolute inset-0 flex items-center justify-center bg-black/20 transition-colors hover:bg-black/10">
-              <span className="flex h-14 w-14 items-center justify-center rounded-full bg-white/90 text-gray-900 shadow-lg bg-gray-100 text-gray-900">
+              <span className="flex h-14 w-14 items-center justify-center rounded-full bg-white/90 text-gray-900 shadow-lg dark:bg-gray-100 dark:text-gray-900">
                 <svg
                   aria-hidden="true"
                   viewBox="0 0 24 24"

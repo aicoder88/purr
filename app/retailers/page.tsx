@@ -133,25 +133,25 @@ export default function RetailersPage() {
         }}
       />
 
-      <main className="min-h-screen bg-white bg-gray-900">
+      <main className="min-h-screen bg-white dark:bg-gray-900">
         {/* Breadcrumb Navigation */}
-        <div className="bg-gray-50 bg-gray-800/50 border-b border-gray-200 border-gray-700">
+        <div className="bg-gray-50 dark:bg-gray-800/50 border-b border-gray-200 dark:border-gray-700">
           <div className="max-w-7xl mx-auto px-4">
             <nav aria-label="Breadcrumb" className="py-3">
               <ol className="flex items-center space-x-2 text-sm">
                 <li className="flex items-center">
                   <Link
                     href="/"
-                    className="text-gray-600 text-gray-400 hover:text-green-600 hover:text-green-400 transition-colors"
+                    className="text-gray-600 dark:text-gray-400 hover:text-green-600 dark:hover:text-green-400 transition-colors"
                   >
                     <Home className="h-4 w-4" />
                     <span className="sr-only">Home</span>
                   </Link>
                 </li>
                 <li className="flex items-center">
-                  <ChevronRight className="h-4 w-4 mx-2 text-gray-400 text-gray-500" />
+                  <ChevronRight className="h-4 w-4 mx-2 text-gray-400 dark:text-gray-500" />
                   <span
-                    className="font-medium text-gray-900 text-gray-100"
+                    className="font-medium text-gray-900 dark:text-gray-100"
                     aria-current="page"
                   >
                     Retailers
@@ -169,47 +169,47 @@ export default function RetailersPage() {
         <RetailerContact />
 
         {/* B2B Resources Section */}
-        <section className="py-16 bg-gray-50 bg-gray-800/50">
+        <section className="py-16 bg-gray-50 dark:bg-gray-800/50">
           <div className="max-w-7xl mx-auto px-4">
             <div className="text-center mb-12">
-              <h2 className="text-3xl font-bold text-gray-900 text-gray-100 mb-4">
+              <h2 className="text-3xl font-bold text-gray-900 dark:text-gray-100 mb-4">
                 Retailer Resources
               </h2>
-              <p className="text-gray-600 text-gray-400 max-w-2xl mx-auto">
+              <p className="text-gray-600 dark:text-gray-400 max-w-2xl mx-auto">
                 Everything you need to successfully sell Purrify in your store
               </p>
             </div>
             <div className="grid md:grid-cols-3 gap-6">
               <Link
                 href="/pos/"
-                className="bg-white bg-gray-800 p-6 rounded-xl shadow-sm hover:shadow-md transition-shadow border border-gray-200 border-gray-700"
+                className="bg-white dark:bg-gray-800 p-6 rounded-xl shadow-sm hover:shadow-md transition-shadow border border-gray-200 dark:border-gray-700"
               >
-                <h3 className="font-semibold text-lg text-gray-900 text-gray-100 mb-2">
+                <h3 className="font-semibold text-lg text-gray-900 dark:text-gray-100 mb-2">
                   POS Materials
                 </h3>
-                <p className="text-gray-600 text-gray-400 text-sm">
+                <p className="text-gray-600 dark:text-gray-400 text-sm">
                   Download shelf talkers, posters, and display materials for your store
                 </p>
               </Link>
               <Link
                 href="/b2b/sell-sheet/"
-                className="bg-white bg-gray-800 p-6 rounded-xl shadow-sm hover:shadow-md transition-shadow border border-gray-200 border-gray-700"
+                className="bg-white dark:bg-gray-800 p-6 rounded-xl shadow-sm hover:shadow-md transition-shadow border border-gray-200 dark:border-gray-700"
               >
-                <h3 className="font-semibold text-lg text-gray-900 text-gray-100 mb-2">
+                <h3 className="font-semibold text-lg text-gray-900 dark:text-gray-100 mb-2">
                   Sell Sheet
                 </h3>
-                <p className="text-gray-600 text-gray-400 text-sm">
+                <p className="text-gray-600 dark:text-gray-400 text-sm">
                   Product information and selling points for your staff
                 </p>
               </Link>
               <Link
                 href="/case-studies/"
-                className="bg-white bg-gray-800 p-6 rounded-xl shadow-sm hover:shadow-md transition-shadow border border-gray-200 border-gray-700"
+                className="bg-white dark:bg-gray-800 p-6 rounded-xl shadow-sm hover:shadow-md transition-shadow border border-gray-200 dark:border-gray-700"
               >
-                <h3 className="font-semibold text-lg text-gray-900 text-gray-100 mb-2">
+                <h3 className="font-semibold text-lg text-gray-900 dark:text-gray-100 mb-2">
                   Success Stories
                 </h3>
-                <p className="text-gray-600 text-gray-400 text-sm">
+                <p className="text-gray-600 dark:text-gray-400 text-sm">
                   See how other retailers have increased sales with Purrify
                 </p>
               </Link>

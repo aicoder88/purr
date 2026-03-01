@@ -25,7 +25,7 @@ export function ScrollingAnnouncementBar() {
   ];
 
   return (
-    <section className="w-full overflow-x-clip border-y border-gray-200 bg-gray-50 py-6 border-gray-800 bg-gray-900">
+    <section className="w-full overflow-x-clip border-y border-gray-200 bg-gray-50 py-6 dark:border-gray-800 dark:bg-gray-900">
       <div className="container mx-auto px-4">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-3 md:gap-4">
           {chips.map((chip) => {
@@ -33,12 +33,12 @@ export function ScrollingAnnouncementBar() {
             return (
               <div
                 key={chip.line1}
-                className="rounded-2xl border border-gray-200 border-gray-700 bg-white bg-gray-950 px-4 py-3 flex items-start gap-3"
+                className="rounded-2xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-950 px-4 py-3 flex items-start gap-3"
               >
-                <Icon className="w-5 h-5 mt-0.5 text-gray-700 text-gray-300 shrink-0" />
+                <Icon className="w-5 h-5 mt-0.5 text-gray-700 dark:text-gray-300 shrink-0" />
                 <div className="min-w-0">
-                  <p className="text-sm font-semibold text-gray-900 text-white leading-tight">{chip.line1}</p>
-                  <p className="text-sm text-gray-600 text-gray-400 leading-tight mt-1">{chip.line2}</p>
+                  <p className="text-sm font-semibold text-gray-900 dark:text-white leading-tight">{chip.line1}</p>
+                  <p className="text-sm text-gray-600 dark:text-gray-400 leading-tight mt-1">{chip.line2}</p>
                 </div>
               </div>
             );

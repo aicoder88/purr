@@ -22,22 +22,22 @@ export function Features() {
 
   return (
     <section
-      className="py-12 bg-gradient-to-br from-[#FFFFF5] to-[#FFFFFF] from-gray-900 to-gray-950 transition-colors duration-300"
+      className="py-12 bg-gradient-to-br from-[#FFFFF5] to-[#FFFFFF] dark:from-gray-900 dark:to-gray-950 transition-colors duration-300"
       id="features"
     >
       <Container>
         <div className="max-w-3xl mx-auto text-center mb-16">
           <SectionHeader text={t('featuresSection.badge')} />
-          <h2 className="font-heading text-4xl font-bold tracking-tight mb-6 bg-gradient-to-r from-[#FF3131] to-[#FF3131]/80 from-[#FF5050] to-[#FF5050]/80 bg-clip-text text-transparent">
+          <h2 className="font-heading text-4xl font-bold tracking-tight mb-6 bg-gradient-to-r from-[#FF3131] to-[#FF3131]/80 dark:from-[#FF5050] dark:to-[#FF5050]/80 bg-clip-text text-transparent">
             {t('featuresSection.title')}
           </h2>
-          <p className="text-gray-600 text-gray-300 text-gray-300 leading-relaxed text-lg text-gray-300">
+          <p className="text-gray-600 dark:text-gray-300 dark:text-gray-300 leading-relaxed text-lg dark:text-gray-300">
             {t('featuresSection.paragraph1')}
           </p>
-          <p className="text-gray-600 text-gray-300 leading-relaxed mt-4 text-lg text-gray-300">
+          <p className="text-gray-600 dark:text-gray-300 leading-relaxed mt-4 text-lg dark:text-gray-300">
             {t('featuresSection.paragraph2')}
           </p>
-          <p className="text-[#333333] leading-relaxed mt-4 font-bold text-3xl text-foreground">
+          <p className="text-[#333333] leading-relaxed mt-4 font-bold text-3xl dark:text-foreground">
             {t('featuresSection.tagline')}
           </p>
         </div>
@@ -60,19 +60,19 @@ export function Features() {
                         : "from-green-600 to-green-500"
                     } p-3 sm:p-4 rounded-2xl w-12 h-12 sm:w-16 sm:h-16 flex items-center justify-center mb-4 sm:mb-6 shadow-md group-hover:scale-110 transition-transform duration-300`}
                 >
-                  <IconComponent className="h-7 w-7 text-white text-gray-100 text-gray-100" />
+                  <IconComponent className="h-7 w-7 text-white dark:text-gray-100 dark:text-gray-100" />
                 </div>
                 <h3
                   className={`font-bold text-lg sm:text-xl mb-3 sm:mb-4 ${index % 3 === 0
                       ? "text-[#FF3131]"
                       : index % 3 === 1
                         ? "text-[#5B2EFF]"
-                        : "text-green-700 text-green-500"
+                        : "text-green-700 dark:text-green-500"
                     }`}
                 >
                   {feature.title}
                 </h3>
-                <p className="text-gray-600 text-gray-300 leading-relaxed text-sm sm:text-base">
+                <p className="text-gray-600 dark:text-gray-300 leading-relaxed text-sm sm:text-base">
                   {feature.description}
                 </p>
 
@@ -83,7 +83,7 @@ export function Features() {
                         ? "text-[#FF3131] group-hover:text-[#FF3131]/80"
                         : index % 3 === 1
                           ? "text-[#5B2EFF] group-hover:text-[#5B2EFF]/80"
-                          : "text-green-700 text-green-500 group-hover:text-green-800 group-hover:text-green-400"
+                          : "text-green-700 dark:text-green-500 group-hover:text-green-800 dark:group-hover:text-green-400"
                       }`}
                   >
                     {t('featuresSection.learnMore')}

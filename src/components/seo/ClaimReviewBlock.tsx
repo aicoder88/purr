@@ -48,29 +48,29 @@ const ratingLabels: Record<ClaimRating, string> = {
 
 const ratingColors: Record<ClaimRating, { bg: string; text: string; border: string }> = {
   1: {
-    bg: 'bg-red-100 bg-red-900/30',
-    text: 'text-red-800 text-red-200',
-    border: 'border-red-300 border-red-700',
+    bg: 'bg-red-100 dark:bg-red-900/30',
+    text: 'text-red-800 dark:text-red-200',
+    border: 'border-red-300 dark:border-red-700',
   },
   2: {
-    bg: 'bg-orange-100 bg-orange-900/30',
-    text: 'text-orange-800 text-orange-200',
-    border: 'border-orange-300 border-orange-700',
+    bg: 'bg-orange-100 dark:bg-orange-900/30',
+    text: 'text-orange-800 dark:text-orange-200',
+    border: 'border-orange-300 dark:border-orange-700',
   },
   3: {
-    bg: 'bg-yellow-100 bg-yellow-900/30',
-    text: 'text-yellow-800 text-yellow-200',
-    border: 'border-yellow-300 border-yellow-700',
+    bg: 'bg-yellow-100 dark:bg-yellow-900/30',
+    text: 'text-yellow-800 dark:text-yellow-200',
+    border: 'border-yellow-300 dark:border-yellow-700',
   },
   4: {
-    bg: 'bg-lime-100 bg-lime-900/30',
-    text: 'text-lime-800 text-lime-200',
-    border: 'border-lime-300 border-lime-700',
+    bg: 'bg-lime-100 dark:bg-lime-900/30',
+    text: 'text-lime-800 dark:text-lime-200',
+    border: 'border-lime-300 dark:border-lime-700',
   },
   5: {
-    bg: 'bg-green-100 bg-green-900/30',
-    text: 'text-green-800 text-green-200',
-    border: 'border-green-300 border-green-700',
+    bg: 'bg-green-100 dark:bg-green-900/30',
+    text: 'text-green-800 dark:text-green-200',
+    border: 'border-green-300 dark:border-green-700',
   },
 };
 
@@ -175,17 +175,17 @@ export function ClaimReviewBlock({
         </div>
 
         {/* Content */}
-        <div className="p-4 bg-white bg-gray-900">
+        <div className="p-4 bg-white dark:bg-gray-900">
           {/* The claim */}
           <div className="mb-4">
-            <p className="text-sm text-gray-500 text-gray-400 uppercase tracking-wide mb-1">
+            <p className="text-sm text-gray-500 dark:text-gray-400 uppercase tracking-wide mb-1">
               Claim
             </p>
-            <blockquote className="text-lg font-medium text-gray-900 text-gray-100 border-l-4 border-gray-300 border-gray-600 pl-4 italic">
+            <blockquote className="text-lg font-medium text-gray-900 dark:text-gray-100 border-l-4 border-gray-300 dark:border-gray-600 pl-4 italic">
               &ldquo;{claim}&rdquo;
             </blockquote>
             {claimSource && (
-              <p className="text-sm text-gray-500 text-gray-400 mt-1">
+              <p className="text-sm text-gray-500 dark:text-gray-400 mt-1">
                 — {claimSource}
               </p>
             )}
@@ -193,26 +193,26 @@ export function ClaimReviewBlock({
 
           {/* Explanation */}
           <div className="mb-4">
-            <p className="text-sm text-gray-500 text-gray-400 uppercase tracking-wide mb-1">
+            <p className="text-sm text-gray-500 dark:text-gray-400 uppercase tracking-wide mb-1">
               Our Analysis
             </p>
-            <p className="text-gray-700 text-gray-300">{explanation}</p>
+            <p className="text-gray-700 dark:text-gray-300">{explanation}</p>
           </div>
 
           {/* Evidence list */}
           {evidence && evidence.length > 0 && (
             <div>
-              <p className="text-sm text-gray-500 text-gray-400 uppercase tracking-wide mb-2">
+              <p className="text-sm text-gray-500 dark:text-gray-400 uppercase tracking-wide mb-2">
                 Supporting Evidence
               </p>
               <ul className="space-y-1">
                 {evidence.map((item, index) => (
                   <li
                     key={index}
-                    className="flex items-start gap-2 text-sm text-gray-700 text-gray-300"
+                    className="flex items-start gap-2 text-sm text-gray-700 dark:text-gray-300"
                   >
                     <svg
-                      className="w-4 h-4 mt-0.5 text-green-500 text-green-400 flex-shrink-0"
+                      className="w-4 h-4 mt-0.5 text-green-500 dark:text-green-400 flex-shrink-0"
                       fill="none"
                       viewBox="0 0 24 24"
                       stroke="currentColor"

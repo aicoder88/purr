@@ -88,7 +88,7 @@ export function GroomersVertical({ locale }: GroomersVerticalProps) {
           : 'Partnership Benefits',
       items: [
         {
-          icon: <DollarSign className="h-6 w-6 text-green-600 text-green-400" />,
+          icon: <DollarSign className="h-6 w-6 text-green-600 dark:text-green-400" />,
           title: locale === 'fr' ? 'Prix de Gros' : 'Wholesale Pricing',
           description:
             locale === 'fr'
@@ -96,7 +96,7 @@ export function GroomersVertical({ locale }: GroomersVerticalProps) {
               : 'Premium margins on every sale. Volume discounts available.',
         },
         {
-          icon: <Package className="h-6 w-6 text-blue-600 text-blue-400" />,
+          icon: <Package className="h-6 w-6 text-blue-600 dark:text-blue-400" />,
           title:
             locale === 'fr'
               ? 'Matériel de Présentation'
@@ -107,7 +107,7 @@ export function GroomersVertical({ locale }: GroomersVerticalProps) {
               : 'Free counter displays, shelf talkers, and promotional materials.',
         },
         {
-          icon: <Users className="h-6 w-6 text-purple-600 text-purple-400" />,
+          icon: <Users className="h-6 w-6 text-purple-600 dark:text-purple-400" />,
           title: locale === 'fr' ? 'Formation Produit' : 'Product Training',
           description:
             locale === 'fr'
@@ -128,33 +128,33 @@ export function GroomersVertical({ locale }: GroomersVerticalProps) {
     <div className="space-y-16">
       {/* Hero */}
       <section className="text-center">
-        <div className="inline-flex items-center gap-2 bg-purple-100 bg-purple-900/30 text-purple-700 text-purple-300 px-4 py-2 rounded-full text-sm font-medium mb-6">
+        <div className="inline-flex items-center gap-2 bg-purple-100 dark:bg-purple-900/30 text-purple-700 dark:text-purple-300 px-4 py-2 rounded-full text-sm font-medium mb-6">
           <Scissors className="h-4 w-4" />
           {t.hero.badge}
         </div>
 
-        <h2 className="font-heading text-4xl md:text-5xl font-bold text-gray-900 text-white mb-6">
+        <h2 className="font-heading text-4xl md:text-5xl font-bold text-gray-900 dark:text-white mb-6">
           {t.hero.title}
         </h2>
 
-        <p className="text-xl md:text-2xl text-gray-600 text-gray-300 mb-8 max-w-3xl mx-auto">
+        <p className="text-xl md:text-2xl text-gray-600 dark:text-gray-300 mb-8 max-w-3xl mx-auto">
           {t.hero.description}
         </p>
 
         {/* Stats */}
-        <div className="bg-white bg-gray-800 border border-gray-200 border-gray-700 rounded-xl p-6 mb-8 max-w-2xl mx-auto">
+        <div className="bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-xl p-6 mb-8 max-w-2xl mx-auto">
           <div className="grid grid-cols-3 gap-6 text-center">
             <div>
-              <div className="text-3xl font-bold text-purple-600 text-purple-400 mb-2">96%</div>
-              <div className="text-sm text-gray-700 text-gray-300">{t.stats.satisfaction}</div>
+              <div className="text-3xl font-bold text-purple-600 dark:text-purple-400 mb-2">96%</div>
+              <div className="text-sm text-gray-700 dark:text-gray-300">{t.stats.satisfaction}</div>
             </div>
             <div>
-              <div className="text-3xl font-bold text-purple-600 text-purple-400 mb-2">45%</div>
-              <div className="text-sm text-gray-700 text-gray-300">{t.stats.margin}</div>
+              <div className="text-3xl font-bold text-purple-600 dark:text-purple-400 mb-2">45%</div>
+              <div className="text-sm text-gray-700 dark:text-gray-300">{t.stats.margin}</div>
             </div>
             <div>
-              <div className="text-3xl font-bold text-purple-600 text-purple-400 mb-2">7+</div>
-              <div className="text-sm text-gray-700 text-gray-300">{t.stats.freshness}</div>
+              <div className="text-3xl font-bold text-purple-600 dark:text-purple-400 mb-2">7+</div>
+              <div className="text-sm text-gray-700 dark:text-gray-300">{t.stats.freshness}</div>
             </div>
           </div>
         </div>
@@ -171,10 +171,10 @@ export function GroomersVertical({ locale }: GroomersVerticalProps) {
       {/* Opportunity */}
       <section>
         <div className="text-center mb-12">
-          <h3 className="font-heading text-3xl font-bold text-gray-900 text-white mb-4">
+          <h3 className="font-heading text-3xl font-bold text-gray-900 dark:text-white mb-4">
             {t.opportunity.title}
           </h3>
-          <p className="text-lg text-gray-600 text-gray-300 max-w-3xl mx-auto">
+          <p className="text-lg text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
             {t.opportunity.intro}
           </p>
         </div>
@@ -183,15 +183,15 @@ export function GroomersVertical({ locale }: GroomersVerticalProps) {
           {t.opportunity.items.map((item, index) => (
             <div
               key={index}
-              className="bg-white bg-gray-800 border border-gray-200 border-gray-700 rounded-xl p-6 text-center shadow-sm hover:shadow-md transition-shadow"
+              className="bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-xl p-6 text-center shadow-sm hover:shadow-md transition-shadow"
             >
-              <div className="w-14 h-14 bg-purple-100 bg-purple-900/30 rounded-full flex items-center justify-center mx-auto mb-4 text-purple-600 text-purple-400">
+              <div className="w-14 h-14 bg-purple-100 dark:bg-purple-900/30 rounded-full flex items-center justify-center mx-auto mb-4 text-purple-600 dark:text-purple-400">
                 {item.icon}
               </div>
-              <h4 className="font-heading text-lg font-semibold text-gray-900 text-white mb-3">
+              <h4 className="font-heading text-lg font-semibold text-gray-900 dark:text-white mb-3">
                 {item.title}
               </h4>
-              <p className="text-gray-600 text-gray-300 text-sm">
+              <p className="text-gray-600 dark:text-gray-300 text-sm">
                 {item.description}
               </p>
             </div>
@@ -200,21 +200,21 @@ export function GroomersVertical({ locale }: GroomersVerticalProps) {
       </section>
 
       {/* Benefits */}
-      <section className="bg-gray-50 bg-gray-800 rounded-2xl p-8">
-        <h3 className="font-heading text-3xl font-bold text-gray-900 text-white mb-8 text-center">
+      <section className="bg-gray-50 dark:bg-gray-800 rounded-2xl p-8">
+        <h3 className="font-heading text-3xl font-bold text-gray-900 dark:text-white mb-8 text-center">
           {t.benefits.title}
         </h3>
         <div className="grid md:grid-cols-3 gap-6">
           {t.benefits.items.map((benefit, index) => (
             <div
               key={index}
-              className="bg-white bg-gray-700 rounded-xl p-6 text-center shadow-sm"
+              className="bg-white dark:bg-gray-700 rounded-xl p-6 text-center shadow-sm"
             >
               <div className="flex justify-center mb-4">{benefit.icon}</div>
-              <h4 className="font-heading text-lg font-semibold text-gray-900 text-white mb-3">
+              <h4 className="font-heading text-lg font-semibold text-gray-900 dark:text-white mb-3">
                 {benefit.title}
               </h4>
-              <p className="text-gray-600 text-gray-300 text-sm">
+              <p className="text-gray-600 dark:text-gray-300 text-sm">
                 {benefit.description}
               </p>
             </div>
@@ -237,7 +237,7 @@ export function GroomersVertical({ locale }: GroomersVerticalProps) {
           </p>
           <Link
             href="mailto:partners@purrify.ca"
-            className="inline-block bg-white bg-gray-900 text-purple-600 text-purple-400 px-8 py-3 rounded-lg font-bold hover:bg-gray-100 hover:bg-gray-800 transition-colors"
+            className="inline-block bg-white dark:bg-gray-900 text-purple-600 dark:text-purple-400 px-8 py-3 rounded-lg font-bold hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors"
           >
             {locale === 'fr' ? 'Contactez-nous' : 'Contact Us'}
           </Link>

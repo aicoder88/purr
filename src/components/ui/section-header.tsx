@@ -16,7 +16,7 @@ const SectionHeader = ({ text, highlightTexts = defaultHighlightTexts }: Section
     <div className="section-header">
       <h2>
         {isHighlighted ? (
-          <span className="inline-flex items-center px-4 py-1.5 rounded-full bg-[#FF10F0]/70 text-white bg-[#FF10F0]/60 text-white text-sm sm:text-base font-semibold tracking-wide transition-colors duration-300">
+          <span className="inline-flex items-center px-4 py-1.5 rounded-full bg-[#FF10F0]/70 text-white dark:bg-[#FF10F0]/60 dark:text-white text-sm sm:text-base font-semibold tracking-wide transition-colors duration-300">
             {text}
           </span>
         ) : (

@@ -121,11 +121,11 @@ export function ScarcityIndicator({
 
     switch (urgency) {
       case 'critical':
-        return 'bg-red-500 text-white text-gray-100 border-red-600';
+        return 'bg-red-500 text-white dark:text-gray-100 border-red-600';
       case 'low':
-        return 'bg-orange-500 text-white text-gray-100 border-orange-600';
+        return 'bg-orange-500 text-white dark:text-gray-100 border-orange-600';
       default:
-        return 'bg-green-500 text-white text-gray-100 border-green-600';
+        return 'bg-green-500 text-white dark:text-gray-100 border-green-600';
     }
   };
 
@@ -165,9 +165,9 @@ export function ScarcityIndicator({
         </div>
         
         {/* Progress bar showing stock level */}
-        <div className="mt-3 bg-white bg-gray-800/20 rounded-full h-2">
+        <div className="mt-3 bg-white dark:bg-gray-800/20 rounded-full h-2">
           <div 
-            className="bg-white bg-gray-800 rounded-full h-2 transition-all duration-1000"
+            className="bg-white dark:bg-gray-800 rounded-full h-2 transition-all duration-1000"
             style={{ 
               width: `${Math.max(10, (availableStock / product.lowStockThreshold) * 100)}%` 
             }}
@@ -208,8 +208,8 @@ export function ScarcityIndicator({
     >
       {/* Pulsing dot */}
       <div className="relative">
-        <div className="w-2 h-2 bg-white bg-gray-800 rounded-full"></div>
-        <div className="absolute top-0 left-0 w-2 h-2 bg-white bg-gray-800 rounded-full animate-ping opacity-75"></div>
+        <div className="w-2 h-2 bg-white dark:bg-gray-800 rounded-full"></div>
+        <div className="absolute top-0 left-0 w-2 h-2 bg-white dark:bg-gray-800 rounded-full animate-ping opacity-75"></div>
       </div>
       
       <span>{urgencyMessage}</span>
@@ -264,7 +264,7 @@ export function CountdownTimer({
   if (isExpired) return null;
 
   return (
-    <div className="bg-gradient-to-r from-red-500 to-pink-500 text-white text-gray-100 px-6 py-3 rounded-lg shadow-lg">
+    <div className="bg-gradient-to-r from-red-500 to-pink-500 text-white dark:text-gray-100 px-6 py-3 rounded-lg shadow-lg">
       <div className="text-center">
         <div className="text-sm font-medium opacity-90 mb-1">
           🚨 FLASH SALE ENDS IN:
@@ -325,21 +325,21 @@ export function StockMovementIndicator({ productId }: { productId: string }) {
     switch (movement) {
       case 'high':
         return {
-          icon: <Zap className="w-4 h-4 text-red-500 text-red-400" />,
+          icon: <Zap className="w-4 h-4 text-red-500 dark:text-red-400" />,
           text: 'High demand',
-          color: 'text-red-600 text-red-400 bg-red-50 bg-red-900/20 border-red-200 border-red-700'
+          color: 'text-red-600 dark:text-red-400 bg-red-50 dark:bg-red-900/20 border-red-200 dark:border-red-700'
         };
       case 'medium':
         return {
-          icon: <TrendingUp className="w-4 h-4 text-orange-500 text-orange-400" />,
+          icon: <TrendingUp className="w-4 h-4 text-orange-500 dark:text-orange-400" />,
           text: 'Popular choice',
-          color: 'text-orange-600 text-orange-400 bg-orange-50 bg-orange-900/20 border-orange-200 border-orange-700'
+          color: 'text-orange-600 dark:text-orange-400 bg-orange-50 dark:bg-orange-900/20 border-orange-200 dark:border-orange-700'
         };
       case 'low':
         return {
-          icon: <Users className="w-4 h-4 text-green-500 text-green-400" />,
+          icon: <Users className="w-4 h-4 text-green-500 dark:text-green-400" />,
           text: 'Steady sales',
-          color: 'text-green-600 text-green-400 bg-green-50 bg-green-900/20 border-green-200 border-green-700'
+          color: 'text-green-600 dark:text-green-400 bg-green-50 dark:bg-green-900/20 border-green-200 dark:border-green-700'
         };
     }
   };

@@ -25,7 +25,7 @@ export default function POSContent() {
 
             {/* Printable Area - A4 / Letter Aspect Ratio Container */}
             <div
-                className="relative w-[210mm] h-[297mm] bg-white bg-white text-black text-black overflow-hidden shadow-2xl print:shadow-none print:w-full print:h-full print:absolute print:top-0 print:left-0 print:m-0 flex flex-col"
+                className="relative w-[210mm] h-[297mm] bg-white dark:bg-white text-black dark:text-black overflow-hidden shadow-2xl print:shadow-none print:w-full print:h-full print:absolute print:top-0 print:left-0 print:m-0 flex flex-col"
                 style={{ pageBreakAfter: "always" }}
             >
                 {/* Background Image / Texture */}
@@ -39,10 +39,10 @@ export default function POSContent() {
 
                     {/* Header */}
                     <div className="text-center space-y-2 mb-6">
-                        <div className="inline-block px-4 py-1 rounded-full bg-orange-100 bg-orange-100 text-orange-700 text-orange-700 font-bold tracking-widest text-sm uppercase mb-2">
+                        <div className="inline-block px-4 py-1 rounded-full bg-orange-100 dark:bg-orange-100 text-orange-700 dark:text-orange-700 font-bold tracking-widest text-sm uppercase mb-2">
                             Stop Litter Box Smell
                         </div>
-                        <h1 className="text-6xl font-black leading-none tracking-tight text-gray-900 text-gray-900">
+                        <h1 className="text-6xl font-black leading-none tracking-tight text-gray-900 dark:text-gray-900">
                             ELIMINATE<br />
                             <span className="text-transparent bg-clip-text bg-gradient-to-r from-orange-500 to-pink-600">AMMONIA ODOR</span><br />
                             INSTANTLY
@@ -54,19 +54,19 @@ export default function POSContent() {
 
                         {/* Left Column: Problem/Solution */}
                         <div className="col-span-3 flex flex-col gap-8 justify-center">
-                            <div className="bg-white/80 bg-white/80 backdrop-blur-sm p-4 rounded-xl shadow-lg border border-orange-100 border-orange-100 text-center">
-                                <div className="mx-auto w-12 h-12 bg-red-100 bg-red-100 rounded-full flex items-center justify-center mb-3">
-                                    <Zap className="w-6 h-6 text-red-500 text-red-500" />
+                            <div className="bg-white/80 dark:bg-white/80 backdrop-blur-sm p-4 rounded-xl shadow-lg border border-orange-100 dark:border-orange-100 text-center">
+                                <div className="mx-auto w-12 h-12 bg-red-100 dark:bg-red-100 rounded-full flex items-center justify-center mb-3">
+                                    <Zap className="w-6 h-6 text-red-500 dark:text-red-500" />
                                 </div>
-                                <h3 className="font-bold text-gray-900 text-gray-900 leading-tight">Targets Ammonia</h3>
-                                <p className="text-xs text-gray-600 text-gray-600 mt-1">Neutralizes the root cause of smell</p>
+                                <h3 className="font-bold text-gray-900 dark:text-gray-900 leading-tight">Targets Ammonia</h3>
+                                <p className="text-xs text-gray-600 dark:text-gray-600 mt-1">Neutralizes the root cause of smell</p>
                             </div>
-                            <div className="bg-white/80 bg-white/80 backdrop-blur-sm p-4 rounded-xl shadow-lg border border-orange-100 border-orange-100 text-center">
-                                <div className="mx-auto w-12 h-12 bg-green-100 bg-green-100 rounded-full flex items-center justify-center mb-3">
-                                    <Leaf className="w-6 h-6 text-green-600 text-green-600" />
+                            <div className="bg-white/80 dark:bg-white/80 backdrop-blur-sm p-4 rounded-xl shadow-lg border border-orange-100 dark:border-orange-100 text-center">
+                                <div className="mx-auto w-12 h-12 bg-green-100 dark:bg-green-100 rounded-full flex items-center justify-center mb-3">
+                                    <Leaf className="w-6 h-6 text-green-600 dark:text-green-600" />
                                 </div>
-                                <h3 className="font-bold text-gray-900 text-gray-900 leading-tight">100% Non-Toxic</h3>
-                                <p className="text-xs text-gray-600 text-gray-600 mt-1">Safe for cats & humans</p>
+                                <h3 className="font-bold text-gray-900 dark:text-gray-900 leading-tight">100% Non-Toxic</h3>
+                                <p className="text-xs text-gray-600 dark:text-gray-600 mt-1">Safe for cats & humans</p>
                             </div>
                         </div>
 
@@ -85,63 +85,63 @@ export default function POSContent() {
 
                         {/* Right Column: Benefits */}
                         <div className="col-span-3 flex flex-col gap-8 justify-center">
-                            <div className="bg-white/80 bg-white/80 backdrop-blur-sm p-4 rounded-xl shadow-lg border border-orange-100 border-orange-100 text-center">
-                                <div className="mx-auto w-12 h-12 bg-blue-100 bg-blue-100 rounded-full flex items-center justify-center mb-3">
-                                    <Wind className="w-6 h-6 text-blue-500 text-blue-500" />
+                            <div className="bg-white/80 dark:bg-white/80 backdrop-blur-sm p-4 rounded-xl shadow-lg border border-orange-100 dark:border-orange-100 text-center">
+                                <div className="mx-auto w-12 h-12 bg-blue-100 dark:bg-blue-100 rounded-full flex items-center justify-center mb-3">
+                                    <Wind className="w-6 h-6 text-blue-500 dark:text-blue-500" />
                                 </div>
-                                <h3 className="font-bold text-gray-900 text-gray-900 leading-tight">Fragrance Free</h3>
-                                <p className="text-xs text-gray-600 text-gray-600 mt-1">No masking perfumes</p>
+                                <h3 className="font-bold text-gray-900 dark:text-gray-900 leading-tight">Fragrance Free</h3>
+                                <p className="text-xs text-gray-600 dark:text-gray-600 mt-1">No masking perfumes</p>
                             </div>
-                            <div className="bg-white/80 bg-white/80 backdrop-blur-sm p-4 rounded-xl shadow-lg border border-orange-100 border-orange-100 text-center">
-                                <div className="mx-auto w-12 h-12 bg-purple-100 bg-purple-100 rounded-full flex items-center justify-center mb-3">
-                                    <ShieldCheck className="w-6 h-6 text-purple-500 text-purple-500" />
+                            <div className="bg-white/80 dark:bg-white/80 backdrop-blur-sm p-4 rounded-xl shadow-lg border border-orange-100 dark:border-orange-100 text-center">
+                                <div className="mx-auto w-12 h-12 bg-purple-100 dark:bg-purple-100 rounded-full flex items-center justify-center mb-3">
+                                    <ShieldCheck className="w-6 h-6 text-purple-500 dark:text-purple-500" />
                                 </div>
-                                <h3 className="font-bold text-gray-900 text-gray-900 leading-tight">Works Instantly</h3>
-                                <p className="text-xs text-gray-600 text-gray-600 mt-1">Activated carbon technology</p>
+                                <h3 className="font-bold text-gray-900 dark:text-gray-900 leading-tight">Works Instantly</h3>
+                                <p className="text-xs text-gray-600 dark:text-gray-600 mt-1">Activated carbon technology</p>
                             </div>
                         </div>
                     </div>
 
                     {/* How It Works - Process Flow */}
-                    <div className="bg-white bg-white rounded-2xl shadow-xl border border-gray-100 border-gray-100 p-6 mb-8">
+                    <div className="bg-white dark:bg-white rounded-2xl shadow-xl border border-gray-100 dark:border-gray-100 p-6 mb-8">
                         <div className="grid grid-cols-3 gap-4 relative">
                             {/* Connecting Line */}
                             <div className="absolute top-1/2 left-0 w-full h-1 bg-gradient-to-r from-orange-200 to-pink-200 -z-10 transform -translate-y-1/2" />
 
-                            <div className="text-center bg-white bg-white p-2">
+                            <div className="text-center bg-white dark:bg-white p-2">
                                 <div className="w-16 h-16 bg-gradient-to-br from-orange-400 to-orange-500 rounded-2xl text-white flex items-center justify-center text-xl font-bold mx-auto mb-3 shadow-lg transform rotate-3">1</div>
-                                <h4 className="font-bold text-gray-900 text-gray-900 uppercase text-sm">Scoop</h4>
-                                <p className="text-xs text-gray-500 text-gray-500">Scoop waste as usual</p>
+                                <h4 className="font-bold text-gray-900 dark:text-gray-900 uppercase text-sm">Scoop</h4>
+                                <p className="text-xs text-gray-500 dark:text-gray-500">Scoop waste as usual</p>
                             </div>
-                            <div className="text-center bg-white bg-white p-2">
+                            <div className="text-center bg-white dark:bg-white p-2">
                                 <div className="w-16 h-16 bg-gradient-to-br from-pink-400 to-pink-500 rounded-2xl text-white flex items-center justify-center text-xl font-bold mx-auto mb-3 shadow-lg transform -rotate-3">2</div>
-                                <h4 className="font-bold text-gray-900 text-gray-900 uppercase text-sm">Sprinkle</h4>
-                                <p className="text-xs text-gray-500 text-gray-500">Add 1 tbsp of Purrify</p>
+                                <h4 className="font-bold text-gray-900 dark:text-gray-900 uppercase text-sm">Sprinkle</h4>
+                                <p className="text-xs text-gray-500 dark:text-gray-500">Add 1 tbsp of Purrify</p>
                             </div>
-                            <div className="text-center bg-white bg-white p-2">
+                            <div className="text-center bg-white dark:bg-white p-2">
                                 <div className="w-16 h-16 bg-gradient-to-br from-green-400 to-green-500 rounded-2xl text-white flex items-center justify-center text-xl font-bold mx-auto mb-3 shadow-lg transform rotate-3">3</div>
-                                <h4 className="font-bold text-gray-900 text-gray-900 uppercase text-sm">Fresh Air</h4>
-                                <p className="text-xs text-gray-500 text-gray-500">Live odor-free</p>
+                                <h4 className="font-bold text-gray-900 dark:text-gray-900 uppercase text-sm">Fresh Air</h4>
+                                <p className="text-xs text-gray-500 dark:text-gray-500">Live odor-free</p>
                             </div>
                         </div>
                     </div>
 
                     {/* Footer / CTA */}
-                    <div className="flex items-center justify-between bg-gray-900 bg-gray-900 text-white text-white p-6 rounded-2xl shadow-2xl">
+                    <div className="flex items-center justify-between bg-gray-900 dark:bg-gray-900 text-white dark:text-white p-6 rounded-2xl shadow-2xl">
                         <div className="flex-1">
-                            <h3 className="text-2xl font-bold text-orange-300 text-orange-300">Try a Trial Size Today</h3>
-                            <p className="text-gray-400 text-gray-400 text-sm">Available at the counter • 100% Satisfaction Guarantee</p>
+                            <h3 className="text-2xl font-bold text-orange-300 dark:text-orange-300">Try a Trial Size Today</h3>
+                            <p className="text-gray-400 dark:text-gray-400 text-sm">Available at the counter • 100% Satisfaction Guarantee</p>
                         </div>
                         <div className="flex items-center gap-4 bg-white/10 p-2 rounded-xl border border-white/20">
-                            <div className="bg-white bg-white p-1 rounded-lg">
+                            <div className="bg-white dark:bg-white p-1 rounded-lg">
                                 {/* QR Code Placeholder */}
                                 <div className="w-16 h-16 bg-neutral-900 flex items-center justify-center text-white text-[10px] text-center font-mono leading-tight">
                                     SCAN<br />INFO
                                 </div>
                             </div>
                             <div className="text-left pr-2">
-                                <p className="font-bold text-sm uppercase tracking-wide text-white text-white">Learn More</p>
-                                <p className="text-xs text-orange-300 text-orange-300 font-bold">purrify.ca</p>
+                                <p className="font-bold text-sm uppercase tracking-wide text-white dark:text-white">Learn More</p>
+                                <p className="text-xs text-orange-300 dark:text-orange-300 font-bold">purrify.ca</p>
                             </div>
                         </div>
                     </div>

@@ -49,16 +49,16 @@ interface Application {
 
 function StatusBadge({ status }: { status: string }) {
   const colors = {
-    ACTIVE: 'bg-green-100 text-green-700 bg-green-900/30 text-green-300',
-    SUSPENDED: 'bg-yellow-100 text-yellow-700 bg-yellow-900/30 text-yellow-300',
-    TERMINATED: 'bg-red-100 text-red-700 bg-red-900/30 text-red-300',
-    PENDING: 'bg-blue-100 text-blue-700 bg-blue-900/30 text-blue-300',
-    APPROVED: 'bg-green-100 text-green-700 bg-green-900/30 text-green-300',
-    REJECTED: 'bg-red-100 text-red-700 bg-red-900/30 text-red-300',
+    ACTIVE: 'bg-green-100 text-green-700 dark:bg-green-900/30 dark:text-green-300',
+    SUSPENDED: 'bg-yellow-100 text-yellow-700 dark:bg-yellow-900/30 dark:text-yellow-300',
+    TERMINATED: 'bg-red-100 text-red-700 dark:bg-red-900/30 dark:text-red-300',
+    PENDING: 'bg-blue-100 text-blue-700 dark:bg-blue-900/30 dark:text-blue-300',
+    APPROVED: 'bg-green-100 text-green-700 dark:bg-green-900/30 dark:text-green-300',
+    REJECTED: 'bg-red-100 text-red-700 dark:bg-red-900/30 dark:text-red-300',
   };
 
   return (
-    <span className={`px-2 py-1 rounded text-xs font-medium ${colors[status as keyof typeof colors] || 'bg-gray-100 text-gray-700 bg-gray-700 text-gray-300'}`}>
+    <span className={`px-2 py-1 rounded text-xs font-medium ${colors[status as keyof typeof colors] || 'bg-gray-100 text-gray-700 dark:bg-gray-700 dark:text-gray-300'}`}>
       {status}
     </span>
   );
@@ -105,21 +105,21 @@ export default function AffiliatesPage() {
       {/* Header */}
       <div className="mb-8 flex justify-between items-center">
         <div>
-          <h1 className="font-heading text-3xl font-bold text-gray-900 text-gray-50">
+          <h1 className="font-heading text-3xl font-bold text-gray-900 dark:text-gray-50">
             Affiliate Program
           </h1>
-          <p className="text-gray-600 text-gray-400 mt-1">
+          <p className="text-gray-600 dark:text-gray-400 mt-1">
             Manage affiliates, applications, and track performance.
           </p>
         </div>
         <Link
           href="/admin/ops/affiliates/applications"
-          className="inline-flex items-center px-4 py-2 bg-teal-600 bg-teal-500 hover:bg-teal-700 hover:bg-teal-600 text-white text-gray-100 rounded-lg transition-colors"
+          className="inline-flex items-center px-4 py-2 bg-teal-600 dark:bg-teal-500 hover:bg-teal-700 dark:hover:bg-teal-600 text-white dark:text-gray-100 rounded-lg transition-colors"
         >
           <UserPlus className="w-4 h-4 mr-2" />
           Review Applications
           {stats && stats.pendingApplications > 0 && (
-            <span className="ml-2 px-2 py-0.5 bg-white/20 bg-white/10 rounded-full text-xs">
+            <span className="ml-2 px-2 py-0.5 bg-white/20 dark:bg-white/10 rounded-full text-xs">
               {stats.pendingApplications}
             </span>
           )}
@@ -160,14 +160,14 @@ export default function AffiliatesPage() {
       {/* Two Column Layout */}
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
         {/* Pending Applications */}
-        <div className="bg-white bg-gray-800 rounded-xl border border-gray-200 border-gray-700 p-6">
+        <div className="bg-white dark:bg-gray-800 rounded-xl border border-gray-200 dark:border-gray-700 p-6">
           <div className="flex justify-between items-center mb-4">
-            <h2 className="text-lg font-semibold text-gray-900 text-gray-50">
+            <h2 className="text-lg font-semibold text-gray-900 dark:text-gray-50">
               Pending Applications
             </h2>
             <Link
               href="/admin/ops/affiliates/applications"
-              className="text-sm text-teal-600 text-teal-400 hover:text-teal-700 hover:text-teal-300"
+              className="text-sm text-teal-600 dark:text-teal-400 hover:text-teal-700 dark:hover:text-teal-300"
             >
               View all
             </Link>
@@ -175,7 +175,7 @@ export default function AffiliatesPage() {
           {isLoading ? (
             <div className="animate-pulse space-y-4">
               {[1, 2, 3].map((i) => (
-                <div key={i} className="h-16 bg-gray-100 bg-gray-700 rounded" />
+                <div key={i} className="h-16 bg-gray-100 dark:bg-gray-700 rounded" />
               ))}
             </div>
           ) : pendingApplications.length > 0 ? (
@@ -183,18 +183,18 @@ export default function AffiliatesPage() {
               {pendingApplications.map((app) => (
                 <div
                   key={app.id}
-                  className="flex items-center justify-between p-3 bg-gray-50 bg-gray-700/50 rounded-lg"
+                  className="flex items-center justify-between p-3 bg-gray-50 dark:bg-gray-700/50 rounded-lg"
                 >
                   <div>
-                    <p className="font-medium text-gray-900 text-gray-100">{app.name}</p>
-                    <p className="text-sm text-gray-500 text-gray-400">
+                    <p className="font-medium text-gray-900 dark:text-gray-100">{app.name}</p>
+                    <p className="text-sm text-gray-500 dark:text-gray-400">
                       {app.email} &bull; {app.trafficSource}
                     </p>
                   </div>
                   <div className="flex items-center space-x-2">
                     <Link
                       href={`/admin/ops/affiliates/applications?id=${app.id}`}
-                      className="p-2 text-teal-600 text-teal-400 hover:bg-teal-50 hover:bg-teal-900/30 rounded"
+                      className="p-2 text-teal-600 dark:text-teal-400 hover:bg-teal-50 dark:hover:bg-teal-900/30 rounded"
                       title="Review"
                     >
                       <Eye className="w-4 h-4" />
@@ -204,44 +204,44 @@ export default function AffiliatesPage() {
               ))}
             </div>
           ) : (
-            <p className="text-gray-500 text-gray-400 text-center py-8">
+            <p className="text-gray-500 dark:text-gray-400 text-center py-8">
               No pending applications
             </p>
           )}
         </div>
 
         {/* Commission Summary */}
-        <div className="bg-white bg-gray-800 rounded-xl border border-gray-200 border-gray-700 p-6">
-          <h2 className="text-lg font-semibold text-gray-900 text-gray-50 mb-4">
+        <div className="bg-white dark:bg-gray-800 rounded-xl border border-gray-200 dark:border-gray-700 p-6">
+          <h2 className="text-lg font-semibold text-gray-900 dark:text-gray-50 mb-4">
             Commission Summary
           </h2>
           <div className="space-y-4">
-            <div className="flex justify-between items-center p-3 bg-gray-50 bg-gray-700/50 rounded-lg">
+            <div className="flex justify-between items-center p-3 bg-gray-50 dark:bg-gray-700/50 rounded-lg">
               <div className="flex items-center space-x-3">
-                <div className="p-2 bg-green-100 bg-green-900/30 rounded-lg">
-                  <CheckCircle className="w-5 h-5 text-green-600 text-green-400" />
+                <div className="p-2 bg-green-100 dark:bg-green-900/30 rounded-lg">
+                  <CheckCircle className="w-5 h-5 text-green-600 dark:text-green-400" />
                 </div>
-                <span className="text-gray-700 text-gray-300">Total Paid</span>
+                <span className="text-gray-700 dark:text-gray-300">Total Paid</span>
               </div>
-              <span className="font-semibold text-gray-900 text-gray-100">
+              <span className="font-semibold text-gray-900 dark:text-gray-100">
                 ${(stats?.totalCommissionsPaid || 0).toFixed(2)}
               </span>
             </div>
-            <div className="flex justify-between items-center p-3 bg-gray-50 bg-gray-700/50 rounded-lg">
+            <div className="flex justify-between items-center p-3 bg-gray-50 dark:bg-gray-700/50 rounded-lg">
               <div className="flex items-center space-x-3">
-                <div className="p-2 bg-yellow-100 bg-yellow-900/30 rounded-lg">
-                  <Clock className="w-5 h-5 text-yellow-600 text-yellow-400" />
+                <div className="p-2 bg-yellow-100 dark:bg-yellow-900/30 rounded-lg">
+                  <Clock className="w-5 h-5 text-yellow-600 dark:text-yellow-400" />
                 </div>
-                <span className="text-gray-700 text-gray-300">Pending</span>
+                <span className="text-gray-700 dark:text-gray-300">Pending</span>
               </div>
-              <span className="font-semibold text-gray-900 text-gray-100">
+              <span className="font-semibold text-gray-900 dark:text-gray-100">
                 ${(stats?.pendingCommissions || 0).toFixed(2)}
               </span>
             </div>
           </div>
           <Link
             href="/admin/ops/affiliates/payouts"
-            className="block mt-4 text-center text-sm text-teal-600 text-teal-400 hover:text-teal-700 hover:text-teal-300"
+            className="block mt-4 text-center text-sm text-teal-600 dark:text-teal-400 hover:text-teal-700 dark:hover:text-teal-300"
           >
             Manage payouts &rarr;
           </Link>
@@ -249,83 +249,83 @@ export default function AffiliatesPage() {
       </div>
 
       {/* Active Affiliates Table */}
-      <div className="mt-6 bg-white bg-gray-800 rounded-xl border border-gray-200 border-gray-700 overflow-hidden">
-        <div className="px-6 py-4 border-b border-gray-200 border-gray-700">
-          <h2 className="text-lg font-semibold text-gray-900 text-gray-50">
+      <div className="mt-6 bg-white dark:bg-gray-800 rounded-xl border border-gray-200 dark:border-gray-700 overflow-hidden">
+        <div className="px-6 py-4 border-b border-gray-200 dark:border-gray-700">
+          <h2 className="text-lg font-semibold text-gray-900 dark:text-gray-50">
             Recent Affiliates
           </h2>
         </div>
         <div className="overflow-x-auto">
           <table className="w-full">
-            <thead className="bg-gray-50 bg-gray-700/50">
+            <thead className="bg-gray-50 dark:bg-gray-700/50">
               <tr>
-                <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 text-gray-400 uppercase tracking-wider">
+                <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wider">
                   Affiliate
                 </th>
-                <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 text-gray-400 uppercase tracking-wider">
+                <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wider">
                   Code
                 </th>
-                <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 text-gray-400 uppercase tracking-wider">
+                <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wider">
                   Status
                 </th>
-                <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 text-gray-400 uppercase tracking-wider">
+                <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wider">
                   Clicks
                 </th>
-                <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 text-gray-400 uppercase tracking-wider">
+                <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wider">
                   Conversions
                 </th>
-                <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 text-gray-400 uppercase tracking-wider">
+                <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wider">
                   Earnings
                 </th>
-                <th className="px-6 py-3 text-right text-xs font-medium text-gray-500 text-gray-400 uppercase tracking-wider">
+                <th className="px-6 py-3 text-right text-xs font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wider">
                   Actions
                 </th>
               </tr>
             </thead>
-            <tbody className="divide-y divide-gray-200 divide-gray-700">
+            <tbody className="divide-y divide-gray-200 dark:divide-gray-700">
               {isLoading ? (
                 <tr>
                   <td colSpan={7} className="px-6 py-8 text-center">
                     <div className="animate-pulse space-y-2">
-                      <div className="h-4 bg-gray-200 bg-gray-700 rounded w-1/2 mx-auto" />
-                      <div className="h-4 bg-gray-200 bg-gray-700 rounded w-1/3 mx-auto" />
+                      <div className="h-4 bg-gray-200 dark:bg-gray-700 rounded w-1/2 mx-auto" />
+                      <div className="h-4 bg-gray-200 dark:bg-gray-700 rounded w-1/3 mx-auto" />
                     </div>
                   </td>
                 </tr>
               ) : affiliates.length > 0 ? (
                 affiliates.map((affiliate) => (
-                  <tr key={affiliate.id} className="hover:bg-gray-50 hover:bg-gray-700/30">
+                  <tr key={affiliate.id} className="hover:bg-gray-50 dark:hover:bg-gray-700/30">
                     <td className="px-6 py-4 whitespace-nowrap">
                       <div>
-                        <p className="font-medium text-gray-900 text-gray-100">
+                        <p className="font-medium text-gray-900 dark:text-gray-100">
                           {affiliate.name}
                         </p>
-                        <p className="text-sm text-gray-500 text-gray-400">
+                        <p className="text-sm text-gray-500 dark:text-gray-400">
                           {affiliate.email}
                         </p>
                       </div>
                     </td>
                     <td className="px-6 py-4 whitespace-nowrap">
-                      <code className="px-2 py-1 bg-gray-100 bg-gray-700 rounded text-sm text-gray-700 text-gray-300">
+                      <code className="px-2 py-1 bg-gray-100 dark:bg-gray-700 rounded text-sm text-gray-700 dark:text-gray-300">
                         {affiliate.code}
                       </code>
                     </td>
                     <td className="px-6 py-4 whitespace-nowrap">
                       <StatusBadge status={affiliate.status} />
                     </td>
-                    <td className="px-6 py-4 whitespace-nowrap text-gray-700 text-gray-300">
+                    <td className="px-6 py-4 whitespace-nowrap text-gray-700 dark:text-gray-300">
                       {affiliate.totalClicks.toLocaleString()}
                     </td>
-                    <td className="px-6 py-4 whitespace-nowrap text-gray-700 text-gray-300">
+                    <td className="px-6 py-4 whitespace-nowrap text-gray-700 dark:text-gray-300">
                       {affiliate.totalConversions}
                     </td>
-                    <td className="px-6 py-4 whitespace-nowrap text-gray-700 text-gray-300">
+                    <td className="px-6 py-4 whitespace-nowrap text-gray-700 dark:text-gray-300">
                       ${affiliate.totalEarnings.toFixed(2)}
                     </td>
                     <td className="px-6 py-4 whitespace-nowrap text-right">
                       <Link
                         href={`/admin/ops/affiliates/${affiliate.id}`}
-                        className="text-teal-600 text-teal-400 hover:text-teal-700 hover:text-teal-300"
+                        className="text-teal-600 dark:text-teal-400 hover:text-teal-700 dark:hover:text-teal-300"
                       >
                         View Details
                       </Link>
@@ -334,7 +334,7 @@ export default function AffiliatesPage() {
                 ))
               ) : (
                 <tr>
-                  <td colSpan={7} className="px-6 py-8 text-center text-gray-500 text-gray-400">
+                  <td colSpan={7} className="px-6 py-8 text-center text-gray-500 dark:text-gray-400">
                     No affiliates yet
                   </td>
                 </tr>

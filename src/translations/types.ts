@@ -59,8 +59,6 @@ export interface TranslationType {
     signedIn?: string;
     // SEO FIX (Feb 2026): Added missing nav keys
     litterCalculator?: string;
-    smellQuiz?: string;
-    toolsHub?: string;
     catLitterAnswers?: string;
     scienceHub?: string;
     carbonVsBakingSoda?: string;
@@ -731,8 +729,6 @@ export interface TranslationType {
     carbonVsBakingSoda: string;
     ammoniaSolutions: string;
     litterCalculator: string;
-    smellQuiz?: string;
-    toolsHub?: string;
     // Article links
     houseSmells: string;
     multiCatGuide: string;

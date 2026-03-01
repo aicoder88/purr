@@ -351,10 +351,10 @@ export default function LeadsPage() {
       {/* Header */}
       <div className="flex flex-col sm:flex-row sm:justify-between sm:items-center gap-4 mb-6">
         <div>
-          <h1 className="font-heading text-3xl font-bold text-gray-900 text-gray-50">
+          <h1 className="font-heading text-3xl font-bold text-gray-900 dark:text-gray-50">
             Lead Management
           </h1>
-          <p className="text-gray-600 text-gray-400 mt-1">
+          <p className="text-gray-600 dark:text-gray-400 mt-1">
             {totalLeads} total leads · Manage and track your B2B prospects
           </p>
         </div>
@@ -362,7 +362,7 @@ export default function LeadsPage() {
           <Button
             variant="outline"
             onClick={() => setIsImportModalOpen(true)}
-            className="border-gray-200 border-gray-700 text-gray-700 text-gray-300 hover:bg-gray-50 hover:bg-gray-800"
+            className="border-gray-200 dark:border-gray-700 text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-800"
           >
             <Upload className="w-4 h-4 mr-2" />
             Import CSV
@@ -371,14 +371,14 @@ export default function LeadsPage() {
             variant="outline"
             onClick={() => fetchLeads(pagination.page)}
             disabled={isLoading}
-            className="border-gray-200 border-gray-700 text-gray-700 text-gray-300 hover:bg-gray-50 hover:bg-gray-800"
+            className="border-gray-200 dark:border-gray-700 text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-800"
           >
             <RefreshCw className={`w-4 h-4 mr-2 ${isLoading ? 'animate-spin' : ''}`} />
             Refresh
           </Button>
           <Button
             onClick={handleCreateLead}
-            className="bg-teal-500 bg-teal-600 text-white text-gray-100 hover:bg-teal-600 hover:bg-teal-700"
+            className="bg-teal-500 dark:bg-teal-600 text-white dark:text-gray-100 hover:bg-teal-600 dark:hover:bg-teal-700"
           >
             <Plus className="w-4 h-4 mr-2" />
             Add Lead
@@ -392,11 +392,11 @@ export default function LeadsPage() {
             key={status}
             onClick={() => setStatusFilter(status === statusFilter ? 'ALL' : (status as LeadStatus))}
             className={`p-3 rounded-lg border transition-all ${statusFilter === status
-              ? 'border-teal-500 border-teal-400 ring-2 ring-teal-500/20 ring-teal-400/20'
-              : 'border-gray-200 border-gray-700 hover:border-gray-300 hover:border-gray-600'
-              } bg-white bg-gray-800`}
+              ? 'border-teal-500 dark:border-teal-400 ring-2 ring-teal-500/20 dark:ring-teal-400/20'
+              : 'border-gray-200 dark:border-gray-700 hover:border-gray-300 dark:hover:border-gray-600'
+              } bg-white dark:bg-gray-800`}
           >
-            <div className="text-2xl font-bold text-gray-900 text-gray-100">
+            <div className="text-2xl font-bold text-gray-900 dark:text-gray-100">
               {statusCounts[status as LeadStatus] || 0}
             </div>
             <LeadStatusBadge status={status as LeadStatus} className="mt-1" />
@@ -406,8 +406,8 @@ export default function LeadsPage() {
 
       {/* Bulk Actions */}
       {selectedIds.length > 0 && (
-        <div className="flex items-center gap-3 mb-4 p-3 bg-teal-50 bg-teal-900/20 border border-teal-200 border-teal-800 rounded-lg">
-          <span className="text-sm font-medium text-teal-700 text-teal-300">
+        <div className="flex items-center gap-3 mb-4 p-3 bg-teal-50 dark:bg-teal-900/20 border border-teal-200 dark:border-teal-800 rounded-lg">
+          <span className="text-sm font-medium text-teal-700 dark:text-teal-300">
             {selectedIds.length} lead{selectedIds.length > 1 ? 's' : ''} selected
           </span>
           <div className="flex-1" />
@@ -416,19 +416,19 @@ export default function LeadsPage() {
               <Button
                 variant="outline"
                 size="sm"
-                className="border-teal-300 border-teal-700 text-teal-700 text-teal-300"
+                className="border-teal-300 dark:border-teal-700 text-teal-700 dark:text-teal-300"
               >
                 <Tag className="w-4 h-4 mr-2" />
                 Change Status
                 <ChevronDown className="w-4 h-4 ml-2" />
               </Button>
             </DropdownMenuTrigger>
-            <DropdownMenuContent className="bg-white bg-gray-800 border-gray-200 border-gray-700">
+            <DropdownMenuContent className="bg-white dark:bg-gray-800 border-gray-200 dark:border-gray-700">
               {Object.entries(statusConfig).map(([status]) => (
                 <DropdownMenuItem
                   key={status}
                   onClick={() => handleBulkStatusChange(status as LeadStatus)}
-                  className="cursor-pointer text-gray-900 text-gray-100"
+                  className="cursor-pointer text-gray-900 dark:text-gray-100"
                 >
                   <LeadStatusBadge status={status as LeadStatus} className="mr-2" />
                   {statusConfig[status as LeadStatus].label}
@@ -440,7 +440,7 @@ export default function LeadsPage() {
             variant="outline"
             size="sm"
             onClick={handleBulkDelete}
-            className="border-red-300 border-red-700 text-red-600 text-red-400 hover:bg-red-50 hover:bg-red-900/20"
+            className="border-red-300 dark:border-red-700 text-red-600 dark:text-red-400 hover:bg-red-50 dark:hover:bg-red-900/20"
           >
             <Trash2 className="w-4 h-4 mr-2" />
             Delete
@@ -449,7 +449,7 @@ export default function LeadsPage() {
             variant="ghost"
             size="sm"
             onClick={() => setSelectedIds([])}
-            className="text-gray-600 text-gray-400"
+            className="text-gray-600 dark:text-gray-400"
           >
             Clear Selection
           </Button>
@@ -498,23 +498,23 @@ export default function LeadsPage() {
         open={!!deleteConfirmLead}
         onOpenChange={(open) => !open && setDeleteConfirmLead(null)}
       >
-        <AlertDialogContent className="bg-white bg-gray-900 border-gray-200 border-gray-700">
+        <AlertDialogContent className="bg-white dark:bg-gray-900 border-gray-200 dark:border-gray-700">
           <AlertDialogHeader>
-            <AlertDialogTitle className="text-gray-900 text-gray-50">
+            <AlertDialogTitle className="text-gray-900 dark:text-gray-50">
               Delete Lead
             </AlertDialogTitle>
-            <AlertDialogDescription className="text-gray-600 text-gray-400">
+            <AlertDialogDescription className="text-gray-600 dark:text-gray-400">
               Are you sure you want to delete &quot;{deleteConfirmLead?.companyName}&quot;?
               This action cannot be undone.
             </AlertDialogDescription>
           </AlertDialogHeader>
           <AlertDialogFooter>
-            <AlertDialogCancel className="border-gray-200 border-gray-700 text-gray-700 text-gray-300">
+            <AlertDialogCancel className="border-gray-200 dark:border-gray-700 text-gray-700 dark:text-gray-300">
               Cancel
             </AlertDialogCancel>
             <AlertDialogAction
               onClick={confirmDeleteLead}
-              className="bg-red-600 bg-red-700 text-white text-gray-100 hover:bg-red-700 hover:bg-red-800"
+              className="bg-red-600 dark:bg-red-700 text-white dark:text-gray-100 hover:bg-red-700 dark:hover:bg-red-800"
             >
               Delete
             </AlertDialogAction>
@@ -527,23 +527,23 @@ export default function LeadsPage() {
         open={bulkDeleteConfirm}
         onOpenChange={(open) => !open && setBulkDeleteConfirm(false)}
       >
-        <AlertDialogContent className="bg-white bg-gray-900 border-gray-200 border-gray-700">
+        <AlertDialogContent className="bg-white dark:bg-gray-900 border-gray-200 dark:border-gray-700">
           <AlertDialogHeader>
-            <AlertDialogTitle className="text-gray-900 text-gray-50">
+            <AlertDialogTitle className="text-gray-900 dark:text-gray-50">
               Delete {selectedIds.length} Lead{selectedIds.length > 1 ? 's' : ''}
             </AlertDialogTitle>
-            <AlertDialogDescription className="text-gray-600 text-gray-400">
+            <AlertDialogDescription className="text-gray-600 dark:text-gray-400">
               Are you sure you want to delete {selectedIds.length} selected lead{selectedIds.length > 1 ? 's' : ''}?
               This action cannot be undone.
             </AlertDialogDescription>
           </AlertDialogHeader>
           <AlertDialogFooter>
-            <AlertDialogCancel className="border-gray-200 border-gray-700 text-gray-700 text-gray-300">
+            <AlertDialogCancel className="border-gray-200 dark:border-gray-700 text-gray-700 dark:text-gray-300">
               Cancel
             </AlertDialogCancel>
             <AlertDialogAction
               onClick={confirmBulkDelete}
-              className="bg-red-600 bg-red-700 text-white text-gray-100 hover:bg-red-700 hover:bg-red-800"
+              className="bg-red-600 dark:bg-red-700 text-white dark:text-gray-100 hover:bg-red-700 dark:hover:bg-red-800"
             >
               Delete All
             </AlertDialogAction>

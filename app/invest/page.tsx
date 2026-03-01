@@ -56,19 +56,19 @@ export default function InvestorRelations() {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(investorSchema) }}
       />
-      <main className="min-h-screen bg-gradient-to-br from-[#FFFFF5] via-[#FFFFFF] to-[#E0EFC7]/30 from-gray-900 via-gray-800 to-purple-900/20 relative overflow-hidden">
+      <main className="min-h-screen bg-gradient-to-br from-[#FFFFF5] via-[#FFFFFF] to-[#E0EFC7]/30 dark:from-gray-900 dark:via-gray-800 dark:to-purple-900/20 relative overflow-hidden">
         {/* Animated background elements */}
-        <div className="absolute inset-0 opacity-30 opacity-20">
-          <div className="absolute top-10 left-10 w-72 h-72 bg-[#FF3131]/20 bg-[#FF5050]/10 rounded-full blur-3xl animate-pulse"></div>
-          <div className="absolute top-1/2 right-10 w-96 h-96 bg-[#5B2EFF]/20 bg-[#818CF8]/10 rounded-full blur-3xl animate-pulse delay-1000"></div>
-          <div className="absolute bottom-10 left-1/3 w-80 h-80 bg-[#E0EFC7]/30 bg-green-900/20 rounded-full blur-3xl animate-pulse delay-2000"></div>
+        <div className="absolute inset-0 opacity-30 dark:opacity-20">
+          <div className="absolute top-10 left-10 w-72 h-72 bg-[#FF3131]/20 dark:bg-[#FF5050]/10 rounded-full blur-3xl animate-pulse"></div>
+          <div className="absolute top-1/2 right-10 w-96 h-96 bg-[#5B2EFF]/20 dark:bg-[#818CF8]/10 rounded-full blur-3xl animate-pulse delay-1000"></div>
+          <div className="absolute bottom-10 left-1/3 w-80 h-80 bg-[#E0EFC7]/30 dark:bg-green-900/20 rounded-full blur-3xl animate-pulse delay-2000"></div>
         </div>
 
         <section className="relative z-10 max-w-4xl mx-auto px-4 pt-12">
-          <h1 className="font-heading text-3xl md:text-5xl font-bold text-gray-900 text-gray-100">
+          <h1 className="font-heading text-3xl md:text-5xl font-bold text-gray-900 dark:text-gray-100">
             Invest in Purrify
           </h1>
-          <p className="mt-4 text-lg text-gray-700 text-gray-300">
+          <p className="mt-4 text-lg text-gray-700 dark:text-gray-300">
             Review traction, unit economics, and terms for our current investor round.
           </p>
         </section>

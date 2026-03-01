@@ -46,7 +46,7 @@ export default function AutoSaveIndicator({ state }: AutoSaveIndicatorProps) {
 
   if (state.status === 'saving') {
     return (
-      <div className="flex items-center space-x-2 text-sm text-gray-600 text-gray-400">
+      <div className="flex items-center space-x-2 text-sm text-gray-600 dark:text-gray-400">
         <Loader2 className="w-4 h-4 animate-spin" />
         <span>Saving...</span>
       </div>
@@ -55,7 +55,7 @@ export default function AutoSaveIndicator({ state }: AutoSaveIndicatorProps) {
 
   if (state.status === 'saved' && state.lastSaved) {
     return (
-      <div className="flex items-center space-x-2 text-sm text-green-600 text-green-400">
+      <div className="flex items-center space-x-2 text-sm text-green-600 dark:text-green-400">
         <Check className="w-4 h-4" />
         <span>Saved at {formatTime(state.lastSaved)}</span>
       </div>
@@ -64,7 +64,7 @@ export default function AutoSaveIndicator({ state }: AutoSaveIndicatorProps) {
 
   if (state.status === 'error') {
     return (
-      <div className="flex items-center space-x-2 text-sm text-red-600 text-red-400">
+      <div className="flex items-center space-x-2 text-sm text-red-600 dark:text-red-400">
         <AlertCircle className="w-4 h-4" />
         <span>Save failed - Draft in localStorage</span>
       </div>
@@ -73,7 +73,7 @@ export default function AutoSaveIndicator({ state }: AutoSaveIndicatorProps) {
 
   if (state.lastSaved) {
     return (
-      <div className="text-sm text-gray-500 text-gray-400">
+      <div className="text-sm text-gray-500 dark:text-gray-400">
         Saved {getTimeSince(state.lastSaved)}
       </div>
     );

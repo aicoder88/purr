@@ -35,17 +35,17 @@ interface CustomerSupportProps {
 // ============================================================================
 
 const STATUS_COLORS = {
-  open: 'bg-blue-100 bg-blue-900/20 text-blue-800 text-blue-300',
-  'in-progress': 'bg-yellow-100 bg-yellow-900/20 text-yellow-800 text-yellow-300',
-  resolved: 'bg-green-100 bg-green-900/20 text-green-800 text-green-300',
-  closed: 'bg-gray-100 bg-gray-700 text-gray-800 text-gray-300',
+  open: 'bg-blue-100 dark:bg-blue-900/20 text-blue-800 dark:text-blue-300',
+  'in-progress': 'bg-yellow-100 dark:bg-yellow-900/20 text-yellow-800 dark:text-yellow-300',
+  resolved: 'bg-green-100 dark:bg-green-900/20 text-green-800 dark:text-green-300',
+  closed: 'bg-gray-100 dark:bg-gray-700 text-gray-800 dark:text-gray-300',
 } as const;
 
 const PRIORITY_COLORS = {
-  low: 'bg-gray-100 bg-gray-700 text-gray-800 text-gray-300',
-  medium: 'bg-blue-100 bg-blue-900/20 text-blue-800 text-blue-300',
-  high: 'bg-orange-100 bg-orange-900/20 text-orange-800 text-orange-300',
-  urgent: 'bg-red-100 bg-red-900/20 text-red-800 text-red-300',
+  low: 'bg-gray-100 dark:bg-gray-700 text-gray-800 dark:text-gray-300',
+  medium: 'bg-blue-100 dark:bg-blue-900/20 text-blue-800 dark:text-blue-300',
+  high: 'bg-orange-100 dark:bg-orange-900/20 text-orange-800 dark:text-orange-300',
+  urgent: 'bg-red-100 dark:bg-red-900/20 text-red-800 dark:text-red-300',
 } as const;
 
 const getStatusColor = (status: string): string => {
@@ -215,12 +215,12 @@ export function CustomerSupport({ customerId }: CustomerSupportProps) {
   if (loading) {
     return (
       <div className="space-y-6">
-        <div className="bg-white bg-gray-800 rounded-lg shadow p-6">
+        <div className="bg-white dark:bg-gray-800 rounded-lg shadow p-6">
           <div className="animate-pulse space-y-4">
-            <div className="h-4 bg-gray-200 bg-gray-700 rounded w-1/3"></div>
+            <div className="h-4 bg-gray-200 dark:bg-gray-700 rounded w-1/3"></div>
             <div className="space-y-2">
-              <div className="h-4 bg-gray-200 bg-gray-700 rounded"></div>
-              <div className="h-4 bg-gray-200 bg-gray-700 rounded w-5/6"></div>
+              <div className="h-4 bg-gray-200 dark:bg-gray-700 rounded"></div>
+              <div className="h-4 bg-gray-200 dark:bg-gray-700 rounded w-5/6"></div>
             </div>
           </div>
         </div>
@@ -239,15 +239,15 @@ export function CustomerSupport({ customerId }: CustomerSupportProps) {
   return (
     <div className="space-y-6">
       {/* Header */}
-      <div className="bg-white bg-gray-800 rounded-lg shadow p-6">
+      <div className="bg-white dark:bg-gray-800 rounded-lg shadow p-6">
         <div className="flex items-center justify-between">
           <div>
-            <h2 className="font-heading text-xl font-bold text-gray-900 text-gray-50">Support Tickets</h2>
-            <p className="text-gray-600 text-gray-300 mt-1">Get help with your orders, subscriptions, and more</p>
+            <h2 className="font-heading text-xl font-bold text-gray-900 dark:text-gray-50">Support Tickets</h2>
+            <p className="text-gray-600 dark:text-gray-300 mt-1">Get help with your orders, subscriptions, and more</p>
           </div>
           <button
             onClick={() => setShowNewTicketForm(true)}
-            className="px-4 py-2 bg-blue-600 bg-blue-600 text-white text-gray-100 font-medium rounded-md hover:bg-blue-700 hover:bg-blue-500 transition-colors flex items-center gap-2"
+            className="px-4 py-2 bg-blue-600 dark:bg-blue-600 text-white dark:text-gray-100 font-medium rounded-md hover:bg-blue-700 dark:hover:bg-blue-500 transition-colors flex items-center gap-2"
           >
             <Plus className="w-4 h-4" />
             New Ticket
@@ -256,24 +256,24 @@ export function CustomerSupport({ customerId }: CustomerSupportProps) {
       </div>
 
       {/* Tickets List */}
-      <div className="bg-white bg-gray-800 rounded-lg shadow">
-        <div className="px-6 py-4 border-b border-gray-200 border-gray-700">
-          <h3 className="font-heading text-lg font-medium text-gray-900 text-gray-50">Your Tickets</h3>
+      <div className="bg-white dark:bg-gray-800 rounded-lg shadow">
+        <div className="px-6 py-4 border-b border-gray-200 dark:border-gray-700">
+          <h3 className="font-heading text-lg font-medium text-gray-900 dark:text-gray-50">Your Tickets</h3>
         </div>
-        <div className="divide-y divide-gray-200 divide-gray-700">
+        <div className="divide-y divide-gray-200 dark:divide-gray-700">
           {tickets.length > 0 ? (
             tickets.map((ticket) => (
               <div
                 key={ticket.id}
-                className="p-6 bg-white bg-gray-800 hover:bg-gray-50 hover:bg-gray-700/50 cursor-pointer transition-colors"
+                className="p-6 bg-white dark:bg-gray-800 hover:bg-gray-50 dark:hover:bg-gray-700/50 cursor-pointer transition-colors"
                 onClick={() => setSelectedTicket(ticket)}
               >
                 <div className="flex items-start justify-between mb-3">
                   <div className="flex-1">
-                    <h4 className="text-lg font-medium text-gray-900 text-gray-50 mb-1">{ticket.subject}</h4>
-                    <p className="text-gray-600 text-gray-300 text-sm line-clamp-2">{ticket.description}</p>
+                    <h4 className="text-lg font-medium text-gray-900 dark:text-gray-50 mb-1">{ticket.subject}</h4>
+                    <p className="text-gray-600 dark:text-gray-300 text-sm line-clamp-2">{ticket.description}</p>
                   </div>
-                  <Eye className="w-5 h-5 text-gray-400 text-gray-500 ml-4 flex-shrink-0" />
+                  <Eye className="w-5 h-5 text-gray-400 dark:text-gray-500 ml-4 flex-shrink-0" />
                 </div>
 
                 <div className="flex items-center justify-between">
@@ -284,11 +284,11 @@ export function CustomerSupport({ customerId }: CustomerSupportProps) {
                     <span className={cn('inline-flex px-2 py-1 text-xs font-medium rounded-full', getPriorityColor(ticket.priority))}>
                       {ticket.priority}
                     </span>
-                    <span className="text-xs text-gray-500 text-gray-400 capitalize">
+                    <span className="text-xs text-gray-500 dark:text-gray-400 capitalize">
                       {ticket.category.replace('-', ' ')}
                     </span>
                   </div>
-                  <div className="text-xs text-gray-500 text-gray-400">
+                  <div className="text-xs text-gray-500 dark:text-gray-400">
                     Updated {formatDate(ticket.updated)}
                   </div>
                 </div>
@@ -296,11 +296,11 @@ export function CustomerSupport({ customerId }: CustomerSupportProps) {
             ))
           ) : (
             <div className="p-8 text-center">
-              <MessageCircle className="w-12 h-12 text-gray-400 text-gray-500 mx-auto mb-4" />
-              <p className="text-gray-500 text-gray-400 mb-4">No support tickets yet</p>
+              <MessageCircle className="w-12 h-12 text-gray-400 dark:text-gray-500 mx-auto mb-4" />
+              <p className="text-gray-500 dark:text-gray-400 mb-4">No support tickets yet</p>
               <button
                 onClick={() => setShowNewTicketForm(true)}
-                className="px-6 py-2 bg-blue-600 bg-blue-600 text-white text-gray-100 font-medium rounded-md hover:bg-blue-700 hover:bg-blue-500 transition-colors"
+                className="px-6 py-2 bg-blue-600 dark:bg-blue-600 text-white dark:text-gray-100 font-medium rounded-md hover:bg-blue-700 dark:hover:bg-blue-500 transition-colors"
               >
                 Create Your First Ticket
               </button>
@@ -332,20 +332,20 @@ function NewTicketForm({ onSubmit, onCancel }: {
   };
 
   return (
-    <div className="bg-white bg-gray-800 rounded-lg shadow">
-      <div className="px-6 py-4 border-b border-gray-200 border-gray-700">
-        <h3 className="font-heading text-lg font-medium text-gray-900 text-gray-50">Create New Support Ticket</h3>
+    <div className="bg-white dark:bg-gray-800 rounded-lg shadow">
+      <div className="px-6 py-4 border-b border-gray-200 dark:border-gray-700">
+        <h3 className="font-heading text-lg font-medium text-gray-900 dark:text-gray-50">Create New Support Ticket</h3>
       </div>
       <form onSubmit={handleSubmit} className="p-6 space-y-6">
         <div>
-          <label className="block text-sm font-medium text-gray-700 text-gray-300 mb-2">
+          <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
             Subject *
           </label>
           <input
             type="text"
             value={formData.subject}
             onChange={(e) => setFormData(prev => ({ ...prev, subject: e.target.value }))}
-            className="w-full px-3 py-2 border border-gray-300 border-gray-600 rounded-md bg-white bg-gray-700 text-gray-900 text-gray-50 focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+            className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-md bg-white dark:bg-gray-700 text-gray-900 dark:text-gray-50 focus:ring-2 focus:ring-blue-500 focus:border-transparent"
             placeholder="Brief description of your issue"
             required
           />
@@ -353,13 +353,13 @@ function NewTicketForm({ onSubmit, onCancel }: {
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           <div>
-            <label className="block text-sm font-medium text-gray-700 text-gray-300 mb-2">
+            <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
               Category
             </label>
             <select
               value={formData.category}
               onChange={(e) => setFormData(prev => ({ ...prev, category: e.target.value as SupportTicket['category'] }))}
-              className="w-full px-3 py-2 border border-gray-300 border-gray-600 rounded-md bg-white bg-gray-700 text-gray-900 text-gray-50"
+              className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-md bg-white dark:bg-gray-700 text-gray-900 dark:text-gray-50"
             >
               <option value="order-issue">Order Issue</option>
               <option value="subscription">Subscription</option>
@@ -371,13 +371,13 @@ function NewTicketForm({ onSubmit, onCancel }: {
           </div>
 
           <div>
-            <label className="block text-sm font-medium text-gray-700 text-gray-300 mb-2">
+            <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
               Priority
             </label>
             <select
               value={formData.priority}
               onChange={(e) => setFormData(prev => ({ ...prev, priority: e.target.value as SupportTicket['priority'] }))}
-              className="w-full px-3 py-2 border border-gray-300 border-gray-600 rounded-md bg-white bg-gray-700 text-gray-900 text-gray-50"
+              className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-md bg-white dark:bg-gray-700 text-gray-900 dark:text-gray-50"
             >
               <option value="low">Low</option>
               <option value="medium">Medium</option>
@@ -388,14 +388,14 @@ function NewTicketForm({ onSubmit, onCancel }: {
         </div>
 
         <div>
-          <label className="block text-sm font-medium text-gray-700 text-gray-300 mb-2">
+          <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
             Description *
           </label>
           <textarea
             value={formData.description}
             onChange={(e) => setFormData(prev => ({ ...prev, description: e.target.value }))}
             rows={6}
-            className="w-full px-3 py-2 border border-gray-300 border-gray-600 rounded-md bg-white bg-gray-700 text-gray-900 text-gray-50 focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+            className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-md bg-white dark:bg-gray-700 text-gray-900 dark:text-gray-50 focus:ring-2 focus:ring-blue-500 focus:border-transparent"
             placeholder="Please provide as much detail as possible about your issue..."
             required
           />
@@ -405,13 +405,13 @@ function NewTicketForm({ onSubmit, onCancel }: {
           <button
             type="button"
             onClick={onCancel}
-            className="px-4 py-2 border border-gray-300 border-gray-600 text-gray-700 text-gray-200 rounded-md hover:bg-gray-50 hover:bg-gray-700 transition-colors"
+            className="px-4 py-2 border border-gray-300 dark:border-gray-600 text-gray-700 dark:text-gray-200 rounded-md hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors"
           >
             Cancel
           </button>
           <button
             type="submit"
-            className="px-4 py-2 bg-blue-600 bg-blue-600 text-white text-gray-100 rounded-md hover:bg-blue-700 hover:bg-blue-500 transition-colors"
+            className="px-4 py-2 bg-blue-600 dark:bg-blue-600 text-white dark:text-gray-100 rounded-md hover:bg-blue-700 dark:hover:bg-blue-500 transition-colors"
           >
             Create Ticket
           </button>
@@ -440,11 +440,11 @@ function TicketView({ ticket, onBack, onAddMessage }: {
   return (
     <div className="space-y-6">
       {/* Ticket Header */}
-      <div className="bg-white bg-gray-800 rounded-lg shadow p-6">
+      <div className="bg-white dark:bg-gray-800 rounded-lg shadow p-6">
         <div className="flex items-start justify-between mb-4">
           <button
             onClick={onBack}
-            className="text-blue-600 text-blue-400 hover:text-blue-700 hover:text-blue-300 font-medium flex items-center gap-2"
+            className="text-blue-600 dark:text-blue-400 hover:text-blue-700 dark:hover:text-blue-300 font-medium flex items-center gap-2"
           >
             ← Back to Tickets
           </button>
@@ -453,9 +453,9 @@ function TicketView({ ticket, onBack, onAddMessage }: {
           </span>
         </div>
 
-        <h1 className="font-heading text-2xl font-bold text-gray-900 text-gray-50 mb-2">{ticket.subject}</h1>
+        <h1 className="font-heading text-2xl font-bold text-gray-900 dark:text-gray-50 mb-2">{ticket.subject}</h1>
 
-        <div className="flex items-center gap-4 text-sm text-gray-500 text-gray-400">
+        <div className="flex items-center gap-4 text-sm text-gray-500 dark:text-gray-400">
           <span>Ticket #{ticket.id}</span>
           <span>•</span>
           <span>Created {formatDate(ticket.created)}</span>
@@ -467,9 +467,9 @@ function TicketView({ ticket, onBack, onAddMessage }: {
       </div>
 
       {/* Messages */}
-      <div className="bg-white bg-gray-800 rounded-lg shadow">
-        <div className="px-6 py-4 border-b border-gray-200 border-gray-700">
-          <h3 className="font-heading text-lg font-medium text-gray-900 text-gray-50">Conversation</h3>
+      <div className="bg-white dark:bg-gray-800 rounded-lg shadow">
+        <div className="px-6 py-4 border-b border-gray-200 dark:border-gray-700">
+          <h3 className="font-heading text-lg font-medium text-gray-900 dark:text-gray-50">Conversation</h3>
         </div>
 
         <div className="p-6 space-y-6">
@@ -484,8 +484,8 @@ function TicketView({ ticket, onBack, onAddMessage }: {
               <div className={cn(
                 'flex-shrink-0 w-8 h-8 rounded-full flex items-center justify-center text-white text-sm font-medium',
                 message.author === 'customer'
-                  ? 'bg-blue-600 bg-blue-500'
-                  : 'bg-green-600 bg-green-500'
+                  ? 'bg-blue-600 dark:bg-blue-500'
+                  : 'bg-green-600 dark:bg-green-500'
               )}>
                 {message.author === 'customer' ? 'You' : 'CS'}
               </div>
@@ -497,12 +497,12 @@ function TicketView({ ticket, onBack, onAddMessage }: {
                 <div className={cn(
                   'rounded-lg p-4',
                   message.author === 'customer'
-                    ? 'bg-blue-600 bg-blue-500 text-white'
-                    : 'bg-gray-100 bg-gray-700 text-gray-900 text-gray-50'
+                    ? 'bg-blue-600 dark:bg-blue-500 text-white'
+                    : 'bg-gray-100 dark:bg-gray-700 text-gray-900 dark:text-gray-50'
                 )}>
                   <p className="text-sm">{message.content}</p>
                 </div>
-                <p className="text-xs text-gray-500 text-gray-400 mt-1">
+                <p className="text-xs text-gray-500 dark:text-gray-400 mt-1">
                   {formatDate(message.timestamp)}
                 </p>
               </div>
@@ -512,7 +512,7 @@ function TicketView({ ticket, onBack, onAddMessage }: {
 
         {/* Reply Form */}
         {ticket.status !== 'closed' && (
-          <div className="border-t border-gray-200 border-gray-700 p-6">
+          <div className="border-t border-gray-200 dark:border-gray-700 p-6">
             <form onSubmit={handleSubmitMessage}>
               <div className="flex gap-4">
                 <div className="flex-1">
@@ -521,13 +521,13 @@ function TicketView({ ticket, onBack, onAddMessage }: {
                     onChange={(e) => setNewMessage(e.target.value)}
                     placeholder="Type your message..."
                     rows={3}
-                    className="w-full px-3 py-2 border border-gray-300 border-gray-600 rounded-md bg-white bg-gray-700 text-gray-900 text-gray-50 focus:ring-2 focus:ring-blue-500 focus:border-transparent resize-none"
+                    className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-md bg-white dark:bg-gray-700 text-gray-900 dark:text-gray-50 focus:ring-2 focus:ring-blue-500 focus:border-transparent resize-none"
                   />
                 </div>
                 <button
                   type="submit"
                   disabled={!newMessage.trim()}
-                  className="px-4 py-2 bg-blue-600 bg-blue-600 text-white text-gray-100 rounded-md hover:bg-blue-700 hover:bg-blue-500 transition-colors disabled:opacity-50 disabled:cursor-not-allowed flex items-center gap-2"
+                  className="px-4 py-2 bg-blue-600 dark:bg-blue-600 text-white dark:text-gray-100 rounded-md hover:bg-blue-700 dark:hover:bg-blue-500 transition-colors disabled:opacity-50 disabled:cursor-not-allowed flex items-center gap-2"
                 >
                   <Send className="w-4 h-4" />
                   Send

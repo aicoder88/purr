@@ -459,7 +459,7 @@ export function Stores() {
   };
 
   return (
-    <section id="stores" className="py-16 md:py-24 bg-gray-50 bg-gray-900 transition-colors duration-300">
+    <section id="stores" className="py-16 md:py-24 bg-gray-50 dark:bg-gray-900 transition-colors duration-300">
       <Container>
         <div className="text-center mb-12">
           <div className="inline-flex items-center gap-2 mb-6">
@@ -469,13 +469,13 @@ export function Stores() {
             </span>
             <span className="h-px w-8 bg-gradient-to-l from-transparent to-[#FF8E3C]"></span>
           </div>
-          <h2 className="font-heading text-4xl md:text-5xl font-black text-gray-900 text-white mb-6">
+          <h2 className="font-heading text-4xl md:text-5xl font-black text-gray-900 dark:text-white mb-6">
             {uiCopy.headingPrefix}
             <span className="bg-gradient-to-r from-[#FF8E3C] to-[#FF5050] bg-clip-text text-transparent ml-2">
               {uiCopy.headingHighlight}
             </span>
           </h2>
-          <p className="text-xl text-gray-600 text-gray-300 max-w-2xl mx-auto mb-10">
+          <p className="text-xl text-gray-600 dark:text-gray-300 max-w-2xl mx-auto mb-10">
             {uiCopy.subtitle}
           </p>
 
@@ -493,7 +493,7 @@ export function Stores() {
             return (
               <div
                 key={`${store.name}-${store.location}`}
-                className="bg-white bg-gray-800 rounded-2xl p-6 shadow-lg shadow-gray-200/50 shadow-none border border-gray-100 border-gray-700 hover:shadow-xl hover:border-orange-200 hover:border-orange-900/50 transition-all duration-300 hover:-translate-y-1 group"
+                className="bg-white dark:bg-gray-800 rounded-2xl p-6 shadow-lg shadow-gray-200/50 dark:shadow-none border border-gray-100 dark:border-gray-700 hover:shadow-xl hover:border-orange-200 dark:hover:border-orange-900/50 transition-all duration-300 hover:-translate-y-1 group"
                 style={{ transitionDelay: `${index * 50}ms` }}
               >
                 <div className="flex items-start space-x-4">
@@ -501,14 +501,14 @@ export function Stores() {
                     <div
                       className={
                         "w-16 h-16 rounded-xl flex items-center justify-center shadow-md overflow-hidden " +
-                        (shouldUseWhiteBg ? "bg-white bg-white" : "bg-gradient-to-br from-[#FF8E3C] to-[#FF5050]")
+                        (shouldUseWhiteBg ? "bg-white dark:bg-white" : "bg-gradient-to-br from-[#FF8E3C] to-[#FF5050]")
                       }
                     >
                       <StoreLogoImage logoConfig={logoConfig} storeName={store.name} />
                     </div>
                   </div>
                   <div className="flex-1 min-w-0">
-                    <h3 className="font-bold text-[17px] text-gray-900 text-white mb-2.5 group-hover:text-[#FF8E3C] transition-colors leading-tight">
+                    <h3 className="font-bold text-[17px] text-gray-900 dark:text-white mb-2.5 group-hover:text-[#FF8E3C] transition-colors leading-tight">
                       {store.name}
                     </h3>
 
@@ -517,21 +517,21 @@ export function Stores() {
                         href={`https://maps.google.com/?q=${encodeURIComponent(`${store.address}`)}`}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="flex min-h-[44px] items-start rounded-lg px-1 text-[14px] text-gray-600 text-gray-300 hover:text-[#FF8E3C] hover:text-[#FF8E3C] transition-colors gap-2.5"
+                        className="flex min-h-[44px] items-start rounded-lg px-1 text-[14px] text-gray-600 dark:text-gray-300 hover:text-[#FF8E3C] dark:hover:text-[#FF8E3C] transition-colors gap-2.5"
                         aria-label={`View ${store.name} on Google Maps`}
                       >
-                        <svg className="w-4 h-4 text-gray-400 text-gray-500 mt-1 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <svg className="w-4 h-4 text-gray-400 dark:text-gray-500 mt-1 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
                           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
                         </svg>
                         <span className="leading-snug">
                           {store.address.includes(',') ? (
                             <>
-                              <span className="block font-medium text-gray-200">{store.address.substring(0, store.address.indexOf(','))}</span>
-                              <span className="block text-[13px] text-gray-500 text-gray-400 mt-0.5">{store.address.substring(store.address.indexOf(',') + 1).trim()}</span>
+                              <span className="block font-medium dark:text-gray-200">{store.address.substring(0, store.address.indexOf(','))}</span>
+                              <span className="block text-[13px] text-gray-500 dark:text-gray-400 mt-0.5">{store.address.substring(store.address.indexOf(',') + 1).trim()}</span>
                             </>
                           ) : (
-                            <span className="font-medium text-gray-200">{store.address}</span>
+                            <span className="font-medium dark:text-gray-200">{store.address}</span>
                           )}
                         </span>
                       </a>
@@ -539,13 +539,13 @@ export function Stores() {
                       {store.phone && (
                         <a
                           href={`tel:${store.phone.replace(/[^\d+]/g, '')}`}
-                          className="flex min-h-[44px] items-center rounded-lg px-1 text-[14px] text-gray-600 text-gray-300 hover:text-[#FF8E3C] hover:text-[#FF8E3C] transition-colors gap-2.5"
+                          className="flex min-h-[44px] items-center rounded-lg px-1 text-[14px] text-gray-600 dark:text-gray-300 hover:text-[#FF8E3C] dark:hover:text-[#FF8E3C] transition-colors gap-2.5"
                           aria-label={`Call ${store.name} at ${store.phone}`}
                         >
-                          <svg className="w-4 h-4 text-gray-400 text-gray-500 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <svg className="w-4 h-4 text-gray-400 dark:text-gray-500 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
                           </svg>
-                          <span className="font-medium text-gray-200">{store.phone}</span>
+                          <span className="font-medium dark:text-gray-200">{store.phone}</span>
                         </a>
                       )}
 
@@ -554,7 +554,7 @@ export function Stores() {
                           href={store.url}
                           target="_blank"
                           rel="noopener noreferrer"
-                          className="flex min-h-[44px] items-center rounded-lg px-1 text-[14px] text-blue-600 text-blue-400 hover:text-blue-700 hover:text-blue-300 transition-colors gap-2.5"
+                          className="flex min-h-[44px] items-center rounded-lg px-1 text-[14px] text-blue-600 dark:text-blue-400 hover:text-blue-700 dark:hover:text-blue-300 transition-colors gap-2.5"
                           aria-label={`${uiCopy.websiteLabel} - ${store.name}`}
                         >
                           <WebsiteIcon className="w-4 h-4 flex-shrink-0 mt-0.5" />
@@ -572,17 +572,17 @@ export function Stores() {
         {/* Request Store CTA */}
         <div className="mt-20 text-center">
           <div className="inline-block p-1 bg-gradient-to-r from-[#FF8E3C] to-[#FF5050] rounded-2xl shadow-lg shadow-orange-500/20">
-            <div className="bg-white bg-gray-900 rounded-xl px-8 py-10 md:px-16">
-              <h3 className="font-heading text-2xl font-black text-gray-900 text-white mb-3">
+            <div className="bg-white dark:bg-gray-900 rounded-xl px-8 py-10 md:px-16">
+              <h3 className="font-heading text-2xl font-black text-gray-900 dark:text-white mb-3">
                 {uiCopy.requestTitle}
               </h3>
-              <p className="text-gray-600 text-gray-300 mb-8 max-w-lg mx-auto">
+              <p className="text-gray-600 dark:text-gray-300 mb-8 max-w-lg mx-auto">
                 {uiCopy.requestSubtitle}
               </p>
               <form onSubmit={handleRequestStore} className="max-w-xl mx-auto space-y-4 text-left">
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                   <label className="block">
-                    <span className="block text-sm font-semibold text-gray-800 text-gray-200 mb-1.5">
+                    <span className="block text-sm font-semibold text-gray-800 dark:text-gray-200 mb-1.5">
                       {t.contactPage?.form?.fullName}
                     </span>
                     <input
@@ -592,11 +592,11 @@ export function Stores() {
                       maxLength={50}
                       value={requestForm.name}
                       onChange={(event) => setRequestForm((prev) => ({ ...prev, name: event.target.value }))}
-                      className="w-full rounded-lg border border-gray-300 border-gray-600 bg-white bg-gray-800 px-4 py-3 text-gray-900 text-gray-100 placeholder:text-gray-400 placeholder:text-gray-500 focus:outline-none focus:ring-2 focus:ring-[#FF8E3C] focus:border-transparent"
+                      className="w-full rounded-lg border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-800 px-4 py-3 text-gray-900 dark:text-gray-100 placeholder:text-gray-400 dark:placeholder:text-gray-500 focus:outline-none focus:ring-2 focus:ring-[#FF8E3C] focus:border-transparent"
                     />
                   </label>
                   <label className="block">
-                    <span className="block text-sm font-semibold text-gray-800 text-gray-200 mb-1.5">
+                    <span className="block text-sm font-semibold text-gray-800 dark:text-gray-200 mb-1.5">
                       {t.contactPage?.form?.emailAddress}
                     </span>
                     <input
@@ -605,12 +605,12 @@ export function Stores() {
                       maxLength={100}
                       value={requestForm.email}
                       onChange={(event) => setRequestForm((prev) => ({ ...prev, email: event.target.value }))}
-                      className="w-full rounded-lg border border-gray-300 border-gray-600 bg-white bg-gray-800 px-4 py-3 text-gray-900 text-gray-100 placeholder:text-gray-400 placeholder:text-gray-500 focus:outline-none focus:ring-2 focus:ring-[#FF8E3C] focus:border-transparent"
+                      className="w-full rounded-lg border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-800 px-4 py-3 text-gray-900 dark:text-gray-100 placeholder:text-gray-400 dark:placeholder:text-gray-500 focus:outline-none focus:ring-2 focus:ring-[#FF8E3C] focus:border-transparent"
                     />
                   </label>
                 </div>
                 <label className="block">
-                  <span className="block text-sm font-semibold text-gray-800 text-gray-200 mb-1.5">
+                  <span className="block text-sm font-semibold text-gray-800 dark:text-gray-200 mb-1.5">
                     {t.contactPage?.form?.message}
                   </span>
                   <textarea
@@ -621,17 +621,17 @@ export function Stores() {
                     value={requestForm.message}
                     onChange={(event) => setRequestForm((prev) => ({ ...prev, message: event.target.value }))}
                     placeholder={t.contactPage?.form?.messagePlaceholder}
-                    className="w-full rounded-lg border border-gray-300 border-gray-600 bg-white bg-gray-800 px-4 py-3 text-gray-900 text-gray-100 placeholder:text-gray-400 placeholder:text-gray-500 focus:outline-none focus:ring-2 focus:ring-[#FF8E3C] focus:border-transparent"
+                    className="w-full rounded-lg border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-800 px-4 py-3 text-gray-900 dark:text-gray-100 placeholder:text-gray-400 dark:placeholder:text-gray-500 focus:outline-none focus:ring-2 focus:ring-[#FF8E3C] focus:border-transparent"
                   />
                 </label>
                 <button
                   type="submit"
                   disabled={isSubmitting || submitStatus === 'success'}
-                  className="bg-gradient-to-r from-[#FF8E3C] to-[#FF5050] from-[#CC5C00] to-[#CC2727] hover:from-[#E67E30] hover:to-[#E64040] hover:from-[#B35200] hover:to-[#991D1D] text-white font-bold py-4 px-8 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 active:scale-95 border-0 flex items-center justify-center gap-2 mx-auto min-w-[240px] disabled:opacity-70 disabled:cursor-not-allowed"
+                  className="bg-gradient-to-r from-[#FF8E3C] to-[#FF5050] dark:from-[#CC5C00] dark:to-[#CC2727] hover:from-[#E67E30] hover:to-[#E64040] dark:hover:from-[#B35200] dark:hover:to-[#991D1D] text-white font-bold py-4 px-8 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 active:scale-95 border-0 flex items-center justify-center gap-2 mx-auto min-w-[240px] disabled:opacity-70 disabled:cursor-not-allowed"
                 >
                   {isSubmitting ? (
                     <>
-                      <svg className="animate-spin -ml-1 mr-2 h-5 w-5 text-white text-gray-200" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                      <svg className="animate-spin -ml-1 mr-2 h-5 w-5 text-white dark:text-gray-200" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
                         <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
                         <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
                       </svg>
@@ -654,7 +654,7 @@ export function Stores() {
                 <p
                   role="status"
                   aria-live="polite"
-                  className={`mt-4 text-sm font-medium ${submitStatus === 'success' ? 'text-green-600 text-green-400' : 'text-red-600 text-red-400'}`}
+                  className={`mt-4 text-sm font-medium ${submitStatus === 'success' ? 'text-green-600 dark:text-green-400' : 'text-red-600 dark:text-red-400'}`}
                 >
                   {statusMessage}
                 </p>

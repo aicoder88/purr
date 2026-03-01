@@ -53,7 +53,7 @@ export default function LoginForm() {
     };
 
     return (
-        <div className="w-full max-w-md mx-auto p-6 bg-white bg-gray-800 rounded-lg shadow-md">
+        <div className="w-full max-w-md mx-auto p-6 bg-white dark:bg-gray-800 rounded-lg shadow-md">
             <Tabs defaultValue="affiliate" className="w-full">
                 <TabsList className="grid w-full grid-cols-2 mb-6">
                     <TabsTrigger value="affiliate">Affiliate</TabsTrigger>
@@ -128,9 +128,9 @@ export default function LoginForm() {
             </Tabs>
 
             <div className="mt-4 text-center text-sm">
-                <p className="text-gray-500 text-gray-400">
+                <p className="text-gray-500 dark:text-gray-400">
                     Don't have an affiliate account?{" "}
-                    <Link href="/affiliate/signup" className="text-blue-600 text-blue-400 hover:underline">
+                    <Link href="/affiliate/signup" className="text-blue-600 dark:text-blue-400 hover:underline">
                         Join now
                     </Link>
                 </p>

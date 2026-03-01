@@ -42,21 +42,21 @@ export function TrialCTA({ className = '', variant = 'default' }: TrialCTAProps)
   if (variant === 'inline') {
     return (
       <aside
-        className={`my-8 p-4 bg-gradient-to-r from-[#03E46A]/10 to-[#5B2EFF]/10 from-[#03E46A]/5 to-[#5B2EFF]/5 border border-[#03E46A]/30 border-[#03E46A]/20 rounded-lg ${className}`}
+        className={`my-8 p-4 bg-gradient-to-r from-[#03E46A]/10 to-[#5B2EFF]/10 dark:from-[#03E46A]/5 dark:to-[#5B2EFF]/5 border border-[#03E46A]/30 dark:border-[#03E46A]/20 rounded-lg ${className}`}
       >
         <Link
           href="/products/trial-size"
           className="flex items-center justify-between group"
         >
           <div>
-            <p className="text-sm font-semibold text-gray-900 text-gray-100">
+            <p className="text-sm font-semibold text-gray-900 dark:text-gray-100">
               {trialSizeText}
             </p>
-            <p className="text-xs text-gray-600 text-gray-400 mt-1">
+            <p className="text-xs text-gray-600 dark:text-gray-400 mt-1">
               {trialDescription}
             </p>
           </div>
-          <span className="text-[#5B2EFF] text-[#3694FF] font-medium text-sm group-hover:translate-x-1 transition-transform">
+          <span className="text-[#5B2EFF] dark:text-[#3694FF] font-medium text-sm group-hover:translate-x-1 transition-transform">
             {tryFreeText} →
           </span>
         </Link>
@@ -67,7 +67,7 @@ export function TrialCTA({ className = '', variant = 'default' }: TrialCTAProps)
   if (variant === 'compact') {
     return (
       <aside
-        className={`my-6 p-4 bg-white bg-gray-800 border border-[#E0EFC7] border-gray-700 rounded-xl shadow-sm ${className}`}
+        className={`my-6 p-4 bg-white dark:bg-gray-800 border border-[#E0EFC7] dark:border-gray-700 rounded-xl shadow-sm ${className}`}
       >
         <Link
           href="/products/trial-size"
@@ -83,15 +83,15 @@ export function TrialCTA({ className = '', variant = 'default' }: TrialCTAProps)
             />
           </div>
           <div className="flex-1">
-            <p className="font-semibold text-gray-900 text-gray-100 group-hover:text-[#5B2EFF] group-hover:text-[#3694FF] transition-colors">
+            <p className="font-semibold text-gray-900 dark:text-gray-100 group-hover:text-[#5B2EFF] dark:group-hover:text-[#3694FF] transition-colors">
               {trialSizeText}
             </p>
-            <p className="text-sm text-gray-600 text-gray-400">
+            <p className="text-sm text-gray-600 dark:text-gray-400">
               {tryFreeText}
             </p>
           </div>
           <svg
-            className="w-5 h-5 text-gray-400 text-gray-500 group-hover:text-[#5B2EFF] group-hover:text-[#3694FF] transition-colors flex-shrink-0"
+            className="w-5 h-5 text-gray-400 dark:text-gray-500 group-hover:text-[#5B2EFF] dark:group-hover:text-[#3694FF] transition-colors flex-shrink-0"
             fill="none"
             stroke="currentColor"
             viewBox="0 0 24 24"
@@ -111,7 +111,7 @@ export function TrialCTA({ className = '', variant = 'default' }: TrialCTAProps)
   // Default variant - full featured CTA
   return (
     <aside
-      className={`my-12 overflow-hidden rounded-2xl bg-gradient-to-br from-[#03E46A]/10 via-white to-[#5B2EFF]/10 from-[#03E46A]/5 via-gray-800 to-[#5B2EFF]/5 border border-[#E0EFC7] border-gray-700 ${className}`}
+      className={`my-12 overflow-hidden rounded-2xl bg-gradient-to-br from-[#03E46A]/10 via-white to-[#5B2EFF]/10 dark:from-[#03E46A]/5 dark:via-gray-800 dark:to-[#5B2EFF]/5 border border-[#E0EFC7] dark:border-gray-700 ${className}`}
     >
       <div className="p-6 md:p-8">
         <div className="flex flex-col md:flex-row items-center gap-6">
@@ -128,20 +128,20 @@ export function TrialCTA({ className = '', variant = 'default' }: TrialCTAProps)
 
           {/* Content */}
           <div className="flex-1 text-center md:text-left">
-            <span className="inline-block px-3 py-1 text-xs font-semibold text-[#03E46A] bg-[#03E46A]/10 bg-[#03E46A]/20 rounded-full mb-3">
+            <span className="inline-block px-3 py-1 text-xs font-semibold text-[#03E46A] bg-[#03E46A]/10 dark:bg-[#03E46A]/20 rounded-full mb-3">
               {limitedOfferText}
             </span>
-            <h3 className="text-2xl md:text-3xl font-bold text-gray-900 text-gray-100 mb-2">
+            <h3 className="text-2xl md:text-3xl font-bold text-gray-900 dark:text-gray-100 mb-2">
               {trialSizeText}
             </h3>
-            <p className="text-gray-600 text-gray-400 mb-4 max-w-lg">
+            <p className="text-gray-600 dark:text-gray-400 mb-4 max-w-lg">
               {trialDescription}
             </p>
 
             <div className="flex flex-col sm:flex-row items-center gap-3 justify-center md:justify-start">
               <Link
                 href="/products/trial-size"
-                className="inline-flex items-center justify-center px-6 py-3 bg-[#5B2EFF] hover:bg-[#5B2EFF]/90 text-white text-gray-100 font-semibold rounded-full transition-all shadow-lg hover:shadow-xl hover:scale-105"
+                className="inline-flex items-center justify-center px-6 py-3 bg-[#5B2EFF] hover:bg-[#5B2EFF]/90 text-white dark:text-gray-100 font-semibold rounded-full transition-all shadow-lg hover:shadow-xl hover:scale-105"
               >
                 {tryFreeText}
                 <svg
@@ -158,7 +158,7 @@ export function TrialCTA({ className = '', variant = 'default' }: TrialCTAProps)
                   />
                 </svg>
               </Link>
-              <span className="text-sm text-gray-500 text-gray-400">
+              <span className="text-sm text-gray-500 dark:text-gray-400">
                 {readMoreText}
               </span>
             </div>

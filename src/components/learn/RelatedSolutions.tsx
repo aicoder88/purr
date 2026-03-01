@@ -65,9 +65,9 @@ export function RelatedSolutions({ currentPath, limit = 3 }: RelatedSolutionsPro
   if (solutions.length === 0) return null;
 
   return (
-    <section className="py-12 bg-gray-50 bg-gray-800/50">
+    <section className="py-12 bg-gray-50 dark:bg-gray-800/50">
       <Container>
-        <h2 className="font-heading text-2xl md:text-3xl font-bold mb-6 text-gray-900 text-gray-100">
+        <h2 className="font-heading text-2xl md:text-3xl font-bold mb-6 text-gray-900 dark:text-gray-100">
           Related Solutions
         </h2>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
@@ -77,20 +77,20 @@ export function RelatedSolutions({ currentPath, limit = 3 }: RelatedSolutionsPro
               <Link
                 key={solution.href}
                 href={solution.href}
-                className="group flex items-start gap-4 p-4 bg-white bg-gray-800 rounded-xl border border-gray-200 border-gray-700 hover:border-[#03E46A] hover:border-[#03E46A] transition-all hover:shadow-md"
+                className="group flex items-start gap-4 p-4 bg-white dark:bg-gray-800 rounded-xl border border-gray-200 dark:border-gray-700 hover:border-[#03E46A] dark:hover:border-[#03E46A] transition-all hover:shadow-md"
               >
-                <div className="flex-shrink-0 p-2 bg-[#5B2EFF]/10 bg-[#3694FF]/10 rounded-lg">
-                  <Icon className="w-5 h-5 text-[#5B2EFF] text-[#3694FF]" />
+                <div className="flex-shrink-0 p-2 bg-[#5B2EFF]/10 dark:bg-[#3694FF]/10 rounded-lg">
+                  <Icon className="w-5 h-5 text-[#5B2EFF] dark:text-[#3694FF]" />
                 </div>
                 <div className="flex-1 min-w-0">
-                  <h3 className="font-heading font-semibold text-gray-900 text-gray-100 group-hover:text-[#5B2EFF] group-hover:text-[#3694FF] transition-colors">
+                  <h3 className="font-heading font-semibold text-gray-900 dark:text-gray-100 group-hover:text-[#5B2EFF] dark:group-hover:text-[#3694FF] transition-colors">
                     {solution.title}
                   </h3>
-                  <p className="text-sm text-gray-600 text-gray-400 mt-1">
+                  <p className="text-sm text-gray-600 dark:text-gray-400 mt-1">
                     {solution.description}
                   </p>
                 </div>
-                <ChevronRight className="w-5 h-5 text-gray-400 text-gray-500 flex-shrink-0 transition-transform group-hover:translate-x-1" />
+                <ChevronRight className="w-5 h-5 text-gray-400 dark:text-gray-500 flex-shrink-0 transition-transform group-hover:translate-x-1" />
               </Link>
             );
           })}
@@ -98,7 +98,7 @@ export function RelatedSolutions({ currentPath, limit = 3 }: RelatedSolutionsPro
         <div className="mt-6 text-center">
           <Link
             href="/learn/solutions"
-            className="inline-flex items-center text-[#5B2EFF] text-[#3694FF] font-medium hover:underline"
+            className="inline-flex items-center text-[#5B2EFF] dark:text-[#3694FF] font-medium hover:underline"
           >
             View all solutions
             <ChevronRight className="w-4 h-4 ml-1" />

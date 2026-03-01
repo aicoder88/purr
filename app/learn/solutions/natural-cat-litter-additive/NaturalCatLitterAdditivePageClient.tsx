@@ -67,18 +67,18 @@ export default function NaturalCatLitterAdditivePageClient() {
   ];
 
   return (
-    <div className="min-h-screen bg-[#FFFFF5] bg-gray-900 transition-colors duration-300">
+    <div className="min-h-screen bg-[#FFFFF5] dark:bg-gray-900 transition-colors duration-300">
       <section className="py-20 px-4">
         <div className="max-w-4xl mx-auto text-center">
-          <h1 className="text-4xl md:text-6xl font-heading font-bold mb-6 text-gray-900 text-gray-100">
+          <h1 className="text-4xl md:text-6xl font-heading font-bold mb-6 text-gray-900 dark:text-gray-100">
             Non-Toxic Cat Litter Deodorizer
           </h1>
-          <p className="text-xl text-gray-700 text-gray-200 mb-8">
+          <p className="text-xl text-gray-700 dark:text-gray-200 mb-8">
             Looking for a cat litter deodorizer that&apos;s truly safe? Activated carbon is food-grade, fragrance-free, and effective—without chemicals that can harm your cat.
           </p>
 
-          <div className="bg-white/80 bg-gray-800/80 backdrop-blur-lg rounded-xl p-8 shadow-lg border border-electric-indigo/10 border-electric-indigo/20 max-w-2xl mx-auto">
-            <h2 className="text-2xl font-heading font-bold mb-4 text-electric-indigo text-electric-indigo-400">The Purrify Solution</h2>
+          <div className="bg-white/80 dark:bg-gray-800/80 backdrop-blur-lg rounded-xl p-8 shadow-lg border border-electric-indigo/10 dark:border-electric-indigo/20 max-w-2xl mx-auto">
+            <h2 className="text-2xl font-heading font-bold mb-4 text-electric-indigo dark:text-electric-indigo-400">The Purrify Solution</h2>
             <p className="text-lg mb-6">100% natural activated carbon with no added fragrances or dyes</p>
 
             <div className="grid md:grid-cols-3 gap-4 mb-8">
@@ -98,7 +98,7 @@ export default function NaturalCatLitterAdditivePageClient() {
 
             <Link
               href="/products/trial-size/"
-              className="inline-block bg-gradient-to-r from-electric-indigo to-deep-coral text-white text-gray-100 font-bold py-3 px-8 rounded-lg hover:from-electric-indigo-600 hover:to-deep-coral-600 hover:scale-105 transition-all duration-300 shadow-lg"
+              className="inline-block bg-gradient-to-r from-electric-indigo to-deep-coral text-white dark:text-gray-100 font-bold py-3 px-8 rounded-lg hover:from-electric-indigo-600 hover:to-deep-coral-600 hover:scale-105 transition-all duration-300 shadow-lg"
             >
               Try Purrify Risk-Free
             </Link>
@@ -118,7 +118,7 @@ export default function NaturalCatLitterAdditivePageClient() {
               className="w-full h-auto"
             />
             <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent flex items-end">
-              <div className="p-8 text-white text-gray-100">
+              <div className="p-8 text-white dark:text-gray-100">
                 <h2 className="text-3xl font-heading font-bold mb-2">100% Natural from Coconut Shells</h2>
                 <p className="text-xl opacity-90">No chemicals, no fragrances, just pure carbon</p>
               </div>
@@ -129,25 +129,25 @@ export default function NaturalCatLitterAdditivePageClient() {
 
       <section className="py-16 px-4">
         <div className="max-w-4xl mx-auto">
-          <h2 className="text-3xl font-heading font-bold text-center mb-12 text-gray-900 text-gray-100">How It Works</h2>
+          <h2 className="text-3xl font-heading font-bold text-center mb-12 text-gray-900 dark:text-gray-100">How It Works</h2>
           <div className="grid md:grid-cols-3 gap-8">
             <div className="text-center">
               <div className="bg-gradient-to-br from-electric-indigo to-deep-coral w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
-                <span className="text-2xl font-heading font-bold text-white text-gray-100">1</span>
+                <span className="text-2xl font-heading font-bold text-white dark:text-gray-100">1</span>
               </div>
               <h3 className="text-xl font-heading font-bold mb-2">Sprinkle</h3>
               <p>Add Purrify to your existing litter</p>
             </div>
             <div className="text-center">
               <div className="bg-gradient-to-br from-electric-indigo to-deep-coral w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
-                <span className="text-2xl font-heading font-bold text-white text-gray-100">2</span>
+                <span className="text-2xl font-heading font-bold text-white dark:text-gray-100">2</span>
               </div>
               <h3 className="text-xl font-heading font-bold mb-2">Activate</h3>
               <p>Activated carbon absorbs odor molecules</p>
             </div>
             <div className="text-center">
               <div className="bg-gradient-to-br from-electric-indigo to-deep-coral w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
-                <span className="text-2xl font-heading font-bold text-white text-gray-100">3</span>
+                <span className="text-2xl font-heading font-bold text-white dark:text-gray-100">3</span>
               </div>
               <h3 className="text-xl font-heading font-bold mb-2">Eliminate</h3>
               <p>Odors are permanently trapped</p>
@@ -165,7 +165,7 @@ export default function NaturalCatLitterAdditivePageClient() {
                 className="w-full h-auto"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent flex items-end">
-                <div className="p-8 text-white text-gray-100">
+                <div className="p-8 text-white dark:text-gray-100">
                   <h3 className="text-2xl font-heading font-bold mb-2">Pure & Natural Ingredients</h3>
                   <p className="text-lg opacity-90">Safe for your family and the environment</p>
                 </div>
@@ -184,7 +184,7 @@ export default function NaturalCatLitterAdditivePageClient() {
                 className="w-full h-auto"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent flex items-end">
-                <div className="p-8 text-white text-gray-100">
+                <div className="p-8 text-white dark:text-gray-100">
                   <h3 className="text-2xl font-heading font-bold mb-2">Happy Cats, Natural Solution</h3>
                   <p className="text-lg opacity-90">No artificial fragrances or chemicals</p>
                 </div>
@@ -194,10 +194,10 @@ export default function NaturalCatLitterAdditivePageClient() {
         </div>
       </section>
 
-      <section className="py-16 px-4 bg-white bg-gray-800">
+      <section className="py-16 px-4 bg-white dark:bg-gray-800">
         <div className="max-w-4xl mx-auto text-center">
-          <h2 className="text-3xl font-heading font-bold mb-8 text-gray-900 text-gray-100">Ready to Try Non-Toxic Cat Litter Deodorizer?</h2>
-          <p className="text-xl mb-8 text-gray-700 text-gray-200">Join 1,000+ satisfied cat owners</p>
+          <h2 className="text-3xl font-heading font-bold mb-8 text-gray-900 dark:text-gray-100">Ready to Try Non-Toxic Cat Litter Deodorizer?</h2>
+          <p className="text-xl mb-8 text-gray-700 dark:text-gray-200">Join 1,000+ satisfied cat owners</p>
 
           {/* Solution Image */}
           <div className="mb-12 max-w-3xl mx-auto">
@@ -210,7 +210,7 @@ export default function NaturalCatLitterAdditivePageClient() {
                 className="w-full h-auto"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent flex items-end">
-                <div className="p-8 text-white text-gray-100">
+                <div className="p-8 text-white dark:text-gray-100">
                   <h3 className="text-2xl font-heading font-bold mb-2">Sustainable Pet Care</h3>
                   <p className="text-lg opacity-90">Natural solution for a cleaner planet</p>
                 </div>
@@ -220,7 +220,7 @@ export default function NaturalCatLitterAdditivePageClient() {
 
           <Link
             href="/products/"
-            className="inline-block bg-gradient-to-r from-electric-indigo to-deep-coral text-white text-gray-100 font-bold py-4 px-8 rounded-lg hover:from-electric-indigo-600 hover:to-deep-coral-600 hover:scale-105 transition-all duration-300 text-lg shadow-lg"
+            className="inline-block bg-gradient-to-r from-electric-indigo to-deep-coral text-white dark:text-gray-100 font-bold py-4 px-8 rounded-lg hover:from-electric-indigo-600 hover:to-deep-coral-600 hover:scale-105 transition-all duration-300 text-lg shadow-lg"
           >
             Shop Purrify Now
           </Link>
@@ -240,7 +240,7 @@ export default function NaturalCatLitterAdditivePageClient() {
       </section>
 
       {/* HowTo Section */}
-      <section className="py-12 px-4 bg-gray-50 bg-gray-800">
+      <section className="py-12 px-4 bg-gray-50 dark:bg-gray-800">
         <div className="max-w-4xl mx-auto">
           <HowToSection
             title="How to Use Non-Toxic Cat Litter Deodorizer"

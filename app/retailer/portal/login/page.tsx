@@ -176,30 +176,30 @@ export default function RetailerLoginPage() {
 
   return (
     <>
-      <div className="min-h-screen bg-gray-50 bg-gray-900 flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8">
+      <div className="min-h-screen bg-gray-50 dark:bg-gray-900 flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8">
         <div className="max-w-2xl w-full space-y-8">
           {/* Header */}
           <div className="text-center">
-            <Building2 className="mx-auto h-12 w-12 text-blue-600 text-blue-400" />
-            <h2 className="font-heading mt-6 text-3xl font-bold text-gray-900 text-gray-50">
+            <Building2 className="mx-auto h-12 w-12 text-blue-600 dark:text-blue-400" />
+            <h2 className="font-heading mt-6 text-3xl font-bold text-gray-900 dark:text-gray-50">
               {isLogin ? 'Retailer Portal Login' : 'Apply for Wholesale Account'}
             </h2>
-            <p className="mt-2 text-sm text-gray-600 text-gray-300">
+            <p className="mt-2 text-sm text-gray-600 dark:text-gray-300">
               {isLogin ? 'Access your wholesale account' : 'Join our network of retail partners'}
             </p>
           </div>
 
           {/* Error Message */}
           {error && (
-            <div className="bg-red-50 bg-red-900/20 border border-red-200 border-red-700 rounded-md p-4">
-              <p className="text-sm text-red-600 text-red-400">{error}</p>
+            <div className="bg-red-50 dark:bg-red-900/20 border border-red-200 dark:border-red-700 rounded-md p-4">
+              <p className="text-sm text-red-600 dark:text-red-400">{error}</p>
             </div>
           )}
 
           {/* Success Message */}
           {success && (
-            <div className="bg-green-50 bg-green-900/20 border border-green-200 border-green-700 rounded-md p-4">
-              <p className="text-sm text-green-600 text-green-400">{success}</p>
+            <div className="bg-green-50 dark:bg-green-900/20 border border-green-200 dark:border-green-700 rounded-md p-4">
+              <p className="text-sm text-green-600 dark:text-green-400">{success}</p>
             </div>
           )}
 
@@ -208,12 +208,12 @@ export default function RetailerLoginPage() {
             <form className="mt-8 space-y-6" onSubmit={handleLogin}>
               <div className="space-y-4">
                 <div>
-                  <label htmlFor="email" className="block text-sm font-medium text-gray-700 text-gray-300 mb-1">
+                  <label htmlFor="email" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
                     Email address
                   </label>
                   <div className="relative">
                     <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-                      <Mail className="h-5 w-5 text-gray-400 text-gray-500" />
+                      <Mail className="h-5 w-5 text-gray-400 dark:text-gray-500" />
                     </div>
                     <input
                       id="email"
@@ -221,7 +221,7 @@ export default function RetailerLoginPage() {
                       type="email"
                       autoComplete="email"
                       required
-                      className="appearance-none relative block w-full pl-10 pr-3 py-2 border border-gray-300 border-gray-600 placeholder-gray-500 placeholder-gray-400 text-gray-900 text-gray-50 rounded-md focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm bg-white bg-gray-700"
+                      className="appearance-none relative block w-full pl-10 pr-3 py-2 border border-gray-300 dark:border-gray-600 placeholder-gray-500 dark:placeholder-gray-400 text-gray-900 dark:text-gray-50 rounded-md focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm bg-white dark:bg-gray-700"
                       placeholder="your.email@business.com"
                       value={loginForm.email}
                       onChange={(e) => setLoginForm({ ...loginForm, email: e.target.value })}
@@ -230,12 +230,12 @@ export default function RetailerLoginPage() {
                 </div>
 
                 <div>
-                  <label htmlFor="password" className="block text-sm font-medium text-gray-700 text-gray-300 mb-1">
+                  <label htmlFor="password" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
                     Password
                   </label>
                   <div className="relative">
                     <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-                      <Lock className="h-5 w-5 text-gray-400 text-gray-500" />
+                      <Lock className="h-5 w-5 text-gray-400 dark:text-gray-500" />
                     </div>
                     <input
                       id="password"
@@ -243,7 +243,7 @@ export default function RetailerLoginPage() {
                       type={showPassword ? 'text' : 'password'}
                       autoComplete="current-password"
                       required
-                      className="appearance-none relative block w-full pl-10 pr-10 py-2 border border-gray-300 border-gray-600 placeholder-gray-500 placeholder-gray-400 text-gray-900 text-gray-50 rounded-md focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm bg-white bg-gray-700"
+                      className="appearance-none relative block w-full pl-10 pr-10 py-2 border border-gray-300 dark:border-gray-600 placeholder-gray-500 dark:placeholder-gray-400 text-gray-900 dark:text-gray-50 rounded-md focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm bg-white dark:bg-gray-700"
                       placeholder="Enter your password"
                       value={loginForm.password}
                       onChange={(e) => setLoginForm({ ...loginForm, password: e.target.value })}
@@ -254,9 +254,9 @@ export default function RetailerLoginPage() {
                       onClick={() => setShowPassword(!showPassword)}
                     >
                       {showPassword ? (
-                        <EyeOff className="h-5 w-5 text-gray-400 text-gray-500" />
+                        <EyeOff className="h-5 w-5 text-gray-400 dark:text-gray-500" />
                       ) : (
-                        <Eye className="h-5 w-5 text-gray-400 text-gray-500" />
+                        <Eye className="h-5 w-5 text-gray-400 dark:text-gray-500" />
                       )}
                     </button>
                   </div>
@@ -267,15 +267,15 @@ export default function RetailerLoginPage() {
                 type="submit"
                 disabled={loading}
                 className={cn(
-                  'group relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white text-gray-100 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500',
+                  'group relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white dark:text-gray-100 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500',
                   loading
-                    ? 'bg-gray-400 bg-gray-600 cursor-not-allowed'
-                    : 'bg-blue-600 bg-blue-600 hover:bg-blue-700 hover:bg-blue-500'
+                    ? 'bg-gray-400 dark:bg-gray-600 cursor-not-allowed'
+                    : 'bg-blue-600 dark:bg-blue-600 hover:bg-blue-700 dark:hover:bg-blue-500'
                 )}
               >
                 {loading ? (
                   <div className="flex items-center">
-                    <div className="animate-spin rounded-full h-4 w-4 border-b-2 border-white border-gray-100 mr-2"></div>
+                    <div className="animate-spin rounded-full h-4 w-4 border-b-2 border-white dark:border-gray-100 mr-2"></div>
                     Signing in...
                   </div>
                 ) : (
@@ -288,18 +288,18 @@ export default function RetailerLoginPage() {
             <form className="mt-8 space-y-6" onSubmit={handleRegister}>
               <div className="space-y-6">
                 {/* Business Information */}
-                <div className="bg-white bg-gray-800 p-6 rounded-lg border border-gray-200 border-gray-700">
-                  <h3 className="font-heading text-lg font-medium text-gray-900 text-gray-50 mb-4">Business Information</h3>
+                <div className="bg-white dark:bg-gray-800 p-6 rounded-lg border border-gray-200 dark:border-gray-700">
+                  <h3 className="font-heading text-lg font-medium text-gray-900 dark:text-gray-50 mb-4">Business Information</h3>
                   <div className="space-y-4">
                     <div>
-                      <label htmlFor="businessName" className="block text-sm font-medium text-gray-700 text-gray-300 mb-1">
+                      <label htmlFor="businessName" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
                         Business Name *
                       </label>
                       <input
                         id="businessName"
                         type="text"
                         required
-                        className="appearance-none block w-full px-3 py-2 border border-gray-300 border-gray-600 placeholder-gray-500 placeholder-gray-400 text-gray-900 text-gray-50 rounded-md focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm bg-white bg-gray-700"
+                        className="appearance-none block w-full px-3 py-2 border border-gray-300 dark:border-gray-600 placeholder-gray-500 dark:placeholder-gray-400 text-gray-900 dark:text-gray-50 rounded-md focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm bg-white dark:bg-gray-700"
                         placeholder="Your Pet Store Inc."
                         value={registerForm.businessName}
                         onChange={(e) => setRegisterForm({ ...registerForm, businessName: e.target.value })}
@@ -308,14 +308,14 @@ export default function RetailerLoginPage() {
 
                     <div className="grid grid-cols-2 gap-4">
                       <div>
-                        <label htmlFor="contactName" className="block text-sm font-medium text-gray-700 text-gray-300 mb-1">
+                        <label htmlFor="contactName" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
                           Contact Name *
                         </label>
                         <input
                           id="contactName"
                           type="text"
                           required
-                          className="appearance-none block w-full px-3 py-2 border border-gray-300 border-gray-600 placeholder-gray-500 placeholder-gray-400 text-gray-900 text-gray-50 rounded-md focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm bg-white bg-gray-700"
+                          className="appearance-none block w-full px-3 py-2 border border-gray-300 dark:border-gray-600 placeholder-gray-500 dark:placeholder-gray-400 text-gray-900 dark:text-gray-50 rounded-md focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm bg-white dark:bg-gray-700"
                           placeholder="John Doe"
                           value={registerForm.contactName}
                           onChange={(e) => setRegisterForm({ ...registerForm, contactName: e.target.value })}
@@ -323,14 +323,14 @@ export default function RetailerLoginPage() {
                       </div>
 
                       <div>
-                        <label htmlFor="phone" className="block text-sm font-medium text-gray-700 text-gray-300 mb-1">
+                        <label htmlFor="phone" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
                           Phone Number *
                         </label>
                         <input
                           id="phone"
                           type="tel"
                           required
-                          className="appearance-none block w-full px-3 py-2 border border-gray-300 border-gray-600 placeholder-gray-500 placeholder-gray-400 text-gray-900 text-gray-50 rounded-md focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm bg-white bg-gray-700"
+                          className="appearance-none block w-full px-3 py-2 border border-gray-300 dark:border-gray-600 placeholder-gray-500 dark:placeholder-gray-400 text-gray-900 dark:text-gray-50 rounded-md focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm bg-white dark:bg-gray-700"
                           placeholder="(555) 123-4567"
                           value={registerForm.phone}
                           onChange={(e) => setRegisterForm({ ...registerForm, phone: e.target.value })}
@@ -340,14 +340,14 @@ export default function RetailerLoginPage() {
 
                     <div className="grid grid-cols-2 gap-4">
                       <div>
-                        <label htmlFor="email" className="block text-sm font-medium text-gray-700 text-gray-300 mb-1">
+                        <label htmlFor="email" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
                           Email Address *
                         </label>
                         <input
                           id="email"
                           type="email"
                           required
-                          className="appearance-none block w-full px-3 py-2 border border-gray-300 border-gray-600 placeholder-gray-500 placeholder-gray-400 text-gray-900 text-gray-50 rounded-md focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm bg-white bg-gray-700"
+                          className="appearance-none block w-full px-3 py-2 border border-gray-300 dark:border-gray-600 placeholder-gray-500 dark:placeholder-gray-400 text-gray-900 dark:text-gray-50 rounded-md focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm bg-white dark:bg-gray-700"
                           placeholder="contact@business.com"
                           value={registerForm.email}
                           onChange={(e) => setRegisterForm({ ...registerForm, email: e.target.value })}
@@ -355,13 +355,13 @@ export default function RetailerLoginPage() {
                       </div>
 
                       <div>
-                        <label htmlFor="taxId" className="block text-sm font-medium text-gray-700 text-gray-300 mb-1">
+                        <label htmlFor="taxId" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
                           Business Tax ID (Optional)
                         </label>
                         <input
                           id="taxId"
                           type="text"
-                          className="appearance-none block w-full px-3 py-2 border border-gray-300 border-gray-600 placeholder-gray-500 placeholder-gray-400 text-gray-900 text-gray-50 rounded-md focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm bg-white bg-gray-700"
+                          className="appearance-none block w-full px-3 py-2 border border-gray-300 dark:border-gray-600 placeholder-gray-500 dark:placeholder-gray-400 text-gray-900 dark:text-gray-50 rounded-md focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm bg-white dark:bg-gray-700"
                           placeholder="GST/HST Number"
                           value={registerForm.taxId}
                           onChange={(e) => setRegisterForm({ ...registerForm, taxId: e.target.value })}
@@ -372,21 +372,21 @@ export default function RetailerLoginPage() {
                 </div>
 
                 {/* Shipping Address */}
-                <div className="bg-white bg-gray-800 p-6 rounded-lg border border-gray-200 border-gray-700">
-                  <h3 className="font-heading text-lg font-medium text-gray-900 text-gray-50 mb-4 flex items-center">
+                <div className="bg-white dark:bg-gray-800 p-6 rounded-lg border border-gray-200 dark:border-gray-700">
+                  <h3 className="font-heading text-lg font-medium text-gray-900 dark:text-gray-50 mb-4 flex items-center">
                     <MapPin className="h-5 w-5 mr-2" />
                     Shipping Address
                   </h3>
                   <div className="space-y-4">
                     <div>
-                      <label htmlFor="street" className="block text-sm font-medium text-gray-700 text-gray-300 mb-1">
+                      <label htmlFor="street" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
                         Street Address *
                       </label>
                       <input
                         id="street"
                         type="text"
                         required
-                        className="appearance-none block w-full px-3 py-2 border border-gray-300 border-gray-600 placeholder-gray-500 placeholder-gray-400 text-gray-900 text-gray-50 rounded-md focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm bg-white bg-gray-700"
+                        className="appearance-none block w-full px-3 py-2 border border-gray-300 dark:border-gray-600 placeholder-gray-500 dark:placeholder-gray-400 text-gray-900 dark:text-gray-50 rounded-md focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm bg-white dark:bg-gray-700"
                         placeholder="123 Main Street"
                         value={registerForm.shippingAddress.street}
                         onChange={(e) => setRegisterForm({
@@ -398,14 +398,14 @@ export default function RetailerLoginPage() {
 
                     <div className="grid grid-cols-3 gap-4">
                       <div>
-                        <label htmlFor="city" className="block text-sm font-medium text-gray-700 text-gray-300 mb-1">
+                        <label htmlFor="city" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
                           City *
                         </label>
                         <input
                           id="city"
                           type="text"
                           required
-                          className="appearance-none block w-full px-3 py-2 border border-gray-300 border-gray-600 placeholder-gray-500 placeholder-gray-400 text-gray-900 text-gray-50 rounded-md focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm bg-white bg-gray-700"
+                          className="appearance-none block w-full px-3 py-2 border border-gray-300 dark:border-gray-600 placeholder-gray-500 dark:placeholder-gray-400 text-gray-900 dark:text-gray-50 rounded-md focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm bg-white dark:bg-gray-700"
                           placeholder="Toronto"
                           value={registerForm.shippingAddress.city}
                           onChange={(e) => setRegisterForm({
@@ -416,13 +416,13 @@ export default function RetailerLoginPage() {
                       </div>
 
                       <div>
-                        <label htmlFor="province" className="block text-sm font-medium text-gray-700 text-gray-300 mb-1">
+                        <label htmlFor="province" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
                           Province *
                         </label>
                         <select
                           id="province"
                           required
-                          className="appearance-none block w-full px-3 py-2 border border-gray-300 border-gray-600 text-gray-900 text-gray-50 rounded-md focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm bg-white bg-gray-700"
+                          className="appearance-none block w-full px-3 py-2 border border-gray-300 dark:border-gray-600 text-gray-900 dark:text-gray-50 rounded-md focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm bg-white dark:bg-gray-700"
                           value={registerForm.shippingAddress.province}
                           onChange={(e) => setRegisterForm({
                             ...registerForm,
@@ -439,14 +439,14 @@ export default function RetailerLoginPage() {
                       </div>
 
                       <div>
-                        <label htmlFor="postalCode" className="block text-sm font-medium text-gray-700 text-gray-300 mb-1">
+                        <label htmlFor="postalCode" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
                           Postal Code *
                         </label>
                         <input
                           id="postalCode"
                           type="text"
                           required
-                          className="appearance-none block w-full px-3 py-2 border border-gray-300 border-gray-600 placeholder-gray-500 placeholder-gray-400 text-gray-900 text-gray-50 rounded-md focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm bg-white bg-gray-700"
+                          className="appearance-none block w-full px-3 py-2 border border-gray-300 dark:border-gray-600 placeholder-gray-500 dark:placeholder-gray-400 text-gray-900 dark:text-gray-50 rounded-md focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm bg-white dark:bg-gray-700"
                           placeholder="M5V 3A8"
                           value={registerForm.shippingAddress.postalCode}
                           onChange={(e) => setRegisterForm({
@@ -461,11 +461,11 @@ export default function RetailerLoginPage() {
                       <input
                         id="sameAsBilling"
                         type="checkbox"
-                        className="h-4 w-4 text-blue-600 text-blue-400 focus:ring-blue-500 border-gray-300 border-gray-600 rounded bg-white bg-gray-700"
+                        className="h-4 w-4 text-blue-600 dark:text-blue-400 focus:ring-blue-500 border-gray-300 dark:border-gray-600 rounded bg-white dark:bg-gray-700"
                         checked={registerForm.sameAsBilling}
                         onChange={(e) => setRegisterForm({ ...registerForm, sameAsBilling: e.target.checked })}
                       />
-                      <label htmlFor="sameAsBilling" className="ml-2 block text-sm text-gray-900 text-gray-300">
+                      <label htmlFor="sameAsBilling" className="ml-2 block text-sm text-gray-900 dark:text-gray-300">
                         Billing address same as shipping address
                       </label>
                     </div>
@@ -473,11 +473,11 @@ export default function RetailerLoginPage() {
                 </div>
 
                 {/* Password */}
-                <div className="bg-white bg-gray-800 p-6 rounded-lg border border-gray-200 border-gray-700">
-                  <h3 className="font-heading text-lg font-medium text-gray-900 text-gray-50 mb-4">Account Security</h3>
+                <div className="bg-white dark:bg-gray-800 p-6 rounded-lg border border-gray-200 dark:border-gray-700">
+                  <h3 className="font-heading text-lg font-medium text-gray-900 dark:text-gray-50 mb-4">Account Security</h3>
                   <div className="grid grid-cols-2 gap-4">
                     <div>
-                      <label htmlFor="password" className="block text-sm font-medium text-gray-700 text-gray-300 mb-1">
+                      <label htmlFor="password" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
                         Password *
                       </label>
                       <div className="relative">
@@ -485,7 +485,7 @@ export default function RetailerLoginPage() {
                           id="password"
                           type={showPassword ? 'text' : 'password'}
                           required
-                          className="appearance-none block w-full pr-10 px-3 py-2 border border-gray-300 border-gray-600 placeholder-gray-500 placeholder-gray-400 text-gray-900 text-gray-50 rounded-md focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm bg-white bg-gray-700"
+                          className="appearance-none block w-full pr-10 px-3 py-2 border border-gray-300 dark:border-gray-600 placeholder-gray-500 dark:placeholder-gray-400 text-gray-900 dark:text-gray-50 rounded-md focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm bg-white dark:bg-gray-700"
                           placeholder="Min. 8 characters"
                           value={registerForm.password}
                           onChange={(e) => setRegisterForm({ ...registerForm, password: e.target.value })}
@@ -496,16 +496,16 @@ export default function RetailerLoginPage() {
                           onClick={() => setShowPassword(!showPassword)}
                         >
                           {showPassword ? (
-                            <EyeOff className="h-5 w-5 text-gray-400 text-gray-500" />
+                            <EyeOff className="h-5 w-5 text-gray-400 dark:text-gray-500" />
                           ) : (
-                            <Eye className="h-5 w-5 text-gray-400 text-gray-500" />
+                            <Eye className="h-5 w-5 text-gray-400 dark:text-gray-500" />
                           )}
                         </button>
                       </div>
                     </div>
 
                     <div>
-                      <label htmlFor="confirmPassword" className="block text-sm font-medium text-gray-700 text-gray-300 mb-1">
+                      <label htmlFor="confirmPassword" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
                         Confirm Password *
                       </label>
                       <div className="relative">
@@ -513,7 +513,7 @@ export default function RetailerLoginPage() {
                           id="confirmPassword"
                           type={showConfirmPassword ? 'text' : 'password'}
                           required
-                          className="appearance-none block w-full pr-10 px-3 py-2 border border-gray-300 border-gray-600 placeholder-gray-500 placeholder-gray-400 text-gray-900 text-gray-50 rounded-md focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm bg-white bg-gray-700"
+                          className="appearance-none block w-full pr-10 px-3 py-2 border border-gray-300 dark:border-gray-600 placeholder-gray-500 dark:placeholder-gray-400 text-gray-900 dark:text-gray-50 rounded-md focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm bg-white dark:bg-gray-700"
                           placeholder="Repeat password"
                           value={registerForm.confirmPassword}
                           onChange={(e) => setRegisterForm({ ...registerForm, confirmPassword: e.target.value })}
@@ -524,9 +524,9 @@ export default function RetailerLoginPage() {
                           onClick={() => setShowConfirmPassword(!showConfirmPassword)}
                         >
                           {showConfirmPassword ? (
-                            <EyeOff className="h-5 w-5 text-gray-400 text-gray-500" />
+                            <EyeOff className="h-5 w-5 text-gray-400 dark:text-gray-500" />
                           ) : (
-                            <Eye className="h-5 w-5 text-gray-400 text-gray-500" />
+                            <Eye className="h-5 w-5 text-gray-400 dark:text-gray-500" />
                           )}
                         </button>
                       </div>
@@ -539,15 +539,15 @@ export default function RetailerLoginPage() {
                 type="submit"
                 disabled={loading}
                 className={cn(
-                  'group relative w-full flex justify-center py-3 px-4 border border-transparent text-sm font-medium rounded-md text-white text-gray-100 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500',
+                  'group relative w-full flex justify-center py-3 px-4 border border-transparent text-sm font-medium rounded-md text-white dark:text-gray-100 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500',
                   loading
-                    ? 'bg-gray-400 bg-gray-600 cursor-not-allowed'
-                    : 'bg-blue-600 bg-blue-600 hover:bg-blue-700 hover:bg-blue-500'
+                    ? 'bg-gray-400 dark:bg-gray-600 cursor-not-allowed'
+                    : 'bg-blue-600 dark:bg-blue-600 hover:bg-blue-700 dark:hover:bg-blue-500'
                 )}
               >
                 {loading ? (
                   <div className="flex items-center">
-                    <div className="animate-spin rounded-full h-4 w-4 border-b-2 border-white border-gray-100 mr-2"></div>
+                    <div className="animate-spin rounded-full h-4 w-4 border-b-2 border-white dark:border-gray-100 mr-2"></div>
                     Submitting application...
                   </div>
                 ) : (
@@ -566,7 +566,7 @@ export default function RetailerLoginPage() {
                 setError('');
                 setSuccess('');
               }}
-              className="text-sm text-blue-600 text-blue-400 hover:text-blue-500 hover:text-blue-300"
+              className="text-sm text-blue-600 dark:text-blue-400 hover:text-blue-500 dark:hover:text-blue-300"
             >
               {isLogin
                 ? "Don't have an account? Apply for wholesale access"

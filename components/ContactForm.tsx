@@ -100,7 +100,7 @@ export default function ContactForm() {
       <div>
         <label
           htmlFor="name"
-          className="block text-sm font-medium text-[#333333] text-gray-200"
+          className="block text-sm font-medium text-[#333333] dark:text-gray-200"
         >
           {t.contact.form?.name || "Name"}
         </label>
@@ -110,10 +110,10 @@ export default function ContactForm() {
           {...register('name')}
           aria-invalid={errors.name ? 'true' : 'false'}
           aria-describedby={errors.name ? 'name-error' : undefined}
-          className="mt-1 block w-full rounded-md border border-[#E0EFC7] border-gray-700 bg-white bg-gray-900 px-3 py-2 text-sm text-[#333333] text-gray-200 shadow-sm focus:border-[#FF3131] focus:outline-none focus:ring-1 focus:ring-[#FF3131]"
+          className="mt-1 block w-full rounded-md border border-[#E0EFC7] dark:border-gray-700 bg-white dark:bg-gray-900 px-3 py-2 text-sm text-[#333333] dark:text-gray-200 shadow-sm focus:border-[#FF3131] focus:outline-none focus:ring-1 focus:ring-[#FF3131]"
         />
         {errors.name && (
-          <p id="name-error" className="mt-1 text-sm text-red-600 text-red-400">
+          <p id="name-error" className="mt-1 text-sm text-red-600 dark:text-red-400">
             {errors.name.message}
           </p>
         )}
@@ -122,7 +122,7 @@ export default function ContactForm() {
       <div>
         <label
           htmlFor="email"
-          className="block text-sm font-medium text-[#333333] text-gray-200"
+          className="block text-sm font-medium text-[#333333] dark:text-gray-200"
         >
           {t.contact.form?.email || "Email"}
         </label>
@@ -132,10 +132,10 @@ export default function ContactForm() {
           {...register('email')}
           aria-invalid={errors.email ? 'true' : 'false'}
           aria-describedby={errors.email ? 'email-error' : undefined}
-          className="mt-1 block w-full rounded-md border border-[#E0EFC7] border-gray-700 bg-white bg-gray-900 px-3 py-2 text-sm text-[#333333] text-gray-200 shadow-sm focus:border-[#FF3131] focus:outline-none focus:ring-1 focus:ring-[#FF3131]"
+          className="mt-1 block w-full rounded-md border border-[#E0EFC7] dark:border-gray-700 bg-white dark:bg-gray-900 px-3 py-2 text-sm text-[#333333] dark:text-gray-200 shadow-sm focus:border-[#FF3131] focus:outline-none focus:ring-1 focus:ring-[#FF3131]"
         />
         {errors.email && (
-          <p id="email-error" className="mt-1 text-sm text-red-600 text-red-400">
+          <p id="email-error" className="mt-1 text-sm text-red-600 dark:text-red-400">
             {errors.email.message}
           </p>
         )}
@@ -144,7 +144,7 @@ export default function ContactForm() {
       <div>
         <label
           htmlFor="message"
-          className="block text-sm font-medium text-[#333333] text-gray-200"
+          className="block text-sm font-medium text-[#333333] dark:text-gray-200"
         >
           {t.contact.form?.message || "Message"}
         </label>
@@ -154,10 +154,10 @@ export default function ContactForm() {
           aria-invalid={errors.message ? 'true' : 'false'}
           aria-describedby={errors.message ? 'message-error' : undefined}
           rows={4}
-          className="mt-1 block w-full rounded-md border border-[#E0EFC7] border-gray-700 bg-white bg-gray-900 px-3 py-2 text-sm text-[#333333] text-gray-200 shadow-sm focus:border-[#FF3131] focus:outline-none focus:ring-1 focus:ring-[#FF3131]"
+          className="mt-1 block w-full rounded-md border border-[#E0EFC7] dark:border-gray-700 bg-white dark:bg-gray-900 px-3 py-2 text-sm text-[#333333] dark:text-gray-200 shadow-sm focus:border-[#FF3131] focus:outline-none focus:ring-1 focus:ring-[#FF3131]"
         />
         {errors.message && (
-          <p id="message-error" className="mt-1 text-sm text-red-600 text-red-400">
+          <p id="message-error" className="mt-1 text-sm text-red-600 dark:text-red-400">
             {errors.message.message}
           </p>
         )}
@@ -167,8 +167,8 @@ export default function ContactForm() {
         <div
           className={`rounded-md p-4 ${
             submitStatus.success
-              ? 'bg-green-50 bg-green-900/20 text-green-800 text-green-200'
-              : 'bg-red-50 bg-red-900/20 text-red-800 text-red-200'
+              ? 'bg-green-50 dark:bg-green-900/20 text-green-800 dark:text-green-200'
+              : 'bg-red-50 dark:bg-red-900/20 text-red-800 dark:text-red-200'
           }`}
           role="alert"
           aria-live="polite"
@@ -180,7 +180,7 @@ export default function ContactForm() {
       <Button
         type="submit"
         disabled={isSubmitting}
-        className="w-full bg-[#FF3131] hover:bg-[#FF3131]/90 text-white text-gray-100"
+        className="w-full bg-[#FF3131] hover:bg-[#FF3131]/90 text-white dark:text-gray-100"
         aria-busy={isSubmitting}
       >
         {isSubmitting ? t.freeGiveaway?.submitting || "Submitting..." : t.contact.form?.submit || "Send"}

@@ -288,22 +288,22 @@ export default function GlossaryPageClient() {
   }, []);
 
   return (
-    <main className="min-h-screen bg-[#FFFFF5] bg-gray-900 transition-colors duration-300">
+    <main className="min-h-screen bg-[#FFFFF5] dark:bg-gray-900 transition-colors duration-300">
       {/* Breadcrumb Navigation */}
-      <section className="py-4 border-b border-[#E0EFC7] border-gray-800">
+      <section className="py-4 border-b border-[#E0EFC7] dark:border-gray-800">
         <Container>
           <nav aria-label={glossaryUi.breadcrumbAriaLabel} className="flex items-center text-sm">
-            <Link href={localePrefix || '/'} className="text-gray-500 text-gray-400 hover:text-[#FF3131] hover:text-[#FF5050] transition-colors">
+            <Link href={localePrefix || '/'} className="text-gray-500 dark:text-gray-400 hover:text-[#FF3131] dark:hover:text-[#FF5050] transition-colors">
               <Home className="w-4 h-4" />
               <span className="sr-only">{glossaryUi.homeSrOnly}</span>
             </Link>
             {breadcrumbItems.map((item, index, arr) => (
               <span key={item.path} className="flex items-center">
-                <ChevronRight className="w-4 h-4 mx-1 text-gray-400 text-gray-500" />
+                <ChevronRight className="w-4 h-4 mx-1 text-gray-400 dark:text-gray-500" />
                 {index === arr.length - 1 ? (
-                  <span aria-current="page" className="font-medium text-gray-900 text-gray-100">{item.name}</span>
+                  <span aria-current="page" className="font-medium text-gray-900 dark:text-gray-100">{item.name}</span>
                 ) : (
-                  <Link href={item.path} className="text-gray-500 text-gray-400 hover:text-[#FF3131] hover:text-[#FF5050] transition-colors">
+                  <Link href={item.path} className="text-gray-500 dark:text-gray-400 hover:text-[#FF3131] dark:hover:text-[#FF5050] transition-colors">
                     {item.name}
                   </Link>
                 )}
@@ -316,7 +316,7 @@ export default function GlossaryPageClient() {
       {/* Hero Section */}
       <section className="py-16 bg-gradient-to-br from-electric-indigo via-electric-indigo-600 to-deep-coral relative overflow-hidden">
         <Container>
-          <div className="text-center text-white text-gray-100 max-w-4xl mx-auto">
+          <div className="text-center text-white dark:text-gray-100 max-w-4xl mx-auto">
             <BookOpen className="w-16 h-16 mx-auto mb-6 opacity-90" />
             <h1 className="text-4xl md:text-5xl font-heading font-bold mb-6">
               {glossaryUi.heroTitle}
@@ -330,13 +330,13 @@ export default function GlossaryPageClient() {
 
             {/* Search Bar */}
             <div className="max-w-2xl mx-auto relative mt-8">
-              <Search className="absolute left-4 top-1/2 transform -translate-y-1/2 w-5 h-5 text-gray-400 text-gray-500" />
+              <Search className="absolute left-4 top-1/2 transform -translate-y-1/2 w-5 h-5 text-gray-400 dark:text-gray-500" />
               <input
                 type="text"
                 placeholder={glossaryUi.searchPlaceholder}
                 value={searchTerm}
                 onChange={handleSearchChange}
-                className="w-full pl-12 pr-4 py-4 rounded-xl bg-white/95 bg-gray-800/95 backdrop-blur-lg text-gray-900 text-gray-50 text-lg focus:outline-none focus:ring-2 focus:ring-white/50 transition-all"
+                className="w-full pl-12 pr-4 py-4 rounded-xl bg-white/95 dark:bg-gray-800/95 backdrop-blur-lg text-gray-900 dark:text-gray-50 text-lg focus:outline-none focus:ring-2 focus:ring-white/50 transition-all"
               />
             </div>
           </div>
@@ -344,7 +344,7 @@ export default function GlossaryPageClient() {
       </section>
 
       {/* Category Filter */}
-      <section className="py-8 bg-white/50 bg-gray-800/50 border-b border-[#E0EFC7] border-gray-700">
+      <section className="py-8 bg-white/50 dark:bg-gray-800/50 border-b border-[#E0EFC7] dark:border-gray-700">
         <Container>
           <div className="flex flex-wrap justify-center gap-3">
             {categories.map((category) => (
@@ -352,8 +352,8 @@ export default function GlossaryPageClient() {
                 key={category.id}
                 onClick={() => handleCategoryClick(category.id)}
                 className={`px-4 py-2 rounded-full font-medium transition-all ${selectedCategory === category.id
-                  ? 'bg-electric-indigo-700 text-white text-white shadow-lg'
-                  : 'bg-white bg-gray-800 text-gray-700 text-gray-300 hover:bg-gray-50 hover:bg-gray-700'
+                  ? 'bg-electric-indigo-700 text-white dark:text-white shadow-lg'
+                  : 'bg-white dark:bg-gray-800 text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-700'
                   }`}
               >
                 {category.name} ({category.count})
@@ -367,7 +367,7 @@ export default function GlossaryPageClient() {
       <section className="py-16">
         <Container>
           <div className="max-w-4xl mx-auto">
-            <p className="text-center text-gray-600 text-gray-400 mb-8">
+            <p className="text-center text-gray-600 dark:text-gray-400 mb-8">
               {filteredTerms.length} {filteredTerms.length !== 1 ? glossaryUi.termLabelPlural : glossaryUi.termLabelSingular} {glossaryUi.foundLabel}
             </p>
 
@@ -376,29 +376,29 @@ export default function GlossaryPageClient() {
                 <div
                   key={term.id}
                   id={term.id}
-                  className="bg-white/80 bg-gray-800/80 backdrop-blur-lg rounded-xl p-6 shadow-lg border border-electric-indigo/10 border-electric-indigo/20 hover:shadow-xl transition-all duration-300"
+                  className="bg-white/80 dark:bg-gray-800/80 backdrop-blur-lg rounded-xl p-6 shadow-lg border border-electric-indigo/10 dark:border-electric-indigo/20 hover:shadow-xl transition-all duration-300"
                 >
-                  <h2 className="term-name speakable-content text-2xl font-heading font-bold text-gray-900 text-gray-100 mb-3">
+                  <h2 className="term-name speakable-content text-2xl font-heading font-bold text-gray-900 dark:text-gray-100 mb-3">
                     {term.term}
                   </h2>
-                  <p className="term-definition speakable-content text-gray-700 text-gray-300 text-lg leading-relaxed mb-4">
+                  <p className="term-definition speakable-content text-gray-700 dark:text-gray-300 text-lg leading-relaxed mb-4">
                     {term.definition}
                   </p>
                   {term.extendedDefinition && (
-                    <p className="text-gray-600 text-gray-400 leading-relaxed mb-4 border-l-4 border-electric-indigo/30 pl-4">
+                    <p className="text-gray-600 dark:text-gray-400 leading-relaxed mb-4 border-l-4 border-electric-indigo/30 pl-4">
                       {term.extendedDefinition}
                     </p>
                   )}
                   {term.relatedTerms && term.relatedTerms.length > 0 && (
                     <div className="flex flex-wrap gap-2 mt-4">
-                      <span className="text-sm text-gray-500 text-gray-500">{glossaryUi.relatedLabel}</span>
+                      <span className="text-sm text-gray-500 dark:text-gray-500">{glossaryUi.relatedLabel}</span>
                       {term.relatedTerms.map((related) => {
                         const relatedTerm = glossaryTerms.find((term: GlossaryTerm) => term.term === related);
                         return (
                           <a
                             key={related}
                             href={relatedTerm ? `#${relatedTerm.id}` : '#'}
-                            className="text-sm px-2 py-1 bg-electric-indigo/10 bg-electric-indigo-800 text-electric-indigo-700 text-electric-indigo-100 rounded-full hover:bg-electric-indigo/20 hover:bg-electric-indigo-700 transition-colors"
+                            className="text-sm px-2 py-1 bg-electric-indigo/10 dark:bg-electric-indigo-800 text-electric-indigo-700 dark:text-electric-indigo-100 rounded-full hover:bg-electric-indigo/20 dark:hover:bg-electric-indigo-700 transition-colors"
                           >
                             {related}
                           </a>
@@ -412,11 +412,11 @@ export default function GlossaryPageClient() {
 
             {filteredTerms.length === 0 && (
               <div className="text-center py-12">
-                <BookOpen className="w-16 h-16 text-gray-300 text-gray-600 mx-auto mb-4" />
-                <h3 className="font-heading text-xl font-semibold text-gray-600 text-gray-400 mb-2">
+                <BookOpen className="w-16 h-16 text-gray-300 dark:text-gray-600 mx-auto mb-4" />
+                <h3 className="font-heading text-xl font-semibold text-gray-600 dark:text-gray-400 mb-2">
                   {glossaryUi.emptyTitle}
                 </h3>
-                <p className="text-gray-500 text-gray-500">
+                <p className="text-gray-500 dark:text-gray-500">
                   {glossaryUi.emptyDescription}
                 </p>
               </div>
@@ -428,7 +428,7 @@ export default function GlossaryPageClient() {
       {/* CTA Section */}
       <section className="py-16 bg-gradient-to-br from-electric-indigo via-electric-indigo-600 to-deep-coral relative overflow-hidden">
         <Container>
-          <div className="text-center text-white text-gray-100 max-w-3xl mx-auto">
+          <div className="text-center text-white dark:text-gray-100 max-w-3xl mx-auto">
             <h2 className="text-3xl md:text-4xl font-heading font-bold mb-6">
               {glossaryUi.ctaTitle}
             </h2>
@@ -437,13 +437,13 @@ export default function GlossaryPageClient() {
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Link href={`${localePrefix}/products/trial-size`}>
-                <Button size="lg" className="bg-white bg-gray-900 text-electric-indigo-800 text-electric-indigo-100 hover:bg-gray-100 hover:scale-105 hover:bg-gray-700 font-bold transition-all duration-300">
+                <Button size="lg" className="bg-white dark:bg-gray-900 text-electric-indigo-800 dark:text-electric-indigo-100 hover:bg-gray-100 hover:scale-105 dark:hover:bg-gray-700 font-bold transition-all duration-300">
                   {trialCtaLabel}
                   <ChevronRight className="w-5 h-5 ml-2" />
                 </Button>
               </Link>
               <Link href={`${localePrefix}/learn/how-it-works`}>
-                <Button size="lg" variant="outline" className="!bg-electric-indigo-800 border-electric-indigo-700 !bg-electric-indigo-700 border-electric-indigo-600 text-white text-white hover:!bg-electric-indigo-700 hover:scale-105 hover:!bg-electric-indigo-600 hover:text-white hover:text-white transition-all duration-300">
+                <Button size="lg" variant="outline" className="!bg-electric-indigo-800 border-electric-indigo-700 dark:!bg-electric-indigo-700 dark:border-electric-indigo-600 text-white dark:text-white hover:!bg-electric-indigo-700 hover:scale-105 dark:hover:!bg-electric-indigo-600 hover:text-white dark:hover:text-white transition-all duration-300">
                   {glossaryUi.ctaLearnHow}
                 </Button>
               </Link>
@@ -456,40 +456,40 @@ export default function GlossaryPageClient() {
       <section className="py-16">
         <Container>
           <div className="text-center mb-12">
-            <h2 className="text-2xl md:text-3xl font-heading font-bold mb-4 text-gray-900 text-gray-100">
+            <h2 className="text-2xl md:text-3xl font-heading font-bold mb-4 text-gray-900 dark:text-gray-100">
               {glossaryUi.continueLearning}
             </h2>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             <Link href={`${localePrefix}/learn/how-it-works`} className="group">
-              <div className="bg-white/80 bg-gray-800/80 backdrop-blur-lg rounded-xl p-6 shadow-lg border border-electric-indigo/10 border-electric-indigo/20 hover:shadow-xl hover:scale-105 transition-all duration-300">
-                <h3 className="text-xl font-heading font-bold mb-3 text-gray-900 text-gray-100 group-hover:text-electric-indigo transition-colors">
+              <div className="bg-white/80 dark:bg-gray-800/80 backdrop-blur-lg rounded-xl p-6 shadow-lg border border-electric-indigo/10 dark:border-electric-indigo/20 hover:shadow-xl hover:scale-105 transition-all duration-300">
+                <h3 className="text-xl font-heading font-bold mb-3 text-gray-900 dark:text-gray-100 group-hover:text-electric-indigo transition-colors">
                   {glossaryUi.relatedHowItWorksTitle}
                 </h3>
-                <p className="text-gray-600 text-gray-300">
+                <p className="text-gray-600 dark:text-gray-300">
                   {glossaryUi.relatedHowItWorksDescription}
                 </p>
               </div>
             </Link>
 
             <Link href={`${localePrefix}/learn/faq`} className="group">
-              <div className="bg-white/80 bg-gray-800/80 backdrop-blur-lg rounded-xl p-6 shadow-lg border border-electric-indigo/10 border-electric-indigo/20 hover:shadow-xl hover:scale-105 transition-all duration-300">
-                <h3 className="text-xl font-heading font-bold mb-3 text-gray-900 text-gray-100 group-hover:text-electric-indigo transition-colors">
+              <div className="bg-white/80 dark:bg-gray-800/80 backdrop-blur-lg rounded-xl p-6 shadow-lg border border-electric-indigo/10 dark:border-electric-indigo/20 hover:shadow-xl hover:scale-105 transition-all duration-300">
+                <h3 className="text-xl font-heading font-bold mb-3 text-gray-900 dark:text-gray-100 group-hover:text-electric-indigo transition-colors">
                   FAQ
                 </h3>
-                <p className="text-gray-600 text-gray-300">
+                <p className="text-gray-600 dark:text-gray-300">
                   {glossaryUi.relatedFaqDescription}
                 </p>
               </div>
             </Link>
 
             <Link href={`${localePrefix}/learn/safety`} className="group">
-              <div className="bg-white/80 bg-gray-800/80 backdrop-blur-lg rounded-xl p-6 shadow-lg border border-electric-indigo/10 border-electric-indigo/20 hover:shadow-xl hover:scale-105 transition-all duration-300">
-                <h3 className="text-xl font-heading font-bold mb-3 text-gray-900 text-gray-100 group-hover:text-electric-indigo transition-colors">
+              <div className="bg-white/80 dark:bg-gray-800/80 backdrop-blur-lg rounded-xl p-6 shadow-lg border border-electric-indigo/10 dark:border-electric-indigo/20 hover:shadow-xl hover:scale-105 transition-all duration-300">
+                <h3 className="text-xl font-heading font-bold mb-3 text-gray-900 dark:text-gray-100 group-hover:text-electric-indigo transition-colors">
                   {glossaryUi.relatedSafetyTitle}
                 </h3>
-                <p className="text-gray-600 text-gray-300">
+                <p className="text-gray-600 dark:text-gray-300">
                   {glossaryUi.relatedSafetyDescription}
                 </p>
               </div>

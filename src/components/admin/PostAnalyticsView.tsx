@@ -55,7 +55,7 @@ export default function PostAnalyticsView({ slug }: PostAnalyticsViewProps) {
   if (!analytics) {
     return (
       <div className="text-center py-8">
-        <p className="text-gray-500 text-gray-400">No analytics data available</p>
+        <p className="text-gray-500 dark:text-gray-400">No analytics data available</p>
       </div>
     );
   }
@@ -66,11 +66,11 @@ export default function PostAnalyticsView({ slug }: PostAnalyticsViewProps) {
     <div className="space-y-6">
       {/* Header */}
       <div className="flex justify-between items-center">
-        <h3 className="font-heading text-lg font-semibold text-gray-900 text-gray-100">Post Analytics</h3>
+        <h3 className="font-heading text-lg font-semibold text-gray-900 dark:text-gray-100">Post Analytics</h3>
         <select
           value={dateRange}
           onChange={(e) => setDateRange(e.target.value)}
-          className="px-3 py-1.5 text-sm border border-gray-300 border-gray-700 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-500 bg-white bg-gray-900 text-gray-900 text-gray-100"
+          className="px-3 py-1.5 text-sm border border-gray-300 dark:border-gray-700 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-500 bg-white dark:bg-gray-900 text-gray-900 dark:text-gray-100"
         >
           <option value="7d">Last 7 days</option>
           <option value="30d">Last 30 days</option>
@@ -103,20 +103,20 @@ export default function PostAnalyticsView({ slug }: PostAnalyticsViewProps) {
       </div>
 
       {/* Traffic Sources */}
-      <div className="bg-white bg-gray-800 rounded-lg border border-gray-200 border-gray-700 p-4">
-        <h4 className="text-sm font-semibold text-gray-900 text-gray-100 mb-3">Traffic Sources</h4>
+      <div className="bg-white dark:bg-gray-800 rounded-lg border border-gray-200 dark:border-gray-700 p-4">
+        <h4 className="text-sm font-semibold text-gray-900 dark:text-gray-100 mb-3">Traffic Sources</h4>
         <div className="space-y-2">
           {Object.entries(analytics.sources).map(([source, count]) => (
             <div key={source} className="flex items-center justify-between">
-              <span className="text-sm text-gray-700 text-gray-300 capitalize">{source}</span>
+              <span className="text-sm text-gray-700 dark:text-gray-300 capitalize">{source}</span>
               <div className="flex items-center space-x-2">
-                <div className="w-24 bg-gray-200 bg-gray-700 rounded-full h-2">
+                <div className="w-24 bg-gray-200 dark:bg-gray-700 rounded-full h-2">
                   <div
                     className="bg-purple-600 h-2 rounded-full"
                     style={{ width: `${(count / totalTraffic) * 100}%` }}
                   />
                 </div>
-                <span className="text-sm font-medium text-gray-900 text-gray-100 w-12 text-right">
+                <span className="text-sm font-medium text-gray-900 dark:text-gray-100 w-12 text-right">
                   {count}
                 </span>
               </div>
@@ -127,16 +127,16 @@ export default function PostAnalyticsView({ slug }: PostAnalyticsViewProps) {
 
       {/* Top Keywords */}
       {analytics.topKeywords.length > 0 && (
-        <div className="bg-white bg-gray-800 rounded-lg border border-gray-200 border-gray-700 p-4">
-          <h4 className="text-sm font-semibold text-gray-900 text-gray-100 mb-3">Top Keywords</h4>
+        <div className="bg-white dark:bg-gray-800 rounded-lg border border-gray-200 dark:border-gray-700 p-4">
+          <h4 className="text-sm font-semibold text-gray-900 dark:text-gray-100 mb-3">Top Keywords</h4>
           <div className="space-y-2">
             {analytics.topKeywords.map((kw) => (
               <div key={kw.keyword} className="flex items-center justify-between text-sm">
-                <span className="text-gray-700 text-gray-300">{kw.keyword}</span>
-                <div className="flex items-center space-x-3 text-gray-500 text-gray-400">
+                <span className="text-gray-700 dark:text-gray-300">{kw.keyword}</span>
+                <div className="flex items-center space-x-3 text-gray-500 dark:text-gray-400">
                   <span>{kw.impressions} impressions</span>
                   <span>{kw.clicks} clicks</span>
-                  <span className="font-medium text-gray-900 text-gray-100">
+                  <span className="font-medium text-gray-900 dark:text-gray-100">
                     {((kw.clicks / kw.impressions) * 100).toFixed(1)}% CTR
                   </span>
                 </div>
@@ -147,15 +147,15 @@ export default function PostAnalyticsView({ slug }: PostAnalyticsViewProps) {
       )}
 
       {/* Conversion Rate */}
-      <div className="bg-purple-50 bg-purple-900/20 rounded-lg border border-purple-200 border-purple-800 p-4">
+      <div className="bg-purple-50 dark:bg-purple-900/20 rounded-lg border border-purple-200 dark:border-purple-800 p-4">
         <div className="flex items-center justify-between">
           <div>
-            <h4 className="text-sm font-semibold text-purple-900 text-purple-100">Conversion Rate</h4>
-            <p className="text-xs text-purple-700 text-purple-300 mt-0.5">
+            <h4 className="text-sm font-semibold text-purple-900 dark:text-purple-100">Conversion Rate</h4>
+            <p className="text-xs text-purple-700 dark:text-purple-300 mt-0.5">
               Visitors who took action after reading
             </p>
           </div>
-          <div className="text-2xl font-bold text-purple-900 text-purple-100">
+          <div className="text-2xl font-bold text-purple-900 dark:text-purple-100">
             {analytics.conversionRate.toFixed(2)}%
           </div>
         </div>
@@ -172,12 +172,12 @@ interface MetricCardProps {
 
 function MetricCard({ icon, label, value }: MetricCardProps) {
   return (
-    <div className="bg-white bg-gray-800 rounded-lg border border-gray-200 border-gray-700 p-4">
-      <div className="flex items-center space-x-2 text-gray-600 text-gray-400 mb-2">
+    <div className="bg-white dark:bg-gray-800 rounded-lg border border-gray-200 dark:border-gray-700 p-4">
+      <div className="flex items-center space-x-2 text-gray-600 dark:text-gray-400 mb-2">
         {icon}
         <span className="text-xs font-medium">{label}</span>
       </div>
-      <div className="text-2xl font-bold text-gray-900 text-gray-100">{value}</div>
+      <div className="text-2xl font-bold text-gray-900 dark:text-gray-100">{value}</div>
     </div>
   );
 }

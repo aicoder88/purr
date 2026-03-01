@@ -196,12 +196,12 @@ export function SubscriptionPlans({
           <h2 className="font-heading text-4xl font-bold mb-4 bg-gradient-to-r from-orange-600 to-pink-600 bg-clip-text text-transparent">
             Never Run Out of Odor Control
           </h2>
-          <p className="text-xl text-gray-600 text-gray-300 mb-6">
+          <p className="text-xl text-gray-600 dark:text-gray-300 mb-6">
             Save money and ensure fresh litter 24/7 with automatic deliveries
           </p>
           
           {/* Trust indicators */}
-          <div className="flex justify-center items-center space-x-6 text-sm text-gray-500 text-gray-400 mb-8">
+          <div className="flex justify-center items-center space-x-6 text-sm text-gray-500 dark:text-gray-400 mb-8">
             <div className="flex items-center">
               <Truck className="w-4 h-4 mr-2" />
               Fast shipping
@@ -256,7 +256,7 @@ export function SubscriptionPlans({
 
                 {/* Plan Name */}
                 <h3 className="font-heading text-2xl font-bold mb-2">{plan.name}</h3>
-                <p className="text-gray-600 text-gray-400 mb-4">{plan.description}</p>
+                <p className="text-gray-600 dark:text-gray-400 mb-4">{plan.description}</p>
 
                 {/* Pricing */}
                 <div className="mb-4">
@@ -266,19 +266,19 @@ export function SubscriptionPlans({
                   
                   {plan.originalPrice && (
                     <div className="flex items-center justify-center space-x-2">
-                      <span className="text-lg text-gray-400 text-gray-500 line-through">
+                      <span className="text-lg text-gray-400 dark:text-gray-500 line-through">
                         {formatCurrencyValue(plan.originalPrice)}
                       </span>
-                      <Badge variant="secondary" className="bg-green-100 bg-green-800/30 text-green-800 text-green-200">
+                      <Badge variant="secondary" className="bg-green-100 dark:bg-green-800/30 text-green-800 dark:text-green-200">
                         Save {plan.discount}%
                       </Badge>
                     </div>
                   )}
                   
-                  <p className="text-sm text-gray-500 text-gray-400 mt-2">{plan.intervalLabel}</p>
+                  <p className="text-sm text-gray-500 dark:text-gray-400 mt-2">{plan.intervalLabel}</p>
                   
                   {showAnnualSavings && (
-                    <p className="text-lg font-semibold text-green-600 text-green-400 mt-2">
+                    <p className="text-lg font-semibold text-green-600 dark:text-green-400 mt-2">
                       {plan.savings}
                     </p>
                   )}
@@ -290,7 +290,7 @@ export function SubscriptionPlans({
                 <ul className="space-y-3 mb-6">
                   {plan.features.map((feature, featureIndex) => (
                     <li key={featureIndex} className="flex items-start">
-                      <Check className="w-5 h-5 text-green-500 text-green-400 mr-3 mt-0.5 flex-shrink-0" />
+                      <Check className="w-5 h-5 text-green-500 dark:text-green-400 mr-3 mt-0.5 flex-shrink-0" />
                       <span className="text-sm">{feature}</span>
                     </li>
                   ))}
@@ -298,14 +298,14 @@ export function SubscriptionPlans({
 
                 {/* Bonus Items */}
                 {plan.bonus && (
-                  <div className="bg-gradient-to-r from-orange-50 to-pink-50 from-orange-900/20 to-pink-900/20 p-4 rounded-lg mb-6">
-                    <h4 className="font-semibold text-orange-700 text-orange-400 mb-2 flex items-center">
+                  <div className="bg-gradient-to-r from-orange-50 to-pink-50 dark:from-orange-900/20 dark:to-pink-900/20 p-4 rounded-lg mb-6">
+                    <h4 className="font-semibold text-orange-700 dark:text-orange-400 mb-2 flex items-center">
                       <Gift className="w-4 h-4 mr-2" />
                       Bonus Items
                     </h4>
                     <ul className="space-y-1">
                       {plan.bonus.map((bonus, bonusIndex) => (
-                        <li key={bonusIndex} className="text-sm text-orange-600 text-orange-400">
+                        <li key={bonusIndex} className="text-sm text-orange-600 dark:text-orange-400">
                           • {bonus}
                         </li>
                       ))}
@@ -314,7 +314,7 @@ export function SubscriptionPlans({
                 )}
 
                 {/* Value Breakdown */}
-                <div className="bg-gray-50 bg-gray-800 p-4 rounded-lg mb-6">
+                <div className="bg-gray-50 dark:bg-gray-800 p-4 rounded-lg mb-6">
                   <h4 className="font-semibold mb-2">What You Get:</h4>
                   <div className="space-y-1">
                     {plan.products.map((product, productIndex) => (
@@ -326,9 +326,9 @@ export function SubscriptionPlans({
                   </div>
                   <div className="border-t pt-2 mt-2 font-semibold flex justify-between">
                     <span>Total Value:</span>
-                    <span className="text-green-600 text-green-400">{formatCurrencyValue(plan.totalValue)}</span>
+                    <span className="text-green-600 dark:text-green-400">{formatCurrencyValue(plan.totalValue)}</span>
                   </div>
-                  <div className="flex justify-between text-sm text-purple-600 text-purple-400">
+                  <div className="flex justify-between text-sm text-purple-600 dark:text-purple-400">
                     <span>You Pay:</span>
                     <span>{formatCurrencyValue(plan.price)}</span>
                   </div>
@@ -337,7 +337,7 @@ export function SubscriptionPlans({
                 {/* CTA Button */}
                 <div className="mt-auto">
                   <Button
-                    className={`w-full bg-gradient-to-r ${plan.color} hover:opacity-90 text-white text-gray-100 font-bold py-3 transition-all transform ${
+                    className={`w-full bg-gradient-to-r ${plan.color} hover:opacity-90 text-white dark:text-gray-100 font-bold py-3 transition-all transform ${
                       hoveredPlan === plan.id ? 'scale-105' : ''
                     }`}
                     onClick={handleButtonClick}
@@ -352,48 +352,48 @@ export function SubscriptionPlans({
         </div>
 
         {/* Subscription Benefits */}
-        <div className="bg-gradient-to-r from-blue-50 to-purple-50 from-blue-900/20 to-purple-900/20 rounded-lg p-8">
+        <div className="bg-gradient-to-r from-blue-50 to-purple-50 dark:from-blue-900/20 dark:to-purple-900/20 rounded-lg p-8">
           <h3 className="font-heading text-2xl font-bold text-center mb-6">
             Why 3,000+ Cat Owners Love Purrify Subscriptions
           </h3>
           
           <div className="grid md:grid-cols-4 gap-6">
             <div className="text-center">
-              <div className="w-12 h-12 bg-blue-100 bg-blue-900/30 rounded-full flex items-center justify-center mx-auto mb-3">
-                <Truck className="w-6 h-6 text-blue-600 text-blue-400" />
+              <div className="w-12 h-12 bg-blue-100 dark:bg-blue-900/30 rounded-full flex items-center justify-center mx-auto mb-3">
+                <Truck className="w-6 h-6 text-blue-600 dark:text-blue-400" />
               </div>
               <h4 className="font-semibold mb-2">Never Run Out</h4>
-              <p className="text-sm text-gray-600 text-gray-400">
+              <p className="text-sm text-gray-600 dark:text-gray-400">
                 Automatic deliveries ensure your cats never suffer from odors
               </p>
             </div>
             
             <div className="text-center">
-              <div className="w-12 h-12 bg-green-100 bg-green-900/30 rounded-full flex items-center justify-center mx-auto mb-3">
-                <Gift className="w-6 h-6 text-green-600 text-green-400" />
+              <div className="w-12 h-12 bg-green-100 dark:bg-green-900/30 rounded-full flex items-center justify-center mx-auto mb-3">
+                <Gift className="w-6 h-6 text-green-600 dark:text-green-400" />
               </div>
               <h4 className="font-semibold mb-2">Member Perks</h4>
-              <p className="text-sm text-gray-600 text-gray-400">
+              <p className="text-sm text-gray-600 dark:text-gray-400">
                 Exclusive bonuses, early access, and special member pricing
               </p>
             </div>
             
             <div className="text-center">
-              <div className="w-12 h-12 bg-purple-100 bg-purple-900/30 rounded-full flex items-center justify-center mx-auto mb-3">
-                <Zap className="w-6 h-6 text-purple-600 text-purple-400" />
+              <div className="w-12 h-12 bg-purple-100 dark:bg-purple-900/30 rounded-full flex items-center justify-center mx-auto mb-3">
+                <Zap className="w-6 h-6 text-purple-600 dark:text-purple-400" />
               </div>
               <h4 className="font-semibold mb-2">Total Flexibility</h4>
-              <p className="text-sm text-gray-600 text-gray-400">
+              <p className="text-sm text-gray-600 dark:text-gray-400">
                 Skip, pause, or cancel anytime. No commitments or fees
               </p>
             </div>
             
             <div className="text-center">
-              <div className="w-12 h-12 bg-orange-100 bg-orange-900/30 rounded-full flex items-center justify-center mx-auto mb-3">
-                <Star className="w-6 h-6 text-orange-600 text-orange-400" />
+              <div className="w-12 h-12 bg-orange-100 dark:bg-orange-900/30 rounded-full flex items-center justify-center mx-auto mb-3">
+                <Star className="w-6 h-6 text-orange-600 dark:text-orange-400" />
               </div>
               <h4 className="font-semibold mb-2">Premium Support</h4>
-              <p className="text-sm text-gray-600 text-gray-400">
+              <p className="text-sm text-gray-600 dark:text-gray-400">
                 Priority customer service and dedicated account management
               </p>
             </div>
@@ -402,10 +402,10 @@ export function SubscriptionPlans({
 
         {/* Testimonials */}
         <div className="mt-12 grid md:grid-cols-2 gap-8">
-          <div className="bg-white bg-gray-800 p-6 rounded-lg shadow-lg">
+          <div className="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-lg">
             <div className="flex items-center mb-4">
               {[1,2,3,4,5].map((star) => (
-                <Star key={star} className="w-5 h-5 text-yellow-400 text-yellow-300 fill-current" />
+                <Star key={star} className="w-5 h-5 text-yellow-400 dark:text-yellow-300 fill-current" />
               ))}
             </div>
             <p className="italic mb-4">
@@ -415,10 +415,10 @@ export function SubscriptionPlans({
             <p className="font-semibold">- Sarah M., Bi-Monthly Subscriber</p>
           </div>
           
-          <div className="bg-white bg-gray-800 p-6 rounded-lg shadow-lg">
+          <div className="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-lg">
             <div className="flex items-center mb-4">
               {[1,2,3,4,5].map((star) => (
-                <Star key={star} className="w-5 h-5 text-yellow-400 text-yellow-300 fill-current" />
+                <Star key={star} className="w-5 h-5 text-yellow-400 dark:text-yellow-300 fill-current" />
               ))}
             </div>
             <p className="italic mb-4">

@@ -17,7 +17,7 @@ interface BreadcrumbsProps {
 
 export const Breadcrumbs: React.FC<BreadcrumbsProps> = ({
   items,
-  className = "py-4 border-b border-[#E0EFC7] border-gray-800"
+  className = "py-4 border-b border-[#E0EFC7] dark:border-gray-800"
 }) => {
   const t = useTranslations();
   const locale = useLocale();
@@ -65,10 +65,10 @@ export const Breadcrumbs: React.FC<BreadcrumbsProps> = ({
       <section className={className}>
         <Container>
           <nav
-            className="flex items-center space-x-2 text-sm text-gray-600 text-gray-400"
+            className="flex items-center space-x-2 text-sm text-gray-600 dark:text-gray-400"
             aria-label={breadcrumbLabel}
           >
-            <Link href={homeHref} className="hover:text-[#FF3131] hover:text-[#FF5050] transition-colors">
+            <Link href={homeHref} className="hover:text-[#FF3131] dark:hover:text-[#FF5050] transition-colors">
               <Home className="w-4 h-4" aria-label={homeAriaLabel} />
             </Link>
             {items.map((item, index) => (
@@ -77,12 +77,12 @@ export const Breadcrumbs: React.FC<BreadcrumbsProps> = ({
                 {item.href ? (
                   <Link
                     href={item.href}
-                    className="hover:text-[#FF3131] hover:text-[#FF5050] transition-colors"
+                    className="hover:text-[#FF3131] dark:hover:text-[#FF5050] transition-colors"
                   >
                     {item.label}
                   </Link>
                 ) : (
-                  <span className="text-gray-900 text-gray-100" aria-current="page">
+                  <span className="text-gray-900 dark:text-gray-100" aria-current="page">
                     {item.label}
                   </span>
                 )}

@@ -80,25 +80,25 @@ export function ReferralWidget({
 
   if (compact) {
     return (
-      <div className={`bg-gradient-to-r from-purple-600 to-pink-600 from-purple-700 to-pink-700 rounded-lg p-4 text-white ${className}`}>
+      <div className={`bg-gradient-to-r from-purple-600 to-pink-600 dark:from-purple-700 dark:to-pink-700 rounded-lg p-4 text-white ${className}`}>
         <div className="flex flex-col sm:flex-row items-center justify-between gap-4">
           <div>
-            <p className="font-semibold text-white text-gray-100">
+            <p className="font-semibold text-white dark:text-gray-100">
               {t('referral.widget.giveGet') || 'Give $5, Get $5'}
             </p>
-            <p className="text-sm text-purple-100 text-purple-200">
+            <p className="text-sm text-purple-100 dark:text-purple-200">
               {t('referral.widget.shareDescription') || 'Share your code with friends'}
             </p>
           </div>
           <div className="flex items-center gap-2">
-            <code className="bg-white/20 bg-black/20 px-3 py-1 rounded font-mono text-lg text-white text-gray-100">
+            <code className="bg-white/20 dark:bg-black/20 px-3 py-1 rounded font-mono text-lg text-white dark:text-gray-100">
               {code}
             </code>
             <Button
               variant="secondary"
               size="sm"
               onClick={() => copyToClipboard(code, 'code')}
-              className="bg-white text-purple-600 hover:bg-gray-100 bg-gray-100 text-purple-700 hover:bg-gray-200"
+              className="bg-white text-purple-600 hover:bg-gray-100 dark:bg-gray-100 dark:text-purple-700 dark:hover:bg-gray-200"
             >
               {copied === 'code' ? (t('referral.widget.copied') || 'Copied!') : (t('referral.widget.copy') || 'Copy')}
             </Button>
@@ -109,13 +109,13 @@ export function ReferralWidget({
   }
 
   return (
-    <Card className={`bg-white bg-gray-900 border-gray-200 border-gray-700 overflow-hidden ${className}`}>
+    <Card className={`bg-white dark:bg-gray-900 border-gray-200 dark:border-gray-700 overflow-hidden ${className}`}>
       {/* Header with gradient */}
-      <div className="bg-gradient-to-r from-purple-600 to-pink-600 from-purple-700 to-pink-700 p-6 text-white text-gray-100">
-        <CardTitle className="text-2xl text-white text-gray-100">
+      <div className="bg-gradient-to-r from-purple-600 to-pink-600 dark:from-purple-700 dark:to-pink-700 p-6 text-white dark:text-gray-100">
+        <CardTitle className="text-2xl text-white dark:text-gray-100">
           {t('referral.widget.title') || 'Give $5, Get $5'}
         </CardTitle>
-        <CardDescription className="text-purple-100 text-purple-200 mt-1">
+        <CardDescription className="text-purple-100 dark:text-purple-200 mt-1">
           {t('referral.widget.description') || 'Share your code with friends. They get $5 off, you get $5 credit!'}
         </CardDescription>
       </div>
@@ -123,18 +123,18 @@ export function ReferralWidget({
       <CardContent className="pt-6 space-y-6">
         {/* Referral Code */}
         <div>
-          <label className="block text-sm font-medium text-gray-700 text-gray-300 mb-2">
+          <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
             {t('referral.widget.yourCode') || 'Your Referral Code'}
           </label>
           <div className="flex gap-2">
             <Input
               value={code}
               readOnly
-              className="font-mono text-lg text-center tracking-wider bg-gray-50 bg-gray-800 text-gray-900 text-gray-50 border-gray-200 border-gray-700"
+              className="font-mono text-lg text-center tracking-wider bg-gray-50 dark:bg-gray-800 text-gray-900 dark:text-gray-50 border-gray-200 dark:border-gray-700"
             />
             <Button
               onClick={() => copyToClipboard(code, 'code')}
-              className={copied === 'code' ? 'bg-green-600 hover:bg-green-700 bg-green-500 hover:bg-green-600' : ''}
+              className={copied === 'code' ? 'bg-green-600 hover:bg-green-700 dark:bg-green-500 dark:hover:bg-green-600' : ''}
             >
               {copied === 'code' ? (
                 <span className="flex items-center gap-1">
@@ -153,19 +153,19 @@ export function ReferralWidget({
 
         {/* Share Link */}
         <div>
-          <label className="block text-sm font-medium text-gray-700 text-gray-300 mb-2">
+          <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
             {t('referral.widget.shareLink') || 'Share Link'}
           </label>
           <div className="flex gap-2">
             <Input
               value={shareUrl}
               readOnly
-              className="text-sm bg-gray-50 bg-gray-800 text-gray-900 text-gray-50 border-gray-200 border-gray-700"
+              className="text-sm bg-gray-50 dark:bg-gray-800 text-gray-900 dark:text-gray-50 border-gray-200 dark:border-gray-700"
             />
             <Button
               variant="outline"
               onClick={() => copyToClipboard(shareUrl, 'url')}
-              className={copied === 'url' ? 'border-green-500 text-green-600 border-green-400 text-green-400' : 'border-gray-200 border-gray-700 text-gray-700 text-gray-300'}
+              className={copied === 'url' ? 'border-green-500 text-green-600 dark:border-green-400 dark:text-green-400' : 'border-gray-200 dark:border-gray-700 text-gray-700 dark:text-gray-300'}
             >
               {copied === 'url' ? (t('referral.widget.copied') || 'Copied!') : (t('referral.widget.copyLink') || 'Copy Link')}
             </Button>
@@ -174,7 +174,7 @@ export function ReferralWidget({
 
         {/* Social Share Buttons */}
         <div>
-          <label className="block text-sm font-medium text-gray-700 text-gray-300 mb-3">
+          <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-3">
             {t('referral.widget.shareVia') || 'Share via'}
           </label>
           <div className="grid grid-cols-3 sm:grid-cols-5 gap-2">
@@ -182,7 +182,7 @@ export function ReferralWidget({
             <Button
               variant="outline"
               onClick={handleEmailShare}
-              className="flex flex-col items-center gap-1 h-auto py-3 border-gray-200 border-gray-700 text-gray-700 text-gray-300 hover:bg-gray-50 hover:bg-gray-800"
+              className="flex flex-col items-center gap-1 h-auto py-3 border-gray-200 dark:border-gray-700 text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-800"
             >
               <EmailIcon className="h-5 w-5" />
               <span className="text-xs">{t('referral.share.email') || 'Email'}</span>
@@ -192,7 +192,7 @@ export function ReferralWidget({
             <Button
               variant="outline"
               onClick={handleSmsShare}
-              className="flex flex-col items-center gap-1 h-auto py-3 border-gray-200 border-gray-700 text-gray-700 text-gray-300 hover:bg-gray-50 hover:bg-gray-800"
+              className="flex flex-col items-center gap-1 h-auto py-3 border-gray-200 dark:border-gray-700 text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-800"
             >
               <SmsIcon className="h-5 w-5" />
               <span className="text-xs">{t('referral.share.sms') || 'SMS'}</span>
@@ -202,7 +202,7 @@ export function ReferralWidget({
             <Button
               variant="outline"
               onClick={() => handleSocialShare(shareUrls.whatsapp.url)}
-              className="flex flex-col items-center gap-1 h-auto py-3 border-gray-200 border-gray-700 text-green-600 text-green-400 hover:bg-green-50 hover:bg-green-900/20"
+              className="flex flex-col items-center gap-1 h-auto py-3 border-gray-200 dark:border-gray-700 text-green-600 dark:text-green-400 hover:bg-green-50 dark:hover:bg-green-900/20"
             >
               <WhatsAppIcon className="h-5 w-5" />
               <span className="text-xs">{shareLabels.whatsapp}</span>
@@ -212,7 +212,7 @@ export function ReferralWidget({
             <Button
               variant="outline"
               onClick={() => handleSocialShare(shareUrls.facebook.url)}
-              className="flex flex-col items-center gap-1 h-auto py-3 border-gray-200 border-gray-700 text-blue-600 text-blue-400 hover:bg-blue-50 hover:bg-blue-900/20"
+              className="flex flex-col items-center gap-1 h-auto py-3 border-gray-200 dark:border-gray-700 text-blue-600 dark:text-blue-400 hover:bg-blue-50 dark:hover:bg-blue-900/20"
             >
               <FacebookIcon className="h-5 w-5" />
               <span className="text-xs">{shareLabels.facebook}</span>
@@ -222,7 +222,7 @@ export function ReferralWidget({
             <Button
               variant="outline"
               onClick={() => copyToClipboard(shareUrl, 'url')}
-              className="flex flex-col items-center gap-1 h-auto py-3 border-gray-200 border-gray-700 text-gray-700 text-gray-300 hover:bg-gray-50 hover:bg-gray-800"
+              className="flex flex-col items-center gap-1 h-auto py-3 border-gray-200 dark:border-gray-700 text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-800"
             >
               <LinkIcon className="h-5 w-5" />
               <span className="text-xs">{t('referral.share.link') || 'Link'}</span>
@@ -231,21 +231,21 @@ export function ReferralWidget({
         </div>
 
         {/* How it works */}
-        <div className="bg-gray-50 bg-gray-800 rounded-lg p-4">
-          <h4 className="font-medium text-gray-900 text-gray-50 mb-3">
+        <div className="bg-gray-50 dark:bg-gray-800 rounded-lg p-4">
+          <h4 className="font-medium text-gray-900 dark:text-gray-50 mb-3">
             {t('referral.widget.howItWorks') || 'How it works'}
           </h4>
-          <ol className="space-y-2 text-sm text-gray-600 text-gray-400">
+          <ol className="space-y-2 text-sm text-gray-600 dark:text-gray-400">
             <li className="flex gap-2">
-              <span className="flex-shrink-0 w-5 h-5 bg-purple-100 bg-purple-900 text-purple-600 text-purple-400 rounded-full flex items-center justify-center text-xs font-medium">1</span>
+              <span className="flex-shrink-0 w-5 h-5 bg-purple-100 dark:bg-purple-900 text-purple-600 dark:text-purple-400 rounded-full flex items-center justify-center text-xs font-medium">1</span>
               {t('referral.widget.step1') || 'Share your code or link with friends'}
             </li>
             <li className="flex gap-2">
-              <span className="flex-shrink-0 w-5 h-5 bg-purple-100 bg-purple-900 text-purple-600 text-purple-400 rounded-full flex items-center justify-center text-xs font-medium">2</span>
+              <span className="flex-shrink-0 w-5 h-5 bg-purple-100 dark:bg-purple-900 text-purple-600 dark:text-purple-400 rounded-full flex items-center justify-center text-xs font-medium">2</span>
               {t('referral.widget.step2') || 'They get $5 off their first order'}
             </li>
             <li className="flex gap-2">
-              <span className="flex-shrink-0 w-5 h-5 bg-purple-100 bg-purple-900 text-purple-600 text-purple-400 rounded-full flex items-center justify-center text-xs font-medium">3</span>
+              <span className="flex-shrink-0 w-5 h-5 bg-purple-100 dark:bg-purple-900 text-purple-600 dark:text-purple-400 rounded-full flex items-center justify-center text-xs font-medium">3</span>
               {t('referral.widget.step3') || 'You get $5 credit when they purchase'}
             </li>
           </ol>

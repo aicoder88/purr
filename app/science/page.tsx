@@ -122,23 +122,23 @@ export default function SciencePage() {
         }}
       />
 
-      <main className="relative py-16 lg:py-24 overflow-hidden bg-gradient-to-br from-[#FFFFFF] via-[#F4F7FF] to-[#FFFFFF] from-gray-900 via-[#1A1C29] to-gray-900">
+      <main className="relative py-16 lg:py-24 overflow-hidden bg-gradient-to-br from-[#FFFFFF] via-[#F4F7FF] to-[#FFFFFF] dark:from-gray-900 dark:via-[#1A1C29] dark:to-gray-900">
         {/* Decorative Background Elements */}
-        <div className="absolute top-[-10%] left-[-10%] w-[40vw] h-[40vw] max-w-[600px] max-h-[600px] bg-blue-400/20 bg-blue-600/20 rounded-full blur-[120px] pointer-events-none" />
-        <div className="absolute bottom-[-10%] right-[-10%] w-[40vw] h-[40vw] max-w-[600px] max-h-[600px] bg-electric-indigo/20 bg-electric-indigo/20 rounded-full blur-[120px] pointer-events-none" />
+        <div className="absolute top-[-10%] left-[-10%] w-[40vw] h-[40vw] max-w-[600px] max-h-[600px] bg-blue-400/20 dark:bg-blue-600/20 rounded-full blur-[120px] pointer-events-none" />
+        <div className="absolute bottom-[-10%] right-[-10%] w-[40vw] h-[40vw] max-w-[600px] max-h-[600px] bg-electric-indigo/20 dark:bg-electric-indigo/20 rounded-full blur-[120px] pointer-events-none" />
 
         <Container className="relative z-10">
           <div className="max-w-5xl mx-auto relative">
             {/* Breadcrumb */}
             <nav className="mb-8">
-              <ol className="flex items-center space-x-2 text-sm text-gray-600 text-gray-400">
+              <ol className="flex items-center space-x-2 text-sm text-gray-600 dark:text-gray-400">
                 <li>
-                  <Link href="/" className="hover:text-[#FF3131] hover:text-[#FF6B6B]">
+                  <Link href="/" className="hover:text-[#FF3131] dark:hover:text-[#FF6B6B]">
                     Home
                   </Link>
                 </li>
                 <li>/</li>
-                <li className="text-[#FF3131] text-[#FF6B6B]">Science Hub</li>
+                <li className="text-[#FF3131] dark:text-[#FF6B6B]">Science Hub</li>
               </ol>
             </nav>
 

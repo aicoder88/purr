@@ -19,8 +19,8 @@ export function RelatedContentInline({
   }
 
   return (
-    <aside className="my-8 p-6 bg-blue-50 bg-blue-900/20 border-l-4 border-blue-500 border-blue-400 rounded-r-lg">
-      <h4 className="text-lg font-bold text-gray-900 text-gray-50 mb-3">
+    <aside className="my-8 p-6 bg-blue-50 dark:bg-blue-900/20 border-l-4 border-blue-500 dark:border-blue-400 rounded-r-lg">
+      <h4 className="text-lg font-bold text-gray-900 dark:text-gray-50 mb-3">
         {context}
       </h4>
 
@@ -29,7 +29,7 @@ export function RelatedContentInline({
           <li key={page.url}>
             <Link prefetch={false}
               href={page.url}
-              className="text-blue-600 text-blue-400 hover:text-blue-700 hover:text-blue-300 hover:underline font-medium"
+              className="text-blue-600 dark:text-blue-400 hover:text-blue-700 dark:hover:text-blue-300 hover:underline font-medium"
             >
               → {page.title}
             </Link>

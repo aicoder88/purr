@@ -95,23 +95,23 @@ export default function B2BClientPage() {
       : 'Home';
 
   return (
-    <div className="max-w-7xl mx-auto px-4 py-12 bg-white bg-gray-900 min-h-screen">
+    <div className="max-w-7xl mx-auto px-4 py-12 bg-white dark:bg-gray-900 min-h-screen">
       {/* Breadcrumb Navigation */}
       <nav aria-label={breadcrumbAriaLabel} className="mb-6">
         <ol className="flex items-center space-x-2 text-sm">
           <li className="flex items-center">
             <Link
               href="/"
-              className="text-gray-600 text-gray-400 hover:text-blue-600 hover:text-blue-400 transition-colors"
+              className="text-gray-600 dark:text-gray-400 hover:text-blue-600 dark:hover:text-blue-400 transition-colors"
             >
               <Home className="h-4 w-4" />
               <span className="sr-only">{homeLabel}</span>
             </Link>
           </li>
           <li className="flex items-center">
-            <ChevronRight className="h-4 w-4 mx-2 text-gray-400 text-gray-500" />
+            <ChevronRight className="h-4 w-4 mx-2 text-gray-400 dark:text-gray-500" />
             <span
-              className="font-medium text-gray-900 text-gray-100"
+              className="font-medium text-gray-900 dark:text-gray-100"
               aria-current="page"
             >
               {locale === 'fr' ? 'Partenariat B2B' : 'B2B Partnership'}
@@ -122,17 +122,17 @@ export default function B2BClientPage() {
 
       {/* Hero Header */}
       <section className="text-center mb-12">
-        <h1 className="font-heading text-4xl md:text-6xl font-bold text-gray-900 text-white mb-6">
+        <h1 className="font-heading text-4xl md:text-6xl font-bold text-gray-900 dark:text-white mb-6">
           {locale === 'fr'
             ? 'Partenariat Purrify'
             : 'Purrify Partnership Program'}
         </h1>
-        <p className="text-xl md:text-2xl text-gray-600 text-gray-300 mb-4 max-w-4xl mx-auto">
+        <p className="text-xl md:text-2xl text-gray-600 dark:text-gray-300 mb-4 max-w-4xl mx-auto">
           {locale === 'fr'
             ? "Rejoignez notre réseau de partenaires et offrez la meilleure solution d'odeurs pour chats au Canada."
             : 'Join our partner network and offer the best cat odor solution in Canada.'}
         </p>
-        <p className="text-gray-500 text-gray-400">
+        <p className="text-gray-500 dark:text-gray-400">
           {locale === 'fr'
             ? 'Sélectionnez votre type de entreprise ci-dessous:'
             : 'Select your business type below:'}
@@ -149,7 +149,7 @@ export default function B2BClientPage() {
               onClick={() => setActiveTab(tab.id)}
               className={`inline-flex items-center gap-2 px-6 py-3 rounded-xl font-semibold transition-all duration-200 ${activeTab === tab.id
                 ? 'bg-blue-600 text-white shadow-lg transform scale-105'
-                : 'bg-gray-100 bg-gray-800 text-gray-700 text-gray-300 hover:bg-gray-200 hover:bg-gray-700'
+                : 'bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-700'
                 }`}
             >
               {tab.icon}
@@ -163,7 +163,7 @@ export default function B2BClientPage() {
           <select
             value={activeTab}
             onChange={(e) => setActiveTab(e.target.value as VerticalTab)}
-            className="w-full px-4 py-3 rounded-xl border border-gray-300 border-gray-600 bg-white bg-gray-800 text-gray-900 text-white font-semibold"
+            className="w-full px-4 py-3 rounded-xl border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-800 text-gray-900 dark:text-white font-semibold"
           >
             {tabs.map((tab) => (
               <option key={tab.id} value={tab.id}>
@@ -175,7 +175,7 @@ export default function B2BClientPage() {
 
         {/* Active Tab Label (Mobile) */}
         <div className="md:hidden text-center mb-4">
-          <span className="inline-flex items-center gap-2 text-lg font-semibold text-blue-600 text-blue-400">
+          <span className="inline-flex items-center gap-2 text-lg font-semibold text-blue-600 dark:text-blue-400">
             {activeTabConfig?.icon}
             {activeTabConfig?.label}
           </span>
@@ -188,14 +188,14 @@ export default function B2BClientPage() {
       </div>
 
       {/* Universal Contact Footer */}
-      <section className="mt-16 pt-12 border-t border-gray-200 border-gray-700">
+      <section className="mt-16 pt-12 border-t border-gray-200 dark:border-gray-700">
         <div className="text-center">
-          <h3 className="font-heading text-2xl font-bold text-gray-900 text-white mb-4">
+          <h3 className="font-heading text-2xl font-bold text-gray-900 dark:text-white mb-4">
             {locale === 'fr'
               ? "Vous avez des questions? Contactez-nous"
               : 'Have questions? Contact us'}
           </h3>
-          <p className="text-gray-600 text-gray-300 mb-6 max-w-2xl mx-auto">
+          <p className="text-gray-600 dark:text-gray-300 mb-6 max-w-2xl mx-auto">
             {locale === 'fr'
               ? "Notre équipe de développement des partenaires est là pour vous aider à réussir, quel que soit votre type d'entreprise."
               : 'Our partner development team is here to help you succeed, regardless of your business type.'}
@@ -209,7 +209,7 @@ export default function B2BClientPage() {
             </a>
             <a
               href={`tel:${t('contact.phone')}`}
-              className="inline-flex items-center justify-center gap-2 border border-blue-600 border-blue-400 text-blue-600 text-blue-400 bg-white bg-gray-800 px-8 py-4 rounded-lg font-semibold text-lg hover:bg-blue-50 hover:bg-blue-900/20 transition-colors"
+              className="inline-flex items-center justify-center gap-2 border border-blue-600 dark:border-blue-400 text-blue-600 dark:text-blue-400 bg-white dark:bg-gray-800 px-8 py-4 rounded-lg font-semibold text-lg hover:bg-blue-50 dark:hover:bg-blue-900/20 transition-colors"
             >
               {t('contact.phone')}
             </a>

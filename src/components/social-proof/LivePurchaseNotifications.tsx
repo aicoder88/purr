@@ -226,7 +226,7 @@ export function LivePurchaseNotifications({
         <div
           key={notification.id}
           onClick={handleNotificationClickCallback(notification)}
-          className="bg-white bg-gray-800 border border-gray-200 border-gray-700 rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 cursor-pointer transform hover:scale-105 animate-in slide-in-from-bottom-2 fade-in-0"
+          className="bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 cursor-pointer transform hover:scale-105 animate-in slide-in-from-bottom-2 fade-in-0"
           style={{
             animationDelay: `${index * 100}ms`,
             maxWidth: '320px'
@@ -241,7 +241,7 @@ export function LivePurchaseNotifications({
             {/* Product Icon */}
             <div className="flex-shrink-0">
               <div className="w-10 h-10 bg-gradient-to-br from-orange-500 to-pink-500 rounded-full flex items-center justify-center">
-                <ShoppingBag className="w-5 h-5 text-white text-gray-100" />
+                <ShoppingBag className="w-5 h-5 text-white dark:text-gray-100" />
               </div>
             </div>
 
@@ -250,27 +250,27 @@ export function LivePurchaseNotifications({
               <div className="flex items-center space-x-1 mb-1">
                 <p
                   id={`notification-${notification.id}-customer`}
-                  className="text-sm font-medium text-gray-900 text-gray-100"
+                  className="text-sm font-medium text-gray-900 dark:text-gray-100"
                 >
                   {notification.customerName}
                 </p>
                 {notification.verified && (
                   <div className="flex items-center">
-                    <Star className="w-3 h-3 text-green-500 text-green-400 fill-current" />
+                    <Star className="w-3 h-3 text-green-500 dark:text-green-400 fill-current" />
                   </div>
                 )}
               </div>
 
               <p
                 id={`notification-${notification.id}-product`}
-                className="text-sm text-gray-600 text-gray-300 mb-1"
+                className="text-sm text-gray-600 dark:text-gray-300 mb-1"
               >
                 purchased <span className="font-medium">{notification.product}</span>
               </p>
 
               <div
                 id={`notification-${notification.id}-meta`}
-                className="flex items-center justify-between text-xs text-gray-500 text-gray-400"
+                className="flex items-center justify-between text-xs text-gray-500 dark:text-gray-400"
               >
                 <div className="flex items-center space-x-1">
                   <MapPin className="w-3 h-3" />
@@ -286,7 +286,7 @@ export function LivePurchaseNotifications({
             {/* Close button */}
             <button
               onClick={handleCloseNotification(notification)}
-              className="flex-shrink-0 text-gray-400 text-gray-500 hover:text-gray-600 hover:text-gray-300 transition-colors min-w-[44px] min-h-[44px] flex items-center justify-center"
+              className="flex-shrink-0 text-gray-400 dark:text-gray-500 hover:text-gray-600 dark:hover:text-gray-300 transition-colors min-w-[44px] min-h-[44px] flex items-center justify-center"
               aria-label="Close notification"
             >
               <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
@@ -336,9 +336,9 @@ export function LiveVisitorCounter() {
   if (!isVisible) return null;
 
   return (
-    <div className="fixed bottom-4 right-4 z-40 bg-gradient-to-r from-purple-500 to-pink-500 text-white text-gray-100 px-4 py-2 rounded-full shadow-lg animate-in slide-in-from-bottom-2 fade-in-0">
+    <div className="fixed bottom-4 right-4 z-40 bg-gradient-to-r from-purple-500 to-pink-500 text-white dark:text-gray-100 px-4 py-2 rounded-full shadow-lg animate-in slide-in-from-bottom-2 fade-in-0">
       <div className="flex items-center space-x-2 text-sm font-medium">
-        <div className="w-2 h-2 bg-green-400 bg-green-500 rounded-full animate-pulse"></div>
+        <div className="w-2 h-2 bg-green-400 dark:bg-green-500 rounded-full animate-pulse"></div>
         <span>{visitorCount} people viewing this page</span>
       </div>
     </div>

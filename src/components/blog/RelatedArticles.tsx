@@ -177,21 +177,21 @@ export function RelatedArticles({ currentPath, limit = 3 }: { currentPath?: stri
   return (
     <section aria-label={relatedAriaLabel} className="py-12">
       <Container>
-        <h2 className="font-heading text-2xl md:text-3xl font-bold mb-6 text-gray-900 text-gray-100">
+        <h2 className="font-heading text-2xl md:text-3xl font-bold mb-6 text-gray-900 dark:text-gray-100">
           {t('relatedArticles.title')}
         </h2>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
           {items.map((item) => (
-            <article key={item.href} className="group rounded-xl overflow-hidden border border-[#E0EFC7] border-gray-700 bg-white bg-gray-800/80 shadow-sm hover:shadow-md transition-all">
+            <article key={item.href} className="group rounded-xl overflow-hidden border border-[#E0EFC7] dark:border-gray-700 bg-white dark:bg-gray-800/80 shadow-sm hover:shadow-md transition-all">
               <Link href={item.href} prefetch={false} className="block focus:outline-none focus:ring-2 focus:ring-[#03E46A]">
                 <div className="relative aspect-video overflow-hidden">
                   <Image src={item.image} alt={item.alt} fill sizes="(max-width: 768px) 100vw, 33vw" className="object-cover transition-transform duration-500 group-hover:scale-105" />
                 </div>
                 <div className="p-4">
-                  <h3 className="font-heading text-lg font-semibold text-[#5B2EFF] text-[#3694FF] group-hover:text-[#5B2EFF]/80 group-hover:text-[#3694FF]/80">
+                  <h3 className="font-heading text-lg font-semibold text-[#5B2EFF] dark:text-[#3694FF] group-hover:text-[#5B2EFF]/80 dark:group-hover:text-[#3694FF]/80">
                     {item.title}
                   </h3>
-                  <p className="text-sm text-electric-indigo-600 text-indigo-400 mt-2">
+                  <p className="text-sm text-electric-indigo-600 dark:text-indigo-400 mt-2">
                     {t('relatedArticles.readMore')} →
                   </p>
                 </div>

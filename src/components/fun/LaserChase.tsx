@@ -145,24 +145,24 @@ export function LaserChase() {
     };
 
     return (
-        <div className="bg-white/80 bg-gray-800/80 backdrop-blur-sm rounded-2xl shadow-xl p-6 border border-purple-200 border-purple-800 w-full max-w-md mx-auto min-h-[420px] flex flex-col relative overflow-hidden">
+        <div className="bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm rounded-2xl shadow-xl p-6 border border-purple-200 dark:border-purple-800 w-full max-w-md mx-auto min-h-[420px] flex flex-col relative overflow-hidden">
             {/* Header */}
             <div className="flex justify-between items-center mb-4 z-10">
-                <h2 className="text-xl font-bold text-gray-800 text-gray-200 flex items-center gap-2">
+                <h2 className="text-xl font-bold text-gray-800 dark:text-gray-200 flex items-center gap-2">
                     <Cat className="w-5 h-5 text-red-500" />
                     Laser Chase
                 </h2>
                 <div className="flex items-center gap-3">
                     {/* Timer */}
                     <div className={`flex items-center gap-1 px-2 py-1 rounded-full text-sm font-bold ${timeLeft < 10
-                        ? 'bg-red-100 text-red-600 bg-red-900/30 text-red-400'
-                        : 'bg-gray-100 text-gray-600 bg-gray-700 text-gray-300'
+                        ? 'bg-red-100 text-red-600 dark:bg-red-900/30 dark:text-red-400'
+                        : 'bg-gray-100 text-gray-600 dark:bg-gray-700 dark:text-gray-300'
                         }`}>
                         <Clock className="w-3 h-3" />
                         {timeLeft}s
                     </div>
                     {/* Score */}
-                    <div className="bg-red-100 bg-red-900/30 text-red-600 text-red-400 px-3 py-1 rounded-full text-sm font-bold">
+                    <div className="bg-red-100 dark:bg-red-900/30 text-red-600 dark:text-red-400 px-3 py-1 rounded-full text-sm font-bold">
                         {score}
                     </div>
                 </div>
@@ -214,13 +214,13 @@ export function LaserChase() {
             {/* Game Area */}
             <div
                 ref={containerRef}
-                className="flex-1 bg-gradient-to-br from-gray-50 to-gray-100 from-gray-900/50 to-gray-800/50 rounded-xl relative cursor-none overflow-hidden"
+                className="flex-1 bg-gradient-to-br from-gray-50 to-gray-100 dark:from-gray-900/50 dark:to-gray-800/50 rounded-xl relative cursor-none overflow-hidden"
                 onClick={() => {
                     // Missed click - could add penalty here
                 }}
             >
                 {/* Grid pattern background */}
-                <div className="absolute inset-0 opacity-5 opacity-10"
+                <div className="absolute inset-0 opacity-5 dark:opacity-10"
                     style={{
                         backgroundImage: `
                             linear-gradient(to right, currentColor 1px, transparent 1px),
@@ -232,7 +232,7 @@ export function LaserChase() {
 
                 {/* Start overlay */}
                 {!isPlaying && (
-                    <div className="absolute inset-0 flex items-center justify-center z-20 bg-white/60 bg-black/60 backdrop-blur-sm rounded-xl">
+                    <div className="absolute inset-0 flex items-center justify-center z-20 bg-white/60 dark:bg-black/60 backdrop-blur-sm rounded-xl">
                         <motion.button
                             whileHover={{ scale: 1.05 }}
                             whileTap={{ scale: 0.95 }}
@@ -247,7 +247,7 @@ export function LaserChase() {
 
                 {/* Score display during game */}
                 {isPlaying && (
-                    <div className="absolute top-3 left-3 text-xs text-gray-400 text-gray-500">
+                    <div className="absolute top-3 left-3 text-xs text-gray-400 dark:text-gray-500">
                         <Target className="w-4 h-4 inline mr-1" />
                         Click the dot!
                     </div>
@@ -268,7 +268,7 @@ export function LaserChase() {
                                 top: particle.y,
                             }}
                         >
-                            <Sparkles className="w-full h-full text-yellow-400 text-yellow-300" />
+                            <Sparkles className="w-full h-full text-yellow-400 dark:text-yellow-300" />
                         </motion.div>
                     ))}
                 </AnimatePresence>
@@ -309,13 +309,13 @@ export function LaserChase() {
                         />
 
                         {/* Inner highlight */}
-                        <div className="absolute top-0.5 left-0.5 w-1.5 h-1.5 bg-white bg-gray-100 rounded-full opacity-80" />
+                        <div className="absolute top-0.5 left-0.5 w-1.5 h-1.5 bg-white dark:bg-gray-100 rounded-full opacity-80" />
                     </motion.button>
                 )}
             </div>
 
             {/* Footer */}
-            <div className="mt-4 flex items-center justify-between text-xs text-gray-500 text-gray-400">
+            <div className="mt-4 flex items-center justify-between text-xs text-gray-500 dark:text-gray-400">
                 <span className="flex items-center gap-1">
                     <Zap className="w-3 h-3" />
                     Keep clicking for combos!

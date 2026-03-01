@@ -375,13 +375,13 @@ export default async function LocalizedBlogPostPage({ params }: BlogPostPageProp
         }}
       />
 
-      <main className="min-h-screen bg-gradient-to-br from-[#FFFFF5] via-white to-[#FFFFF5] from-gray-900 via-gray-900 to-gray-800">
+      <main className="min-h-screen bg-gradient-to-br from-[#FFFFF5] via-white to-[#FFFFF5] dark:from-gray-900 dark:via-gray-900 dark:to-gray-800">
         {/* Back Navigation */}
-        <section className="py-4 border-b border-gray-100 border-gray-800">
+        <section className="py-4 border-b border-gray-100 dark:border-gray-800">
           <Container>
             <Link
               href={getBlogBasePath(locale)}
-              className="inline-flex items-center gap-2 text-gray-600 text-gray-400 hover:text-electric-indigo transition-colors"
+              className="inline-flex items-center gap-2 text-gray-600 dark:text-gray-400 hover:text-electric-indigo transition-colors"
             >
               <ArrowLeft className="w-4 h-4" />
               {t.backToBlog}
@@ -394,7 +394,7 @@ export default async function LocalizedBlogPostPage({ params }: BlogPostPageProp
             <Container>
               <div className="max-w-4xl mx-auto">
                 {/* Meta Info */}
-                <div className="flex flex-wrap items-center gap-4 text-sm text-gray-500 text-gray-400 mb-6">
+                <div className="flex flex-wrap items-center gap-4 text-sm text-gray-500 dark:text-gray-400 mb-6">
                   <span className="flex items-center gap-1">
                     <Calendar className="w-4 h-4" />
                     {formatDate(post.date)}
@@ -412,12 +412,12 @@ export default async function LocalizedBlogPostPage({ params }: BlogPostPageProp
                 </div>
 
                 {/* Title */}
-                <h1 className="font-heading text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 text-white mb-6 leading-tight">
+                <h1 className="font-heading text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 dark:text-white mb-6 leading-tight">
                   {post.title}
                 </h1>
 
                 {/* Excerpt */}
-                <p className="text-xl text-gray-600 text-gray-300 mb-8">{post.excerpt}</p>
+                <p className="text-xl text-gray-600 dark:text-gray-300 mb-8">{post.excerpt}</p>
 
                 {/* Featured Image */}
                 <div className="relative aspect-video rounded-2xl overflow-hidden shadow-xl">
@@ -430,7 +430,7 @@ export default async function LocalizedBlogPostPage({ params }: BlogPostPageProp
                   />
                 </div>
                 {(post.heroImageCaption || post.heroImageCredit) && (
-                  <div className="mt-3 text-sm text-gray-500 text-gray-400 text-center">
+                  <div className="mt-3 text-sm text-gray-500 dark:text-gray-400 text-center">
                     {post.heroImageCaption && <span>{post.heroImageCaption}</span>}
                     {post.heroImageCredit && (
                       <span className="ml-2">
@@ -448,21 +448,21 @@ export default async function LocalizedBlogPostPage({ params }: BlogPostPageProp
         <section className="py-8 md:py-12">
           <Container>
             <div className="max-w-4xl mx-auto">
-              <article className="prose prose-lg prose-invert prose-headings:font-heading prose-a:text-electric-indigo max-w-none">
+              <article className="prose prose-lg dark:prose-invert prose-headings:font-heading prose-a:text-electric-indigo max-w-none">
                 {post.content ? (
                   <div dangerouslySetInnerHTML={{ __html: sanitizeHTML(post.content) }} />
                 ) : (
-                  <p className="text-gray-600 text-gray-300">{post.excerpt}</p>
+                  <p className="text-gray-600 dark:text-gray-300">{post.excerpt}</p>
                 )}
               </article>
 
               {/* Citations */}
               {post.citations && post.citations.length > 0 && (
-                <div className="mt-12 pt-8 border-t border-gray-200 border-gray-700">
-                  <h2 className="text-xl font-bold text-gray-900 text-white mb-4">{t.references}</h2>
+                <div className="mt-12 pt-8 border-t border-gray-200 dark:border-gray-700">
+                  <h2 className="text-xl font-bold text-gray-900 dark:text-white mb-4">{t.references}</h2>
                   <ol className="space-y-2">
                     {post.citations.map((citation, index) => (
-                      <li key={index} className="text-sm text-gray-600 text-gray-400">
+                      <li key={index} className="text-sm text-gray-600 dark:text-gray-400">
                         {citation.url ? (
                           <a
                             href={citation.url}
@@ -483,14 +483,14 @@ export default async function LocalizedBlogPostPage({ params }: BlogPostPageProp
 
               {/* FAQ Section */}
               {post.faq && post.faq.length > 0 && (
-                <div className="mt-12 pt-8 border-t border-gray-200 border-gray-700">
-                  <h2 className="text-2xl font-bold text-gray-900 text-white mb-6">{t.faqTitle}</h2>
+                <div className="mt-12 pt-8 border-t border-gray-200 dark:border-gray-700">
+                  <h2 className="text-2xl font-bold text-gray-900 dark:text-white mb-6">{t.faqTitle}</h2>
                   <div className="space-y-6">
                     {post.faq.map((item, index) => (
-                      <div key={index} className="bg-gray-50 bg-gray-800 rounded-xl p-6">
-                        <h3 className="text-lg font-semibold text-gray-900 text-white mb-2">{item.question}</h3>
+                      <div key={index} className="bg-gray-50 dark:bg-gray-800 rounded-xl p-6">
+                        <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-2">{item.question}</h3>
                         <div
-                          className="text-gray-600 text-gray-300 prose prose-invert max-w-none"
+                          className="text-gray-600 dark:text-gray-300 prose dark:prose-invert max-w-none"
                           dangerouslySetInnerHTML={{ __html: sanitizeHTML(item.answerHtml) }}
                         />
                       </div>
@@ -500,25 +500,25 @@ export default async function LocalizedBlogPostPage({ params }: BlogPostPageProp
               )}
 
               {/* Related Content */}
-              <RelatedContent currentUrl={getBlogPostPath(locale, slug)} className="mt-12 pt-8 border-t border-gray-200 border-gray-700" />
+              <RelatedContent currentUrl={getBlogPostPath(locale, slug)} className="mt-12 pt-8 border-t border-gray-200 dark:border-gray-700" />
             </div>
           </Container>
         </section>
 
         {/* Navigation Footer */}
-        <section className="py-8 border-t border-gray-100 border-gray-800">
+        <section className="py-8 border-t border-gray-100 dark:border-gray-800">
           <Container>
             <div className="max-w-4xl mx-auto flex justify-between items-center">
               <Link
                 href={getBlogBasePath(locale)}
-                className="inline-flex items-center gap-2 text-gray-600 text-gray-400 hover:text-electric-indigo transition-colors"
+                className="inline-flex items-center gap-2 text-gray-600 dark:text-gray-400 hover:text-electric-indigo transition-colors"
               >
                 <ArrowLeft className="w-4 h-4" />
                 {t.allArticles}
               </Link>
               <Link
                 href="/"
-                className="inline-flex items-center gap-2 text-gray-600 text-gray-400 hover:text-electric-indigo transition-colors"
+                className="inline-flex items-center gap-2 text-gray-600 dark:text-gray-400 hover:text-electric-indigo transition-colors"
               >
                 {t.visitStore}
                 <ArrowLeft className="w-4 h-4 rotate-180" />

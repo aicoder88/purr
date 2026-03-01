@@ -66,10 +66,10 @@ export default function RetailerMap({ height = 600 }: RetailerMapProps) {
 
     if (loading) {
         return (
-            <div className="w-full flex items-center justify-center bg-gray-50 bg-gray-800/50 rounded-xl border border-gray-200 border-gray-700" style={{ minHeight: `${mapHeight}px` }}>
+            <div className="w-full flex items-center justify-center bg-gray-50 dark:bg-gray-800/50 rounded-xl border border-gray-200 dark:border-gray-700" style={{ minHeight: `${mapHeight}px` }}>
                 <div className="text-center">
-                    <div className="w-10 h-10 border-4 border-orange-500 border-orange-400 border-t-transparent rounded-full animate-spin mx-auto mb-4"></div>
-                    <p className="text-gray-500 text-gray-400 font-medium">Loading locations...</p>
+                    <div className="w-10 h-10 border-4 border-orange-500 dark:border-orange-400 border-t-transparent rounded-full animate-spin mx-auto mb-4"></div>
+                    <p className="text-gray-500 dark:text-gray-400 font-medium">Loading locations...</p>
                 </div>
             </div>
         );
@@ -77,7 +77,7 @@ export default function RetailerMap({ height = 600 }: RetailerMapProps) {
 
     if (error) {
         return (
-            <div className="w-full flex items-center justify-center bg-red-50 bg-red-900/10 rounded-xl border border-red-200 border-red-800/40" style={{ minHeight: `${mapHeight}px` }}>
+            <div className="w-full flex items-center justify-center bg-red-50 dark:bg-red-900/10 rounded-xl border border-red-200 dark:border-red-800/40" style={{ minHeight: `${mapHeight}px` }}>
                 <p className="text-red-500 font-medium">Error: {error}</p>
             </div>
         );
@@ -87,7 +87,7 @@ export default function RetailerMap({ height = 600 }: RetailerMapProps) {
     const center: [number, number] = [56.1304, -106.3468];
 
     return (
-        <div className="w-full rounded-xl overflow-hidden shadow-lg border border-gray-200 border-gray-700 z-0" style={{ height: `${mapHeight}px` }}>
+        <div className="w-full rounded-xl overflow-hidden shadow-lg border border-gray-200 dark:border-gray-700 z-0" style={{ height: `${mapHeight}px` }}>
             <MapContainer
                 center={center}
                 zoom={4}
@@ -107,7 +107,7 @@ export default function RetailerMap({ height = 600 }: RetailerMapProps) {
                         <Popup>
                             <div className="p-1 min-w-[200px]">
                                 <h3 className="font-bold text-lg mb-1">{loc.store_name}</h3>
-                                <p className="text-sm text-gray-600 text-gray-600 mb-2 font-sans">
+                                <p className="text-sm text-gray-600 dark:text-gray-600 mb-2 font-sans">
                                     {loc.address}<br />
                                     {loc.city}, {loc.province} {loc.postal_code}
                                 </p>
@@ -120,7 +120,7 @@ export default function RetailerMap({ height = 600 }: RetailerMapProps) {
                                             href={loc.website}
                                             target="_blank"
                                             rel="noopener noreferrer"
-                                            className="bg-orange-700 hover:bg-orange-800 bg-orange-600 hover:bg-orange-700 text-white text-xs font-bold py-2 px-3 rounded-lg text-center transition-colors"
+                                            className="bg-orange-700 hover:bg-orange-800 dark:bg-orange-600 dark:hover:bg-orange-700 text-white text-xs font-bold py-2 px-3 rounded-lg text-center transition-colors"
                                         >
                                             Visit Website →
                                         </a>
@@ -129,7 +129,7 @@ export default function RetailerMap({ height = 600 }: RetailerMapProps) {
                                         href={`https://www.google.com/maps/dir/?api=1&destination=${encodeURIComponent(`${loc.address}, ${loc.city}, ${loc.province}, ${loc.postal_code}`)}`}
                                         target="_blank"
                                         rel="noopener noreferrer"
-                                        className="bg-gray-200 bg-gray-600 hover:bg-gray-300 hover:bg-gray-500 text-gray-900 text-gray-100 text-xs font-bold py-2 px-3 rounded-lg text-center transition-colors"
+                                        className="bg-gray-200 dark:bg-gray-600 hover:bg-gray-300 dark:hover:bg-gray-500 text-gray-900 dark:text-gray-100 text-xs font-bold py-2 px-3 rounded-lg text-center transition-colors"
                                     >
                                         Get Directions
                                     </a>

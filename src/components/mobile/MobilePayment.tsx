@@ -385,7 +385,7 @@ export const MobilePayment: React.FC<MobilePaymentProps> = ({
   return (
     <div className={`space-y-4 ${className}`}>
       <div className="text-center mb-6">
-        <h3 className="font-heading text-lg font-semibold text-gray-900 text-gray-100 mb-2">
+        <h3 className="font-heading text-lg font-semibold text-gray-900 dark:text-gray-100 mb-2">
           {uiCopy.choosePaymentMethod}
         </h3>
         <div className="text-2xl font-bold text-[#5B2EFF]">
@@ -402,12 +402,12 @@ export const MobilePayment: React.FC<MobilePaymentProps> = ({
                 disabled={isProcessing}
                 className={`w-full p-4 h-auto flex items-center justify-between border-2 transition-all ${selectedMethod === payment.id
                   ? 'border-[#5B2EFF] bg-[#5B2EFF]/10'
-                  : 'border-gray-200 border-gray-700 hover:border-[#5B2EFF]/50'
+                  : 'border-gray-200 dark:border-gray-700 hover:border-[#5B2EFF]/50'
                   } ${payment.id === 'apple-pay'
-                    ? 'bg-black hover:bg-gray-800 text-white text-gray-100'
+                    ? 'bg-black hover:bg-gray-800 text-white dark:text-gray-100'
                     : payment.id === 'google-pay'
-                      ? 'bg-[#4285f4] hover:bg-[#3367d6] text-white text-gray-100'
-                      : 'bg-white bg-gray-800 text-gray-900 text-gray-100'
+                      ? 'bg-[#4285f4] hover:bg-[#3367d6] text-white dark:text-gray-100'
+                      : 'bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100'
                   }`}
                 variant="outline"
               >
@@ -425,14 +425,14 @@ export const MobilePayment: React.FC<MobilePaymentProps> = ({
                 )}
               </Button>
             ) : (
-              <div className="w-full p-4 border-2 border-gray-200 border-gray-700 rounded-lg bg-gray-50 bg-gray-800/50 opacity-50">
+              <div className="w-full p-4 border-2 border-gray-200 dark:border-gray-700 rounded-lg bg-gray-50 dark:bg-gray-800/50 opacity-50">
                 <div className="flex items-center space-x-3">
                   <span className="text-2xl grayscale">{payment.icon}</span>
                   <div className="text-left">
-                    <div className="font-semibold text-gray-600 text-gray-400">
+                    <div className="font-semibold text-gray-600 dark:text-gray-400">
                       {payment.name} {uiCopy.notAvailableSuffix}
                     </div>
-                    <div className="text-sm text-gray-500 text-gray-400">
+                    <div className="text-sm text-gray-500 dark:text-gray-400">
                       {uiCopy.notSupportedOnDevice}
                     </div>
                   </div>
@@ -444,18 +444,18 @@ export const MobilePayment: React.FC<MobilePaymentProps> = ({
       </div>
 
       {/* Security Notice */}
-      <div className="mt-6 p-4 bg-green-50 bg-green-900/20 rounded-lg border border-green-200 border-green-800">
-        <div className="flex items-center space-x-2 text-green-800 text-green-200">
+      <div className="mt-6 p-4 bg-green-50 dark:bg-green-900/20 rounded-lg border border-green-200 dark:border-green-800">
+        <div className="flex items-center space-x-2 text-green-800 dark:text-green-200">
           <Shield className="w-5 h-5" />
           <span className="font-semibold">{t('paymentSecurity.securePayment') || 'Secure Payment'}</span>
         </div>
-        <p className="text-green-700 text-green-400 text-sm mt-1">
+        <p className="text-green-700 dark:text-green-400 text-sm mt-1">
           {t('paymentSecurity.sslEncryptedCheckout') || 'Your payment information is encrypted and secure. We never store your payment details.'}
         </p>
       </div>
 
       {/* Mobile-specific features */}
-      <div className="md:hidden mt-4 text-center text-sm text-gray-600 text-gray-400">
+      <div className="md:hidden mt-4 text-center text-sm text-gray-600 dark:text-gray-400">
         <p>💡 {uiCopy.biometricTip}</p>
       </div>
     </div>
@@ -521,13 +521,13 @@ const ExpressCheckoutButtons: React.FC<ExpressCheckoutButtonsProps> = ({
 
   return (
     <div className={`space-y-3 ${className}`}>
-      <div className="text-center text-sm text-gray-600 text-gray-400 mb-3">
+      <div className="text-center text-sm text-gray-600 dark:text-gray-400 mb-3">
         {uiCopy.expressCheckout}
       </div>
 
       {showApplePay && (
         <button
-          className="w-full bg-black bg-black text-white text-gray-100 rounded-lg p-3 flex items-center justify-center space-x-2 hover:bg-gray-800 hover:bg-gray-700 transition-colors"
+          className="w-full bg-black dark:bg-black text-white dark:text-gray-100 rounded-lg p-3 flex items-center justify-center space-x-2 hover:bg-gray-800 dark:hover:bg-gray-700 transition-colors"
           onClick={handleApplePayExpress}
         >
           <span>🍎</span>
@@ -537,7 +537,7 @@ const ExpressCheckoutButtons: React.FC<ExpressCheckoutButtonsProps> = ({
 
       {showGooglePay && (
         <button
-          className="w-full bg-[#4285f4] text-white text-gray-100 rounded-lg p-3 flex items-center justify-center space-x-2 hover:bg-[#3367d6] transition-colors"
+          className="w-full bg-[#4285f4] text-white dark:text-gray-100 rounded-lg p-3 flex items-center justify-center space-x-2 hover:bg-[#3367d6] transition-colors"
           onClick={handleGooglePayExpress}
         >
           <span>🟢</span>
@@ -545,7 +545,7 @@ const ExpressCheckoutButtons: React.FC<ExpressCheckoutButtonsProps> = ({
         </button>
       )}
 
-      <div className="text-center text-xs text-gray-500 text-gray-400">
+      <div className="text-center text-xs text-gray-500 dark:text-gray-400">
         {uiCopy.regularCheckoutHint}
       </div>
     </div>

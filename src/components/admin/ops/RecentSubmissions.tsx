@@ -38,10 +38,10 @@ const platformIcons: Record<string, React.ElementType> = {
 };
 
 const platformColors: Record<string, string> = {
-  facebook: 'bg-blue-100 bg-blue-900/30 text-blue-600 text-blue-400',
-  linkedin: 'bg-blue-100 bg-blue-900/30 text-blue-700 text-blue-300',
-  instagram: 'bg-pink-100 bg-pink-900/30 text-pink-600 text-pink-400',
-  blog: 'bg-teal-100 bg-teal-900/30 text-teal-600 text-teal-400'
+  facebook: 'bg-blue-100 dark:bg-blue-900/30 text-blue-600 dark:text-blue-400',
+  linkedin: 'bg-blue-100 dark:bg-blue-900/30 text-blue-700 dark:text-blue-300',
+  instagram: 'bg-pink-100 dark:bg-pink-900/30 text-pink-600 dark:text-pink-400',
+  blog: 'bg-teal-100 dark:bg-teal-900/30 text-teal-600 dark:text-teal-400'
 };
 
 const statusConfig: Record<SocialPostStatus, {
@@ -51,34 +51,34 @@ const statusConfig: Record<SocialPostStatus, {
 }> = {
   DRAFT: {
     label: 'Draft',
-    color: 'bg-gray-100 bg-gray-700 text-gray-600 text-gray-400',
+    color: 'bg-gray-100 dark:bg-gray-700 text-gray-600 dark:text-gray-400',
     icon: FileText
   },
   SCHEDULED: {
     label: 'Scheduled',
-    color: 'bg-yellow-100 bg-yellow-900/30 text-yellow-600 text-yellow-400',
+    color: 'bg-yellow-100 dark:bg-yellow-900/30 text-yellow-600 dark:text-yellow-400',
     icon: Calendar
   },
   PUBLISHED: {
     label: 'Published',
-    color: 'bg-green-100 bg-green-900/30 text-green-600 text-green-400',
+    color: 'bg-green-100 dark:bg-green-900/30 text-green-600 dark:text-green-400',
     icon: CheckCircle
   },
   FAILED: {
     label: 'Failed',
-    color: 'bg-red-100 bg-red-900/30 text-red-600 text-red-400',
+    color: 'bg-red-100 dark:bg-red-900/30 text-red-600 dark:text-red-400',
     icon: XCircle
   }
 };
 
 function SubmissionSkeleton() {
   return (
-    <div className="animate-pulse p-4 border-b border-gray-100 border-gray-700">
+    <div className="animate-pulse p-4 border-b border-gray-100 dark:border-gray-700">
       <div className="flex items-start space-x-3">
-        <div className="w-8 h-8 bg-gray-200 bg-gray-700 rounded" />
+        <div className="w-8 h-8 bg-gray-200 dark:bg-gray-700 rounded" />
         <div className="flex-1">
-          <div className="h-4 bg-gray-200 bg-gray-700 rounded w-3/4 mb-2" />
-          <div className="h-3 bg-gray-200 bg-gray-700 rounded w-1/2" />
+          <div className="h-4 bg-gray-200 dark:bg-gray-700 rounded w-3/4 mb-2" />
+          <div className="h-3 bg-gray-200 dark:bg-gray-700 rounded w-1/2" />
         </div>
       </div>
     </div>
@@ -123,11 +123,11 @@ export function RecentSubmissions({ onRefresh }: RecentSubmissionsProps) {
     <motion.div
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
-      className="bg-white bg-gray-800 rounded-xl border border-gray-200 border-gray-700"
+      className="bg-white dark:bg-gray-800 rounded-xl border border-gray-200 dark:border-gray-700"
     >
       {/* Header */}
-      <div className="flex items-center justify-between p-4 border-b border-gray-200 border-gray-700">
-        <h2 className="text-lg font-semibold text-gray-900 text-gray-50">
+      <div className="flex items-center justify-between p-4 border-b border-gray-200 dark:border-gray-700">
+        <h2 className="text-lg font-semibold text-gray-900 dark:text-gray-50">
           Recent Submissions
         </h2>
         <div className="flex items-center space-x-2">
@@ -135,7 +135,7 @@ export function RecentSubmissions({ onRefresh }: RecentSubmissionsProps) {
           <select
             value={statusFilter}
             onChange={(e) => setStatusFilter(e.target.value as SocialPostStatus | 'all')}
-            className="px-3 py-1.5 text-sm border border-gray-300 border-gray-600 rounded-lg bg-white bg-gray-700 text-gray-900 text-gray-50"
+            className="px-3 py-1.5 text-sm border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-700 text-gray-900 dark:text-gray-50"
           >
             <option value="all">All</option>
             <option value="DRAFT">Draft</option>
@@ -147,7 +147,7 @@ export function RecentSubmissions({ onRefresh }: RecentSubmissionsProps) {
           {/* Refresh Button */}
           <button
             onClick={handleRefresh}
-            className="p-2 text-gray-500 text-gray-400 hover:text-gray-700 hover:text-gray-200 hover:bg-gray-100 hover:bg-gray-700 rounded-lg transition-colors"
+            className="p-2 text-gray-500 dark:text-gray-400 hover:text-gray-700 dark:hover:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-700 rounded-lg transition-colors"
           >
             <RefreshCw className="w-4 h-4" />
           </button>
@@ -155,11 +155,11 @@ export function RecentSubmissions({ onRefresh }: RecentSubmissionsProps) {
       </div>
 
       {/* Content */}
-      <div className="divide-y divide-gray-100 divide-gray-700 max-h-[400px] overflow-y-auto">
+      <div className="divide-y divide-gray-100 dark:divide-gray-700 max-h-[400px] overflow-y-auto">
         {isLoading ? (
           [1, 2, 3, 4, 5].map((i) => <SubmissionSkeleton key={i} />)
         ) : posts.length === 0 ? (
-          <div className="text-center py-8 text-gray-500 text-gray-400">
+          <div className="text-center py-8 text-gray-500 dark:text-gray-400">
             <Clock className="w-12 h-12 mx-auto mb-3 opacity-50" />
             <p>No submissions yet</p>
             <p className="text-sm mt-1">Create your first post above</p>
@@ -175,7 +175,7 @@ export function RecentSubmissions({ onRefresh }: RecentSubmissionsProps) {
                 initial={{ opacity: 0, x: -20 }}
                 animate={{ opacity: 1, x: 0 }}
                 transition={{ delay: index * 0.05 }}
-                className="p-4 hover:bg-gray-50 hover:bg-gray-700/50 transition-colors"
+                className="p-4 hover:bg-gray-50 dark:hover:bg-gray-700/50 transition-colors"
               >
                 <div className="flex items-start justify-between mb-2">
                   {/* Platforms */}
@@ -204,12 +204,12 @@ export function RecentSubmissions({ onRefresh }: RecentSubmissionsProps) {
                 </div>
 
                 {/* Content Preview */}
-                <p className="text-sm text-gray-700 text-gray-300 line-clamp-2 mb-2">
+                <p className="text-sm text-gray-700 dark:text-gray-300 line-clamp-2 mb-2">
                   {post.content}
                 </p>
 
                 {/* Timestamp */}
-                <p className="text-xs text-gray-500 text-gray-400">
+                <p className="text-xs text-gray-500 dark:text-gray-400">
                   {post.publishedAt
                     ? `Published ${formatDistanceToNow(new Date(post.publishedAt), { addSuffix: true })}`
                     : post.scheduledAt

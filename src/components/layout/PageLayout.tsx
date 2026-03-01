@@ -9,7 +9,7 @@ interface PageLayoutProps {
 
 export const PageLayout: React.FC<PageLayoutProps> = ({ 
   children, 
-  className = "min-h-screen bg-[#FFFFF5] bg-gray-900 transition-colors duration-300",
+  className = "min-h-screen bg-[#FFFFF5] dark:bg-gray-900 transition-colors duration-300",
   containerized = false 
 }) => {
   if (containerized) {

@@ -68,13 +68,13 @@ export function MobileFloatingCTA() {
         flex items-center justify-center
         w-14 h-14 rounded-full
         bg-orange-500 hover:bg-orange-600
-        bg-orange-600 hover:bg-orange-500
-        text-white text-gray-100
+        dark:bg-orange-600 dark:hover:bg-orange-500
+        text-white dark:text-gray-100
         shadow-lg hover:shadow-xl
         transition-all duration-200
         hover:scale-105
         focus:outline-none focus:ring-2 focus:ring-orange-400 focus:ring-offset-2
-        focus:ring-orange-500 focus:ring-offset-gray-900
+        dark:focus:ring-orange-500 dark:focus:ring-offset-gray-900
       "
       aria-label={t('nav.buyNow') || 'Buy Now'}
     >

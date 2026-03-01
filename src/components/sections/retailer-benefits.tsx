@@ -81,13 +81,13 @@ export function RetailerBenefits() {
   ];
 
   return (
-    <section className="py-16 bg-gray-50 bg-gray-800">
+    <section className="py-16 bg-gray-50 dark:bg-gray-800">
       <Container>
         <div className="text-center mb-12">
-          <h2 className="font-heading text-3xl md:text-4xl font-bold text-gray-900 text-gray-50 mb-4">
+          <h2 className="font-heading text-3xl md:text-4xl font-bold text-gray-900 dark:text-gray-50 mb-4">
             {t('retailers.benefits.title') || 'Why Retailers Choose Purrify'}
           </h2>
-          <p className="text-xl text-gray-600 text-gray-300 max-w-3xl mx-auto">
+          <p className="text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
             {t('retailers.benefits.description') || 'Join hundreds of successful pet stores and retailers who have added Purrify to their product lineup with outstanding results.'}
           </p>
         </div>
@@ -96,24 +96,24 @@ export function RetailerBenefits() {
           {benefits.map((benefit, index) => (
             <div
               key={index}
-              className="bg-white bg-gray-900 rounded-xl p-6 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2 border border-gray-200 border-gray-700"
+              className="bg-white dark:bg-gray-900 rounded-xl p-6 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2 border border-gray-200 dark:border-gray-700"
             >
-              <div className="w-16 h-16 bg-gradient-to-br from-[#5B2EFF]/10 to-[#3694FF]/20 from-[#3694FF]/20 to-[#5B2EFF]/10 rounded-xl flex items-center justify-center mb-4 text-[#5B2EFF] text-[#3694FF]">
+              <div className="w-16 h-16 bg-gradient-to-br from-[#5B2EFF]/10 to-[#3694FF]/20 dark:from-[#3694FF]/20 dark:to-[#5B2EFF]/10 rounded-xl flex items-center justify-center mb-4 text-[#5B2EFF] dark:text-[#3694FF]">
                 {benefit.icon}
               </div>
 
-              <h3 className="font-heading text-xl font-bold text-gray-900 text-gray-50 mb-3">
+              <h3 className="font-heading text-xl font-bold text-gray-900 dark:text-gray-50 mb-3">
                 {benefit.title}
               </h3>
 
-              <p className="text-gray-600 text-gray-300 mb-4 leading-relaxed">
+              <p className="text-gray-600 dark:text-gray-300 mb-4 leading-relaxed">
                 {benefit.description}
               </p>
 
-              <div className="pt-4 border-t border-gray-200 border-gray-700">
+              <div className="pt-4 border-t border-gray-200 dark:border-gray-700">
                 <div className="flex items-center">
                   <div className="w-2 h-2 bg-gradient-to-r from-[#5B2EFF] to-[#3694FF] rounded-full mr-3"></div>
-                  <span className="text-sm font-semibold text-[#5B2EFF] text-[#3694FF]">
+                  <span className="text-sm font-semibold text-[#5B2EFF] dark:text-[#3694FF]">
                     {benefit.stats}
                   </span>
                 </div>
@@ -123,16 +123,16 @@ export function RetailerBenefits() {
         </div>
 
         {/* Success Stories Preview */}
-        <div className="mt-16 bg-gradient-to-r from-[#5B2EFF]/5 to-[#3694FF]/5 from-[#3694FF]/10 to-[#5B2EFF]/10 rounded-2xl p-8">
+        <div className="mt-16 bg-gradient-to-r from-[#5B2EFF]/5 to-[#3694FF]/5 dark:from-[#3694FF]/10 dark:to-[#5B2EFF]/10 rounded-2xl p-8">
           <div className="text-center">
-            <h3 className="font-heading text-2xl font-bold text-gray-900 text-gray-50 mb-4">
+            <h3 className="font-heading text-2xl font-bold text-gray-900 dark:text-gray-50 mb-4">
               {t('retailers.benefits.success.title') || 'Real Success Stories'}
             </h3>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
               {successMetrics.map((metric, index) => (
                 <div key={metric.label}>
-                  <div className={`text-3xl font-bold mb-2 ${index === 1 ? 'text-[#FF3131] text-[#FF5050]' : 'text-[#5B2EFF] text-[#3694FF]'}`}>{metric.value}</div>
-                  <div className="text-gray-600 text-gray-300">{metric.label}</div>
+                  <div className={`text-3xl font-bold mb-2 ${index === 1 ? 'text-[#FF3131] dark:text-[#FF5050]' : 'text-[#5B2EFF] dark:text-[#3694FF]'}`}>{metric.value}</div>
+                  <div className="text-gray-600 dark:text-gray-300">{metric.label}</div>
                 </div>
               ))}
             </div>

@@ -248,22 +248,22 @@ export default function ArmAndHammerClient() {
     const trialCtaLabel = `${t('nav.trialSize')} - ${trialPrice}`;
 
     return (
-        <main className="min-h-screen bg-gradient-to-br from-[#FFFFFF] via-[#FFFFF5] to-[#FFFFFF] from-gray-900 via-gray-950 to-gray-900">
-            <section className="py-4 border-b border-gray-200 border-gray-800">
+        <main className="min-h-screen bg-gradient-to-br from-[#FFFFFF] via-[#FFFFF5] to-[#FFFFFF] dark:from-gray-900 dark:via-gray-950 dark:to-gray-900">
+            <section className="py-4 border-b border-gray-200 dark:border-gray-800">
                 <Container>
                     <nav aria-label={copy.breadcrumbAria} className="flex items-center space-x-2 text-sm">
-                        <Link href={localizePath('/', locale)} className="flex items-center text-gray-500 text-gray-400 hover:text-[#FF3131] hover:text-[#FF5050] transition-colors">
+                        <Link href={localizePath('/', locale)} className="flex items-center text-gray-500 dark:text-gray-400 hover:text-[#FF3131] dark:hover:text-[#FF5050] transition-colors">
                             <Home className="w-4 h-4" />
                         </Link>
                         <span className="flex items-center">
-                            <ChevronRight className="w-4 h-4 mx-1 text-gray-400 text-gray-500" />
-                            <Link href={localizePath('/learn', locale)} className="text-gray-500 text-gray-400 hover:text-[#FF3131] hover:text-[#FF5050] transition-colors">
+                            <ChevronRight className="w-4 h-4 mx-1 text-gray-400 dark:text-gray-500" />
+                            <Link href={localizePath('/learn', locale)} className="text-gray-500 dark:text-gray-400 hover:text-[#FF3131] dark:hover:text-[#FF5050] transition-colors">
                                 {t('nav.learn')}
                             </Link>
                         </span>
                         <span className="flex items-center">
-                            <ChevronRight className="w-4 h-4 mx-1 text-gray-400 text-gray-500" />
-                            <span className="font-medium text-gray-900 text-gray-100">{copy.titleTop}</span>
+                            <ChevronRight className="w-4 h-4 mx-1 text-gray-400 dark:text-gray-500" />
+                            <span className="font-medium text-gray-900 dark:text-gray-100">{copy.titleTop}</span>
                         </span>
                     </nav>
                 </Container>
@@ -272,22 +272,22 @@ export default function ArmAndHammerClient() {
             <section className="py-16">
                 <Container>
                     <div className="text-center max-w-4xl mx-auto">
-                        <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-orange-100 bg-orange-900/30 text-orange-800 text-orange-200 text-sm font-medium mb-6">
+                        <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-orange-100 dark:bg-orange-900/30 text-orange-800 dark:text-orange-200 text-sm font-medium mb-6">
                             <Beaker className="w-4 h-4" />
                             <span>{copy.badge}</span>
                         </div>
 
-                        <h1 className="font-heading text-4xl md:text-5xl font-bold mb-6 text-gray-900 text-gray-50 leading-tight">
+                        <h1 className="font-heading text-4xl md:text-5xl font-bold mb-6 text-gray-900 dark:text-gray-50 leading-tight">
                             {copy.titleTop}
                             <br />
-                            <span className="text-[#FF3131] text-[#FF5050]">{copy.titleHighlight}</span>
+                            <span className="text-[#FF3131] dark:text-[#FF5050]">{copy.titleHighlight}</span>
                         </h1>
-                        <p className="text-xl text-gray-600 text-gray-300 max-w-3xl mx-auto leading-relaxed mb-8">
+                        <p className="text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto leading-relaxed mb-8">
                             {copy.intro} <strong>{copy.introStrong}</strong>
                         </p>
 
                         <div className="relative max-w-2xl mx-auto">
-                            <div className="absolute -inset-4 bg-gradient-to-r from-[#FF3131]/20 to-[#5B2EFF]/30 from-[#FF5050]/10 to-[#3694FF]/20 rounded-3xl blur-xl opacity-70" />
+                            <div className="absolute -inset-4 bg-gradient-to-r from-[#FF3131]/20 to-[#5B2EFF]/30 dark:from-[#FF5050]/10 dark:to-[#3694FF]/20 rounded-3xl blur-xl opacity-70" />
                             <div className="relative">
                                 <Image
                                     src="/optimized/blog/activated-carbon-vs-baking-soda-comparison.webp"
@@ -303,34 +303,34 @@ export default function ArmAndHammerClient() {
                 </Container>
             </section>
 
-            <section className="py-16 bg-white bg-gray-800/50">
+            <section className="py-16 bg-white dark:bg-gray-800/50">
                 <Container>
-                    <div className="bg-white bg-gray-800 rounded-2xl p-8 shadow-xl border border-gray-200 border-gray-700">
-                        <h2 className="text-2xl font-heading font-bold text-gray-900 text-gray-100 mb-6">{copy.problemTitle}</h2>
+                    <div className="bg-white dark:bg-gray-800 rounded-2xl p-8 shadow-xl border border-gray-200 dark:border-gray-700">
+                        <h2 className="text-2xl font-heading font-bold text-gray-900 dark:text-gray-100 mb-6">{copy.problemTitle}</h2>
                         <div className="grid md:grid-cols-2 gap-8 items-start">
                             <div>
-                                <p className="text-gray-700 text-gray-300 mb-4">{copy.problemP1}</p>
-                                <p className="text-gray-700 text-gray-300 mb-4">{copy.problemP2}</p>
+                                <p className="text-gray-700 dark:text-gray-300 mb-4">{copy.problemP1}</p>
+                                <p className="text-gray-700 dark:text-gray-300 mb-4">{copy.problemP2}</p>
 
-                                <div className="bg-red-50 bg-red-900/20 border border-red-200 border-red-800 rounded-lg p-4 mb-4">
-                                    <p className="text-red-800 text-red-200 font-medium">{`${copy.reactionLabel}: ${copy.reactionValue}`}</p>
-                                    <p className="text-red-700 text-red-300 text-sm mt-2">{copy.reactionResult}</p>
+                                <div className="bg-red-50 dark:bg-red-900/20 border border-red-200 dark:border-red-800 rounded-lg p-4 mb-4">
+                                    <p className="text-red-800 dark:text-red-200 font-medium">{`${copy.reactionLabel}: ${copy.reactionValue}`}</p>
+                                    <p className="text-red-700 dark:text-red-300 text-sm mt-2">{copy.reactionResult}</p>
                                 </div>
 
-                                <p className="text-gray-700 text-gray-300">{copy.problemP3}</p>
+                                <p className="text-gray-700 dark:text-gray-300">{copy.problemP3}</p>
                             </div>
 
-                            <div className="bg-gray-50 bg-gray-700/50 rounded-xl p-6">
-                                <h3 className="font-bold text-gray-900 text-gray-100 mb-4">{copy.whatItDoesTitle}</h3>
+                            <div className="bg-gray-50 dark:bg-gray-700/50 rounded-xl p-6">
+                                <h3 className="font-bold text-gray-900 dark:text-gray-100 mb-4">{copy.whatItDoesTitle}</h3>
                                 <ul className="space-y-3">
                                     {copy.limits.map((item, index) => (
                                         <li key={`${item}-${index}`} className="flex items-start gap-2">
                                             {index < 2 ? (
-                                                <Check className="w-5 h-5 text-green-500 text-green-400 mt-0.5 flex-shrink-0" />
+                                                <Check className="w-5 h-5 text-green-500 dark:text-green-400 mt-0.5 flex-shrink-0" />
                                             ) : (
-                                                <X className="w-5 h-5 text-red-500 text-red-400 mt-0.5 flex-shrink-0" />
+                                                <X className="w-5 h-5 text-red-500 dark:text-red-400 mt-0.5 flex-shrink-0" />
                                             )}
-                                            <span className="text-gray-700 text-gray-300">{item}</span>
+                                            <span className="text-gray-700 dark:text-gray-300">{item}</span>
                                         </li>
                                     ))}
                                 </ul>
@@ -342,70 +342,70 @@ export default function ArmAndHammerClient() {
 
             <section className="py-16">
                 <Container>
-                    <div className="bg-gradient-to-br from-green-50 to-emerald-50 from-green-900/20 to-emerald-900/20 rounded-2xl p-8 border border-green-200 border-green-800">
-                        <h2 className="text-2xl font-heading font-bold text-gray-900 text-gray-100 mb-4">{copy.solutionTitle}</h2>
-                        <p className="text-gray-700 text-gray-300 mb-8 text-lg">{copy.solutionIntro}</p>
+                    <div className="bg-gradient-to-br from-green-50 to-emerald-50 dark:from-green-900/20 dark:to-emerald-900/20 rounded-2xl p-8 border border-green-200 dark:border-green-800">
+                        <h2 className="text-2xl font-heading font-bold text-gray-900 dark:text-gray-100 mb-4">{copy.solutionTitle}</h2>
+                        <p className="text-gray-700 dark:text-gray-300 mb-8 text-lg">{copy.solutionIntro}</p>
 
                         <div className="grid md:grid-cols-3 gap-6 mb-8">
                             {copy.solutionCards.map((card, index) => (
-                                <div key={card.title} className="bg-white bg-gray-800 rounded-xl p-6 text-center">
-                                    <div className="w-12 h-12 bg-green-100 bg-green-900/50 rounded-full flex items-center justify-center mx-auto mb-4">
-                                        {index === 0 ? <Beaker className="w-6 h-6 text-green-600 text-green-400" /> : index === 1 ? <Clock className="w-6 h-6 text-green-600 text-green-400" /> : <Leaf className="w-6 h-6 text-green-600 text-green-400" />}
+                                <div key={card.title} className="bg-white dark:bg-gray-800 rounded-xl p-6 text-center">
+                                    <div className="w-12 h-12 bg-green-100 dark:bg-green-900/50 rounded-full flex items-center justify-center mx-auto mb-4">
+                                        {index === 0 ? <Beaker className="w-6 h-6 text-green-600 dark:text-green-400" /> : index === 1 ? <Clock className="w-6 h-6 text-green-600 dark:text-green-400" /> : <Leaf className="w-6 h-6 text-green-600 dark:text-green-400" />}
                                     </div>
-                                    <h3 className="font-bold text-gray-900 text-gray-100 mb-2">{card.title}</h3>
-                                    <p className="text-sm text-gray-600 text-gray-400">{card.body}</p>
+                                    <h3 className="font-bold text-gray-900 dark:text-gray-100 mb-2">{card.title}</h3>
+                                    <p className="text-sm text-gray-600 dark:text-gray-400">{card.body}</p>
                                 </div>
                             ))}
                         </div>
 
-                        <div className="bg-white bg-gray-800 rounded-xl p-6">
-                            <h3 className="font-bold text-gray-900 text-gray-100 mb-4">{copy.surfaceTitle}</h3>
+                        <div className="bg-white dark:bg-gray-800 rounded-xl p-6">
+                            <h3 className="font-bold text-gray-900 dark:text-gray-100 mb-4">{copy.surfaceTitle}</h3>
                             <div className="grid md:grid-cols-2 gap-6">
                                 <div>
                                     <div className="flex justify-between mb-2">
-                                        <span className="text-gray-700 text-gray-300">{copy.tableHeaders.arm}</span>
-                                        <span className="font-mono text-gray-900 text-gray-100">{copy.surfaceArmValue}</span>
+                                        <span className="text-gray-700 dark:text-gray-300">{copy.tableHeaders.arm}</span>
+                                        <span className="font-mono text-gray-900 dark:text-gray-100">{copy.surfaceArmValue}</span>
                                     </div>
-                                    <div className="h-3 bg-gray-200 bg-gray-700 rounded-full overflow-hidden">
-                                        <div className="h-full bg-red-400 bg-red-500 rounded-full" style={{ width: '2%' }} />
+                                    <div className="h-3 bg-gray-200 dark:bg-gray-700 rounded-full overflow-hidden">
+                                        <div className="h-full bg-red-400 dark:bg-red-500 rounded-full" style={{ width: '2%' }} />
                                     </div>
                                 </div>
                                 <div>
                                     <div className="flex justify-between mb-2">
-                                        <span className="text-gray-700 text-gray-300">{copy.tableHeaders.purrify}</span>
-                                        <span className="font-mono text-gray-900 text-gray-100">{copy.surfacePurrifyValue}</span>
+                                        <span className="text-gray-700 dark:text-gray-300">{copy.tableHeaders.purrify}</span>
+                                        <span className="font-mono text-gray-900 dark:text-gray-100">{copy.surfacePurrifyValue}</span>
                                     </div>
-                                    <div className="h-3 bg-gray-200 bg-gray-700 rounded-full overflow-hidden">
-                                        <div className="h-full bg-green-500 bg-green-400 rounded-full" style={{ width: '100%' }} />
+                                    <div className="h-3 bg-gray-200 dark:bg-gray-700 rounded-full overflow-hidden">
+                                        <div className="h-full bg-green-500 dark:bg-green-400 rounded-full" style={{ width: '100%' }} />
                                     </div>
                                 </div>
                             </div>
-                            <p className="text-center text-sm text-gray-500 text-gray-400 mt-4">{copy.surfaceCaption}</p>
+                            <p className="text-center text-sm text-gray-500 dark:text-gray-400 mt-4">{copy.surfaceCaption}</p>
                         </div>
                     </div>
                 </Container>
             </section>
 
-            <section className="py-16 bg-white bg-gray-800/50">
+            <section className="py-16 bg-white dark:bg-gray-800/50">
                 <Container>
-                    <h2 className="text-2xl font-heading font-bold text-gray-900 text-gray-100 mb-6 text-center">{copy.tableTitle}</h2>
+                    <h2 className="text-2xl font-heading font-bold text-gray-900 dark:text-gray-100 mb-6 text-center">{copy.tableTitle}</h2>
                     <div className="overflow-x-auto">
-                        <table className="w-full border-collapse bg-white bg-gray-800 rounded-xl overflow-hidden shadow-lg">
+                        <table className="w-full border-collapse bg-white dark:bg-gray-800 rounded-xl overflow-hidden shadow-lg">
                             <thead>
-                                <tr className="bg-gray-100 bg-gray-700">
-                                    <th className="p-4 text-left text-gray-900 text-gray-100 font-bold">{copy.tableHeaders.feature}</th>
-                                    <th className="p-4 text-left text-gray-900 text-gray-100 font-bold">{copy.tableHeaders.arm}</th>
-                                    <th className="p-4 text-left text-gray-900 text-gray-100 font-bold">{copy.tableHeaders.purrify}</th>
+                                <tr className="bg-gray-100 dark:bg-gray-700">
+                                    <th className="p-4 text-left text-gray-900 dark:text-gray-100 font-bold">{copy.tableHeaders.feature}</th>
+                                    <th className="p-4 text-left text-gray-900 dark:text-gray-100 font-bold">{copy.tableHeaders.arm}</th>
+                                    <th className="p-4 text-left text-gray-900 dark:text-gray-100 font-bold">{copy.tableHeaders.purrify}</th>
                                 </tr>
                             </thead>
                             <tbody>
                                 {copy.comparison.map((row, index) => (
-                                    <tr key={row.feature} className={index % 2 === 0 ? 'bg-white bg-gray-800' : 'bg-gray-50 bg-gray-750'}>
-                                        <td className="p-4 text-gray-700 text-gray-300 font-medium">{row.feature}</td>
-                                        <td className={`p-4 ${row.winner === 'purrify' ? 'text-gray-500 text-gray-400' : 'text-gray-700 text-gray-300'}`}>
+                                    <tr key={row.feature} className={index % 2 === 0 ? 'bg-white dark:bg-gray-800' : 'bg-gray-50 dark:bg-gray-750'}>
+                                        <td className="p-4 text-gray-700 dark:text-gray-300 font-medium">{row.feature}</td>
+                                        <td className={`p-4 ${row.winner === 'purrify' ? 'text-gray-500 dark:text-gray-400' : 'text-gray-700 dark:text-gray-300'}`}>
                                             {row.armHammer}
                                         </td>
-                                        <td className={`p-4 ${row.winner === 'purrify' ? 'text-green-700 text-green-400 font-medium' : 'text-gray-700 text-gray-300'}`}>
+                                        <td className={`p-4 ${row.winner === 'purrify' ? 'text-green-700 dark:text-green-400 font-medium' : 'text-gray-700 dark:text-gray-300'}`}>
                                             {row.winner === 'purrify' && <Check className="w-4 h-4 inline mr-1" />}
                                             {row.purrify}
                                         </td>
@@ -420,18 +420,18 @@ export default function ArmAndHammerClient() {
             <section className="py-16">
                 <Container>
                     <div className="max-w-4xl mx-auto">
-                        <h2 className="text-2xl font-bold text-gray-900 text-gray-50 mb-2">{copy.howToTitle}</h2>
-                        <p className="text-gray-700 text-gray-300 mb-4">{copy.howToIntro}</p>
-                        <p className="text-sm text-gray-500 text-gray-400 mb-6">{copy.howToTime}</p>
+                        <h2 className="text-2xl font-bold text-gray-900 dark:text-gray-50 mb-2">{copy.howToTitle}</h2>
+                        <p className="text-gray-700 dark:text-gray-300 mb-4">{copy.howToIntro}</p>
+                        <p className="text-sm text-gray-500 dark:text-gray-400 mb-6">{copy.howToTime}</p>
                         <ol className="space-y-6">
                             {copy.howTo.map((step, index) => (
-                                <li key={step.title} className="relative pl-12 pb-6 border-l-2 border-green-200 border-green-800 last:border-l-0 last:pb-0">
-                                    <div className="absolute left-0 top-0 -translate-x-1/2 w-8 h-8 rounded-full bg-green-500 bg-green-600 text-white text-gray-100 flex items-center justify-center font-bold text-sm">
+                                <li key={step.title} className="relative pl-12 pb-6 border-l-2 border-green-200 dark:border-green-800 last:border-l-0 last:pb-0">
+                                    <div className="absolute left-0 top-0 -translate-x-1/2 w-8 h-8 rounded-full bg-green-500 dark:bg-green-600 text-white dark:text-gray-100 flex items-center justify-center font-bold text-sm">
                                         {index + 1}
                                     </div>
-                                    <div className="bg-gray-50 bg-gray-800 rounded-lg p-4">
-                                        <h3 className="font-semibold text-gray-900 text-gray-50 mb-2">{step.title}</h3>
-                                        <p className="text-gray-700 text-gray-300">{step.body}</p>
+                                    <div className="bg-gray-50 dark:bg-gray-800 rounded-lg p-4">
+                                        <h3 className="font-semibold text-gray-900 dark:text-gray-50 mb-2">{step.title}</h3>
+                                        <p className="text-gray-700 dark:text-gray-300">{step.body}</p>
                                     </div>
                                 </li>
                             ))}
@@ -440,15 +440,15 @@ export default function ArmAndHammerClient() {
                 </Container>
             </section>
 
-            <section className="py-16 bg-white bg-gray-800/50">
+            <section className="py-16 bg-white dark:bg-gray-800/50">
                 <Container>
-                    <div className="bg-white bg-gray-800 rounded-2xl p-8 shadow-lg border border-gray-200 border-gray-700">
-                        <h2 className="text-2xl font-heading font-bold text-gray-900 text-gray-100 mb-6 text-center">{copy.socialTitle}</h2>
+                    <div className="bg-white dark:bg-gray-800 rounded-2xl p-8 shadow-lg border border-gray-200 dark:border-gray-700">
+                        <h2 className="text-2xl font-heading font-bold text-gray-900 dark:text-gray-100 mb-6 text-center">{copy.socialTitle}</h2>
                         <div className="grid md:grid-cols-2 gap-6">
                             {copy.testimonials.map((item) => (
-                                <blockquote key={item.author} className="bg-gray-50 bg-gray-700/50 rounded-xl p-6">
-                                    <p className="text-gray-700 text-gray-300 italic mb-4">{item.quote}</p>
-                                    <footer className="text-sm text-gray-500 text-gray-400">{item.author}</footer>
+                                <blockquote key={item.author} className="bg-gray-50 dark:bg-gray-700/50 rounded-xl p-6">
+                                    <p className="text-gray-700 dark:text-gray-300 italic mb-4">{item.quote}</p>
+                                    <footer className="text-sm text-gray-500 dark:text-gray-400">{item.author}</footer>
                                 </blockquote>
                             ))}
                         </div>
@@ -458,18 +458,18 @@ export default function ArmAndHammerClient() {
 
             <section className="py-16">
                 <Container>
-                    <div className="bg-gradient-to-r from-[#FF3131] to-[#FF5050] rounded-2xl p-8 text-center text-white text-gray-100">
+                    <div className="bg-gradient-to-r from-[#FF3131] to-[#FF5050] rounded-2xl p-8 text-center text-white dark:text-gray-100">
                         <h2 className="text-3xl font-heading font-bold mb-4">{copy.ctaTitle}</h2>
                         <p className="text-lg mb-6 opacity-90 max-w-2xl mx-auto">{copy.ctaBody}</p>
                         <div className="flex flex-col sm:flex-row gap-4 justify-center">
                             <a href={trialCheckoutUrl} target="_blank" rel="noopener noreferrer">
-                                <Button size="lg" className="bg-white bg-gray-900 text-[#FF3131] hover:bg-gray-100 hover:bg-gray-700 font-bold shadow-xl">
+                                <Button size="lg" className="bg-white dark:bg-gray-900 text-[#FF3131] hover:bg-gray-100 dark:hover:bg-gray-700 font-bold shadow-xl">
                                     <Shield className="w-5 h-5 mr-2" />
                                     {trialCtaLabel}
                                 </Button>
                             </a>
                             <Link href={localizePath('/products', locale)}>
-                                <Button size="lg" variant="outline" className="border-white border-gray-600 text-gray-900 text-gray-50 bg-white bg-gray-800 hover:bg-gray-50 hover:bg-gray-700 hover:text-gray-900 transition-colors">
+                                <Button size="lg" variant="outline" className="border-white dark:border-gray-600 text-gray-900 dark:text-gray-50 bg-white dark:bg-gray-800 hover:bg-gray-50 dark:hover:bg-gray-700 hover:text-gray-900 transition-colors">
                                     {copy.ctaSecondary}
                                 </Button>
                             </Link>
@@ -479,19 +479,19 @@ export default function ArmAndHammerClient() {
                 </Container>
             </section>
 
-            <section className="py-16 bg-white bg-gray-800/50">
+            <section className="py-16 bg-white dark:bg-gray-800/50">
                 <Container>
                     <div className="max-w-4xl mx-auto">
-                        <h2 className="text-2xl font-bold text-gray-900 text-gray-50 mb-6">{copy.faqTitle}</h2>
+                        <h2 className="text-2xl font-bold text-gray-900 dark:text-gray-50 mb-6">{copy.faqTitle}</h2>
                         <div className="space-y-3">
                             {copy.faqs.map((item) => (
-                                <div key={item.question} className="border border-gray-200 border-gray-700 rounded-lg overflow-hidden">
+                                <div key={item.question} className="border border-gray-200 dark:border-gray-700 rounded-lg overflow-hidden">
                                     <details className="group">
-                                        <summary className="w-full px-4 py-4 flex items-center justify-between text-left bg-white bg-gray-900 hover:bg-gray-50 hover:bg-gray-800 transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-green-500 focus-visible:ring-offset-2 cursor-pointer list-none">
-                                            <span className="font-medium text-gray-900 text-gray-100 pr-4">{item.question}</span>
-                                            <ChevronRight className="w-5 h-5 text-gray-500 text-gray-400 flex-shrink-0 transition-transform duration-200 group-open:rotate-90" />
+                                        <summary className="w-full px-4 py-4 flex items-center justify-between text-left bg-white dark:bg-gray-900 hover:bg-gray-50 dark:hover:bg-gray-800 transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-green-500 focus-visible:ring-offset-2 cursor-pointer list-none">
+                                            <span className="font-medium text-gray-900 dark:text-gray-100 pr-4">{item.question}</span>
+                                            <ChevronRight className="w-5 h-5 text-gray-500 dark:text-gray-400 flex-shrink-0 transition-transform duration-200 group-open:rotate-90" />
                                         </summary>
-                                        <div className="px-4 pb-4 pt-0 text-gray-700 text-gray-300 border-t border-gray-100 border-gray-800">
+                                        <div className="px-4 pb-4 pt-0 text-gray-700 dark:text-gray-300 border-t border-gray-100 dark:border-gray-800">
                                             <div className="pt-3">{item.answer}</div>
                                         </div>
                                     </details>
@@ -504,14 +504,14 @@ export default function ArmAndHammerClient() {
 
             <section className="py-16">
                 <Container>
-                    <h2 className="text-2xl font-heading font-bold text-gray-900 text-gray-100 mb-6">{copy.relatedTitle}</h2>
+                    <h2 className="text-2xl font-heading font-bold text-gray-900 dark:text-gray-100 mb-6">{copy.relatedTitle}</h2>
                     <div className="grid md:grid-cols-3 gap-6">
                         {copy.related.map((item) => (
-                            <Link key={item.href} href={localizePath(item.href, locale)} className="bg-white bg-gray-800 rounded-xl p-6 shadow-md hover:shadow-lg transition-all border border-gray-200 border-gray-700 group">
-                                <h3 className="font-bold text-gray-900 text-gray-100 mb-2 group-hover:text-[#FF3131] group-hover:text-[#FF5050] transition-colors">
+                            <Link key={item.href} href={localizePath(item.href, locale)} className="bg-white dark:bg-gray-800 rounded-xl p-6 shadow-md hover:shadow-lg transition-all border border-gray-200 dark:border-gray-700 group">
+                                <h3 className="font-bold text-gray-900 dark:text-gray-100 mb-2 group-hover:text-[#FF3131] dark:group-hover:text-[#FF5050] transition-colors">
                                     {item.title}
                                 </h3>
-                                <p className="text-sm text-gray-600 text-gray-400">{item.description}</p>
+                                <p className="text-sm text-gray-600 dark:text-gray-400">{item.description}</p>
                             </Link>
                         ))}
                     </div>

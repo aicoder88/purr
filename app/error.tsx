@@ -41,55 +41,55 @@ const getErrorMessage = (statusCode: number): ErrorInfo => {
       return {
         title: '400 - Bad Request',
         message: 'The request could not be understood by the server due to malformed syntax. Please check the URL and try again.',
-        icon: <AlertCircle className="w-12 h-12 text-orange-500 text-orange-400" />
+        icon: <AlertCircle className="w-12 h-12 text-orange-500 dark:text-orange-400" />
       };
     case 401:
       return {
         title: '401 - Unauthorized',
         message: 'You need to authenticate to access this resource. Please sign in to continue.',
-        icon: <Lock className="w-12 h-12 text-orange-500 text-orange-400" />
+        icon: <Lock className="w-12 h-12 text-orange-500 dark:text-orange-400" />
       };
     case 403:
       return {
         title: '403 - Access Denied',
         message: 'You do not have permission to access this resource. Contact support if you believe this is an error.',
-        icon: <Lock className="w-12 h-12 text-red-500 text-red-400" />
+        icon: <Lock className="w-12 h-12 text-red-500 dark:text-red-400" />
       };
     case 404:
       return {
         title: '404 - Page Not Found',
         message: 'The page you are looking for might have been moved, deleted, or perhaps never existed.',
-        icon: <FileSearch className="w-12 h-12 text-blue-500 text-blue-400" />
+        icon: <FileSearch className="w-12 h-12 text-blue-500 dark:text-blue-400" />
       };
     case 429:
       return {
         title: '429 - Too Many Requests',
         message: 'You have sent too many requests in a given amount of time. Please wait a moment and try again.',
-        icon: <Clock className="w-12 h-12 text-yellow-500 text-yellow-400" />
+        icon: <Clock className="w-12 h-12 text-yellow-500 dark:text-yellow-400" />
       };
     case 500:
       return {
         title: '500 - Internal Server Error',
         message: 'Something went wrong on our end. Our team has been notified and is working on a fix.',
-        icon: <ServerCrash className="w-12 h-12 text-red-500 text-red-400" />
+        icon: <ServerCrash className="w-12 h-12 text-red-500 dark:text-red-400" />
       };
     case 502:
       return {
         title: '502 - Bad Gateway',
         message: 'We are experiencing temporary issues connecting to our servers. Please try again in a few minutes.',
-        icon: <ServerCrash className="w-12 h-12 text-red-500 text-red-400" />
+        icon: <ServerCrash className="w-12 h-12 text-red-500 dark:text-red-400" />
       };
     case 503:
       return {
         title: '503 - Service Unavailable',
         message: 'The service is temporarily unavailable. We are likely performing maintenance. Please try again later.',
-        icon: <ServerCrash className="w-12 h-12 text-orange-500 text-orange-400" />
+        icon: <ServerCrash className="w-12 h-12 text-orange-500 dark:text-orange-400" />
       };
     case 504:
       return {
         title: '504 - Gateway Timeout',
         message: 'The request took too long to complete. This could be due to high traffic. Please try again.',
-        icon: <Clock className="w-12 h-12 text-orange-500 text-orange-400" />
+        icon: <Clock className="w-12 h-12 text-orange-500 dark:text-orange-400" />
       };
     default:
       return {
@@ -284,7 +284,7 @@ export default function Error({ error, reset }: ErrorPageProps) {
   }, []);
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-gray-50 to-white from-gray-900 to-gray-950">
+    <div className="min-h-screen bg-gradient-to-b from-gray-50 to-white dark:from-gray-900 dark:to-gray-950">
       <Container className="py-16 md:py-24">
         <div className="max-w-3xl mx-auto text-center px-4">
           {/* Animated Logo */}
@@ -295,7 +295,7 @@ export default function Error({ error, reset }: ErrorPageProps) {
                 alt={`${SITE_NAME} Logo`}
                 width={120}
                 height={120}
-                className="h-20 w-auto hidden"
+                className="h-20 w-auto dark:hidden"
                 priority
               />
               <Image
@@ -303,7 +303,7 @@ export default function Error({ error, reset }: ErrorPageProps) {
                 alt={`${SITE_NAME} Logo`}
                 width={120}
                 height={120}
-                className="h-20 w-auto hidden block"
+                className="h-20 w-auto hidden dark:block"
                 priority
               />
             </div>
@@ -312,31 +312,31 @@ export default function Error({ error, reset }: ErrorPageProps) {
           {/* Error Icon */}
           <div className="flex justify-center mb-6">
             <div className={`p-4 rounded-full ${isServerError
-              ? 'bg-red-100 bg-red-900/30'
+              ? 'bg-red-100 dark:bg-red-900/30'
               : isClientError && statusCode !== 404
-                ? 'bg-orange-100 bg-orange-900/30'
-                : 'bg-blue-100 bg-blue-900/30'
+                ? 'bg-orange-100 dark:bg-orange-900/30'
+                : 'bg-blue-100 dark:bg-blue-900/30'
               }`}>
               {errorInfo.icon}
             </div>
           </div>
 
           {/* Title */}
-          <h1 className="font-heading text-3xl md:text-4xl lg:text-5xl font-bold mb-4 text-gray-900 text-gray-50">
+          <h1 className="font-heading text-3xl md:text-4xl lg:text-5xl font-bold mb-4 text-gray-900 dark:text-gray-50">
             {errorInfo.title}
           </h1>
 
           {/* Message */}
-          <p className="text-lg md:text-xl mb-8 text-gray-600 text-gray-300 max-w-2xl mx-auto leading-relaxed">
+          <p className="text-lg md:text-xl mb-8 text-gray-600 dark:text-gray-300 max-w-2xl mx-auto leading-relaxed">
             {errorInfo.message}
           </p>
 
           {/* Status Code Display */}
-          <div className="mb-8 inline-flex items-center gap-2 px-4 py-2 bg-gray-100 bg-gray-800 rounded-full">
-            <span className="text-sm font-medium text-gray-500 text-gray-400">Error Code:</span>
+          <div className="mb-8 inline-flex items-center gap-2 px-4 py-2 bg-gray-100 dark:bg-gray-800 rounded-full">
+            <span className="text-sm font-medium text-gray-500 dark:text-gray-400">Error Code:</span>
             <span className={`text-sm font-bold ${isServerError
-              ? 'text-red-600 text-red-400'
-              : 'text-orange-600 text-orange-400'
+              ? 'text-red-600 dark:text-red-400'
+              : 'text-orange-600 dark:text-orange-400'
               }`}>
               {statusCode}
             </span>
@@ -344,12 +344,12 @@ export default function Error({ error, reset }: ErrorPageProps) {
 
           {/* Server Error Help Section */}
           {isServerError && (
-            <div className="mb-8 p-5 bg-red-50 bg-red-900/20 rounded-xl border border-red-200 border-red-800/50">
-              <h2 className="font-heading text-lg font-semibold mb-3 text-red-800 text-red-200 flex items-center justify-center gap-2">
+            <div className="mb-8 p-5 bg-red-50 dark:bg-red-900/20 rounded-xl border border-red-200 dark:border-red-800/50">
+              <h2 className="font-heading text-lg font-semibold mb-3 text-red-800 dark:text-red-200 flex items-center justify-center gap-2">
                 <AlertTriangle className="w-5 h-5" />
                 What can you do?
               </h2>
-              <ul className="text-sm text-red-700 text-red-300 space-y-2 text-left max-w-md mx-auto">
+              <ul className="text-sm text-red-700 dark:text-red-300 space-y-2 text-left max-w-md mx-auto">
                 <li className="flex items-start gap-2">
                   <span className="text-red-500 mt-0.5">•</span>
                   <span>Try refreshing the page in a few minutes</span>
@@ -372,27 +372,27 @@ export default function Error({ error, reset }: ErrorPageProps) {
 
           {/* Client Error Help Section (non-404) */}
           {isClientError && statusCode !== 404 && (
-            <div className="mb-8 p-5 bg-orange-50 bg-orange-900/20 rounded-xl border border-orange-200 border-orange-800/50">
-              <h2 className="font-heading text-lg font-semibold mb-3 text-orange-800 text-orange-200 flex items-center justify-center gap-2">
+            <div className="mb-8 p-5 bg-orange-50 dark:bg-orange-900/20 rounded-xl border border-orange-200 dark:border-orange-800/50">
+              <h2 className="font-heading text-lg font-semibold mb-3 text-orange-800 dark:text-orange-200 flex items-center justify-center gap-2">
                 <AlertCircle className="w-5 h-5" />
                 What can you do?
               </h2>
-              <ul className="text-sm text-orange-700 text-orange-300 space-y-2 text-left max-w-md mx-auto">
+              <ul className="text-sm text-orange-700 dark:text-orange-300 space-y-2 text-left max-w-md mx-auto">
                 <li className="flex items-start gap-2">
-                  <span className="text-orange-500 text-orange-400 mt-0.5">•</span>
+                  <span className="text-orange-500 dark:text-orange-400 mt-0.5">•</span>
                   <span>Check the URL for any typos</span>
                 </li>
                 <li className="flex items-start gap-2">
-                  <span className="text-orange-500 text-orange-400 mt-0.5">•</span>
+                  <span className="text-orange-500 dark:text-orange-400 mt-0.5">•</span>
                   <span>Make sure you are logged in if required</span>
                 </li>
                 <li className="flex items-start gap-2">
-                  <span className="text-orange-500 text-orange-400 mt-0.5">•</span>
+                  <span className="text-orange-500 dark:text-orange-400 mt-0.5">•</span>
                   <span>Try accessing the resource again</span>
                 </li>
                 {(statusCode === 401 || statusCode === 403) && (
                   <li className="flex items-start gap-2">
-                    <span className="text-orange-500 text-orange-400 mt-0.5">•</span>
+                    <span className="text-orange-500 dark:text-orange-400 mt-0.5">•</span>
                     <span>Sign out and sign back in to refresh your session</span>
                   </li>
                 )}
@@ -415,7 +415,7 @@ export default function Error({ error, reset }: ErrorPageProps) {
               onClick={navigateHome}
               variant="outline"
               size="lg"
-              className="border-2 border-gray-300 border-gray-600 hover:border-[#5B2EFF] hover:border-[#5B2EFF] hover:text-[#5B2EFF] hover:text-[#8B5CF6] font-medium py-3 px-8 rounded-full transition-all duration-300 min-w-[180px]"
+              className="border-2 border-gray-300 dark:border-gray-600 hover:border-[#5B2EFF] dark:hover:border-[#5B2EFF] hover:text-[#5B2EFF] dark:hover:text-[#8B5CF6] font-medium py-3 px-8 rounded-full transition-all duration-300 min-w-[180px]"
             >
               <Home className="w-4 h-4 mr-2" />
               Go Home
@@ -423,8 +423,8 @@ export default function Error({ error, reset }: ErrorPageProps) {
           </div>
 
           {/* Suggested Pages */}
-          <div className="mb-12 p-6 bg-gray-50 bg-gray-800/50 rounded-2xl border border-gray-200 border-gray-700">
-            <h2 className="font-heading text-xl font-semibold mb-6 text-gray-900 text-gray-100">
+          <div className="mb-12 p-6 bg-gray-50 dark:bg-gray-800/50 rounded-2xl border border-gray-200 dark:border-gray-700">
+            <h2 className="font-heading text-xl font-semibold mb-6 text-gray-900 dark:text-gray-100">
               You might be looking for:
             </h2>
 
@@ -433,17 +433,17 @@ export default function Error({ error, reset }: ErrorPageProps) {
                 <Link
                   key={page.path}
                   href={page.path}
-                  className="group p-4 border border-gray-200 border-gray-600 rounded-xl bg-white bg-gray-800 hover:bg-gray-50 hover:bg-gray-700 hover:shadow-md hover:border-[#5B2EFF]/30 hover:border-[#5B2EFF]/30 transition-all duration-300 text-left flex items-start gap-3"
+                  className="group p-4 border border-gray-200 dark:border-gray-600 rounded-xl bg-white dark:bg-gray-800 hover:bg-gray-50 dark:hover:bg-gray-700 hover:shadow-md hover:border-[#5B2EFF]/30 dark:hover:border-[#5B2EFF]/30 transition-all duration-300 text-left flex items-start gap-3"
                 >
-                  <div className="p-2 bg-gray-100 bg-gray-700 rounded-lg text-gray-600 text-gray-400 group-hover:bg-[#5B2EFF]/10 group-hover:text-[#5B2EFF] group-hover:text-[#8B5CF6] transition-colors">
+                  <div className="p-2 bg-gray-100 dark:bg-gray-700 rounded-lg text-gray-600 dark:text-gray-400 group-hover:bg-[#5B2EFF]/10 group-hover:text-[#5B2EFF] dark:group-hover:text-[#8B5CF6] transition-colors">
                     {page.icon}
                   </div>
                   <div className="flex-1 min-w-0">
-                    <span className="font-medium text-gray-900 text-gray-100 group-hover:text-[#5B2EFF] group-hover:text-[#8B5CF6] transition-colors flex items-center gap-1">
+                    <span className="font-medium text-gray-900 dark:text-gray-100 group-hover:text-[#5B2EFF] dark:group-hover:text-[#8B5CF6] transition-colors flex items-center gap-1">
                       {page.title}
                       <ArrowRight className="w-3 h-3 opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all" />
                     </span>
-                    <span className="text-sm text-gray-500 text-gray-400 block mt-0.5">
+                    <span className="text-sm text-gray-500 dark:text-gray-400 block mt-0.5">
                       {page.description}
                     </span>
                   </div>
@@ -455,17 +455,17 @@ export default function Error({ error, reset }: ErrorPageProps) {
           {/* Error Details (Development Only) */}
           {process.env.NODE_ENV === 'development' && (
             <details className="text-left">
-              <summary className="text-sm text-gray-600 text-gray-400 cursor-pointer hover:text-gray-800 hover:text-gray-200 transition-colors py-2">
+              <summary className="text-sm text-gray-600 dark:text-gray-400 cursor-pointer hover:text-gray-800 dark:hover:text-gray-200 transition-colors py-2">
                 Developer Details
               </summary>
-              <div className="mt-3 text-xs bg-gray-100 bg-gray-800 rounded-lg p-4 overflow-auto">
-                <div className="mb-2 font-semibold text-gray-800 text-gray-200">
+              <div className="mt-3 text-xs bg-gray-100 dark:bg-gray-800 rounded-lg p-4 overflow-auto">
+                <div className="mb-2 font-semibold text-gray-800 dark:text-gray-200">
                   {error.name}: {error.message}
                 </div>
-                <div className="mb-2 text-gray-600 text-gray-400">
+                <div className="mb-2 text-gray-600 dark:text-gray-400">
                   Status Code: {statusCode} | Digest: {error.digest || 'N/A'}
                 </div>
-                <pre className="text-gray-600 text-gray-400 whitespace-pre-wrap break-words font-mono text-[11px]">
+                <pre className="text-gray-600 dark:text-gray-400 whitespace-pre-wrap break-words font-mono text-[11px]">
                   {error.stack}
                 </pre>
               </div>
@@ -473,11 +473,11 @@ export default function Error({ error, reset }: ErrorPageProps) {
           )}
 
           {/* Footer Message */}
-          <p className="mt-8 text-sm text-gray-500 text-gray-500">
+          <p className="mt-8 text-sm text-gray-500 dark:text-gray-500">
             If this problem persists, please{' '}
             <Link
               href="/support/"
-              className="text-[#5B2EFF] hover:text-[#4B1EEF] text-[#8B5CF6] hover:text-[#A78BFA] underline underline-offset-2 transition-colors"
+              className="text-[#5B2EFF] hover:text-[#4B1EEF] dark:text-[#8B5CF6] dark:hover:text-[#A78BFA] underline underline-offset-2 transition-colors"
             >
               contact our support team
             </Link>

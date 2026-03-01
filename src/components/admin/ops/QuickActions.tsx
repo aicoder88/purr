@@ -63,37 +63,37 @@ function QuickActionCard({
       whileTap={{ scale: 0.98 }}
       className={`flex items-center space-x-4 p-4 rounded-xl border transition-all cursor-pointer ${
         isPrimary
-          ? 'bg-teal-50 bg-teal-900/20 border-teal-200 border-teal-800 hover:border-teal-400 hover:border-teal-600'
-          : 'bg-white bg-gray-800 border-gray-200 border-gray-700 hover:border-teal-300 hover:border-teal-700'
-      } hover:shadow-md hover:shadow-gray-900/30`}
+          ? 'bg-teal-50 dark:bg-teal-900/20 border-teal-200 dark:border-teal-800 hover:border-teal-400 dark:hover:border-teal-600'
+          : 'bg-white dark:bg-gray-800 border-gray-200 dark:border-gray-700 hover:border-teal-300 dark:hover:border-teal-700'
+      } hover:shadow-md dark:hover:shadow-gray-900/30`}
     >
       <div className={`p-3 rounded-lg ${
         isPrimary
-          ? 'bg-teal-100 bg-teal-800/50'
-          : 'bg-gray-100 bg-gray-700'
+          ? 'bg-teal-100 dark:bg-teal-800/50'
+          : 'bg-gray-100 dark:bg-gray-700'
       }`}>
         {isLoading ? (
           <Loader2 className={`w-5 h-5 animate-spin ${
-            isPrimary ? 'text-teal-600 text-teal-400' : 'text-gray-700 text-gray-300'
+            isPrimary ? 'text-teal-600 dark:text-teal-400' : 'text-gray-700 dark:text-gray-300'
           }`} />
         ) : status === 'success' ? (
-          <CheckCircle className="w-5 h-5 text-green-600 text-green-400" />
+          <CheckCircle className="w-5 h-5 text-green-600 dark:text-green-400" />
         ) : status === 'error' ? (
-          <AlertCircle className="w-5 h-5 text-red-600 text-red-400" />
+          <AlertCircle className="w-5 h-5 text-red-600 dark:text-red-400" />
         ) : (
           <Icon className={`w-5 h-5 ${
-            isPrimary ? 'text-teal-600 text-teal-400' : 'text-gray-700 text-gray-300'
+            isPrimary ? 'text-teal-600 dark:text-teal-400' : 'text-gray-700 dark:text-gray-300'
           }`} />
         )}
       </div>
       <div className="flex-1">
         <h3 className={`font-medium ${
-          isPrimary ? 'text-teal-900 text-teal-100' : 'text-gray-900 text-gray-50'
+          isPrimary ? 'text-teal-900 dark:text-teal-100' : 'text-gray-900 dark:text-gray-50'
         }`}>
           {title}
         </h3>
         <p className={`text-sm ${
-          isPrimary ? 'text-teal-700 text-teal-300' : 'text-gray-500 text-gray-400'
+          isPrimary ? 'text-teal-700 dark:text-teal-300' : 'text-gray-500 dark:text-gray-400'
         }`}>
           {isLoading ? 'Processing...' : status === 'success' ? 'Done!' : status === 'error' ? 'Failed' : description}
         </p>
@@ -173,7 +173,7 @@ export function QuickActions({ onSync, onExport }: QuickActionsProps) {
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
     >
-      <h2 className="text-lg font-semibold text-gray-900 text-gray-50 mb-4">
+      <h2 className="text-lg font-semibold text-gray-900 dark:text-gray-50 mb-4">
         Quick Actions
       </h2>
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">

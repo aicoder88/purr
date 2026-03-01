@@ -130,7 +130,7 @@ export default async function HomePage() {
       <main
         id="main-content"
         role="main"
-        className="overflow-x-clip bg-gradient-to-br from-purple-50 via-pink-50 to-orange-50 from-gray-950 via-purple-950/20 to-gray-900"
+        className="overflow-x-clip bg-gradient-to-br from-purple-50 via-pink-50 to-orange-50 dark:from-gray-950 dark:via-purple-950/20 dark:to-gray-900"
       >
         {/* Section 1: Hero */}
         <ErrorBoundary>
@@ -175,7 +175,7 @@ export default async function HomePage() {
         <div className="cv-auto cis-720">
           <ErrorBoundary>
             <LazyClientLocationsMap
-              className="bg-gradient-to-br from-purple-50 via-pink-50 to-orange-50 from-gray-950 via-purple-950/20 to-gray-900"
+              className="bg-gradient-to-br from-purple-50 via-pink-50 to-orange-50 dark:from-gray-950 dark:via-purple-950/20 dark:to-gray-900"
               height="400"
             />
           </ErrorBoundary>

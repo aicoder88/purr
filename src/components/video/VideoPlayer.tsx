@@ -157,16 +157,16 @@ export function VideoPlayer({
   if (hasError) {
     return (
       <div className={cn(
-        'relative bg-gray-100 bg-gray-800 rounded-lg overflow-hidden',
+        'relative bg-gray-100 dark:bg-gray-800 rounded-lg overflow-hidden',
         className
       )}>
         <div className="aspect-video flex items-center justify-center">
           <div className="text-center">
-            <div className="text-red-500 text-red-400 mb-2">❌</div>
-            <p className="text-gray-600 text-gray-300">Failed to load video</p>
+            <div className="text-red-500 dark:text-red-400 mb-2">❌</div>
+            <p className="text-gray-600 dark:text-gray-300">Failed to load video</p>
             <button
               onClick={handleReload}
-              className="mt-2 text-blue-600 text-blue-400 hover:underline text-sm"
+              className="mt-2 text-blue-600 dark:text-blue-400 hover:underline text-sm"
             >
               Try again
             </button>
@@ -193,7 +193,7 @@ export function VideoPlayer({
         aria-label={title}
       >
         <source src={src} type="video/mp4" />
-        <p className="text-white text-gray-100">
+        <p className="text-white dark:text-gray-100">
           Your browser does not support the video tag.
         </p>
       </video>
@@ -201,7 +201,7 @@ export function VideoPlayer({
       {/* Loading Overlay */}
       {isLoading && (
         <div className="absolute inset-0 bg-black/50 flex items-center justify-center">
-          <div className="w-8 h-8 border-2 border-white border-gray-100 border-t-transparent rounded-full animate-spin" />
+          <div className="w-8 h-8 border-2 border-white dark:border-gray-100 border-t-transparent rounded-full animate-spin" />
         </div>
       )}
 
@@ -210,10 +210,10 @@ export function VideoPlayer({
         <div className="absolute inset-0 flex items-center justify-center bg-black/20 group-hover:bg-black/40 transition-colors">
           <button
             onClick={togglePlay}
-            className="w-16 h-16 bg-white bg-gray-100/90 rounded-full flex items-center justify-center hover:bg-gray-50 hover:bg-white transition-colors shadow-lg"
+            className="w-16 h-16 bg-white dark:bg-gray-100/90 rounded-full flex items-center justify-center hover:bg-gray-50 dark:hover:bg-white transition-colors shadow-lg"
             aria-label="Play video"
           >
-            <Play className="w-8 h-8 text-gray-900 text-gray-800 ml-1" />
+            <Play className="w-8 h-8 text-gray-900 dark:text-gray-800 ml-1" />
           </button>
         </div>
       )}
@@ -232,7 +232,7 @@ export function VideoPlayer({
               max="100"
               value={duration ? (currentTime / duration) * 100 : 0}
               onChange={handleSeek}
-              className="w-full h-1 bg-white bg-gray-900/30 rounded-lg appearance-none cursor-pointer slider"
+              className="w-full h-1 bg-white dark:bg-gray-900/30 rounded-lg appearance-none cursor-pointer slider"
             />
           </div>
 
@@ -241,7 +241,7 @@ export function VideoPlayer({
             <div className="flex items-center space-x-3">
               <button
                 onClick={togglePlay}
-                className="text-white text-gray-100 hover:text-gray-300 hover:text-gray-300 transition-colors"
+                className="text-white dark:text-gray-100 hover:text-gray-300 dark:hover:text-gray-300 transition-colors"
                 aria-label={isPlaying ? 'Pause' : 'Play'}
               >
                 {isPlaying ? <Pause className="w-6 h-6" /> : <Play className="w-6 h-6" />}
@@ -249,7 +249,7 @@ export function VideoPlayer({
 
               <button
                 onClick={restart}
-                className="text-white text-gray-100 hover:text-gray-300 hover:text-gray-300 transition-colors"
+                className="text-white dark:text-gray-100 hover:text-gray-300 dark:hover:text-gray-300 transition-colors"
                 aria-label="Restart video"
               >
                 <RotateCcw className="w-5 h-5" />
@@ -257,20 +257,20 @@ export function VideoPlayer({
 
               <button
                 onClick={toggleMute}
-                className="text-white text-gray-100 hover:text-gray-300 hover:text-gray-300 transition-colors"
+                className="text-white dark:text-gray-100 hover:text-gray-300 dark:hover:text-gray-300 transition-colors"
                 aria-label={isMuted ? 'Unmute' : 'Mute'}
               >
                 {isMuted ? <VolumeX className="w-5 h-5" /> : <Volume2 className="w-5 h-5" />}
               </button>
 
-              <span className="text-white text-gray-100 text-sm">
+              <span className="text-white dark:text-gray-100 text-sm">
                 {formatTime(currentTime)} / {formatTime(duration)}
               </span>
             </div>
 
             <button
               onClick={toggleFullscreen}
-              className="text-white text-gray-100 hover:text-gray-300 hover:text-gray-300 transition-colors"
+              className="text-white dark:text-gray-100 hover:text-gray-300 dark:hover:text-gray-300 transition-colors"
               aria-label="Fullscreen"
             >
               <Maximize className="w-5 h-5" />
@@ -284,12 +284,12 @@ export function VideoPlayer({
         <div className="absolute top-4 left-4 right-4 opacity-0 group-hover:opacity-100 transition-opacity">
           <div className="bg-black/60 rounded-lg p-3 backdrop-blur-sm">
             {title && (
-              <h3 className="font-heading text-white text-gray-100 font-semibold text-lg mb-1">
+              <h3 className="font-heading text-white dark:text-gray-100 font-semibold text-lg mb-1">
                 {title}
               </h3>
             )}
             {description && (
-              <p className="text-white/90 text-gray-200 text-sm">
+              <p className="text-white/90 dark:text-gray-200 text-sm">
                 {description}
               </p>
             )}
@@ -364,8 +364,8 @@ export function VideoGallery({ videos, className }: VideoGalleryProps) {
               className={cn(
                 'px-4 py-2 rounded-full text-sm font-medium transition-colors',
                 filter === category
-                  ? 'bg-blue-600 bg-blue-600 text-white text-gray-100'
-                  : 'bg-gray-100 bg-gray-800 text-gray-700 text-gray-200 hover:bg-gray-200 hover:bg-gray-700'
+                  ? 'bg-blue-600 dark:bg-blue-600 text-white dark:text-gray-100'
+                  : 'bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-200 hover:bg-gray-200 dark:hover:bg-gray-700'
               )}
             >
               {category === 'all' ? 'All Videos' : category}
@@ -395,8 +395,8 @@ export function VideoGallery({ videos, className }: VideoGalleryProps) {
               className={cn(
                 'flex space-x-3 p-3 rounded-lg cursor-pointer transition-colors',
                 selectedVideo.id === video.id
-                  ? 'bg-blue-50 bg-blue-900/20 border-2 border-blue-200 border-blue-700'
-                  : 'bg-gray-50 bg-gray-800 hover:bg-gray-100 hover:bg-gray-700'
+                  ? 'bg-blue-50 dark:bg-blue-900/20 border-2 border-blue-200 dark:border-blue-700'
+                  : 'bg-gray-50 dark:bg-gray-800 hover:bg-gray-100 dark:hover:bg-gray-700'
               )}
             >
               {video.poster && (
@@ -411,11 +411,11 @@ export function VideoGallery({ videos, className }: VideoGalleryProps) {
                 </div>
               )}
               <div className="flex-1 min-w-0">
-                <h4 className="font-medium text-gray-900 text-gray-50 text-sm line-clamp-2">
+                <h4 className="font-medium text-gray-900 dark:text-gray-50 text-sm line-clamp-2">
                   {video.title}
                 </h4>
                 {video.description && (
-                  <p className="text-gray-600 text-gray-300 text-xs mt-1 line-clamp-2">
+                  <p className="text-gray-600 dark:text-gray-300 text-xs mt-1 line-clamp-2">
                     {video.description}
                   </p>
                 )}

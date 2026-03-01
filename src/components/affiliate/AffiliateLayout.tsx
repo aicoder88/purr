@@ -89,21 +89,21 @@ export default function AffiliateLayout({ children }: AffiliateLayoutProps) {
   };
 
   return (
-    <div className="min-h-screen bg-gray-50 bg-gray-900">
+    <div className="min-h-screen bg-gray-50 dark:bg-gray-900">
       {/* Mobile Header */}
-      <div className="lg:hidden sticky top-0 z-40 bg-white bg-gray-800 border-b border-gray-200 border-gray-700">
+      <div className="lg:hidden sticky top-0 z-40 bg-white dark:bg-gray-800 border-b border-gray-200 dark:border-gray-700">
         <div className="flex items-center justify-between px-4 py-3">
           <Link href="/affiliate/dashboard" className="flex items-center space-x-2">
-            <div className="w-8 h-8 bg-purple-600 bg-purple-500 rounded-lg flex items-center justify-center">
-              <span className="text-white text-gray-100 font-bold text-sm">P</span>
+            <div className="w-8 h-8 bg-purple-600 dark:bg-purple-500 rounded-lg flex items-center justify-center">
+              <span className="text-white dark:text-gray-100 font-bold text-sm">P</span>
             </div>
-            <span className="text-lg font-semibold text-gray-900 text-gray-100">
+            <span className="text-lg font-semibold text-gray-900 dark:text-gray-100">
               {uiCopy.affiliateTitle}
             </span>
           </Link>
           <button
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-            className="p-2 text-gray-600 text-gray-300 hover:bg-gray-100 hover:bg-gray-700 rounded-lg"
+            className="p-2 text-gray-600 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 rounded-lg"
           >
             {isMobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
           </button>
@@ -111,7 +111,7 @@ export default function AffiliateLayout({ children }: AffiliateLayoutProps) {
 
         {/* Mobile Menu */}
         {isMobileMenuOpen && (
-          <div className="border-t border-gray-200 border-gray-700 bg-white bg-gray-800 py-2">
+          <div className="border-t border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-800 py-2">
             <nav className="space-y-1 px-2">
               {navigation.map((item) => {
                 const Icon = item.icon;
@@ -122,8 +122,8 @@ export default function AffiliateLayout({ children }: AffiliateLayoutProps) {
                     href={item.href}
                     onClick={() => setIsMobileMenuOpen(false)}
                     className={`flex items-center px-3 py-2 rounded-lg text-sm font-medium transition-colors ${isActive
-                        ? 'bg-purple-100 bg-purple-900/30 text-purple-700 text-purple-300'
-                        : 'text-gray-700 text-gray-300 hover:bg-gray-100 hover:bg-gray-700'
+                        ? 'bg-purple-100 dark:bg-purple-900/30 text-purple-700 dark:text-purple-300'
+                        : 'text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700'
                       }`}
                   >
                     <Icon className="w-5 h-5 mr-3" />
@@ -133,7 +133,7 @@ export default function AffiliateLayout({ children }: AffiliateLayoutProps) {
               })}
               <button
                 onClick={handleSignOut}
-                className="w-full flex items-center px-3 py-2 rounded-lg text-sm font-medium text-gray-700 text-gray-300 hover:bg-gray-100 hover:bg-gray-700 transition-colors"
+                className="w-full flex items-center px-3 py-2 rounded-lg text-sm font-medium text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors"
               >
                 <LogOut className="w-5 h-5 mr-3" />
                 {t('affiliateDashboard.logout') || 'Sign Out'}
@@ -145,35 +145,35 @@ export default function AffiliateLayout({ children }: AffiliateLayoutProps) {
 
       <div className="flex">
         {/* Desktop Sidebar */}
-        <aside className="hidden lg:flex lg:flex-col lg:w-64 lg:fixed lg:inset-y-0 bg-white bg-gray-800 border-r border-gray-200 border-gray-700">
+        <aside className="hidden lg:flex lg:flex-col lg:w-64 lg:fixed lg:inset-y-0 bg-white dark:bg-gray-800 border-r border-gray-200 dark:border-gray-700">
           {/* Logo */}
-          <div className="flex items-center h-16 px-6 border-b border-gray-200 border-gray-700">
+          <div className="flex items-center h-16 px-6 border-b border-gray-200 dark:border-gray-700">
             <Link href="/affiliate/dashboard" className="flex items-center space-x-2">
-              <div className="w-8 h-8 bg-purple-600 bg-purple-500 rounded-lg flex items-center justify-center">
-                <span className="text-white text-gray-100 font-bold text-sm">P</span>
+              <div className="w-8 h-8 bg-purple-600 dark:bg-purple-500 rounded-lg flex items-center justify-center">
+                <span className="text-white dark:text-gray-100 font-bold text-sm">P</span>
               </div>
-              <span className="text-lg font-semibold text-gray-900 text-gray-100">
+              <span className="text-lg font-semibold text-gray-900 dark:text-gray-100">
                 {uiCopy.affiliateTitle}
               </span>
             </Link>
           </div>
 
           {/* Affiliate Code */}
-          <div className="px-4 py-4 border-b border-gray-200 border-gray-700">
-            <p className="text-xs text-gray-500 text-gray-400 uppercase tracking-wider mb-1">
+          <div className="px-4 py-4 border-b border-gray-200 dark:border-gray-700">
+            <p className="text-xs text-gray-500 dark:text-gray-400 uppercase tracking-wider mb-1">
               {t('affiliateDashboard.overview.yourCode') || 'Your Code'}
             </p>
             <button
               onClick={copyCode}
-              className="flex items-center justify-between w-full px-3 py-2 bg-gray-100 bg-gray-700 rounded-lg hover:bg-gray-200 hover:bg-gray-600 transition-colors group"
+              className="flex items-center justify-between w-full px-3 py-2 bg-gray-100 dark:bg-gray-700 rounded-lg hover:bg-gray-200 dark:hover:bg-gray-600 transition-colors group"
             >
-              <code className="text-sm font-mono text-purple-600 text-purple-400">
+              <code className="text-sm font-mono text-purple-600 dark:text-purple-400">
                 {affiliateCode}
               </code>
               {codeCopied ? (
-                <Check className="w-4 h-4 text-green-500 text-green-400" />
+                <Check className="w-4 h-4 text-green-500 dark:text-green-400" />
               ) : (
-                <Copy className="w-4 h-4 text-gray-400 text-gray-500 group-hover:text-gray-600 group-hover:text-gray-300" />
+                <Copy className="w-4 h-4 text-gray-400 dark:text-gray-500 group-hover:text-gray-600 dark:group-hover:text-gray-300" />
               )}
             </button>
           </div>
@@ -188,8 +188,8 @@ export default function AffiliateLayout({ children }: AffiliateLayoutProps) {
                   key={item.href}
                   href={item.href}
                   className={`flex items-center px-3 py-2 rounded-lg text-sm font-medium transition-colors ${isActive
-                      ? 'bg-purple-100 bg-purple-900/30 text-purple-700 text-purple-300'
-                      : 'text-gray-700 text-gray-300 hover:bg-gray-100 hover:bg-gray-700'
+                      ? 'bg-purple-100 dark:bg-purple-900/30 text-purple-700 dark:text-purple-300'
+                      : 'text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700'
                     }`}
                 >
                   <Icon className="w-5 h-5 mr-3" />
@@ -200,18 +200,18 @@ export default function AffiliateLayout({ children }: AffiliateLayoutProps) {
           </nav>
 
           {/* User Section */}
-          <div className="p-4 border-t border-gray-200 border-gray-700">
+          <div className="p-4 border-t border-gray-200 dark:border-gray-700">
             <div className="flex items-center mb-3">
-              <div className="w-10 h-10 bg-purple-100 bg-purple-900/30 rounded-full flex items-center justify-center">
-                <span className="text-purple-600 text-purple-400 font-semibold">
+              <div className="w-10 h-10 bg-purple-100 dark:bg-purple-900/30 rounded-full flex items-center justify-center">
+                <span className="text-purple-600 dark:text-purple-400 font-semibold">
                   {session?.user?.name?.charAt(0).toUpperCase() || 'A'}
                 </span>
               </div>
               <div className="ml-3 flex-1 min-w-0">
-                <p className="text-sm font-medium text-gray-900 text-gray-100 truncate">
+                <p className="text-sm font-medium text-gray-900 dark:text-gray-100 truncate">
                   {session?.user?.name}
                 </p>
-                <p className="text-xs text-gray-500 text-gray-400 truncate">
+                <p className="text-xs text-gray-500 dark:text-gray-400 truncate">
                   {session?.user?.email}
                 </p>
               </div>
@@ -220,14 +220,14 @@ export default function AffiliateLayout({ children }: AffiliateLayoutProps) {
               <Link
                 href="/"
                 target="_blank"
-                className="flex-1 flex items-center justify-center px-3 py-2 text-xs text-gray-600 text-gray-300 hover:bg-gray-100 hover:bg-gray-700 rounded-lg transition-colors"
+                className="flex-1 flex items-center justify-center px-3 py-2 text-xs text-gray-600 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 rounded-lg transition-colors"
               >
                 <ExternalLink className="w-3 h-3 mr-1" />
                 {uiCopy.viewSite}
               </Link>
               <button
                 onClick={handleSignOut}
-                className="flex-1 flex items-center justify-center px-3 py-2 text-xs text-gray-600 text-gray-300 hover:bg-gray-100 hover:bg-gray-700 rounded-lg transition-colors"
+                className="flex-1 flex items-center justify-center px-3 py-2 text-xs text-gray-600 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 rounded-lg transition-colors"
               >
                 <LogOut className="w-3 h-3 mr-1" />
                 {t('affiliateDashboard.logout') || 'Sign Out'}

@@ -28,7 +28,7 @@ const TestimonialCard = ({ testimonial, index, colorScheme }: TestimonialCardPro
       style={staggerStyle}
     >
       <div className="absolute -top-6 left-1/2 transform -translate-x-1/2 z-10">
-        <div className="rounded-full border-4 border-white bg-white bg-gray-800 shadow-lg overflow-hidden w-16 h-16 group-hover:scale-110 transition-transform duration-300">
+        <div className="rounded-full border-4 border-white bg-white dark:bg-gray-800 shadow-lg overflow-hidden w-16 h-16 group-hover:scale-110 transition-transform duration-300">
           <Image
             src={generateAvatarUrl(testimonial.author, index)}
             alt={`Portrait photo of ${testimonial.author}, satisfied Purrify customer`}
@@ -90,14 +90,14 @@ export function Testimonials() {
                   element.scrollIntoView({ behavior: 'smooth' });
                 }
               }}
-              className={`inline-flex items-center px-6 py-3 ${GRADIENTS.background.primary} text-white text-gray-100 font-bold rounded-full shadow-lg hover:shadow-xl transition-all duration-300 active:scale-95`}
+              className={`inline-flex items-center px-6 py-3 ${GRADIENTS.background.primary} text-white dark:text-gray-100 font-bold rounded-full shadow-lg hover:shadow-xl transition-all duration-300 active:scale-95`}
               aria-label={t('homepage.altText.customerTestimonials')}
             >
               {t('nav.testimonials')}
             </button>
             <button
               onClick={() => window.open('https://g.page/r/CUB8bZ_ibMbwEBM/review', '_blank')}
-              className={`inline-flex items-center px-6 py-3 ${COLORS.surface.light} text-[#5B2EFF] font-bold rounded-full shadow-lg hover:shadow-xl transition-all duration-300 active:scale-95 border-2 border-[#5B2EFF] hover:bg-[#5B2EFF] hover:text-white text-gray-100`}
+              className={`inline-flex items-center px-6 py-3 ${COLORS.surface.light} text-[#5B2EFF] font-bold rounded-full shadow-lg hover:shadow-xl transition-all duration-300 active:scale-95 border-2 border-[#5B2EFF] hover:bg-[#5B2EFF] hover:text-white dark:text-gray-100`}
               aria-label={t('homepage.altText.leaveGoogleReview')}
             >
               <svg

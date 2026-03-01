@@ -89,12 +89,12 @@ export function HowToSection({
 
       <section className={`how-to-section ${className}`}>
         <div className="mb-6">
-          <h2 className="text-2xl font-bold text-gray-900 text-gray-50 mb-2">
+          <h2 className="text-2xl font-bold text-gray-900 dark:text-gray-50 mb-2">
             {title}
           </h2>
-          <p className="text-gray-700 text-gray-300">{description}</p>
+          <p className="text-gray-700 dark:text-gray-300">{description}</p>
           {timeDisplay && (
-            <p className="text-sm text-gray-500 text-gray-400 mt-2">
+            <p className="text-sm text-gray-500 dark:text-gray-400 mt-2">
               <span className="font-medium">Time needed:</span> {timeDisplay}
             </p>
           )}
@@ -104,22 +104,22 @@ export function HowToSection({
           {steps.map((step, index) => (
             <li
               key={index}
-              className="relative pl-12 pb-6 border-l-2 border-green-200 border-green-800 last:border-l-0 last:pb-0"
+              className="relative pl-12 pb-6 border-l-2 border-green-200 dark:border-green-800 last:border-l-0 last:pb-0"
             >
               {/* Step number circle */}
-              <div className="absolute left-0 top-0 -translate-x-1/2 w-8 h-8 rounded-full bg-green-500 bg-green-600 text-white text-gray-100 flex items-center justify-center font-bold text-sm">
+              <div className="absolute left-0 top-0 -translate-x-1/2 w-8 h-8 rounded-full bg-green-500 dark:bg-green-600 text-white dark:text-gray-100 flex items-center justify-center font-bold text-sm">
                 {index + 1}
               </div>
 
-              <div className="bg-gray-50 bg-gray-800 rounded-lg p-4">
-                <h3 className="font-semibold text-gray-900 text-gray-50 mb-2">
+              <div className="bg-gray-50 dark:bg-gray-800 rounded-lg p-4">
+                <h3 className="font-semibold text-gray-900 dark:text-gray-50 mb-2">
                   {step.name}
                 </h3>
-                <p className="text-gray-700 text-gray-300">{step.text}</p>
+                <p className="text-gray-700 dark:text-gray-300">{step.text}</p>
 
                 {step.tip && (
-                  <div className="mt-3 p-3 bg-amber-50 bg-amber-900/20 border-l-4 border-amber-400 border-amber-500 rounded-r">
-                    <p className="text-sm text-amber-800 text-amber-200">
+                  <div className="mt-3 p-3 bg-amber-50 dark:bg-amber-900/20 border-l-4 border-amber-400 dark:border-amber-500 rounded-r">
+                    <p className="text-sm text-amber-800 dark:text-amber-200">
                       <span className="font-medium">Pro tip:</span> {step.tip}
                     </p>
                   </div>

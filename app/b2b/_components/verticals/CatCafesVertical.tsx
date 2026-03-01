@@ -29,7 +29,7 @@ export function CatCafesVertical({ locale }: CatCafesVerticalProps) {
     },
     valueProps: [
       {
-        icon: <Users className="h-6 w-6 text-white text-white" />,
+        icon: <Users className="h-6 w-6 text-white dark:text-white" />,
         title:
           locale === 'fr'
             ? 'Expérience Client Avant Tout'
@@ -45,7 +45,7 @@ export function CatCafesVertical({ locale }: CatCafesVerticalProps) {
         color: 'from-blue-500 to-purple-500',
       },
       {
-        icon: <Shield className="h-6 w-6 text-white text-white" />,
+        icon: <Shield className="h-6 w-6 text-white dark:text-white" />,
         title:
           locale === 'fr' ? 'Formule Sans Danger' : 'Cat-Friendly Formula',
         highlight:
@@ -57,7 +57,7 @@ export function CatCafesVertical({ locale }: CatCafesVerticalProps) {
         color: 'from-green-500 to-emerald-500',
       },
       {
-        icon: <Zap className="h-6 w-6 text-white text-white" />,
+        icon: <Zap className="h-6 w-6 text-white dark:text-white" />,
         title: locale === 'fr' ? 'Application Rapide' : 'Quick Application',
         highlight:
           locale === 'fr' ? '60 secondes par bac' : '60 seconds per box',
@@ -138,37 +138,37 @@ export function CatCafesVertical({ locale }: CatCafesVerticalProps) {
     <div className="space-y-16">
       {/* Hero */}
       <section className="text-center">
-        <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full text-sm font-bold bg-gradient-to-r from-purple-500/15 to-blue-500/15 text-purple-700 text-purple-300 border border-purple-500/30 border-purple-500/20 mb-6">
+        <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full text-sm font-bold bg-gradient-to-r from-purple-500/15 to-blue-500/15 text-purple-700 dark:text-purple-300 border border-purple-500/30 dark:border-purple-500/20 mb-6">
           <Coffee className="h-4 w-4" />
           {locale === 'fr' ? 'Partenariat Café à Chats' : 'Cat Cafe Partnership'}
         </div>
-        <h2 className="font-heading text-4xl md:text-5xl font-black text-gray-900 text-white mb-4">
+        <h2 className="font-heading text-4xl md:text-5xl font-black text-gray-900 dark:text-white mb-4">
           {t.hero.title}
         </h2>
-        <p className="text-xl text-gray-600 text-gray-300 mb-2">
+        <p className="text-xl text-gray-600 dark:text-gray-300 mb-2">
           {t.hero.subtitle}
         </p>
-        <p className="text-lg text-gray-500 text-gray-400 mb-8 max-w-2xl mx-auto">
+        <p className="text-lg text-gray-500 dark:text-gray-400 mb-8 max-w-2xl mx-auto">
           {t.hero.description}
         </p>
 
         {/* Stats */}
         <div className="grid grid-cols-3 gap-4 max-w-lg mx-auto mb-8">
-          <div className="text-center p-4 bg-white bg-gray-800 rounded-xl shadow-lg">
-            <div className="text-3xl font-black text-purple-600 text-purple-400">7+</div>
-            <div className="text-sm font-semibold text-gray-600 text-gray-300">
+          <div className="text-center p-4 bg-white dark:bg-gray-800 rounded-xl shadow-lg">
+            <div className="text-3xl font-black text-purple-600 dark:text-purple-400">7+</div>
+            <div className="text-sm font-semibold text-gray-600 dark:text-gray-300">
               {t.stats.days}
             </div>
           </div>
-          <div className="text-center p-4 bg-white bg-gray-800 rounded-xl shadow-lg">
-            <div className="text-3xl font-black text-green-600 text-green-400">0</div>
-            <div className="text-sm font-semibold text-gray-600 text-gray-300">
+          <div className="text-center p-4 bg-white dark:bg-gray-800 rounded-xl shadow-lg">
+            <div className="text-3xl font-black text-green-600 dark:text-green-400">0</div>
+            <div className="text-sm font-semibold text-gray-600 dark:text-gray-300">
               {t.stats.fragrances}
             </div>
           </div>
-          <div className="text-center p-4 bg-white bg-gray-800 rounded-xl shadow-lg">
-            <div className="text-3xl font-black text-red-600 text-red-400">100%</div>
-            <div className="text-sm font-semibold text-gray-600 text-gray-300">
+          <div className="text-center p-4 bg-white dark:bg-gray-800 rounded-xl shadow-lg">
+            <div className="text-3xl font-black text-red-600 dark:text-red-400">100%</div>
+            <div className="text-sm font-semibold text-gray-600 dark:text-gray-300">
               {t.stats.natural}
             </div>
           </div>
@@ -186,7 +186,7 @@ export function CatCafesVertical({ locale }: CatCafesVerticalProps) {
             <Button
               size="lg"
               variant="outline"
-              className="bg-white bg-gray-800 text-purple-600 text-purple-400 font-bold py-6 px-10 rounded-2xl border-2 border-purple-500/50 border-purple-500/40"
+              className="bg-white dark:bg-gray-800 text-purple-600 dark:text-purple-400 font-bold py-6 px-10 rounded-2xl border-2 border-purple-500/50 dark:border-purple-500/40"
             >
               {t.cta.secondary}
             </Button>
@@ -199,7 +199,7 @@ export function CatCafesVertical({ locale }: CatCafesVerticalProps) {
         {t.valueProps.map((prop, index) => (
           <div
             key={index}
-            className="bg-white bg-gray-800 rounded-2xl p-6 shadow-xl border border-gray-200/50 border-gray-700/50"
+            className="bg-white dark:bg-gray-800 rounded-2xl p-6 shadow-xl border border-gray-200/50 dark:border-gray-700/50"
           >
             <div className="flex items-center mb-4">
               <div
@@ -208,34 +208,34 @@ export function CatCafesVertical({ locale }: CatCafesVerticalProps) {
                 {prop.icon}
               </div>
               <div>
-                <h3 className="font-heading font-black text-xl text-gray-900 text-white">
+                <h3 className="font-heading font-black text-xl text-gray-900 dark:text-white">
                   {prop.title}
                 </h3>
-                <p className="text-purple-600 text-purple-400 font-bold text-sm">
+                <p className="text-purple-600 dark:text-purple-400 font-bold text-sm">
                   {prop.highlight}
                 </p>
               </div>
             </div>
-            <p className="text-gray-700 text-gray-200">{prop.description}</p>
+            <p className="text-gray-700 dark:text-gray-200">{prop.description}</p>
           </div>
         ))}
       </section>
 
       {/* Benefits */}
-      <section id="cafe-pricing" className="bg-gradient-to-br from-purple-50 to-blue-50 from-gray-900 to-gray-800 rounded-2xl p-8">
-        <h3 className="font-heading text-3xl font-bold text-gray-900 text-white mb-8 text-center">
+      <section id="cafe-pricing" className="bg-gradient-to-br from-purple-50 to-blue-50 dark:from-gray-900 dark:to-gray-800 rounded-2xl p-8">
+        <h3 className="font-heading text-3xl font-bold text-gray-900 dark:text-white mb-8 text-center">
           {t.benefits.title}
         </h3>
         <div className="grid md:grid-cols-2 gap-6">
           {t.benefits.items.map((benefit, index) => (
             <div
               key={index}
-              className="bg-white bg-gray-800 rounded-xl p-6 shadow-lg"
+              className="bg-white dark:bg-gray-800 rounded-xl p-6 shadow-lg"
             >
-              <h4 className="font-heading font-bold text-lg text-gray-900 text-white mb-2">
+              <h4 className="font-heading font-bold text-lg text-gray-900 dark:text-white mb-2">
                 {benefit.title}
               </h4>
-              <p className="text-gray-600 text-gray-300">
+              <p className="text-gray-600 dark:text-gray-300">
                 {benefit.description}
               </p>
             </div>
@@ -245,16 +245,16 @@ export function CatCafesVertical({ locale }: CatCafesVerticalProps) {
 
       {/* Contact */}
       <section id="cafe-contact" className="text-center">
-        <h3 className="font-heading text-2xl font-bold text-gray-900 text-white mb-4">
+        <h3 className="font-heading text-2xl font-bold text-gray-900 dark:text-white mb-4">
           {t.contact.title}
         </h3>
-        <p className="text-gray-600 text-gray-300 mb-6">
+        <p className="text-gray-600 dark:text-gray-300 mb-6">
           {t.contact.subtitle}
         </p>
-        <div className="bg-gradient-to-r from-purple-100 to-blue-100 from-purple-900/30 to-blue-900/30 rounded-2xl p-6 max-w-md mx-auto">
+        <div className="bg-gradient-to-r from-purple-100 to-blue-100 dark:from-purple-900/30 dark:to-blue-900/30 rounded-2xl p-6 max-w-md mx-auto">
           <a
             href={`mailto:${t.contact.email}`}
-            className="text-purple-600 text-purple-400 font-bold text-lg hover:underline"
+            className="text-purple-600 dark:text-purple-400 font-bold text-lg hover:underline"
           >
             {t.contact.email}
           </a>

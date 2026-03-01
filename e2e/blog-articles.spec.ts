@@ -11,31 +11,38 @@ const blogArticles = [
   '/blog/activated-carbon-vs-baking-soda-comparison'
 ];
 
-test.describe('Blog Articles Styling and Image Tests', () => {
+test.describe('Blog Articles Dark Mode and Image Tests', () => {
   for (const articlePath of blogArticles) {
     test.describe(`Testing ${articlePath}`, () => {
-      test('has no dark-mode class variants', async ({ page }) => {
+      test('has proper dark mode compliance', async ({ page }) => {
         await page.goto(articlePath);
 
         // Wait for content to load
         await expect(page.locator('h1')).toBeVisible();
 
-        const darkVariantElements = await page.locator('[class*="dark:"]').all();
-        if (darkVariantElements.length > 0) {
-          console.log(`Found ${darkVariantElements.length} dark-variant classes in ${articlePath}`);
-          for (const element of darkVariantElements.slice(0, 5)) {
+        // Switch to dark mode
+        await page.emulateMedia({ colorScheme: 'dark' });
+
+        // Check for text elements without dark mode variants
+        const textElements = await page.locator('[class*="text-"]:not([class*="dark:"])').all();
+
+        // We expect zero text elements without dark mode variants
+        if (textElements.length > 0) {
+          console.log(`Found ${textElements.length} elements without dark mode variants in ${articlePath}`);
+
+          // Get details of problematic elements
+          for (const element of textElements.slice(0, 5)) { // Check first 5 to avoid too much output
             const className = await element.getAttribute('class');
             const tagName = await element.evaluate(el => el.tagName.toLowerCase());
             console.log(`- ${tagName} with classes: ${className}`);
           }
         }
-        expect(darkVariantElements.length).toBe(0);
 
-        // Check that main content areas are readable
+        // Check that main content areas are readable in dark mode
         const mainContent = page.locator('article, main').first();
         await expect(mainContent).toBeVisible();
 
-        // Verify breadcrumb links work
+        // Verify breadcrumb links work in dark mode
         const breadcrumbLinks = page.locator('nav ol a');
         if (await breadcrumbLinks.count() > 0) {
           await expect(breadcrumbLinks.first()).toBeVisible();

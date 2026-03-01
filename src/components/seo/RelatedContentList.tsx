@@ -25,8 +25,8 @@ export function RelatedContentList({
 
   return (
     <section className={`related-content ${className}`}>
-      <div className="border-t border-gray-200 border-gray-700 pt-8 mt-12">
-        <h2 className="text-2xl font-bold text-gray-900 text-gray-50 mb-6">
+      <div className="border-t border-gray-200 dark:border-gray-700 pt-8 mt-12">
+        <h2 className="text-2xl font-bold text-gray-900 dark:text-gray-50 mb-6">
           {title}
         </h2>
 
@@ -35,21 +35,21 @@ export function RelatedContentList({
             <Link prefetch={false}
               key={page.url}
               href={page.url}
-              className="block p-4 rounded-lg border border-gray-200 border-gray-700 hover:border-blue-500 hover:border-blue-400 transition-colors group"
+              className="block p-4 rounded-lg border border-gray-200 dark:border-gray-700 hover:border-blue-500 dark:hover:border-blue-400 transition-colors group"
             >
               <div className="flex items-start justify-between">
                 <div className="flex-1">
-                  <h3 className="text-lg font-semibold text-gray-900 text-gray-50 group-hover:text-blue-600 group-hover:text-blue-400 transition-colors">
+                  <h3 className="text-lg font-semibold text-gray-900 dark:text-gray-50 group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors">
                     {page.title}
                   </h3>
                   {page.type === 'hub' && (
-                    <span className="inline-block mt-2 text-xs font-medium text-blue-600 text-blue-400 bg-blue-50 bg-blue-900/30 px-2 py-1 rounded">
+                    <span className="inline-block mt-2 text-xs font-medium text-blue-600 dark:text-blue-400 bg-blue-50 dark:bg-blue-900/30 px-2 py-1 rounded">
                       {clusterName} Hub
                     </span>
                   )}
                 </div>
                 <svg
-                  className="w-5 h-5 text-gray-400 text-gray-500 group-hover:text-blue-600 group-hover:text-blue-400 transition-colors flex-shrink-0 ml-3"
+                  className="w-5 h-5 text-gray-400 dark:text-gray-500 group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors flex-shrink-0 ml-3"
                   fill="none"
                   stroke="currentColor"
                   viewBox="0 0 24 24"
@@ -67,10 +67,10 @@ export function RelatedContentList({
         </div>
 
         {clusters.length > 0 && (
-          <div className="mt-6 text-sm text-gray-600 text-gray-400">
+          <div className="mt-6 text-sm text-gray-600 dark:text-gray-400">
             <p>
               Part of our{' '}
-              <strong className="text-gray-900 text-gray-100">
+              <strong className="text-gray-900 dark:text-gray-100">
                 {clusterName}
               </strong>{' '}
               guide series

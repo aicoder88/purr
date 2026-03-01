@@ -34,25 +34,25 @@ export function LandingHero({
       : 'Breadcrumb';
 
   return (
-    <section className="bg-white bg-gray-900 py-12 lg:py-20">
+    <section className="bg-white dark:bg-gray-900 py-12 lg:py-20">
       <Container>
         {/* Breadcrumb */}
         <nav aria-label={breadcrumbAriaLabel} className="mb-8">
-          <ol className="flex items-center gap-2 text-sm text-gray-600 text-gray-400">
+          <ol className="flex items-center gap-2 text-sm text-gray-600 dark:text-gray-400">
             <li>
               <Link
                 href="/"
-                className="flex items-center gap-1 hover:text-gray-900 hover:text-gray-200 transition-colors"
+                className="flex items-center gap-1 hover:text-gray-900 dark:hover:text-gray-200 transition-colors"
               >
                 <Home className="w-4 h-4" />
                 <span>{t('nav.home')}</span>
               </Link>
             </li>
             <li>
-              <ChevronRight className="w-4 h-4 text-gray-400 text-gray-500" />
+              <ChevronRight className="w-4 h-4 text-gray-400 dark:text-gray-500" />
             </li>
             <li>
-              <span className="text-gray-900 text-gray-100 font-medium">
+              <span className="text-gray-900 dark:text-gray-100 font-medium">
                 {breadcrumb}
               </span>
             </li>
@@ -63,10 +63,10 @@ export function LandingHero({
         <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
           {/* Text Column */}
           <div className="order-2 lg:order-1">
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-gray-900 text-gray-50 tracking-tight mb-6">
+            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-gray-900 dark:text-gray-50 tracking-tight mb-6">
               {headline}
             </h1>
-            <p className="text-lg md:text-xl text-gray-700 text-gray-300 mb-8 leading-relaxed">
+            <p className="text-lg md:text-xl text-gray-700 dark:text-gray-300 mb-8 leading-relaxed">
               {subheadline}
             </p>
             <div className="flex flex-col sm:flex-row gap-4">
@@ -76,7 +76,7 @@ export function LandingHero({
               {secondaryCTA && (
                 <Link
                   href={secondaryCTA.href}
-                  className="inline-flex items-center justify-center gap-2 text-gray-700 text-gray-300 hover:text-gray-900 hover:text-gray-100 font-medium transition-colors py-3"
+                  className="inline-flex items-center justify-center gap-2 text-gray-700 dark:text-gray-300 hover:text-gray-900 dark:hover:text-gray-100 font-medium transition-colors py-3"
                 >
                   {secondaryCTA.label}
                   <ChevronRight className="w-4 h-4" />
@@ -87,7 +87,7 @@ export function LandingHero({
 
           {/* Image Column */}
           <div className="order-1 lg:order-2 relative">
-            <div className="relative aspect-square lg:aspect-[4/3] rounded-2xl overflow-hidden bg-gray-100 bg-gray-800">
+            <div className="relative aspect-square lg:aspect-[4/3] rounded-2xl overflow-hidden bg-gray-100 dark:bg-gray-800">
               <Image
                 src={image}
                 alt={imageAlt || headline}

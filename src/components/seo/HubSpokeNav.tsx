@@ -89,11 +89,11 @@ export function HubSpokeNav({
   return (
     <nav
       aria-label="Guide contents"
-      className={`hub-spoke-nav bg-gradient-to-br from-blue-50 to-purple-50 from-gray-800 to-gray-800/80 rounded-xl p-6 ${className}`}
+      className={`hub-spoke-nav bg-gradient-to-br from-blue-50 to-purple-50 dark:from-gray-800 dark:to-gray-800/80 rounded-xl p-6 ${className}`}
     >
-      <h3 className="text-xl font-bold text-gray-900 text-gray-50 mb-4 flex items-center">
+      <h3 className="text-xl font-bold text-gray-900 dark:text-gray-50 mb-4 flex items-center">
         <svg
-          className="w-5 h-5 mr-2 text-blue-600 text-blue-400"
+          className="w-5 h-5 mr-2 text-blue-600 dark:text-blue-400"
           fill="none"
           stroke="currentColor"
           viewBox="0 0 24 24"
@@ -107,7 +107,7 @@ export function HubSpokeNav({
         </svg>
         {title || 'In This Guide'}
       </h3>
-      <p className="text-sm text-gray-600 text-gray-400 mb-4">
+      <p className="text-sm text-gray-600 dark:text-gray-400 mb-4">
         {cluster.description}
       </p>
 
@@ -115,7 +115,7 @@ export function HubSpokeNav({
         {/* Blog Articles */}
         {groups.blog.length > 0 && (
           <div>
-            <h4 className="text-sm font-semibold text-gray-700 text-gray-300 uppercase tracking-wide mb-2">
+            <h4 className="text-sm font-semibold text-gray-700 dark:text-gray-300 uppercase tracking-wide mb-2">
               Related Articles
             </h4>
             <ul className="space-y-1">
@@ -123,10 +123,10 @@ export function HubSpokeNav({
                 <li key={item.url}>
                   <Link prefetch={false}
                     href={item.url}
-                    className="group flex items-center text-gray-700 text-gray-300 hover:text-blue-600 hover:text-blue-400 transition-colors py-1"
+                    className="group flex items-center text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors py-1"
                   >
                     <svg
-                      className="w-4 h-4 mr-2 text-gray-400 text-gray-500 group-hover:text-blue-500 group-hover:text-blue-400 transition-colors flex-shrink-0"
+                      className="w-4 h-4 mr-2 text-gray-400 dark:text-gray-500 group-hover:text-blue-500 dark:group-hover:text-blue-400 transition-colors flex-shrink-0"
                       fill="none"
                       stroke="currentColor"
                       viewBox="0 0 24 24"
@@ -149,7 +149,7 @@ export function HubSpokeNav({
         {/* Learn Guides */}
         {groups.learn.length > 0 && (
           <div>
-            <h4 className="text-sm font-semibold text-gray-700 text-gray-300 uppercase tracking-wide mb-2">
+            <h4 className="text-sm font-semibold text-gray-700 dark:text-gray-300 uppercase tracking-wide mb-2">
               Guides
             </h4>
             <ul className="space-y-1">
@@ -157,10 +157,10 @@ export function HubSpokeNav({
                 <li key={item.url}>
                   <Link prefetch={false}
                     href={item.url}
-                    className="group flex items-center text-gray-700 text-gray-300 hover:text-blue-600 hover:text-blue-400 transition-colors py-1"
+                    className="group flex items-center text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors py-1"
                   >
                     <svg
-                      className="w-4 h-4 mr-2 text-gray-400 text-gray-500 group-hover:text-blue-500 group-hover:text-blue-400 transition-colors flex-shrink-0"
+                      className="w-4 h-4 mr-2 text-gray-400 dark:text-gray-500 group-hover:text-blue-500 dark:group-hover:text-blue-400 transition-colors flex-shrink-0"
                       fill="none"
                       stroke="currentColor"
                       viewBox="0 0 24 24"
@@ -183,7 +183,7 @@ export function HubSpokeNav({
         {/* Products */}
         {groups.products.length > 0 && (
           <div>
-            <h4 className="text-sm font-semibold text-gray-700 text-gray-300 uppercase tracking-wide mb-2">
+            <h4 className="text-sm font-semibold text-gray-700 dark:text-gray-300 uppercase tracking-wide mb-2">
               Products
             </h4>
             <ul className="space-y-1">
@@ -191,10 +191,10 @@ export function HubSpokeNav({
                 <li key={item.url}>
                   <Link prefetch={false}
                     href={item.url}
-                    className="group flex items-center text-gray-700 text-gray-300 hover:text-blue-600 hover:text-blue-400 transition-colors py-1"
+                    className="group flex items-center text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors py-1"
                   >
                     <svg
-                      className="w-4 h-4 mr-2 text-gray-400 text-gray-500 group-hover:text-blue-500 group-hover:text-blue-400 transition-colors flex-shrink-0"
+                      className="w-4 h-4 mr-2 text-gray-400 dark:text-gray-500 group-hover:text-blue-500 dark:group-hover:text-blue-400 transition-colors flex-shrink-0"
                       fill="none"
                       stroke="currentColor"
                       viewBox="0 0 24 24"
@@ -238,8 +238,8 @@ export function HubSpokeNavSidebar({
   }
 
   return (
-    <aside className="bg-gray-50 bg-gray-800 rounded-lg p-4 border border-gray-200 border-gray-700">
-      <h4 className="text-sm font-bold text-gray-900 text-gray-50 mb-3">
+    <aside className="bg-gray-50 dark:bg-gray-800 rounded-lg p-4 border border-gray-200 dark:border-gray-700">
+      <h4 className="text-sm font-bold text-gray-900 dark:text-gray-50 mb-3">
         {cluster.name}
       </h4>
       <ul className="space-y-2">
@@ -247,7 +247,7 @@ export function HubSpokeNavSidebar({
           <li key={url}>
             <Link prefetch={false}
               href={url}
-              className="text-sm text-blue-600 text-blue-400 hover:text-blue-700 hover:text-blue-300 hover:underline"
+              className="text-sm text-blue-600 dark:text-blue-400 hover:text-blue-700 dark:hover:text-blue-300 hover:underline"
             >
               {urlToTitle(url)}
             </Link>
@@ -257,7 +257,7 @@ export function HubSpokeNavSidebar({
       {spokes.length > 5 && (
         <Link prefetch={false}
           href={cluster.hubPage}
-          className="block mt-3 text-xs text-gray-500 text-gray-400 hover:text-gray-700 hover:text-gray-300"
+          className="block mt-3 text-xs text-gray-500 dark:text-gray-400 hover:text-gray-700 dark:hover:text-gray-300"
         >
           +{spokes.length - 5} more articles
         </Link>

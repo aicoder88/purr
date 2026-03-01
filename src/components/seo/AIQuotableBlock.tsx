@@ -61,19 +61,19 @@ const icons = {
 
 const variantStyles = {
   default: {
-    container: 'bg-blue-50 bg-blue-900/20 border-blue-200 border-blue-800',
-    icon: 'text-blue-600 text-blue-400',
-    fact: 'text-blue-900 text-blue-100',
+    container: 'bg-blue-50 dark:bg-blue-900/20 border-blue-200 dark:border-blue-800',
+    icon: 'text-blue-600 dark:text-blue-400',
+    fact: 'text-blue-900 dark:text-blue-100',
   },
   highlight: {
-    container: 'bg-green-50 bg-green-900/20 border-green-200 border-green-800',
-    icon: 'text-green-600 text-green-400',
-    fact: 'text-green-900 text-green-100',
+    container: 'bg-green-50 dark:bg-green-900/20 border-green-200 dark:border-green-800',
+    icon: 'text-green-600 dark:text-green-400',
+    fact: 'text-green-900 dark:text-green-100',
   },
   subtle: {
-    container: 'bg-gray-50 bg-gray-800 border-gray-200 border-gray-700',
-    icon: 'text-gray-600 text-gray-400',
-    fact: 'text-gray-900 text-gray-100',
+    container: 'bg-gray-50 dark:bg-gray-800 border-gray-200 dark:border-gray-700',
+    icon: 'text-gray-600 dark:text-gray-400',
+    fact: 'text-gray-900 dark:text-gray-100',
   },
 };
 
@@ -127,14 +127,14 @@ export function AIQuotableBlock({
 
             {/* Supporting explanation */}
             {explanation && (
-              <p className="mt-2 text-gray-700 text-gray-300 text-sm">
+              <p className="mt-2 text-gray-700 dark:text-gray-300 text-sm">
                 {explanation}
               </p>
             )}
 
             {/* Source attribution */}
             {source && (
-              <p className="mt-2 text-xs text-gray-500 text-gray-400 italic">
+              <p className="mt-2 text-xs text-gray-500 dark:text-gray-400 italic">
                 — {source}
               </p>
             )}

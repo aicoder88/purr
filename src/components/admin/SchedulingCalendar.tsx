@@ -72,24 +72,24 @@ export default function SchedulingCalendar({ posts, onPostClick }: SchedulingCal
   const monthName = currentDate.toLocaleDateString('en-US', { month: 'long', year: 'numeric' });
 
   return (
-    <div className="bg-white bg-gray-800 rounded-lg shadow-sm border border-gray-200 border-gray-700 p-6">
+    <div className="bg-white dark:bg-gray-800 rounded-lg shadow-sm border border-gray-200 dark:border-gray-700 p-6">
       {/* Header */}
       <div className="flex items-center justify-between mb-6">
-        <h2 className="font-heading text-xl font-bold text-gray-900 text-gray-100 flex items-center space-x-2">
+        <h2 className="font-heading text-xl font-bold text-gray-900 dark:text-gray-100 flex items-center space-x-2">
           <Calendar className="w-5 h-5" />
           <span>Scheduled Posts</span>
         </h2>
         <div className="flex items-center space-x-4">
           <button
             onClick={previousMonth}
-            className="px-3 py-1 border border-gray-300 border-gray-700 rounded hover:bg-gray-50 hover:bg-gray-700"
+            className="px-3 py-1 border border-gray-300 dark:border-gray-700 rounded hover:bg-gray-50 dark:hover:bg-gray-700"
           >
             ←
           </button>
           <span className="text-lg font-medium">{monthName}</span>
           <button
             onClick={nextMonth}
-            className="px-3 py-1 border border-gray-300 border-gray-700 rounded hover:bg-gray-50 hover:bg-gray-700"
+            className="px-3 py-1 border border-gray-300 dark:border-gray-700 rounded hover:bg-gray-50 dark:hover:bg-gray-700"
           >
             →
           </button>
@@ -102,7 +102,7 @@ export default function SchedulingCalendar({ posts, onPostClick }: SchedulingCal
         {['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'].map(day => (
           <div
             key={day}
-            className="text-center text-sm font-medium text-gray-600 text-gray-400 py-2"
+            className="text-center text-sm font-medium text-gray-600 dark:text-gray-400 py-2"
           >
             {day}
           </div>
@@ -120,15 +120,15 @@ export default function SchedulingCalendar({ posts, onPostClick }: SchedulingCal
           return (
             <div
               key={index}
-              className={`min-h-[80px] p-2 border border-gray-200 border-gray-700 rounded ${
-                !isCurrentMonth ? 'bg-gray-50 bg-gray-900' : ''
+              className={`min-h-[80px] p-2 border border-gray-200 dark:border-gray-700 rounded ${
+                !isCurrentMonth ? 'bg-gray-50 dark:bg-gray-900' : ''
               } ${isToday ? 'ring-2 ring-purple-500' : ''}`}
             >
               <div
                 className={`text-sm font-medium mb-1 ${
                   !isCurrentMonth
-                    ? 'text-gray-400 text-gray-600'
-                    : 'text-gray-900 text-gray-100'
+                    ? 'text-gray-400 dark:text-gray-600'
+                    : 'text-gray-900 dark:text-gray-100'
                 }`}
               >
                 {day.getDate()}
@@ -140,7 +140,7 @@ export default function SchedulingCalendar({ posts, onPostClick }: SchedulingCal
                     <button
                       key={post.id}
                       onClick={() => onPostClick?.(post)}
-                      className="w-full text-left px-2 py-1 bg-purple-100 bg-purple-900/30 text-purple-700 text-purple-300 rounded text-xs hover:bg-purple-200 hover:bg-purple-900/50 transition-colors"
+                      className="w-full text-left px-2 py-1 bg-purple-100 dark:bg-purple-900/30 text-purple-700 dark:text-purple-300 rounded text-xs hover:bg-purple-200 dark:hover:bg-purple-900/50 transition-colors"
                       title={post.title}
                     >
                       <div className="flex items-center space-x-1">
@@ -158,14 +158,14 @@ export default function SchedulingCalendar({ posts, onPostClick }: SchedulingCal
       </div>
 
       {/* Legend */}
-      <div className="mt-6 flex items-center justify-between text-sm text-gray-600 text-gray-400">
+      <div className="mt-6 flex items-center justify-between text-sm text-gray-600 dark:text-gray-400">
         <div className="flex items-center space-x-4">
           <div className="flex items-center space-x-2">
             <div className="w-4 h-4 rounded ring-2 ring-purple-500"></div>
             <span>Today</span>
           </div>
           <div className="flex items-center space-x-2">
-            <div className="w-4 h-4 rounded bg-purple-100 bg-purple-900/30"></div>
+            <div className="w-4 h-4 rounded bg-purple-100 dark:bg-purple-900/30"></div>
             <span>Scheduled post</span>
           </div>
         </div>

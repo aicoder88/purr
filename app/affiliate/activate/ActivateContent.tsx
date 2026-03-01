@@ -68,31 +68,31 @@ export default function ActivateContent() {
 
     if (isLoading) {
         return (
-            <div className="min-h-screen flex items-center justify-center bg-gradient-to-b from-gray-50 to-white from-gray-950 to-gray-900">
-                <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-purple-600 border-purple-400"></div>
+            <div className="min-h-screen flex items-center justify-center bg-gradient-to-b from-gray-50 to-white dark:from-gray-950 dark:to-gray-900">
+                <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-purple-600 dark:border-purple-400"></div>
             </div>
         );
     }
 
     if (!affiliate) {
         return (
-            <div className="min-h-screen flex items-center justify-center bg-gradient-to-b from-gray-50 to-white from-gray-950 to-gray-900">
+            <div className="min-h-screen flex items-center justify-center bg-gradient-to-b from-gray-50 to-white dark:from-gray-950 dark:to-gray-900">
                 <div className="text-center">
-                    <p className="text-gray-600 text-gray-400">Please log in to activate your account.</p>
+                    <p className="text-gray-600 dark:text-gray-400">Please log in to activate your account.</p>
                 </div>
             </div>
         );
     }
 
     return (
-        <div className="min-h-screen bg-gradient-to-b from-gray-50 to-white from-gray-950 to-gray-900">
-            <div className="bg-gradient-to-r from-purple-600 to-purple-800 from-purple-700 to-purple-900 py-12">
+        <div className="min-h-screen bg-gradient-to-b from-gray-50 to-white dark:from-gray-950 dark:to-gray-900">
+            <div className="bg-gradient-to-r from-purple-600 to-purple-800 dark:from-purple-700 dark:to-purple-900 py-12">
                 <Container>
                     <div className="text-center">
-                        <h1 className="font-heading text-3xl md:text-4xl font-bold text-white text-gray-100 mb-2">
+                        <h1 className="font-heading text-3xl md:text-4xl font-bold text-white dark:text-gray-100 mb-2">
                             Welcome, {affiliate.name.split(' ')[0]}!
                         </h1>
-                        <p className="text-purple-100 text-purple-200 text-lg">
+                        <p className="text-purple-100 dark:text-purple-200 text-lg">
                             One more step to start earning commissions
                         </p>
                     </div>
@@ -103,68 +103,68 @@ export default function ActivateContent() {
                 <div className="max-w-4xl mx-auto">
                     <div className="flex items-center justify-center mb-12">
                         <div className="flex items-center">
-                            <div className="flex items-center justify-center w-10 h-10 bg-green-500 bg-green-600 rounded-full">
-                                <CheckCircle2 className="w-6 h-6 text-white text-gray-100" />
+                            <div className="flex items-center justify-center w-10 h-10 bg-green-500 dark:bg-green-600 rounded-full">
+                                <CheckCircle2 className="w-6 h-6 text-white dark:text-gray-100" />
                             </div>
-                            <span className="ml-2 text-sm font-medium text-gray-900 text-gray-100">Application Approved</span>
+                            <span className="ml-2 text-sm font-medium text-gray-900 dark:text-gray-100">Application Approved</span>
                         </div>
-                        <div className="w-16 h-0.5 bg-gray-300 bg-gray-700 mx-4"></div>
+                        <div className="w-16 h-0.5 bg-gray-300 dark:bg-gray-700 mx-4"></div>
                         <div className="flex items-center">
-                            <div className="flex items-center justify-center w-10 h-10 bg-purple-600 bg-purple-500 rounded-full animate-pulse">
-                                <span className="text-white text-gray-100 font-bold">2</span>
+                            <div className="flex items-center justify-center w-10 h-10 bg-purple-600 dark:bg-purple-500 rounded-full animate-pulse">
+                                <span className="text-white dark:text-gray-100 font-bold">2</span>
                             </div>
-                            <span className="ml-2 text-sm font-medium text-purple-600 text-purple-400">Get Your Starter Kit</span>
+                            <span className="ml-2 text-sm font-medium text-purple-600 dark:text-purple-400">Get Your Starter Kit</span>
                         </div>
-                        <div className="w-16 h-0.5 bg-gray-300 bg-gray-700 mx-4"></div>
+                        <div className="w-16 h-0.5 bg-gray-300 dark:bg-gray-700 mx-4"></div>
                         <div className="flex items-center">
-                            <div className="flex items-center justify-center w-10 h-10 bg-gray-300 bg-gray-700 rounded-full">
-                                <span className="text-gray-600 text-gray-400 font-bold">3</span>
+                            <div className="flex items-center justify-center w-10 h-10 bg-gray-300 dark:bg-gray-700 rounded-full">
+                                <span className="text-gray-600 dark:text-gray-400 font-bold">3</span>
                             </div>
-                            <span className="ml-2 text-sm font-medium text-gray-500 text-gray-400">Start Earning</span>
+                            <span className="ml-2 text-sm font-medium text-gray-500 dark:text-gray-400">Start Earning</span>
                         </div>
                     </div>
 
-                    <div className="bg-white bg-gray-800 rounded-2xl shadow-xl border border-gray-200 border-gray-700 overflow-hidden">
+                    <div className="bg-white dark:bg-gray-800 rounded-2xl shadow-xl border border-gray-200 dark:border-gray-700 overflow-hidden">
                         <div className="grid md:grid-cols-2 gap-0">
                             <div className="p-8 md:p-10">
                                 <div className="flex items-center gap-3 mb-6">
-                                    <Package className="w-8 h-8 text-purple-600 text-purple-400" />
-                                    <h2 className="font-heading text-2xl font-bold text-gray-900 text-gray-100">
+                                    <Package className="w-8 h-8 text-purple-600 dark:text-purple-400" />
+                                    <h2 className="font-heading text-2xl font-bold text-gray-900 dark:text-gray-100">
                                         Affiliate Starter Kit
                                     </h2>
                                 </div>
 
-                                <p className="text-gray-600 text-gray-400 mb-6">
+                                <p className="text-gray-600 dark:text-gray-400 mb-6">
                                     Get everything you need to start earning commissions with Purrify.
                                 </p>
 
                                 <ul className="space-y-4 mb-8">
                                     <li className="flex items-start gap-3">
-                                        <CheckCircle2 className="w-5 h-5 text-green-500 text-green-400 mt-0.5 flex-shrink-0" />
+                                        <CheckCircle2 className="w-5 h-5 text-green-500 dark:text-green-400 mt-0.5 flex-shrink-0" />
                                         <div>
-                                            <span className="font-medium text-gray-900 text-gray-100">1 Bag of Purrify (500g)</span>
-                                            <p className="text-sm text-gray-600 text-gray-400">Experience the product yourself</p>
+                                            <span className="font-medium text-gray-900 dark:text-gray-100">1 Bag of Purrify (500g)</span>
+                                            <p className="text-sm text-gray-600 dark:text-gray-400">Experience the product yourself</p>
                                         </div>
                                     </li>
                                     <li className="flex items-start gap-3">
-                                        <CheckCircle2 className="w-5 h-5 text-green-500 text-green-400 mt-0.5 flex-shrink-0" />
+                                        <CheckCircle2 className="w-5 h-5 text-green-500 dark:text-green-400 mt-0.5 flex-shrink-0" />
                                         <div>
-                                            <span className="font-medium text-gray-900 text-gray-100">Marketing Materials</span>
-                                            <p className="text-sm text-gray-600 text-gray-400">High-quality images and copy templates</p>
+                                            <span className="font-medium text-gray-900 dark:text-gray-100">Marketing Materials</span>
+                                            <p className="text-sm text-gray-600 dark:text-gray-400">High-quality images and copy templates</p>
                                         </div>
                                     </li>
                                     <li className="flex items-start gap-3">
-                                        <CheckCircle2 className="w-5 h-5 text-green-500 text-green-400 mt-0.5 flex-shrink-0" />
+                                        <CheckCircle2 className="w-5 h-5 text-green-500 dark:text-green-400 mt-0.5 flex-shrink-0" />
                                         <div>
-                                            <span className="font-medium text-gray-900 text-gray-100">Your Unique Referral Code</span>
-                                            <p className="text-sm text-gray-600 text-gray-400">{affiliate.code}</p>
+                                            <span className="font-medium text-gray-900 dark:text-gray-100">Your Unique Referral Code</span>
+                                            <p className="text-sm text-gray-600 dark:text-gray-400">{affiliate.code}</p>
                                         </div>
                                     </li>
                                     <li className="flex items-start gap-3">
-                                        <CheckCircle2 className="w-5 h-5 text-green-500 text-green-400 mt-0.5 flex-shrink-0" />
+                                        <CheckCircle2 className="w-5 h-5 text-green-500 dark:text-green-400 mt-0.5 flex-shrink-0" />
                                         <div>
-                                            <span className="font-medium text-gray-900 text-gray-100">Priority Support</span>
-                                            <p className="text-sm text-gray-600 text-gray-400">Direct access to our affiliate team</p>
+                                            <span className="font-medium text-gray-900 dark:text-gray-100">Priority Support</span>
+                                            <p className="text-sm text-gray-600 dark:text-gray-400">Direct access to our affiliate team</p>
                                         </div>
                                     </li>
                                 </ul>
@@ -179,50 +179,50 @@ export default function ActivateContent() {
                                 </div>
                             </div>
 
-                            <div className="bg-gray-50 bg-gray-900 p-8 md:p-10 flex flex-col">
+                            <div className="bg-gray-50 dark:bg-gray-900 p-8 md:p-10 flex flex-col">
                                 <div className="mb-8">
-                                    <div className="text-sm text-gray-500 text-gray-400 mb-1">One-time investment</div>
+                                    <div className="text-sm text-gray-500 dark:text-gray-400 mb-1">One-time investment</div>
                                     <div className="flex items-baseline gap-2">
-                                        <span className="text-5xl font-bold text-gray-900 text-gray-100">$49</span>
+                                        <span className="text-5xl font-bold text-gray-900 dark:text-gray-100">$49</span>
                                     </div>
-                                    <p className="text-sm text-gray-600 text-gray-400 mt-2">
+                                    <p className="text-sm text-gray-600 dark:text-gray-400 mt-2">
                                         Includes free shipping across Canada
                                     </p>
                                 </div>
 
-                                <div className="bg-white bg-gray-800 rounded-xl p-4 mb-6 border border-gray-200 border-gray-700">
-                                    <h4 className="text-sm font-semibold text-gray-900 text-gray-100 mb-3">Your Commission Path</h4>
+                                <div className="bg-white dark:bg-gray-800 rounded-xl p-4 mb-6 border border-gray-200 dark:border-gray-700">
+                                    <h4 className="text-sm font-semibold text-gray-900 dark:text-gray-100 mb-3">Your Commission Path</h4>
                                     <div className="space-y-2">
                                         <div className="flex items-center justify-between">
                                             <div className="flex items-center gap-2">
-                                                <Zap className="w-4 h-4 text-gray-400 text-gray-500" />
-                                                <span className="text-sm text-gray-700 text-gray-300">Starter</span>
+                                                <Zap className="w-4 h-4 text-gray-400 dark:text-gray-500" />
+                                                <span className="text-sm text-gray-700 dark:text-gray-300">Starter</span>
                                             </div>
-                                            <span className="text-sm font-medium text-gray-900 text-gray-100">20%</span>
+                                            <span className="text-sm font-medium text-gray-900 dark:text-gray-100">20%</span>
                                         </div>
                                         <div className="flex items-center justify-between">
                                             <div className="flex items-center gap-2">
-                                                <TrendingUp className="w-4 h-4 text-blue-500 text-blue-400" />
-                                                <span className="text-sm text-gray-700 text-gray-300">Active (3+ sales)</span>
+                                                <TrendingUp className="w-4 h-4 text-blue-500 dark:text-blue-400" />
+                                                <span className="text-sm text-gray-700 dark:text-gray-300">Active (3+ sales)</span>
                                             </div>
-                                            <span className="text-sm font-medium text-blue-600 text-blue-400">25%</span>
+                                            <span className="text-sm font-medium text-blue-600 dark:text-blue-400">25%</span>
                                         </div>
                                         <div className="flex items-center justify-between">
                                             <div className="flex items-center gap-2">
-                                                <Award className="w-4 h-4 text-purple-500 text-purple-400" />
-                                                <span className="text-sm text-gray-700 text-gray-300">Partner</span>
+                                                <Award className="w-4 h-4 text-purple-500 dark:text-purple-400" />
+                                                <span className="text-sm text-gray-700 dark:text-gray-300">Partner</span>
                                             </div>
-                                            <span className="text-sm font-medium text-purple-600 text-purple-400">30%</span>
+                                            <span className="text-sm font-medium text-purple-600 dark:text-purple-400">30%</span>
                                         </div>
                                     </div>
                                 </div>
 
-                                <div className="bg-green-50 bg-green-900/20 rounded-xl p-4 mb-6 border border-green-200 border-green-800">
+                                <div className="bg-green-50 dark:bg-green-900/20 rounded-xl p-4 mb-6 border border-green-200 dark:border-green-800">
                                     <div className="flex items-center gap-2 mb-1">
-                                        <Gift className="w-4 h-4 text-green-600 text-green-400" />
-                                        <span className="text-sm font-semibold text-green-800 text-green-300">Monthly Bonus</span>
+                                        <Gift className="w-4 h-4 text-green-600 dark:text-green-400" />
+                                        <span className="text-sm font-semibold text-green-800 dark:text-green-300">Monthly Bonus</span>
                                     </div>
-                                    <p className="text-sm text-green-700 text-green-400">
+                                    <p className="text-sm text-green-700 dark:text-green-400">
                                         Make 3+ sales each month and get a free Purrify product ($49 value)!
                                     </p>
                                 </div>
@@ -230,15 +230,15 @@ export default function ActivateContent() {
                                 <div className="flex-grow"></div>
 
                                 {error && (
-                                    <div className="mb-4 p-3 bg-red-50 bg-red-900/20 border border-red-200 border-red-800 rounded-lg">
-                                        <p className="text-sm text-red-700 text-red-300">{error}</p>
+                                    <div className="mb-4 p-3 bg-red-50 dark:bg-red-900/20 border border-red-200 dark:border-red-800 rounded-lg">
+                                        <p className="text-sm text-red-700 dark:text-red-300">{error}</p>
                                     </div>
                                 )}
 
                                 <button
                                     onClick={handlePurchase}
                                     disabled={isPurchasing}
-                                    className="w-full py-4 bg-purple-600 hover:bg-purple-700 bg-purple-600 hover:bg-purple-500 text-white text-gray-100 font-semibold rounded-xl transition-colors flex items-center justify-center gap-2 disabled:opacity-50 disabled:cursor-not-allowed"
+                                    className="w-full py-4 bg-purple-600 hover:bg-purple-700 dark:bg-purple-600 dark:hover:bg-purple-500 text-white dark:text-gray-100 font-semibold rounded-xl transition-colors flex items-center justify-center gap-2 disabled:opacity-50 disabled:cursor-not-allowed"
                                 >
                                     {isPurchasing ? (
                                         <>
@@ -257,7 +257,7 @@ export default function ActivateContent() {
                                     )}
                                 </button>
 
-                                <p className="text-xs text-center text-gray-500 text-gray-400 mt-4">
+                                <p className="text-xs text-center text-gray-500 dark:text-gray-400 mt-4">
                                     Secure payment powered by Stripe
                                 </p>
                             </div>

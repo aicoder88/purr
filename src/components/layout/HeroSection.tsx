@@ -24,7 +24,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
   return (
     <section className={className}>
       <Container>
-        <div className="text-center text-white text-gray-100 text-gray-100 max-w-4xl mx-auto">
+        <div className="text-center text-white dark:text-gray-100 dark:text-gray-100 max-w-4xl mx-auto">
           {Icon && <Icon className={iconClassName} />}
           <h1 className="font-heading text-4xl md:text-5xl font-bold mb-6">
             {title}

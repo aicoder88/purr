@@ -131,77 +131,77 @@ export function HospitalityVertical({ locale }: HospitalityVerticalProps) {
     <div className="space-y-16">
       {/* Hero */}
       <section className="text-center">
-        <div className="inline-flex items-center gap-2 bg-amber-100 bg-amber-900/30 text-amber-800 text-amber-300 px-4 py-2 rounded-full text-sm font-medium mb-6">
+        <div className="inline-flex items-center gap-2 bg-amber-100 dark:bg-amber-900/30 text-amber-800 dark:text-amber-300 px-4 py-2 rounded-full text-sm font-medium mb-6">
           <Building2 className="h-4 w-4" />
           {t.hero.badge}
         </div>
-        <h2 className="font-heading text-4xl md:text-5xl font-bold text-gray-900 text-white mb-6">
+        <h2 className="font-heading text-4xl md:text-5xl font-bold text-gray-900 dark:text-white mb-6">
           {t.hero.title}
         </h2>
-        <p className="text-xl md:text-2xl text-gray-600 text-gray-300 mb-8 max-w-3xl mx-auto">
+        <p className="text-xl md:text-2xl text-gray-600 dark:text-gray-300 mb-8 max-w-3xl mx-auto">
           {t.hero.subtitle}
         </p>
         {/* Stats */}
-        <div className="bg-gradient-to-r from-amber-50 to-orange-50 from-amber-900/20 to-orange-900/20 border border-amber-200 border-amber-800 rounded-lg p-6 mb-8 max-w-3xl mx-auto">
+        <div className="bg-gradient-to-r from-amber-50 to-orange-50 dark:from-amber-900/20 dark:to-orange-900/20 border border-amber-200 dark:border-amber-800 rounded-lg p-6 mb-8 max-w-3xl mx-auto">
           <div className="grid grid-cols-3 gap-6 text-center">
             <div>
-              <div className="text-3xl font-bold text-amber-600 text-amber-400 mb-2">+60%</div>
-              <div className="text-sm font-semibold text-gray-800 text-gray-200">{t.stats.bookings}</div>
-              <div className="text-xs text-gray-600 text-gray-400">{t.stats.bookingsDesc}</div>
+              <div className="text-3xl font-bold text-amber-600 dark:text-amber-400 mb-2">+60%</div>
+              <div className="text-sm font-semibold text-gray-800 dark:text-gray-200">{t.stats.bookings}</div>
+              <div className="text-xs text-gray-600 dark:text-gray-400">{t.stats.bookingsDesc}</div>
             </div>
             <div>
-              <div className="text-3xl font-bold text-amber-600 text-amber-400 mb-2">100%</div>
-              <div className="text-sm font-semibold text-gray-800 text-gray-200">{t.stats.fragranceFree}</div>
+              <div className="text-3xl font-bold text-amber-600 dark:text-amber-400 mb-2">100%</div>
+              <div className="text-sm font-semibold text-gray-800 dark:text-gray-200">{t.stats.fragranceFree}</div>
             </div>
             <div>
-              <div className="text-3xl font-bold text-amber-600 text-amber-400 mb-2">+$50</div>
-              <div className="text-sm font-semibold text-gray-800 text-gray-200">{t.stats.revenue}</div>
+              <div className="text-3xl font-bold text-amber-600 dark:text-amber-400 mb-2">+$50</div>
+              <div className="text-sm font-semibold text-gray-800 dark:text-gray-200">{t.stats.revenue}</div>
             </div>
           </div>
         </div>
       </section>
       {/* Challenges */}
       <section>
-        <h3 className="font-heading text-3xl font-bold text-gray-900 text-white mb-4 text-center">
+        <h3 className="font-heading text-3xl font-bold text-gray-900 dark:text-white mb-4 text-center">
           {t.challenges.title}
         </h3>
-        <p className="text-center text-gray-600 text-gray-300 mb-8 max-w-2xl mx-auto">
+        <p className="text-center text-gray-600 dark:text-gray-300 mb-8 max-w-2xl mx-auto">
           {t.challenges.subtitle}
         </p>
         <div className="grid md:grid-cols-3 gap-6">
           {t.challenges.items.map((item, index) => (
             <div
               key={index}
-              className="bg-red-50 bg-red-900/20 border border-red-200 border-red-800 rounded-lg p-6 text-center"
+              className="bg-red-50 dark:bg-red-900/20 border border-red-200 dark:border-red-800 rounded-lg p-6 text-center"
             >
-              <div className="w-12 h-12 bg-red-100 bg-red-900/40 rounded-full flex items-center justify-center mx-auto mb-4">
-                <Star className="h-6 w-6 text-red-600 text-red-400" />
+              <div className="w-12 h-12 bg-red-100 dark:bg-red-900/40 rounded-full flex items-center justify-center mx-auto mb-4">
+                <Star className="h-6 w-6 text-red-600 dark:text-red-400" />
               </div>
-              <h4 className="font-semibold text-gray-900 text-white mb-2">{item.title}</h4>
-              <p className="text-sm text-gray-600 text-gray-300">{item.description}</p>
+              <h4 className="font-semibold text-gray-900 dark:text-white mb-2">{item.title}</h4>
+              <p className="text-sm text-gray-600 dark:text-gray-300">{item.description}</p>
             </div>
           ))}
         </div>
       </section>
       {/* Solution */}
-      <section className="bg-green-50 bg-green-900/10 rounded-2xl p-8">
-        <h3 className="font-heading text-3xl font-bold text-gray-900 text-white mb-4 text-center">
+      <section className="bg-green-50 dark:bg-green-900/10 rounded-2xl p-8">
+        <h3 className="font-heading text-3xl font-bold text-gray-900 dark:text-white mb-4 text-center">
           {t.solution.title}
         </h3>
-        <p className="text-center text-gray-600 text-gray-300 mb-8 max-w-2xl mx-auto">
+        <p className="text-center text-gray-600 dark:text-gray-300 mb-8 max-w-2xl mx-auto">
           {t.solution.subtitle}
         </p>
         <div className="grid md:grid-cols-3 gap-6">
           {t.solution.items.map((item, index) => (
-            <div key={index} className="bg-white bg-gray-800 rounded-lg p-6 flex gap-4">
+            <div key={index} className="bg-white dark:bg-gray-800 rounded-lg p-6 flex gap-4">
               <div className="flex-shrink-0">
-                <div className="w-12 h-12 bg-green-100 bg-green-900/40 rounded-full flex items-center justify-center">
-                  <CheckCircle className="h-6 w-6 text-green-600 text-green-400" />
+                <div className="w-12 h-12 bg-green-100 dark:bg-green-900/40 rounded-full flex items-center justify-center">
+                  <CheckCircle className="h-6 w-6 text-green-600 dark:text-green-400" />
                 </div>
               </div>
               <div>
-                <h4 className="font-semibold text-gray-900 text-white mb-2">{item.title}</h4>
-                <p className="text-gray-600 text-gray-300 text-sm">{item.description}</p>
+                <h4 className="font-semibold text-gray-900 dark:text-white mb-2">{item.title}</h4>
+                <p className="text-gray-600 dark:text-gray-300 text-sm">{item.description}</p>
               </div>
             </div>
           ))}
@@ -209,7 +209,7 @@ export function HospitalityVertical({ locale }: HospitalityVerticalProps) {
       </section>
       {/* Pricing */}
       <section>
-        <h3 className="font-heading text-3xl font-bold text-gray-900 text-white mb-8 text-center">
+        <h3 className="font-heading text-3xl font-bold text-gray-900 dark:text-white mb-8 text-center">
           {t.pricing.title}
         </h3>
         <div className="grid md:grid-cols-3 gap-8">
@@ -218,8 +218,8 @@ export function HospitalityVertical({ locale }: HospitalityVerticalProps) {
               key={index}
               className={`rounded-lg p-8 ${
                 tier.popular
-                  ? 'bg-amber-50 bg-amber-900/20 border-2 border-amber-300 border-amber-600 shadow-lg'
-                  : 'bg-white bg-gray-800 border border-gray-200 border-gray-700 shadow-sm'
+                  ? 'bg-amber-50 dark:bg-amber-900/20 border-2 border-amber-300 dark:border-amber-600 shadow-lg'
+                  : 'bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 shadow-sm'
               }`}
             >
               {tier.popular && (
@@ -230,12 +230,12 @@ export function HospitalityVertical({ locale }: HospitalityVerticalProps) {
                 </div>
               )}
               <div className="text-center mb-6">
-                <h4 className="font-heading text-xl font-semibold text-gray-900 text-white mb-2">
+                <h4 className="font-heading text-xl font-semibold text-gray-900 dark:text-white mb-2">
                   {tier.name}
                 </h4>
-                <div className="text-sm text-gray-600 text-gray-400 mb-4">{tier.properties}</div>
-                <div className="text-4xl font-bold text-amber-600 text-amber-400 mb-2">{tier.discount}</div>
-                <div className="text-sm text-gray-600 text-gray-400">
+                <div className="text-sm text-gray-600 dark:text-gray-400 mb-4">{tier.properties}</div>
+                <div className="text-4xl font-bold text-amber-600 dark:text-amber-400 mb-2">{tier.discount}</div>
+                <div className="text-sm text-gray-600 dark:text-gray-400">
                   {locale === 'fr' ? 'de réduction' : 'off retail'}
                 </div>
               </div>
@@ -244,21 +244,21 @@ export function HospitalityVertical({ locale }: HospitalityVerticalProps) {
         </div>
       </section>
       {/* Contact */}
-      <section className="text-center bg-gray-50 bg-gray-800 rounded-2xl p-8">
-        <h3 className="font-heading text-2xl font-bold text-gray-900 text-white mb-4">
+      <section className="text-center bg-gray-50 dark:bg-gray-800 rounded-2xl p-8">
+        <h3 className="font-heading text-2xl font-bold text-gray-900 dark:text-white mb-4">
           {t.contact.title}
         </h3>
         <div className="flex flex-col sm:flex-row gap-6 justify-center items-center">
           <a
             href={`mailto:${t.contact.email}`}
-            className="inline-flex items-center gap-2 text-amber-600 text-amber-400 hover:underline"
+            className="inline-flex items-center gap-2 text-amber-600 dark:text-amber-400 hover:underline"
           >
             <Mail className="h-5 w-5" />
             {t.contact.email}
           </a>
           <a
             href="tel:+1234567890"
-            className="inline-flex items-center gap-2 text-amber-600 text-amber-400 hover:underline"
+            className="inline-flex items-center gap-2 text-amber-600 dark:text-amber-400 hover:underline"
           >
             <Phone className="h-5 w-5" />
             1-800-PURRIFY

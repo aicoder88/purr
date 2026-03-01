@@ -84,17 +84,17 @@ export function WhyPurrify() {
   })).filter((card) => card.title && card.description);
 
   return (
-    <section id="why-purrify" className="py-14 md:py-16 bg-gray-50 bg-gray-900">
+    <section id="why-purrify" className="py-14 md:py-16 bg-gray-50 dark:bg-gray-900">
       <Container>
         <div className="max-w-3xl mx-auto text-center mb-10">
-          <div className="inline-flex items-center rounded-full border border-gray-200 border-gray-700 bg-white bg-gray-950 px-4 py-1.5 mb-4">
-            <span className="text-sm font-medium text-gray-700 text-gray-300">{t("whyPurrify.badge")}</span>
+          <div className="inline-flex items-center rounded-full border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-950 px-4 py-1.5 mb-4">
+            <span className="text-sm font-medium text-gray-700 dark:text-gray-300">{t("whyPurrify.badge")}</span>
           </div>
-          <h2 className="font-heading text-3xl md:text-4xl font-semibold tracking-tight text-gray-900 text-white">
+          <h2 className="font-heading text-3xl md:text-4xl font-semibold tracking-tight text-gray-900 dark:text-white">
             {t("whyPurrify.title")}
           </h2>
           {t("whyPurrify.subtitle") && (
-            <p className="mt-3 text-base md:text-lg text-gray-600 text-gray-400 leading-relaxed">
+            <p className="mt-3 text-base md:text-lg text-gray-600 dark:text-gray-400 leading-relaxed">
               {t("whyPurrify.subtitle")}
             </p>
           )}
@@ -106,7 +106,7 @@ export function WhyPurrify() {
             return (
               <article
                 key={card.title}
-                className="overflow-hidden rounded-2xl border border-gray-200 border-gray-700 bg-white bg-gray-950"
+                className="overflow-hidden rounded-2xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-950"
               >
                 <div className="relative aspect-[4/3] w-full">
                   <Image
@@ -120,10 +120,10 @@ export function WhyPurrify() {
                 </div>
                 <div className="p-5">
                   <div className="flex items-center gap-2 mb-2">
-                    <Icon className="w-6 h-6 text-gray-700 text-gray-300" />
-                    <h3 className="text-lg font-semibold text-gray-900 text-white">{card.title}</h3>
+                    <Icon className="w-6 h-6 text-gray-700 dark:text-gray-300" />
+                    <h3 className="text-lg font-semibold text-gray-900 dark:text-white">{card.title}</h3>
                   </div>
-                  <p className="text-sm md:text-base leading-relaxed text-gray-600 text-gray-400">
+                  <p className="text-sm md:text-base leading-relaxed text-gray-600 dark:text-gray-400">
                     {card.description}
                   </p>
                 </div>

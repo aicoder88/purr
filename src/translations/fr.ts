@@ -60,9 +60,6 @@ export const fr = {
     signOut: "Se Déconnecter",
     signedIn: "Connecté",
     // SEO FIX (Feb 2026): Added missing nav keys
-    litterCalculator: "Calculateur de Litière",
-    smellQuiz: "Quiz Odeur",
-    toolsHub: "Tous les outils",
     catLitterAnswers: "Q&R sur la Litière",
     scienceHub: "Références Scientifiques",
     carbonVsBakingSoda: "Charbon vs Bicarbonate",
@@ -839,8 +836,6 @@ export const fr = {
     carbonVsBakingSoda: "Charbon vs Bicarbonate",
     ammoniaSolutions: "Solutions pour l'Ammoniaque",
     litterCalculator: "Calculateur de Litière",
-    smellQuiz: "Quiz Odeur",
-    toolsHub: "Tous les outils",
     // Article links
     houseSmells: "Maison Sent la Litière pour Chat ?",
     multiCatGuide: "Guide Désodorisant Multi-Chats",

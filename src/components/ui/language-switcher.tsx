@@ -108,7 +108,7 @@ export function LanguageSwitcher() {
       <Button
         variant="ghost"
         size="sm"
-        className="flex items-center space-x-1 px-1.5 sm:px-2 py-1 hover:bg-[#FFFFF5] hover:bg-gray-800"
+        className="flex items-center space-x-1 px-1.5 sm:px-2 py-1 hover:bg-[#FFFFF5] dark:hover:bg-gray-800"
         onClick={toggleDropdown}
         onMouseEnter={cancelClose}
         onMouseLeave={scheduleClose}
@@ -125,13 +125,13 @@ export function LanguageSwitcher() {
           className="w-4 h-4 sm:w-5 sm:h-5 rounded-full object-cover"
         />
         <span className="sr-only">{currentLanguage.name}</span>
-        <ChevronDown className="h-4 w-4 text-[#FF3131] text-[#FF5050]" />
+        <ChevronDown className="h-4 w-4 text-[#FF3131] dark:text-[#FF5050]" />
       </Button>
 
       {isOpen && (
         <div
           id={menuId}
-          className="absolute right-0 mt-1 w-32 sm:w-40 rounded-md shadow-lg bg-white bg-gray-800 ring-1 ring-black ring-gray-700 ring-opacity-5 ring-opacity-50 z-50"
+          className="absolute right-0 mt-1 w-32 sm:w-40 rounded-md shadow-lg bg-white dark:bg-gray-800 ring-1 ring-black dark:ring-gray-700 ring-opacity-5 dark:ring-opacity-50 z-50"
           aria-labelledby={buttonId}
           onMouseEnter={cancelClose}
           onMouseLeave={scheduleClose}
@@ -141,8 +141,8 @@ export function LanguageSwitcher() {
               <li key={language.locale}>
                 <button
                   className={`flex items-center px-3 py-2 text-sm w-full text-left ${locale === language.locale
-                    ? 'bg-[#FFFFF5] bg-gray-700 text-[#FF3131] text-[#FF5050] font-medium'
-                    : 'text-gray-700 text-gray-200 hover:bg-[#FFFFF5] hover:bg-gray-700 hover:text-[#FF3131] hover:text-[#FF5050]'
+                    ? 'bg-[#FFFFF5] dark:bg-gray-700 text-[#FF3131] dark:text-[#FF5050] font-medium'
+                    : 'text-gray-700 dark:text-gray-200 hover:bg-[#FFFFF5] dark:hover:bg-gray-700 hover:text-[#FF3131] dark:hover:text-[#FF5050]'
                     }`}
                   onClick={createLanguageClickHandler(language.locale)}
                   type="button"

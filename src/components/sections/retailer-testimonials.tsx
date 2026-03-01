@@ -35,11 +35,11 @@ interface BusinessMetric {
 const GRADIENTS = {
   primary: 'from-[#5B2EFF] to-[#3694FF]',
   primaryHover: 'hover:from-[#4C1EEB] hover:to-[#2563EB]',
-  background: 'from-[#5B2EFF]/5 to-[#3694FF]/5 from-[#3694FF]/10 to-[#5B2EFF]/10',
+  background: 'from-[#5B2EFF]/5 to-[#3694FF]/5 dark:from-[#3694FF]/10 dark:to-[#5B2EFF]/10',
 } as const;
 
 // Shared text color classes
-const BRAND_TEXT = 'text-[#5B2EFF] text-[#3694FF]';
+const BRAND_TEXT = 'text-[#5B2EFF] dark:text-[#3694FF]';
 
 // Icon components
 function TrendUpIcon() {
@@ -175,13 +175,13 @@ export function RetailerTestimonials() {
       };
 
   return (
-    <section className="py-16 bg-gray-50 bg-gray-800">
+    <section className="py-16 bg-gray-50 dark:bg-gray-800">
       <Container>
         <div className="text-center mb-12">
-          <h2 className="font-heading text-3xl md:text-4xl font-bold text-gray-900 text-gray-50 mb-4">
+          <h2 className="font-heading text-3xl md:text-4xl font-bold text-gray-900 dark:text-gray-50 mb-4">
             {t('retailers.testimonials.title') || 'What Our Retail Partners Say'}
           </h2>
-          <p className="text-xl text-gray-600 text-gray-300 max-w-3xl mx-auto">
+          <p className="text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
             {t('retailers.testimonials.description') || 'Real feedback from successful pet store owners and managers across Canada.'}
           </p>
         </div>
@@ -191,28 +191,28 @@ export function RetailerTestimonials() {
           {TESTIMONIALS.map((testimonial, index) => (
             <div
               key={index}
-              className="bg-white bg-gray-900 rounded-xl p-6 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2"
+              className="bg-white dark:bg-gray-900 rounded-xl p-6 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2"
             >
               <div className="flex items-center mb-4">
-                <div className={`w-14 h-14 rounded-xl flex items-center justify-center mr-4 ${testimonial.logo?.whiteBg ? 'bg-white bg-gray-900 border border-gray-200 border-gray-700' : `bg-gradient-to-br ${GRADIENTS.primary}`}`}>
+                <div className={`w-14 h-14 rounded-xl flex items-center justify-center mr-4 ${testimonial.logo?.whiteBg ? 'bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-700' : `bg-gradient-to-br ${GRADIENTS.primary}`}`}>
                   {testimonial.logo && (
                     <Image src={testimonial.logo.src} alt={testimonial.logo.alt} width={testimonial.logo.width} height={testimonial.logo.height} className="object-contain w-10 h-10" />
                   )}
                 </div>
                 <div>
-                  <h4 className="font-bold text-gray-900 text-gray-50">{testimonial.name}</h4>
-                  <p className="text-sm text-gray-600 text-gray-300">{testimonial.title}</p>
-                  <p className="text-xs text-gray-500 text-gray-400">{testimonial.location}</p>
+                  <h4 className="font-bold text-gray-900 dark:text-gray-50">{testimonial.name}</h4>
+                  <p className="text-sm text-gray-600 dark:text-gray-300">{testimonial.title}</p>
+                  <p className="text-xs text-gray-500 dark:text-gray-400">{testimonial.location}</p>
                 </div>
               </div>
 
-              <blockquote className="text-gray-700 text-gray-200 italic mb-4">
+              <blockquote className="text-gray-700 dark:text-gray-200 italic mb-4">
                 "{testimonial.quote}"
               </blockquote>
 
-              <div className="pt-4 border-t border-gray-200 border-gray-700">
+              <div className="pt-4 border-t border-gray-200 dark:border-gray-700">
                 <div className="flex justify-between items-center">
-                  <span className="text-sm text-gray-600 text-gray-300">{testimonial.stats.label}</span>
+                  <span className="text-sm text-gray-600 dark:text-gray-300">{testimonial.stats.label}</span>
                   <span className={`font-bold ${BRAND_TEXT}`}>{testimonial.stats.value}</span>
                 </div>
               </div>
@@ -222,23 +222,23 @@ export function RetailerTestimonials() {
 
         {/* Business Metrics */}
         <div className={`bg-gradient-to-r ${GRADIENTS.background} rounded-2xl p-8`}>
-          <h3 className="font-heading text-2xl font-bold text-gray-900 text-gray-50 mb-8 text-center">
+          <h3 className="font-heading text-2xl font-bold text-gray-900 dark:text-gray-50 mb-8 text-center">
             {t('retailers.testimonials.metrics.title') || 'Proven Business Results'}
           </h3>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
             {BUSINESS_METRICS.map((metric, index) => (
               <div key={index} className="text-center">
-                <div className={`w-16 h-16 bg-white bg-gray-800 rounded-xl flex items-center justify-center mx-auto mb-4 shadow-lg ${BRAND_TEXT}`}>
+                <div className={`w-16 h-16 bg-white dark:bg-gray-800 rounded-xl flex items-center justify-center mx-auto mb-4 shadow-lg ${BRAND_TEXT}`}>
                   {metric.icon}
                 </div>
-                <div className="text-3xl font-bold text-gray-900 text-gray-50 mb-1">
+                <div className="text-3xl font-bold text-gray-900 dark:text-gray-50 mb-1">
                   {metric.value}
                 </div>
-                <div className="font-semibold text-gray-700 text-gray-200 mb-1">
+                <div className="font-semibold text-gray-700 dark:text-gray-200 mb-1">
                   {metric.label}
                 </div>
-                <div className="text-sm text-gray-600 text-gray-300">
+                <div className="text-sm text-gray-600 dark:text-gray-300">
                   {metric.description}
                 </div>
               </div>
@@ -248,17 +248,17 @@ export function RetailerTestimonials() {
 
         {/* Case Study CTA */}
         <div className="mt-12 text-center">
-          <h3 className="font-heading text-xl font-bold text-gray-900 text-gray-50 mb-4">
+          <h3 className="font-heading text-xl font-bold text-gray-900 dark:text-gray-50 mb-4">
             {caseStudyCopy.title}
           </h3>
-          <p className="text-gray-600 text-gray-300 mb-6">
+          <p className="text-gray-600 dark:text-gray-300 mb-6">
             {caseStudyCopy.description}
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <button className={`bg-gradient-to-r ${GRADIENTS.primary} ${GRADIENTS.primaryHover} text-white text-white font-bold py-3 px-8 rounded-lg shadow-md hover:shadow-lg transition-all duration-300`}>
+            <button className={`bg-gradient-to-r ${GRADIENTS.primary} ${GRADIENTS.primaryHover} text-white dark:text-white font-bold py-3 px-8 rounded-lg shadow-md hover:shadow-lg transition-all duration-300`}>
               {caseStudyCopy.download}
             </button>
-            <button className="border-2 border-[#5B2EFF] border-[#3694FF] text-[#5B2EFF] text-[#3694FF] hover:bg-[#5B2EFF] hover:bg-[#3694FF] hover:text-white hover:text-white font-bold py-3 px-8 rounded-lg transition-all duration-300">
+            <button className="border-2 border-[#5B2EFF] dark:border-[#3694FF] text-[#5B2EFF] dark:text-[#3694FF] hover:bg-[#5B2EFF] dark:hover:bg-[#3694FF] hover:text-white dark:hover:text-white font-bold py-3 px-8 rounded-lg transition-all duration-300">
               {caseStudyCopy.schedule}
             </button>
           </div>

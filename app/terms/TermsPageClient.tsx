@@ -172,25 +172,25 @@ export default function TermsPage() {
         <script type="application/ld+json" dangerouslySetInnerHTML={generateJSONLD(schema)} />
       )}
 
-      <main className="min-h-screen bg-gradient-to-br from-[#FFFFFF] via-[#FFFFF5] to-[#FFFFFF] from-gray-900 via-gray-900 to-gray-800">
-        <section className="py-4 border-b border-gray-200 border-gray-800">
+      <main className="min-h-screen bg-gradient-to-br from-[#FFFFFF] via-[#FFFFF5] to-[#FFFFFF] dark:from-gray-900 dark:via-gray-900 dark:to-gray-800">
+        <section className="py-4 border-b border-gray-200 dark:border-gray-800">
           <Container>
             <nav aria-label={copy.breadcrumbAria} className="flex items-center space-x-2 text-sm">
               <Link
                 href={localizePath('/', locale)}
-                className="flex items-center text-gray-500 text-gray-400 hover:text-[#FF3131] hover:text-[#FF5050] transition-colors"
+                className="flex items-center text-gray-500 dark:text-gray-400 hover:text-[#FF3131] dark:hover:text-[#FF5050] transition-colors"
               >
                 <Home className="w-4 h-4" />
               </Link>
               {breadcrumb?.items?.slice(1).map((item, index, arr) => (
                 <span key={item.path} className="flex items-center">
-                  <ChevronRight className="w-4 h-4 mx-1 text-gray-400 text-gray-500" />
+                  <ChevronRight className="w-4 h-4 mx-1 text-gray-400 dark:text-gray-500" />
                   {index === arr.length - 1 ? (
-                    <span className="font-medium text-gray-900 text-gray-100">{item.name}</span>
+                    <span className="font-medium text-gray-900 dark:text-gray-100">{item.name}</span>
                   ) : (
                     <Link
                       href={item.path}
-                      className="text-gray-500 text-gray-400 hover:text-[#FF3131] hover:text-[#FF5050] transition-colors"
+                      className="text-gray-500 dark:text-gray-400 hover:text-[#FF3131] dark:hover:text-[#FF5050] transition-colors"
                     >
                       {item.name}
                     </Link>
@@ -206,10 +206,10 @@ export default function TermsPage() {
             <div className="max-w-4xl mx-auto">
               <div className="text-center mb-12">
                 <h1 className="font-heading text-4xl font-bold tracking-tight mb-4 text-[#03E46A]">{copy.heading}</h1>
-                <p className="text-gray-600 text-gray-300">{copy.lastUpdated}</p>
+                <p className="text-gray-600 dark:text-gray-300">{copy.lastUpdated}</p>
               </div>
 
-              <div className="prose prose-lg max-w-none prose-invert text-gray-700 text-gray-200">
+              <div className="prose prose-lg max-w-none dark:prose-invert text-gray-700 dark:text-gray-200">
                 {copy.intro.map((paragraph) => (
                   <p key={paragraph}>{paragraph}</p>
                 ))}
@@ -234,7 +234,7 @@ export default function TermsPage() {
                   <br />
                   {`${copy.contactAddressLabel}: ${CONTACT_INFO.address}`}
                 </p>
-                <p className="text-sm text-gray-500 text-gray-400">
+                <p className="text-sm text-gray-500 dark:text-gray-400">
                   {t('nav.termsOfService')}
                 </p>
               </div>

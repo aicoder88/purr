@@ -62,15 +62,15 @@ export default function InvestorContent() {
       {/* Navigation Tabs */}
       <Container>
         <div className="pt-8 mb-4 relative z-10">
-          <div className="w-fit mx-auto bg-white bg-gray-900/60 backdrop-blur-md rounded-lg shadow-md border border-white/20 border-gray-700/50 p-1">
+          <div className="w-fit mx-auto bg-white dark:bg-gray-900/60 backdrop-blur-md rounded-lg shadow-md border border-white/20 dark:border-gray-700/50 p-1">
             <div className="flex flex-wrap justify-center gap-1">
               {TABS.map((tab) => (
                 <button
                   key={tab.id}
                   onClick={() => handleTabClick(tab.id)}
                   className={`px-3 py-1.5 text-sm font-medium transition-all duration-300 rounded-lg ${activeTab === tab.id
-                    ? 'bg-gradient-to-r from-[#FF3131] from-[#FF5050] to-[#5B2EFF] to-[#818CF8] text-white shadow-lg transform scale-105'
-                    : 'text-gray-600 text-gray-300 hover:text-[#333333] hover:text-white hover:bg-white hover:bg-gray-700/50'
+                    ? 'bg-gradient-to-r from-[#FF3131] dark:from-[#FF5050] to-[#5B2EFF] dark:to-[#818CF8] text-white shadow-lg transform scale-105'
+                    : 'text-gray-600 dark:text-gray-300 hover:text-[#333333] dark:hover:text-white hover:bg-white dark:hover:bg-gray-700/50'
                     }`}
                 >
                   {tab.label}
@@ -84,11 +84,11 @@ export default function InvestorContent() {
       {/* Middle Navigation Buttons */}
       <Container>
         <div className="flex justify-center mb-4 relative z-10">
-          <div className="w-fit mx-auto bg-white bg-gray-900/80 backdrop-blur-md rounded-lg shadow-md border border-white/20 border-gray-700/50 p-2">
+          <div className="w-fit mx-auto bg-white dark:bg-gray-900/80 backdrop-blur-md rounded-lg shadow-md border border-white/20 dark:border-gray-700/50 p-2">
             <div className="flex items-center space-x-3">
               <button
                 onClick={() => navigateTab('prev')}
-                className="flex items-center px-4 py-2 text-sm bg-gradient-to-r from-[#FF3131] from-[#FF5050] to-[#5B2EFF] to-[#818CF8] text-white rounded-lg font-semibold shadow-md hover:shadow-lg transition-all duration-300 transform hover:scale-105"
+                className="flex items-center px-4 py-2 text-sm bg-gradient-to-r from-[#FF3131] dark:from-[#FF5050] to-[#5B2EFF] dark:to-[#818CF8] text-white rounded-lg font-semibold shadow-md hover:shadow-lg transition-all duration-300 transform hover:scale-105"
               >
                 <span className="text-sm mr-1">←</span>
                 Previous
@@ -98,7 +98,7 @@ export default function InvestorContent() {
                 {TABS.map((tab) => (
                   <div
                     key={tab.id}
-                    className={`w-1.5 h-1.5 rounded-full transition-all duration-300 ${activeTab === tab.id ? 'bg-[#FF3131] w-4' : 'bg-gray-300 bg-gray-600'
+                    className={`w-1.5 h-1.5 rounded-full transition-all duration-300 ${activeTab === tab.id ? 'bg-[#FF3131] w-4' : 'bg-gray-300 dark:bg-gray-600'
                       }`}
                   />
                 ))}
@@ -106,7 +106,7 @@ export default function InvestorContent() {
 
               <button
                 onClick={() => navigateTab('next')}
-                className="flex items-center px-4 py-2 text-sm bg-gradient-to-r from-[#5B2EFF] from-[#818CF8] to-[#FF3131] to-[#FF5050] text-white rounded-lg font-semibold shadow-md hover:shadow-lg transition-all duration-300 transform hover:scale-105"
+                className="flex items-center px-4 py-2 text-sm bg-gradient-to-r from-[#5B2EFF] dark:from-[#818CF8] to-[#FF3131] dark:to-[#FF5050] text-white rounded-lg font-semibold shadow-md hover:shadow-lg transition-all duration-300 transform hover:scale-105"
               >
                 Next
                 <span className="text-sm ml-1">→</span>

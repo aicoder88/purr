@@ -156,17 +156,17 @@ export default function SettingsContent() {
         <AffiliateLayout>
             {/* Header */}
             <div className="mb-8">
-                <h1 className="font-heading text-3xl font-bold text-gray-900 text-gray-100">
+                <h1 className="font-heading text-3xl font-bold text-gray-900 dark:text-gray-100">
                     {t('affiliateDashboard.settings') || 'Settings'}
                 </h1>
-                <p className="text-gray-600 text-gray-400 mt-1">
+                <p className="text-gray-600 dark:text-gray-400 mt-1">
                     Manage your account and payment settings.
                 </p>
             </div>
 
             {error && (
-                <div className="mb-6 p-4 bg-red-50 bg-red-900/20 border border-red-200 border-red-800 rounded-lg">
-                    <p className="text-red-700 text-red-300">{error}</p>
+                <div className="mb-6 p-4 bg-red-50 dark:bg-red-900/20 border border-red-200 dark:border-red-800 rounded-lg">
+                    <p className="text-red-700 dark:text-red-300">{error}</p>
                 </div>
             )}
 
@@ -175,12 +175,12 @@ export default function SettingsContent() {
                     {[1, 2, 3].map((i) => (
                         <div
                             key={i}
-                            className="bg-white bg-gray-800 rounded-xl border border-gray-200 border-gray-700 p-6 animate-pulse"
+                            className="bg-white dark:bg-gray-800 rounded-xl border border-gray-200 dark:border-gray-700 p-6 animate-pulse"
                         >
-                            <div className="h-6 bg-gray-200 bg-gray-700 rounded w-32 mb-4" />
+                            <div className="h-6 bg-gray-200 dark:bg-gray-700 rounded w-32 mb-4" />
                             <div className="space-y-4">
-                                <div className="h-10 bg-gray-200 bg-gray-700 rounded" />
-                                <div className="h-10 bg-gray-200 bg-gray-700 rounded" />
+                                <div className="h-10 bg-gray-200 dark:bg-gray-700 rounded" />
+                                <div className="h-10 bg-gray-200 dark:bg-gray-700 rounded" />
                             </div>
                         </div>
                     ))}
@@ -188,48 +188,48 @@ export default function SettingsContent() {
             ) : data ? (
                 <div className="space-y-6">
                     {/* Profile Information */}
-                    <div className="bg-white bg-gray-800 rounded-xl border border-gray-200 border-gray-700 p-6">
+                    <div className="bg-white dark:bg-gray-800 rounded-xl border border-gray-200 dark:border-gray-700 p-6">
                         <div className="flex items-center space-x-2 mb-6">
-                            <User className="w-5 h-5 text-purple-600 text-purple-400" />
-                            <h2 className="text-lg font-semibold text-gray-900 text-gray-100">
+                            <User className="w-5 h-5 text-purple-600 dark:text-purple-400" />
+                            <h2 className="text-lg font-semibold text-gray-900 dark:text-gray-100">
                                 Profile Information
                             </h2>
                         </div>
 
                         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                             <div>
-                                <label className="block text-sm font-medium text-gray-700 text-gray-300 mb-1">
+                                <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
                                     Name
                                 </label>
-                                <p className="text-gray-900 text-gray-100">{data.profile.name}</p>
+                                <p className="text-gray-900 dark:text-gray-100">{data.profile.name}</p>
                             </div>
                             <div>
-                                <label className="block text-sm font-medium text-gray-700 text-gray-300 mb-1">
+                                <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
                                     Email
                                 </label>
-                                <p className="text-gray-900 text-gray-100">{data.profile.email}</p>
+                                <p className="text-gray-900 dark:text-gray-100">{data.profile.email}</p>
                             </div>
                             <div>
-                                <label className="block text-sm font-medium text-gray-700 text-gray-300 mb-1">
+                                <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
                                     Affiliate Code
                                 </label>
-                                <code className="text-purple-600 text-purple-400 font-mono">
+                                <code className="text-purple-600 dark:text-purple-400 font-mono">
                                     {data.profile.code}
                                 </code>
                             </div>
                             <div>
-                                <label className="block text-sm font-medium text-gray-700 text-gray-300 mb-1">
+                                <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
                                     Website
                                 </label>
-                                <p className="text-gray-900 text-gray-100">
+                                <p className="text-gray-900 dark:text-gray-100">
                                     {data.profile.website || 'Not provided'}
                                 </p>
                             </div>
                             <div>
-                                <label className="block text-sm font-medium text-gray-700 text-gray-300 mb-1">
+                                <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
                                     Member Since
                                 </label>
-                                <p className="text-gray-900 text-gray-100">
+                                <p className="text-gray-900 dark:text-gray-100">
                                     {new Date(data.profile.memberSince).toLocaleDateString()}
                                 </p>
                             </div>
@@ -239,26 +239,26 @@ export default function SettingsContent() {
                     {/* Payment Settings */}
                     <form
                         onSubmit={handlePaymentSave}
-                        className="bg-white bg-gray-800 rounded-xl border border-gray-200 border-gray-700 p-6"
+                        className="bg-white dark:bg-gray-800 rounded-xl border border-gray-200 dark:border-gray-700 p-6"
                     >
                         <div className="flex items-center space-x-2 mb-6">
-                            <CreditCard className="w-5 h-5 text-purple-600 text-purple-400" />
-                            <h2 className="text-lg font-semibold text-gray-900 text-gray-100">
+                            <CreditCard className="w-5 h-5 text-purple-600 dark:text-purple-400" />
+                            <h2 className="text-lg font-semibold text-gray-900 dark:text-gray-100">
                                 Payment Settings
                             </h2>
                         </div>
 
                         {paymentError && (
-                            <div className="mb-4 p-3 bg-red-50 bg-red-900/20 border border-red-200 border-red-800 rounded-lg flex items-start space-x-2">
-                                <AlertCircle className="w-5 h-5 text-red-600 text-red-400 flex-shrink-0 mt-0.5" />
-                                <p className="text-sm text-red-700 text-red-300">{paymentError}</p>
+                            <div className="mb-4 p-3 bg-red-50 dark:bg-red-900/20 border border-red-200 dark:border-red-800 rounded-lg flex items-start space-x-2">
+                                <AlertCircle className="w-5 h-5 text-red-600 dark:text-red-400 flex-shrink-0 mt-0.5" />
+                                <p className="text-sm text-red-700 dark:text-red-300">{paymentError}</p>
                             </div>
                         )}
 
                         {paymentSuccess && (
-                            <div className="mb-4 p-3 bg-green-50 bg-green-900/20 border border-green-200 border-green-800 rounded-lg flex items-start space-x-2">
-                                <Check className="w-5 h-5 text-green-600 text-green-400 flex-shrink-0 mt-0.5" />
-                                <p className="text-sm text-green-700 text-green-300">
+                            <div className="mb-4 p-3 bg-green-50 dark:bg-green-900/20 border border-green-200 dark:border-green-800 rounded-lg flex items-start space-x-2">
+                                <Check className="w-5 h-5 text-green-600 dark:text-green-400 flex-shrink-0 mt-0.5" />
+                                <p className="text-sm text-green-700 dark:text-green-300">
                                     Payment settings saved successfully!
                                 </p>
                             </div>
@@ -268,7 +268,7 @@ export default function SettingsContent() {
                             <div>
                                 <label
                                     htmlFor="payoutMethod"
-                                    className="block text-sm font-medium text-gray-700 text-gray-300 mb-1"
+                                    className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1"
                                 >
                                     Payout Method
                                 </label>
@@ -276,7 +276,7 @@ export default function SettingsContent() {
                                     id="payoutMethod"
                                     value={payoutMethod}
                                     onChange={(e) => setPayoutMethod(e.target.value)}
-                                    className="w-full px-3 py-2 border border-gray-300 border-gray-600 rounded-lg bg-white bg-gray-700 text-gray-900 text-gray-100 focus:ring-2 focus:ring-purple-500 focus:ring-purple-400 focus:border-transparent"
+                                    className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-700 text-gray-900 dark:text-gray-100 focus:ring-2 focus:ring-purple-500 dark:focus:ring-purple-400 focus:border-transparent"
                                 >
                                     <option value="">Select a method</option>
                                     <option value="PAYPAL">PayPal</option>
@@ -287,7 +287,7 @@ export default function SettingsContent() {
                             <div>
                                 <label
                                     htmlFor="payoutEmail"
-                                    className="block text-sm font-medium text-gray-700 text-gray-300 mb-1"
+                                    className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1"
                                 >
                                     Payout Email
                                 </label>
@@ -297,9 +297,9 @@ export default function SettingsContent() {
                                     value={payoutEmail}
                                     onChange={(e) => setPayoutEmail(e.target.value)}
                                     placeholder="your-paypal-email@example.com"
-                                    className="w-full px-3 py-2 border border-gray-300 border-gray-600 rounded-lg bg-white bg-gray-700 text-gray-900 text-gray-100 placeholder-gray-500 placeholder-gray-400 focus:ring-2 focus:ring-purple-500 focus:ring-purple-400 focus:border-transparent"
+                                    className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-700 text-gray-900 dark:text-gray-100 placeholder-gray-500 dark:placeholder-gray-400 focus:ring-2 focus:ring-purple-500 dark:focus:ring-purple-400 focus:border-transparent"
                                 />
-                                <p className="mt-1 text-sm text-gray-500 text-gray-400">
+                                <p className="mt-1 text-sm text-gray-500 dark:text-gray-400">
                                     This is where your payout will be sent
                                 </p>
                             </div>
@@ -308,7 +308,7 @@ export default function SettingsContent() {
                                 <button
                                     type="submit"
                                     disabled={paymentSaving}
-                                    className="px-4 py-2 bg-purple-600 bg-purple-500 hover:bg-purple-700 hover:bg-purple-600 text-white text-gray-100 font-medium rounded-lg transition-colors disabled:opacity-50 flex items-center space-x-2"
+                                    className="px-4 py-2 bg-purple-600 dark:bg-purple-500 hover:bg-purple-700 dark:hover:bg-purple-600 text-white dark:text-gray-100 font-medium rounded-lg transition-colors disabled:opacity-50 flex items-center space-x-2"
                                 >
                                     {paymentSaving ? (
                                         <>
@@ -348,26 +348,26 @@ export default function SettingsContent() {
                     {/* Change Password */}
                     <form
                         onSubmit={handlePasswordChange}
-                        className="bg-white bg-gray-800 rounded-xl border border-gray-200 border-gray-700 p-6"
+                        className="bg-white dark:bg-gray-800 rounded-xl border border-gray-200 dark:border-gray-700 p-6"
                     >
                         <div className="flex items-center space-x-2 mb-6">
-                            <Lock className="w-5 h-5 text-purple-600 text-purple-400" />
-                            <h2 className="text-lg font-semibold text-gray-900 text-gray-100">
+                            <Lock className="w-5 h-5 text-purple-600 dark:text-purple-400" />
+                            <h2 className="text-lg font-semibold text-gray-900 dark:text-gray-100">
                                 Change Password
                             </h2>
                         </div>
 
                         {passwordError && (
-                            <div className="mb-4 p-3 bg-red-50 bg-red-900/20 border border-red-200 border-red-800 rounded-lg flex items-start space-x-2">
-                                <AlertCircle className="w-5 h-5 text-red-600 text-red-400 flex-shrink-0 mt-0.5" />
-                                <p className="text-sm text-red-700 text-red-300">{passwordError}</p>
+                            <div className="mb-4 p-3 bg-red-50 dark:bg-red-900/20 border border-red-200 dark:border-red-800 rounded-lg flex items-start space-x-2">
+                                <AlertCircle className="w-5 h-5 text-red-600 dark:text-red-400 flex-shrink-0 mt-0.5" />
+                                <p className="text-sm text-red-700 dark:text-red-300">{passwordError}</p>
                             </div>
                         )}
 
                         {passwordSuccess && (
-                            <div className="mb-4 p-3 bg-green-50 bg-green-900/20 border border-green-200 border-green-800 rounded-lg flex items-start space-x-2">
-                                <Check className="w-5 h-5 text-green-600 text-green-400 flex-shrink-0 mt-0.5" />
-                                <p className="text-sm text-green-700 text-green-300">
+                            <div className="mb-4 p-3 bg-green-50 dark:bg-green-900/20 border border-green-200 dark:border-green-800 rounded-lg flex items-start space-x-2">
+                                <Check className="w-5 h-5 text-green-600 dark:text-green-400 flex-shrink-0 mt-0.5" />
+                                <p className="text-sm text-green-700 dark:text-green-300">
                                     Password changed successfully!
                                 </p>
                             </div>
@@ -377,7 +377,7 @@ export default function SettingsContent() {
                             <div>
                                 <label
                                     htmlFor="currentPassword"
-                                    className="block text-sm font-medium text-gray-700 text-gray-300 mb-1"
+                                    className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1"
                                 >
                                     Current Password
                                 </label>
@@ -387,12 +387,12 @@ export default function SettingsContent() {
                                         id="currentPassword"
                                         value={currentPassword}
                                         onChange={(e) => setCurrentPassword(e.target.value)}
-                                        className="w-full px-3 py-2 pr-10 border border-gray-300 border-gray-600 rounded-lg bg-white bg-gray-700 text-gray-900 text-gray-100 focus:ring-2 focus:ring-purple-500 focus:ring-purple-400 focus:border-transparent"
+                                        className="w-full px-3 py-2 pr-10 border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-700 text-gray-900 dark:text-gray-100 focus:ring-2 focus:ring-purple-500 dark:focus:ring-purple-400 focus:border-transparent"
                                     />
                                     <button
                                         type="button"
                                         onClick={() => setShowCurrentPassword(!showCurrentPassword)}
-                                        className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-400 hover:text-gray-600 hover:text-gray-300"
+                                        className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-400 hover:text-gray-600 dark:hover:text-gray-300"
                                     >
                                         {showCurrentPassword ? (
                                             <EyeOff className="w-4 h-4" />
@@ -406,7 +406,7 @@ export default function SettingsContent() {
                             <div>
                                 <label
                                     htmlFor="newPassword"
-                                    className="block text-sm font-medium text-gray-700 text-gray-300 mb-1"
+                                    className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1"
                                 >
                                     New Password
                                 </label>
@@ -416,12 +416,12 @@ export default function SettingsContent() {
                                         id="newPassword"
                                         value={newPassword}
                                         onChange={(e) => setNewPassword(e.target.value)}
-                                        className="w-full px-3 py-2 pr-10 border border-gray-300 border-gray-600 rounded-lg bg-white bg-gray-700 text-gray-900 text-gray-100 focus:ring-2 focus:ring-purple-500 focus:ring-purple-400 focus:border-transparent"
+                                        className="w-full px-3 py-2 pr-10 border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-700 text-gray-900 dark:text-gray-100 focus:ring-2 focus:ring-purple-500 dark:focus:ring-purple-400 focus:border-transparent"
                                     />
                                     <button
                                         type="button"
                                         onClick={() => setShowNewPassword(!showNewPassword)}
-                                        className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-400 hover:text-gray-600 hover:text-gray-300"
+                                        className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-400 hover:text-gray-600 dark:hover:text-gray-300"
                                     >
                                         {showNewPassword ? (
                                             <EyeOff className="w-4 h-4" />
@@ -430,7 +430,7 @@ export default function SettingsContent() {
                                         )}
                                     </button>
                                 </div>
-                                <p className="mt-1 text-sm text-gray-500 text-gray-400">
+                                <p className="mt-1 text-sm text-gray-500 dark:text-gray-400">
                                     Must be at least 8 characters
                                 </p>
                             </div>
@@ -438,7 +438,7 @@ export default function SettingsContent() {
                             <div>
                                 <label
                                     htmlFor="confirmPassword"
-                                    className="block text-sm font-medium text-gray-700 text-gray-300 mb-1"
+                                    className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1"
                                 >
                                     Confirm New Password
                                 </label>
@@ -447,7 +447,7 @@ export default function SettingsContent() {
                                     id="confirmPassword"
                                     value={confirmPassword}
                                     onChange={(e) => setConfirmPassword(e.target.value)}
-                                    className="w-full px-3 py-2 border border-gray-300 border-gray-600 rounded-lg bg-white bg-gray-700 text-gray-900 text-gray-100 focus:ring-2 focus:ring-purple-500 focus:ring-purple-400 focus:border-transparent"
+                                    className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-700 text-gray-900 dark:text-gray-100 focus:ring-2 focus:ring-purple-500 dark:focus:ring-purple-400 focus:border-transparent"
                                 />
                             </div>
 
@@ -455,7 +455,7 @@ export default function SettingsContent() {
                                 <button
                                     type="submit"
                                     disabled={passwordSaving || !currentPassword || !newPassword || !confirmPassword}
-                                    className="px-4 py-2 bg-purple-600 bg-purple-500 hover:bg-purple-700 hover:bg-purple-600 text-white text-gray-100 font-medium rounded-lg transition-colors disabled:opacity-50 disabled:cursor-not-allowed flex items-center space-x-2"
+                                    className="px-4 py-2 bg-purple-600 dark:bg-purple-500 hover:bg-purple-700 dark:hover:bg-purple-600 text-white dark:text-gray-100 font-medium rounded-lg transition-colors disabled:opacity-50 disabled:cursor-not-allowed flex items-center space-x-2"
                                 >
                                     {passwordSaving ? (
                                         <>

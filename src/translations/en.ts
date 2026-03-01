@@ -60,8 +60,6 @@ export const en = {
     signedIn: "Signed in",
     // SEO FIX (Feb 2026): Added missing nav keys
     litterCalculator: "Litter Calculator",
-    smellQuiz: "Smell Quiz",
-    toolsHub: "All Tools",
     catLitterAnswers: "Cat Litter Q&A",
     scienceHub: "Research Citations",
     carbonVsBakingSoda: "Carbon vs Baking Soda",
@@ -213,8 +211,8 @@ export const en = {
     },
     pricing: {
       trial: "FREE Trial (just pay $4.76 S&H)",
-      standard: "120g: $29.99",
-      family: "240g: $54.99"
+      standard: "50g: $14.99",
+      family: "120g: $29.99"
     },
     buttons: {
       shopNow: "Try FREE — Just $4.76 Shipping",
@@ -851,8 +849,6 @@ export const en = {
     carbonVsBakingSoda: "Carbon vs Baking Soda",
     ammoniaSolutions: "Ammonia Solutions",
     litterCalculator: "Litter Calculator",
-    smellQuiz: "Smell Quiz",
-    toolsHub: "All Tools",
     // Article links
     houseSmells: "House Smells Like Cat Litter?",
     multiCatGuide: "Multi-Cat Deodorizer Guide",
@@ -1337,32 +1333,32 @@ export const en = {
     products: [
       {
         id: "trial",
-        name: "The Skeptic's Sample",
-        subtitle: "12g · One Week of Proof",
+        name: "Trial Pouch",
+        subtitle: "17g · First test at home",
         duration: "7+ days",
         cats: "1 cat",
-        features: ["One week of fresh-air confidence", "Just $4.76 shipping", "Zero risk, zero commitment"],
-        bestFor: "Cat parents who've been burned before. Test it yourself. Your nose doesn't lie.",
-        cta: "Get Purrify Near You"
+        features: ["Sized for a first full trial", "Fast check of odor-control results", "Low-commitment start"],
+        bestFor: "First-time buyers who want to test performance before buying a larger bag.",
+        cta: "Try Without Risk"
       },
       {
         id: "regular",
-        name: "Regular Size",
-        subtitle: "120g · Regular Size",
+        name: "Standard Pouch",
+        subtitle: "60g · Everyday home use",
         duration: "7+ days per application",
         cats: "1-2 cats",
-        features: ["Use more for extended freshness", "Top-up anytime", "Works with any litter"],
-        bestFor: "Single or dual cat homes. The size that keeps customers coming back.",
+        features: ["Balanced size for weekly use", "Easy to store and scoop", "Great fit for most homes"],
+        bestFor: "Single- and two-cat homes that want consistent odor control without overbuying.",
         cta: "Get Purrify Near You"
       },
       {
         id: "large",
-        name: "Family Size",
-        subtitle: "240g · Best Value Per Gram",
+        name: "Multi-Cat Pouch",
+        subtitle: "140g · Extended supply",
         duration: "7+ days per application",
         cats: "3+ cats",
-        features: ["Best value per gram", "Flexible dosing", "Perfect for multiple boxes"],
-        bestFor: "Multi-cat households, foster parents, or anyone who's lost count.",
+        features: ["More supply per bag", "Flexible dosing across boxes", "Best for high-usage households"],
+        bestFor: "Busy homes with multiple litter boxes that need longer-lasting inventory.",
         cta: "Get Purrify Near You"
       }
     ],

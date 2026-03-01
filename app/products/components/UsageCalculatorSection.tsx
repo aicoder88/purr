@@ -36,18 +36,18 @@ export function UsageCalculatorSection() {
     <section className="py-16 cv-auto cis-720">
       <Container>
         <div className="text-center mb-12">
-          <h2 className="font-heading text-3xl md:text-4xl font-bold mb-4 text-gray-900 text-gray-100">
+          <h2 className="font-heading text-3xl md:text-4xl font-bold mb-4 text-gray-900 dark:text-gray-100">
             {t('productComparison.howLongWillEachSizeLast')}
           </h2>
-          <p className="text-xl text-gray-600 text-gray-300">
+          <p className="text-xl text-gray-600 dark:text-gray-300">
             {t('productComparison.usageCalculator.subtitle')}
           </p>
         </div>
 
-        <div className="bg-white bg-gray-800 rounded-xl shadow-lg overflow-hidden">
+        <div className="bg-white dark:bg-gray-800 rounded-xl shadow-lg overflow-hidden">
           <div className="overflow-x-auto">
             <table className="w-full">
-              <thead className="bg-gradient-to-r from-brand-purple to-brand-red text-white text-gray-100">
+              <thead className="bg-gradient-to-r from-brand-purple to-brand-red text-white dark:text-gray-100">
                 <tr>
                   <th className="px-6 py-4 text-left font-bold">{t('productComparison.usageCalculator.numberOfCats')}</th>
                   <th className="px-6 py-4 text-center font-bold">{t('productComparison.usageCalculator.typicalChanges')}</th>
@@ -58,20 +58,20 @@ export function UsageCalculatorSection() {
               </thead>
               <tbody>
                 {usageCalculator.map((row, index) => (
-                  <tr key={index} className={`${index % 2 === 0 ? 'bg-gray-50 bg-gray-700/50' : 'bg-white bg-gray-800'}`}>
+                  <tr key={index} className={`${index % 2 === 0 ? 'bg-gray-50 dark:bg-gray-700/50' : 'bg-white dark:bg-gray-800'}`}>
                     <td className="px-6 py-4 font-bold text-brand-purple">
                       {row.cats} {row.cats > 1 ? t('productComparison.units.cats') : t('productComparison.units.cat')}
                     </td>
-                    <td className="px-6 py-4 text-center text-gray-600 text-gray-300">
+                    <td className="px-6 py-4 text-center text-gray-600 dark:text-gray-300">
                       {row.litterChanges}
                     </td>
-                    <td className="px-6 py-4 text-center font-medium text-gray-900 text-gray-100">
+                    <td className="px-6 py-4 text-center font-medium text-gray-900 dark:text-gray-100">
                       {row.trial}
                     </td>
-                    <td className="px-6 py-4 text-center font-medium text-gray-900 text-gray-100">
+                    <td className="px-6 py-4 text-center font-medium text-gray-900 dark:text-gray-100">
                       {row.regular}
                     </td>
-                    <td className="px-6 py-4 text-center font-medium text-gray-900 text-gray-100">
+                    <td className="px-6 py-4 text-center font-medium text-gray-900 dark:text-gray-100">
                       {row.large}
                     </td>
                   </tr>
@@ -82,7 +82,7 @@ export function UsageCalculatorSection() {
         </div>
 
         {/* Transition to CTA - Natural conclusion */}
-        <p className="text-center mt-10 text-lg text-gray-700 text-gray-300 max-w-2xl mx-auto">
+        <p className="text-center mt-10 text-lg text-gray-700 dark:text-gray-300 max-w-2xl mx-auto">
           {locale === 'fr'
             ? "Vous avez vu la science. Vous avez entendu les témoignages. Vous savez quel format vous convient. Il ne reste plus qu'une chose à faire..."
             : "You've seen the science. You've heard the testimonials. You know which size fits. There's only one thing left to do..."}
