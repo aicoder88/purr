@@ -177,7 +177,36 @@ export default async function RootLayout({
 
   // Load messages directly to avoid dynamic request config using cookies
   const translationModule = await import(`@/translations/${locale}.ts`);
-  const messages = translationModule[locale];
+  const allMessages = translationModule[locale] as Record<string, unknown>;
+
+  // Namespaces used ONLY in server components (pages / API routes).
+  // Removing them from the client payload reduces the serialized __NEXT_DATA__
+  // blob without breaking any client-side rendering.
+  //
+  // Verified safe to exclude:
+  //   privacyPolicy  – static legal text, server-rendered page
+  //   structuredData – server-side JSON-LD schema building only
+  //   seoKeywords    – server-side <meta> generation only
+  //   groomers / shelters / catCafes / veterinarians / hospitality
+  //                  – B2B vertical components use inline locale ternaries,
+  //                    never call useTranslations()
+  //   canadaPage     – Canada landing page is a server component that uses
+  //                    getTranslations(), not the client provider
+  const SERVER_ONLY_NAMESPACES = new Set([
+    'privacyPolicy',
+    'structuredData',
+    'seoKeywords',
+    'groomers',
+    'shelters',
+    'catCafes',
+    'veterinarians',
+    'hospitality',
+    'canadaPage',
+  ]);
+
+  const messages = Object.fromEntries(
+    Object.entries(allMessages).filter(([key]) => !SERVER_ONLY_NAMESPACES.has(key))
+  );
 
   return (
     <html lang={locale} className={`${inter.variable} dark`} suppressHydrationWarning>

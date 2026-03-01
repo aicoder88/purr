@@ -10,7 +10,7 @@ import { SITE_NAME, SITE_URL } from '@/lib/constants';
 import { locales, isValidLocale } from '@/i18n/config';
 import { generateArticlePageSchema, stripContext } from '@/lib/seo-utils';
 import { optimizeMetaTitle } from '@/lib/seo/meta-optimizer';
-import { ArrowLeft, Calendar, User, Clock } from 'lucide-react';
+import { ArrowLeft, User, Clock } from 'lucide-react';
 import { sanitizeHTML } from '@/lib/security/sanitize';
 
 // Force static generation - no dynamic data fetching
@@ -395,10 +395,7 @@ export default async function LocalizedBlogPostPage({ params }: BlogPostPageProp
               <div className="max-w-4xl mx-auto">
                 {/* Meta Info */}
                 <div className="flex flex-wrap items-center gap-4 text-sm text-gray-500 dark:text-gray-400 mb-6">
-                  <span className="flex items-center gap-1">
-                    <Calendar className="w-4 h-4" />
-                    {formatDate(post.date)}
-                  </span>
+                  <span>{formatDate(post.date)}</span>
                   <span className="flex items-center gap-1">
                     <User className="w-4 h-4" />
                     {post.author}

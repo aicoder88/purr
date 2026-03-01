@@ -40,6 +40,26 @@ describe('Sanitization', () => {
             const output = sanitizeHTML(input);
             expect(output).not.toContain('<iframe');
         });
+
+        it('should remove legacy blog calendar emoji span markup', () => {
+            const input = '<span class="w-4 h-4 mr-1">📅</span><span>January 27, 2026</span>';
+            const output = sanitizeHTML(input);
+            expect(output).toBe('<span>January 27, 2026</span>');
+        });
+
+        it('should normalize button-like links into unified CTA styling', () => {
+            const input = '<a href="/products/trial-size" class="inline-block bg-[#5B2EFF] text-white px-8 py-4 rounded-lg font-bold">Try Purrify Risk-Free</a>';
+            const output = sanitizeHTML(input);
+            expect(output).toContain('purrify-cta');
+            expect(output).toContain('not-prose');
+        });
+
+        it('should not modify regular inline text links', () => {
+            const input = '<a href="/blog/example" class="text-[#FF3131] hover:underline">Read more</a>';
+            const output = sanitizeHTML(input);
+            expect(output).not.toContain('purrify-cta');
+            expect(output).toBe(input);
+        });
     });
 
     describe('escapeHtml', () => {

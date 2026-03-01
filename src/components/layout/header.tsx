@@ -29,6 +29,14 @@ interface NavigationItem {
   dropdownItems?: DropdownItem[];
 }
 
+// Base class shared by every desktop dropdown link — ~290 chars defined once.
+const dropdownLinkBase =
+  'block py-2 text-sm text-gray-700 dark:text-gray-200 hover:text-brand-red dark:hover:text-brand-red-400 focus:text-brand-red dark:focus:text-brand-red-400 hover:bg-gray-50 dark:bg-gray-900/80 dark:hover:bg-gray-700/80 focus:bg-gray-50 dark:focus:bg-gray-700/80 transition-colors rounded-md mx-1 my-0.5 focus:outline-none focus:ring-2 focus:ring-brand-red dark:focus:ring-brand-red-400 focus:ring-offset-1';
+
+// Base class shared by every mobile dropdown link.
+const mobileDropdownLinkBase =
+  'block py-3 min-h-[44px] flex items-center text-gray-700 dark:text-gray-200 hover:text-brand-red dark:hover:text-brand-red-400 hover:bg-gray-50 dark:bg-gray-900/80 dark:hover:bg-gray-700/80 transition-colors font-medium rounded-md mx-2 my-0.5';
+
 export function Header() {
   const mobileMenuId = 'mobile-navigation-menu';
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -226,6 +234,14 @@ export function Header() {
           label: t('nav.litterCalculator') || "Litter Calculator",
           href: "/tools/cat-litter-calculator/",
         },
+        {
+          label: t('nav.smellQuiz') || "Smell Quiz",
+          href: "/tools/smell-quiz/",
+        },
+        {
+          label: t('nav.toolsHub') || "All Tools",
+          href: "/tools/",
+        },
         { label: t('nav.solutions'), isGroupHeader: true },
         {
           label: t('nav.ammoniaSmellControl'),
@@ -358,7 +374,7 @@ export function Header() {
                               key={dropdownItem.label}
                               href={dropdownItem.href || ""}
                               prefetch={false}
-                              className={`block py-2 text-sm text-gray-700 dark:text-gray-200 hover:text-brand-red dark:hover:text-brand-red-400 focus:text-brand-red dark:focus:text-brand-red-400 hover:bg-gray-50 dark:bg-gray-900/80 dark:hover:bg-gray-700/80 focus:bg-gray-50 dark:focus:bg-gray-700/80 transition-colors rounded-md mx-1 my-0.5 focus:outline-none focus:ring-2 focus:ring-brand-red dark:focus:ring-brand-red-400 focus:ring-offset-1 ${dropdownItem.indent ? "pl-6" : "px-4"}`}
+                              className={`${dropdownLinkBase} ${dropdownItem.indent ? "pl-6" : "px-4"}`}
                               role="menuitem"
                             >
                               {dropdownItem.label}
@@ -450,7 +466,7 @@ export function Header() {
                                 key={dropdownItem.label}
                                 href={dropdownItem.href || ""}
                                 prefetch={false}
-                                className={`block py-3 min-h-[44px] flex items-center text-gray-700 dark:text-gray-200 hover:text-brand-red dark:hover:text-brand-red-400 hover:bg-gray-50 dark:bg-gray-900/80 dark:hover:bg-gray-700/80 transition-colors font-medium rounded-md mx-2 my-0.5 ${dropdownItem.indent ? "pl-8" : "px-6"}`}
+                                className={`${mobileDropdownLinkBase} ${dropdownItem.indent ? "pl-8" : "px-6"}`}
                                 onClick={closeMenu}
                               >
                                 {dropdownItem.label}

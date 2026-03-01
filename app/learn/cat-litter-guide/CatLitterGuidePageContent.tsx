@@ -32,13 +32,13 @@ export default function CatLitterGuidePageContent() {
     schemaData: {
       headline: 'Complete Cat Litter Guide - Types, Tips & Best Practices',
       description: 'Comprehensive guide to cat litter types, maintenance tips, and solving common problems. Learn how to choose the best litter for your cat and keep it fresh longer.',
-      image: 'https://www.purrify.ca/optimized/blog/litter-guide-hero-setup.webp',
+      image: 'https://www.purrify.ca/optimized/blog/cat-litter-guide-hero-640w.webp',
       datePublished: '2024-01-01T10:00:00Z',
       dateModified: new Date().toISOString(),
       category: 'Pet Care Guides',
       keywords: ['cat litter guide', 'cat litter types', 'litter maintenance tips', 'clay litter', 'clumping litter', 'silica litter', 'natural cat litter'],
     },
-    image: 'https://www.purrify.ca/optimized/blog/litter-guide-hero-setup.webp',
+    image: 'https://www.purrify.ca/optimized/blog/cat-litter-guide-hero-640w.webp',
     keywords: ['cat litter guide', 'cat litter types', 'litter maintenance tips', 'clay litter', 'clumping litter', 'silica litter', 'natural cat litter'],
   });
 
@@ -104,10 +104,10 @@ export default function CatLitterGuidePageContent() {
           <Container>
             <div className="max-w-4xl mx-auto">
               <Image
-                src="/optimized/blog/safe-cat-litter.webp"
+                src="/optimized/blog/cat-litter-comparison-miyazaki-640w.webp"
                 alt={copy.sectionImageAlt}
-                width={1600}
-                height={1067}
+                width={640}
+                height={640}
                 className="w-full h-auto rounded-lg shadow-md"
               />
             </div>

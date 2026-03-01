@@ -131,6 +131,16 @@ const footerUiCopy: Record<SupportedLocale, {
 };
 
 
+// Shared class strings — defined once to avoid repeating long strings on every element.
+const footerLinkClass =
+  'text-[#333333]/80 dark:text-gray-300 hover:text-[#991D1D] dark:hover:text-[#FF8585] transition-colors duration-300';
+
+const footerLegalLinkClass =
+  'inline-flex min-h-[44px] items-center px-1 text-xs text-[#333333]/80 dark:text-gray-300 hover:text-[#991D1D] dark:hover:text-[#FF8585] transition-colors duration-300';
+
+const footerHeadingClass =
+  'font-heading text-sm font-semibold text-[#333333] dark:text-gray-100';
+
 export function Footer() {
   const currentYear = new Date().getFullYear();
   const t = useTranslations();
@@ -232,14 +242,14 @@ export function Footer() {
             </div>
 
             <div className="space-y-4">
-              <h3 className="font-heading text-sm font-semibold text-[#333333] dark:text-gray-100">
+              <h3 className={footerHeadingClass}>
                 {t('footerNav.products')}
               </h3>
               <ul className="space-y-2 text-sm dark:text-sm">
                 <li>
                   <Link prefetch={false}
                     href={locale === "fr" ? "/fr/stores/" : "/stores/"}
-                    className="text-[#333333]/80 dark:text-gray-300 hover:text-[#991D1D] dark:hover:text-[#FF8585] transition-colors duration-300 font-medium"
+                    className={`${footerLinkClass} font-medium`}
                   >
                     {t('nav.findStore') || "Find a Store"}
                   </Link>
@@ -247,7 +257,7 @@ export function Footer() {
                 <li>
                   <Link prefetch={false}
                     href={locale === "fr" ? "/fr/products/" : "/products/"}
-                    className="text-[#333333]/80 dark:text-gray-300 hover:text-[#991D1D] dark:hover:text-[#FF8585] transition-colors duration-300"
+                    className={footerLinkClass}
                   >
                     {t('footerNav.compareSizes')}
                   </Link>
@@ -256,14 +266,14 @@ export function Footer() {
             </div>
 
             <div className="space-y-4">
-              <h3 className="font-heading text-sm font-semibold text-[#333333] dark:text-gray-100">
+              <h3 className={footerHeadingClass}>
                 {t('footerNav.learn')}
               </h3>
               <ul className="space-y-2 text-sm dark:text-sm">
                 <li>
                   <Link prefetch={false}
                     href={`${localePrefix}/learn/how-it-works/`}
-                    className="text-[#333333]/80 dark:text-gray-300 hover:text-[#991D1D] dark:hover:text-[#FF8585] transition-colors duration-300"
+                    className={footerLinkClass}
                   >
                     {t('footerNav.howItWorks')}
                   </Link>
@@ -271,7 +281,7 @@ export function Footer() {
                 <li>
                   <Link prefetch={false}
                     href={`${localePrefix}/learn/faq/`}
-                    className="text-[#333333]/80 dark:text-gray-300 hover:text-[#991D1D] dark:hover:text-[#FF8585] transition-colors duration-300"
+                    className={footerLinkClass}
                   >
                     {t('footerNav.faq')}
                   </Link>
@@ -279,7 +289,7 @@ export function Footer() {
                 <li>
                   <Link prefetch={false}
                     href={`${localePrefix}/learn/science/`}
-                    className="text-[#333333]/80 dark:text-gray-300 hover:text-[#991D1D] dark:hover:text-[#FF8585] transition-colors duration-300"
+                    className={footerLinkClass}
                   >
                     {t('footerNav.science')}
                   </Link>
@@ -287,7 +297,7 @@ export function Footer() {
                 <li>
                   <Link prefetch={false}
                     href={`${localePrefix}/blog/activated-carbon-vs-baking-soda-comparison/`}
-                    className="text-[#333333]/80 dark:text-gray-300 hover:text-[#991D1D] dark:hover:text-[#FF8585] transition-colors duration-300"
+                    className={footerLinkClass}
                   >
                     {t('footerNav.carbonVsBakingSoda') || "Carbon vs Baking Soda"}
                   </Link>
@@ -295,7 +305,7 @@ export function Footer() {
                 <li>
                   <Link prefetch={false}
                     href={`${localePrefix}/learn/safety/`}
-                    className="text-[#333333]/80 dark:text-gray-300 hover:text-[#991D1D] dark:hover:text-[#FF8585] transition-colors duration-300"
+                    className={footerLinkClass}
                   >
                     {t('footerNav.safetyInfo')}
                   </Link>
@@ -303,15 +313,39 @@ export function Footer() {
                 <li>
                   <Link prefetch={false}
                     href={`${localePrefix}/learn/cat-litter-guide/`}
-                    className="text-[#333333]/80 dark:text-gray-300 hover:text-[#991D1D] dark:hover:text-[#FF8585] transition-colors duration-300"
+                    className={footerLinkClass}
                   >
                     {t('footerNav.catLitterGuide')}
                   </Link>
                 </li>
                 <li>
                   <Link prefetch={false}
+                    href="/tools/cat-litter-calculator/"
+                    className={footerLinkClass}
+                  >
+                    {t('footerNav.litterCalculator')}
+                  </Link>
+                </li>
+                <li>
+                  <Link prefetch={false}
+                    href="/tools/smell-quiz/"
+                    className={footerLinkClass}
+                  >
+                    {t('footerNav.smellQuiz') || "Smell Quiz"}
+                  </Link>
+                </li>
+                <li>
+                  <Link prefetch={false}
+                    href="/tools/"
+                    className={footerLinkClass}
+                  >
+                    {t('footerNav.toolsHub') || "All Tools"}
+                  </Link>
+                </li>
+                <li>
+                  <Link prefetch={false}
                     href={`${localePrefix}/blog/how-to-neutralize-ammonia-cat-litter/`}
-                    className="text-[#333333]/80 dark:text-gray-300 hover:text-[#991D1D] dark:hover:text-[#FF8585] transition-colors duration-300"
+                    className={footerLinkClass}
                   >
                     {t('footerNav.ammoniaSolutions') || "Ammonia Smell Control"}
                   </Link>
@@ -320,14 +354,14 @@ export function Footer() {
             </div>
 
             <div className="space-y-4">
-              <h3 className="font-heading text-sm font-semibold text-[#333333] dark:text-gray-100">
+              <h3 className={footerHeadingClass}>
                 {t('footerNav.popularArticles')}
               </h3>
               <ul className="space-y-2 text-sm dark:text-sm">
                 <li>
                   <Link prefetch={false}
                     href={`${localePrefix}/blog/house-smells-like-cat-litter-solutions/`}
-                    className="text-[#333333]/80 dark:text-gray-300 hover:text-[#991D1D] dark:hover:text-[#FF8585] transition-colors duration-300"
+                    className={footerLinkClass}
                   >
                     {t('footerNav.houseSmells')}
                   </Link>
@@ -335,7 +369,7 @@ export function Footer() {
                 <li>
                   <Link prefetch={false}
                     href={`${localePrefix}/blog/multi-cat-litter-deodorizer-guide/`}
-                    className="text-[#333333]/80 dark:text-gray-300 hover:text-[#991D1D] dark:hover:text-[#FF8585] transition-colors duration-300"
+                    className={footerLinkClass}
                   >
                     {t('footerNav.multiCatGuide')}
                   </Link>
@@ -343,7 +377,7 @@ export function Footer() {
                 <li>
                   <Link prefetch={false}
                     href={`${localePrefix}/blog/tried-everything-cat-litter-smell-solutions/`}
-                    className="text-[#333333]/80 dark:text-gray-300 hover:text-[#991D1D] dark:hover:text-[#FF8585] transition-colors duration-300"
+                    className={footerLinkClass}
                   >
                     {t('footerNav.triedEverything')}
                   </Link>
@@ -351,7 +385,7 @@ export function Footer() {
                 <li>
                   <Link prefetch={false}
                     href={`${localePrefix}/blog/most-powerful-odor-absorber/`}
-                    className="text-[#333333]/80 dark:text-gray-300 hover:text-[#991D1D] dark:hover:text-[#FF8585] transition-colors duration-300"
+                    className={footerLinkClass}
                   >
                     {t('footerNav.powerfulAbsorber')}
                   </Link>
@@ -359,7 +393,7 @@ export function Footer() {
                 <li>
                   <Link prefetch={false}
                     href={`${localePrefix}/blog/best-litter-odor-remover-small-apartments/`}
-                    className="text-[#333333]/80 dark:text-gray-300 hover:text-[#991D1D] dark:hover:text-[#FF8585] transition-colors duration-300"
+                    className={footerLinkClass}
                   >
                     {t('footerNav.smallApartments')}
                   </Link>
@@ -368,14 +402,14 @@ export function Footer() {
             </div>
 
             <div className="space-y-4">
-              <h3 className="font-heading text-sm font-semibold text-[#333333] dark:text-gray-100">
+              <h3 className={footerHeadingClass}>
                 {t('footerNav.company')}
               </h3>
               <ul className="space-y-2 text-sm dark:text-sm">
                 <li>
                   <Link prefetch={false}
                     href={`${localePrefix}/about/our-story/`}
-                    className="text-[#333333]/80 dark:text-gray-300 hover:text-[#991D1D] dark:hover:text-[#FF8585] transition-colors duration-300"
+                    className={footerLinkClass}
                   >
                     {t('footerNav.about')}
                   </Link>
@@ -383,7 +417,7 @@ export function Footer() {
                 <li>
                   <Link prefetch={false}
                     href={`${localePrefix}/blog/`}
-                    className="text-[#333333]/80 dark:text-gray-300 hover:text-[#991D1D] dark:hover:text-[#FF8585] transition-colors duration-300"
+                    className={footerLinkClass}
                   >
                     {t('footerNav.blog')}
                   </Link>
@@ -391,7 +425,7 @@ export function Footer() {
                 <li>
                   <Link prefetch={false}
                     href={`${localePrefix}/reviews/`}
-                    className="text-[#333333]/80 dark:text-gray-300 hover:text-[#991D1D] dark:hover:text-[#FF8585] transition-colors duration-300"
+                    className={footerLinkClass}
                   >
                     {t('footerNav.testimonials')}
                   </Link>
@@ -399,7 +433,7 @@ export function Footer() {
                 <li>
                   <Link prefetch={false}
                     href={`${localePrefix}/retailers/`}
-                    className="text-[#333333]/80 dark:text-gray-300 hover:text-[#991D1D] dark:hover:text-[#FF8585] transition-colors duration-300"
+                    className={footerLinkClass}
                   >
                     {t('footerNav.retailers')}
                   </Link>
@@ -407,7 +441,7 @@ export function Footer() {
                 <li>
                   <Link prefetch={false}
                     href={`${localePrefix}/retailer/portal/login/`}
-                    className="text-[#333333]/80 dark:text-gray-300 hover:text-[#991D1D] dark:hover:text-[#FF8585] transition-colors duration-300"
+                    className={footerLinkClass}
                   >
                     {t('footerNav.retailerPortal') || "Retailer Portal"}
                   </Link>
@@ -415,7 +449,7 @@ export function Footer() {
                 <li>
                   <Link prefetch={false}
                     href={`${localePrefix}/b2b/`}
-                    className="text-[#333333]/80 dark:text-gray-300 hover:text-[#991D1D] dark:hover:text-[#FF8585] transition-colors duration-300"
+                    className={footerLinkClass}
                   >
                     {t('footerNav.b2bInquiry') || "B2B Inquiry"}
                   </Link>
@@ -423,7 +457,7 @@ export function Footer() {
                 <li>
                   <Link prefetch={false}
                     href={`${localePrefix}/affiliate/`}
-                    className="text-[#333333]/80 dark:text-gray-300 hover:text-[#991D1D] dark:hover:text-[#FF8585] transition-colors duration-300"
+                    className={footerLinkClass}
                   >
                     {t('footerNav.affiliateProgram')}
                   </Link>
@@ -431,7 +465,7 @@ export function Footer() {
                 <li>
                   <Link prefetch={false}
                     href={`${localePrefix}/invest/`}
-                    className="text-[#333333]/80 dark:text-gray-300 hover:text-[#991D1D] dark:hover:text-[#FF8585] transition-colors duration-300"
+                    className={footerLinkClass}
                   >
                     {t('footerNav.contact')}
                   </Link>
@@ -439,14 +473,14 @@ export function Footer() {
               </ul>
             </div>
             <div className="space-y-4">
-              <h3 className="font-heading text-sm font-semibold text-[#333333] dark:text-gray-100">
+              <h3 className={footerHeadingClass}>
                 {t('footerNav.locations') || "Locations"}
               </h3>
               <ul className="space-y-2 text-sm dark:text-sm">
                 <li>
                   <Link prefetch={false}
                     href={`${localePrefix}/locations/`}
-                    className="text-[#333333]/80 dark:text-gray-300 hover:text-[#991D1D] dark:hover:text-[#FF8585] transition-colors duration-300"
+                    className={footerLinkClass}
                   >
                     {t('footerNav.allLocations') || "All Locations"}
                   </Link>
@@ -454,7 +488,7 @@ export function Footer() {
                 <li>
                   <Link prefetch={false}
                     href={`${localePrefix}/locations/province/british-columbia/`}
-                    className="text-[#333333]/80 dark:text-gray-300 hover:text-[#991D1D] dark:hover:text-[#FF8585] transition-colors duration-300"
+                    className={footerLinkClass}
                   >
                     {copy.regions.britishColumbia}
                   </Link>
@@ -462,7 +496,7 @@ export function Footer() {
                 <li>
                   <Link prefetch={false}
                     href={`${localePrefix}/locations/province/alberta/`}
-                    className="text-[#333333]/80 dark:text-gray-300 hover:text-[#991D1D] dark:hover:text-[#FF8585] transition-colors duration-300"
+                    className={footerLinkClass}
                   >
                     {copy.regions.alberta}
                   </Link>
@@ -470,7 +504,7 @@ export function Footer() {
                 <li>
                   <Link prefetch={false}
                     href={`${localePrefix}/locations/province/ontario/`}
-                    className="text-[#333333]/80 dark:text-gray-300 hover:text-[#991D1D] dark:hover:text-[#FF8585] transition-colors duration-300"
+                    className={footerLinkClass}
                   >
                     {copy.regions.ontario}
                   </Link>
@@ -478,7 +512,7 @@ export function Footer() {
                 <li>
                   <Link prefetch={false}
                     href={`${localePrefix}/locations/province/quebec/`}
-                    className="text-[#333333]/80 dark:text-gray-300 hover:text-[#991D1D] dark:hover:text-[#FF8585] transition-colors duration-300"
+                    className={footerLinkClass}
                   >
                     {copy.regions.quebec}
                   </Link>
@@ -493,19 +527,19 @@ export function Footer() {
             <div className="flex flex-col md:flex-row justify-center items-center space-y-2 md:space-y-0 md:space-x-4 mb-4">
               <Link prefetch={false}
                 href={`${localePrefix}/privacy-policy/`}
-                className="inline-flex min-h-[44px] items-center px-1 text-xs text-[#333333]/80 dark:text-gray-300 hover:text-[#991D1D] dark:hover:text-[#FF8585] transition-colors duration-300"
+                className={footerLegalLinkClass}
               >
                 {t('nav.privacyPolicy')}
               </Link>
               <Link prefetch={false}
                 href={`${localePrefix}/terms/`}
-                className="inline-flex min-h-[44px] items-center px-1 text-xs text-[#333333]/80 dark:text-gray-300 hover:text-[#991D1D] dark:hover:text-[#FF8585] transition-colors duration-300"
+                className={footerLegalLinkClass}
               >
                 {t('nav.termsOfService')}
               </Link>
               <Link prefetch={false}
                 href="/sitemap.xml"
-                className="inline-flex min-h-[44px] items-center px-1 text-xs text-[#333333]/80 dark:text-gray-300 hover:text-[#991D1D] dark:hover:text-[#FF8585] transition-colors duration-300"
+                className={footerLegalLinkClass}
               >
                 {t('footerNav.sitemap') || "Sitemap"}
               </Link>

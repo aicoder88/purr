@@ -26,9 +26,9 @@ export const metadata: Metadata = {
     locale: 'en_CA',
     images: [
       {
-        url: 'https://www.purrify.ca/optimized/blog/litter-guide-hero-setup.webp',
-        width: 1600,
-        height: 1067,
+        url: 'https://www.purrify.ca/optimized/blog/cat-litter-guide-hero-640w.webp',
+        width: 640,
+        height: 640,
         alt: 'Modern cat litter box setup showing different litter types and maintenance tools',
       },
     ],
@@ -63,7 +63,7 @@ const guideSchema = {
       inLanguage: 'en-CA',
       headline: `Cat Litter Guide: Types & Best Practices | ${SITE_NAME}`,
       description: 'Comprehensive guide to cat litter types and maintenance tips. Learn how to choose the best litter for your cat and keep it fresh longer.',
-      image: 'https://www.purrify.ca/optimized/blog/litter-guide-hero-setup.webp',
+      image: 'https://www.purrify.ca/optimized/blog/cat-litter-guide-hero-640w.webp',
       datePublished: '2024-01-01T10:00:00Z',
       dateModified: new Date().toISOString(),
       author: {

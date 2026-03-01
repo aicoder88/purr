@@ -1,6 +1,5 @@
 import { notFound } from 'next/navigation';
-import { Providers } from '../providers';
-import { Locale, isValidLocale } from '@/i18n/config';
+import { isValidLocale } from '@/i18n/config';
 
 export default async function LocaleLayout({
     children,
@@ -16,18 +15,11 @@ export default async function LocaleLayout({
         notFound();
     }
 
-    // Load messages for the active locale
-    let messages;
-    try {
-        const translationModule = await import(`@/translations/${locale}.ts`);
-        messages = translationModule[locale];
-    } catch {
-        notFound();
-    }
-
-    return (
-        <Providers locale={locale as Locale} messages={messages}>
-            {children}
-        </Providers>
-    );
+    // The root layout's <Providers> already supplies NextIntlClientProvider,
+    // CurrencyProvider, and TranslationProvider with the correct locale and
+    // filtered messages (detected via the x-pathname middleware header).
+    // A second provider here would re-serialize the full messages object into
+    // __NEXT_DATA__ for every locale route — including blog pages where no
+    // client component ever reads page-specific translations.
+    return <>{children}</>;
 }

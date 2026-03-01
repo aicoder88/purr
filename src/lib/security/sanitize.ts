@@ -5,6 +5,42 @@ import type { BlogPost } from '@/types/blog';
  * This avoids the jsdom dependency issues in Next.js API routes
  */
 
+const CTA_CLASS_NAMES = 'purrify-cta not-prose';
+const BUTTON_LIKE_CLASS_PATTERNS = [
+  /\bbg-[^\s]+/,
+  /\b(?:px|py|p)-[^\s]+/,
+  /\b(?:rounded[^\s]*|font-bold|font-semibold|shadow[^\s]*|inline-block|inline-flex)/,
+];
+
+function isButtonLikeLink(classValue: string): boolean {
+  return BUTTON_LIKE_CLASS_PATTERNS.every((pattern) => pattern.test(classValue));
+}
+
+function normalizeCtaLinks(html: string): string {
+  return html.replace(/<a\b([^>]*?)>/gi, (fullMatch, attrs) => {
+    const classAttrMatch = attrs.match(/\bclass\s*=\s*(["'])(.*?)\1/i);
+
+    if (!classAttrMatch) {
+      return fullMatch;
+    }
+
+    const existingClassValue = classAttrMatch[2].trim();
+    if (!existingClassValue || !isButtonLikeLink(existingClassValue)) {
+      return fullMatch;
+    }
+
+    if (/\bpurrify-cta\b/.test(existingClassValue)) {
+      return fullMatch;
+    }
+
+    const normalizedClassValue = `${existingClassValue} ${CTA_CLASS_NAMES}`
+      .replace(/\s+/g, ' ')
+      .trim();
+
+    return fullMatch.replace(classAttrMatch[0], `class="${normalizedClassValue}"`);
+  });
+}
+
 /**
  * Sanitize HTML content to prevent XSS attacks
  * Allows safe HTML tags for blog content while removing dangerous scripts
@@ -60,6 +96,14 @@ export function sanitizeHTML(dirty: string): string {
       return `${attr}=""`;
     }
   });
+
+  clean = clean.replace(
+    /<span\b[^>]*class=(["'])(?=[^"']*\bw-4\b)(?=[^"']*\bh-4\b)(?=[^"']*\bmr-1\b)[^"']*\1[^>]*>\s*📅\s*<\/span>/giu,
+    ''
+  );
+
+  // Keep CTA links consistent and readable inside prose containers.
+  clean = normalizeCtaLinks(clean);
 
   return clean;
 }

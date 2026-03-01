@@ -60,6 +60,8 @@ export const en = {
     signedIn: "Signed in",
     // SEO FIX (Feb 2026): Added missing nav keys
     litterCalculator: "Litter Calculator",
+    smellQuiz: "Smell Quiz",
+    toolsHub: "All Tools",
     catLitterAnswers: "Cat Litter Q&A",
     scienceHub: "Research Citations",
     carbonVsBakingSoda: "Carbon vs Baking Soda",
@@ -849,6 +851,8 @@ export const en = {
     carbonVsBakingSoda: "Carbon vs Baking Soda",
     ammoniaSolutions: "Ammonia Solutions",
     litterCalculator: "Litter Calculator",
+    smellQuiz: "Smell Quiz",
+    toolsHub: "All Tools",
     // Article links
     houseSmells: "House Smells Like Cat Litter?",
     multiCatGuide: "Multi-Cat Deodorizer Guide",

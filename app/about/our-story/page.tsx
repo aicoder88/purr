@@ -336,7 +336,7 @@ export default function AboutPage() {
                         <span className="opacity-90 font-normal ml-1">- {PRODUCT_PRICES.trial.formatted}</span>
                       </span>
                       <span className="text-xs font-medium opacity-90 tracking-wide uppercase">
-                        Trial size • Free Shipping Included
+                        Trial size • Just pay shipping
                       </span>
                     </div>
                     <ChevronRight className="w-6 h-6 group-hover:translate-x-1 transition-transform" />

@@ -55,9 +55,9 @@ export async function generateMetadata({ params }: LocalizedCatLitterGuidePagePr
       locale: isFrench ? 'fr_CA' : 'en_CA',
       images: [
         {
-          url: `${baseUrl}/optimized/blog/litter-guide-hero-setup.webp`,
-          width: 1600,
-          height: 1067,
+          url: `${baseUrl}/optimized/blog/cat-litter-guide-hero-640w.webp`,
+          width: 640,
+          height: 640,
           alt: isFrench ? 'Configuration litière moderne' : 'Modern cat litter box setup',
         },
       ],

@@ -57,10 +57,10 @@ export default function ProblemsSection({ localePrefix, copy }: ProblemsSectionP
         <Container>
           <div className="max-w-4xl mx-auto">
             <Image
-              src="/optimized/blog/benefits-happy-cats.avif"
+              src="/optimized/blog/happy-cats-clean-home-miyazaki-640w.webp"
               alt={copy.solutionImageAlt}
-              width={1600}
-              height={1067}
+              width={640}
+              height={640}
               className="w-full h-auto rounded-lg shadow-md"
             />
           </div>

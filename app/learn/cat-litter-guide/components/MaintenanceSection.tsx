@@ -47,10 +47,10 @@ export default function MaintenanceSection({ copy }: MaintenanceSectionProps) {
         <Container>
           <div className="max-w-4xl mx-auto">
             <Image
-              src="/optimized/marketing/step-2-mix.webp"
+              src="/optimized/blog/cat-litter-maintenance-miyazaki-640w.webp"
               alt={copy.maintenanceImageAlt}
-              width={1600}
-              height={1067}
+              width={640}
+              height={640}
               className="w-full h-auto rounded-lg shadow-md"
             />
           </div>
