@@ -325,7 +325,7 @@ export const GUIDE_COPY: Record<string, GuideCopy> = {
     externalResourcesDescription:
       'These independent veterinary and feline-care references are useful when evaluating behavior changes, hygiene protocols, and litter box management decisions.',
     externalResources: [
-      { label: 'American Veterinary Medical Association - Pet Care', url: 'https://www.avma.org/resources-tools/pet-owners/petcare' },
+      { label: 'ASPCA - Common Cat Behavior Issues: Litter Box Problems', url: 'https://www.aspca.org/pet-care/cat-care/common-cat-behavior-issues/litter-box-problems' },
       { label: 'AAFP Cat Friendly Practice Guidance', url: 'https://catvets.com/guidelines' },
       { label: 'Cornell Feline Health Center', url: 'https://www.vet.cornell.edu/departments/riney-canine-health-center/feline-health-topics' },
     ],
@@ -596,7 +596,7 @@ export const GUIDE_COPY: Record<string, GuideCopy> = {
     externalResourcesDescription:
       'Ces references independantes peuvent aider a verifier les bonnes pratiques de gestion de bac, les signaux comportementaux et les points de vigilance veterinaire.',
     externalResources: [
-      { label: 'American Veterinary Medical Association - Pet Care', url: 'https://www.avma.org/resources-tools/pet-owners/petcare' },
+      { label: 'ASPCA - Common Cat Behavior Issues: Litter Box Problems', url: 'https://www.aspca.org/pet-care/cat-care/common-cat-behavior-issues/litter-box-problems' },
       { label: 'AAFP Cat Friendly Practice Guidance', url: 'https://catvets.com/guidelines' },
       { label: 'Cornell Feline Health Center', url: 'https://www.vet.cornell.edu/departments/riney-canine-health-center/feline-health-topics' },
     ],

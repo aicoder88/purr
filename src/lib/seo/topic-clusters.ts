@@ -15,6 +15,42 @@ export interface TopicCluster {
   keywords: string[];
 }
 
+type RelatedPage = { url: string; title: string; type: 'hub' | 'spoke' };
+type FallbackPage = { url: string; title: string };
+
+const LOCALE_PREFIX_REGEX = /^\/(en|fr|es|zh)(?=\/|$)/;
+const BLOG_PATH_REGEX = /^\/blog(?:\/|$)/;
+
+function normalizePath(path: string): string {
+  const withoutQuery = path.split('?')[0].split('#')[0];
+  return withoutQuery.replace(/\/+$/, '') || '/';
+}
+
+function extractLocale(path: string): string | null {
+  const match = normalizePath(path).match(LOCALE_PREFIX_REGEX);
+  return match ? match[1] : null;
+}
+
+function stripLocalePrefix(path: string): string {
+  const normalized = normalizePath(path);
+  const stripped = normalized.replace(LOCALE_PREFIX_REGEX, '');
+  return stripped || '/';
+}
+
+function localizeBlogPath(path: string, locale: string): string {
+  const localeAgnosticPath = stripLocalePrefix(path);
+
+  if (locale === 'en') {
+    return localeAgnosticPath;
+  }
+
+  if (!BLOG_PATH_REGEX.test(localeAgnosticPath)) {
+    return localeAgnosticPath;
+  }
+
+  return `/${locale}${localeAgnosticPath}`;
+}
+
 /**
  * Topic cluster definitions
  */
@@ -165,8 +201,12 @@ export const TOPIC_CLUSTERS: TopicCluster[] = [
  * Get cluster for a given page
  */
 export function getClusterForPage(pageUrl: string): TopicCluster | null {
+  const normalizedPage = stripLocalePrefix(pageUrl);
+
   for (const cluster of TOPIC_CLUSTERS) {
-    if (cluster.hubPage === pageUrl || cluster.spokes.includes(pageUrl)) {
+    const hubPage = normalizePath(cluster.hubPage);
+    const spokes = cluster.spokes.map(normalizePath);
+    if (hubPage === normalizedPage || spokes.includes(normalizedPage)) {
       return cluster;
     }
   }
@@ -178,13 +218,45 @@ export function getClusterForPage(pageUrl: string): TopicCluster | null {
  */
 export function getRelatedPages(
   pageUrl: string,
-  maxResults: number = 5
-): Array<{ url: string; title: string; type: 'hub' | 'spoke' }> {
-  const cluster = getClusterForPage(pageUrl);
+  maxResults: number = 5,
+  fallbackPages: FallbackPage[] = []
+): RelatedPage[] {
+  const normalizedPageUrl = normalizePath(pageUrl);
+  const currentLocale = extractLocale(normalizedPageUrl) || 'en';
+  const cluster = getClusterForPage(normalizedPageUrl);
   // Removed early return to allow fallback logic
   // if (!cluster) return [];
 
-  const related: Array<{ url: string; title: string; type: 'hub' | 'spoke' }> = [];
+  const related: RelatedPage[] = [];
+  const seenUrls = new Set<string>([normalizedPageUrl]);
+
+  const fallbackTitleMap = new Map<string, string>();
+  fallbackPages.forEach((page) => {
+    fallbackTitleMap.set(normalizePath(page.url), page.title);
+  });
+
+  const getTitle = (url: string): string => {
+    const normalizedUrl = normalizePath(url);
+    return (
+      fallbackTitleMap.get(normalizedUrl) ||
+      fallbackTitleMap.get(stripLocalePrefix(normalizedUrl)) ||
+      urlToTitle(normalizedUrl)
+    );
+  };
+
+  const addRelated = (url: string, type: 'hub' | 'spoke') => {
+    if (related.length >= maxResults) return;
+
+    const normalizedUrl = normalizePath(url);
+    if (seenUrls.has(normalizedUrl)) return;
+
+    seenUrls.add(normalizedUrl);
+    related.push({
+      url: normalizedUrl,
+      title: getTitle(normalizedUrl),
+      type,
+    });
+  };
 
   // Removed: Hub pages are now excluded from "Related Articles" to prevent
   // jarring transitions from blog posts to commercial landing pages.
@@ -201,7 +273,9 @@ export function getRelatedPages(
 
   // Add other spokes (excluding current page)
   if (cluster) {
-    const otherSpokes = cluster.spokes.filter(url => url !== pageUrl);
+    const otherSpokes = cluster.spokes
+      .map((url) => localizeBlogPath(url, currentLocale))
+      .filter((url) => normalizePath(url) !== normalizedPageUrl);
 
     // Prioritize blog posts and learn pages over product pages
     const sortedSpokes = otherSpokes.sort((a, b) => {
@@ -211,13 +285,7 @@ export function getRelatedPages(
     });
 
     for (const spokeUrl of sortedSpokes) {
-      if (related.length >= maxResults) break;
-
-      related.push({
-        url: spokeUrl,
-        title: urlToTitle(spokeUrl),
-        type: 'spoke',
-      });
+      addRelated(spokeUrl, 'spoke');
     }
   }
 
@@ -231,28 +299,62 @@ export function getRelatedPages(
     // NOTE: See import addition at top of file. 
 
     // Filter potential fallback posts
-    const fallbackPosts = sampleBlogPosts
-      .filter(post => {
+    const dynamicFallbackPages = fallbackPages.length > 0
+      ? fallbackPages
+      : sampleBlogPosts
+        .map((post) => ({
+          url: localizeBlogPath(post.link, currentLocale),
+          title: post.title,
+        }))
+        .sort((a, b) => new Date(
+          sampleBlogPosts.find((post) => post.link === b.url || localizeBlogPath(post.link, currentLocale) === b.url)?.date || 0
+        ).getTime() - new Date(
+          sampleBlogPosts.find((post) => post.link === a.url || localizeBlogPath(post.link, currentLocale) === a.url)?.date || 0
+        ).getTime());
+
+    const normalizedFallbackPages = dynamicFallbackPages
+      .map((page) => ({
+        url: normalizePath(page.url),
+        title: page.title,
+      }))
+      .filter((page) => {
         // Exclude current page
-        if (post.link === pageUrl) return false;
+        if (page.url === normalizedPageUrl) return false;
 
         // Exclude pages already in related list
-        if (related.some(r => r.url === post.link)) return false;
+        if (seenUrls.has(page.url)) return false;
 
         return true;
-      })
-      // Sort by date (newest first) - assuming they are already sorted or we sort them
-      .sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
-
-    // Add fallback posts until we reach maxResults
-    for (const post of fallbackPosts) {
-      if (related.length >= maxResults) break;
-
-      related.push({
-        url: post.link,
-        title: post.title,
-        type: 'spoke' // Treat fallbacks as regular articles
       });
+
+    if (normalizedFallbackPages.length > 0) {
+      const currentIndex = dynamicFallbackPages.findIndex(
+        (page) => normalizePath(page.url) === normalizedPageUrl
+      );
+
+      if (currentIndex >= 0) {
+        for (let offset = 1; offset < normalizedFallbackPages.length && related.length < maxResults; offset++) {
+          const forwardIndex = currentIndex + offset;
+          const backwardIndex = currentIndex - offset;
+
+          if (forwardIndex < dynamicFallbackPages.length) {
+            addRelated(dynamicFallbackPages[forwardIndex].url, 'spoke');
+          }
+
+          if (related.length >= maxResults) break;
+
+          if (backwardIndex >= 0) {
+            addRelated(dynamicFallbackPages[backwardIndex].url, 'spoke');
+          }
+        }
+      }
+
+      if (related.length < maxResults) {
+        for (const fallbackPage of normalizedFallbackPages) {
+          if (related.length >= maxResults) break;
+          addRelated(fallbackPage.url, 'spoke');
+        }
+      }
     }
   }
 
@@ -263,8 +365,12 @@ export function getRelatedPages(
  * Get all clusters a page belongs to
  */
 export function getClustersForPage(pageUrl: string): TopicCluster[] {
+  const normalizedPage = stripLocalePrefix(pageUrl);
   return TOPIC_CLUSTERS.filter(
-    cluster => cluster.hubPage === pageUrl || cluster.spokes.includes(pageUrl)
+    (cluster) => (
+      normalizePath(cluster.hubPage) === normalizedPage ||
+      cluster.spokes.map(normalizePath).includes(normalizedPage)
+    )
   );
 }
 
@@ -287,23 +393,27 @@ function urlToTitle(url: string): string {
  * Get all pages that should link to a given page
  */
 export function getPagesLinkingTo(targetUrl: string): string[] {
-  const cluster = getClusterForPage(targetUrl);
+  const normalizedTargetUrl = normalizePath(targetUrl);
+  const targetLocale = extractLocale(normalizedTargetUrl) || 'en';
+  const localeAgnosticTarget = stripLocalePrefix(normalizedTargetUrl);
+
+  const cluster = getClusterForPage(localeAgnosticTarget);
   if (!cluster) return [];
 
   const linkingPages: string[] = [];
 
   // If target is the hub, all spokes should link to it
-  if (cluster.hubPage === targetUrl) {
-    return cluster.spokes;
+  if (normalizePath(cluster.hubPage) === localeAgnosticTarget) {
+    return cluster.spokes.map((url) => localizeBlogPath(url, targetLocale));
   }
 
   // If target is a spoke, hub and related spokes should link to it
-  if (cluster.spokes.includes(targetUrl)) {
-    linkingPages.push(cluster.hubPage);
+  if (cluster.spokes.map(normalizePath).includes(localeAgnosticTarget)) {
+    linkingPages.push(localizeBlogPath(cluster.hubPage, targetLocale));
 
     // Add a few related spokes (not all to avoid over-linking)
-    const otherSpokes = cluster.spokes.filter(url => url !== targetUrl);
-    linkingPages.push(...otherSpokes.slice(0, 3));
+    const otherSpokes = cluster.spokes.filter((url) => normalizePath(url) !== localeAgnosticTarget);
+    linkingPages.push(...otherSpokes.slice(0, 3).map((url) => localizeBlogPath(url, targetLocale)));
   }
 
   return linkingPages;
@@ -313,27 +423,32 @@ export function getPagesLinkingTo(targetUrl: string): string[] {
  * Get breadcrumb trail for a page based on its cluster
  */
 export function getBreadcrumbs(pageUrl: string): Array<{ label: string; url: string }> {
+  const normalizedPageUrl = normalizePath(pageUrl);
+  const locale = extractLocale(normalizedPageUrl) || 'en';
+  const localeAgnosticUrl = stripLocalePrefix(normalizedPageUrl);
+  const localizedSectionUrl = (section: string) => (locale === 'en' ? section : `/${locale}${section}`);
+
   const breadcrumbs: Array<{ label: string; url: string }> = [
     { label: 'Home', url: '/' },
   ];
 
   // Add section breadcrumb
-  if (pageUrl.startsWith('/blog/')) {
-    breadcrumbs.push({ label: 'Blog', url: '/blog' });
-  } else if (pageUrl.startsWith('/learn/')) {
-    breadcrumbs.push({ label: 'Learn', url: '/learn' });
-  } else if (pageUrl.startsWith('/products/')) {
+  if (localeAgnosticUrl.startsWith('/blog/')) {
+    breadcrumbs.push({ label: 'Blog', url: localizedSectionUrl('/blog') });
+  } else if (localeAgnosticUrl.startsWith('/learn/')) {
+    breadcrumbs.push({ label: 'Learn', url: localizedSectionUrl('/learn') });
+  } else if (localeAgnosticUrl.startsWith('/products/')) {
     breadcrumbs.push({ label: 'Products', url: '/products' });
-  } else if (pageUrl.startsWith('/locations/')) {
+  } else if (localeAgnosticUrl.startsWith('/locations/')) {
     breadcrumbs.push({ label: 'Locations', url: '/locations' });
   }
 
   // Add cluster hub if applicable
-  const cluster = getClusterForPage(pageUrl);
-  if (cluster && cluster.spokes.includes(pageUrl)) {
+  const cluster = getClusterForPage(localeAgnosticUrl);
+  if (cluster && cluster.spokes.map(normalizePath).includes(localeAgnosticUrl)) {
     breadcrumbs.push({
       label: cluster.name,
-      url: cluster.hubPage,
+      url: localizeBlogPath(cluster.hubPage, locale),
     });
   }
 

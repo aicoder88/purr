@@ -238,12 +238,12 @@ function buildExternalSourcesBlock(locale: Locale): string {
   const sources =
     locale === 'fr'
       ? [
-          { label: 'American Veterinary Medical Association - Litter box management', url: 'https://www.avma.org/resources-tools/pet-owners/petcare' },
+          { label: 'ASPCA - Litter Box Problems', url: 'https://www.aspca.org/pet-care/cat-care/common-cat-behavior-issues/litter-box-problems' },
           { label: 'Cornell Feline Health Center', url: 'https://www.vet.cornell.edu/departments/riney-canine-health-center/feline-health-topics' },
           { label: 'AAFP Cat Friendly Guidelines', url: 'https://catvets.com/guidelines' },
         ]
       : [
-          { label: 'American Veterinary Medical Association - Litter box management', url: 'https://www.avma.org/resources-tools/pet-owners/petcare' },
+          { label: 'ASPCA - Litter Box Problems', url: 'https://www.aspca.org/pet-care/cat-care/common-cat-behavior-issues/litter-box-problems' },
           { label: 'Cornell Feline Health Center', url: 'https://www.vet.cornell.edu/departments/riney-canine-health-center/feline-health-topics' },
           { label: 'AAFP Cat Friendly Guidelines', url: 'https://catvets.com/guidelines' },
         ];

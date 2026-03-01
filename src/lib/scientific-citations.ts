@@ -66,8 +66,8 @@ export const SCIENTIFIC_CITATIONS: ScientificCitation[] = [
     title: 'EPA - Activated Carbon Adsorption',
     authors: 'United States Environmental Protection Agency (EPA)',
     journal: 'United States Environmental Protection Agency',
-    url: 'https://www.epa.gov/sites/default/files/2018-11/documents/activated_carbon_adsorption_intro_0.pdf',
-    summary: 'EPA introductory document on activated carbon adsorption.',
+    url: 'https://www.epa.gov/air-emissions-monitoring-knowledge-base/monitoring-control-technique-activated-carbon-adsorber',
+    summary: 'EPA technical overview of activated carbon adsorption in control systems.',
     claims: [
       'Activated carbon adsorption is driven by surface area and pore structure',
       'Activated carbon can adsorb odor-causing molecules',
