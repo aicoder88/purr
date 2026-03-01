@@ -209,7 +209,7 @@ export default function SubscriptionPage() {
                 <div key={index} className="relative">
                   <div className="bg-white dark:bg-gray-800 rounded-2xl p-8 shadow-lg border border-gray-100 dark:border-gray-700 text-center">
                     <div className="w-16 h-16 bg-[#03E46A] rounded-full flex items-center justify-center mx-auto mb-6">
-                      <span className="text-gray-900 font-bold text-2xl">{item.step}</span>
+                      <span className="text-gray-900 dark:text-gray-900 font-bold text-2xl">{item.step}</span>
                     </div>
                     <h3 className="font-heading text-xl font-bold text-gray-900 dark:text-white mb-3">
                       {item.title}
@@ -315,7 +315,7 @@ export default function SubscriptionPage() {
         {/* CTA */}
         <section className="py-16 bg-gradient-to-r from-[#03E46A] to-[#02C55A] dark:from-[#04D162]/80 dark:to-[#04D162]/60">
           <Container>
-            <div className="text-center text-gray-900 max-w-3xl mx-auto">
+            <div className="text-center text-gray-900 dark:text-gray-900 max-w-3xl mx-auto">
               <RefreshCw className="w-16 h-16 mx-auto mb-6 opacity-80" />
               <h2 className="font-heading text-3xl md:text-4xl font-bold mb-6">
                 Start Saving Today
