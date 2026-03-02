@@ -409,15 +409,8 @@ export default async function LocalizedBlogPostPage({ params }: BlogPostPageProp
         </section>
 
         {needsFallbackH1 && (
-          <section className="py-10 md:py-12">
-            <Container>
-              <div className="max-w-4xl mx-auto">
-                <h1 className="font-heading text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 dark:text-gray-100 mb-6 leading-tight">
-                  {post.title}
-                </h1>
-                <p className="text-xl text-gray-600 dark:text-gray-300">{post.excerpt}</p>
-              </div>
-            </Container>
+          <section className="sr-only">
+            <h1>{post.title}</h1>
           </section>
         )}
 
