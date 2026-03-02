@@ -15,9 +15,6 @@ const { images, OPTIMIZE_PACKAGE_IMPORTS } = require("./config/images");
 const nextConfig = {
   reactStrictMode: true,
   productionBrowserSourceMaps: false,
-  output: "standalone",
-  // outputFileTracingRoot removed to avoid Vercel deployment issues
-  // complex excludes removed to rely on Next.js defaults
   outputFileTracingIncludes: {
     "/admin/*": ["./content/blog/**/*"],
     "/api/admin/*": ["./content/blog/**/*"],
