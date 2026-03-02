@@ -11,6 +11,8 @@ const BUTTON_LIKE_CLASS_PATTERNS = [
   /\b(?:px|py|p)-[^\s]+/,
   /\b(?:rounded[^\s]*|font-bold|font-semibold|shadow[^\s]*|inline-block|inline-flex)/,
 ];
+const LIGHT_GREEN_SURFACE_PATTERN = /\b(?:bg|from|to)-(?:green|emerald)-(?:50|100|200|300|400|500)\b|\bbg-\[#E0EFC7\]\b|\bbg-brand-green-light\b/;
+const DARK_GREEN_SURFACE_PATTERN = /\b(?:bg|from|to)-(?:green|emerald)-(?:600|700|800|900)\b/;
 
 function isButtonLikeLink(classValue: string): boolean {
   return BUTTON_LIKE_CLASS_PATTERNS.every((pattern) => pattern.test(classValue));
@@ -34,6 +36,34 @@ function normalizeCtaLinks(html: string): string {
     }
 
     const normalizedClassValue = `${existingClassValue} ${CTA_CLASS_NAMES}`
+      .replace(/\s+/g, ' ')
+      .trim();
+
+    return fullMatch.replace(classAttrMatch[0], `class="${normalizedClassValue}"`);
+  });
+}
+
+function normalizeGreenSurfaceContrast(html: string): string {
+  return html.replace(/<([a-z0-9]+)\b([^>]*?)>/gi, (fullMatch, tag, attrs) => {
+    const classAttrMatch = attrs.match(/\bclass\s*=\s*(["'])(.*?)\1/i);
+
+    if (!classAttrMatch) {
+      return fullMatch;
+    }
+
+    const existingClassValue = classAttrMatch[2].trim();
+    const hasTextWhite = /\btext-white\b/.test(existingClassValue);
+    const hasLightGreenSurface = LIGHT_GREEN_SURFACE_PATTERN.test(existingClassValue);
+    const hasDarkGreenSurface = DARK_GREEN_SURFACE_PATTERN.test(existingClassValue);
+
+    if (!hasTextWhite || !hasLightGreenSurface || hasDarkGreenSurface) {
+      return fullMatch;
+    }
+
+    const normalizedClassValue = existingClassValue
+      .replace(/\btext-white\b/g, 'text-gray-900 dark:text-gray-100')
+      .replace(/\btext-green-100\b/g, 'text-green-900 dark:text-green-100')
+      .replace(/\btext-emerald-100\b/g, 'text-emerald-900 dark:text-emerald-100')
       .replace(/\s+/g, ' ')
       .trim();
 
@@ -101,6 +131,9 @@ export function sanitizeHTML(dirty: string): string {
     /<span\b[^>]*class=(["'])(?=[^"']*\bw-4\b)(?=[^"']*\bh-4\b)(?=[^"']*\bmr-1\b)[^"']*\1[^>]*>\s*📅\s*<\/span>/giu,
     ''
   );
+
+  // Prevent low-contrast combinations like white text on pale green surfaces.
+  clean = normalizeGreenSurfaceContrast(clean);
 
   // Keep CTA links consistent and readable inside prose containers.
   clean = normalizeCtaLinks(clean);
