@@ -105,7 +105,6 @@ const CLIENT_MESSAGE_KEYS = new Set<string>([
   'siteDescription',
   'siteName',
   'socialFollow',
-  'stockAlertBanner',
   'subscriptionOfferExtended',
   'testimonialsSection',
   'ui',
@@ -122,7 +121,6 @@ const GLOBAL_LAYOUT_KEYS = new Set<string>([
   'locationsMenu',
   'footer',
   'footerNav',
-  'stockAlertBanner',
   'waitlist',
 ]);
 

@@ -78,13 +78,7 @@ export const en = {
     ourStory: "Our Story"
   },
 
-  stockAlertBanner: {
-    headline: "⚠️ STOP - Read This Before You Order",
-    line1: "Word got out. Orders flooded in. We're tiny and ran out of stock.",
-    line2: "We're shipping new orders starting March 3rd. Get on the list and be first to know the day we're shipping again. Or place your order and get in front of the line.",
-    line3: "But don't wait. The same thing that just happened.... will happen again",
-    cta: "Join the \"Free us from stink\" waitlist!"
-  },
+
 
   waitlist: {
     placeholder: "Enter your email",
