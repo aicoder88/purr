@@ -134,7 +134,7 @@ export function Testimonials() {
           <a
             href="https://g.page/r/CUB8bZ_ibMbwEBM/review"
             target="_blank"
-            rel="noopener noreferrer"
+            rel="noopener noreferrer nofollow"
             className={`inline-flex items-center px-6 py-3 ${COLORS.surface.light} rounded-full shadow-md hover:shadow-lg text-[#5B2EFF] hover:text-[#5B2EFF]/80 font-medium transition-all duration-300 group`}
           >
             {t('testimonialsSection.readMoreReviews')}

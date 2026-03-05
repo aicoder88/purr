@@ -16,15 +16,15 @@ This file provides a curated set of pages for LLM inference-time understanding o
 - [How It Works](https://www.purrify.ca/learn/how-it-works/): Practical explanation of how Purrify granules are used.
 - [Science](https://www.purrify.ca/science/): Scientific context behind odor and ammonia control.
 - [Ammonia Science](https://www.purrify.ca/learn/ammonia-science/): Focused ammonia-related guidance.
-- [FAQ](https://www.purrify.ca/learn/faq/): Frequently asked questions.
+- [FAQ](https://www.purrify.ca/learn/faq): Frequently asked questions.
 - [Blog](https://www.purrify.ca/blog/): Ongoing cat care and odor-control articles.
 
 ## Support
 
-- [Support Center](https://www.purrify.ca/support/): Customer help and support paths.
+- [Support Center](https://www.purrify.ca/support): Customer help and support paths.
 - [Contact](https://www.purrify.ca/contact/): Contact form and support access.
-- [Shipping](https://www.purrify.ca/support/shipping/): Shipping details and expectations.
-- [Subscription Support](https://www.purrify.ca/support/subscription/): Subscription-related help.
+- [Shipping](https://www.purrify.ca/support/shipping): Shipping details and expectations.
+- [Subscription Support](https://www.purrify.ca/support/subscription): Subscription-related help.
 - [Privacy Policy](https://www.purrify.ca/privacy-policy/): Privacy terms and data handling details.
 - [Terms](https://www.purrify.ca/terms/): Terms of service.
 

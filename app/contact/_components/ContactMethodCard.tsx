@@ -72,14 +72,17 @@ export default function ContactMethodCard({
 
       {/* Action */}
       <Button
+        asChild
         variant="outline"
         className="w-full justify-between group-hover:border-purple-200 dark:group-hover:border-purple-800 group-hover:bg-purple-50 dark:group-hover:bg-purple-900/20 dark:border-gray-700 dark:bg-transparent transition-all duration-300"
-        onClick={() => {
-          window.location.href = action;
-        }}
       >
-        <span className="font-semibold text-gray-700 dark:text-gray-200 group-hover:text-purple-700 dark:group-hover:text-purple-300">{contactNowText}</span>
-        <ArrowRight className="w-4 h-4 text-gray-400 dark:text-gray-500 group-hover:text-purple-600 dark:group-hover:text-purple-400 transition-colors" />
+        <a
+          href={action}
+          {...(action.startsWith('http') ? { target: "_blank", rel: "noopener noreferrer nofollow" } : {})}
+        >
+          <span className="font-semibold text-gray-700 dark:text-gray-200 group-hover:text-purple-700 dark:group-hover:text-purple-300">{contactNowText}</span>
+          <ArrowRight className="w-4 h-4 text-gray-400 dark:text-gray-500 group-hover:text-purple-600 dark:group-hover:text-purple-400 transition-colors" />
+        </a>
       </Button>
     </div>
   );
