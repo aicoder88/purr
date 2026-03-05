@@ -7,24 +7,14 @@ export type PaymentLinkKey =
   | 'jumboSingle'
   | 'jumboAutoship';
 
-const DEFAULT_PAYMENT_LINKS: Record<PaymentLinkKey, string> = {
-  trialSingle: 'https://buy.stripe.com/8x2bJ1dSg6kqafO3oe6Na0a',
-  standardSingle: '',
-  standardAutoship: '',
-  familySingle: '',
-  familyAutoship: 'https://buy.stripe.com/14A4gz9C0aAGew4gb06Na08',
-  jumboSingle: '',
-  jumboAutoship: 'https://buy.stripe.com/3cI7sLbK8dMS9bK7Eu6Na09',
-};
-
 const PAYMENT_LINKS: Record<PaymentLinkKey, string> = {
-  trialSingle: process.env.NEXT_PUBLIC_STRIPE_LINK_TRIAL_SINGLE || DEFAULT_PAYMENT_LINKS.trialSingle,
-  standardSingle: process.env.NEXT_PUBLIC_STRIPE_LINK_STANDARD_SINGLE || DEFAULT_PAYMENT_LINKS.standardSingle,
-  standardAutoship: process.env.NEXT_PUBLIC_STRIPE_LINK_STANDARD_AUTOSHIP || DEFAULT_PAYMENT_LINKS.standardAutoship,
-  familySingle: process.env.NEXT_PUBLIC_STRIPE_LINK_FAMILY_SINGLE || DEFAULT_PAYMENT_LINKS.familySingle,
-  familyAutoship: process.env.NEXT_PUBLIC_STRIPE_LINK_FAMILY_AUTOSHIP || DEFAULT_PAYMENT_LINKS.familyAutoship,
-  jumboSingle: process.env.NEXT_PUBLIC_STRIPE_LINK_JUMBO_SINGLE || DEFAULT_PAYMENT_LINKS.jumboSingle,
-  jumboAutoship: process.env.NEXT_PUBLIC_STRIPE_LINK_JUMBO_AUTOSHIP || DEFAULT_PAYMENT_LINKS.jumboAutoship,
+  trialSingle: '/buy/purrify-12g',
+  standardSingle: '/buy/purrify-50g',
+  standardAutoship: '/buy/purrify-50g-autoship',
+  familySingle: '/buy/purrify-120g',
+  familyAutoship: '/buy/purrify-120g-autoship',
+  jumboSingle: '/buy/purrify-240g',
+  jumboAutoship: '/buy/purrify-240g-autoship',
 };
 
 export function getPaymentLink(key: PaymentLinkKey): string | null {

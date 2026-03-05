@@ -8,11 +8,18 @@
 - This project uses `pnpm` exclusively.
 - Do not use `npm` or `yarn` for manual commands.
 
+### Environment Preflight (Before Running Commands)
+- Verify runtime/tooling versions first: `node -v` and `pnpm -v`.
+- Node must match `22.x` (from `package.json` engines). If not, switch Node before install/build/check commands.
+- Before running a scripted validation command, confirm it exists in `package.json` scripts.
+
 ### Agent Memory (Persistent Defaults)
 - Start by scoping with fast search (`rg --files`, `rg "<pattern>"`) before editing.
 - Make the smallest viable change first; avoid broad refactors unless explicitly requested.
 - Reuse existing project patterns/components before introducing new abstractions.
 - Validate claims before completion: run the smallest relevant check (typecheck, lint, test, or targeted script) for touched areas.
+- Report exactly which commands were run and whether each passed/failed.
+- If checks are skipped, state which were skipped and why.
 - For UI copy changes, run `pnpm validate-i18n:hardcoded` and inspect `reports/i18n-hardcoded-sweep.md` before handoff.
 - When requirements are ambiguous, state assumptions explicitly in the final handoff.
 - If a new recurring preference appears, persist it in both `docs/AGENTS.md` and `docs/CLAUDE.md`.
@@ -42,7 +49,7 @@
 ## Technology Stack
 
 ### Core Framework
-- **Next.js 16.0.10** - App Router (primary)
+- **Next.js 16.0.14** - App Router (primary)
 - **React 19.2.3**
 - **TypeScript 5.9.3** (strict mode)
 - **next-intl 4.8.2** for i18n routing/messages
@@ -53,7 +60,7 @@
 - Prisma singleton in `src/lib/prisma.ts`
 
 ### Authentication & Security
-- **NextAuth 5.0.0-beta.25** (JWT session strategy)
+- **NextAuth 5.0.0-beta.30** (JWT session strategy)
 - `requireAuth()` helper in `src/lib/auth/session.ts`
 - Rate limiting in `src/lib/security/rate-limit.ts` / `src/lib/security/rate-limit-app.ts`
 - CSRF helpers in `src/lib/security/csrf.ts`
@@ -166,10 +173,10 @@ pnpm test:e2e
 pnpm test:e2e:ui
 
 # Validation
-pnpm validate-dark-mode
 pnpm validate-i18n:hardcoded
 pnpm validate-hydration
 pnpm validate-images
+pnpm validate-button-contrast
 pnpm validate-links
 pnpm validate-schemas
 pnpm validate-sitemap
@@ -236,7 +243,7 @@ Copy `.env.local.example` to `.env.local` and configure at least:
 ### Dark Mode (Required)
 - Every text/background choice must work in both themes.
 - Any `text-white` usage must have safe contrast in dark mode.
-- Validate with `pnpm validate-dark-mode`.
+- Validate with `pnpm validate-button-contrast` (plus visual spot checks for touched pages/components).
 
 ## Testing Instructions
 

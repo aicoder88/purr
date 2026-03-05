@@ -287,8 +287,6 @@ export function SubscriptionSelector({
                 >
                   <a
                     href={paymentLink}
-                    target="_blank"
-                    rel="noopener noreferrer"
                     onClick={() => handlePlanSelect(plan)}
                   >
                     {isSelected ? copy.buttonSelected : isRecommended ? copy.buttonGetStarted : copy.buttonChoosePlan}

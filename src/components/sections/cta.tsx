@@ -103,8 +103,6 @@ export const CTA = React.memo(function CTA() {
           <div className="flex flex-col gap-4 min-w-[200px]">
             <Link
               href={paymentLink}
-              target="_blank"
-              rel="noopener noreferrer"
               className="group"
             >
               <Button

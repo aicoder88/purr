@@ -1,5 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server';
 import prisma from '@/lib/prisma';
+import { attachEmailToFreshnessProfile, getFreshnessSnapshotBySessionId } from '@/lib/freshness-profile';
+import { FRESHNESS_SESSION_COOKIE } from '@/lib/freshness-session';
 import { checkRateLimit, getClientIp } from '@/lib/rate-limit';
 import { signOrderId } from '@/lib/security/checkout-token';
 interface CartItem {
@@ -99,7 +101,11 @@ export async function POST(request: NextRequest) {
       customer: CustomerData;
       currency: string;
       total?: number;
+      sessionId?: string;
     };
+    const sessionId = typeof body.sessionId === 'string'
+      ? body.sessionId
+      : request.cookies.get(FRESHNESS_SESSION_COOKIE)?.value;
     // Validate required fields
     if (!items || !Array.isArray(items) || items.length === 0) {
       return NextResponse.json(
@@ -122,6 +128,12 @@ export async function POST(request: NextRequest) {
     }
     // Recalculate total server-side to prevent price tampering
     const { total: serverTotal, validatedItems } = await recalculateOrderTotal(items);
+    const freshness = sessionId
+      ? await getFreshnessSnapshotBySessionId(sessionId)
+      : null;
+    if (sessionId) {
+      await attachEmailToFreshnessProfile(sessionId, customer.email.toLowerCase().trim());
+    }
     // Log if there's a significant discrepancy (for security monitoring)
     if (clientTotal && Math.abs(clientTotal - serverTotal) > 0.01) {
       // Price tampering detected - using server-calculated total
@@ -131,6 +143,11 @@ export async function POST(request: NextRequest) {
         totalAmount: serverTotal, // Use server-calculated total only
         currency: currency,
         status: 'PENDING',
+        freshnessSessionId: freshness?.sessionId,
+        freshnessSource: freshness?.source,
+        freshnessScore: freshness?.score,
+        freshnessRiskLevel: freshness?.riskLevel,
+        freshnessRecommendedProductId: freshness?.recommendedProductId,
         customer: {
           create: {
             email: customer.email,

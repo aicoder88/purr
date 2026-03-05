@@ -3,6 +3,7 @@
 import { useCallback, useEffect, useRef, useState } from 'react';
 import type { ChatToolUse } from '@/lib/chat/tools';
 import { isChatArticleSlug, isChatProductId } from '@/lib/chat/tools';
+import { getOrCreateFreshnessSessionId } from '@/lib/freshness-session';
 
 type ChatLocale = 'en' | 'fr';
 
@@ -184,6 +185,7 @@ export function useChatStream(locale: ChatLocale) {
           body: JSON.stringify({
             locale,
             messages: historyForApi,
+            sessionId: getOrCreateFreshnessSessionId(),
           }),
         });
 

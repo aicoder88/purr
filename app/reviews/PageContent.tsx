@@ -125,8 +125,6 @@ export default function Reviews() {
                     </Link>
                     <a
                       href={getPaymentLink('trialSingle') || '#'}
-                      target="_blank"
-                      rel="noopener noreferrer"
                       className="inline-block border border-[#FF3131] text-[#FF3131] dark:text-[#FF5050] dark:border-[#FF5050]/50 px-8 py-3 rounded-lg font-semibold hover:bg-[#FF3131]/5 dark:hover:bg-[#FF5050]/10 transition-colors"
                     >
                       Try Free Sample

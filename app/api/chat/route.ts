@@ -3,6 +3,8 @@ import { NextRequest, NextResponse } from 'next/server';
 import { z } from 'zod';
 import { buildChatSystemPrompt } from '@/lib/chat/system-prompt';
 import { CHAT_TOOLS, CHAT_ARTICLE_SLUGS, CHAT_PRODUCT_IDS } from '@/lib/chat/tools';
+import type { RecommendProductToolInput } from '@/lib/chat/tools';
+import { upsertFreshnessProfile } from '@/lib/freshness-profile';
 import { checkRateLimit, createRateLimitHeaders, getClientIp } from '@/lib/rate-limit';
 
 export const runtime = 'nodejs';
@@ -16,6 +18,13 @@ const chatMessageSchema = z.object({
 const chatRequestSchema = z.object({
   locale: z.enum(['en', 'fr']).default('en'),
   messages: z.array(chatMessageSchema).min(1).max(10),
+  sessionId: z
+    .string()
+    .trim()
+    .min(8)
+    .max(128)
+    .regex(/^[A-Za-z0-9_-]+$/)
+    .optional(),
 });
 
 const recommendProductInputSchema = z.object({
@@ -177,6 +186,11 @@ export async function POST(request: NextRequest) {
                 const parsedInput = mergeToolInput(pendingTool);
                 if (parsedInput) {
                   emittedOutput = true;
+                  let latestRecommendation: RecommendProductToolInput | null = null;
+                  if (pendingTool.name === 'recommend_product') {
+                    const parsedRecommendation = recommendProductInputSchema.safeParse(parsedInput);
+                    latestRecommendation = parsedRecommendation.success ? parsedRecommendation.data : null;
+                  }
                   pushEvent({
                     type: 'tool_use',
                     tool: {
@@ -184,6 +198,19 @@ export async function POST(request: NextRequest) {
                       input: parsedInput,
                     },
                   });
+
+                  if (latestRecommendation && validatedBody.sessionId) {
+                    void upsertFreshnessProfile({
+                      sessionId: validatedBody.sessionId,
+                      locale: validatedBody.locale,
+                      source: 'chat',
+                      recommendedProductId: latestRecommendation.product_id,
+                      recommendationReason: latestRecommendation.reason,
+                      confidence: 70,
+                    }).catch((profileError) => {
+                      console.error('Unable to persist chat freshness profile:', profileError);
+                    });
+                  }
                 }
 
                 pendingTools.delete(event.index);

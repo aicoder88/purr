@@ -1396,6 +1396,10 @@ export const en = {
     maxValuePerGram: "Maximum value per gram",
     bulkSavingsIncluded: "Bulk savings included",
     sustainableSupply: "Sustainable supply for heavy users",
+    personalizedBadge: "Saved recommendation",
+    personalizedTitle: "{product} fits your home best right now",
+    personalizedDescription: "We saved this based on your most recent quiz or advisor conversation.",
+    recommendedForYou: "RECOMMENDED FOR YOU",
     // fastShippingIncluded: "Fast shipping included", // TODO: Restore when offer is available
     features: "Features",
     idealFor: "Ideal For",

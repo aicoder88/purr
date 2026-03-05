@@ -2,6 +2,8 @@ import { NextRequest, NextResponse } from 'next/server';
 import Stripe from 'stripe';
 import { z } from 'zod';
 import prisma from '@/lib/prisma';
+import { attachEmailToFreshnessProfile, getFreshnessSnapshotBySessionId } from '@/lib/freshness-profile';
+import { FRESHNESS_SESSION_COOKIE } from '@/lib/freshness-session';
 import { checkRateLimit, createRateLimitHeaders } from '@/lib/rate-limit';
 import { verifyCheckoutToken, isOrderExpired } from '@/lib/security/checkout-token';
 
@@ -26,6 +28,13 @@ const createCheckoutSchema = z.object({
     email: z.string().email('Invalid email format').max(254, 'Email too long'),
     name: z.string().min(1, 'Name is required').max(100, 'Name too long').optional(),
   }),
+  sessionId: z
+    .string()
+    .trim()
+    .min(8)
+    .max(128)
+    .regex(/^[A-Za-z0-9_-]+$/)
+    .optional(),
 });
 
 export async function POST(request: NextRequest) {
@@ -64,7 +73,8 @@ export async function POST(request: NextRequest) {
       );
     }
 
-    const { orderId, checkoutToken, currency, locale, customer } = validationResult.data;
+    const { orderId, checkoutToken, currency, locale, customer, sessionId: bodySessionId } = validationResult.data;
+    const sessionId = bodySessionId ?? request.cookies.get(FRESHNESS_SESSION_COOKIE)?.value;
 
     // Verify checkout token for ownership
     if (!verifyCheckoutToken(orderId, checkoutToken)) {
@@ -111,6 +121,27 @@ export async function POST(request: NextRequest) {
       );
     }
 
+    const freshness = sessionId
+      ? await getFreshnessSnapshotBySessionId(sessionId)
+      : null;
+
+    if (sessionId) {
+      await attachEmailToFreshnessProfile(sessionId, customer.email.toLowerCase().trim());
+    }
+
+    if (freshness && !order.freshnessSessionId) {
+      await prisma.order.update({
+        where: { id: order.id },
+        data: {
+          freshnessSessionId: freshness.sessionId,
+          freshnessSource: freshness.source,
+          freshnessScore: freshness.score,
+          freshnessRiskLevel: freshness.riskLevel,
+          freshnessRecommendedProductId: freshness.recommendedProductId,
+        },
+      });
+    }
+
     // Create Stripe checkout session
     const session = await getStripe().checkout.sessions.create({
       payment_method_types: ['card'],
@@ -134,6 +165,11 @@ export async function POST(request: NextRequest) {
         orderId: order.id,
         customerName: customer.name || '',
         locale,
+        freshnessSessionId: order.freshnessSessionId ?? freshness?.sessionId ?? '',
+        freshnessSource: order.freshnessSource ?? freshness?.source ?? '',
+        freshnessScore: String(order.freshnessScore ?? freshness?.score ?? ''),
+        freshnessRiskLevel: order.freshnessRiskLevel ?? freshness?.riskLevel ?? '',
+        freshnessRecommendedProductId: order.freshnessRecommendedProductId ?? freshness?.recommendedProductId ?? '',
       },
     });
 

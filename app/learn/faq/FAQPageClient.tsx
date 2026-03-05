@@ -612,7 +612,7 @@ export default function FAQPageClient() {
                 {faqPage?.startWithRiskFreeTrial || 'Start with our risk-free trial size and experience the difference for yourself.'}
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                <a href={trialCheckoutUrl} target="_blank" rel="noopener noreferrer">
+                <a href={trialCheckoutUrl}>
                   <Button size="lg" className="bg-white dark:bg-gray-900 text-electric-indigo hover:bg-gray-100 hover:scale-105 dark:hover:bg-gray-700 font-bold transition-all duration-300">
                     {trialCtaLabel}
                     <ChevronRight className="w-5 h-5 ml-2" />

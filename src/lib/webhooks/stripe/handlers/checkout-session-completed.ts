@@ -268,8 +268,35 @@ async function handleConsumerOrder(data: CheckoutSessionData): Promise<void> {
   // Update order status
   await prisma.order.update({
     where: { id: orderId },
-    data: { status: 'PAID' },
+    data: {
+      status: 'PAID',
+      stripeSessionId: session.id,
+    },
   });
+
+  if (customerEmail) {
+    const [firstName = '', ...lastNameParts] = (customerName || '').trim().split(/\s+/);
+    const lastName = lastNameParts.join(' ');
+
+    await prisma.customer.upsert({
+      where: { orderId },
+      update: {
+        email: customerEmail,
+        firstName,
+        lastName,
+      },
+      create: {
+        orderId,
+        email: customerEmail,
+        firstName,
+        lastName,
+        address: '',
+        city: '',
+        province: '',
+        postalCode: '',
+      },
+    });
+  }
 
   // Generate referral code if first-time customer
   await generateReferralCode(orderId);

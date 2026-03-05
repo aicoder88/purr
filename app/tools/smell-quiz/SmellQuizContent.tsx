@@ -1,7 +1,7 @@
 'use client';
 
 import Link from 'next/link';
-import { useEffect, useMemo, useState } from 'react';
+import { useEffect, useMemo, useRef, useState } from 'react';
 import { useSearchParams } from 'next/navigation';
 import { AnimatePresence, motion } from 'framer-motion';
 import { Check, ChevronRight, Home, Mail, RotateCcw, Share2, Sparkles } from 'lucide-react';
@@ -9,6 +9,7 @@ import { useLocale } from 'next-intl';
 import { Button } from '@/components/ui/button';
 import { Container } from '@/components/ui/container';
 import { PRODUCTS } from '@/lib/constants';
+import { getOrCreateFreshnessSessionId } from '@/lib/freshness-session';
 import { localizePath } from '@/lib/i18n/locale-path';
 
 type Language = 'en' | 'fr';
@@ -391,6 +392,45 @@ type QuizResult = {
   productHref: string;
 };
 
+const CAT_COUNT_BY_ANSWER: Record<string, number> = {
+  'q1-1': 1,
+  'q1-2': 2,
+  'q1-3': 3,
+  'q1-4': 4,
+};
+
+const LITTER_TYPE_BY_ANSWER: Record<string, string> = {
+  'q2-1': 'clumping-clay',
+  'q2-2': 'non-clumping',
+  'q2-3': 'silica-crystal',
+  'q2-4': 'natural',
+  'q2-5': 'other',
+  'q2-6': 'odor-control',
+};
+
+const HOME_TYPE_BY_ANSWER: Record<string, string> = {
+  'q3-1': 'bathroom',
+  'q3-2': 'basement-laundry',
+  'q3-3': 'living-space',
+  'q3-4': 'small-apartment',
+  'q3-5': 'enclosed-closet',
+};
+
+const ODOR_SEVERITY_BY_ANSWER: Record<string, string> = {
+  'q4-1': 'barely-noticeable',
+  'q4-2': 'noticeable-after-day',
+  'q4-3': 'hits-when-entering',
+  'q4-4': 'constant',
+};
+
+const CURRENT_REMEDY_BY_ANSWER: Record<string, string> = {
+  'q5-1': 'nothing-yet',
+  'q5-2': 'scented-litter',
+  'q5-3': 'air-fresheners',
+  'q5-4': 'baking-soda',
+  'q5-5': 'frequent-full-changes',
+};
+
 function calculateResult(questions: Question[], answers: Answers): QuizResult {
   const total = questions.reduce((sum, question) => {
     const selectedId = answers[question.id];
@@ -488,6 +528,44 @@ function selectLearningArticles(answers: Answers): LearningArticle[] {
   return Array.from(new Set(orderedIds)).slice(0, 4).map((articleId) => LEARNING_ARTICLES[articleId]);
 }
 
+async function persistFreshnessProfile({
+  sessionId,
+  language,
+  answers,
+  result,
+  recommendationReason,
+  email,
+}: {
+  sessionId: string;
+  language: Language;
+  answers: Answers;
+  result: QuizResult;
+  recommendationReason?: string;
+  email?: string;
+}) {
+  await fetch('/api/freshness-profile', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({
+      sessionId,
+      locale: language,
+      source: 'quiz',
+      email,
+      catCount: answers.q1 ? CAT_COUNT_BY_ANSWER[answers.q1] : undefined,
+      litterType: answers.q2 ? LITTER_TYPE_BY_ANSWER[answers.q2] : undefined,
+      homeType: answers.q3 ? HOME_TYPE_BY_ANSWER[answers.q3] : undefined,
+      odorSeverity: answers.q4 ? ODOR_SEVERITY_BY_ANSWER[answers.q4] : undefined,
+      currentRemedy: answers.q5 ? CURRENT_REMEDY_BY_ANSWER[answers.q5] : undefined,
+      riskLevel: result.risk,
+      score: result.score,
+      recommendedProductId: result.productId,
+      recommendationReason,
+      confidence: 92,
+      answers,
+    }),
+  });
+}
+
 export default function SmellQuizContent() {
   const locale = useLocale() as Language;
   const language: Language = locale === 'fr' ? 'fr' : 'en';
@@ -501,6 +579,7 @@ export default function SmellQuizContent() {
   const [emailStatus, setEmailStatus] = useState<'idle' | 'loading' | 'success' | 'error'>('idle');
   const [emailMessage, setEmailMessage] = useState('');
   const [shareCopied, setShareCopied] = useState(false);
+  const persistedResultRef = useRef<string | null>(null);
 
   const result = useMemo(() => calculateResult(copy.questions, answers), [answers, copy.questions]);
   const causeInsights = useMemo(() => buildCauseInsights(answers, copy), [answers, copy]);
@@ -571,6 +650,29 @@ export default function SmellQuizContent() {
     return () => cancelAnimationFrame(frameId);
   }, [currentStep, result.score]);
 
+  useEffect(() => {
+    if (currentStep !== 6 || Object.keys(answers).length !== QUESTION_IDS.length) {
+      return;
+    }
+
+    const sessionId = getOrCreateFreshnessSessionId();
+    const persistenceKey = `${sessionId}:${JSON.stringify(answers)}:${result.productId}:${result.score}`;
+    if (persistedResultRef.current === persistenceKey) {
+      return;
+    }
+
+    persistedResultRef.current = persistenceKey;
+    void persistFreshnessProfile({
+      sessionId,
+      language,
+      answers,
+      result,
+      recommendationReason: copy.whySize[result.risk],
+    }).catch(() => {
+      persistedResultRef.current = null;
+    });
+  }, [answers, copy.whySize, currentStep, language, result]);
+
   const selectedProduct = PRODUCTS.find((product) => product.id === result.productId);
   const selectedPrice = selectedProduct ? `$${selectedProduct.price.toFixed(2)}` : '$0.00';
   const selectedName = selectedProduct?.name ?? 'Purrify';
@@ -602,19 +704,24 @@ export default function SmellQuizContent() {
     setEmailMessage('');
 
     try {
-      const response = await fetch('/api/contact', {
+      const sessionId = getOrCreateFreshnessSessionId();
+      const response = await fetch('/api/quiz-result-email', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
-          name: 'Smell Quiz Result',
+          sessionId,
           email,
-          message: `Quiz score: ${result.score}/100 (${result.risk}). Recommended: ${selectedName} (${selectedSize}) at ${selectedPrice}.`,
+          locale: language,
+          score: result.score,
+          riskLevel: result.risk,
+          recommendedProductId: result.productId,
+          recommendationReason: copy.whySize[result.risk],
         }),
       });
 
-      const data = (await response.json().catch(() => null)) as { message?: string } | null;
+      const data = (await response.json().catch(() => null)) as { error?: string } | null;
       if (!response.ok) {
-        throw new Error(data?.message || copy.emailError);
+        throw new Error(data?.error || copy.emailError);
       }
 
       setEmailStatus('success');
@@ -659,6 +766,7 @@ export default function SmellQuizContent() {
     setDisplayScore(0);
     setEmailStatus('idle');
     setEmailMessage('');
+    persistedResultRef.current = null;
   };
 
   return (

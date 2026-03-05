@@ -183,7 +183,7 @@ export function SubscriptionOffer() {
                           asChild
                           className="w-full py-6 text-xl font-black transition-all duration-300 bg-gradient-to-r from-purple-600 via-pink-600 to-orange-500 hover:from-purple-700 hover:via-pink-700 hover:to-orange-600 text-white dark:text-gray-100 shadow-2xl hover:shadow-purple-500/50 hover:scale-105"
                         >
-                          <a href={paymentLink} target="_blank" rel="noopener noreferrer" className="flex items-center justify-center gap-3">
+                          <a href={paymentLink} className="flex items-center justify-center gap-3">
                             <Zap className="w-6 h-6" />
                             {plan.ctaLabel}
                           </a>

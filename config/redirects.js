@@ -285,6 +285,16 @@ const REDIRECTS = [
     destination: "/blog/multi-cat-litter-deodorizer-guide/",
     permanent: true
   },
+  {
+    source: "/blog/how-to-get-rid-of-cat-litter-smell-apartment",
+    destination: "/blog/best-litter-odor-remover-small-apartments/",
+    permanent: true
+  },
+  {
+    source: "/blog/how-to-get-rid-of-cat-litter-smell-apartment/",
+    destination: "/blog/best-litter-odor-remover-small-apartments/",
+    permanent: true
+  },
 
   // --- LEARN → BLOG CONSOLIDATIONS ---
   // Baking soda comparison
@@ -1918,6 +1928,16 @@ const REDIRECTS = [
   {
     source: "/:locale(fr)/blog/beyond-masking-odors",
     destination: "/:locale/blog/most-powerful-odor-absorber/",
+    permanent: true
+  },
+  {
+    source: "/:locale(fr)/blog/how-to-get-rid-of-cat-litter-smell-apartment",
+    destination: "/:locale/blog/best-litter-odor-remover-small-apartments/",
+    permanent: true
+  },
+  {
+    source: "/:locale(fr)/blog/how-to-get-rid-of-cat-litter-smell-apartment/",
+    destination: "/:locale/blog/best-litter-odor-remover-small-apartments/",
     permanent: true
   },
 

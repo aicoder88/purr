@@ -993,6 +993,10 @@ export interface TranslationType {
     maxValuePerGram: string;
     bulkSavingsIncluded: string;
     sustainableSupply: string;
+    personalizedBadge: string;
+    personalizedTitle: string;
+    personalizedDescription: string;
+    recommendedForYou: string;
     // freeShippingIncluded: string; // TODO: Restore when free shipping is available
     features: string;
     idealFor: string;

@@ -242,6 +242,12 @@ model Order {
   referralDiscount  Float?  // Discount amount from referral ($5)
   // Affiliate tracking
   affiliateCode     String? // Affiliate code that referred this order
+  // Freshness profile attribution
+  freshnessSessionId String?
+  freshnessSource    FreshnessProfileSource?
+  freshnessScore     Int?
+  freshnessRiskLevel String?
+  freshnessRecommendedProductId String?
 
   @@index([status])
   @@index([createdAt])
@@ -252,6 +258,8 @@ model Order {
   @@index([referralCodeUsed])
   @@index([affiliateCode])
   @@index([currency])
+  @@index([freshnessSessionId])
+  @@index([freshnessRecommendedProductId])
 }
 
 enum OrderStatus {
@@ -647,12 +655,18 @@ model EmailSubscriber {
   welcomeEmailAt   DateTime? // When welcome email was sent
   unsubscribedAt   DateTime? // When user unsubscribed
   bouncedAt        DateTime? // When email bounced
+  freshnessSessionId String?
+  freshnessSource    FreshnessProfileSource?
+  freshnessScore     Int?
+  freshnessRiskLevel String?
+  freshnessRecommendedProductId String?
   createdAt        DateTime         @default(now())
   updatedAt        DateTime         @updatedAt
 
   @@index([status])
   @@index([source])
   @@index([welcomeEmailSent, status]) // For finding subscribers needing welcome emails
+  @@index([freshnessSessionId])
   @@map("email_subscribers")
 }
 
@@ -660,6 +674,41 @@ enum SubscriberStatus {
   ACTIVE // Active subscriber
   UNSUBSCRIBED // User unsubscribed
   BOUNCED // Email bounced
+}
+
+model FreshnessProfile {
+  id                   String                @id @default(cuid())
+  sessionId            String                @unique
+  email                String?
+  locale               String                @default("en")
+  source               FreshnessProfileSource @default(QUIZ)
+  catCount             Int?
+  litterType           String?
+  homeType             String?
+  odorSeverity         String?
+  currentRemedy        String?
+  riskLevel            String?
+  score                Int?
+  recommendedProductId String?
+  recommendationReason String?
+  confidence           Int?
+  answers              Json?
+  lastQuizAt           DateTime?
+  lastChatAt           DateTime?
+  lastSeenAt           DateTime              @default(now())
+  createdAt            DateTime              @default(now())
+  updatedAt            DateTime              @updatedAt
+
+  @@index([email])
+  @@index([recommendedProductId])
+  @@index([source])
+  @@index([lastSeenAt])
+  @@map("freshness_profiles")
+}
+
+enum FreshnessProfileSource {
+  QUIZ
+  CHAT
 }
 
 // ===== Customer LTV & Subscription Models =====

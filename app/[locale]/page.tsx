@@ -11,7 +11,7 @@ import { Stores } from '@/components/sections/stores';
 import { WaitlistSection } from '@/components/sections/newsletter';
 import { ErrorBoundary } from '@/components/ui/error-boundary';
 import { TrustBadges } from '@/components/social-proof/TrustBadges';
-import { ClientLocationsMap } from '@/components/maps/ClientLocationsMap';
+import { LazyClientLocationsMap } from '@/components/maps/LazyClientLocationsMap';
 
 import { SITE_NAME, SITE_DESCRIPTION, SITE_URL } from '@/lib/constants';
 import { getSEOMeta } from '@/translations/seo-meta';
@@ -156,7 +156,7 @@ export default async function LocalizedHomePage({ params }: LocalizedHomepagePro
 
                 <div className="cv-auto cis-720">
                     <ErrorBoundary>
-                        <ClientLocationsMap height="400" />
+                        <LazyClientLocationsMap height="400" />
                     </ErrorBoundary>
                 </div>
 

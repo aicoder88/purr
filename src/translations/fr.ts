@@ -1440,6 +1440,10 @@ export const fr = {
     maxValuePerGram: "Valeur maximale par gramme",
     bulkSavingsIncluded: "Économies en vrac incluses",
     sustainableSupply: "Approvisionnement durable",
+    personalizedBadge: "Recommandation enregistree",
+    personalizedTitle: "{product} correspond le mieux a votre foyer pour l instant",
+    personalizedDescription: "Nous avons conserve cette recommandation d apres votre quiz ou votre conversation recente.",
+    recommendedForYou: "RECOMMANDE POUR VOUS",
     // freeShippingIncluded: "Livraison gratuite incluse", // TODO: Restore when free shipping is available
     features: "Caractéristiques",
     idealFor: "Idéal Pour",

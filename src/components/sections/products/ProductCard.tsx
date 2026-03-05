@@ -66,7 +66,13 @@ export const ProductCard = React.memo(function ProductCard({
 
             {/* Product image */}
             <div className="relative h-full flex items-center justify-center p-4 sm:p-8 z-20">
-              <div className="relative max-w-[140px] sm:max-w-[180px] max-h-[140px] sm:max-h-[180px] mx-auto">
+              <div className={`relative mx-auto ${
+                index === 0
+                  ? 'max-w-[100px] sm:max-w-[120px] max-h-[100px] sm:max-h-[120px]'
+                  : index === 1
+                  ? 'max-w-[130px] sm:max-w-[160px] max-h-[130px] sm:max-h-[160px]'
+                  : 'max-w-[160px] sm:max-w-[200px] max-h-[160px] sm:max-h-[200px]'
+              }`}>
                 <Image
                   src={product.image}
                   alt={`${product.name} activated carbon cat litter additive package showing ${product.size} size for odor elimination`}
@@ -129,8 +135,6 @@ export const ProductCard = React.memo(function ProductCard({
 
           <a
             href={getPaymentLink(getPaymentLinkKey(product.id)) || '/products'}
-            target="_blank"
-            rel="noopener noreferrer"
             className={`w-full inline-flex items-center justify-center ${createButtonClasses('primary')} text-lg`}
           >
             {product.id === "purrify-12g"

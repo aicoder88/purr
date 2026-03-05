@@ -84,7 +84,7 @@ export const HeroContent = ({ t }: HeroContentProps) => {
 
       <div className="flex flex-col gap-3 pt-2 max-w-md">
         <Button asChild className={CTA_BUTTON_CLASSES} aria-label={t.hero.ariaLabels.shopNow}>
-          <a href={getPaymentLink("trialSingle") || "#"} target="_blank" rel="noopener noreferrer">
+          <a href={getPaymentLink("trialSingle") || "#"}>
             <LightningIcon />
             <span>{primaryCta}</span>
             <ArrowIcon />

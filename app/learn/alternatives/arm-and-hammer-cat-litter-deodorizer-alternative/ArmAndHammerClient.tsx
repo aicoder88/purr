@@ -462,7 +462,7 @@ export default function ArmAndHammerClient() {
                         <h2 className="text-3xl font-heading font-bold mb-4">{copy.ctaTitle}</h2>
                         <p className="text-lg mb-6 opacity-90 max-w-2xl mx-auto">{copy.ctaBody}</p>
                         <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                            <a href={trialCheckoutUrl} target="_blank" rel="noopener noreferrer">
+                            <a href={trialCheckoutUrl}>
                                 <Button size="lg" className="bg-white dark:bg-gray-900 text-[#FF3131] hover:bg-gray-100 dark:hover:bg-gray-700 font-bold shadow-xl">
                                     <Shield className="w-5 h-5 mr-2" />
                                     {trialCtaLabel}

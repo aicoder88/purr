@@ -27,7 +27,7 @@ export default function HeroSection({ copy, trialCtaLabel, trialCheckoutUrl }: H
             <h1 className="font-heading text-4xl md:text-5xl font-bold mb-6">{copy.heroTitle}</h1>
             <p className="text-xl md:text-2xl mb-8 opacity-90">{copy.heroDescription}</p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <a href={trialCheckoutUrl} target="_blank" rel="noopener noreferrer">
+              <a href={trialCheckoutUrl}>
                 <Button size="lg" className="bg-white dark:bg-gray-900 text-[#5B2EFF] dark:text-[#818CF8] hover:bg-gray-100 dark:hover:bg-gray-700 font-bold">
                   {trialCtaLabel}
                   <ChevronRight className="w-5 h-5 ml-2" />

@@ -176,7 +176,7 @@ export default function TrialSizePageContent({ locale }: TrialSizePageContentPro
               <p className="text-2xl font-bold mt-8">None of them actually eliminate it.<br />Purrify does.<br />And right now, your first bag is free.</p>
             </div>
 
-            <a href={checkoutUrl} target="_blank" rel="noopener noreferrer" onClick={handleBuyClick} className="inline-block">
+            <a href={checkoutUrl} onClick={handleBuyClick} className="inline-block">
               <Button
                 size="lg"
                 className="bg-black hover:bg-gray-800 text-white dark:bg-white dark:text-black dark:hover:bg-gray-200 font-bold py-6 px-12 text-lg rounded-none shadow-xl transform hover:-translate-y-1 transition-all uppercase tracking-widest"
@@ -391,7 +391,7 @@ export default function TrialSizePageContent({ locale }: TrialSizePageContentPro
                     <span>Made in Canada</span>
                   </div>
 
-                  <a href={checkoutUrl} target="_blank" rel="noopener noreferrer" onClick={handleBuyClick} className="block w-full">
+                  <a href={checkoutUrl} onClick={handleBuyClick} className="block w-full">
                     <Button
                       size="lg"
                       className="w-full bg-black hover:bg-gray-800 text-white dark:bg-white dark:text-black dark:hover:bg-gray-200 font-bold py-8 text-lg md:text-xl rounded-xl shadow-xl transform hover:-translate-y-1 transition-all flex flex-col items-center justify-center h-auto"
@@ -438,7 +438,7 @@ export default function TrialSizePageContent({ locale }: TrialSizePageContentPro
               <p>The litter box odor problem is solvable.<br />Purrify solves it.<br />The trial is free.<br />What are you waiting for?</p>
             </div>
 
-            <a href={checkoutUrl} target="_blank" rel="noopener noreferrer" onClick={handleBuyClick} className="inline-block">
+            <a href={checkoutUrl} onClick={handleBuyClick} className="inline-block">
               <Button
                 size="lg"
                 className="bg-black hover:bg-gray-800 text-white dark:bg-white dark:text-black dark:hover:bg-gray-200 font-bold py-6 px-16 text-lg rounded-none shadow-xl transform hover:-translate-y-1 transition-all uppercase tracking-widest"
