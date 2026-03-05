@@ -235,8 +235,8 @@ export function ReferralClient({ code, referralData }: ReferralClientProps) {
                 Non-toxic & Natural
               </h3>
               <p className="text-gray-600 dark:text-gray-400">
-                Made from 100% natural activated coconut carbon. No chemicals,
-                fragrances, or additives.
+                Made from 100% natural activated coconut carbon. No added
+                fragrances, perfumes, or additive deodorizers.
               </p>
             </Card>
           </div>

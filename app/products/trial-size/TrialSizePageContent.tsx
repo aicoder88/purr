@@ -295,8 +295,8 @@ export default function TrialSizePageContent({ locale }: TrialSizePageContentPro
                 <p className="text-sm font-medium opacity-80 uppercase tracking-wide">Of trial customers upgrade within 7 days</p>
               </div>
               <div className="bg-black text-white dark:bg-white dark:text-black p-8 rounded-xl text-center shadow-xl">
-                <div className="text-3xl font-black mb-2 font-serif">20+</div>
-                <p className="text-sm font-medium opacity-80 uppercase tracking-wide">Retail partners coast to coast</p>
+                <div className="text-3xl font-black mb-2 font-serif">25</div>
+                <p className="text-sm font-medium opacity-80 uppercase tracking-wide">25 active retail partners (as of March 2026)</p>
               </div>
             </div>
           </Container>
@@ -434,9 +434,9 @@ export default function TrialSizePageContent({ locale }: TrialSizePageContentPro
 
             <div className="prose prose-lg dark:prose-invert mx-auto text-gray-700 dark:text-gray-300 mb-12">
               <p>You can close this tab. Light a candle. Spray something. Hope for the best before your next guest arrives.</p>
-              <p className="font-bold text-xl text-black dark:text-white my-8">Or you can spend {trialPrice} - less than a coffee - and find out why 87% of the people who tried this never went back to their old routine.</p>
-              <p>The litter box odor problem is solvable.<br />Purrify solves it.<br />The trial is free.<br />What are you waiting for?</p>
-            </div>
+                  <p className="font-bold text-xl text-black dark:text-white my-8">Or you can spend {trialPrice} - less than a coffee - and find out why 87% of trial customers upgraded (based on internal trial-to-full-size conversion data, Jan-Dec 2025).</p>
+                  <p>The litter box odor problem is solvable.<br />Purrify solves it.<br />The trial is free.<br />What are you waiting for?</p>
+                </div>
 
             <a href={checkoutUrl} onClick={handleBuyClick} className="inline-block">
               <Button
@@ -463,7 +463,7 @@ export default function TrialSizePageContent({ locale }: TrialSizePageContentPro
             <div className="max-w-2xl bg-black/40 backdrop-blur-md p-8 rounded-2xl border border-white/10">
               <h3 className="font-serif font-black text-2xl mb-4 text-white dark:text-gray-100">We&apos;re Purrify.</h3>
               <p className="text-lg font-medium text-gray-200 dark:text-gray-300 mb-2">A Canadian company obsessed with one thing: making sure your home smells exactly the way you want it to.</p>
-              <p className="text-sm text-gray-400 dark:text-gray-500">Water-filter grade activated carbon. No perfumes. No chemicals. No compromises.</p>
+              <p className="text-sm text-gray-400 dark:text-gray-500">Water-filter grade activated carbon. No added fragrances or perfumes. No compromises.</p>
             </div>
           </Container>
         </section>

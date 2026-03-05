@@ -56,6 +56,22 @@ export function Header() {
   const pathname = usePathname();
   const searchParams = useSearchParams();
   const headerRef = useRef<HTMLElement | null>(null);
+  const closeTimeoutRef = useRef<number | null>(null);
+
+  const clearCloseTimeout = useCallback(() => {
+    if (closeTimeoutRef.current !== null) {
+      window.clearTimeout(closeTimeoutRef.current);
+      closeTimeoutRef.current = null;
+    }
+  }, []);
+
+  const scheduleDropdownClose = useCallback((menuId: string) => {
+    clearCloseTimeout();
+    closeTimeoutRef.current = window.setTimeout(() => {
+      setActiveDropdown((current) => (current === menuId ? null : current));
+      closeTimeoutRef.current = null;
+    }, 150);
+  }, [clearCloseTimeout]);
 
   // Shared handlers to avoid recreating inline functions in JSX
   const handleNavMouseEnter = useCallback(
@@ -110,12 +126,15 @@ export function Header() {
       const target = e.target as HTMLElement;
       // Only close if clicking completely outside the header
       if (headerRef.current && !headerRef.current.contains(target)) {
+        clearCloseTimeout();
         setActiveDropdown(null);
       }
     };
     document.addEventListener("click", handleClickOutside);
     return () => document.removeEventListener("click", handleClickOutside);
-  }, []);
+  }, [clearCloseTimeout]);
+
+  useEffect(() => () => clearCloseTimeout(), [clearCloseTimeout]);
 
   // Navigation items - memoized to prevent unnecessary re-renders
   const navigationItems: NavigationItem[] = useMemo(() => [
@@ -336,7 +355,21 @@ export function Header() {
 
           <nav className="hidden md:flex items-center space-x-8">
             {navigationItems.map((item) => (
-              <div key={item.id} className="relative group">
+              <div
+                key={item.id}
+                className="relative group"
+                onMouseEnter={() => {
+                  if (item.hasDropdown) {
+                    clearCloseTimeout();
+                    setActiveDropdown(item.id);
+                  }
+                }}
+                onMouseLeave={() => {
+                  if (item.hasDropdown) {
+                    scheduleDropdownClose(item.id);
+                  }
+                }}
+              >
                 {item.hasDropdown ? (
                   <>
                     <button
@@ -360,6 +393,8 @@ export function Header() {
                         role="menu"
                         aria-labelledby={`dropdown-${item.id}`}
                         data-dropdown
+                        onMouseEnter={clearCloseTimeout}
+                        onMouseLeave={() => scheduleDropdownClose(item.id)}
                       >
                         {item.dropdownItems?.map((dropdownItem) =>
                           dropdownItem.isGroupHeader ? (

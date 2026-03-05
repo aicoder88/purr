@@ -411,7 +411,7 @@ export const en = {
       },
       {
         question: "Can I use Purrify for rodents like hamsters, mice, or rats?",
-        answer: "Yes! Purrify uses the same type of activated carbon found in hospital water filtration and veterinary applications. When used properly in sealed pouches or containers with proper ventilation, it can be suitable for odor control in rodent environments. Always minimize dust exposure and rinse before use if needed. For detailed usage guidelines and precautions for small pets, see our complete safety information page.",
+        answer: "Yes. Activated carbon is commonly used in household and municipal filtration and in specific healthcare treatment systems. When used properly in sealed pouches or containers with proper ventilation, it can be suitable for odor control in rodent environments. Always minimize dust exposure and rinse before use if needed. For detailed usage guidelines and precautions for small pets, see our complete safety information page.",
         link: "/learn/safety"
       },
       {
@@ -436,7 +436,7 @@ export const en = {
       },
       {
         question: "Is Purrify certified? Where can I find safety information?",
-        answer: "Yes! Purrify meets NSF/ANSI 61, AWWA B604, and Food Chemicals Codex (FCC) standards. It's also Halal and Kosher certified. For complete technical specifications, certifications, and detailed safety information including rodent usage guidelines, visit our safety information page.",
+        answer: "Our activated carbon grade aligns with NSF/ANSI 61 and Food Chemicals Codex (FCC) criteria per supplier COA/specification. For complete technical specifications and detailed safety information, visit our safety information page.",
         link: "/learn/safety"
       }
     ]
@@ -738,7 +738,7 @@ export const en = {
     },
     naturalBadge: {
       title: "100% Natural",
-      subtitle: "No chemicals"
+      subtitle: "No added fragrances or perfumes"
     },
     expertInsightTitle: "Expert Insight",
     expertInsightBody: "Activated carbon's highly porous structure gives it an exceptional surface area — allowing it to trap and hold volatile organic compounds (VOCs) and odor molecules at the molecular level, rather than simply masking them.",
@@ -1190,14 +1190,14 @@ export const en = {
     benefitFreeShipping: "Free Canadian Shipping",
     benefitFreeShippingDesc: "Free shipping on orders over $35 anywhere in Canada. Fast delivery coast to coast.",
     benefitNatural: "100% Natural",
-    benefitNaturalDesc: "Water-filter grade activated carbon. No fragrances, no chemicals, no fillers.",
+    benefitNaturalDesc: "Water-filter grade activated carbon. No added fragrances/perfumes and no filler additives.",
     benefitSupport: "Canadian Customer Support",
     benefitSupportDesc: "Real support from a Canadian team who understands Canadian pet owners.",
     // Story Section
     storyTitle: "Our Canadian Story",
     storyP1: "Purrify was born from a simple frustration: why couldn't we find a cat litter deodorizer that actually worked without overpowering fragrances or questionable ingredients?",
     storyP2: "As Canadian cat parents, we set out to create something better. We source premium coconut shell activated carbon—the same water-filter grade material used in municipal water treatment—and manufacture right here in Canada.",
-    storyP3: "The result? A 100% natural, fragrance-free solution that eliminates odours at the molecular level. No masking. No chemicals. Just clean air and happy cats.",
+    storyP3: "The result? A fragrance-free solution that eliminates odours at the molecular level. No masking. No added perfumes. Just clean air and happy cats.",
     statCanadianMade: "Canadian Made",
     statDays: "7+ Days",
     statDaysLabel: "Odour Control",
@@ -1496,7 +1496,7 @@ export const en = {
       },
       ingredients: {
         title: "Ingredients: Coconut Shells. That's It.",
-        description: "No fragrance to stress your cat. No chemicals to worry about. Just pure, activated carbon from coconut shells."
+        description: "No added fragrances or perfumes. Just pure, activated carbon from coconut shells."
       },
       science: {
         title: "Science, Not Perfume",
@@ -1910,7 +1910,7 @@ export const en = {
       },
       {
         question: "Is Purrify safe for cats and kittens?",
-        answer: "Purrify is made from 100% natural coconut shell activated carbon - the same food-grade, non-toxic material used in hospital water systems, municipal drinking water treatment, and household water filters. It contains no added chemicals, fragrances, or additives, and meets NSF/ANSI 61 and Food Chemicals Codex (FCC) standards for potable water applications. The product is fragrance-free and pet-friendly."
+        answer: "Purrify is made from coconut shell activated carbon. Activated carbon is widely used in municipal and household water filtration, and in specific healthcare water-treatment applications. Purrify contains no added fragrances or perfumes, and no added chemical deodorizers."
       },
       {
         question: "What is activated carbon made from?",
@@ -1918,7 +1918,7 @@ export const en = {
       },
       {
         question: "What certifications does Purrify have?",
-        answer: "Purrify's activated carbon meets multiple international standards: NSF/ANSI 61 (drinking water system components), AWWA B604 (granular activated carbon), and Food Chemicals Codex (FCC) for food-grade applications. It is also Halal and Kosher certified. These are the same certifications required for municipal water treatment systems."
+        answer: "Our activated carbon grade aligns with NSF/ANSI 61 and Food Chemicals Codex (FCC) criteria per supplier COA/specification. Contact support for current documentation and grade details."
       },
       {
         question: "Does Purrify work with all types of litter?",
@@ -1926,7 +1926,7 @@ export const en = {
       },
       {
         question: "How quickly does Purrify start working?",
-        answer: "Purrify begins working immediately upon contact with odor molecules. You'll notice a significant reduction in odors within 60 seconds for ammonia-based odors, with maximum effectiveness achieved within 24 hours as the activated carbon distributes throughout the litter."
+        answer: "Purrify begins working immediately on contact with odor molecules. In independent bench testing under test conditions, significant ammonia-related odor reduction was observed in as little as 60 seconds, with maximum effect reached within 24 hours."
       },
       {
         question: "What sizes are available and how long do they last?",
@@ -1954,7 +1954,7 @@ export const en = {
       },
       {
         question: "Does Purrify contain any chemicals or additives?",
-        answer: "No. Purrify is 100% pure activated carbon made from coconut shells. There are no added chemicals, fragrances, preservatives, binding agents, or fillers. The only processing involved is the physical activation of the carbon through high-temperature steam treatment - a process also used to produce food-grade and pharmaceutical-grade activated carbon."
+        answer: "Purrify is activated carbon made from coconut shells. It contains no added fragrances, perfumes, preservatives, binding agents, or fillers. The carbon is produced through high-temperature steam activation."
       },
       {
         question: "Is coconut shell carbon better than other types?",
@@ -2211,9 +2211,9 @@ export const en = {
       breadcrumb: "Odor Science",
       stats: {
         title: "Odor Elimination Benchmarks",
-        ammoniaReduction: "Independent lab data shows up to 92% ammonia reduction with activated carbon layers",
-        adsorptionSpeed: "Porous carbon structure traps odor molecules in under 60 seconds",
-        safeUsage: "No chemicals, fragrances, or additives - non-toxic for sensitive cats",
+        ammoniaReduction: "Independent third-party bench testing shows up to 92% airborne ammonia reduction under test conditions",
+        adsorptionSpeed: "Porous carbon structure traps odor molecules in as little as 60 seconds under test conditions",
+        safeUsage: "No added fragrances/perfumes or added chemical deodorizers",
         refreshTiming: "Refresh carbon every scoop or litter top-up for consistent performance"
       }
     }
@@ -2224,7 +2224,7 @@ export const en = {
   retailers: {
     seo: {
       pageTitle: "Wholesale Cat Litter Deodorizer | 50% Margins...",
-      description: "Pet Retailers: 50%+ margins on Canada's #1 reordered cat litter deodorizer. Free POS materials + marketing support. Become a wholesale partner today.",
+      description: "Pet Retailers: 50%+ margins with proven reorder performance. Free POS materials + marketing support. Become a wholesale partner today.",
       openGraphAlt: "Wholesale Partners",
       keywords: "wholesale cat litter deodorizer, pet store wholesale, cat litter additive distributor, bulk cat litter products, wholesale pet supplies Canada, pet retail partnership"
     },
@@ -2305,7 +2305,7 @@ export const en = {
       },
       highDemand: {
         title: "High Customer Demand",
-        description: "Pet owners actively seek odor solutions. Purrify addresses the #1 complaint about cat ownership - litter box odors."
+        description: "Pet owners actively seek odor solutions. Purrify addresses a major complaint about cat ownership: litter box odors."
       },
       highMargins: {
         title: "Premium Margins",
@@ -2427,7 +2427,7 @@ export const en = {
       },
       bottomCta: {
         title: "Ready to Boost Your Revenue?",
-        description: "Join 21 established Montreal and surrounding-area retailers already earning high margins with Purrify.",
+        description: "Join 25 active Montreal and surrounding-area retail partners already earning high margins with Purrify (as of March 2026).",
         setupNote: "Setup takes less than 24 hours.",
         primaryButton: "Apply for Partnership",
         secondaryButton: "Call Us"
@@ -2451,7 +2451,7 @@ export const en = {
     // Extended contact section from retailer-contact.tsx
     contact: {
       title: "Become a Purrify Retail Partner",
-      description: "Ready to add Canada's #1 cat litter additive to your store? Fill out the form below and we'll get back to you within 24 hours.",
+      description: "Ready to add a proven cat litter additive to your store? Fill out the form below and we'll get back to you within 24 hours.",
       // Header section
       sectionBadge: "Join 21 Established Partners",
       sectionTitle: "Start Your",
@@ -2469,7 +2469,7 @@ export const en = {
           label: "Setup Fees"
         },
         currentPartners: {
-          value: "21",
+          value: "25",
           label: "Current Partners"
         }
       },
@@ -2879,7 +2879,7 @@ export const en = {
       pillar1: {
         title: "100% Natural Science",
         intro: "Made from pure coconut shell activated carbon",
-        description: "Purrify is made from premium coconut shell activated carbon—nothing else. No chemicals, fragrances, synthetic additives, or fillers. It's the same...",
+        description: "Purrify is made from premium coconut shell activated carbon—nothing else. No added perfumes, synthetic deodorizers, or fillers. It's the same...",
         detail: "Coconut shell carbon is prized for its high density of micropores, making it particularly effective for trapping small gas molecules like ammonia."
       },
       pillar2: {
@@ -2976,7 +2976,7 @@ export const en = {
       q1: "How does Purrify control ammonia?",
       a1: "Purrify uses activated coconut carbon with millions of microscopic pores that trap ammonia molecules through adsorption. Unlike baking soda or fragrances that mask odor, activated carbon physically captures and holds ammonia so it never reaches your nose.",
       q2: "Is activated carbon safe for cats?",
-      a2: "Yes, activated carbon is 100% natural and non-toxic. It's the same material used in water filters and air purifiers, and has been safely used around pets for decades. Purrify contains no chemicals, fragrances, or additives.",
+      a2: "Yes, activated carbon is natural and non-toxic. It's the same material used in water filters and air purifiers, and has been safely used around pets for decades. Purrify contains no added fragrances/perfumes or additive deodorizers.",
       q3: "How much Purrify do I use?",
       a3: "Simply sprinkle a thin layer over your cat's litter and mix it in. One 50g pouch treats a standard litter box for about 7 days. For multiple cats, use our 120g size.",
       q4: "Does it work with all litter types?",
@@ -2986,7 +2986,7 @@ export const en = {
       q6: "Will it eliminate existing odors?",
       a6: "Purrify immediately starts absorbing ammonia from the moment you add it. Existing odors typically disappear within 24-48 hours as the activated carbon absorbs them.",
       q7: "Is it safe for kittens?",
-      a7: "Absolutely. Purrify is safe for cats of all ages. There are no chemicals or fragrances that could irritate young or sensitive cats.",
+      a7: "Absolutely. Purrify is safe for cats of all ages. There are no added fragrances/perfumes or harsh additive deodorizers that could irritate young or sensitive cats.",
       q8: "How long does one bag last?",
       a8: "The 50g pouch lasts about 7 days for one cat. The 120g pouch lasts about 7 days for multi-cat households (2-3 cats). Most customers find they need to change litter less often."
     },

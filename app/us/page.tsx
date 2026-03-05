@@ -400,7 +400,7 @@ export default async function USALandingPage() {
                 },
                 {
                   q: "Is it safe for my cat to inhale?",
-                  a: "Yes! Purrify is 100% natural and dust-free. Our carbon is water-filter grade, meaning it's pure enough for human water filtration. It contains no chemicals or synthetic scents that could irritate a cat's respiratory system."
+                  a: "Yes. Purrify is natural and dust-free. Our carbon is water-filter grade and contains no added fragrances, perfumes, or harsh additive deodorizers that could irritate a cat's respiratory system."
                 },
                 {
                   q: "When can I buy Purrify in the USA?",
