@@ -112,3 +112,48 @@ export function localizePath(path: string, locale: Locale): string {
 
   return `${localizedPath}${suffix}`;
 }
+
+function isLocalizableAbsoluteUrl(href: string): boolean {
+  try {
+    const url = new URL(href);
+    return /(^|\.)purrify\.ca$/i.test(url.hostname);
+  } catch {
+    return false;
+  }
+}
+
+export function localizeInternalHref(href: string, locale: Locale): string {
+  if (!href || locale === 'en') {
+    return href;
+  }
+
+  if (
+    href.startsWith('#') ||
+    href.startsWith('mailto:') ||
+    href.startsWith('tel:')
+  ) {
+    return href;
+  }
+
+  if (href.startsWith('/')) {
+    return localizePath(href, locale);
+  }
+
+  if (!isLocalizableAbsoluteUrl(href)) {
+    return href;
+  }
+
+  const url = new URL(href);
+  return localizePath(`${url.pathname}${url.search}${url.hash}`, locale);
+}
+
+export function localizeInternalHrefAttributes(html: string, locale: Locale): string {
+  if (!html || locale === 'en') {
+    return html;
+  }
+
+  return html.replace(/\bhref\s*=\s*(["'])([^"']+)\1/gi, (_match, quote: string, href: string) => {
+    const localizedHref = localizeInternalHref(href, locale);
+    return `href=${quote}${localizedHref}${quote}`;
+  });
+}

@@ -10,6 +10,7 @@ import { useCurrency } from '@/lib/currency-context';
 import { RelatedContent } from '@/components/seo/RelatedContent';
 import { formatProductPrice } from '@/lib/pricing';
 import { getPaymentLink } from '@/lib/payment-links';
+import { localizePath } from '@/lib/i18n/locale-path';
 import {
   Search,
   ChevronDown,
@@ -107,7 +108,7 @@ export default function FAQPageClient() {
   const uiCopy = FAQ_UI_COPY[locale as SupportedLocale] || FAQ_UI_COPY.en;
   const faqPage = t.faqPage;
   const trialPrice = formatProductPrice('trial', currency, locale);
-  const trialCheckoutUrl = getPaymentLink('trialSingle') || '/products/trial-size';
+  const trialCheckoutUrl = getPaymentLink('trialSingle') || localizePath('/products/trial-size', locale === 'fr' ? 'fr' : 'en');
   const trialCtaLabel = faqPage?.tryRiskFree ||
     (locale === 'fr'
       ? `Envoyer Mon Essai GRATUIT - ${trialPrice}`

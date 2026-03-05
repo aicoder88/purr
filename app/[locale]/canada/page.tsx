@@ -106,6 +106,9 @@ export async function generateMetadata({ params }: CanadaPageProps): Promise<Met
 export default async function CanadaPage({ params }: CanadaPageProps) {
   const { locale } = await params;
   const normalizedLocale = normalizeLocale(locale);
+  const localePrefix = normalizedLocale === 'fr' ? '/fr' : '';
+  const localizedProductsPath = `${localePrefix}/products/`;
+  const localizedTrialPath = `${localePrefix}/products/trial-size/`;
   const t = translations[normalizedLocale as keyof typeof translations] || en;
   const c = t.canadaPage;
   
@@ -248,13 +251,13 @@ export default async function CanadaPage({ params }: CanadaPageProps) {
               </p>
               <div className="flex flex-col sm:flex-row gap-4 mb-8">
                 <Link
-                  href="/products/trial-size/"
+                  href={localizedTrialPath}
                   className="inline-flex items-center justify-center gap-2 bg-[#FF3131] dark:bg-[#FF5050] text-white dark:text-gray-100 px-8 py-4 rounded-lg font-bold text-lg hover:bg-[#E02828] dark:hover:bg-[#E02828]/90 transition-all shadow-xl"
                 >
                   {c.ctaTrial.replace('{price}', trialPrice)}
                 </Link>
                 <Link
-                  href="/products/"
+                  href={localizedProductsPath}
                   className="inline-flex items-center justify-center gap-2 bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100 px-8 py-4 rounded-lg font-bold text-lg hover:bg-gray-100 dark:hover:bg-gray-700 transition-all border border-gray-200 dark:border-gray-700"
                 >
                   {c.ctaProducts}
@@ -453,13 +456,13 @@ export default async function CanadaPage({ params }: CanadaPageProps) {
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center mb-8">
               <Link
-                href="/products/trial-size/"
+                href={localizedTrialPath}
                 className="inline-flex items-center justify-center gap-2 bg-white dark:bg-gray-100 text-[#FF3131] px-8 py-4 rounded-lg font-bold text-lg hover:bg-gray-100 dark:hover:bg-gray-200 transition-all shadow-xl"
               >
                 {c.ctaTrialButton.replace('{price}', trialPrice)}
               </Link>
               <Link
-                href="/products/"
+                href={localizedProductsPath}
                 className="inline-flex items-center justify-center gap-2 bg-white/20 dark:bg-white/10 text-white dark:text-gray-100 px-8 py-4 rounded-lg font-bold text-lg hover:bg-white/30 dark:hover:bg-white/20 transition-all border border-white/30 dark:border-white/20"
               >
                 {c.ctaStandardButton.replace('{price}', standardPrice)}

@@ -7,11 +7,12 @@ import { RelatedContent } from '@/components/seo/RelatedContent';
 import { ContentStore } from '@/lib/blog/content-store';
 import { sampleBlogPosts, getBlogPostContent, type BlogPost as DataBlogPost } from '@/data/blog-posts';
 import { SITE_NAME, SITE_URL } from '@/lib/constants';
-import { locales, isValidLocale, defaultLocale } from '@/i18n/config';
+import { locales, isValidLocale, defaultLocale, type Locale } from '@/i18n/config';
 import { generateArticlePageSchema, stripContext } from '@/lib/seo-utils';
 import { optimizeMetaTitle } from '@/lib/seo/meta-optimizer';
 import { ArrowLeft, User, Clock } from 'lucide-react';
 import { sanitizeHTML } from '@/lib/security/sanitize';
+import { localizeInternalHrefAttributes } from '@/lib/i18n/locale-path';
 
 // Force static generation - no dynamic data fetching
 export const dynamic = 'force-static';
@@ -275,6 +276,10 @@ export default async function LocalizedBlogPostPage({ params }: BlogPostPageProp
   const hasEmbeddedHero = /<header\b[^>]*>/i.test(leadingContent);
   const hasEmbeddedH1 = /<h1\b[^>]*>/i.test(post.content ?? '');
   const needsFallbackH1 = hasEmbeddedHero && !hasEmbeddedH1;
+  const contentLocale = locale as Locale;
+  const localizedContentHtml = post.content
+    ? localizeInternalHrefAttributes(sanitizeHTML(post.content), contentLocale)
+    : '';
 
   // Generate comprehensive Article schema using centralized utility
   const wordCount = post.content ? post.content.split(/\s+/).length : 0;
@@ -473,7 +478,7 @@ export default async function LocalizedBlogPostPage({ params }: BlogPostPageProp
             <div className="max-w-4xl mx-auto">
               <article className="prose prose-lg dark:prose-invert prose-headings:font-heading prose-a:text-electric-indigo max-w-none">
                 {post.content ? (
-                  <div dangerouslySetInnerHTML={{ __html: sanitizeHTML(post.content) }} />
+                  <div dangerouslySetInnerHTML={{ __html: localizedContentHtml }} />
                 ) : (
                   <p className="text-gray-600 dark:text-gray-300">{post.excerpt}</p>
                 )}
@@ -514,7 +519,9 @@ export default async function LocalizedBlogPostPage({ params }: BlogPostPageProp
                         <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-2">{item.question}</h3>
                         <div
                           className="text-gray-600 dark:text-gray-300 prose dark:prose-invert max-w-none"
-                          dangerouslySetInnerHTML={{ __html: sanitizeHTML(item.answerHtml) }}
+                          dangerouslySetInnerHTML={{
+                            __html: localizeInternalHrefAttributes(sanitizeHTML(item.answerHtml), contentLocale),
+                          }}
                         />
                       </div>
                     ))}

@@ -6,6 +6,7 @@ import { useEffect } from 'react';
 import { getProvinceBySlug, getCitiesByProvince, getCityCountByProvince } from '@/lib/locations/provinces';
 import { useLocale } from 'next-intl';
 import { safeTrackEvent } from '@/lib/analytics';
+import { localizePath } from '@/lib/i18n/locale-path';
 
 export interface ProvincePageTemplateProps {
   provinceSlug: string;
@@ -23,6 +24,9 @@ export const ProvincePageTemplate = ({ provinceSlug }: ProvincePageTemplateProps
   const provinceName = locale === 'fr' ? province.nameFr : province.name;
   const description = locale === 'fr' ? province.descriptionFr : province.description;
   const cityCount = getCityCountByProvince(provinceSlug);
+  const localizedLocale = locale === 'fr' ? 'fr' : 'en';
+  const trialHref = localizePath('/products/trial-size', localizedLocale);
+  const howItWorksHref = localizePath('/learn/how-it-works', localizedLocale);
 
   // Group cities by region for better organization
   const majorCities = cities.filter(city => city.metroPopulation && city.metroPopulation > 100000);
@@ -119,14 +123,14 @@ export const ProvincePageTemplate = ({ provinceSlug }: ProvincePageTemplateProps
 
               <div className="mt-6 flex flex-col sm:flex-row items-center justify-center gap-4">
                 <Link
-                  href="/products/trial-size"
+                  href={trialHref}
                   prefetch={false}
                   className="inline-flex items-center justify-center bg-gradient-to-r from-orange-500 to-pink-500 text-white dark:text-gray-100 font-bold py-3 px-6 rounded-lg hover:from-orange-600 hover:to-pink-600 transition-all"
                 >
                   {locale === 'fr' ? 'Essayer Purrify' : 'Try Purrify'}
                 </Link>
                 <Link
-                  href="/learn/how-it-works"
+                  href={howItWorksHref}
                   prefetch={false}
                   className="inline-flex items-center justify-center text-orange-600 dark:text-orange-300 font-semibold"
                 >
@@ -288,7 +292,7 @@ export const ProvincePageTemplate = ({ provinceSlug }: ProvincePageTemplateProps
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Link
-                href="/products/trial-size"
+                href={trialHref}
                 prefetch={false}
                 className="inline-flex items-center justify-center bg-gradient-to-r from-orange-500 to-pink-500 text-white dark:text-gray-100 font-bold py-4 px-8 rounded-lg hover:from-orange-600 hover:to-pink-600 transition-all shadow-lg hover:shadow-xl text-lg"
               >

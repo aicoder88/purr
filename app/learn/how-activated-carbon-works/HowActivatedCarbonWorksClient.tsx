@@ -2,11 +2,14 @@
 
 import Link from 'next/link';
 import Image from 'next/image';
+import { useLocale } from 'next-intl';
 import { AIQuotableBlock } from '@/components/seo/AIQuotableBlock';
 import { RelatedQuestions } from '@/components/seo/RelatedQuestions';
 import { HowToSection } from '@/components/seo/HowToSection';
+import { localizePath } from '@/lib/i18n/locale-path';
 
 export default function HowActivatedCarbonWorksClient() {
+  const locale = useLocale() as 'en' | 'fr';
   const heroImage = '/optimized/blog/ammonia-science.webp';
   const canonicalUrl = 'https://www.purrify.ca/learn/how-activated-carbon-works/';
 
@@ -576,13 +579,13 @@ export default function HowActivatedCarbonWorksClient() {
 
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Link
-                href="/products/trial-size/"
+                href={localizePath('/products/trial-size', locale)}
                 className="inline-block bg-white dark:bg-gray-100 text-electric-indigo font-bold py-4 px-8 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-200 hover:scale-105 transition-all duration-300 shadow-lg"
               >
                 Try Purrify Today
               </Link>
               <Link
-                href="/learn/ammonia-science/"
+                href={localizePath('/learn/ammonia-science', locale)}
                 className="inline-block border-2 border-white dark:border-gray-100 text-white dark:text-gray-100 font-bold py-4 px-8 rounded-lg hover:bg-white/10 dark:hover:bg-gray-100/10 hover:scale-105 transition-all duration-300"
               >
                 Learn About Ammonia

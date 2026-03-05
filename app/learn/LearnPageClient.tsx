@@ -1,7 +1,9 @@
 import Link from 'next/link';
 import Image from 'next/image';
+import { useLocale } from 'next-intl';
 import { Container } from '../../src/components/ui/container';
 import { RelatedArticles } from '../../src/components/blog/RelatedArticles';
+import { localizePath } from '@/lib/i18n/locale-path';
 import {
   ChevronRight,
   Home,
@@ -148,6 +150,7 @@ const SOLUTIONS: LearnCard[] = [
 ];
 
 export default function LearnPageClient() {
+  const locale = useLocale() as 'en' | 'fr';
   const proofSection = (
     <section className="pb-8 px-4">
       <Container>
@@ -325,7 +328,7 @@ export default function LearnPageClient() {
               Put what you&apos;ve learned into practice. Try Purrify risk-free with our trial size and see why thousands of cat parents swear by it.
             </p>
             <Link
-              href="/products/trial-size/"
+              href={localizePath('/products/trial-size', locale)}
               className="inline-flex items-center justify-center px-8 py-4 bg-[#03E46A] dark:bg-[#04D162] hover:bg-[#02c75b] dark:hover:bg-[#04D162]/90 text-gray-900 dark:text-gray-900 font-bold rounded-full transition-colors shadow-lg hover:shadow-xl"
             >
               Try Purrify Risk-Free

@@ -244,7 +244,7 @@ export default function ArmAndHammerClient() {
     const copy = COPY[language];
 
     const trialPrice = formatProductPrice('trial', currency, locale);
-    const trialCheckoutUrl = getPaymentLink('trialSingle') || '/products/trial-size';
+    const trialCheckoutUrl = getPaymentLink('trialSingle') || localizePath('/products/trial-size', locale);
     const trialCtaLabel = `${t('nav.trialSize')} - ${trialPrice}`;
 
     return (

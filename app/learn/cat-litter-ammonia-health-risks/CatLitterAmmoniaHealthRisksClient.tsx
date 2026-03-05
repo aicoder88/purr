@@ -3,10 +3,13 @@
 import { Container } from '@/components/ui/container';
 import Link from 'next/link';
 import Image from 'next/image';
+import { useLocale } from 'next-intl';
 import { AlertTriangle, ShieldCheck, Wind, Heart, Home, ChevronRight, Check, X, Thermometer, Clock } from 'lucide-react';
 import { RelatedContent } from '@/components/seo/RelatedContent';
+import { localizePath } from '@/lib/i18n/locale-path';
 
 export default function CatLitterAmmoniaHealthRisksClient() {
+  const locale = useLocale() as 'en' | 'fr';
   const exposureLevels = [
     { level: '< 5 ppm', description: 'Clean, freshly scooped litter box', risk: 'None', color: 'green' },
     { level: '5\u201325 ppm', description: 'Mild odor; typical in a well-maintained single-cat home', risk: 'Safe', color: 'green' },
@@ -417,7 +420,7 @@ export default function CatLitterAmmoniaHealthRisksClient() {
                 <p className="text-gray-600 dark:text-gray-400 text-sm">Purrify activated carbon granules adsorb NH&#8323; molecules before they become airborne. Try a free sample&mdash;you only cover $4.76 shipping.</p>
               </div>
               <Link
-                href="/products/trial-size"
+                href={localizePath('/products/trial-size', locale)}
                 className="whitespace-nowrap bg-[#FF3131] hover:bg-[#e02828] dark:bg-[#FF5050] dark:hover:bg-[#e04040] text-white font-semibold px-6 py-3 rounded-lg transition-colors"
               >
                 Try a free sample (pay $4.76 shipping)
@@ -577,7 +580,7 @@ export default function CatLitterAmmoniaHealthRisksClient() {
                 One tablespoon of Purrify activated carbon granules in your litter box reduces ammonia to undetectable levels within hours. Try a free sample&mdash;you pay only $4.76 shipping.
               </p>
               <Link
-                href="/products/trial-size"
+                href={localizePath('/products/trial-size', locale)}
                 className="inline-flex items-center gap-2 bg-white dark:bg-gray-100 text-forest-900 dark:text-gray-900 font-bold px-8 py-4 rounded-lg hover:bg-forest-50 dark:hover:bg-gray-200 transition-colors text-lg"
               >
                 Try a free sample (pay $4.76 shipping)

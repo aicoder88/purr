@@ -2,12 +2,15 @@
 
 import Link from 'next/link';
 import Image from 'next/image';
+import { useLocale } from 'next-intl';
 import { RelatedSolutions } from '@/components/learn/RelatedSolutions';
 import { HowToSection } from '@/components/seo/HowToSection';
 import { AIQuotableBlock } from '@/components/seo/AIQuotableBlock';
 import { RelatedQuestions } from '@/components/seo/RelatedQuestions';
+import { localizePath } from '@/lib/i18n/locale-path';
 
 export default function HowToNeutralizeAmmoniaPageClient() {
+  const locale = useLocale() as 'en' | 'fr';
   const canonicalUrl = 'https://www.purrify.ca/learn/solutions/how-to-neutralize-ammonia-cat-litter/';
 
   const heroImage = '/optimized/blog/ammonia-hero.webp';
@@ -110,7 +113,7 @@ export default function HowToNeutralizeAmmoniaPageClient() {
               up to 7 days per application.
             </p>
             <Link
-              href="/products/trial-size/"
+              href={localizePath('/products/trial-size', locale)}
               className="inline-block bg-green-600 hover:bg-green-700 text-white dark:text-gray-100 font-bold py-2 px-6 rounded-lg transition-colors"
             >
               Try Activated Carbon Solution →
@@ -499,7 +502,7 @@ export default function HowToNeutralizeAmmoniaPageClient() {
 
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Link
-                href="/products/trial-size/"
+                href={localizePath('/products/trial-size', locale)}
                 className="inline-block bg-white dark:bg-gray-100 text-electric-indigo font-bold py-4 px-8 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-200 hover:scale-105 transition-all duration-300 shadow-lg"
               >
                 Try Purrify Risk-Free

@@ -11,6 +11,8 @@
 import { Clock, Package, MapPin } from 'lucide-react';
 import { useEffect, useState } from 'react';
 import Link from 'next/link';
+import { useLocale } from 'next-intl';
+import { localizePath } from '@/lib/i18n/locale-path';
 
 interface LocalShippingUrgencyProps {
   cityName: string;
@@ -23,8 +25,11 @@ export function LocalShippingUrgency({
   provinceName,
   provinceCode
 }: LocalShippingUrgencyProps) {
+  const locale = useLocale() as 'en' | 'fr';
   const [currentTime, setCurrentTime] = useState<Date | null>(null);
   const [hoursUntilCutoff, setHoursUntilCutoff] = useState<number>(0);
+  const trialHref = localizePath('/products/trial-size', locale);
+  const productsHref = localizePath('/products', locale);
 
   // Initialize time on client only to avoid hydration mismatch
   useEffect(() => {
@@ -107,14 +112,14 @@ export function LocalShippingUrgency({
           {/* CTA */}
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link
-              href="/products/trial-size"
+              href={trialHref}
               className="inline-flex items-center justify-center bg-gradient-to-r from-orange-500 to-pink-500 text-white dark:text-gray-100 font-bold py-3 px-8 rounded-lg hover:from-orange-600 hover:to-pink-600 transition-all shadow-lg hover:shadow-xl transform hover:-translate-y-0.5"
             >
               <Package className="w-5 h-5 mr-2" />
               Order Now for {cityName}
             </Link>
             <Link
-              href="/products/"
+              href={productsHref}
               className="inline-flex items-center justify-center border-2 border-gray-300 dark:border-gray-600 text-gray-700 dark:text-gray-100 font-bold py-3 px-8 rounded-lg hover:bg-gray-50 dark:hover:bg-gray-800 transition-all"
             >
               View All Sizes

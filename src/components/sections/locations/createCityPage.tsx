@@ -12,6 +12,7 @@ import { safeTrackEvent } from '@/lib/analytics';
 import { CityLeadCaptureCTA } from './CityLeadCaptureCTA';
 import { useEnhancedSEO } from '@/hooks/useEnhancedSEO';
 import { PROVINCES } from '@/lib/locations/provinces';
+import { localizePath } from '@/lib/i18n/locale-path';
 
 // ============================================================================
 // Types & Interfaces
@@ -185,6 +186,8 @@ export interface CityPageTemplateProps {
 export const CityPageTemplate = ({ citySlug, initialProfile }: CityPageTemplateProps) => {
   const t = useTranslations();
   const locale = useLocale();
+  const localizedLocale = locale === 'fr' ? 'fr' : 'en';
+  const trialHref = localizePath('/products/trial-size', localizedLocale);
   const breadcrumbAriaLabel =
     locale === 'fr'
       ? 'Fil d Ariane'
@@ -442,7 +445,7 @@ export const CityPageTemplate = ({ citySlug, initialProfile }: CityPageTemplateP
 
               <div className="mt-6 flex flex-col sm:flex-row items-center justify-center gap-4">
                 <Link
-                  href="/products/trial-size"
+                  href={trialHref}
                   className={CTA_BUTTON_CLASSES}
                 >
                   {interpolate(t('cityPage.cta.tryInCity') ?? 'Try Purrify in {{city}}', { city: profile.name })}
@@ -499,7 +502,7 @@ export const CityPageTemplate = ({ citySlug, initialProfile }: CityPageTemplateP
                       {interpolate(t('cityPage.whereToFind.orderDirect.description') ?? 'Prefer doorstep delivery? Order online and receive fresh air in 2-3 business days anywhere in {{province}}.', { province: provinceName })}
                     </p>
                     <Link
-                      href="/products/trial-size"
+                      href={trialHref}
                       className={CTA_BUTTON_CLASSES}
                     >
                       {t('cityPage.cta.shopOnline') ?? 'Shop Online Now'}

@@ -2,9 +2,11 @@
 
 import Link from 'next/link';
 import Image from 'next/image';
+import { useLocale } from 'next-intl';
 import { Container } from '@/components/ui/container';
 import { RelatedArticles } from '@/components/blog/RelatedArticles';
 import { ChevronRight, Home, Sparkles, Wind, Cat, Building2, Users, Leaf, Heart } from 'lucide-react';
+import { localizePath } from '@/lib/i18n/locale-path';
 
 interface SolutionCard {
   title: string;
@@ -75,6 +77,7 @@ const SOLUTIONS: SolutionCard[] = [
 ];
 
 export default function SolutionsPageClient() {
+  const locale = useLocale() as 'en' | 'fr';
   return (
     <div className="min-h-screen bg-[#FFFFF5] dark:bg-gray-900 transition-colors duration-300">
       {/* Breadcrumb */}
@@ -166,7 +169,7 @@ export default function SolutionsPageClient() {
               All our solutions feature Purrify&apos;s activated carbon technology. Start with our risk-free trial size.
             </p>
             <Link
-              href="/products/trial-size/"
+              href={localizePath('/products/trial-size', locale)}
               className="inline-flex items-center justify-center px-8 py-4 bg-[#03E46A] dark:bg-[#04D162] hover:bg-[#02c75b] dark:hover:bg-[#04D162]/90 text-gray-900 dark:text-gray-900 font-bold rounded-full transition-colors shadow-lg hover:shadow-xl"
             >
               Try Purrify Risk-Free

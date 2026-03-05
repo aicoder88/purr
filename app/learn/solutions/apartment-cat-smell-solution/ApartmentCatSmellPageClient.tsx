@@ -2,13 +2,16 @@
 
 import Link from 'next/link';
 import Image from 'next/image';
+import { useLocale } from 'next-intl';
 import { RelatedSolutions } from '@/components/learn/RelatedSolutions';
 import { RelatedContent } from '@/components/seo/RelatedContent';
 import { HowToSection } from '@/components/seo/HowToSection';
 import { AIQuotableBlock } from '@/components/seo/AIQuotableBlock';
 import { RelatedQuestions } from '@/components/seo/RelatedQuestions';
+import { localizePath } from '@/lib/i18n/locale-path';
 
 export default function ApartmentCatSmellPageClient() {
+  const locale = useLocale() as 'en' | 'fr';
   const canonicalUrl = 'https://www.purrify.ca/learn/solutions/apartment-cat-smell-solution/';
 
   // SEO optimized images
@@ -124,7 +127,7 @@ export default function ApartmentCatSmellPageClient() {
 
             <div className="text-center">
               <Link
-                href="/products/trial-size/"
+                href={localizePath('/products/trial-size', locale)}
                 className="inline-block bg-gradient-to-r from-electric-indigo to-deep-coral text-white dark:text-gray-100 font-bold py-4 px-8 rounded-lg hover:from-electric-indigo-600 hover:to-deep-coral-600 hover:scale-105 transition-all duration-300 shadow-lg"
               >
                 Try Purrify Risk-Free
@@ -274,7 +277,7 @@ export default function ApartmentCatSmellPageClient() {
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
               <Link
-                href="/products/trial-size/"
+                href={localizePath('/products/trial-size', locale)}
                 className="bg-gradient-to-r from-electric-indigo to-deep-coral text-white dark:text-gray-100 font-bold py-4 px-8 rounded-lg hover:from-electric-indigo-600 hover:to-deep-coral-600 hover:scale-105 transition-all duration-300 shadow-lg"
               >
                 Start Your Trial
