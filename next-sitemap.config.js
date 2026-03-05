@@ -419,13 +419,6 @@ module.exports = {
       lastmod: new Date().toISOString(),
     },
 
-    {
-      loc: '/terms/',
-      changefreq: 'monthly',
-      priority: 0.3,
-      lastmod: new Date().toISOString(),
-    },
-
     // === MISSING INDEXABLE PAGES - Adding all important pages ===
     // Learn alternatives
     {

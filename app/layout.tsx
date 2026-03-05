@@ -10,6 +10,8 @@ import { Analytics } from '@vercel/analytics/react';
 import { SpeedInsights } from '@vercel/speed-insights/next';
 import { MetaPixel } from '@/components/analytics/MetaPixel';
 import { ChatWidgetMount } from '@/components/chat/ChatWidgetMount';
+import { getScopedMessages } from '@/i18n/scoped-messages';
+import { getUserLocale } from '@/lib/locale';
 
 const inter = Inter({
   subsets: ['latin'],
@@ -46,87 +48,6 @@ const gtmId = process.env.NODE_ENV === 'test'
   : (normalizedGtmId ?? DEFAULT_GTM_ID);
 const ahrefsSiteVerification = normalizeMetaValue(process.env.NEXT_PUBLIC_AHREFS_SITE_VERIFICATION);
 const hasAnthropicApiKey = Boolean(process.env.ANTHROPIC_API_KEY);
-
-const SERVER_ONLY_NAMESPACES = new Set([
-  'privacyPolicy',
-  'structuredData',
-  'seoKeywords',
-  'groomers',
-  'shelters',
-  'catCafes',
-  'veterinarians',
-  'hospitality',
-  'canadaPage',
-]);
-
-// Keep only translation branches used by client components that rely on
-// next-intl useTranslations(). This trims serialized HTML significantly
-// without removing user-visible copy on hydrated routes.
-const CLIENT_MESSAGE_KEYS = new Set<string>([
-  'about',
-  'accessibility',
-  'affiliate',
-  'affiliateDashboard',
-  'agitationSection',
-  'ammonia',
-  'announcementBar',
-  'b2bCaseStudies',
-  'benefitsSection',
-  'calculatorSection',
-  'cityPage',
-  'chat',
-  'contact',
-  'contactSection',
-  'cta',
-  'customerLove',
-  'enhancedProductComparison',
-  'errorPages',
-  'exitPopup',
-  'faq',
-  'features',
-  'featuresSection',
-  'footer',
-  'footerNav',
-  'freeGiveaway',
-  'hero',
-  'homepage',
-  'howItWorks',
-  'locationsMenu',
-  'maps',
-  'nav',
-  'paymentSecurity',
-  'productComparison',
-  'productsHero',
-  'productsPage',
-  'productsSection',
-  'referral',
-  'relatedArticles',
-  'retailers',
-  'reviewSystem',
-  'safetyPage',
-  'sciencePage',
-  'scienceSection',
-  'siteDescription',
-  'siteName',
-  'socialFollow',
-  'subscriptionOfferExtended',
-  'testimonialsSection',
-  'ui',
-  'upsell',
-  'waitlist',
-  'whyPurrify',
-]);
-
-const GLOBAL_LAYOUT_KEYS = new Set<string>([
-  'accessibility',
-  'siteName',
-  'siteDescription',
-  'nav',
-  'locationsMenu',
-  'footer',
-  'footerNav',
-  'waitlist',
-]);
 
 /**
  * Generate metadata for the app based on locale
@@ -253,27 +174,15 @@ export default async function RootLayout({
 }: {
   children: React.ReactNode;
 }) {
-  // Detect locale from URL path for correct html lang attribute
   const headersList = await headers();
   const pathname = headersList.get('x-pathname') || '';
-  const locale: Locale = getLocaleFromPathname(pathname);
-
-  // Load messages directly to avoid dynamic request config using cookies
-  const translationModule = await import(`@/translations/${locale}.ts`);
-  const allMessages = translationModule[locale] as Record<string, unknown>;
-  const accessibilityMessages = allMessages.accessibility as { gtmNoscriptTitle?: string } | undefined;
+  const headerLocale = pathname ? getLocaleFromPathname(pathname) : null;
+  const locale: Locale = headerLocale ?? await getUserLocale();
+  const messages = await getScopedMessages(locale, ['root']);
+  const accessibilityMessages = (messages as Record<string, unknown>).accessibility as
+    | { gtmNoscriptTitle?: string }
+    | undefined;
   const gtmNoscriptTitle = accessibilityMessages?.gtmNoscriptTitle;
-
-  const selectedMessageKeys = new Set<string>([
-    ...CLIENT_MESSAGE_KEYS,
-    ...GLOBAL_LAYOUT_KEYS,
-  ]);
-
-  const messages = Object.fromEntries(
-    Object.entries(allMessages).filter(([key]) =>
-      selectedMessageKeys.has(key) && !SERVER_ONLY_NAMESPACES.has(key)
-    )
-  );
 
   return (
     <html lang={locale} className={`${inter.variable} dark`} suppressHydrationWarning>

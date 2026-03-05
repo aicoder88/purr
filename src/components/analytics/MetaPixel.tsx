@@ -27,6 +27,7 @@ export const MetaPixel: React.FC = () => {
                 }}
             />
             <noscript>
+                {/* eslint-disable-next-line @next/next/no-img-element -- Meta pixel noscript fallback requires a plain img tag */}
                 <img
                     height="1"
                     width="1"

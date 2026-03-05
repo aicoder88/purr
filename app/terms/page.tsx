@@ -22,8 +22,12 @@ export const metadata: Metadata = {
     description: `Read Purrify's Terms of Service, user agreements, and conditions for using our products and services.`,
   },
   robots: {
-    index: true,
+    index: false,
     follow: true,
+    googleBot: {
+      index: false,
+      follow: true,
+    },
   },
 };
 

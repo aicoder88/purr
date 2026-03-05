@@ -169,10 +169,6 @@ export function Header() {
           href: `${localePrefix}/retailers`,
         },
         {
-          label: t('nav.wholesalePricing'),
-          href: `${localePrefix}/retailers#wholesale-pricing`,
-        },
-        {
           label: t('nav.becomePartner'),
           href: `${localePrefix}/retailers#retailer-contact`,
         },

@@ -23,6 +23,7 @@ import {
 } from '@/lib/seo-utils';
 import { defaultLocale } from '@/i18n/config';
 import type { Currency } from '@/lib/geo/currency-detector';
+import { ScopedIntlProvider } from '@/components/providers/ScopedIntlProvider';
 
 // Import client components
 import { HomepageClient } from './homepage-client';
@@ -127,75 +128,76 @@ export default async function HomePage() {
         dangerouslySetInnerHTML={structuredData}
       />
 
-      <main
-        id="main-content"
-        role="main"
-        className="overflow-x-clip bg-gradient-to-br from-purple-50 via-pink-50 to-orange-50 dark:from-gray-950 dark:via-purple-950/20 dark:to-gray-900"
-      >
-        {/* Section 1: Hero */}
-        <ErrorBoundary>
-          <Hero />
-        </ErrorBoundary>
-
-        <ScrollingAnnouncementBar />
-
-        {/* Section 4: The Story ("The Embarrassed Cat Owner") */}
-        <ErrorBoundary>
-          <AgitationSection />
-        </ErrorBoundary>
-
-        {/* Section 2: How It Works (Three-Step) */}
-        <ErrorBoundary>
-          <HowItWorks />
-        </ErrorBoundary>
-
-        {/* Section 5: Why Cat Parents Keep Coming Back (Features) */}
-        <ErrorBoundary>
-          <WhyPurrify />
-        </ErrorBoundary>
-
-        {/* Section 6: The Science ("The Secret Sauce") */}
-        <ErrorBoundary>
-          <ScienceSection />
-        </ErrorBoundary>
-
-        {/* Section 7: Products / Offer + CTA */}
-        <HomepageClient
-          priceValidUntil={priceValidUntil}
-          locale={defaultLocale}
-          currency={currency}
-        />
-
-        {/* Social Proof: Named Testimonials */}
-        <ErrorBoundary>
-          <HomepageTestimonials />
-        </ErrorBoundary>
-
-        {/* Client Locations Map */}
-        <div className="cv-auto cis-720">
+      <ScopedIntlProvider scopes={['root', 'home']}>
+        <main
+          id="main-content"
+          role="main"
+          className="overflow-x-clip bg-gradient-to-br from-purple-50 via-pink-50 to-orange-50 dark:from-gray-950 dark:via-purple-950/20 dark:to-gray-900"
+        >
+          {/* Section 1: Hero */}
           <ErrorBoundary>
-            <LazyClientLocationsMap
-              className="bg-gradient-to-br from-purple-50 via-pink-50 to-orange-50 dark:from-gray-950 dark:via-purple-950/20 dark:to-gray-900"
-              height="400"
-            />
+            <Hero />
           </ErrorBoundary>
-        </div>
 
-        {/* Retail Store Locations */}
-        <div className="cv-auto cis-720">
+          <ScrollingAnnouncementBar />
+
+          {/* Section 4: The Story ("The Embarrassed Cat Owner") */}
           <ErrorBoundary>
-            <Stores />
+            <AgitationSection />
           </ErrorBoundary>
-        </div>
 
-        {/* Blog Preview */}
-        <div className="cv-auto cis-720">
+          {/* Section 2: How It Works (Three-Step) */}
           <ErrorBoundary>
-            <BlogPreview />
+            <HowItWorks />
           </ErrorBoundary>
-        </div>
 
-      </main>
+          {/* Section 5: Why Cat Parents Keep Coming Back (Features) */}
+          <ErrorBoundary>
+            <WhyPurrify />
+          </ErrorBoundary>
+
+          {/* Section 6: The Science ("The Secret Sauce") */}
+          <ErrorBoundary>
+            <ScienceSection />
+          </ErrorBoundary>
+
+          {/* Section 7: Products / Offer + CTA */}
+          <HomepageClient
+            priceValidUntil={priceValidUntil}
+            locale={defaultLocale}
+            currency={currency}
+          />
+
+          {/* Social Proof: Named Testimonials */}
+          <ErrorBoundary>
+            <HomepageTestimonials />
+          </ErrorBoundary>
+
+          {/* Client Locations Map */}
+          <div className="cv-auto cis-720">
+            <ErrorBoundary>
+              <LazyClientLocationsMap
+                className="bg-gradient-to-br from-purple-50 via-pink-50 to-orange-50 dark:from-gray-950 dark:via-purple-950/20 dark:to-gray-900"
+                height="400"
+              />
+            </ErrorBoundary>
+          </div>
+
+          {/* Retail Store Locations */}
+          <div className="cv-auto cis-720">
+            <ErrorBoundary>
+              <Stores />
+            </ErrorBoundary>
+          </div>
+
+          {/* Blog Preview */}
+          <div className="cv-auto cis-720">
+            <ErrorBoundary>
+              <BlogPreview />
+            </ErrorBoundary>
+          </div>
+        </main>
+      </ScopedIntlProvider>
     </>
   );
 }

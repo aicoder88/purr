@@ -1,6 +1,5 @@
 'use client';
 import Link from "next/link";
-import Script from "next/script";
 import type { SVGProps } from "react";
 import { Container } from "@/components/ui/container";
 import Image from "next/image";
@@ -566,14 +565,6 @@ export function Footer() {
           </div>
         </div>
       </Container>
-
-      {/* Chat Plugin */}
-      <Script
-        src="https://app.simplebotinstall.com/js/chat_plugin.js"
-        data-bot-id="40892"
-        strategy="lazyOnload"
-        defer
-      />
     </footer>
   );
 }

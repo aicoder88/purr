@@ -150,10 +150,10 @@ const LocalShippingUrgency = dynamic(() => import('./LocalShippingUrgency').then
 // Utility Functions
 // ============================================================================
 
-// Helper function to interpolate template strings with {{variable}} syntax
+// Support both ICU-style `{variable}` and legacy `{{variable}}` placeholders.
 const interpolate = (template: string, vars: Record<string, string>): string => {
   return Object.entries(vars).reduce(
-    (result, [key, value]) => result.replace(new RegExp(`{{${key}}}`, 'g'), value),
+    (result, [key, value]) => result.replace(new RegExp(`\\{\\{?${key}\\}?\\}`, 'g'), value),
     template
   );
 };
@@ -569,7 +569,7 @@ export const CityPageTemplate = ({ citySlug, initialProfile }: CityPageTemplateP
             </div>
             <div className="mt-8">
               <Link
-                href={`/locations/${profile.provinceCode?.toLowerCase() || profile.province.toLowerCase().replaceAll(/\s+/g, '-')}`}
+                href={`/locations/province/${provinceData?.slug ?? profile.provinceCode?.toLowerCase() ?? profile.province.toLowerCase().replaceAll(/\s+/g, '-')}`}
                 className="inline-flex items-center text-orange-600 dark:text-orange-400 font-semibold hover:text-orange-700 dark:hover:text-orange-300 transition-colors"
               >
                 {provinceWidePills.explore}

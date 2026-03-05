@@ -26,6 +26,7 @@ import {
 import { isValidLocale } from '@/i18n/config';
 import type { Currency } from '@/lib/geo/currency-detector';
 import { notFound } from 'next/navigation';
+import { ScopedIntlProvider } from '@/components/providers/ScopedIntlProvider';
 
 // Import client components
 import { HomepageClient } from '../homepage-client';
@@ -105,79 +106,81 @@ export default async function LocalizedHomePage({ params }: LocalizedHomepagePro
                 dangerouslySetInnerHTML={{ __html: JSON.stringify(homepageSchema) }}
             />
 
-            <main
-                id="main-content"
-                className="bg-gradient-to-br from-purple-50 via-pink-50 to-orange-50 dark:from-gray-950 dark:via-purple-950/20 dark:to-gray-900"
-            >
-                {/* Section 1: Hero */}
-                <ErrorBoundary>
-                    <Hero />
-                </ErrorBoundary>
+            <ScopedIntlProvider locale={locale} scopes={['root', 'home']}>
+                <main
+                    id="main-content"
+                    className="bg-gradient-to-br from-purple-50 via-pink-50 to-orange-50 dark:from-gray-950 dark:via-purple-950/20 dark:to-gray-900"
+                >
+                    {/* Section 1: Hero */}
+                    <ErrorBoundary>
+                        <Hero />
+                    </ErrorBoundary>
 
-                <ScrollingAnnouncementBar />
+                    <ScrollingAnnouncementBar />
 
-                {/* Section 4: The Story ("The Embarrassed Cat Owner") */}
-                <ErrorBoundary>
-                    <AgitationSection />
-                </ErrorBoundary>
+                    {/* Section 4: The Story ("The Embarrassed Cat Owner") */}
+                    <ErrorBoundary>
+                        <AgitationSection />
+                    </ErrorBoundary>
 
-                {/* Section 2: How It Works (Three-Step) */}
-                <ErrorBoundary>
-                    <HowItWorks />
-                </ErrorBoundary>
+                    {/* Section 2: How It Works (Three-Step) */}
+                    <ErrorBoundary>
+                        <HowItWorks />
+                    </ErrorBoundary>
 
-                {/* Section 5: Why Cat Parents Keep Coming Back (Features) */}
-                <ErrorBoundary>
-                    <WhyPurrify />
-                </ErrorBoundary>
+                    {/* Section 5: Why Cat Parents Keep Coming Back (Features) */}
+                    <ErrorBoundary>
+                        <WhyPurrify />
+                    </ErrorBoundary>
 
-                {/* Section 6: The Science ("The Secret Sauce") */}
-                <ErrorBoundary>
-                    <ScienceSection />
-                </ErrorBoundary>
+                    {/* Section 6: The Science ("The Secret Sauce") */}
+                    <ErrorBoundary>
+                        <ScienceSection />
+                    </ErrorBoundary>
 
-                {/* Section 7: Products / Offer + CTA */}
-                <HomepageClient
-                    priceValidUntil={priceValidUntil}
-                    locale={locale}
-                    currency={currency}
-                />
+                    {/* Section 7: Products / Offer + CTA */}
+                    <HomepageClient
+                        priceValidUntil={priceValidUntil}
+                        locale={locale}
+                        currency={currency}
+                    />
 
-                {/* Social Proof: Named Testimonials */}
-                <ErrorBoundary>
-                    <HomepageTestimonials />
-                </ErrorBoundary>
+                    {/* Social Proof: Named Testimonials */}
+                    <ErrorBoundary>
+                        <HomepageTestimonials />
+                    </ErrorBoundary>
 
-                <section className="py-10 cv-auto cis-480">
-                    <div className="container mx-auto px-4">
-                        <TrustBadges variant="elegant" showIcons={true} />
+                    <section className="py-10 cv-auto cis-480">
+                        <div className="container mx-auto px-4">
+                            <TrustBadges variant="elegant" showIcons={true} />
+                        </div>
+                    </section>
+
+                    <div className="cv-auto cis-720">
+                        <ErrorBoundary>
+                            <LazyClientLocationsMap height="400" />
+                        </ErrorBoundary>
                     </div>
-                </section>
 
-                <div className="cv-auto cis-720">
-                    <ErrorBoundary>
-                        <LazyClientLocationsMap height="400" />
-                    </ErrorBoundary>
-                </div>
+                    <div className="cv-auto cis-720">
+                        <ErrorBoundary>
+                            <Stores />
+                        </ErrorBoundary>
+                    </div>
 
-                <div className="cv-auto cis-720">
-                    <ErrorBoundary>
-                        <Stores />
-                    </ErrorBoundary>
-                </div>
+                    <div className="cv-auto cis-720">
+                        <ErrorBoundary>
+                            <WaitlistSection />
+                        </ErrorBoundary>
+                    </div>
 
-                <div className="cv-auto cis-720">
-                    <ErrorBoundary>
-                        <WaitlistSection />
-                    </ErrorBoundary>
-                </div>
-
-                <div className="cv-auto cis-720">
-                    <ErrorBoundary>
-                        <BlogPreview />
-                    </ErrorBoundary>
-                </div>
-            </main>
+                    <div className="cv-auto cis-720">
+                        <ErrorBoundary>
+                            <BlogPreview />
+                        </ErrorBoundary>
+                    </div>
+                </main>
+            </ScopedIntlProvider>
         </>
     );
 }
