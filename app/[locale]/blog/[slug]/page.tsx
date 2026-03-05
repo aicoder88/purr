@@ -7,7 +7,7 @@ import { RelatedContent } from '@/components/seo/RelatedContent';
 import { ContentStore } from '@/lib/blog/content-store';
 import { sampleBlogPosts, getBlogPostContent, type BlogPost as DataBlogPost } from '@/data/blog-posts';
 import { SITE_NAME, SITE_URL } from '@/lib/constants';
-import { locales, isValidLocale } from '@/i18n/config';
+import { locales, isValidLocale, defaultLocale } from '@/i18n/config';
 import { generateArticlePageSchema, stripContext } from '@/lib/seo-utils';
 import { optimizeMetaTitle } from '@/lib/seo/meta-optimizer';
 import { ArrowLeft, User, Clock } from 'lucide-react';
@@ -57,8 +57,9 @@ export async function generateStaticParams() {
   const store = new ContentStore();
   const params: Array<{ locale: string; slug: string }> = [];
 
-  // Get posts for each locale
-  for (const locale of locales) {
+  // Get posts for each locale, excluding defaultLocale (en) since the wrapper handles it
+  const nonDefaultLocales = locales.filter(l => l !== defaultLocale);
+  for (const locale of nonDefaultLocales) {
     try {
       const posts = await store.getAllPosts(locale, false);
       posts.forEach((post) => {

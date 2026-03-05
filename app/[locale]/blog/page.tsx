@@ -6,7 +6,7 @@ import { Container } from '@/components/ui/container';
 import { ContentStore } from '@/lib/blog/content-store';
 import { sampleBlogPosts } from '@/data/blog-posts';
 import { SITE_NAME, SITE_DESCRIPTION, SITE_URL } from '@/lib/constants';
-import { locales, isValidLocale } from '@/i18n/config';
+import { locales, isValidLocale, defaultLocale } from '@/i18n/config';
 import { ArrowRight, Calendar, User } from 'lucide-react';
 
 interface BlogIndexPageProps {
@@ -22,7 +22,7 @@ const getBlogBasePath = (locale: string) => (
 
 // Generate static params for all supported locales
 export async function generateStaticParams() {
-  return locales.map((locale) => ({
+  return locales.filter(l => l !== defaultLocale).map((locale) => ({
     locale,
   }));
 }
