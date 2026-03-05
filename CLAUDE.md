@@ -15,7 +15,7 @@
 - **Branding**:
     - "Purrify" is **granules**, NOT "powder".
     - Capitalized "Purrify".
-    - **Art Style**: Ghibli-reality fusion, vibrant Miyazaki colors. No product image generation.
+    - **Art Style**: Hyper-realistic style with fascinating animations/visuals and vibrant Miyazaki colors. NEVER make images of our product packaging.
     - **Odor**: Must be shown going **IN** to carbon.
 
 ## 💻 Coding Standards

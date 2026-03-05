@@ -1,0 +1,70 @@
+# Google Disavow File — purrify.ca
+# Generated: 2026-03-05
+# Source: SEMrush referring domain analysis
+#
+# Upload at:
+# https://search.google.com/search-console/disavow-links?resource_id=sc-domain%3Apurrify.ca
+#
+# Only clear spam/link farms are listed here.
+# Conservative — when in doubt, excluded.
+#
+# -------------------------------------------------------
+# LINK FARMS (very high backlink count from single low-AS domain)
+# -------------------------------------------------------
+
+# 314 backlinks, AS:11 — Italian personal site, textbook link farm
+domain:gerlinde.it
+
+# 85 backlinks, AS:13 — link farm, off-topic
+domain:spherebrooke.com
+
+# 28 backlinks, AS:19 — sweet shop community linking to a cat product is clearly injected spam
+domain:sweetshoppecommunity.com
+
+# 24 backlinks, AS:16 — generic web directory, off-topic mass linking
+domain:geometry.net
+
+# 25 backlinks, AS:28 — Italian cat content scraper (not editorial)
+domain:micimiao.net
+
+# -------------------------------------------------------
+# SPAM / CRAWLER TOOLS
+# -------------------------------------------------------
+
+# Backlink crawler/spam tool site
+domain:websitescrawl.com
+
+# Domain spam index
+domain:all-aged-domains.com
+
+# Domain indexer spam
+domain:domaindexer.com
+
+# -------------------------------------------------------
+# FREE HOSTING LINK SPAM
+# -------------------------------------------------------
+
+# Free IP/hosting, 8 links
+domain:websites.freemyip.com
+
+# Free hosting used for spam
+domain:atspace.us
+
+# Geocities clone / web archive spam
+domain:geocities.ws
+
+# -------------------------------------------------------
+# LOW-QUALITY / SUSPICIOUS DOMAINS
+# -------------------------------------------------------
+
+# Suspicious store domain, 11 links
+domain:seol.store
+
+# Suspicious, AS:6, 8 links
+domain:jobsapp.info
+
+# Suspicious, AS:6, 2 links
+domain:kakakakaty.com
+
+# Suspicious tech/link-building firm
+domain:itxoft.com

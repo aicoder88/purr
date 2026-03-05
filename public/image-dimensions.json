@@ -15608,5 +15608,167 @@
       ]
     },
     "sizes": "(max-width: 640px) 100vw, 50vw"
+  },
+  "original-images/blog/molecular-odor-trapping-miyazaki.jpg": {
+    "width": 1024,
+    "height": 1024,
+    "aspectRatio": 1,
+    "formats": {
+      "avif": [
+        "optimized/blog/molecular-odor-trapping-miyazaki-640w.avif",
+        "optimized/blog/molecular-odor-trapping-miyazaki-828w.avif"
+      ],
+      "webp": [
+        "optimized/blog/molecular-odor-trapping-miyazaki-640w.webp",
+        "optimized/blog/molecular-odor-trapping-miyazaki-828w.webp"
+      ],
+      "jpg": [
+        "optimized/blog/molecular-odor-trapping-miyazaki-640w.jpg",
+        "optimized/blog/molecular-odor-trapping-miyazaki-828w.jpg"
+      ]
+    },
+    "sizes": "(max-width: 640px) 100vw, 50vw"
+  },
+  "original-images/blog/kitty-litter-deodorizer-ghibli-hero.png": {
+    "width": 640,
+    "height": 640,
+    "aspectRatio": 1,
+    "formats": {
+      "avif": [
+        "optimized/blog/kitty-litter-deodorizer-ghibli-hero-640w.avif"
+      ],
+      "webp": [
+        "optimized/blog/kitty-litter-deodorizer-ghibli-hero-640w.webp"
+      ],
+      "jpg": [
+        "optimized/blog/kitty-litter-deodorizer-ghibli-hero-640w.jpg"
+      ]
+    },
+    "sizes": "100vw"
+  },
+  "original-images/blog/happy-cats-clean-home-miyazaki.png": {
+    "width": 640,
+    "height": 640,
+    "aspectRatio": 1,
+    "formats": {
+      "avif": [
+        "optimized/blog/happy-cats-clean-home-miyazaki-640w.avif"
+      ],
+      "webp": [
+        "optimized/blog/happy-cats-clean-home-miyazaki-640w.webp"
+      ],
+      "jpg": [
+        "optimized/blog/happy-cats-clean-home-miyazaki-640w.jpg"
+      ]
+    },
+    "sizes": "100vw"
+  },
+  "original-images/blog/happy-cat-clean-litter-miyazaki.jpg": {
+    "width": 1024,
+    "height": 1024,
+    "aspectRatio": 1,
+    "formats": {
+      "avif": [
+        "optimized/blog/happy-cat-clean-litter-miyazaki-640w.avif",
+        "optimized/blog/happy-cat-clean-litter-miyazaki-828w.avif"
+      ],
+      "webp": [
+        "optimized/blog/happy-cat-clean-litter-miyazaki-640w.webp",
+        "optimized/blog/happy-cat-clean-litter-miyazaki-828w.webp"
+      ],
+      "jpg": [
+        "optimized/blog/happy-cat-clean-litter-miyazaki-640w.jpg",
+        "optimized/blog/happy-cat-clean-litter-miyazaki-828w.jpg"
+      ]
+    },
+    "sizes": "(max-width: 640px) 100vw, 50vw"
+  },
+  "original-images/blog/cat-olfactory-sensitivity-ghibli.png": {
+    "width": 640,
+    "height": 640,
+    "aspectRatio": 1,
+    "formats": {
+      "avif": [
+        "optimized/blog/cat-olfactory-sensitivity-ghibli-640w.avif"
+      ],
+      "webp": [
+        "optimized/blog/cat-olfactory-sensitivity-ghibli-640w.webp"
+      ],
+      "jpg": [
+        "optimized/blog/cat-olfactory-sensitivity-ghibli-640w.jpg"
+      ]
+    },
+    "sizes": "100vw"
+  },
+  "original-images/blog/cat-litter-maintenance-miyazaki.png": {
+    "width": 640,
+    "height": 640,
+    "aspectRatio": 1,
+    "formats": {
+      "avif": [
+        "optimized/blog/cat-litter-maintenance-miyazaki-640w.avif"
+      ],
+      "webp": [
+        "optimized/blog/cat-litter-maintenance-miyazaki-640w.webp"
+      ],
+      "jpg": [
+        "optimized/blog/cat-litter-maintenance-miyazaki-640w.jpg"
+      ]
+    },
+    "sizes": "100vw"
+  },
+  "original-images/blog/cat-litter-guide-hero.png": {
+    "width": 640,
+    "height": 640,
+    "aspectRatio": 1,
+    "formats": {
+      "avif": [
+        "optimized/blog/cat-litter-guide-hero-640w.avif"
+      ],
+      "webp": [
+        "optimized/blog/cat-litter-guide-hero-640w.webp"
+      ],
+      "jpg": [
+        "optimized/blog/cat-litter-guide-hero-640w.jpg"
+      ]
+    },
+    "sizes": "100vw"
+  },
+  "original-images/blog/cat-litter-comparison-miyazaki.png": {
+    "width": 640,
+    "height": 640,
+    "aspectRatio": 1,
+    "formats": {
+      "avif": [
+        "optimized/blog/cat-litter-comparison-miyazaki-640w.avif"
+      ],
+      "webp": [
+        "optimized/blog/cat-litter-comparison-miyazaki-640w.webp"
+      ],
+      "jpg": [
+        "optimized/blog/cat-litter-comparison-miyazaki-640w.jpg"
+      ]
+    },
+    "sizes": "100vw"
+  },
+  "original-images/blog/cat-litter-box-apartment-miyazaki.jpg": {
+    "width": 1024,
+    "height": 1024,
+    "aspectRatio": 1,
+    "formats": {
+      "avif": [
+        "optimized/blog/cat-litter-box-apartment-miyazaki-640w.avif",
+        "optimized/blog/cat-litter-box-apartment-miyazaki-828w.avif"
+      ],
+      "webp": [
+        "optimized/blog/cat-litter-box-apartment-miyazaki-640w.webp",
+        "optimized/blog/cat-litter-box-apartment-miyazaki-828w.webp"
+      ],
+      "jpg": [
+        "optimized/blog/cat-litter-box-apartment-miyazaki-640w.jpg",
+        "optimized/blog/cat-litter-box-apartment-miyazaki-828w.jpg"
+      ]
+    },
+    "sizes": "(max-width: 640px) 100vw, 50vw"
   }
 }

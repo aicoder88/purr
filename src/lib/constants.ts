@@ -227,7 +227,9 @@ export const SOCIAL_LINKS = {
   medium: BUSINESS_PROFILE.socialMedia.medium ?? 'https://medium.com/@purrify',
   whop: BUSINESS_PROFILE.socialMedia.whop ?? 'https://whop.com/purrify',
   producthunt: BUSINESS_PROFILE.socialMedia.producthunt ?? 'https://www.producthunt.com/products/purrify',
-  wellfound: BUSINESS_PROFILE.socialMedia.wellfound ?? 'https://wellfound.com/company/purrify'
+  wellfound: BUSINESS_PROFILE.socialMedia.wellfound ?? 'https://wellfound.com/company/purrify',
+  pinterest: BUSINESS_PROFILE.socialMedia.pinterest ?? 'https://ca.pinterest.com/purrifyhq',
+  linktree: BUSINESS_PROFILE.socialMedia.linktree ?? 'https://linktr.ee/purrifyhq',
 } as const;
 
 export const CONTACT_INFO = {

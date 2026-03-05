@@ -59,19 +59,6 @@
 
 ---
 
-## Critical Technical Issue: Keyword Cannibalization
-
-Multiple URLs ranking for the same keyword wastes your ranking power:
-
-| Keyword | URLs Competing |
-|---------|---------------|
-| litter smell | /learn/solutions/litter-box-smell-elimination (pos 38, 65, 72) |
-| types of cat litter | /learn/cat-litter-guide (pos 45, 55, 62) |
-| kitty litter odor control | /blog/best-cat-litter-for-smell/ + /products/ (pos 39, 92) |
-| cat urine and ammonia | /learn/solutions/ammonia-smell-cat-litter (pos 56, 60) |
-
-**Fix:** Set canonical tags so only one URL per topic receives link equity. Also add `rel="canonical"` on trailing-slash vs. non-trailing-slash variants (e.g., `/learn/cat-litter-guide` vs `/learn/cat-litter-guide/`).
-
 ---
 
 ## Untapped Keyword Opportunities (Canada)
@@ -109,7 +96,6 @@ These terms have volume and you do NOT currently rank for them:
 
 ## Action Plan (Priority Order)
 
-1. **Fix canonicals** — trailing slash and duplicate URL ranking issues (1 day, high impact)
 2. **Optimize "no scent cat litter" page** — already #6, push to top 3 (1–2 hrs)
 3. **Optimize "is baking soda safe for cats" page** — add FAQ schema, targeted answer (1 hr)
 4. **Create "best cat litter canada" buying guide** — 320/mo volume, directly matches product (2–3 hrs)

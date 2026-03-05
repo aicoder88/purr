@@ -62,6 +62,8 @@ export interface BusinessProfile {
     whop?: string;
     producthunt?: string;
     wellfound?: string;
+    pinterest?: string;
+    linktree?: string;
   };
   businessCategories: string[];
   serviceAreas: string[];
@@ -126,7 +128,9 @@ export const BUSINESS_PROFILE: BusinessProfile = {
     medium: 'https://medium.com/@purrify',
     whop: 'https://whop.com/purrify',
     producthunt: 'https://www.producthunt.com/products/purrify',
-    wellfound: 'https://wellfound.com/company/purrify'
+    wellfound: 'https://wellfound.com/company/purrify',
+    pinterest: 'https://ca.pinterest.com/purrifyhq',
+    linktree: 'https://linktr.ee/purrifyhq'
   },
 
   businessCategories: [
