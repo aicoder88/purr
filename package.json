@@ -22,7 +22,7 @@
     "check-types": "tsc --noEmit",
     "precheck-types": "pnpm blog:generate-featured-image-map",
     "check-types:unused": "node scripts/check-unused-identifiers.js",
-    "postbuild": "next-sitemap",
+    "postbuild": "echo 'Sitemap generated dynamically via app/sitemap.ts'",
     "generate-image": "node scripts/images/generate-fal-image.js",
     "optimize-images": "node scripts/images/optimize-images.js",
     "optimize-images:enhanced": "node scripts/images/optimize-images-enhanced.js",

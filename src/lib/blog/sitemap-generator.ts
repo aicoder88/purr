@@ -6,7 +6,7 @@ import type {} from "@/types/blog";
 export class SitemapGenerator {
   private store: ContentStore;
   private baseUrl: string;
-  private locales = ["en", "fr", "zh"];
+  private locales = ["en", "fr"];
 
   constructor() {
     this.store = new ContentStore();

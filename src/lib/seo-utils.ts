@@ -427,7 +427,8 @@ export const generateArticleStructuredData = (title: string, description: string
     keywords: options?.keywords?.join(', ') || getLocalizedKeywords(locale).join(', '),
     about: {
       '@type': 'Thing',
-      name: 'Cat Litter Odor Control'
+      name: 'Cat Litter Odor Control',
+      description: 'Educational resources on pet odor management and activated carbon technology.'
     }
   };
 };
@@ -587,6 +588,7 @@ export const generateOfferSchema = (product: Product, localeInput: string, curre
 
   return {
     '@type': 'Offer',
+    description: product.description,
     price: getProductPrice(product.id as typeof PRODUCTS[number]['id'], currency as Currency).toFixed(2),
     priceCurrency: currency,
     availability: buildAvailabilityUrl(),
@@ -742,6 +744,11 @@ export const generateHomepageSchema = (localeInput: string, currency: string = '
             name: product.name,
             description: product.description.split('\n')[0],
             image: [`${baseUrl}${product.image}`],
+            sku: product.id,
+            brand: {
+              '@type': 'Brand',
+              name: SITE_NAME
+            },
             offers: generateOfferSchema(product, locale, currency),
             hasMerchantReturnPolicy: {
               '@type': 'MerchantReturnPolicy',
@@ -951,7 +958,8 @@ export const generateLocationPageSchema = (cityName: string, province: string, l
         },
         about: {
           '@type': 'Thing',
-          name: 'Cat Litter Odor Control'
+          name: 'Cat Litter Odor Control',
+          description: 'Activated carbon litter additive that neutralizes ammonia odors.'
         }
       },
 
