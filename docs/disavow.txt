@@ -1,70 +1,144 @@
 # Google Disavow File — purrify.ca
-# Generated: 2026-03-05
-# Source: SEMrush referring domain analysis
+# Merged: 2026-03-05
+# Sources:
+#   - Google Search Console export (www-purrify-ca_20260305T130621Z_DisavowLinks.txt)
+#   - SEMrush referring domain analysis (2026-03-05)
 #
 # Upload at:
 # https://search.google.com/search-console/disavow-links?resource_id=sc-domain%3Apurrify.ca
 #
-# Only clear spam/link farms are listed here.
-# Conservative — when in doubt, excluded.
-#
+# This file REPLACES the previously uploaded list — do not upload both.
+
 # -------------------------------------------------------
-# LINK FARMS (very high backlink count from single low-AS domain)
+# FROM ORIGINAL GSC EXPORT (theglobe.* network + ad/directory spam)
+# -------------------------------------------------------
+domain:www.docs.theglobe.net
+domain:commentadpop.theglobe.net
+domain:adengine.theglobe.net
+domain:searchweb.com
+domain:globalecommerce.org
+domain:websearch.us
+domain:booksreadr.org
+domain:docs.advertise-website.org
+domain:www.the-world.me
+domain:the-world.me
+domain:theglobe.net
+domain:www.theglobe.se
+domain:indians.cc
+domain:www.read.org.in
+domain:theglobe.in
+domain:websiterace.com
+domain:advertise2.com
+domain:docs.internet-advertising.org
+domain:www.musweb.org
+domain:internet-advertising.org
+domain:www.searchweb.com
+domain:yourchatrooms.com
+domain:www.wallpapers.pro
+domain:tunca.org
+domain:wallpapers.pro
+domain:theglobe.se
+domain:way2check.cv
+domain:jobsapp.info
+domain:www.websearch.us
+domain:www.online-ads.org
+domain:www.getwebsiteworth.com
+domain:read.org.in
+domain:alljobs.info
+domain:wonvision.com
+domain:5913231.cc
+domain:www.alljobs.info
+domain:www.ycm.info
+domain:docs.theglobe.onl
+domain:www.websiterace.com
+domain:www.advertise-website.org
+domain:musweb.org
+domain:online-ads.org
+domain:advertise-website.org
+domain:www.theglobe.net
+domain:www.wonvision.com
+domain:www.globalecommerce.org
+domain:all-aged-domains.com
+domain:www.advertise2.com
+domain:theglobe.onl
+domain:ycm.info
+domain:www.theglobe.in
+domain:advertisement.org
+domain:2x9.co
+domain:www.tunca.org
+domain:getwebsiteworth.com
+domain:www.pagesearch.net
+domain:www.egyptiandirectory.com
+domain:www.optimisedwebsites.com
+domain:webadvertisement.co.uk
+domain:linksnatcher.com
+domain:mail.globalecommerce.org
+domain:mail.websiterace.com
+domain:procycling.org
+domain:homefinance.co.in
+domain:australianwebdirectory.shop
+domain:alltopleveldomains.space
+domain:www.australianwebdirectory.shop
+domain:websitescrawl.art
+domain:yesdomains.space
+domain:mail.musweb.org
+domain:www.linksnatcher.com
+domain:mail.tunca.org
+domain:mail.australianwebdirectory.shop
+domain:adsweb.co.uk
+domain:mail.way2check.cv
+domain:mail.getwebsiteworth.com
+domain:egyptiandirectory.com
+domain:pagesearch.net
+domain:way2check.art
+domain:uaewebdirectory.info
+domain:www.webadvertisement.co.uk
+domain:webworthchecker.cv
+domain:optimisedwebsites.com
+domain:linksnatcher.art
+domain:mail.pagesearch.net
+domain:www.adsweb.co.uk
+domain:mail.simplewebdirectory.com
+
+# -------------------------------------------------------
+# ADDED: SEMrush link-farm analysis (2026-03-05)
 # -------------------------------------------------------
 
-# 314 backlinks, AS:11 — Italian personal site, textbook link farm
+# 314 backlinks, AS:11 — link farm
 domain:gerlinde.it
 
-# 85 backlinks, AS:13 — link farm, off-topic
+# 85 backlinks, AS:13 — link farm
 domain:spherebrooke.com
 
-# 28 backlinks, AS:19 — sweet shop community linking to a cat product is clearly injected spam
+# 28 backlinks, AS:19 — off-topic injected spam (sweet shop community)
 domain:sweetshoppecommunity.com
 
-# 24 backlinks, AS:16 — generic web directory, off-topic mass linking
+# 24 backlinks, AS:16 — generic web directory mass links
 domain:geometry.net
 
-# 25 backlinks, AS:28 — Italian cat content scraper (not editorial)
+# 25 backlinks, AS:28 — Italian cat scraper, not editorial
 domain:micimiao.net
 
-# -------------------------------------------------------
-# SPAM / CRAWLER TOOLS
-# -------------------------------------------------------
-
-# Backlink crawler/spam tool site
+# Backlink crawler tool site
 domain:websitescrawl.com
 
-# Domain spam index
-domain:all-aged-domains.com
-
-# Domain indexer spam
+# Domain spam index (complements websitescrawl.art already in list)
 domain:domaindexer.com
 
-# -------------------------------------------------------
-# FREE HOSTING LINK SPAM
-# -------------------------------------------------------
-
-# Free IP/hosting, 8 links
+# Free IP/hosting spam, 8 links
 domain:websites.freemyip.com
 
-# Free hosting used for spam
+# Free hosting spam
 domain:atspace.us
 
 # Geocities clone / web archive spam
 domain:geocities.ws
 
-# -------------------------------------------------------
-# LOW-QUALITY / SUSPICIOUS DOMAINS
-# -------------------------------------------------------
-
 # Suspicious store domain, 11 links
 domain:seol.store
 
-# Suspicious, AS:6, 8 links
-domain:jobsapp.info
-
-# Suspicious, AS:6, 2 links
+# Suspicious, AS:6
 domain:kakakakaty.com
 
-# Suspicious tech/link-building firm
+# Suspicious link-building firm, AS:6
 domain:itxoft.com
