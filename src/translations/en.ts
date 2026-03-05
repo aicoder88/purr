@@ -739,7 +739,10 @@ export const en = {
     naturalBadge: {
       title: "100% Natural",
       subtitle: "No chemicals"
-    }
+    },
+    expertInsightTitle: "Expert Insight",
+    expertInsightBody: "Activated carbon's highly porous structure gives it an exceptional surface area — allowing it to trap and hold volatile organic compounds (VOCs) and odor molecules at the molecular level, rather than simply masking them.",
+    expertInsightSource: "Source: EPA Indoor Air Quality"
   },
 
   // Agitation Section (homepage - pain/problem awareness)
@@ -4309,6 +4312,8 @@ export const en = {
     ],
     bestPracticesTitle: "Best Practices & Safe Usage",
     bestPracticesBody: "Purrify is designed to be sprinkled directly onto your cat's litter. Because we use dense, low-dust granules, it stays put even when your cat scratches. For other small pets like rodents or rabbits, we recommend keeping the carbon contained in a breathable, sealed pouch near their enclosure. Always maintain good ventilation in pet areas.",
+    bestPracticesNote: "Activated carbon (charcoal) is a recognized tool in pet poison management and is listed by the ASPCA Animal Poison Control Center as part of veterinary treatment protocols. (",
+    bestPracticesSource: "Source: ASPCA Animal Poison Control",
     specsHeading: "Technical Specifications",
     specsSubheading: "Engineered for maximum ammonia capture.",
     specsNote: "Contact Purrify support if you require batch-specific certificate data.",

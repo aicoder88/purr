@@ -100,6 +100,7 @@ const CLIENT_MESSAGE_KEYS = new Set<string>([
   'relatedArticles',
   'retailers',
   'reviewSystem',
+  'safetyPage',
   'sciencePage',
   'scienceSection',
   'siteDescription',

@@ -38,6 +38,8 @@ export default function SafetyPageClient() {
     features: t.raw('features') as Array<{ title: string; description: string }>,
     bestPracticesTitle: t('bestPracticesTitle'),
     bestPracticesBody: t('bestPracticesBody'),
+    bestPracticesNote: t('bestPracticesNote'),
+    bestPracticesSource: t('bestPracticesSource'),
     specsHeading: t('specsHeading'),
     specsSubheading: t('specsSubheading'),
     specsNote: t('specsNote'),
@@ -179,7 +181,7 @@ export default function SafetyPageClient() {
             <h3 className="font-bold text-gray-900 dark:text-white mb-2">{copy.bestPracticesTitle}</h3>
             <p className="text-gray-800 dark:text-gray-100 leading-relaxed">{copy.bestPracticesBody}</p>
             <span className="block mt-3 text-xs text-green-700 dark:text-green-300">
-              Activated carbon (charcoal) is a recognized tool in pet poison management and is listed by the ASPCA Animal Poison Control Center as part of veterinary treatment protocols. (<a href="https://www.aspca.org/pet-care/animal-poison-control" target="_blank" rel="nofollow noopener noreferrer" className="underline decoration-green-600/50 dark:decoration-green-400/50 underline-offset-2 hover:text-green-700 dark:hover:text-green-300">Source: ASPCA Animal Poison Control</a>)
+              {copy.bestPracticesNote}<a href="https://www.aspca.org/pet-care/animal-poison-control" target="_blank" rel="nofollow noopener noreferrer" className="underline decoration-green-600/50 dark:decoration-green-400/50 underline-offset-2 hover:text-green-700 dark:hover:text-green-300">{copy.bestPracticesSource}</a>)
             </span>
           </div>
         </Container>

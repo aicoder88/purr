@@ -773,7 +773,10 @@ export const fr = {
     naturalBadge: {
       title: "100% Naturel",
       subtitle: "Sans produits chimiques"
-    }
+    },
+    expertInsightTitle: "Avis d'Expert",
+    expertInsightBody: "La structure hautement poreuse du charbon actif lui confère une surface exceptionnelle — lui permettant de piéger et de retenir les composés organiques volatils (COV) et les molécules olfactives au niveau moléculaire, plutôt que de simplement les masquer.",
+    expertInsightSource: "Source : Qualité de l'Air Intérieur de l'EPA"
   },
 
   // Features Section (homepage component)
@@ -4026,6 +4029,8 @@ export const fr = {
     ],
     bestPracticesTitle: "Bonnes Pratiques et Utilisation Sûre",
     bestPracticesBody: "Purrify est conçu pour être saupoudré directement sur la litière de votre chat. Comme nous utilisons des granulés denses et peu poussiéreux, ils restent en place même lorsque votre chat gratte. Pour les autres petits animaux comme les rongeurs ou les lapins, nous recommandons de conserver le charbon dans un sachet respirant et fermé près de leur enclos. Maintenez toujours une bonne ventilation dans les espaces dédiés aux animaux.",
+    bestPracticesNote: "Le charbon actif (charbon) est un outil reconnu dans la gestion des empoisonnements des animaux de compagnie et figure sur la liste du Centre antipoison animal de l'ASPCA comme faisant partie des protocoles de traitement vétérinaire. (",
+    bestPracticesSource: "Source : ASPCA Animal Poison Control",
     specsHeading: "Spécifications Techniques",
     specsSubheading: "Conçu pour une capture maximale de l'ammoniaque.",
     specsNote: "Contactez le support Purrify si vous avez besoin de données de certificat spécifiques à un lot.",
