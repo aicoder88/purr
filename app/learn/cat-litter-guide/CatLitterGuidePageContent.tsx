@@ -152,6 +152,9 @@ export default function CatLitterGuidePageContent() {
                   </p>
                 ))}
               </div>
+              <span className="block mt-4 text-xs text-gray-400 dark:text-gray-500">
+                International cat care experts consistently identify litter box cleanliness as the top factor in preventing house soiling and litter box avoidance. (<a href="https://icatcare.org/cat-advice/all-advice-articles-page" target="_blank" rel="nofollow noopener noreferrer" className="underline decoration-gray-300 dark:decoration-gray-700 underline-offset-2 hover:text-gray-600 dark:hover:text-gray-300">Source: iCatCare</a>)
+              </span>
               <p className="text-gray-700 dark:text-gray-300 mt-6">
                 Learn more about source control science on{' '}
                 <Link href={`${localePrefix}/learn/how-it-works/`} className="text-[#5B2EFF] dark:text-[#818CF8] hover:underline font-medium">

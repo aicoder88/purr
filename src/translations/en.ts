@@ -4273,6 +4273,67 @@ export const en = {
         secondary: "View Host Solutions"
       }
     }
-  }
 
+  },
+
+  // Safety Page
+  safetyPage: {
+    breadcrumbAria: "Breadcrumb navigation",
+    badge: "Safety Documentation & Technical Datasheet",
+    title: "Is Activated Carbon Safe for Cats?",
+    subtitle: "Purrify Activated Carbon - Granular Coconut Shell Carbon (8x30 Mesh)",
+    description: "The definitive guide to activated carbon safety for cats. Learn how filtration-grade carbon eliminates litter box odors through true adsorption, its non-toxic properties, and why it's a safer alternative to heavily scented sprays.",
+    labTitle: "Laboratory-Tested Purity",
+    labDescription: "Sourced and activated to meet rigorous drinking-water and quality standards. No added chemicals.",
+    carbonTitle: "Premium Coconut Shell Granules",
+    carbonDescription: "High-micropore activated granules optimized to pull ammonia INTO the carbon, not mask it.",
+    featuresHeading: "Why Purrify is the Safest Choice for Your Cat",
+    featuresSubheading: "Ditch the baking soda dust and overpowering fragrances. Here's why activated carbon is superior and completely cat-safe.",
+    features: [
+      {
+        title: "Non-Toxic & Verified Safe",
+        description: "Activated carbon is so safe it's routinely used in veterinary clinics worldwide as an oral treatment for pet poison ingestion. It's completely non-toxic and fragrance-free."
+      },
+      {
+        title: "True Molecular Adsorption",
+        description: "Instead of masking smells with artificial perfumes that irritate your cat's sensitive respiratory system, our carbon physically pulls odor molecules INTO its microscopic pores and traps them forever."
+      },
+      {
+        title: "Premium Granules (No Powder)",
+        description: "We use coarse 8x30 mesh granules instead of fine powder. This means virtually zero dust kicking up when your cat digs, protecting both of your lungs."
+      },
+      {
+        title: "100% Sustainable Coconut Shell",
+        description: "Sourced from renewable coconut shells, activated entirely by steam and pressure. Zero synthetic chemicals, just nature's most powerful odor sponge."
+      }
+    ],
+    bestPracticesTitle: "Best Practices & Safe Usage",
+    bestPracticesBody: "Purrify is designed to be sprinkled directly onto your cat's litter. Because we use dense, low-dust granules, it stays put even when your cat scratches. For other small pets like rodents or rabbits, we recommend keeping the carbon contained in a breathable, sealed pouch near their enclosure. Always maintain good ventilation in pet areas.",
+    specsHeading: "Technical Specifications",
+    specsSubheading: "Engineered for maximum ammonia capture.",
+    specsNote: "Contact Purrify support if you require batch-specific certificate data.",
+    propertyHeader: "Property",
+    valueHeader: "Specification Range",
+    particleTitle: "Optimized Granule Size",
+    particlePrimary: "8x30 mesh (2.36 - 0.60 mm) - the ideal weight to stay in the litter box, prevent tracking, and minimize dust.",
+    particleSecondary: "Additional mesh sizes are available for industrial or wholesale requests.",
+    certificationsHeading: "Certifications & Compliance",
+    certificationsSubheading: "Manufactured to meet the highest safety benchmarks.",
+    certifications: [
+      "NSF/ANSI 61 and AWWA B604 guideline alignment",
+      "Food Chemicals Codex (FCC) compliant",
+      "Halal and Kosher compliant",
+      "Produced via 100% steam activation (no chemical activation)"
+    ],
+    applicationsHeading: "Proven Applications",
+    applications: [
+      "Litter box odor elimination (ammonia and mercaptans)",
+      "High-grade water purification and air filtration",
+      "Multi-cat environments and high-odor zones",
+      "Veterinary and clinical odor control"
+    ],
+    ctaTitle: "Still Have Safety Questions?",
+    ctaBody: "Our team is happy to provide additional technical references or usage guidance for your specific situation.",
+    ctaButton: "Contact Our Team"
+  }
 };

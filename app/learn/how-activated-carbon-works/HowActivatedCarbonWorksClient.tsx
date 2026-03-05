@@ -116,6 +116,9 @@ export default function HowActivatedCarbonWorksClient() {
               extremely small pores, dramatically increasing its surface area. While regular charcoal might seem porous,
               activated carbon takes this to an extreme—creating an internal structure with surface area thousands of
               times greater than its external dimensions.
+              <span className="block mt-2 text-xs text-gray-400 dark:text-gray-500">
+                Activated carbon is recognized by the EPA as an effective technology for removing organic contaminants and VOCs from air and water. (<a href="https://www.epa.gov/indoor-air-quality-iaq/volatile-organic-compounds-impact-indoor-air-quality" target="_blank" rel="nofollow noopener noreferrer" className="underline decoration-gray-300 dark:decoration-gray-700 underline-offset-2 hover:text-gray-600 dark:hover:text-gray-300">Source: EPA Indoor Air Quality</a>)
+              </span>
             </p>
 
             <p className="text-gray-700 dark:text-gray-200 mb-6">
@@ -341,6 +344,9 @@ export default function HowActivatedCarbonWorksClient() {
             <p className="text-gray-700 dark:text-gray-200 mb-4">
               Cat urine contains urea, a nitrogen compound. When bacteria in the litter box break down urea,
               they produce ammonia gas (NH₃)—the sharp, pungent smell that makes litter boxes unpleasant.
+              <span className="block mt-2 text-xs text-gray-400 dark:text-gray-500">
+                Ammonia from urine breakdown is a known respiratory irritant at elevated concentrations. (<a href="https://www.epa.gov/indoor-air-quality-iaq/volatile-organic-compounds-impact-indoor-air-quality" target="_blank" rel="nofollow noopener noreferrer" className="underline decoration-gray-300 dark:decoration-gray-700 underline-offset-2 hover:text-gray-600 dark:hover:text-gray-300">Source: EPA Indoor Air Quality</a>)
+              </span>
             </p>
 
             <div className="bg-gray-50 dark:bg-gray-700 rounded-lg p-4 mb-6">

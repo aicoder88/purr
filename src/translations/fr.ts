@@ -3992,4 +3992,65 @@ export const fr = {
     },
     backToLearn: "Retour à Apprendre"
   },
+
+  // Safety Page
+  safetyPage: {
+    breadcrumbAria: "Fil d'Ariane",
+    badge: "Documentation de Sécurité et Fiche Technique",
+    title: "Le Charbon Actif est-il Sûr pour les Chats ?",
+    subtitle: "Charbon actif Purrify - Granulés de Coque de Noix de Coco (Maille 8x30)",
+    description: "Le guide définitif sur la sécurité du charbon actif pour les chats. Découvrez comment le charbon de qualité filtration élimine les odeurs de litière par véritable adsorption, ses propriétés non toxiques, et pourquoi c'est une alternative plus sûre aux sprays très parfumés.",
+    labTitle: "Pureté Testée en Laboratoire",
+    labDescription: "Sélectionné et activé pour répondre à des normes rigoureuses de qualité et d'eau potable. Aucun produit chimique ajouté.",
+    carbonTitle: "Granulés Premium de Coque de Coco",
+    carbonDescription: "Granulés actifs riches en micropores optimisés pour attirer l'ammoniaque DANS le charbon, et non la masquer.",
+    featuresHeading: "Pourquoi Purrify est le Choix le Plus Sûr pour Votre Chat",
+    featuresSubheading: "Oubliez la poussière de bicarbonate de soude et les parfums entêtants. Voici pourquoi le charbon actif est supérieur et totalement sûr pour les chats.",
+    features: [
+      {
+        title: "Non Toxique et Sécurité Prouvée",
+        description: "Le charbon actif est si sûr qu'il est couramment utilisé dans les cliniques vétérinaires du monde entier comme traitement oral contre l'empoisonnement des animaux. Il est totalement non toxique et sans parfum."
+      },
+      {
+        title: "Véritable Adsorption Moléculaire",
+        description: "Au lieu de masquer les odeurs avec des parfums artificiels qui irritent le système respiratoire sensible de votre chat, notre charbon attire physiquement les molécules d'odeur DANS ses pores microscopiques et les piège pour toujours."
+      },
+      {
+        title: "Granulés Premium (Sans Poudre)",
+        description: "Nous utilisons des granulés grossiers de maille 8x30 au lieu d'une poudre fine. Cela signifie pratiquement aucune poussière soulevée lorsque votre chat gratte, protégeant ainsi vos poumons à tous les deux."
+      },
+      {
+        title: "Coques de Noix de Coco 100% Durables",
+        description: "Provenant de coques de noix de coco renouvelables, activées entièrement à la vapeur et à la pression. Zéro produit chimique synthétique, juste la plus puissante éponge à odeurs de la nature."
+      }
+    ],
+    bestPracticesTitle: "Bonnes Pratiques et Utilisation Sûre",
+    bestPracticesBody: "Purrify est conçu pour être saupoudré directement sur la litière de votre chat. Comme nous utilisons des granulés denses et peu poussiéreux, ils restent en place même lorsque votre chat gratte. Pour les autres petits animaux comme les rongeurs ou les lapins, nous recommandons de conserver le charbon dans un sachet respirant et fermé près de leur enclos. Maintenez toujours une bonne ventilation dans les espaces dédiés aux animaux.",
+    specsHeading: "Spécifications Techniques",
+    specsSubheading: "Conçu pour une capture maximale de l'ammoniaque.",
+    specsNote: "Contactez le support Purrify si vous avez besoin de données de certificat spécifiques à un lot.",
+    propertyHeader: "Propriété",
+    valueHeader: "Plage de Spécification",
+    particleTitle: "Taille de Granulés Optimisée",
+    particlePrimary: "Maille 8x30 (2,36 - 0,60 mm) - le poids idéal pour rester dans le bac à litière, éviter la dispersion et minimiser la poussière.",
+    particleSecondary: "D'autres tailles de maille sont disponibles pour les demandes industrielles ou de gros.",
+    certificationsHeading: "Certifications et Conformité",
+    certificationsSubheading: "Fabriqué pour répondre aux critères de sécurité les plus stricts.",
+    certifications: [
+      "Aligné sur les directives NSF/ANSI 61 et AWWA B604",
+      "Conforme au Food Chemicals Codex (FCC)",
+      "Certifié Halal et Casher",
+      "Produit par activation 100% à la vapeur (aucune activation chimique)"
+    ],
+    applicationsHeading: "Applications Éprouvées",
+    applications: [
+      "Élimination des odeurs de litière (ammoniaque et mercaptans)",
+      "Purification de l'eau et filtration de l'air de haute qualité",
+      "Environnements multi-chats et zones à forte odeur",
+      "Contrôle des odeurs en milieu clinique et vétérinaire"
+    ],
+    ctaTitle: "Encore des Questions sur la Sécurité ?",
+    ctaBody: "Notre équipe se fera un plaisir de vous fournir des références techniques supplémentaires ou des conseils d'utilisation pour votre situation spécifique.",
+    ctaButton: "Contacter Notre Équipe"
+  }
 };

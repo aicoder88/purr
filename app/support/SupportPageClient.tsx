@@ -401,7 +401,7 @@ export default function SupportPageClient() {
               </div>
             </a>
 
-            <a href="https://wa.me/385993433344?text=Hi%20I%27m%20interested%20in%20Purrify" target="_blank" rel="noopener noreferrer" className="group">
+            <a href="https://wa.me/385993433344?text=Hi%20I%27m%20interested%20in%20Purrify" target="_blank" rel="noopener noreferrer nofollow" className="group">
               <div className="bg-white dark:bg-gray-800 p-6 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 border-2 border-transparent hover:border-purple-300 dark:hover:border-purple-600 transform hover:-translate-y-1">
                 <MessageCircle className="w-12 h-12 text-green-600 dark:text-green-400 mb-4" />
                 <h3 className="font-heading text-xl font-bold mb-2 text-gray-900 dark:text-white">{copy.whatsappLabel}</h3>

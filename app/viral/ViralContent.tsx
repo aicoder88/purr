@@ -256,7 +256,7 @@ export default function ViralContent() {
                                             <span className="text-xs text-gray-500 dark:text-gray-400 italic">100M+ Views</span>
                                         </td>
                                         <td className="p-6">
-                                            <a href="https://www.youtube.com/watch?v=soRNTd2JzW0" target="_blank" rel="noreferrer" className="stable-link text-xl">
+                                            <a href="https://www.youtube.com/watch?v=soRNTd2JzW0" target="_blank" rel="noopener noreferrer" className="stable-link text-xl">
                                                 &quot;Gadget Test&quot; ↗
                                             </a>
                                             <span className="block text-[10px] text-gray-500 dark:text-gray-400 mt-1 font-mono">ID: soRNTd2JzW0 (That Little Puff)</span>
@@ -271,7 +271,7 @@ export default function ViralContent() {
                                             <span className="text-xs text-gray-500 dark:text-gray-400 italic">1.7M Views</span>
                                         </td>
                                         <td className="p-6">
-                                            <a href="https://www.youtube.com/watch?v=34cHfvYOYS0" target="_blank" rel="noreferrer" className="stable-link text-xl">
+                                            <a href="https://www.youtube.com/watch?v=34cHfvYOYS0" target="_blank" rel="noopener noreferrer" className="stable-link text-xl">
                                                 &quot;YOU&apos;RE DOING CAT LITTER WRONG&quot; ↗
                                             </a>
                                             <span className="block text-[10px] text-gray-500 dark:text-gray-400 mt-1 font-mono">ID: 34cHfvYOYS0 (Jackson Galaxy)</span>
@@ -286,7 +286,7 @@ export default function ViralContent() {
                                             <span className="text-xs text-gray-500 dark:text-gray-400 italic">5M+ Views</span>
                                         </td>
                                         <td className="p-6">
-                                            <a href="https://www.youtube.com/watch?v=c2g4fHhpqdk" target="_blank" rel="noreferrer" className="stable-link text-xl">
+                                            <a href="https://www.youtube.com/watch?v=c2g4fHhpqdk" target="_blank" rel="noopener noreferrer" className="stable-link text-xl">
                                                 &quot;Nala Cat&quot; (World&apos;s Richest) ↗
                                             </a>
                                             <span className="block text-[10px] text-gray-500 dark:text-gray-400 mt-1 font-mono">ID: c2g4fHhpqdk (Nala Cat)</span>
@@ -301,7 +301,7 @@ export default function ViralContent() {
                                             <span className="text-xs text-gray-500 dark:text-gray-400 italic">Multi-Million</span>
                                         </td>
                                         <td className="p-6">
-                                            <a href="https://www.youtube.com/watch?v=REDACTED" target="_blank" rel="noreferrer" className="stable-link text-xl">
+                                            <a href="https://www.youtube.com/watch?v=REDACTED" target="_blank" rel="noopener noreferrer" className="stable-link text-xl">
                                                 &quot;Puff&apos;s Top Viral Hits&quot; ↗
                                             </a>
                                             <span className="block text-[10px] text-gray-500 dark:text-gray-400 mt-1 font-mono">ID: REDACTED (That Little Puff)</span>
@@ -316,7 +316,7 @@ export default function ViralContent() {
                                             <span className="text-xs text-gray-500 dark:text-gray-400 italic">1.4M Views</span>
                                         </td>
                                         <td className="p-6">
-                                            <a href="https://www.youtube.com/watch?v=N_GaQltINAs" target="_blank" rel="noreferrer" className="stable-link text-xl">
+                                            <a href="https://www.youtube.com/watch?v=N_GaQltINAs" target="_blank" rel="noopener noreferrer" className="stable-link text-xl">
                                                 &quot;Claude Can Talk&quot; (Ad) ↗
                                             </a>
                                             <span className="block text-[10px] text-gray-500 dark:text-gray-400 mt-1 font-mono">ID: N_GaQltINAs (PrettyLitter)</span>
@@ -331,7 +331,7 @@ export default function ViralContent() {
                                             <span className="text-xs text-gray-500 dark:text-gray-400 italic">1M+ Views</span>
                                         </td>
                                         <td className="p-6">
-                                            <a href="https://www.youtube.com/watch?v=REDACTED" target="_blank" rel="noreferrer" className="stable-link text-xl">
+                                            <a href="https://www.youtube.com/watch?v=REDACTED" target="_blank" rel="noopener noreferrer" className="stable-link text-xl">
                                                 &quot;Remy Flying Cat&quot; ↗
                                             </a>
                                             <span className="block text-[10px] text-gray-500 dark:text-gray-400 mt-1 font-mono">ID: REDACTED (Remy&apos;s Owner)</span>
@@ -346,7 +346,7 @@ export default function ViralContent() {
                                             <span className="text-xs text-gray-500 dark:text-gray-400 italic">Review / React</span>
                                         </td>
                                         <td className="p-6">
-                                            <a href="https://www.youtube.com/watch?v=rZQqt6O6HaA" target="_blank" rel="noreferrer" className="stable-link text-xl">
+                                            <a href="https://www.youtube.com/watch?v=rZQqt6O6HaA" target="_blank" rel="noopener noreferrer" className="stable-link text-xl">
                                                 &quot;Cats React to Robot&quot; ↗
                                             </a>
                                             <span className="block text-[10px] text-gray-500 dark:text-gray-400 mt-1 font-mono">ID: rZQqt6O6HaA (ViralHog)</span>

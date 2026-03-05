@@ -569,7 +569,7 @@ export default function FAQPageClient() {
                   <p className="text-gray-600 dark:text-gray-300 text-sm mb-4">
                     {faqPage?.realTimeChatHelp || 'Chat with us instantly'}
                   </p>
-                  <a href="https://wa.me/385993433344?text=Hi%20I%27m%20interested%20in%20Purrify" target="_blank" rel="noopener noreferrer">
+                  <a href="https://wa.me/385993433344?text=Hi%20I%27m%20interested%20in%20Purrify" target="_blank" rel="noopener noreferrer nofollow">
                     <Button size="sm" variant="outline" className="border-green-500 dark:border-green-400 text-green-500 dark:text-green-400 hover:bg-green-500 hover:text-white dark:hover:bg-green-600 dark:hover:text-gray-100">
                       {faqPage?.startChat || 'Chat Now'}
                     </Button>

@@ -27,14 +27,14 @@ export function ScienceSection() {
   const rawFeatures = t.raw("scienceSection.features");
   const features: ScienceFeature[] = Array.isArray(rawFeatures)
     ? rawFeatures.filter(
-        (item): item is ScienceFeature =>
-          typeof item === "object" &&
-          item !== null &&
-          "title" in item &&
-          "description" in item &&
-          typeof (item as { title?: unknown }).title === "string" &&
-          typeof (item as { description?: unknown }).description === "string"
-      )
+      (item): item is ScienceFeature =>
+        typeof item === "object" &&
+        item !== null &&
+        "title" in item &&
+        "description" in item &&
+        typeof (item as { title?: unknown }).title === "string" &&
+        typeof (item as { description?: unknown }).description === "string"
+    )
     : [];
 
   return (
@@ -70,6 +70,16 @@ export function ScienceSection() {
                   </div>
                 </div>
               ))}
+            </div>
+
+            <div className="mt-8 bg-gray-50 dark:bg-gray-800/50 rounded-xl p-5 border-l-4 border-gray-300 dark:border-gray-600 shadow-sm transition-colors duration-300">
+              <span className="block text-xs font-semibold uppercase tracking-wider text-gray-500 dark:text-gray-400 mb-2">Expert Insight</span>
+              <p className="text-sm text-gray-700 dark:text-gray-300 mb-2">
+                Activated carbon&apos;s highly porous structure gives it an exceptional surface area — allowing it to trap and hold volatile organic compounds (VOCs) and odor molecules at the molecular level, rather than simply masking them.
+              </p>
+              <a href="https://www.epa.gov/indoor-air-quality-iaq/volatile-organic-compounds-impact-indoor-air-quality" target="_blank" rel="nofollow noopener noreferrer" className="text-xs font-medium text-gray-500 dark:text-gray-400 hover:text-gray-800 dark:hover:text-gray-200 underline decoration-gray-300 dark:decoration-gray-600 underline-offset-4 transition-colors">
+                Source: EPA Indoor Air Quality
+              </a>
             </div>
 
             <div className="mt-7 flex flex-wrap items-center gap-3">

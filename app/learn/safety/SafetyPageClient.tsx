@@ -8,135 +8,6 @@ import { Container } from '@/components/ui/container';
 import { useTranslations, useLocale } from 'next-intl';
 import { localizePath } from '@/lib/i18n/locale-path';
 
-type SafetyCopy = {
-  breadcrumbAria: string;
-  badge: string;
-  title: string;
-  subtitle: string;
-  description: string;
-  labTitle: string;
-  labDescription: string;
-  carbonTitle: string;
-  carbonDescription: string;
-  featuresHeading: string;
-  featuresSubheading: string;
-  features: Array<{ title: string; description: string }>;
-  bestPracticesTitle: string;
-  bestPracticesBody: string;
-  specsHeading: string;
-  specsSubheading: string;
-  specsNote: string;
-  propertyHeader: string;
-  valueHeader: string;
-  particleTitle: string;
-  particlePrimary: string;
-  particleSecondary: string;
-  certificationsHeading: string;
-  certificationsSubheading: string;
-  certifications: string[];
-  applicationsHeading: string;
-  applications: string[];
-  ctaTitle: string;
-  ctaBody: string;
-  ctaButton: string;
-};
-
-const SAFETY_COPY: Record<'en' | 'fr', SafetyCopy> = {
-  en: {
-    breadcrumbAria: 'Breadcrumb',
-    badge: 'Safety Documentation',
-    title: 'Safety Information & Technical Datasheet',
-    subtitle: 'Purrify Activated Carbon - Granular Coconut Shell Carbon (8...',
-    description: 'Filtration-grade activated carbon designed for odor control in litter environments. Built for high adsorption performance, low dust, and consistent granule quality.',
-    labTitle: 'Laboratory-Tested Quality',
-    labDescription: 'Built to meet recognized drinking-water and quality standards.',
-    carbonTitle: 'Premium Coconut Shell Carbon',
-    carbonDescription: 'High-micropore activated carbon optimized for ammonia capture.',
-    featuresHeading: 'Features & Benefits',
-    featuresSubheading: 'Performance characteristics used in odor and filtration applications.',
-    features: [
-      { title: 'Microporous Structure', description: 'High affinity for small odor molecules including ammonia.' },
-      { title: 'High Hardness', description: 'Low attrition for stable performance over use cycles.' },
-      { title: 'Low Dust Profile', description: 'Cleaner handling with reduced loose particles.' },
-      { title: 'Consistent Sizing', description: 'Uniform granules for predictable application behavior.' },
-    ],
-    bestPracticesTitle: 'Best Practices for Small Pet Environments',
-    bestPracticesBody: 'For rodent or small-pet odor control, keep carbon contained in sealed pouches or cartridges, maintain ventilation, and rinse away loose particles before use.',
-    specsHeading: 'Typical Specifications',
-    specsSubheading: 'Values shown are typical reference ranges.',
-    specsNote: 'Contact Purrify support for purchase-specific certificate data.',
-    propertyHeader: 'Property',
-    valueHeader: 'Value',
-    particleTitle: 'Available Particle Sizes',
-    particlePrimary: '8x30 mesh (2.36 - 0.60 mm) - standard odor and filtration size',
-    particleSecondary: 'Additional mesh sizes available on request.',
-    certificationsHeading: 'Certifications & Standards',
-    certificationsSubheading: 'Compliance targets used for quality and safety review.',
-    certifications: [
-      'NSF/ANSI 61 and AWWA B604 guideline alignment',
-      'Food Chemicals Codex (FCC) compliant',
-      'Halal and Kosher compliant',
-      'Manufactured from sustainable coconut shell feedstock',
-    ],
-    applicationsHeading: 'Common Applications',
-    applications: [
-      'Litter box odor control and ammonia reduction',
-      'Water purification and air filtration support',
-      'Multi-cat and high-load odor environments',
-    ],
-    ctaTitle: 'Need Safety or Compliance Help?',
-    ctaBody: 'Our team can share additional technical references and usage guidance.',
-    ctaButton: 'Contact Support',
-  },
-  fr: {
-    breadcrumbAria: 'Fil d Ariane',
-    badge: 'Documentation de securite',
-    title: 'Informations de Securite et Fiche Technique',
-    subtitle: 'Charbon active Purrify - Charbon granule de coque de noix d...',
-    description: 'Charbon active de qualite filtration concu pour le controle des odeurs de litiere. Performance d adsorption elevee, faible poussiere et granulometrie stable.',
-    labTitle: 'Qualite Testee en Laboratoire',
-    labDescription: 'Concu pour respecter des normes reconnues de qualite et de securite.',
-    carbonTitle: 'Charbon Premium de Coque de Coco',
-    carbonDescription: 'Structure microporeuse optimisee pour capter l ammoniac.',
-    featuresHeading: 'Caracteristiques et Avantages',
-    featuresSubheading: 'Proprietes de performance utilisees pour les applications odeur et filtration.',
-    features: [
-      { title: 'Structure Microporeuse', description: 'Forte affinite pour les petites molecules odorantes, dont l ammoniac.' },
-      { title: 'Haute Durete', description: 'Faible attrition pour une performance stable dans le temps.' },
-      { title: 'Faible Teneur en Poussiere', description: 'Manipulation plus propre avec moins de particules libres.' },
-      { title: 'Granulometrie Homogene', description: 'Granules regulieres pour un comportement d application previsible.' },
-    ],
-    bestPracticesTitle: 'Bonnes Pratiques pour Petits Animaux',
-    bestPracticesBody: 'Pour les petits animaux, utilisez le charbon dans des sachets ou cartouches fermes, assurez une bonne ventilation et rincez les particules libres avant usage.',
-    specsHeading: 'Specifications Typiques',
-    specsSubheading: 'Les valeurs ci-dessous sont des plages de reference.',
-    specsNote: 'Contactez le support Purrify pour les certificats propres a votre achat.',
-    propertyHeader: 'Propriete',
-    valueHeader: 'Valeur',
-    particleTitle: 'Tailles de Particules Disponibles',
-    particlePrimary: '8x30 mesh (2,36 - 0,60 mm) - taille standard odeur et filtration',
-    particleSecondary: 'Autres tailles de maille disponibles sur demande.',
-    certificationsHeading: 'Certifications et Normes',
-    certificationsSubheading: 'References de conformite utilisees pour la revue qualite et securite.',
-    certifications: [
-      'Alignement avec les lignes directrices NSF/ANSI 61 et AWWA B604',
-      'Conforme Food Chemicals Codex (FCC)',
-      'Conforme Halal et Kasher',
-      'Fabrique a partir de coques de noix de coco durables',
-    ],
-    applicationsHeading: 'Applications Courantes',
-    applications: [
-      'Controle des odeurs de litiere et reduction de l ammoniac',
-      'Purification de l eau et filtration de l air',
-      'Foyers multi-chats et charges odorantes elevees',
-    ],
-    ctaTitle: 'Besoin d Aide Securite ou Conformite?',
-    ctaBody: 'Notre equipe peut partager des references techniques supplementaires et des conseils d utilisation.',
-    ctaButton: 'Contacter le Support',
-  },
-};
-
-
 const SPECIFICATIONS = [
   { key: 'Iodine Number', value: '>= 1000 mg/g' },
   { key: 'Moisture (as packed)', value: '<= 5%' },
@@ -148,10 +19,42 @@ const SPECIFICATIONS = [
 ];
 
 export default function SafetyPageClient() {
-  const t = useTranslations();
+  const t = useTranslations('safetyPage');
+  const tNav = useTranslations('nav');
   const locale = useLocale() as 'en' | 'fr';
-  const language = locale === 'fr' ? locale : 'en';
-  const copy = SAFETY_COPY[language as 'en' | 'fr'];
+
+  const copy = {
+    breadcrumbAria: t('breadcrumbAria'),
+    badge: t('badge'),
+    title: t('title'),
+    subtitle: t('subtitle'),
+    description: t('description'),
+    labTitle: t('labTitle'),
+    labDescription: t('labDescription'),
+    carbonTitle: t('carbonTitle'),
+    carbonDescription: t('carbonDescription'),
+    featuresHeading: t('featuresHeading'),
+    featuresSubheading: t('featuresSubheading'),
+    features: t.raw('features') as Array<{ title: string; description: string }>,
+    bestPracticesTitle: t('bestPracticesTitle'),
+    bestPracticesBody: t('bestPracticesBody'),
+    specsHeading: t('specsHeading'),
+    specsSubheading: t('specsSubheading'),
+    specsNote: t('specsNote'),
+    propertyHeader: t('propertyHeader'),
+    valueHeader: t('valueHeader'),
+    particleTitle: t('particleTitle'),
+    particlePrimary: t('particlePrimary'),
+    particleSecondary: t('particleSecondary'),
+    certificationsHeading: t('certificationsHeading'),
+    certificationsSubheading: t('certificationsSubheading'),
+    certifications: t.raw('certifications') as string[],
+    applicationsHeading: t('applicationsHeading'),
+    applications: t.raw('applications') as string[],
+    ctaTitle: t('ctaTitle'),
+    ctaBody: t('ctaBody'),
+    ctaButton: t('ctaButton')
+  };
 
   const features = [
     { icon: Leaf, ...copy.features[0] },
@@ -173,7 +76,7 @@ export default function SafetyPageClient() {
             </Link>
             <span className="flex items-center">
               <ChevronRight className="w-4 h-4 mx-1 text-gray-400 dark:text-gray-500" />
-              <span className="text-gray-500 dark:text-gray-400">{t('nav.learn')}</span>
+              <span className="text-gray-500 dark:text-gray-400">{tNav('learn')}</span>
             </span>
             <span className="flex items-center">
               <ChevronRight className="w-4 h-4 mx-1 text-gray-400 dark:text-gray-500" />
@@ -275,6 +178,9 @@ export default function SafetyPageClient() {
           <div className="bg-green-100 dark:bg-green-900/30 rounded-xl p-6 border-l-4 border-green-600 dark:border-green-400">
             <h3 className="font-bold text-gray-900 dark:text-white mb-2">{copy.bestPracticesTitle}</h3>
             <p className="text-gray-800 dark:text-gray-100 leading-relaxed">{copy.bestPracticesBody}</p>
+            <span className="block mt-3 text-xs text-green-700 dark:text-green-300">
+              Activated carbon (charcoal) is a recognized tool in pet poison management and is listed by the ASPCA Animal Poison Control Center as part of veterinary treatment protocols. (<a href="https://www.aspca.org/pet-care/animal-poison-control" target="_blank" rel="nofollow noopener noreferrer" className="underline decoration-green-600/50 dark:decoration-green-400/50 underline-offset-2 hover:text-green-700 dark:hover:text-green-300">Source: ASPCA Animal Poison Control</a>)
+            </span>
           </div>
         </Container>
       </section>
