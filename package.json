@@ -30,6 +30,7 @@
     "audit-images": "tsx scripts/images/audit-image-compliance.ts",
     "audit-images:strict": "tsx scripts/images/audit-image-compliance.ts --strict",
     "setup-image-hooks": "sh scripts/images/setup-image-hooks.sh",
+    "setup-hooks": "sh scripts/validation/setup-hooks.sh",
     "optimize-all-images": "node scripts/optimize-all-images.js",
     "optimize-performance": "node scripts/optimize-performance.js",
     "add-image-dimensions": "node scripts/add-image-dimensions.js",
