@@ -18,7 +18,7 @@ export function TrustSignalsSection() {
     {
       icon: <Leaf className="w-8 h-8" />,
       title: t('productsPage.trustSignals.ingredients.title') || "Ingredients: Coconut Shells. That's It.",
-      description: t('productsPage.trustSignals.ingredients.description') || "No fragrance to stress your cat. No chemicals to worry about. Just pure, activated carbon from coconut shells.",
+      description: t('productsPage.trustSignals.ingredients.description') || "No added fragrances or perfumes. Just pure, activated carbon from coconut shells.",
     },
     {
       icon: <Droplets className="w-8 h-8" />,

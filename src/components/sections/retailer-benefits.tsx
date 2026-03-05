@@ -7,12 +7,12 @@ export function RetailerBenefits() {
   const successMetrics =
     locale === 'fr'
       ? [
-        { value: '17', label: 'Partenaires de detail actuels' },
+        { value: '25', label: 'Partenaires de detail actuels (mars 2026)' },
         { value: '$2.3M', label: 'Revenus annuels en detail' },
         { value: '98%', label: 'Satisfaction des partenaires' },
       ]
       : [
-        { value: '17', label: 'Current Retail Partners' },
+        { value: '25', label: 'Active Retail Partners (as of Mar 2026)' },
         { value: '$2.3M', label: 'Annual Retail Revenue' },
         { value: '98%', label: 'Partner Satisfaction' },
       ];
@@ -25,8 +25,8 @@ export function RetailerBenefits() {
         </svg>
       ),
       title: t('retailers.benefits.highDemand.title') || 'High Customer Demand',
-      description: t('retailers.benefits.highDemand.description') || 'Pet owners actively seek odor solutions. Purrify addresses the #1 complaint about cat ownership - litter box odors.',
-      stats: '89% of customers repurchase within 30 days'
+      description: t('retailers.benefits.highDemand.description') || 'Pet owners actively seek odor solutions. Purrify addresses a major complaint about cat ownership: litter box odors.',
+      stats: 'High reorder rates across participating partners (Jan-Dec 2025)'
     },
     {
       icon: (

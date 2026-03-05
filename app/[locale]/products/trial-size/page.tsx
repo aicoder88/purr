@@ -26,8 +26,8 @@ export async function generateMetadata({ params }: TrialSizePageProps): Promise<
 
   const seoLocale = locale === 'fr' ? 'fr' : 'en';
   const seoMeta = getSEOMeta(seoLocale, 'products', 'trial');
-  const metadataTitle = seoMeta?.title ?? 'Free Cat Litter Odor Trial | 87% of Owners Upgrade';
-  const metadataDescription = seoMeta?.description ?? "Your litter box shouldn't smell. Ever. Water-filter grade carbon eliminates ammonia in 60 seconds. FREE trial - $4.76 shipping. See why 87% upgrade.";
+  const metadataTitle = seoMeta?.title ?? 'Free Cat Litter Odor Trial | Try Purrify';
+  const metadataDescription = seoMeta?.description ?? "Your litter box shouldn't smell. Ever. In independent bench testing, Purrify reduced airborne ammonia by up to 92% under test conditions. Free trial (shipping terms apply).";
 
   const localizedPath = locale === 'en'
     ? 'https://www.purrify.ca/products/trial-size/'
