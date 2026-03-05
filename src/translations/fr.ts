@@ -3483,7 +3483,7 @@ export const fr = {
   // Review System Component
   reviewSystem: {
     customerReviews: "Avis clients",
-    comingSoon: "Les avis clients apparaîtront ici dès que notre système d'avis sera en ligne.",
+    noReviewsYet: "Soyez le premier à partager votre expérience avec Purrify !",
     reviews: "avis",
     basedOn: "Basé sur",
     wouldRecommend: "recommanderaient",
@@ -3514,6 +3514,30 @@ export const fr = {
       usingFor: "Utilisé depuis",
       helpful: "Utile",
       recommendsProduct: "Recommande ce produit"
+    },
+    form: {
+      writeReview: "Écrire un avis",
+      yourRating: "Votre note",
+      selectRating: "Veuillez sélectionner une note",
+      name: "Votre nom",
+      email: "Courriel",
+      emailNote: "Non affiché publiquement",
+      reviewTitle: "Titre de l'avis",
+      titlePlaceholder: "Résumez votre expérience",
+      reviewContent: "Votre avis",
+      contentPlaceholder: "Qu'avez-vous aimé ou pas ? Comment Purrify a fonctionné pour vos chats ?",
+      productSize: "Taille achetée",
+      numberOfCats: "Nombre de chats",
+      usageDuration: "Durée d'utilisation",
+      durationPlaceholder: "ex. 2 semaines",
+      submit: "Soumettre l'avis",
+      cancel: "Annuler",
+      thankYou: "Merci pour votre avis !",
+      pendingModeration: "Votre avis apparaîtra après modération."
+    },
+    pagination: {
+      previous: "Précédent",
+      next: "Suivant"
     }
   },
 

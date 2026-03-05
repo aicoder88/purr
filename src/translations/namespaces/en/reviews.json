@@ -67,7 +67,7 @@
   },
   "reviewSystem": {
     "customerReviews": "Customer Reviews",
-    "comingSoon": "Customer reviews will appear here once our review system is live.",
+    "noReviewsYet": "Be the first to share your experience with Purrify!",
     "reviews": "reviews",
     "basedOn": "Based on",
     "wouldRecommend": "would recommend",
@@ -91,13 +91,37 @@
       "mostHelpful": "Most Helpful"
     },
     "review": {
-      "verifiedPurchase": "Purchase",
+      "verifiedPurchase": "Verified Purchase",
       "size": "Size",
       "cat": "cat",
       "cats": "cats",
       "usingFor": "Using for",
       "helpful": "Helpful",
       "recommendsProduct": "Recommends this product"
+    },
+    "form": {
+      "writeReview": "Write a Review",
+      "yourRating": "Your Rating",
+      "selectRating": "Please select a star rating",
+      "name": "Your Name",
+      "email": "Email",
+      "emailNote": "Not displayed publicly",
+      "reviewTitle": "Review Title",
+      "titlePlaceholder": "Summarize your experience",
+      "reviewContent": "Your Review",
+      "contentPlaceholder": "What did you like or dislike? How did Purrify work for your cats?",
+      "productSize": "Size Purchased",
+      "numberOfCats": "Number of Cats",
+      "usageDuration": "How Long Used",
+      "durationPlaceholder": "e.g., 2 weeks",
+      "submit": "Submit Review",
+      "cancel": "Cancel",
+      "thankYou": "Thank you for your review!",
+      "pendingModeration": "Your review will appear after moderation."
+    },
+    "pagination": {
+      "previous": "Previous",
+      "next": "Next"
     }
   },
   "testimonialsSection": {

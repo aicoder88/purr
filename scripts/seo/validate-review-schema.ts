@@ -8,7 +8,7 @@
  *   tsx scripts/seo/validate-review-schema.ts
  */
 
-import { useAggregateReview } from '../../src/hooks/useAggregateReview';
+import { useMultipleReviews } from '../../src/hooks/useAggregateReview';
 
 interface ValidationResult {
   product: string;
@@ -30,7 +30,8 @@ function validateReviewData(product: string, locale: string): ValidationResult {
   };
 
   try {
-    const { data, schema, displayText } = useAggregateReview(product, locale);
+    const results = useMultipleReviews([product], locale);
+    const { data, schema, displayText } = results[product];
     result.data = { data, schema, displayText };
 
     // Validate data structure

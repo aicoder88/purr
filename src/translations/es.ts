@@ -3231,7 +3231,7 @@ export const es = {
   // Review System Component
   reviewSystem: {
     customerReviews: "Reseñas de Clientes",
-    comingSoon: "Las reseñas de clientes aparecerán aquí cuando nuestro sistema de reseñas esté en funcionamiento.",
+    noReviewsYet: "¡Sé el primero en compartir tu experiencia con Purrify!",
     reviews: "reseñas",
     basedOn: "Basado en",
     wouldRecommend: "lo recomendarían",
@@ -3255,13 +3255,37 @@ export const es = {
       mostHelpful: "Más Útil"
     },
     review: {
-      verifiedPurchase: "Compra",
+      verifiedPurchase: "Compra Verificada",
       size: "Tamaño",
       cat: "gato",
       cats: "gatos",
       usingFor: "Usando durante",
       helpful: "Útil",
       recommendsProduct: "Recomienda este producto"
+    },
+    form: {
+      writeReview: "Escribir una Reseña",
+      yourRating: "Tu Calificación",
+      selectRating: "Por favor selecciona una calificación",
+      name: "Tu Nombre",
+      email: "Correo electrónico",
+      emailNote: "No se muestra públicamente",
+      reviewTitle: "Título de la Reseña",
+      titlePlaceholder: "Resume tu experiencia",
+      reviewContent: "Tu Reseña",
+      contentPlaceholder: "¿Qué te gustó o no? ¿Cómo funcionó Purrify para tus gatos?",
+      productSize: "Tamaño Comprado",
+      numberOfCats: "Número de Gatos",
+      usageDuration: "Tiempo de Uso",
+      durationPlaceholder: "ej. 2 semanas",
+      submit: "Enviar Reseña",
+      cancel: "Cancelar",
+      thankYou: "¡Gracias por tu reseña!",
+      pendingModeration: "Tu reseña aparecerá después de la moderación."
+    },
+    pagination: {
+      previous: "Anterior",
+      next: "Siguiente"
     }
   },
 

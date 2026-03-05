@@ -67,7 +67,7 @@
   },
   "reviewSystem": {
     "customerReviews": "客户评价",
-    "comingSoon": "客户评价将在我们的评价系统上线后显示在这里。",
+    "noReviewsYet": "成为第一个分享您 Purrify 使用体验的人！",
     "reviews": "条评价",
     "basedOn": "基于",
     "wouldRecommend": "会推荐",
@@ -91,13 +91,37 @@
       "mostHelpful": "最有帮助"
     },
     "review": {
-      "verifiedPurchase": "购买",
+      "verifiedPurchase": "已验证购买",
       "size": "尺寸",
       "cat": "只猫",
       "cats": "只猫",
       "usingFor": "使用时长",
       "helpful": "有帮助",
       "recommendsProduct": "推荐此产品"
+    },
+    "form": {
+      "writeReview": "撰写评价",
+      "yourRating": "您的评分",
+      "selectRating": "请选择星级评分",
+      "name": "您的姓名",
+      "email": "邮箱",
+      "emailNote": "不会公开显示",
+      "reviewTitle": "评价标题",
+      "titlePlaceholder": "总结您的体验",
+      "reviewContent": "您的评价",
+      "contentPlaceholder": "您喜欢或不喜欢什么？Purrify 对您的猫效果如何？",
+      "productSize": "购买尺寸",
+      "numberOfCats": "猫的数量",
+      "usageDuration": "使用时长",
+      "durationPlaceholder": "例如 2 周",
+      "submit": "提交评价",
+      "cancel": "取消",
+      "thankYou": "感谢您的评价！",
+      "pendingModeration": "您的评价将在审核后显示。"
+    },
+    "pagination": {
+      "previous": "上一页",
+      "next": "下一页"
     }
   },
   "testimonialsSection": {

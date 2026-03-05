@@ -207,6 +207,7 @@ model Product {
   orderItems         OrderItem[]
   retailerOrderItems RetailerOrderItem[]
   subscriptionItems  SubscriptionItem[]
+  reviews            Review[]
 
   @@index([stockQuantity, lowStockThreshold]) // For low stock queries
 }
@@ -989,6 +990,65 @@ enum PayoutStatus {
   PROCESSING  // Admin is processing
   COMPLETED   // Payout sent
   REJECTED    // Rejected by admin
+}
+
+// ===== Review System Models =====
+
+model Review {
+  id             String       @id @default(cuid())
+  productId      String
+  product        Product      @relation(fields: [productId], references: [id])
+  orderId        String?      // Link to order for verified purchase
+  // Author info (denormalized for display without joins)
+  authorName     String       // Display name
+  authorEmail    String       // For deduplication and moderation
+  // Review content
+  rating         Int          // 1-5
+  title          String
+  content        String       @db.Text
+  // Product context
+  productSize    String?      // '12g', '50g', '120g'
+  catCount       Int?
+  usageDuration  String?      // e.g., "2 weeks", "3 months"
+  wouldRecommend Boolean      @default(true)
+  // Moderation
+  status         ReviewStatus @default(PENDING)
+  moderatedAt    DateTime?
+  moderatedBy    String?
+  // Vote counts (denormalized for performance)
+  helpfulCount   Int          @default(0)
+  unhelpfulCount Int          @default(0)
+  // Relations
+  votes          ReviewVote[]
+  // Timestamps
+  createdAt      DateTime     @default(now())
+  updatedAt      DateTime     @updatedAt
+
+  @@unique([authorEmail, productId]) // One review per product per email
+  @@index([productId, status])
+  @@index([status])
+  @@index([rating])
+  @@index([createdAt])
+  @@map("reviews")
+}
+
+model ReviewVote {
+  id        String   @id @default(cuid())
+  reviewId  String
+  review    Review   @relation(fields: [reviewId], references: [id], onDelete: Cascade)
+  ipHash    String   // SHA256 of IP for deduplication (no PII stored)
+  isHelpful Boolean  // true = helpful, false = not helpful
+  createdAt DateTime @default(now())
+
+  @@unique([reviewId, ipHash]) // One vote per IP per review
+  @@index([reviewId])
+  @@map("review_votes")
+}
+
+enum ReviewStatus {
+  PENDING   // Awaiting moderation
+  APPROVED  // Visible on site
+  REJECTED  // Not shown
 }
 
 // ===== Waitlist Models =====

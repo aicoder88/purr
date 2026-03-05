@@ -2762,7 +2762,7 @@ export interface TranslationType {
   // Review System Component
   reviewSystem?: {
     customerReviews: string;
-    comingSoon: string;
+    noReviewsYet: string;
     reviews: string;
     basedOn: string;
     wouldRecommend: string;
@@ -2793,6 +2793,30 @@ export interface TranslationType {
       usingFor: string;
       helpful: string;
       recommendsProduct: string;
+    };
+    form: {
+      writeReview: string;
+      yourRating: string;
+      selectRating: string;
+      name: string;
+      email: string;
+      emailNote: string;
+      reviewTitle: string;
+      titlePlaceholder: string;
+      reviewContent: string;
+      contentPlaceholder: string;
+      productSize: string;
+      numberOfCats: string;
+      usageDuration: string;
+      durationPlaceholder: string;
+      submit: string;
+      cancel: string;
+      thankYou: string;
+      pendingModeration: string;
+    };
+    pagination: {
+      previous: string;
+      next: string;
     };
   };
 
