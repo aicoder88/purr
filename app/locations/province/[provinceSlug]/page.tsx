@@ -142,6 +142,8 @@ export async function generateStaticParams() {
   return paths;
 }
 
+export const dynamicParams = false;
+
 // Generate metadata for each province page
 export async function generateMetadata({ params }: ProvincePageProps): Promise<Metadata> {
   const { provinceSlug } = await params;

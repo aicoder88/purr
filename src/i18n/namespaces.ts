@@ -62,6 +62,7 @@ const NAMESPACE_KEY_MAP: Record<TranslationNamespace, (keyof TranslationType)[]>
     'reviewsSection',
     'freeGiveaway',
     'enhancedProductComparison',
+    'productComparison',
     'subscriptionOffer',
     'urgencyBanner',
     'agitationSection',

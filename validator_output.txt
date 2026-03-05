@@ -1,0 +1,15 @@
+🌙 Starting Dark Mode Validation V2.1 (Smart)...
+
+Improvements:
+✓ Smart Contrast: Correctly resolves Light/Dark mode active colors
+✓ Variant Awareness: Handles overrides and opacity correctly
+
+Checking 815 files...
+
+
+🌙 Dark Mode Validation Results:
+Files checked: 815
+Files with errors: 0
+Total errors: 0
+
+✅ All files pass dark mode validation!

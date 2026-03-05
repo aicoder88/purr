@@ -54,7 +54,10 @@ const nextConfig = {
     ],
   },
 
-  images,
+  images: {
+    ...images,
+    unoptimized: true,
+  },
   compress: true,
   poweredByHeader: false,
   generateEtags: true,

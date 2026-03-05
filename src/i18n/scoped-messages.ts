@@ -43,6 +43,7 @@ const SCOPE_MESSAGE_KEYS: Record<MessageScope, string[]> = {
     'homepage',
     'howItWorks',
     'maps',
+    'productComparison',
     'productsSection',
     'reviewsSection',
     'scienceSection',

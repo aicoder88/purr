@@ -34,6 +34,8 @@ export async function generateStaticParams() {
   return paths;
 }
 
+export const dynamicParams = false;
+
 // Generate metadata for each city page
 export async function generateMetadata({ params }: CityPageProps): Promise<Metadata> {
   const { citySlug } = await params;

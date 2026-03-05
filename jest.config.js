@@ -30,6 +30,9 @@ const customJestConfig = {
     '/scripts/',
     '/e2e/',
   ],
+  transformIgnorePatterns: [
+    '/node_modules/(?!(@upstash\\/redis|@upstash\\/ratelimit)\\/)',
+  ],
   moduleFileExtensions: ['ts', 'tsx', 'js', 'jsx', 'json'],
 }
 

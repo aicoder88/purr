@@ -23,6 +23,17 @@ interface WpPost {
   };
 }
 
+import { unstable_cache } from 'next/cache';
+
+const getCachedPosts = unstable_cache(
+  async (locale: string) => {
+    const store = new ContentStore();
+    return store.getAllPosts(locale, false);
+  },
+  ['blog-posts-filesystem'],
+  { revalidate: 3600 }
+);
+
 export async function GET(req: Request): Promise<Response> {
   const { searchParams } = new URL(req.url);
   const limit = searchParams.get('limit');
@@ -36,8 +47,7 @@ export async function GET(req: Request): Promise<Response> {
     // Prefer filesystem-backed content (content/blog/{locale}) so blog cards always
     // use each post's featured image (canonical for hero/cards/social sharing).
     try {
-      const store = new ContentStore();
-      const posts = await store.getAllPosts(locale, false);
+      const posts = await getCachedPosts(locale);
       if (posts.length > 0) {
         return Response.json(
           posts.slice(0, take).map((post) => ({

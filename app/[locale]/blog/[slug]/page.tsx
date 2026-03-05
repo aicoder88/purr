@@ -74,6 +74,8 @@ export async function generateStaticParams() {
   return params;
 }
 
+export const dynamicParams = false;
+
 // Generate metadata for each localized blog post
 export async function generateMetadata({ params }: BlogPostPageProps): Promise<Metadata> {
   const { locale, slug } = await params;
