@@ -35,6 +35,18 @@ type PendingTool = {
   inputChunks: string[];
 };
 
+function getChatModelCandidates(): string[] {
+  const candidates = [
+    process.env.CHAT_ANTHROPIC_MODEL,
+    process.env.BLOG_ANTHROPIC_MODEL,
+    'claude-haiku-4-5',
+    'claude-3-5-haiku-latest',
+    'claude-3-5-sonnet-20241022',
+  ];
+
+  return [...new Set(candidates.filter((candidate): candidate is string => typeof candidate === 'string' && candidate.trim().length > 0))];
+}
+
 function parseToolInput(name: string, input: unknown): Record<string, unknown> | null {
   if (name === 'recommend_product') {
     const parsed = recommendProductInputSchema.safeParse(input);
@@ -103,26 +115,9 @@ export async function POST(request: NextRequest) {
   }
 
   const anthropic = new Anthropic({ apiKey: anthropicApiKey });
-  let anthropicStream: ReturnType<typeof anthropic.messages.stream>;
-
-  try {
-    anthropicStream = anthropic.messages.stream({
-      model: 'claude-haiku-4-5-20251001',
-      max_tokens: 300,
-      system: buildChatSystemPrompt(validatedBody.locale),
-      tools: CHAT_TOOLS,
-      messages: validatedBody.messages,
-    });
-  } catch (error) {
-    console.error('Chat stream start failed:', error);
-    return NextResponse.json(
-      { error: 'Unable to start chat stream.' },
-      { status: 500, headers: rateLimitHeaders }
-    );
-  }
+  const modelCandidates = getChatModelCandidates();
 
   const encoder = new TextEncoder();
-  const pendingTools = new Map<number, PendingTool>();
 
   const stream = new ReadableStream({
     async start(controller) {
@@ -131,55 +126,90 @@ export async function POST(request: NextRequest) {
       };
 
       try {
-        for await (const event of anthropicStream) {
-          if (event.type === 'content_block_start' && event.content_block.type === 'tool_use') {
-            pendingTools.set(event.index, {
-              name: event.content_block.name,
-              initialInput: event.content_block.input,
-              inputChunks: [],
+        let streamFinished = false;
+        let streamFailedError: unknown = null;
+
+        for (const model of modelCandidates) {
+          const pendingTools = new Map<number, PendingTool>();
+          let emittedOutput = false;
+
+          try {
+            const anthropicStream = anthropic.messages.stream({
+              model,
+              max_tokens: 300,
+              system: buildChatSystemPrompt(validatedBody.locale),
+              tools: CHAT_TOOLS,
+              messages: validatedBody.messages,
             });
-            continue;
-          }
 
-          if (event.type === 'content_block_delta') {
-            if (event.delta.type === 'text_delta') {
-              pushEvent({ type: 'text_delta', text: event.delta.text });
-              continue;
-            }
+            for await (const event of anthropicStream) {
+              if (event.type === 'content_block_start' && event.content_block.type === 'tool_use') {
+                pendingTools.set(event.index, {
+                  name: event.content_block.name,
+                  initialInput: event.content_block.input,
+                  inputChunks: [],
+                });
+                continue;
+              }
 
-            if (event.delta.type === 'input_json_delta') {
-              const pendingTool = pendingTools.get(event.index);
-              if (pendingTool) {
-                pendingTool.inputChunks.push(event.delta.partial_json);
+              if (event.type === 'content_block_delta') {
+                if (event.delta.type === 'text_delta') {
+                  emittedOutput = true;
+                  pushEvent({ type: 'text_delta', text: event.delta.text });
+                  continue;
+                }
+
+                if (event.delta.type === 'input_json_delta') {
+                  const pendingTool = pendingTools.get(event.index);
+                  if (pendingTool) {
+                    pendingTool.inputChunks.push(event.delta.partial_json);
+                  }
+                }
+                continue;
+              }
+
+              if (event.type === 'content_block_stop') {
+                const pendingTool = pendingTools.get(event.index);
+                if (!pendingTool) {
+                  continue;
+                }
+
+                const parsedInput = mergeToolInput(pendingTool);
+                if (parsedInput) {
+                  emittedOutput = true;
+                  pushEvent({
+                    type: 'tool_use',
+                    tool: {
+                      name: pendingTool.name,
+                      input: parsedInput,
+                    },
+                  });
+                }
+
+                pendingTools.delete(event.index);
+                continue;
+              }
+
+              if (event.type === 'message_stop') {
+                emittedOutput = true;
+                pushEvent({ type: 'message_stop' });
               }
             }
-            continue;
-          }
 
-          if (event.type === 'content_block_stop') {
-            const pendingTool = pendingTools.get(event.index);
-            if (!pendingTool) {
-              continue;
+            streamFinished = true;
+            streamFailedError = null;
+            break;
+          } catch (error) {
+            streamFailedError = error;
+            console.error(`Chat stream failed for model ${model}:`, error);
+            if (emittedOutput) {
+              break;
             }
-
-            const parsedInput = mergeToolInput(pendingTool);
-            if (parsedInput) {
-              pushEvent({
-                type: 'tool_use',
-                tool: {
-                  name: pendingTool.name,
-                  input: parsedInput,
-                },
-              });
-            }
-
-            pendingTools.delete(event.index);
-            continue;
           }
+        }
 
-          if (event.type === 'message_stop') {
-            pushEvent({ type: 'message_stop' });
-          }
+        if (!streamFinished) {
+          throw streamFailedError ?? new Error('chat_stream_failed');
         }
       } catch (error) {
         console.error('Chat stream failed:', error);
