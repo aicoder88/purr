@@ -17,10 +17,10 @@ export const metadata: Metadata = {
   alternates: {
     canonical: 'https://www.purrify.ca/learn/solutions/litter-box-smell-elimination/',
     languages: {
-      'en-CA': 'https://www.purrify.ca/learn/solutions/litter-box-smell-elimination',
-      'fr-CA': 'https://www.purrify.ca/fr/learn/solutions/litter-box-smell-elimination',
-      'en-US': 'https://www.purrify.ca/learn/solutions/litter-box-smell-elimination',
-      'x-default': 'https://www.purrify.ca/learn/solutions/litter-box-smell-elimination',
+      'en-CA': 'https://www.purrify.ca/learn/solutions/litter-box-smell-elimination/',
+      'fr-CA': 'https://www.purrify.ca/fr/learn/solutions/litter-box-smell-elimination/',
+      'en-US': 'https://www.purrify.ca/learn/solutions/litter-box-smell-elimination/',
+      'x-default': 'https://www.purrify.ca/learn/solutions/litter-box-smell-elimination/',
     },
   },
   openGraph: {
@@ -56,7 +56,7 @@ const articleSchema = {
   description: pageDescription,
   image: heroImage,
   datePublished: '2024-01-15T12:00:00Z',
-  dateModified: new Date().toISOString(),
+  dateModified: '2026-03-04T12:00:00Z',
   author: {
     '@type': 'Organization',
     name: SITE_NAME,

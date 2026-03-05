@@ -5,8 +5,8 @@ import { SITE_NAME } from '@/lib/constants';
 
 export const metadata: Metadata = {
   title: `Is Cat Litter Ammonia Dangerous? Health Guide | ${SITE_NAME}`,
-  description: "That burning sensation when you scoop? That's ammonia. At high levels, it's harmful to you AND your cat. Here's when to worry—and how to fix it fast.",
-  keywords: ['ammonia cat litter dangerous', 'cat litter ammonia health risks', 'is ammonia from cat litter harmful', 'cat litter fumes dangerous'],
+  description: "Cat litter ammonia health risks: that burning smell isn't just unpleasant. At 25+ ppm it irritates airways — here's when to worry and what actually fixes it.",
+  keywords: ['cat litter ammonia health risks', 'ammonia cat litter dangerous', 'is ammonia from cat litter harmful', 'cat litter fumes dangerous', 'ammonia exposure levels ppm', 'cat litter respiratory problems', 'ammonia cat litter symptoms', 'litter box ammonia reduction', 'safe ammonia level cats', 'cat litter babies health risk', 'baking soda ammonia cat litter'],
   alternates: {
     canonical: 'https://www.purrify.ca/learn/cat-litter-ammonia-health-risks/',
     languages: {
@@ -46,7 +46,7 @@ const articleSchema = {
   url: 'https://www.purrify.ca/learn/cat-litter-ammonia-health-risks/',
   inLanguage: 'en-CA',
   headline: 'Is Ammonia From Cat Litter Dangerous? Safe Levels Explained',
-  description: "That burning sensation when you scoop? That's ammonia. At high levels, it's harmful to you AND your cat. Here's when to worry—and how to fix it fast.",
+  description: "Cat litter ammonia health risks: that burning smell isn't just unpleasant. At 25+ ppm it irritates airways — here's when to worry and what actually fixes it.",
   image: 'https://www.purrify.ca/optimized/blog/ammonia-hero.webp',
   datePublished: '2025-01-22T10:00:00Z',
   dateModified: new Date().toISOString(),
@@ -70,7 +70,7 @@ const articleSchema = {
     '@id': 'https://www.purrify.ca/learn/cat-litter-ammonia-health-risks',
   },
   articleSection: 'Pet Health & Safety',
-  keywords: ['ammonia cat litter', 'cat litter health risks', 'ammonia exposure safety'],
+  keywords: ['cat litter ammonia health risks', 'ammonia exposure levels ppm', 'cat litter respiratory problems', 'ammonia cat litter dangerous', 'litter box ammonia reduction', 'safe ammonia level cats', 'baking soda ammonia myth', 'activated carbon ammonia'],
 };
 
 // Client component for the interactive parts

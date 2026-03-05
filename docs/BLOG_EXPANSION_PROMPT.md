@@ -1,4 +1,4 @@
-# Blog SEO Expansion — Master Prompt v2
+# Blog SEO Expansion — Master Prompt 
 
 ---
 
