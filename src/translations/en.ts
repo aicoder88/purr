@@ -2083,6 +2083,22 @@ export const en = {
     moneyBackGuarantee: "30-Day Money-Back Guarantee"
   },
 
+  chat: {
+    fabLabel: "Need help choosing?",
+    fabAriaLabel: "Open chat assistant",
+    panelTitle: "Purrify Freshness Advisor",
+    closeAriaLabel: "Close chat",
+    inputPlaceholder: "Ask about odor control...",
+    sendAriaLabel: "Send message",
+    greeting: "Hi! I help cat owners find the right Purrify size. How many cats do you have, and how is the litter smell situation?",
+    errorMessage: "Something went wrong. Please try again.",
+    shopNow: "Shop Now",
+    tryAutoship: "Try Autoship",
+    readArticle: "Read Article",
+    poweredBy: "Powered by AI",
+    typingLabel: "Advisor is typing..."
+  },
+
   // Exit Intent Popup
   exitPopup: {
     title: "Wait! Don't leave empty-handed",

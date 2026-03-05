@@ -1126,6 +1126,22 @@ export const fr = {
     moneyBackGuarantee: "Garantie de remboursement de 30 jours"
   },
 
+  chat: {
+    fabLabel: "Besoin d'aide?",
+    fabAriaLabel: "Ouvrir l'assistant de chat",
+    panelTitle: "Conseiller Fraicheur Purrify",
+    closeAriaLabel: "Fermer le chat",
+    inputPlaceholder: "Posez votre question sur les odeurs...",
+    sendAriaLabel: "Envoyer le message",
+    greeting: "Bonjour! Je vous aide a trouver le bon format Purrify. Combien de chats avez-vous, et comment sont les odeurs de litiere?",
+    errorMessage: "Un probleme est survenu. Veuillez reessayer.",
+    shopNow: "Voir le produit",
+    tryAutoship: "Essayer l'abonnement",
+    readArticle: "Lire l'article",
+    poweredBy: "Propulse par IA",
+    typingLabel: "Le conseiller ecrit..."
+  },
+
   // Exit Intent Popup
   exitPopup: {
     title: "Attendez ! Ne partez pas les mains vides",

@@ -9,6 +9,7 @@ import { SITE_NAME, SITE_DESCRIPTION, SITE_URL } from '@/lib/constants';
 import { Analytics } from '@vercel/analytics/react';
 import { SpeedInsights } from '@vercel/speed-insights/next';
 import { MetaPixel } from '@/components/analytics/MetaPixel';
+import { ChatWidgetMount } from '@/components/chat/ChatWidgetMount';
 
 const inter = Inter({
   subsets: ['latin'],
@@ -44,6 +45,7 @@ const gtmId = process.env.NODE_ENV === 'test'
   ? normalizedGtmId
   : (normalizedGtmId ?? DEFAULT_GTM_ID);
 const ahrefsSiteVerification = normalizeMetaValue(process.env.NEXT_PUBLIC_AHREFS_SITE_VERIFICATION);
+const hasAnthropicApiKey = Boolean(process.env.ANTHROPIC_API_KEY);
 
 const SERVER_ONLY_NAMESPACES = new Set([
   'privacyPolicy',
@@ -72,6 +74,7 @@ const CLIENT_MESSAGE_KEYS = new Set<string>([
   'benefitsSection',
   'calculatorSection',
   'cityPage',
+  'chat',
   'contact',
   'contactSection',
   'cta',
@@ -328,6 +331,7 @@ export default async function RootLayout({
           <AppLayout>
             {children}
           </AppLayout>
+          {hasAnthropicApiKey ? <ChatWidgetMount /> : null}
           <Analytics />
           <SpeedInsights />
           <MetaPixel />

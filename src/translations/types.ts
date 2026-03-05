@@ -1452,6 +1452,22 @@ export interface TranslationType {
     moneyBackGuarantee: string;
   };
 
+  chat: {
+    fabLabel: string;
+    fabAriaLabel: string;
+    panelTitle: string;
+    closeAriaLabel: string;
+    inputPlaceholder: string;
+    sendAriaLabel: string;
+    greeting: string;
+    errorMessage: string;
+    shopNow: string;
+    tryAutoship: string;
+    readArticle: string;
+    poweredBy: string;
+    typingLabel: string;
+  };
+
   // Exit Intent Popup
   exitPopup?: {
     title: string;
