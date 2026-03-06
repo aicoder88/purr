@@ -37,8 +37,6 @@ export async function generateMetadata({ params }: LocalizedAmmoniaSciencePagePr
       canonical: canonicalPath,
       languages: {
         'en-CA': `${baseUrl}/learn/ammonia-science/`,
-        'fr-CA': `${baseUrl}/fr/learn/ammonia-science/`,
-        'en-US': `${baseUrl}/learn/ammonia-science/`,
         'x-default': `${baseUrl}/learn/ammonia-science/`,
       },
     },

@@ -211,7 +211,7 @@ export const getFormattedBusinessHours = (locale: 'en' | 'fr' = 'en') => {
 // Generate structured data for LocalBusiness
 export const getLocalBusinessStructuredData = (location?: BusinessLocation) => {
   const loc = location || getPrimaryLocation();
-  
+
   // Ensure all address fields are present with fallbacks to prevent "1 field" errors
   const address = loc?.address || {
     streetAddress: '109-17680 Rue Charles',
@@ -261,7 +261,8 @@ export const getLocalBusinessStructuredData = (location?: BusinessLocation) => {
     })),
     paymentAccepted: BUSINESS_PROFILE.paymentMethods,
     currenciesAccepted: BUSINESS_PROFILE.currencies,
-    availableLanguage: BUSINESS_PROFILE.languages
+    availableLanguage: BUSINESS_PROFILE.languages,
+    priceRange: '$$'
   };
 };
 

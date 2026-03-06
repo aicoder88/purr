@@ -37,8 +37,6 @@ export async function generateMetadata({ params }: LocalizedGlossaryPageProps): 
       canonical: canonicalPath,
       languages: {
         'en-CA': `${baseUrl}/learn/glossary/`,
-        'fr-CA': `${baseUrl}/fr/learn/glossary/`,
-        'en-US': `${baseUrl}/learn/glossary/`,
         'x-default': `${baseUrl}/learn/glossary/`,
       },
     },

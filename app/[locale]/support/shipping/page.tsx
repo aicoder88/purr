@@ -36,8 +36,6 @@ export async function generateMetadata({ params }: LocalizedShippingPageProps): 
       canonical: canonicalPath,
       languages: {
         'en-CA': `${baseUrl}/support/shipping/`,
-        'fr-CA': `${baseUrl}/fr/support/shipping/`,
-        'en-US': `${baseUrl}/support/shipping/`,
         'x-default': `${baseUrl}/support/shipping/`,
       },
     },

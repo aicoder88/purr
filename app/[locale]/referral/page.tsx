@@ -36,8 +36,6 @@ export async function generateMetadata({ params }: LocalizedReferralPageProps): 
       canonical: canonicalPath,
       languages: {
         'en-CA': `${baseUrl}/referral/`,
-        'fr-CA': `${baseUrl}/fr/referral/`,
-        'en-US': `${baseUrl}/referral/`,
         'x-default': `${baseUrl}/referral/`,
       },
     },

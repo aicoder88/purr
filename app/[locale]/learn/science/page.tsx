@@ -37,8 +37,6 @@ export async function generateMetadata({ params }: LocalizedSciencePageProps): P
       canonical: canonicalPath,
       languages: {
         'en-CA': `${baseUrl}/learn/science/`,
-        'fr-CA': `${baseUrl}/fr/learn/science/`,
-        'en-US': `${baseUrl}/learn/science/`,
         'x-default': `${baseUrl}/learn/science/`,
       },
     },

@@ -2240,7 +2240,7 @@ export const en = {
       badge: "#1 Pet Store Partner in Canada",
       title: "Partner with Purrify",
       subtitle: "Wholesale Success",
-      description: "Join hundreds of pet stores and retailers offering Canada's #1 activated carbon cat litter additive. Proven sales, loyal customers, marketing support...",
+      description: "Join hundreds of independent pet stores, veterinary clinics, and major retailers offering Canada's #1 activated carbon cat litter additive. Our retail partners enjoy proven sales, incredibly loyal customers, and comprehensive marketing support. We provide full point-of-sale materials, product training for your staff, and dedicated account management to ensure your success with Purrify. Enhance your store's odor control section with a premium, high-margin solution that customers actively seek out and repurchase monthly.",
       cta: {
         primary: "View Wholesale Pricing",
         secondary: "Become a Partner",
@@ -2680,7 +2680,7 @@ export const en = {
     hero: {
       badge: "Join Our Affiliate Program",
       title: "Earn Monthly Income With Purrify",
-      subtitle: "Refer cat owners to Purrify and earn 30% of monthly recurring income for life.",
+      subtitle: "Refer cat owners to Purrify and earn 30% of monthly recurring income for life. Our affiliate program is designed for cat bloggers, influencers, veterinarians, and passionate cat parents who want to recommend a product that actually works. We provide all the marketing materials, tracking software, and support you need to build a substantial passive income stream while helping other cat owners solve their litter box odor problems permanently.",
       primaryCTA: "Become An Affiliate",
       secondaryCTA: "See Earnings Calculator"
     },

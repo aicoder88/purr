@@ -92,7 +92,7 @@ export function BlogPreview() {
     >
       <Container>
         <div className="max-w-3xl mx-auto text-center mb-16">
-          <div className="inline-block px-4 py-1 bg-amber-100 dark:bg-amber-900/30 rounded-full text-amber-700 dark:text-amber-300 font-medium text-sm mb-4">
+          <div className="inline-block px-4 py-1 bg-gradient-to-r from-brand-yellow/25 to-brand-pink/25 rounded-full border border-brand-pink/30 text-gray-900 dark:text-gray-100 font-medium text-sm mb-4">
             {t.blogSection.catCareTips}
           </div>
           <h2 className="font-heading text-3xl md:text-5xl font-bold tracking-tight mb-4 text-gray-900 dark:text-white">
@@ -129,7 +129,7 @@ export function BlogPreview() {
                       quality={75}
                     />
                   </div>
-                  <div className="absolute top-3 right-3 sm:top-4 sm:right-4 bg-amber-500 dark:bg-amber-300 px-2 py-1 sm:px-3 sm:py-1 rounded-full shadow-md text-xs text-gray-50 dark:text-gray-900 font-medium">
+                  <div className="absolute top-3 right-3 sm:top-4 sm:right-4 bg-gradient-to-r from-brand-yellow to-brand-pink px-2 py-1 sm:px-3 sm:py-1 rounded-full shadow-md text-xs text-gray-950 font-medium">
                     {t.blogSection.newPost}
                   </div>
                 </div>
@@ -173,7 +173,7 @@ export function BlogPreview() {
         <div className="mt-16 text-center">
           <Button
             asChild
-            className="bg-gray-900 hover:bg-gray-800 dark:bg-gray-100 dark:hover:bg-gray-200 text-gray-50 dark:text-gray-900 font-semibold py-4 px-8 rounded-full transition-colors duration-300 border-0"
+            className="bg-gradient-to-r from-brand-yellow to-brand-pink hover:from-brand-yellow/90 hover:to-brand-pink/90 text-gray-950 font-semibold py-4 px-8 rounded-full transition-all duration-300 border-0"
           >
             <Link href={locale === 'fr' ? '/fr/blog' : '/blog'}>
               {t.blogSection.viewAllArticles}

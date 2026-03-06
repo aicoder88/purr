@@ -1670,7 +1670,7 @@ export const fr = {
       badge: "Partenariat d'affaires",
       title: "Devenez partenaire de Purrify",
       subtitle: "Succès en gros",
-      description: "Rejoignez des centaines d'animaleries qui offrent l'additif au charbon actif #1 au Canada. Ventes prouvées, clients fidèles et support marketing inclus.",
+      description: "Rejoignez des centaines d'animaleries indépendantes, de cliniques vétérinaires et de grands détaillants offrant l'additif pour litière de chat au charbon actif #1 au Canada. Nos partenaires détaillants bénéficient de ventes prouvées, de clients incroyablement fidèles et d'un support marketing complet. Nous fournissons du matériel de point de vente complet, une formation sur les produits pour votre personnel et une gestion de compte dédiée pour assurer votre succès avec Purrify. Améliorez la section contrôle des odeurs de votre magasin avec une solution premium à forte marge que les clients recherchent activement et rachètent chaque mois.",
       cta: {
         primary: "Voir les tarifs de gros",
         secondary: "Devenir partenaire",
@@ -2441,7 +2441,7 @@ export const fr = {
     hero: {
       badge: "Rejoignez Notre Programme d'Affiliation",
       title: "Gagnez un Revenu Mensuel Avec Purrify",
-      subtitle: "Recommandez Purrify aux propriétaires de chats et gagnez 30% de revenu récurrent mensuel à vie.",
+      subtitle: "Recommandez Purrify aux propriétaires de chats et gagnez 30% de revenu récurrent mensuel à vie. Notre programme d'affiliation est conçu pour les blogueurs félins, les influenceurs, les vétérinaires et les parents de chats passionnés qui souhaitent recommander un produit qui fonctionne vraiment. Nous fournissons tout le matériel marketing, les logiciels de suivi et le soutien dont vous avez besoin pour générer un revenu passif substantiel tout en aidant d'autres propriétaires de chats à résoudre définitivement leurs problèmes d'odeur de litière.",
       primaryCTA: "Devenez Affilié",
       secondaryCTA: "Voir le Calculateur de Revenus"
     },

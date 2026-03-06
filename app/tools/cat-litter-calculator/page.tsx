@@ -62,6 +62,7 @@ const calculatorSchema = {
       applicationCategory: 'UtilityApplication',
       operatingSystem: 'Any',
       url: 'https://www.purrify.ca/tools/cat-litter-calculator/',
+      image: 'https://www.purrify.ca/optimized/logos/purrify-logo.png',
       description: 'Free interactive calculator comparing annual cat litter costs across clay, silica, tofu, wood, and natural litter types. Includes Purrify savings estimation.',
       offers: {
         '@type': 'Offer',

@@ -21,9 +21,9 @@ export function HomepageTestimonials() {
     <section className="py-14 md:py-16 bg-[linear-gradient(180deg,#fffdf8_0%,#fff8ee_100%)] dark:bg-[linear-gradient(180deg,#030712_0%,#111827_100%)]">
       <Container>
         <div className="text-center mb-10">
-          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/90 dark:bg-gray-900/80 border border-amber-200 dark:border-gray-700 mb-5">
+          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-gradient-to-r from-brand-yellow/25 to-brand-pink/25 border border-brand-pink/30 mb-5">
             <Star className="w-4 h-4 text-yellow-500 dark:text-yellow-400 fill-yellow-500 dark:fill-yellow-400" />
-            <span className="text-amber-700 dark:text-amber-300 font-semibold text-sm">{t('customerLove')}</span>
+            <span className="text-gray-900 dark:text-gray-100 font-semibold text-sm">{t('customerLove')}</span>
           </div>
           <h2 className="font-heading text-3xl md:text-4xl font-bold text-gray-900 dark:text-white">
             {t('littersOfLove')}

@@ -108,7 +108,7 @@ export const getLocalizedUrl = (path: string, localeInput: string) => {
   const localePrefix = locale === 'en' ? '' : `/${locale}`;
 
   if (normalizedPath === '/') {
-    return `${baseUrl}/`;
+    return `${baseUrl}${localePrefix}/`;
   }
 
   return `${baseUrl}${localePrefix}${normalizedPath.replace(/^\/(en|fr)(\/|$)/, '/')}`;

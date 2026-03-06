@@ -37,8 +37,6 @@ export async function generateMetadata({ params }: LocalizedArmAndHammerPageProp
       canonical: canonicalPath,
       languages: {
         'en-CA': `${baseUrl}/learn/alternatives/arm-and-hammer-cat-litter-deodorizer-alternative/`,
-        'fr-CA': `${baseUrl}/fr/learn/alternatives/arm-and-hammer-cat-litter-deodorizer-alternative/`,
-        'en-US': `${baseUrl}/learn/alternatives/arm-and-hammer-cat-litter-deodorizer-alternative/`,
         'x-default': `${baseUrl}/learn/alternatives/arm-and-hammer-cat-litter-deodorizer-alternative/`,
       },
     },

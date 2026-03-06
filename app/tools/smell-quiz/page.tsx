@@ -69,6 +69,7 @@ const smellQuizSchema = {
       applicationCategory: 'UtilityApplication',
       operatingSystem: 'Any',
       url: 'https://www.purrify.ca/tools/smell-quiz/',
+      image: 'https://www.purrify.ca/optimized/logos/purrify-logo.png',
       description:
         'Interactive cat litter odor-risk quiz with score-based product recommendations for single and multi-cat homes.',
       offers: {

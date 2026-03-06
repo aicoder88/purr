@@ -37,8 +37,6 @@ export async function generateMetadata({ params }: LocalizedSafetyPageProps): Pr
       canonical: canonicalPath,
       languages: {
         'en-CA': `${baseUrl}/learn/safety/`,
-        'fr-CA': `${baseUrl}/fr/learn/safety/`,
-        'en-US': `${baseUrl}/learn/safety/`,
         'x-default': `${baseUrl}/learn/safety/`,
       },
     },

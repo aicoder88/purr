@@ -37,8 +37,6 @@ export async function generateMetadata({ params }: LocalizedFAQPageProps): Promi
       canonical: canonicalPath,
       languages: {
         'en-CA': `${baseUrl}/learn/faq/`,
-        'fr-CA': `${baseUrl}/fr/learn/faq/`,
-        'en-US': `${baseUrl}/learn/faq/`,
         'x-default': `${baseUrl}/learn/faq/`,
       },
     },

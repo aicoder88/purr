@@ -2,6 +2,8 @@ import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 import Link from 'next/link';
 import Image from 'next/image';
+import fs from 'node:fs';
+import path from 'node:path';
 import { Container } from '@/components/ui/container';
 import { RelatedContent } from '@/components/seo/RelatedContent';
 import { ContentStore } from '@/lib/blog/content-store';
@@ -33,6 +35,61 @@ const getBlogBasePath = (locale: string) => (
 const getBlogPostPath = (locale: string, slug: string, trailingSlash = false) => (
   `${getBlogBasePath(locale)}/${slug}${trailingSlash ? '/' : ''}`
 );
+
+type BlogLocale = 'en' | 'fr';
+const blogSlugsByLocale: Partial<Record<BlogLocale, Set<string>>> = {};
+
+const getBlogSlugs = (locale: BlogLocale): Set<string> => {
+  const cached = blogSlugsByLocale[locale];
+  if (cached) {
+    return cached;
+  }
+
+  const dir = path.join(process.cwd(), 'content', 'blog', locale);
+  const slugs = new Set<string>();
+
+  try {
+    for (const filename of fs.readdirSync(dir)) {
+      if (!filename.endsWith('.json')) {
+        continue;
+      }
+      slugs.add(filename.replace('.json', ''));
+    }
+  } catch (error) {
+    console.error(`Error reading blog slugs for locale ${locale}:`, error);
+  }
+
+  blogSlugsByLocale[locale] = slugs;
+  return slugs;
+};
+
+const normalizeTranslatedSlug = (value: string | undefined): string | null => {
+  if (!value) {
+    return null;
+  }
+
+  const trimmed = value.trim();
+  if (!trimmed) {
+    return null;
+  }
+
+  const withoutOrigin = trimmed.replace(/^https?:\/\/[^/]+/i, '');
+  const withoutBlogPrefix = withoutOrigin
+    .replace(/^\/?(?:en|fr)(?:-[a-z]{2})?\/blog\//i, '')
+    .replace(/^\/?blog\//i, '');
+  const slug = withoutBlogPrefix.replace(/^\/+|\/+$/g, '');
+
+  return /^[a-z0-9-]+$/.test(slug) ? slug : null;
+};
+
+const getValidTranslatedSlug = (locale: BlogLocale, value: string | undefined): string | null => {
+  const normalizedSlug = normalizeTranslatedSlug(value);
+  if (!normalizedSlug) {
+    return null;
+  }
+
+  return getBlogSlugs(locale).has(normalizedSlug) ? normalizedSlug : null;
+};
 
 const buildDistinctMetaTitle = (post: { title: string; seoTitle?: string }) => {
   const rawMetaTitle = post.seoTitle || post.title;
@@ -103,16 +160,23 @@ export async function generateMetadata({ params }: BlogPostPageProps): Promise<M
   // Each locale should have its own self-referencing canonical URL
   const canonicalSlugPath = `${SITE_URL}${getBlogPostPath(locale, slug, true)}`;
 
-  // Build language alternates for hreflang
-  // fr-CA always included (even if translation doesn't exist, per hreflang spec)
-  // en-US intentionally omitted — blog posts have no distinct US landing page
-  const enUrl = `${SITE_URL}${getBlogPostPath('en', slug, true)}`;
-  const frUrl = `${SITE_URL}${getBlogPostPath('fr', slug, true)}`;
+  const fallbackEnSlug = getBlogSlugs('en').has(slug) ? slug : null;
+  const enSlug = post.locale === 'en'
+    ? slug
+    : getValidTranslatedSlug('en', post.translations?.en) ?? fallbackEnSlug ?? slug;
+
+  const translatedFrSlug = getValidTranslatedSlug('fr', post.translations?.fr);
+  const frSlug = translatedFrSlug ?? (locale === 'fr' && getBlogSlugs('fr').has(slug) ? slug : null);
+
+  // Build language alternates for hreflang using only valid slugs
   const languages: Record<string, string> = {
-    'en-CA': enUrl,
-    'fr-CA': frUrl,
-    'x-default': enUrl,
+    'en-CA': `${SITE_URL}${getBlogPostPath('en', enSlug, true)}`,
+    'x-default': `${SITE_URL}${getBlogPostPath('en', enSlug, true)}`,
   };
+
+  if (frSlug) {
+    languages['fr-CA'] = `${SITE_URL}${getBlogPostPath('fr', frSlug, true)}`;
+  }
 
   return {
     title: metaTitle,
@@ -180,6 +244,7 @@ interface BlogPost {
   citations?: DataBlogPost['citations'];
   categories?: string[];
   tags?: string[];
+  translations?: Record<string, string>;
 }
 
 async function getPost(slug: string, locale: string): Promise<BlogPost | null> {
@@ -212,6 +277,7 @@ async function getPost(slug: string, locale: string): Promise<BlogPost | null> {
         canonicalUrl: blogPost.seo?.canonical || undefined,
         seoTitle: blogPost.seo?.title || undefined,
         seoDescription: blogPost.seo?.description || undefined,
+        translations: blogPost.translations,
         howTo: (blogPost as unknown as { howTo?: BlogPost['howTo'] }).howTo ?? null,
         faq: blogPost.faq ?? null,
         citations: blogPost.citations ?? null,

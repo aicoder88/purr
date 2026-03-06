@@ -21,6 +21,7 @@ import {
   generateHomepageSchema,
   getLocalizedKeywords,
   normalizeLocale,
+  getLocalizedUrl,
 } from '@/lib/seo-utils';
 import { defaultLocale } from '@/i18n/config';
 import type { Currency } from '@/lib/geo/currency-detector';
@@ -43,7 +44,7 @@ export async function generateMetadata(): Promise<Metadata> {
 
   // Build canonical and alternate URLs
   const baseUrl = 'https://www.purrify.ca';
-  const canonicalUrl = `${baseUrl}/`;
+  const canonicalUrl = getLocalizedUrl('/', defaultLocale);
 
   // Convert language alternates to Next.js format
   const alternates: Record<string, string> = {

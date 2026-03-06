@@ -42,9 +42,9 @@ export function ScienceSection() {
       <Container>
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 md:gap-10 items-start">
           <div className="lg:col-span-7">
-            <div className="inline-flex items-center gap-2 rounded-full border border-gray-200 dark:border-gray-700 bg-gray-50 dark:bg-gray-900 px-4 py-1.5 mb-4">
-              <IconSciencePores className="w-4 h-4 text-gray-700 dark:text-gray-300" />
-              <span className="text-sm font-medium text-gray-700 dark:text-gray-300">{t("scienceSection.badge")}</span>
+            <div className="inline-flex items-center gap-2 rounded-full border border-brand-pink/30 bg-gradient-to-r from-brand-yellow/25 to-brand-pink/25 px-4 py-1.5 mb-4">
+              <IconSciencePores className="w-4 h-4 text-gray-800 dark:text-gray-100" />
+              <span className="text-sm font-medium text-gray-900 dark:text-gray-100">{t("scienceSection.badge")}</span>
             </div>
 
             <h2 className="font-heading text-3xl md:text-4xl font-semibold tracking-tight text-gray-900 dark:text-white leading-tight">
@@ -84,7 +84,7 @@ export function ScienceSection() {
             </div>
 
             <div className="mt-6 flex flex-wrap items-center gap-3">
-              <Button asChild className="rounded-full bg-gray-900 hover:bg-gray-800 text-gray-50 dark:bg-gray-100 dark:hover:bg-gray-200 dark:text-gray-900">
+              <Button asChild className="rounded-full bg-gradient-to-r from-brand-yellow to-brand-pink hover:from-brand-yellow/90 hover:to-brand-pink/90 text-gray-950 border-0">
                 <Link href={`${locale === "fr" ? "/fr" : ""}/learn/science`}>
                   {t("scienceSection.learnMore")} <ArrowRight className="w-4 h-4 ml-2" />
                 </Link>

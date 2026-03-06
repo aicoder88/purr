@@ -37,8 +37,6 @@ export async function generateMetadata({ params }: LocalizedHowActivatedCarbonWo
       canonical: canonicalPath,
       languages: {
         'en-CA': `${baseUrl}/learn/how-activated-carbon-works/`,
-        'fr-CA': `${baseUrl}/fr/learn/how-activated-carbon-works/`,
-        'en-US': `${baseUrl}/learn/how-activated-carbon-works/`,
         'x-default': `${baseUrl}/learn/how-activated-carbon-works/`,
       },
     },

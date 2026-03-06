@@ -36,8 +36,6 @@ export async function generateMetadata({ params }: LocalizedCaseStudiesPageProps
       canonical: canonicalPath,
       languages: {
         'en-CA': `${baseUrl}/case-studies/`,
-        'fr-CA': `${baseUrl}/fr/case-studies/`,
-        'en-US': `${baseUrl}/case-studies/`,
         'x-default': `${baseUrl}/case-studies/`,
       },
     },

@@ -2,7 +2,7 @@ import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 import { locales, isValidLocale } from '@/i18n/config';
 import { SITE_NAME } from '@/lib/constants';
-import { buildLanguageAlternates, getLocalizedUrl } from '@/lib/seo-utils';
+import { getLocalizedUrl } from '@/lib/seo-utils';
 import HowItWorksPageClient from '@/app/learn/how-it-works/HowItWorksPageClient';
 
 interface LocalizedHowItWorksPageProps {
@@ -36,9 +36,10 @@ export async function generateMetadata({ params }: LocalizedHowItWorksPageProps)
       : ['how activated carbon works', 'cat litter odor control', 'activated carbon science', 'molecular adsorption'],
     alternates: {
       canonical: canonicalPath,
-      languages: Object.fromEntries(
-        buildLanguageAlternates('/learn/how-it-works/').map((alt) => [alt.hrefLang, alt.href])
-      ),
+      languages: {
+        'en-CA': `${baseUrl}/learn/how-it-works/`,
+        'x-default': `${baseUrl}/learn/how-it-works/`,
+      },
     },
     openGraph: {
       type: 'article',

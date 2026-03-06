@@ -11,9 +11,8 @@
 **CRITICAL RULE**: Antigravity MUST use the inbuilt `generate_image` tool (Nano Banana Pro) for all image generation tasks. Use of external scripts like `fal.ai` is secondary and should only be used if explicitly directed by the USER.
 
 ### Image Style & Branding
-- **Art Style**: Hyper-realistic with Miyazaki-style enhancements to make the image fascinating and beautiful. Blend hand-painted animation whimsy with 8K photorealistic textures.
-
-- **Lighting**: Dappled sunlight, golden highlights, and volumetric lighting.
+- **Art Direction**: Photorealistic cinematic photography with integrated illustrated visual effects — a real photographic scene with soft glowing particles, scientific diagrams, molecule symbols, or energy trails layered into the environment, like scientific visualization using saturated, bright colours blended with real photography. 
+- **Technical Specs**: 50mm cinema lens, shallow depth of field, natural film grain, realistic materials, volumetric light, elegant cinematic composition. Subtle luminescent accents interacting with natural lighting.
 - **Aesthetic**: Premium, pristine, and magical realism.
 - **Tone**: Professional, science-backed, yet warm and accessible.
 

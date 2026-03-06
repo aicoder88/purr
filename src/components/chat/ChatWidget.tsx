@@ -184,12 +184,12 @@ export default function ChatWidget() {
           type="button"
           aria-label={t('chat.fabAriaLabel')}
           onClick={openChat}
-          className={`fixed bottom-20 left-4 z-50 inline-flex items-center gap-2 rounded-full bg-gray-900 px-4 py-3 text-sm font-bold text-white shadow-2xl ring-2 ring-gray-900/20 transition-all hover:bg-black ${prefersReducedMotion
+          className={`fixed bottom-20 left-4 z-50 inline-flex items-center gap-2 rounded-full bg-brand-pink px-4 py-3 text-sm font-bold text-white shadow-2xl ring-2 ring-brand-pink/20 transition-all hover:bg-brand-pink/90 ${prefersReducedMotion
             ? ''
-            : 'translate-y-0 opacity-100 duration-300 hover:-translate-y-1 hover:shadow-[0_8px_30px_rgb(0,0,0,0.24)]'
-            } dark:bg-white dark:text-gray-900 dark:ring-white/20 dark:hover:bg-gray-50 md:bottom-6 md:right-6 md:px-5 md:py-3.5`}
+            : 'translate-y-0 opacity-100 duration-300 hover:-translate-y-1 hover:shadow-[0_8px_30px_rgba(255,45,135,0.24)]'
+            } md:bottom-6 md:right-6 md:px-5 md:py-3.5`}
         >
-          <Sparkles className="h-5 w-5 text-[#FF3131]" aria-hidden="true" />
+          <Sparkles className="h-5 w-5 text-white" aria-hidden="true" />
           <span className="hidden md:inline">{t('chat.fabLabel')}</span>
         </button>
       ) : null}

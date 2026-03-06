@@ -37,8 +37,6 @@ export async function generateMetadata({ params }: LocalizedSupportPageProps): P
       canonical: canonicalPath,
       languages: {
         'en-CA': `${baseUrl}/support/`,
-        'fr-CA': `${baseUrl}/fr/support/`,
-        'en-US': `${baseUrl}/support/`,
         'x-default': `${baseUrl}/support/`,
       },
     },

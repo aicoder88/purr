@@ -37,8 +37,6 @@ export async function generateMetadata({ params }: LocalizedCatLitterAmmoniaHeal
       canonical: canonicalPath,
       languages: {
         'en-CA': `${baseUrl}/learn/cat-litter-ammonia-health-risks/`,
-        'fr-CA': `${baseUrl}/fr/learn/cat-litter-ammonia-health-risks/`,
-        'en-US': `${baseUrl}/learn/cat-litter-ammonia-health-risks/`,
         'x-default': `${baseUrl}/learn/cat-litter-ammonia-health-risks/`,
       },
     },

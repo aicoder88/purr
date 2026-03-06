@@ -21,7 +21,7 @@ function ArrowIcon({ className = "" }: { className?: string }) {
 }
 
 const CTA_BUTTON_CLASSES =
-  "w-full sm:w-auto px-8 py-5 bg-gray-900 hover:bg-gray-800 dark:bg-gray-100 dark:hover:bg-gray-200 text-gray-50 dark:text-gray-900 font-semibold text-base sm:text-lg rounded-full shadow-sm transition-colors duration-200 min-h-[56px] flex items-center justify-center gap-2";
+  "w-full sm:w-auto px-8 py-5 bg-gradient-to-r from-brand-yellow to-brand-pink hover:from-brand-yellow/90 hover:to-brand-pink/90 text-gray-950 font-semibold text-base sm:text-lg rounded-full shadow-sm transition-all duration-200 min-h-[56px] flex items-center justify-center gap-2";
 
 interface HeroContentProps {
   t: {
@@ -84,11 +84,11 @@ export const HeroContent = ({ t, heroVideo }: HeroContentProps) => {
   return (
     <div className="flex flex-col justify-center space-y-6 md:space-y-7 py-2">
       <div className="flex flex-wrap items-center gap-2 self-start">
-        <div className="inline-flex items-center rounded-full border border-gray-200 dark:border-brand-yellow/50 px-4 py-1.5 bg-gray-50 dark:bg-brand-yellow/10">
-          <span className="text-sm font-medium text-gray-700 dark:text-brand-yellow">{eyebrow}</span>
+        <div className="inline-flex items-center rounded-full border border-brand-pink/30 px-4 py-1.5 bg-gradient-to-r from-brand-yellow/25 to-brand-pink/25">
+          <span className="text-sm font-medium text-gray-900 dark:text-gray-100">{eyebrow}</span>
         </div>
-        <div className="inline-flex items-center rounded-full border border-gray-200 dark:border-brand-yellow/50 px-4 py-1.5 bg-gray-50 dark:bg-brand-yellow/10">
-          <span className="text-sm font-medium text-gray-700 dark:text-brand-yellow">{canadaBadge}</span>
+        <div className="inline-flex items-center rounded-full border border-brand-pink/30 px-4 py-1.5 bg-gradient-to-r from-brand-yellow/25 to-brand-pink/25">
+          <span className="text-sm font-medium text-gray-900 dark:text-gray-100">{canadaBadge}</span>
         </div>
       </div>
 

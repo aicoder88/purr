@@ -84,7 +84,7 @@ Never conditionally return `null` in page components based on client state. Use 
 | **The Silent Changer** | Deleting "unused" code that's actually used elsewhere | Mention it, don't delete |
 | **The Powder User** | Calling Purrify a "powder" | Use "granules" or "additive" |
 | **The Hardcoder** | Writing "Add to Cart" directly in JSX | Use translation keys |
-| **The White-on-White** | Using text-white without a colored background | Always ensure contrast in BOTH modes |
+| **The White-on-White** | Using text-white without a colored background | Always ensure contrast |
 | **The Label Maker** | Putting labels on generated bags/bottles | Never use labels on AI images |
 | **The Dust Maker** | Showing black clouds/dust | Clean, trapped odor only |
 | **The Wrong Folder** | Storing images outside the workflow | Source in `public/original-images/`, output in `public/optimized/` |
@@ -148,7 +148,6 @@ pnpm test:e2e:ui            # Playwright with browser UI
 # Validation
 pnpm seo:validate           # Lenient SEO check (same as prebuild)
 pnpm seo:validate:strict    # Strict SEO check (fails on error)
-pnpm validate-dark-mode     # Dark mode variant coverage
 pnpm validate-hydration     # Hydration anti-patterns
 pnpm validate-images        # Image size limits
 
@@ -185,12 +184,11 @@ Copy `.env.local.example` to `.env.local` and configure:
 - **Hooks**: ALWAYS add `'use client'` to the very top of any file using React hooks (`useState`, `useEffect`, etc.).
 
 
-### Dark Mode (Required)
-Every element needs both light and dark variants.
-- **Text**: `text-gray-900 dark:text-gray-50`
-- **Backgrounds**: `bg-white dark:bg-gray-900`
-- **CRITICAL**: `text-white` must ALWAYS have a dark variant or a colored background that persists in dark mode.
-- **Validate**: `pnpm validate-dark-mode`
+### User Interface focus
+The application is **Dark Mode ONLY**. Ensure all elements are optimized for a premium dark aesthetic.
+- **Backgrounds**: Use deep charcoals and blacks (`bg-gray-900`, `bg-black`, `bg-gray-950`).
+- **Highlights**: Use neon pink (`#FF2D87`) and brand yellow (`#FFD60A`) for interactive elements and emphasis.
+- **Text**: Ensure high contrast with `text-white`, `text-gray-100`, or `text-gray-200`.
 
 ---
 
@@ -292,7 +290,8 @@ Never generate product images (bags/boxes/logos) with AI -- use existing assets 
 
 ### [SYSTEM_INSTRUCTION: IMAGE_GENERATOR]
 **Context**: Generating image prompts for Purrify.ca.
-**Brand Core**: Deep saturation, volumetric lighting, "magical realism" aesthetic.
+**Art Direction**: Photorealistic cinematic photography with integrated illustrated visual effects — a real photographic scene with soft glowing particles, scientific diagrams, molecule symbols, or energy trails layered into the environment, like scientific visualization using saturated, bright colours blended with real photography. 
+**Technical Specs**: 50mm cinema lens, shallow depth of field, natural film grain, realistic materials, volumetric light, elegant cinematic composition. Subtle luminescent accents interacting with natural lighting.
 
 **STEP 1: CLASSIFY MODE**
 [LIFESTYLE] (cats, home, nature) or [TECH] (molecules, filtration, airflow, science).
@@ -300,12 +299,10 @@ Never generate product images (bags/boxes/logos) with AI -- use existing assets 
 **STEP 2: APPLY STYLE PRESETS**
 
 **IF [LIFESTYLE]:**
-- **Style**: Hyper-realistic with Miyazaki-style enhancements to make the image fascinating and beautiful.
+- **Style**: Hyper-realistic scenes with subtle Miyazaki-inspired illustrative enhancements.
 - **Vibe**: Magical, pristine, healthy, thriving.
-
 - **Lighting**: Gentle dappled lighting with warm golden highlights.
 - **Render**: Hand-painted animation whimsy + 8K photorealistic textures.
-- **Key Elements**: Hyper-realistic cats with expressive anime-style faces. Soft painterly backgrounds.
 
 **IF [TECH]:**
 - **Style**: Cinematic Macrophotography & 3D Scientific Visualization.

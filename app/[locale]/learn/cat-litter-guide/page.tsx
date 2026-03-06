@@ -37,8 +37,6 @@ export async function generateMetadata({ params }: LocalizedCatLitterGuidePagePr
       canonical: canonicalPath,
       languages: {
         'en-CA': `${baseUrl}/learn/cat-litter-guide/`,
-        'fr-CA': `${baseUrl}/fr/learn/cat-litter-guide/`,
-        'en-US': `${baseUrl}/learn/cat-litter-guide/`,
         'x-default': `${baseUrl}/learn/cat-litter-guide/`,
       },
     },
