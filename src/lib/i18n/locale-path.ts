@@ -2,11 +2,23 @@ import type { Locale } from '@/i18n/config';
 
 const LOCALE_SEGMENT_PATTERN = /^\/(en|fr)(?=\/|$)/;
 
-const COMMERCIAL_ROUTE_PATHS = [
+const LOCALIZED_ROUTE_PREFIXES = [
   '/products',
   '/learn',
-  '/reviews',
+  '/blog',
+  '/locations/province',
 ] as const;
+
+const LOCALIZED_EXACT_ROUTE_PATHS = new Set([
+  '/',
+  '/reviews',
+  '/support',
+  '/support/shipping',
+  '/case-studies',
+  '/canada',
+  '/referral',
+  '/ammonia-control',
+]);
 
 function normalizeRoutePath(pathname: string): string {
   if (!pathname || pathname === '/') {
@@ -31,24 +43,20 @@ function normalizePathname(pathname: string): string {
   return trimmed.length === 0 ? '/' : trimmed;
 }
 
-function isCommercialRoute(pathname: string): boolean {
+function hasLocalizedRoutePrefix(pathname: string): boolean {
   const normalizedPath = normalizeRoutePath(pathname);
-  return COMMERCIAL_ROUTE_PATHS.some((path) =>
+  return LOCALIZED_ROUTE_PREFIXES.some((path) =>
     normalizedPath === path || normalizedPath.startsWith(`${path}/`)
   );
 }
 
 function supportsLocalePrefix(pathWithoutLocale: string): boolean {
   const normalizedPath = normalizeRoutePath(pathWithoutLocale);
-  if (normalizedPath === '/') {
+  if (LOCALIZED_EXACT_ROUTE_PATHS.has(normalizedPath)) {
     return true;
   }
 
-  if (normalizedPath === '/blog' || normalizedPath.startsWith('/blog/')) {
-    return true;
-  }
-
-  return isCommercialRoute(normalizedPath);
+  return hasLocalizedRoutePrefix(normalizedPath);
 }
 
 function splitPathAndSuffix(path: string): { pathname: string; suffix: string } {

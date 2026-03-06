@@ -29,6 +29,8 @@
     "optimize-images:watch": "nodemon --watch public/original-images --watch public/images --exec 'pnpm optimize-images:enhanced'",
     "audit-images": "tsx scripts/images/audit-image-compliance.ts",
     "audit-images:strict": "tsx scripts/images/audit-image-compliance.ts --strict",
+    "sync-used-images": "tsx scripts/images/sync-used-image-pipeline.ts",
+    "sync-used-images:apply": "tsx scripts/images/sync-used-image-pipeline.ts --apply",
     "setup-image-hooks": "sh scripts/images/setup-image-hooks.sh",
     "setup-hooks": "sh scripts/validation/setup-hooks.sh",
     "optimize-all-images": "node scripts/optimize-all-images.js",

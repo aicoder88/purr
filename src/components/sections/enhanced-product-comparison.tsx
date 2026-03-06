@@ -9,7 +9,10 @@ import { useEffect, useState } from "react";
 import { CheckCircle2, ChevronRight, MapPin, ShieldCheck } from "lucide-react";
 import Image from "next/image";
 import { formatProductPrice } from "@/lib/pricing";
-import { getOrCreateFreshnessSessionId } from "@/lib/freshness-session";
+import {
+  getFreshnessSessionId,
+  getStoredFreshnessProfile,
+} from "@/lib/freshness-session";
 import { getPaymentLink } from "@/lib/payment-links";
 
 type LocalizedProduct = {
@@ -43,19 +46,6 @@ type FreshnessProfileSummary = {
   recommendedProductId: string | null;
   recommendationReason: string | null;
   source: 'QUIZ' | 'CHAT';
-};
-
-type TopReview = {
-  authorName: string;
-  rating: number;
-  content: string;
-};
-
-// Map card IDs to the primary product IDs stored in the review DB
-const REVIEW_PRODUCT_ID_BY_CARD: Record<string, string> = {
-  trial: 'purrify-12g',
-  regular: 'purrify-50g',
-  large: 'purrify-120g',
 };
 
 const IMAGE_BY_ID: Record<string, { image: string; imageSize: "sm" | "md" | "lg"; ctaType: "stripe" | "store" }> = {
@@ -121,44 +111,27 @@ export function EnhancedProductComparison() {
 
   const trialPrice = formatProductPrice("trial", currency, locale);
   const trialLink = getPaymentLink("trialSingle");
-  const [topReviews, setTopReviews] = useState<Record<string, TopReview>>({});
-
-  useEffect(() => {
-    const cardIds = Object.keys(REVIEW_PRODUCT_ID_BY_CARD);
-    Promise.all(
-      cardIds.map(async (cardId) => {
-        const productId = REVIEW_PRODUCT_ID_BY_CARD[cardId];
-        try {
-          const res = await fetch(
-            `/api/reviews?productId=${encodeURIComponent(productId)}&sort=helpful&limit=1`,
-            { cache: 'no-store' }
-          );
-          if (!res.ok) return null;
-          const data = (await res.json()) as { reviews?: Array<{ authorName: string; rating: number; content: string }> };
-          const review = data.reviews?.[0];
-          if (!review) return null;
-          return { cardId, review: { authorName: review.authorName, rating: review.rating, content: review.content } };
-        } catch {
-          return null;
-        }
-      })
-    ).then((results) => {
-      const map: Record<string, TopReview> = {};
-      for (const r of results) {
-        if (r) map[r.cardId] = r.review;
-      }
-      setTopReviews(map);
-    });
-  }, []);
 
   useEffect(() => {
     let isCancelled = false;
 
     async function loadFreshnessProfile() {
       try {
-        const sessionId = getOrCreateFreshnessSessionId();
+        const sessionId = getFreshnessSessionId();
+        if (!sessionId) {
+          return;
+        }
+
+        const storedProfile = getStoredFreshnessProfile(sessionId);
+        if (storedProfile) {
+          if (!isCancelled) {
+            setFreshnessProfile(storedProfile);
+          }
+          return;
+        }
+
         const response = await fetch(`/api/freshness-profile?sessionId=${encodeURIComponent(sessionId)}`, {
-          cache: 'no-store',
+          cache: 'force-cache',
         });
 
         if (!response.ok) {
@@ -352,30 +325,6 @@ export function EnhancedProductComparison() {
                       {product.bestFor}
                     </p>
                   </div>
-
-                  {topReviews[product.id] && (
-                    <div className="mb-5 rounded-2xl border border-gray-200/60 bg-white/60 p-4 dark:border-gray-700/60 dark:bg-gray-900/60">
-                      <div className="flex items-center gap-1 mb-2">
-                        {Array.from({ length: 5 }).map((_, i) => (
-                          <svg
-                            key={i}
-                            className={["w-3.5 h-3.5", i < topReviews[product.id].rating ? "text-brand-yellow" : "text-gray-600"].join(" ")}
-                            fill="currentColor"
-                            viewBox="0 0 20 20"
-                            aria-hidden="true"
-                          >
-                            <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
-                          </svg>
-                        ))}
-                      </div>
-                      <p className="text-xs text-gray-600 dark:text-gray-400 leading-relaxed line-clamp-3">
-                        {'\u201c'}{topReviews[product.id].content}{'\u201d'}
-                      </p>
-                      <p className="mt-1.5 text-xs font-medium text-gray-400">
-                        — {topReviews[product.id].authorName}
-                      </p>
-                    </div>
-                  )}
 
                   <div className="mt-auto">
                     {product.ctaType === "stripe" && product.stripeLink ? (

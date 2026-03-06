@@ -1,20 +1,16 @@
 import { getRequestConfig } from 'next-intl/server';
-import { getUserLocale } from '@/lib/locale';
 import { locales, defaultLocale, type Locale } from './config';
 
-export default getRequestConfig(async () => {
-  // Get locale from user preference or default
-  const userLocale = await getUserLocale();
-  
-  // Validate locale
-  const locale: Locale = locales.includes(userLocale as Locale) 
-    ? (userLocale as Locale) 
+export default getRequestConfig(async ({ locale, requestLocale }) => {
+  const candidateLocale = locale ?? await requestLocale;
+  const resolvedLocale: Locale = locales.includes(candidateLocale as Locale)
+    ? (candidateLocale as Locale)
     : defaultLocale;
 
-  const messages = (await import(`../translations/${locale}.ts`))[locale];
+  const messages = (await import(`../translations/${resolvedLocale}.ts`))[resolvedLocale];
 
   return {
-    locale,
+    locale: resolvedLocale,
     messages,
     timeZone: 'America/Toronto',
     onError: (error) => {

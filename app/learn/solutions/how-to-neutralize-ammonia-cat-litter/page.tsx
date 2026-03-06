@@ -8,7 +8,7 @@ import { stripContext } from '@/lib/seo-utils';
 const pageTitle = `How to Neutralize Ammonia in Cat Litter (5 Methods That Actually Work) | ${SITE_NAME}`;
 const pageDescription = 'Learn how to neutralize ammonia in cat litter with proven methods that reduce cat urine odor fast. Compare activated carbon, baking soda, zeolite, and daily scooping for long-term litter box ammonia control.';
 const canonicalUrl = 'https://www.purrify.ca/learn/solutions/how-to-neutralize-ammonia-cat-litter/';
-const heroImage = 'https://www.purrify.ca/optimized/blog/ammonia-hero.webp';
+const heroImage = 'https://www.purrify.ca/optimized/blog/ammonia-neutralize-hero-cinematic-v2.webp';
 
 export const metadata: Metadata = {
   title: pageTitle,

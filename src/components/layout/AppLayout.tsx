@@ -1,4 +1,4 @@
-import { HeaderWithSuspense } from './header-suspense';
+import { Header } from './header';
 import { Footer } from './footer';
 import { SkipNav } from '../ui/skip-nav';
 import { AppChrome } from './AppChrome';
@@ -12,7 +12,7 @@ export function AppLayout({ children }: AppLayoutProps) {
         <div className="flex min-h-screen flex-col overflow-x-clip">
             <SkipNav />
             <AppChrome />
-            <HeaderWithSuspense />
+            <Header />
             <div className="flex-grow">
                 {children}
             </div>

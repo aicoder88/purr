@@ -1,15 +1,8 @@
 'use client';
 
-import {
-  ResponsiveContainer,
-  BarChart,
-  CartesianGrid,
-  XAxis,
-  YAxis,
-  Tooltip,
-  Legend,
-  Bar,
-} from 'recharts';
+import { useEffect, useState } from 'react';
+
+type RechartsModule = typeof import('recharts');
 
 const data = [
   {
@@ -38,6 +31,39 @@ const axisTickStyle = { fill: '#334155', fontSize: 12 };
 const tooltipFormatter = (value: number) => `${value}%`;
 
 export function PurrifyPerformanceChart() {
+  const [chartComponents, setChartComponents] = useState<RechartsModule | null>(null);
+
+  useEffect(() => {
+    let isMounted = true;
+
+    import('recharts').then((mod) => {
+      if (!isMounted) {
+        return;
+      }
+
+      setChartComponents(mod);
+    });
+
+    return () => {
+      isMounted = false;
+    };
+  }, []);
+
+  if (!chartComponents) {
+    return <div className="h-[320px] w-full animate-pulse rounded-xl bg-slate-100" aria-hidden="true" />;
+  }
+
+  const {
+    ResponsiveContainer,
+    BarChart,
+    CartesianGrid,
+    XAxis,
+    YAxis,
+    Tooltip,
+    Legend,
+    Bar,
+  } = chartComponents;
+
   return (
     <ResponsiveContainer width="100%" height={320}>
       <BarChart data={data} margin={{ top: 16, right: 24, left: 8, bottom: 8 }}>

@@ -25,6 +25,16 @@ const SOURCE_DIRS = [
   path.join(PUBLIC, 'original-images'),
   path.join(PUBLIC, 'images'),
 ];
+const RESPONSIVE_DIRS = new Set(['blog', 'products', 'marketing', 'locations']);
+const SOURCE_FILE_GLOBS = [
+  'app/**/*.{ts,tsx}',
+  'src/**/*.{ts,tsx}',
+  'content/**/*.json',
+  'public/documents/**/*.html',
+  'public/*.html',
+];
+const SOURCE_FILE_IGNORES = ['**/node_modules/**', '**/.next/**'];
+const IMAGE_PATH_RE = /["'`(](\/(?:images|original-images|optimized)\/[^"'`\s)>]+\.(?:avif|webp|jpg|jpeg|png|gif|svg)|https:\/\/(?:www\.)?purrify\.ca\/(?:images|original-images|optimized)\/[^"'`\s)>]+\.(?:avif|webp|jpg|jpeg|png|gif|svg))/gi;
 
 // ─── Profile definitions (mirrors image-optimization.config.js) ──────────────
 
@@ -83,6 +93,10 @@ function fmt(bytes: number): string {
   return `${(bytes / 1_048_576).toFixed(1)}MB`;
 }
 
+function normalizeLocalImagePath(imagePath: string): string {
+  return imagePath.replace(/^https:\/\/(?:www\.)?purrify\.ca/i, '');
+}
+
 /** Infer profile from optimized subdirectory (e.g. public/optimized/blog/foo → blog) */
 function profileForOptimizedPath(filePath: string): Profile {
   const relative = path.relative(OPTIMIZED_DIR, filePath);
@@ -101,51 +115,72 @@ function parseVariantFilename(filename: string): { base: string; width: number; 
   return { base: m[1], width: parseInt(m[2], 10), ext: m[3].toLowerCase() };
 }
 
-// ─── Check 1: source code references ─────────────────────────────────────────
+async function hasExactUnsuffixedSource(topDir: string, base: string): Promise<boolean> {
+  const sourceDir = path.join(PUBLIC, 'original-images', topDir);
+  if (!fs.existsSync(sourceDir)) return false;
 
-async function checkSourceCodeReferences(): Promise<Issue[]> {
-  const issues: Issue[] = [];
+  const matches = await fg(`${base}.{png,jpg,jpeg,gif,webp,avif}`, {
+    cwd: sourceDir,
+    onlyFiles: true,
+  });
 
-  const sourceFiles = await fg([
-    'app/**/*.{ts,tsx}',
-    'src/**/*.{ts,tsx}',
-    'content/**/*.json',
-  ], { cwd: ROOT, ignore: ['**/node_modules/**', '**/.next/**'] });
+  return matches.length > 0;
+}
 
-  // Regex: any image path in src=, href=, or plain string assignment
-  const imagePathRe = /["'`(](\/((?:images|original-images|optimized)[^"'`\s)>]+\.(?:avif|webp|jpg|jpeg|png|gif|svg)))["'`\s)>]/gi;
+interface ImageReference {
+  file: string;
+  imagePath: string;
+}
+
+async function collectImageReferences(): Promise<ImageReference[]> {
+  const sourceFiles = await fg(SOURCE_FILE_GLOBS, {
+    cwd: ROOT,
+    ignore: SOURCE_FILE_IGNORES,
+  });
+
+  const references: ImageReference[] = [];
 
   for (const sourceFile of sourceFiles) {
     const content = fs.readFileSync(path.join(ROOT, sourceFile), 'utf-8');
-    let m: RegExpExecArray | null;
+    let match: RegExpExecArray | null;
 
-    while ((m = imagePathRe.exec(content)) !== null) {
-      const imgPath = m[1];
+    while ((match = IMAGE_PATH_RE.exec(content)) !== null) {
+      references.push({
+        file: sourceFile,
+        imagePath: normalizeLocalImagePath(match[1]),
+      });
+    }
+  }
 
-      // Flag non-optimized paths
-      if (imgPath.startsWith('/images/') || imgPath.startsWith('/original-images/')) {
+  return references;
+}
+
+// ─── Check 1: source code references ─────────────────────────────────────────
+
+async function checkSourceCodeReferences(references: ImageReference[]): Promise<Issue[]> {
+  const issues: Issue[] = [];
+  for (const reference of references) {
+    if (reference.imagePath.startsWith('/images/') || reference.imagePath.startsWith('/original-images/')) {
+      issues.push({
+        severity: 'error',
+        check: 'non-optimized-path',
+        message: `Image referenced from unoptimized path: ${reference.imagePath}`,
+        file: reference.file,
+        fix: `Move source to public/original-images/, run pnpm sync-used-images:apply, then reference /optimized/...`,
+      });
+      continue;
+    }
+
+    if (reference.imagePath.startsWith('/optimized/')) {
+      const diskPath = path.join(PUBLIC, reference.imagePath.slice(1));
+      if (!fs.existsSync(diskPath)) {
         issues.push({
           severity: 'error',
-          check: 'non-optimized-path',
-          message: `Image referenced from unoptimized path: ${imgPath}`,
-          file: sourceFile,
-          fix: `Move source to public/original-images/, run pnpm optimize-images:enhanced, then reference /optimized/...`,
+          check: 'missing-file',
+          message: `Referenced image does not exist on disk: ${reference.imagePath}`,
+          file: reference.file,
+          fix: `Run pnpm sync-used-images:apply to generate missing optimized images`,
         });
-        continue;
-      }
-
-      // Flag referenced files that don't exist
-      if (imgPath.startsWith('/optimized/')) {
-        const diskPath = path.join(PUBLIC, imgPath.slice(1));
-        if (!fs.existsSync(diskPath)) {
-          issues.push({
-            severity: 'error',
-            check: 'missing-file',
-            message: `Referenced image does not exist on disk: ${imgPath}`,
-            file: sourceFile,
-            fix: `Run pnpm optimize-images:enhanced to generate missing optimized images`,
-          });
-        }
       }
     }
   }
@@ -180,6 +215,9 @@ async function checkResponsiveVariants(): Promise<Issue[]> {
   // For each group, check required variants per profile
   for (const [key, variants] of groups) {
     const [dir, base] = key.split('::');
+    const topDir = dir.split(path.sep)[0];
+    if (!RESPONSIVE_DIRS.has(topDir)) continue;
+    if (!await hasExactUnsuffixedSource(topDir, base)) continue;
     const samplePath = path.join(OPTIMIZED_DIR, dir, `${base}-640w.avif`);
     const profile = profileForOptimizedPath(samplePath);
 
@@ -247,8 +285,12 @@ async function checkUnoptimizedSources(): Promise<Issue[]> {
       }
 
       const pattern = `${basename}-*w.{avif,webp,jpg}`;
-      const matches = await fg(pattern, { cwd: searchDir });
-      if (matches.length === 0) {
+      const flatPattern = `${basename}.{avif,webp,jpg,jpeg,png}`;
+      const [matches, flatMatches] = await Promise.all([
+        fg(pattern, { cwd: searchDir }),
+        fg(flatPattern, { cwd: searchDir }),
+      ]);
+      if (matches.length === 0 && flatMatches.length === 0) {
         issues.push({
           severity: 'warn',
           check: 'unoptimized-source',
@@ -264,12 +306,14 @@ async function checkUnoptimizedSources(): Promise<Issue[]> {
 
 // ─── Check 4: file size limits ───────────────────────────────────────────────
 
-async function checkFileSizes(): Promise<Issue[]> {
+async function checkFileSizes(references: ImageReference[]): Promise<Issue[]> {
   const issues: Issue[] = [];
-
-  const optimizedFiles = await fg('**/*.{avif,webp,jpg,jpeg,png}', {
-    cwd: OPTIMIZED_DIR,
-  });
+  const optimizedFiles = [...new Set(
+    references
+      .map((reference) => reference.imagePath)
+      .filter((imagePath) => imagePath.startsWith('/optimized/'))
+      .map((imagePath) => imagePath.slice('/optimized/'.length))
+  )];
 
   for (const file of optimizedFiles) {
     const ext = path.extname(file).slice(1).toLowerCase();
@@ -277,6 +321,7 @@ async function checkFileSizes(): Promise<Issue[]> {
     if (!limit) continue;
 
     const fullPath = path.join(OPTIMIZED_DIR, file);
+    if (!fs.existsSync(fullPath)) continue;
     const { size } = fs.statSync(fullPath);
 
     if (size > limit) {
@@ -327,6 +372,7 @@ async function main(): Promise<void> {
   const strict = process.argv.includes('--strict');
 
   console.log('🖼️  Image Compliance Audit\n' + '═'.repeat(50));
+  const references = await collectImageReferences();
 
   const [
     refIssues,
@@ -334,10 +380,10 @@ async function main(): Promise<void> {
     sourceIssues,
     sizeIssues,
   ] = await Promise.all([
-    checkSourceCodeReferences(),
+    checkSourceCodeReferences(references),
     checkResponsiveVariants(),
     checkUnoptimizedSources(),
-    checkFileSizes(),
+    checkFileSizes(references),
   ]);
 
   const checks = [

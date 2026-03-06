@@ -2,6 +2,41 @@ import { NextRequest, NextResponse } from 'next/server';
 import prisma from '@/lib/prisma';
 import { checkRateLimit, getClientIp } from '@/lib/rate-limit';
 
+const REVIEW_RESPONSE_CACHE_CONTROL = 'public, s-maxage=300, stale-while-revalidate=3600';
+
+function parsePositiveInteger(
+  value: string | null,
+  fallback: number,
+  options?: { min?: number; max?: number }
+): number {
+  const parsed = Number.parseInt(value ?? '', 10);
+  if (!Number.isFinite(parsed)) {
+    return fallback;
+  }
+
+  const min = options?.min ?? Number.MIN_SAFE_INTEGER;
+  const max = options?.max ?? Number.MAX_SAFE_INTEGER;
+  return Math.min(max, Math.max(min, parsed));
+}
+
+function parseOptionalInteger(
+  value: string | null,
+  options?: { min?: number; max?: number }
+): number | null {
+  if (!value) {
+    return null;
+  }
+
+  const parsed = Number.parseInt(value, 10);
+  if (!Number.isFinite(parsed)) {
+    return null;
+  }
+
+  const min = options?.min ?? Number.MIN_SAFE_INTEGER;
+  const max = options?.max ?? Number.MAX_SAFE_INTEGER;
+  return Math.min(max, Math.max(min, parsed));
+}
+
 // GET /api/reviews?productId=xxx&page=1&limit=10&sort=newest
 export async function GET(request: NextRequest) {
   try {
@@ -11,16 +46,16 @@ export async function GET(request: NextRequest) {
 
     const { searchParams } = new URL(request.url);
     const productId = searchParams.get('productId');
-    const page = Math.max(1, parseInt(searchParams.get('page') || '1'));
-    const limit = Math.min(50, Math.max(1, parseInt(searchParams.get('limit') || '10')));
+    const page = parsePositiveInteger(searchParams.get('page'), 1, { min: 1 });
+    const limit = parsePositiveInteger(searchParams.get('limit'), 10, { min: 1, max: 50 });
     const sort = searchParams.get('sort') || 'newest';
-    const ratingFilter = searchParams.get('rating');
+    const ratingFilter = parseOptionalInteger(searchParams.get('rating'), { min: 1, max: 5 });
     const sizeFilter = searchParams.get('size');
 
     // Build where clause
     const where: Record<string, unknown> = { status: 'APPROVED' };
     if (productId) where.productId = productId;
-    if (ratingFilter) where.rating = parseInt(ratingFilter);
+    if (ratingFilter !== null) where.rating = ratingFilter;
     if (sizeFilter) where.productSize = sizeFilter;
 
     // Build orderBy
@@ -85,28 +120,35 @@ export async function GET(request: NextRequest) {
         })
       : 0;
 
-    return NextResponse.json({
-      reviews: reviews.map((r) => ({
-        ...r,
-        verified: !!r.orderId,
-        date: r.createdAt.toISOString(),
-      })),
-      pagination: {
-        page,
-        limit,
-        totalCount,
-        totalPages: Math.ceil(totalCount / limit),
+    return NextResponse.json(
+      {
+        reviews: reviews.map((r) => ({
+          ...r,
+          verified: !!r.orderId,
+          date: r.createdAt.toISOString(),
+        })),
+        pagination: {
+          page,
+          limit,
+          totalCount,
+          totalPages: Math.ceil(totalCount / limit),
+        },
+        aggregate: {
+          averageRating: aggregateData._avg.rating ?? 0,
+          totalReviews: aggregateData._count.rating,
+          ratingDistribution: distribution,
+          recommendPercentage:
+            aggregateData._count.rating > 0
+              ? Math.round((recommendCount / aggregateData._count.rating) * 100)
+              : 0,
+        },
       },
-      aggregate: {
-        averageRating: aggregateData._avg.rating ?? 0,
-        totalReviews: aggregateData._count.rating,
-        ratingDistribution: distribution,
-        recommendPercentage:
-          aggregateData._count.rating > 0
-            ? Math.round((recommendCount / aggregateData._count.rating) * 100)
-            : 0,
-      },
-    });
+      {
+        headers: {
+          'Cache-Control': REVIEW_RESPONSE_CACHE_CONTROL,
+        },
+      }
+    );
   } catch {
     return NextResponse.json({ message: 'Error fetching reviews' }, { status: 500 });
   }

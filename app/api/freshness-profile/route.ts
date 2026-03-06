@@ -6,6 +6,8 @@ import {
 } from '@/lib/freshness-profile';
 import { FRESHNESS_SESSION_COOKIE } from '@/lib/freshness-session';
 
+const FRESHNESS_PROFILE_GET_CACHE_CONTROL = 'private, max-age=300, stale-while-revalidate=600';
+
 const sessionIdSchema = z
   .string()
   .trim()
@@ -41,18 +43,30 @@ function getSessionIdFromRequest(request: NextRequest): string | null {
 }
 
 export async function GET(request: NextRequest) {
-  const sessionId = getSessionIdFromRequest(request);
-  if (!sessionId) {
+  try {
+    const sessionId = getSessionIdFromRequest(request);
+    if (!sessionId) {
+      return NextResponse.json({ profile: null }, { status: 200 });
+    }
+
+    const parsedSessionId = sessionIdSchema.safeParse(sessionId);
+    if (!parsedSessionId.success) {
+      return NextResponse.json({ profile: null }, { status: 200 });
+    }
+
+    const profile = await getFreshnessProfileBySessionId(parsedSessionId.data);
+    return NextResponse.json(
+      { profile },
+      {
+        status: 200,
+        headers: {
+          'Cache-Control': FRESHNESS_PROFILE_GET_CACHE_CONTROL,
+        },
+      }
+    );
+  } catch {
     return NextResponse.json({ profile: null }, { status: 200 });
   }
-
-  const parsedSessionId = sessionIdSchema.safeParse(sessionId);
-  if (!parsedSessionId.success) {
-    return NextResponse.json({ profile: null }, { status: 200 });
-  }
-
-  const profile = await getFreshnessProfileBySessionId(parsedSessionId.data);
-  return NextResponse.json({ profile }, { status: 200 });
 }
 
 export async function POST(request: NextRequest) {

@@ -9,7 +9,10 @@ import { useLocale } from 'next-intl';
 import { Button } from '@/components/ui/button';
 import { Container } from '@/components/ui/container';
 import { PRODUCTS } from '@/lib/constants';
-import { getOrCreateFreshnessSessionId } from '@/lib/freshness-session';
+import {
+  getOrCreateFreshnessSessionId,
+  persistFreshnessProfileSummary,
+} from '@/lib/freshness-session';
 import { localizePath } from '@/lib/i18n/locale-path';
 
 type Language = 'en' | 'fr';
@@ -543,6 +546,13 @@ async function persistFreshnessProfile({
   recommendationReason?: string;
   email?: string;
 }) {
+  persistFreshnessProfileSummary({
+    sessionId,
+    recommendedProductId: result.productId,
+    recommendationReason: recommendationReason ?? null,
+    source: 'QUIZ',
+  });
+
   await fetch('/api/freshness-profile', {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },

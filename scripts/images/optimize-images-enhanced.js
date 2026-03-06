@@ -240,7 +240,7 @@ async function optimizeImage(filePath) {
       return null;
     }
 
-    const originalSize = metadata.size;
+    const originalSize = metadata.size ?? fs.statSync(filePath).size;
     let { width, height } = metadata;
 
     // Calculate new dimensions if image is too large

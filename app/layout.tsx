@@ -8,7 +8,6 @@ import { Providers } from './providers';
 import { SITE_NAME, SITE_DESCRIPTION, SITE_URL } from '@/lib/constants';
 import { DeferredThirdPartyMounts } from '@/components/performance/DeferredThirdPartyMounts';
 import { getScopedMessages } from '@/i18n/scoped-messages';
-import { getUserLocale } from '@/lib/locale';
 
 const inter = Inter({
   subsets: ['latin'],
@@ -173,8 +172,7 @@ export default async function RootLayout({
 }) {
   const headersList = await headers();
   const pathname = headersList.get('x-pathname') || '';
-  const headerLocale = pathname ? getLocaleFromPathname(pathname) : null;
-  const locale: Locale = headerLocale ?? await getUserLocale();
+  const locale: Locale = getLocaleFromPathname(pathname);
   const messages = await getScopedMessages(locale, ['root']);
   const accessibilityMessages = (messages as Record<string, unknown>).accessibility as
     | { gtmNoscriptTitle?: string }

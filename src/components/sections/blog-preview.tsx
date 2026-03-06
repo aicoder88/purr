@@ -1,6 +1,5 @@
 "use client";
 
-import { useEffect, useState } from "react";
 import { Container } from "@/components/ui/container";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
@@ -65,33 +64,7 @@ function normalizeBlogPosts(data: unknown): BlogPost[] {
 
 export function BlogPreview() {
   const { t, locale } = useTranslation();
-  // Initialize with static data immediately to prevent blinking
-  const [blogPosts, setBlogPosts] = useState<BlogPost[]>(sampleBlogPosts.slice(0, 3));
-
-  useEffect(() => {
-    let isMounted = true;
-    async function fetchBlogPosts() {
-      try {
-        const response = await fetch("/api/blog-posts?limit=3");
-        if (!response.ok) {
-          throw new Error(`Failed to fetch blog posts (status ${response.status})`);
-        }
-        const data = await response.json();
-        const normalizedPosts = normalizeBlogPosts(data);
-        // Only update if we got different data to avoid unnecessary re-renders
-        if (isMounted && normalizedPosts.length > 0) {
-          setBlogPosts(normalizedPosts);
-        }
-      } catch (_err) {
-        // Already initialized with static data, no need to update on error
-        // Silently fall back to static content
-      }
-    }
-    fetchBlogPosts();
-    return () => {
-      isMounted = false;
-    };
-  }, []);
+  const blogPosts = normalizeBlogPosts(sampleBlogPosts.slice(0, 3));
 
   return (
     <section

@@ -1,18 +1,11 @@
-'use client';
-import React, { useState, useEffect, useRef, useCallback, useMemo } from "react";
 import Link from "next/link";
-import {
-  Menu,
-  X,
-  ChevronDown,
-  MapPin,
-} from "lucide-react";
+import Image from "next/image";
+import { ChevronDown, MapPin } from "lucide-react";
+import { getLocale, getTranslations } from "next-intl/server";
 import { Button } from "@/components/ui/button";
 import { Container } from "@/components/ui/container";
 import { LanguageSwitcher } from "@/components/ui/language-switcher";
-import { useTranslations, useLocale } from "next-intl";
-import Image from "next/image";
-import { usePathname, useSearchParams } from "next/navigation";
+import { HeaderMobileMenu } from "./header-suspense";
 
 interface DropdownItem {
   label: string;
@@ -29,171 +22,81 @@ interface NavigationItem {
   dropdownItems?: DropdownItem[];
 }
 
-// Base class shared by every desktop dropdown link — ~290 chars defined once.
+type SupportedLocale = "en" | "fr";
+
+const headerUiCopy: Record<SupportedLocale, { logoAlt: string }> = {
+  en: {
+    logoAlt: "Purrify - Premium Activated Carbon Cat Litter Additive - Home",
+  },
+  fr: {
+    logoAlt: "Purrify - additif premium de charbon actif pour litiere - accueil",
+  },
+};
+
 const dropdownLinkBase =
-  'block py-2 text-sm text-gray-700 dark:text-gray-200 hover:text-brand-pink dark:hover:text-brand-pink-400 focus:text-brand-pink dark:focus:text-brand-pink-400 hover:bg-gray-50 dark:bg-gray-900/80 dark:hover:bg-gray-700/80 focus:bg-gray-50 dark:focus:bg-gray-700/80 transition-colors rounded-md mx-1 my-0.5 focus:outline-none focus:ring-2 focus:ring-brand-pink dark:focus:ring-brand-pink-400 focus:ring-offset-1';
+  "block rounded-md px-4 py-2 text-sm text-gray-700 transition-colors hover:bg-gray-50 hover:text-brand-pink focus:bg-gray-50 focus:text-brand-pink focus:outline-none focus:ring-2 focus:ring-brand-pink focus:ring-offset-1 dark:text-gray-200 dark:bg-gray-900/80 dark:hover:bg-gray-700/80 dark:hover:text-brand-pink-400 dark:focus:bg-gray-700/80 dark:focus:ring-brand-pink-400";
 
-// Base class shared by every mobile dropdown link.
-const mobileDropdownLinkBase =
-  'block py-3 min-h-[44px] flex items-center text-gray-700 dark:text-gray-200 hover:text-brand-pink dark:hover:text-brand-pink-400 hover:bg-gray-50 dark:bg-gray-900/80 dark:hover:bg-gray-700/80 transition-colors font-medium rounded-md mx-2 my-0.5';
-
-export function Header() {
-  const mobileMenuId = 'mobile-navigation-menu';
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const [activeDropdown, setActiveDropdown] = useState<string | null>(null);
-  const [expandedMobileSection, setExpandedMobileSection] = useState<string | null>(null);
-  const t = useTranslations();
-  const locale = useLocale();
-  const headerUiCopy =
-    locale === 'fr'
-      ? {
-        logoAlt: "Purrify - additif premium de charbon actif pour litiere - accueil",
-      }
-      : {
-        logoAlt: 'Purrify - Premium Activated Carbon Cat Litter Additive - Home',
-      };
-  const localePrefix = locale === 'en' ? '' : `/${locale}`;
-  const pathname = usePathname();
-  const searchParams = useSearchParams();
-  const headerRef = useRef<HTMLElement | null>(null);
-  const closeTimeoutRef = useRef<number | null>(null);
-
-  const clearCloseTimeout = useCallback(() => {
-    if (closeTimeoutRef.current !== null) {
-      window.clearTimeout(closeTimeoutRef.current);
-      closeTimeoutRef.current = null;
-    }
-  }, []);
-
-  const scheduleDropdownClose = useCallback((menuId: string) => {
-    clearCloseTimeout();
-    closeTimeoutRef.current = window.setTimeout(() => {
-      setActiveDropdown((current) => (current === menuId ? null : current));
-      closeTimeoutRef.current = null;
-    }, 150);
-  }, [clearCloseTimeout]);
-
-  // Shared handlers to avoid recreating inline functions in JSX
-  const handleNavMouseEnter = useCallback(
-    (e: React.MouseEvent<HTMLButtonElement>) => {
-      const id = (e.currentTarget.dataset.menuId as string) || "";
-      setActiveDropdown(id);
-    },
-    [],
-  );
-
-  const handleNavClick = useCallback(
-    (e: React.MouseEvent<HTMLButtonElement>) => {
-      const id = (e.currentTarget.dataset.menuId as string) || "";
-      setActiveDropdown((current) => current === id ? null : id);
-    },
-    [],
-  );
-
-  const handleNavKeyDown = useCallback(
-    (e: React.KeyboardEvent<HTMLButtonElement>) => {
-      const id = (e.currentTarget.dataset.menuId as string) || "";
-      if (e.key === "Enter" || e.key === " ") {
-        e.preventDefault();
-        setActiveDropdown((current) => current === id ? null : id);
-      }
-      if (e.key === "Escape") {
-        setActiveDropdown(null);
-      }
-    },
-    [],
-  );
-
-  const toggleMenu = useCallback(() => {
-    setIsMenuOpen(!isMenuOpen);
-  }, [isMenuOpen]);
-
-  const closeMenu = useCallback(() => {
-    setIsMenuOpen(false);
-  }, []);
-
-
-  // Close mobile menu when pathname changes (route change detection)
-  useEffect(() => {
-    setIsMenuOpen(false);
-    setActiveDropdown(null);
-    setExpandedMobileSection(null);
-  }, [pathname, searchParams]);
-
-  // Close any open dropdown when clicking outside the header
-  useEffect(() => {
-    const handleClickOutside = (e: MouseEvent) => {
-      const target = e.target as HTMLElement;
-      // Only close if clicking completely outside the header
-      if (headerRef.current && !headerRef.current.contains(target)) {
-        clearCloseTimeout();
-        setActiveDropdown(null);
-      }
-    };
-    document.addEventListener("click", handleClickOutside);
-    return () => document.removeEventListener("click", handleClickOutside);
-  }, [clearCloseTimeout]);
-
-  useEffect(() => () => clearCloseTimeout(), [clearCloseTimeout]);
-
-  // Navigation items - memoized to prevent unnecessary re-renders
-  const navigationItems: NavigationItem[] = useMemo(() => [
+function getNavigationItems(
+  t: Awaited<ReturnType<typeof getTranslations>>,
+  localePrefix: string,
+): NavigationItem[] {
+  return [
     {
       id: "products",
-      label: t('nav.products'),
+      label: t("nav.products"),
       href: `${localePrefix}/`,
       hasDropdown: true,
       dropdownItems: [
         {
-          label: t('nav.trialSize'),
+          label: t("nav.trialSize"),
           href: `${localePrefix}/products/trial-size/`,
         },
         {
-          label: t('nav.compareSizes'),
+          label: t("nav.compareSizes"),
           href: `${localePrefix}/products/`,
         },
         {
-          label: t('nav.shipsToUSA'),
+          label: t("nav.shipsToUSA"),
           href: "/us/",
         },
       ],
     },
     {
       id: "retailers",
-      label: t('nav.retailers'),
+      label: t("nav.retailers"),
       href: `${localePrefix}/retailers/`,
       hasDropdown: true,
       dropdownItems: [
         {
-          label: t('nav.retailers'),
+          label: t("nav.retailers"),
           href: `${localePrefix}/retailers`,
         },
         {
-          label: t('nav.becomePartner'),
+          label: t("nav.becomePartner"),
           href: `${localePrefix}/retailers#retailer-contact`,
         },
         {
-          label: t('nav.marketingSupport'),
+          label: t("nav.marketingSupport"),
           href: `${localePrefix}/retailers#marketing-support`,
         },
-        { label: t('nav.partnerPrograms') || "Partner Programs", isGroupHeader: true },
+        { label: t("nav.partnerPrograms") || "Partner Programs", isGroupHeader: true },
         {
-          label: t('nav.forGroomers') || "For Groomers",
+          label: t("nav.forGroomers") || "For Groomers",
           href: `${localePrefix}/b2b#groomers`,
           indent: true,
         },
         {
-          label: t('nav.forShelters') || "For Shelters",
+          label: t("nav.forShelters") || "For Shelters",
           href: `${localePrefix}/b2b#shelters`,
           indent: true,
         },
         {
-          label: t('nav.affiliateProgram') || "Affiliate Program",
+          label: t("nav.affiliateProgram") || "Affiliate Program",
           href: "/affiliate/",
           indent: true,
         },
         {
-          label: t('nav.b2bInquiry') || "B2B Inquiry",
+          label: t("nav.b2bInquiry") || "B2B Inquiry",
           href: "/b2b/",
           indent: true,
         },
@@ -201,90 +104,90 @@ export function Header() {
     },
     {
       id: "learn",
-      label: t('nav.learn'),
+      label: t("nav.learn"),
       href: `${localePrefix}/learn/`,
       hasDropdown: true,
       dropdownItems: [
         {
-          label: t('nav.howItWorksPage'),
+          label: t("nav.howItWorksPage"),
           href: `${localePrefix}/learn/how-it-works/`,
         },
         {
-          label: t('nav.faq'),
+          label: t("nav.faq"),
           href: `${localePrefix}/learn/faq/`,
         },
         {
-          label: t('nav.science'),
+          label: t("nav.science"),
           href: `${localePrefix}/learn/science/`,
         },
         {
-          label: t('nav.safetyInfo'),
+          label: t("nav.safetyInfo"),
           href: `${localePrefix}/learn/safety/`,
         },
         {
-          label: t('nav.activatedCarbonBenefits'),
-          href: `/blog/activated-carbon-litter-additive-benefits/`,
+          label: t("nav.activatedCarbonBenefits"),
+          href: "/blog/activated-carbon-litter-additive-benefits/",
         },
         {
-          label: t('nav.catLitterGuide'),
+          label: t("nav.catLitterGuide"),
           href: `${localePrefix}/learn/cat-litter-guide/`,
         },
         {
-          label: t('nav.howToUse'),
-          href: `/blog/how-to-use-cat-litter-deodorizer/`,
+          label: t("nav.howToUse"),
+          href: "/blog/how-to-use-cat-litter-deodorizer/",
         },
         {
-          label: t('nav.technologyComparison'),
-          href: `/blog/activated-carbon-vs-baking-soda-comparison/`,
+          label: t("nav.technologyComparison"),
+          href: "/blog/activated-carbon-vs-baking-soda-comparison/",
         },
         {
-          label: t('nav.catLitterAnswers') || "Cat Litter Q&A",
+          label: t("nav.catLitterAnswers") || "Cat Litter Q&A",
           href: "/learn/faq/",
         },
         {
-          label: t('nav.scienceHub') || "Research Citations",
+          label: t("nav.scienceHub") || "Research Citations",
           href: "/science/",
         },
         {
-          label: t('nav.litterCalculator') || "Litter Calculator",
+          label: t("nav.litterCalculator") || "Litter Calculator",
           href: "/tools/cat-litter-calculator/",
         },
         {
-          label: t('nav.smellQuiz') || "Smell Quiz",
+          label: t("nav.smellQuiz") || "Smell Quiz",
           href: "/tools/smell-quiz/",
         },
         {
-          label: t('nav.toolsHub') || "All Tools",
+          label: t("nav.toolsHub") || "All Tools",
           href: "/tools/",
         },
-        { label: t('nav.solutions'), isGroupHeader: true },
+        { label: t("nav.solutions"), isGroupHeader: true },
         {
-          label: t('nav.ammoniaSmellControl'),
+          label: t("nav.ammoniaSmellControl"),
           href: `${localePrefix}/learn/solutions/ammonia-smell-cat-litter/`,
           indent: true,
         },
         {
-          label: t('nav.apartmentLiving'),
+          label: t("nav.apartmentLiving"),
           href: `${localePrefix}/learn/solutions/apartment-cat-smell-solution/`,
           indent: true,
         },
         {
-          label: t('nav.litterBoxOdor'),
+          label: t("nav.litterBoxOdor"),
           href: `${localePrefix}/learn/solutions/litter-box-smell-elimination/`,
           indent: true,
         },
         {
-          label: t('nav.multipleCats'),
+          label: t("nav.multipleCats"),
           href: `${localePrefix}/learn/solutions/multiple-cats-odor-control/`,
           indent: true,
         },
         {
-          label: t('nav.naturalAdditive'),
+          label: t("nav.naturalAdditive"),
           href: `${localePrefix}/learn/solutions/natural-cat-litter-additive/`,
           indent: true,
         },
         {
-          label: t('nav.seniorCats'),
+          label: t("nav.seniorCats"),
           href: `${localePrefix}/learn/solutions/senior-cat-litter-solutions/`,
           indent: true,
         },
@@ -292,52 +195,112 @@ export function Header() {
     },
     {
       id: "blog",
-      label: t('nav.blog') || "Blog",
+      label: t("nav.blog") || "Blog",
       href: `${localePrefix}/blog/`,
     },
     {
       id: "fun",
-      label: t('nav.fun') || "Fun & Games",
+      label: t("nav.fun") || "Fun & Games",
       href: "/fun/",
     },
     {
       id: "about",
-      label: t('nav.about'),
+      label: t("nav.about"),
       href: `${localePrefix}/about/our-story/`,
       hasDropdown: true,
       dropdownItems: [
         {
-          label: t('nav.ourStory') || "Our Story",
+          label: t("nav.ourStory") || "Our Story",
           href: `${localePrefix}/about/our-story`,
         },
         {
-          label: t('nav.customerReviews') || "Reviews",
+          label: t("nav.customerReviews") || "Reviews",
           href: `${localePrefix}/reviews/`,
         },
         {
-          label: t('nav.contact') || "Contact",
+          label: t("nav.contact") || "Contact",
           href: `${localePrefix}/contact/`,
         },
       ],
     },
-  ], [t, localePrefix]);
+  ];
+}
+
+function DesktopNavigationItem({ item }: { item: NavigationItem }) {
+  if (!item.hasDropdown) {
+    return (
+      <Link
+        href={item.href}
+        prefetch={false}
+        className="text-gray-700 transition-colors font-medium hover:text-brand-pink dark:text-gray-200 dark:hover:text-brand-pink-400"
+      >
+        {item.label}
+      </Link>
+    );
+  }
 
   return (
-    <header
-      ref={headerRef}
-      className="sticky top-0 z-50 w-full border-b border-brand-green-light/30 dark:border-purple-500/30 bg-white dark:bg-gray-900/90 backdrop-blur-md supports-[backdrop-filter]:bg-white dark:supports-[backdrop-filter]:bg-gray-900/85 shadow-lg transition-all duration-300"
-    >
+    <div className="group relative">
+      <Link
+        href={item.href}
+        prefetch={false}
+        className="flex items-center rounded-sm font-medium text-gray-700 transition-colors hover:text-brand-pink focus:text-brand-pink focus:outline-none focus:ring-2 focus:ring-brand-pink focus:ring-offset-2 focus:ring-offset-white dark:text-gray-200 dark:hover:text-brand-pink-400 dark:focus:text-brand-pink-400 dark:focus:ring-brand-pink-400 dark:focus:ring-offset-gray-800"
+        aria-haspopup="menu"
+      >
+        {item.label}
+        <ChevronDown className="ml-1 h-4 w-4" />
+      </Link>
+      <div
+        className="invisible pointer-events-none absolute left-0 top-full z-50 mt-1 max-h-96 w-64 overflow-y-auto rounded-lg border border-gray-200 bg-white p-2 opacity-0 shadow-xl transition-all group-hover:visible group-hover:pointer-events-auto group-hover:opacity-100 group-focus-within:visible group-focus-within:pointer-events-auto group-focus-within:opacity-100 dark:border-gray-600/50 dark:bg-gray-800/95"
+        role="menu"
+      >
+        {item.dropdownItems?.map((dropdownItem) =>
+          dropdownItem.isGroupHeader ? (
+            <div
+              key={dropdownItem.label}
+              className="mt-2 px-4 py-2 text-xs font-bold uppercase tracking-wider text-gray-500 first:mt-0 dark:text-gray-400"
+            >
+              {dropdownItem.label}
+            </div>
+          ) : (
+            <Link
+              key={dropdownItem.label}
+              href={dropdownItem.href || ""}
+              prefetch={false}
+              className={`${dropdownLinkBase} ${dropdownItem.indent ? "pl-6" : ""}`}
+              role="menuitem"
+            >
+              {dropdownItem.label}
+            </Link>
+          ),
+        )}
+      </div>
+    </div>
+  );
+}
+
+export async function Header() {
+  const t = await getTranslations();
+  const locale = await getLocale();
+  const resolvedLocale: SupportedLocale = locale === "fr" ? "fr" : "en";
+  const localePrefix = resolvedLocale === "en" ? "" : `/${resolvedLocale}`;
+  const navigationItems = getNavigationItems(t, localePrefix);
+  const copy = headerUiCopy[resolvedLocale];
+  const findStoreHref = resolvedLocale === "fr" ? "/fr/stores/" : "/stores/";
+
+  return (
+    <header className="sticky top-0 z-50 w-full border-b border-brand-green-light/30 bg-white shadow-lg transition-all duration-300 backdrop-blur-md supports-[backdrop-filter]:bg-white dark:border-purple-500/30 dark:bg-gray-900/90 dark:supports-[backdrop-filter]:bg-gray-900/85">
       <Container>
-        <div className="flex h-16 items-center justify-between">
+        <div className="relative flex h-16 items-center justify-between">
           <div className="flex items-center">
             <Link
-              href={localePrefix || '/'}
+              href={localePrefix || "/"}
               prefetch={false}
-              className="flex items-center space-x-2 flex-shrink-0"
+              className="flex flex-shrink-0 items-center space-x-2"
             >
               <Image
                 src="/optimized/logos/logo-light-pink.webp"
-                alt={headerUiCopy.logoAlt}
+                alt={copy.logoAlt}
                 width={120}
                 height={57}
                 priority
@@ -345,201 +308,41 @@ export function Header() {
               />
               <Image
                 src="/optimized/logos/logo-dark.webp"
-                alt={headerUiCopy.logoAlt}
+                alt={copy.logoAlt}
                 width={84}
                 height={40}
                 priority
-                className="h-10 w-auto filter drop-shadow-sm transition-all duration-300 hidden dark:block"
+                className="hidden h-10 w-auto filter drop-shadow-sm transition-all duration-300 dark:block"
               />
             </Link>
           </div>
 
-          <nav className="hidden md:flex items-center space-x-8">
+          <nav className="hidden items-center space-x-8 md:flex">
             {navigationItems.map((item) => (
-              <div
-                key={item.id}
-                className="relative group"
-                onMouseEnter={() => {
-                  if (item.hasDropdown) {
-                    clearCloseTimeout();
-                    setActiveDropdown(item.id);
-                  }
-                }}
-                onMouseLeave={() => {
-                  if (item.hasDropdown) {
-                    scheduleDropdownClose(item.id);
-                  }
-                }}
-              >
-                {item.hasDropdown ? (
-                  <>
-                    <button
-                      id={`dropdown-${item.id}`}
-                      className="flex items-center text-gray-700 dark:text-gray-200 hover:text-brand-pink dark:hover:text-brand-pink-400 focus:text-brand-pink dark:focus:text-brand-pink-400 transition-colors font-medium focus:outline-none focus:ring-2 focus:ring-brand-pink dark:focus:ring-brand-pink-400 focus:ring-offset-2 focus:ring-offset-white dark:focus:ring-offset-gray-800 rounded-sm"
-                      data-dropdown
-                      data-menu-id={item.id}
-                      aria-expanded={activeDropdown === item.id ? "true" : "false"}
-                      aria-haspopup="true"
-                      onMouseEnter={handleNavMouseEnter}
-                      // Do not auto-dismiss on mouse leave
-                      onClick={handleNavClick}
-                      onKeyDown={handleNavKeyDown}
-                    >
-                      {item.label}
-                      <ChevronDown className="ml-1 h-4 w-4" />
-                    </button>
-                    {activeDropdown === item.id && (
-                      <div
-                        className="absolute top-full left-0 mt-1 bg-white dark:bg-gray-800/95 backdrop-blur-md rounded-lg shadow-xl border border-gray-200 dark:border-gray-600/50 z-50 w-64 max-h-96 overflow-y-auto p-2"
-                        role="menu"
-                        aria-labelledby={`dropdown-${item.id}`}
-                        data-dropdown
-                        onMouseEnter={clearCloseTimeout}
-                        onMouseLeave={() => scheduleDropdownClose(item.id)}
-                      >
-                        {item.dropdownItems?.map((dropdownItem) =>
-                          dropdownItem.isGroupHeader ? (
-                            <div
-                              key={dropdownItem.label}
-                              className="px-4 py-2 text-xs font-bold text-gray-500 dark:text-gray-400 uppercase tracking-wider mt-2 first:mt-0"
-                            >
-                              {dropdownItem.label}
-                            </div>
-                          ) : (
-                            <Link
-                              key={dropdownItem.label}
-                              href={dropdownItem.href || ""}
-                              prefetch={false}
-                              className={`${dropdownLinkBase} ${dropdownItem.indent ? "pl-6" : "px-4"}`}
-                              role="menuitem"
-                            >
-                              {dropdownItem.label}
-                            </Link>
-                          ),
-                        )}
-                      </div>
-                    )}
-                  </>
-                ) : (
-                  <Link
-                    href={item.href}
-                    prefetch={false}
-                    className="text-gray-700 dark:text-gray-200 hover:text-brand-pink dark:hover:text-brand-pink-400 transition-colors font-medium"
-                  >
-                    {item.label}
-                  </Link>
-                )}
-              </div>
+              <DesktopNavigationItem key={item.id} item={item} />
             ))}
           </nav>
 
-          <div className="hidden md:flex items-center space-x-3">
+          <div className="hidden items-center space-x-3 md:flex">
             <Button
               asChild
-              className="flex items-center gap-2 bg-gradient-to-r from-brand-pink to-brand-pink/80 dark:from-brand-pink-700 dark:to-brand-pink-600 hover:from-brand-pink/90 hover:to-brand-pink dark:hover:from-brand-pink-800 dark:hover:to-brand-pink-700 text-white font-semibold shadow-md hover:shadow-lg transition-all duration-200"
+              className="flex items-center gap-2 bg-gradient-to-r from-brand-pink to-brand-pink/80 font-semibold text-white shadow-md transition-all duration-200 hover:from-brand-pink/90 hover:to-brand-pink hover:shadow-lg dark:from-brand-pink-700 dark:to-brand-pink-600 dark:hover:from-brand-pink-800 dark:hover:to-brand-pink-700"
             >
-              <Link href="/stores/" prefetch={false}>
-                <MapPin className="w-4 h-4" />
-                {t('nav.findStore') || "Find a Store"}
+              <Link href={findStoreHref} prefetch={false}>
+                <MapPin className="h-4 w-4" />
+                {t("nav.findStore") || "Find a Store"}
               </Link>
             </Button>
             <LanguageSwitcher />
           </div>
 
-          <div className="flex md:hidden items-center space-x-1">
-            <LanguageSwitcher />
-            <Button
-              variant="ghost"
-              size="icon"
-              className="ml-1 h-11 w-11 p-0"
-              onClick={toggleMenu}
-              aria-label={t('nav.toggleMenu') || 'Toggle menu'}
-              aria-controls={mobileMenuId}
-              aria-expanded={isMenuOpen}
-            >
-              {isMenuOpen ? (
-                <X className="h-6 w-6" />
-              ) : (
-                <Menu className="h-6 w-6" />
-              )}
-            </Button>
-          </div>
+          <HeaderMobileMenu
+            navigationItems={navigationItems}
+            findStoreHref={findStoreHref}
+            findStoreLabel={t("nav.findStore") || "Find a Store"}
+            toggleMenuLabel={t("nav.toggleMenu") || "Toggle menu"}
+          />
         </div>
-
-        {/* Mobile menu - Accordion style */}
-        {isMenuOpen && (
-          <div id={mobileMenuId} className="md:hidden border-t border-brand-green-light/30 dark:border-purple-500/30 bg-white dark:bg-gray-900/95 backdrop-blur-md shadow-lg max-h-[80vh] overflow-y-auto">
-            <div className="px-2 pt-2 pb-3 space-y-1">
-              {navigationItems.map((item) => (
-                <div key={item.id}>
-                  {item.hasDropdown ? (
-                    <>
-                      {/* Accordion header - clickable toggle */}
-                      <button
-                        type="button"
-                        onClick={() => setExpandedMobileSection(expandedMobileSection === item.id ? null : item.id)}
-                        className="w-full flex items-center justify-between px-3 py-3 min-h-[44px] text-sm font-semibold text-gray-700 dark:text-gray-200 hover:text-brand-pink dark:hover:text-brand-pink-400 hover:bg-gray-50 dark:hover:bg-gray-700/80 transition-colors rounded-md mx-1"
-                        aria-expanded={expandedMobileSection === item.id}
-                      >
-                        <span className="uppercase tracking-wider">{item.label}</span>
-                        <ChevronDown
-                          className={`h-5 w-5 transition-transform duration-200 ${expandedMobileSection === item.id ? "rotate-180" : ""}`}
-                        />
-                      </button>
-                      {/* Accordion content - collapsible */}
-                      {expandedMobileSection === item.id && (
-                        <div className="pl-2 pb-2 space-y-0.5">
-                          {item.dropdownItems?.map((dropdownItem) =>
-                            dropdownItem.isGroupHeader ? (
-                              <div
-                                key={dropdownItem.label}
-                                className="px-4 py-2 text-xs font-bold text-gray-500 dark:text-gray-400 uppercase tracking-wider mt-2"
-                              >
-                                {dropdownItem.label}
-                              </div>
-                            ) : (
-                              <Link
-                                key={dropdownItem.label}
-                                href={dropdownItem.href || ""}
-                                prefetch={false}
-                                className={`${mobileDropdownLinkBase} ${dropdownItem.indent ? "pl-8" : "px-6"}`}
-                                onClick={closeMenu}
-                              >
-                                {dropdownItem.label}
-                              </Link>
-                            ),
-                          )}
-                        </div>
-                      )}
-                    </>
-                  ) : (
-                    <Link
-                      href={item.href}
-                      prefetch={false}
-                      className="block px-3 py-3 min-h-[44px] flex items-center text-gray-700 dark:text-gray-200 hover:text-brand-pink dark:hover:text-brand-pink-400 hover:bg-gray-50 dark:bg-gray-900/80 dark:hover:bg-gray-700/80 transition-colors font-medium rounded-md mx-2 my-1"
-                      onClick={closeMenu}
-                    >
-                      {item.label}
-                    </Link>
-                  )}
-                </div>
-              ))}
-
-              {/* Quick Actions */}
-              <div className="border-t border-gray-200 dark:border-gray-700 pt-2 mt-2 space-y-2">
-                <Button
-                  asChild
-                  className="w-full flex items-center justify-center gap-2 bg-gradient-to-r from-brand-pink to-brand-pink/80 dark:from-brand-pink-700 dark:to-brand-pink-600 hover:from-brand-pink/90 hover:to-brand-pink dark:hover:from-brand-pink-800 dark:hover:to-brand-pink-700 text-white font-semibold shadow-md hover:shadow-lg transition-all duration-200"
-                >
-                  <Link href="/stores/" prefetch={false} onClick={closeMenu}>
-                    <MapPin className="w-4 h-4" />
-                    {t('nav.findStore') || "Find a Store"}
-                  </Link>
-                </Button>
-              </div>
-            </div>
-          </div>
-        )}
       </Container>
     </header>
   );
