@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useTranslations, useLocale } from 'next-intl';
 import {
   Store,
@@ -83,6 +83,22 @@ export default function B2BClientPage() {
 
   const activeTabConfig = tabs.find((tab) => tab.id === activeTab);
   const ActiveComponent = activeTabConfig?.component || RetailVertical;
+
+  useEffect(() => {
+    const handleHash = () => {
+      const hash = window.location.hash.replace('#', '') as VerticalTab;
+      const validTabs: VerticalTab[] = [
+        'retail', 'cat-cafes', 'groomers', 'hospitality', 'shelters', 'veterinarians'
+      ];
+      if (validTabs.includes(hash)) {
+        setActiveTab(hash);
+      }
+    };
+
+    handleHash();
+    window.addEventListener('hashchange', handleHash);
+    return () => window.removeEventListener('hashchange', handleHash);
+  }, []);
 
   const breadcrumbAriaLabel =
     locale === 'fr'

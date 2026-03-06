@@ -40,11 +40,11 @@ export function RetailVertical({ locale }: RetailVerticalProps) {
     },
     {
       icon: <Shield className="h-8 w-8 text-purple-600 dark:text-purple-400" />,
-      title: locale === 'fr' ? 'Protection Territoriale' : 'Territory Protection',
+      title: locale === 'fr' ? 'Protection en Ligne' : 'Online Protection',
       description:
         locale === 'fr'
-          ? 'Exclusivité régionale pour partenaires dédiés et protection contre la vente en ligne directe.'
-          : 'Regional exclusivity for dedicated partners and protection from direct online selling.',
+          ? 'Protection stricte contre la vente en ligne directe pour protéger vos ventes en magasin.'
+          : 'Strict protection from direct online selling to protect your brick-and-mortar sales.',
     },
     {
       icon: <Package className="h-8 w-8 text-orange-600 dark:text-orange-400" />,
@@ -87,20 +87,19 @@ export function RetailVertical({ locale }: RetailVerticalProps) {
     {
       name: locale === 'fr' ? 'Partenaire Établi' : 'Established Partner',
       minOrder: locale === 'fr' ? '36 unités' : '36 units',
-      discount: '35%',
+      discount: '50%',
       features: [
         locale === 'fr' ? 'Tous les avantages Nouveau' : 'All New Retailer benefits',
         locale === 'fr' ? 'Termes Net 30' : 'Net 30 terms',
         locale === 'fr' ? 'Support marketing local' : 'Local marketing support',
         locale === 'fr' ? 'Représentant dédié' : 'Dedicated rep',
-        locale === 'fr' ? 'Exclusivité territoriale' : 'Territory exclusivity',
       ],
       highlighted: true,
     },
     {
       name: locale === 'fr' ? 'Distributeur Régional' : 'Regional Distributor',
       minOrder: locale === 'fr' ? '144 unités' : '144 units',
-      discount: '45%',
+      discount: '50%+',
       features: [
         locale === 'fr' ? 'Tous les avantages Établi' : 'All Established benefits',
         locale === 'fr' ? 'Livraison directe magasin' : 'Direct-to-store delivery',
@@ -155,7 +154,7 @@ export function RetailVertical({ locale }: RetailVerticalProps) {
             </div>
           </div>
           <div>
-            <div className="text-3xl font-bold text-blue-600 dark:text-blue-400 mb-2">45%</div>
+            <div className="text-3xl font-bold text-blue-600 dark:text-blue-400 mb-2">50%+</div>
             <div className="text-sm text-gray-700 dark:text-gray-300">
               {locale === 'fr' ? 'Marge Maximale' : 'Max Wholesale Margin'}
             </div>
@@ -201,11 +200,10 @@ export function RetailVertical({ locale }: RetailVerticalProps) {
           {pricingTiers.map((tier, index) => (
             <div
               key={index}
-              className={`rounded-lg p-8 ${
-                tier.highlighted
+              className={`rounded-lg p-8 ${tier.highlighted
                   ? 'bg-blue-50 dark:bg-blue-900/20 border-2 border-blue-300 dark:border-blue-600 shadow-lg'
                   : 'bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 shadow-sm'
-              }`}
+                }`}
             >
               {tier.highlighted && (
                 <div className="text-center mb-4">

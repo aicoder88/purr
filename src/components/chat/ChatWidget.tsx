@@ -184,13 +184,12 @@ export default function ChatWidget() {
           type="button"
           aria-label={t('chat.fabAriaLabel')}
           onClick={openChat}
-          className={`fixed bottom-36 right-4 z-50 inline-flex items-center gap-2 rounded-full bg-[#FF3131] px-4 py-3 text-sm font-semibold text-white shadow-lg transition ${
-            prefersReducedMotion
+          className={`fixed bottom-36 right-4 z-50 inline-flex items-center gap-2 rounded-full bg-gray-900 px-5 py-3.5 text-sm font-bold text-white shadow-2xl ring-2 ring-gray-900/20 transition-all hover:bg-black ${prefersReducedMotion
               ? ''
-              : 'translate-y-0 opacity-100 duration-300 hover:-translate-y-0.5'
-          } dark:bg-red-500 dark:text-gray-900 md:bottom-4`}
+              : 'translate-y-0 opacity-100 duration-300 hover:-translate-y-1 hover:shadow-[0_8px_30px_rgb(0,0,0,0.24)]'
+            } dark:bg-white dark:text-gray-900 dark:ring-white/20 dark:hover:bg-gray-50 md:bottom-6 md:right-6`}
         >
-          <Sparkles className="h-4 w-4" aria-hidden="true" />
+          <Sparkles className="h-5 w-5 text-[#FF3131]" aria-hidden="true" />
           <span>{t('chat.fabLabel')}</span>
         </button>
       ) : null}
@@ -201,9 +200,8 @@ export default function ChatWidget() {
           role="dialog"
           aria-modal="true"
           aria-label={t('chat.panelTitle')}
-          className={`fixed inset-x-2 bottom-2 z-50 flex h-[70vh] max-h-[70vh] flex-col rounded-2xl border border-gray-200 bg-white shadow-2xl dark:border-gray-700 dark:bg-gray-900 md:inset-x-auto md:bottom-4 md:right-4 md:h-[500px] md:max-h-[500px] md:w-[400px] ${
-            prefersReducedMotion ? '' : 'animate-in slide-in-from-bottom-4 duration-300'
-          }`}
+          className={`fixed inset-x-2 bottom-2 z-50 flex h-[70vh] max-h-[70vh] flex-col rounded-2xl border border-gray-200 bg-white shadow-2xl dark:border-gray-700 dark:bg-gray-900 md:inset-x-auto md:bottom-4 md:right-4 md:h-[500px] md:max-h-[500px] md:w-[400px] ${prefersReducedMotion ? '' : 'animate-in slide-in-from-bottom-4 duration-300'
+            }`}
         >
           <div className="flex items-center justify-between border-b border-gray-200 px-4 py-3 dark:border-gray-700">
             <div className="flex items-center gap-2">

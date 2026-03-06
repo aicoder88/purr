@@ -179,12 +179,12 @@ export function Header() {
         { label: t('nav.partnerPrograms') || "Partner Programs", isGroupHeader: true },
         {
           label: t('nav.forGroomers') || "For Groomers",
-          href: `${localePrefix}/retailers/`,
+          href: `${localePrefix}/b2b#groomers`,
           indent: true,
         },
         {
           label: t('nav.forShelters') || "For Shelters",
-          href: `${localePrefix}/retailers/`,
+          href: `${localePrefix}/b2b#shelters`,
           indent: true,
         },
         {
