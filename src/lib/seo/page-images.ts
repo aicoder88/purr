@@ -105,8 +105,8 @@ export const PAGE_IMAGES: Record<string, PageImage> = {
     alt: 'Litter box odor elimination guide',
   },
   '/learn/solutions/how-to-neutralize-ammonia-cat-litter': {
-    image: '/optimized/marketing/catonbed.avif',
-    alt: 'Guide to neutralizing ammonia smell',
+    image: '/optimized/blog/ammonia-hero.webp',
+    alt: 'Cat owner using activated carbon granules to neutralize ammonia in a litter box',
   },
   '/learn/solutions/senior-cat-litter-solutions': {
     image: '/optimized/marketing/gigi.webp',

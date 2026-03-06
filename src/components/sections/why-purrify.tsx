@@ -98,7 +98,7 @@ export function WhyPurrify() {
     <section id="why-purrify" className="py-14 md:py-16 bg-gray-50 dark:bg-gray-900">
       <Container>
         <div className="max-w-3xl mx-auto text-center mb-10">
-          <div className="inline-flex items-center rounded-full border border-brand-pink/30 bg-gradient-to-r from-brand-yellow/25 to-brand-pink/25 px-4 py-1.5 mb-4">
+          <div className="inline-flex items-center rounded-full border border-brand-pink/30 bg-gradient-to-r from-brand-yellow/25 via-brand-pink/25 to-brand-pink/25 px-4 py-1.5 mb-4">
             <span className="text-sm font-medium text-gray-900 dark:text-gray-100">{t("whyPurrify.badge")}</span>
           </div>
           <h2 className="font-heading text-3xl md:text-4xl font-semibold tracking-tight text-gray-900 dark:text-white">

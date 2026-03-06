@@ -44,7 +44,7 @@ export function AgitationSection() {
           </div>
 
           <div className="order-1 lg:order-2">
-            <div className="inline-flex items-center rounded-full border border-brand-pink/30 bg-gradient-to-r from-brand-yellow/25 to-brand-pink/25 px-4 py-1.5 mb-4">
+            <div className="inline-flex items-center rounded-full border border-brand-pink/30 bg-gradient-to-r from-brand-yellow/25 via-brand-pink/25 to-brand-pink/25 px-4 py-1.5 mb-4">
               <span className="text-sm font-medium text-gray-900 dark:text-gray-100">{badge}</span>
             </div>
 

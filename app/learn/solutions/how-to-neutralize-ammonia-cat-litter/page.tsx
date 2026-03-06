@@ -6,14 +6,23 @@ import HowToNeutralizeAmmoniaPageClient from './HowToNeutralizeAmmoniaPageClient
 import { stripContext } from '@/lib/seo-utils';
 
 const pageTitle = `How to Neutralize Ammonia in Cat Litter (5 Methods That Actually Work) | ${SITE_NAME}`;
-const pageDescription = 'Cat litter ammonia smell making you gag? Activated carbon neutralizes ammonia 10x better than baking soda. See the 5 proven methods ranked by effectiveness.';
+const pageDescription = 'Learn how to neutralize ammonia in cat litter with proven methods that reduce cat urine odor fast. Compare activated carbon, baking soda, zeolite, and daily scooping for long-term litter box ammonia control.';
 const canonicalUrl = 'https://www.purrify.ca/learn/solutions/how-to-neutralize-ammonia-cat-litter/';
 const heroImage = 'https://www.purrify.ca/optimized/blog/ammonia-hero.webp';
 
 export const metadata: Metadata = {
   title: pageTitle,
   description: pageDescription,
-  keywords: ['how to neutralize ammonia in cat litter', 'cat litter ammonia neutralizer', 'reduce ammonia in litter box', 'best cat litter for ammonia control', 'ammonia absorber for cat litter', 'cat urine ammonia smell'],
+  keywords: [
+    'how to neutralize ammonia in cat litter',
+    'cat litter ammonia neutralizer',
+    'how to get rid of ammonia smell in litter box',
+    'cat urine smell removal',
+    'ammonia absorber for cat litter',
+    'activated carbon granules for cat litter',
+    'litter box ammonia control',
+    'best ammonia remover for cat urine',
+  ],
   alternates: {
     canonical: 'https://www.purrify.ca/learn/solutions/how-to-neutralize-ammonia-cat-litter/',
     languages: {

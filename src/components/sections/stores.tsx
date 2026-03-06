@@ -449,7 +449,7 @@ export function Stores() {
             <span className="h-px w-8 bg-gradient-to-r from-transparent to-brand-pink"></span>
             <span className="font-bold tracking-wider text-sm uppercase flex items-center gap-2">
               <span className="text-lg">📍</span>
-              <span className="bg-gradient-to-r from-brand-yellow to-brand-pink bg-clip-text text-transparent">
+              <span className="bg-gradient-to-r from-brand-yellow via-brand-pink to-brand-pink bg-clip-text text-transparent">
                 {uiCopy.sectionBadge}
               </span>
             </span>
@@ -457,7 +457,7 @@ export function Stores() {
           </div>
           <h2 className="font-heading text-4xl md:text-5xl font-black text-gray-900 dark:text-white mb-6">
             {uiCopy.headingPrefix}
-            <span className="bg-gradient-to-r from-brand-yellow to-brand-pink bg-clip-text text-transparent ml-2">
+            <span className="bg-gradient-to-r from-brand-yellow via-brand-pink to-brand-pink bg-clip-text text-transparent ml-2">
               {uiCopy.headingHighlight}
             </span>
           </h2>
@@ -487,7 +487,7 @@ export function Stores() {
                     <div
                       className={
                         "w-12 h-12 rounded-lg flex items-center justify-center shadow-sm overflow-hidden " +
-                        (shouldUseWhiteBg ? "bg-white dark:bg-white border border-gray-100 dark:border-gray-700" : "bg-gradient-to-br from-brand-yellow to-brand-pink")
+                        (shouldUseWhiteBg ? "bg-white dark:bg-white border border-gray-100 dark:border-gray-700" : "bg-gradient-to-br from-brand-yellow via-brand-pink to-brand-pink")
                       }
                     >
                       <StoreLogoImage logoConfig={logoConfig} storeName={store.name} />
@@ -557,7 +557,7 @@ export function Stores() {
 
         {/* Request Store CTA */}
         <div className="mt-20 text-center">
-          <div className="inline-block p-1 bg-gradient-to-r from-brand-yellow to-brand-pink rounded-2xl shadow-lg shadow-pink-500/20">
+          <div className="inline-block p-1 bg-gradient-to-r from-brand-yellow via-brand-pink to-brand-pink rounded-2xl shadow-lg shadow-pink-500/20">
             <div className="bg-white dark:bg-gray-900 rounded-xl px-8 py-10 md:px-16">
               <h3 className="font-heading text-2xl font-black text-gray-900 dark:text-white mb-3">
                 {uiCopy.requestTitle}
@@ -613,7 +613,7 @@ export function Stores() {
                 <button
                   type="submit"
                   disabled={isSubmitting || submitStatus === 'success'}
-                  className="bg-gradient-to-r from-brand-yellow to-brand-pink hover:from-brand-yellow/90 hover:to-brand-pink/90 text-gray-950 font-bold py-4 px-8 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 active:scale-95 border-0 flex items-center justify-center gap-2 mx-auto min-w-[240px] disabled:opacity-70 disabled:cursor-not-allowed"
+                  className="bg-gradient-to-r from-brand-yellow via-brand-pink to-brand-pink hover:from-brand-yellow/90 hover:via-brand-pink/90 hover:to-brand-pink/90 text-gray-950 font-bold py-4 px-8 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 active:scale-95 border-0 flex items-center justify-center gap-2 mx-auto min-w-[240px] disabled:opacity-70 disabled:cursor-not-allowed"
                 >
                   {isSubmitting ? (
                     <>

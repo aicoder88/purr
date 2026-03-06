@@ -66,25 +66,25 @@ const IMAGE_BY_ID: Record<string, { image: string; imageSize: "sm" | "md" | "lg"
 
 const CARD_TONE_BY_ID: Record<string, { badge: string; glow: string; dot: string; storeButton: string }> = {
   trial: {
-    badge: "border border-brand-pink/30 bg-gradient-to-r from-brand-yellow/25 to-brand-pink/25 text-gray-900 dark:text-gray-100",
+    badge: "border border-brand-pink/30 bg-gradient-to-r from-brand-yellow/25 via-brand-pink/25 to-brand-pink/25 text-gray-900 dark:text-gray-100",
     glow: "before:bg-[radial-gradient(circle_at_top,rgba(16,185,129,0.16),transparent_58%)]",
     dot: "text-emerald-500 dark:text-emerald-300",
     storeButton:
-      "bg-gradient-to-r from-brand-yellow to-brand-pink hover:from-brand-yellow/90 hover:to-brand-pink/90 text-gray-950 border-0",
+      "bg-gradient-to-r from-brand-yellow via-brand-pink to-brand-pink hover:from-brand-yellow/90 hover:via-brand-pink/90 hover:to-brand-pink/90 text-gray-950 border-0",
   },
   regular: {
-    badge: "border border-brand-pink/30 bg-gradient-to-r from-brand-yellow/25 to-brand-pink/25 text-gray-900 dark:text-gray-100",
+    badge: "border border-brand-pink/30 bg-gradient-to-r from-brand-yellow/25 via-brand-pink/25 to-brand-pink/25 text-gray-900 dark:text-gray-100",
     glow: "before:bg-[radial-gradient(circle_at_top,rgba(59,130,246,0.16),transparent_58%)]",
     dot: "text-blue-500 dark:text-blue-300",
     storeButton:
-      "bg-gradient-to-r from-brand-yellow to-brand-pink hover:from-brand-yellow/90 hover:to-brand-pink/90 text-gray-950 border-0",
+      "bg-gradient-to-r from-brand-yellow via-brand-pink to-brand-pink hover:from-brand-yellow/90 hover:via-brand-pink/90 hover:to-brand-pink/90 text-gray-950 border-0",
   },
   large: {
-    badge: "border border-brand-pink/30 bg-gradient-to-r from-brand-yellow/25 to-brand-pink/25 text-gray-900 dark:text-gray-100",
+    badge: "border border-brand-pink/30 bg-gradient-to-r from-brand-yellow/25 via-brand-pink/25 to-brand-pink/25 text-gray-900 dark:text-gray-100",
     glow: "before:bg-[radial-gradient(circle_at_top,rgba(245,158,11,0.16),transparent_58%)]",
     dot: "text-amber-500 dark:text-amber-300",
     storeButton:
-      "bg-gradient-to-r from-brand-yellow to-brand-pink hover:from-brand-yellow/90 hover:to-brand-pink/90 text-gray-950 border-0",
+      "bg-gradient-to-r from-brand-yellow via-brand-pink to-brand-pink hover:from-brand-yellow/90 hover:via-brand-pink/90 hover:to-brand-pink/90 text-gray-950 border-0",
   },
 };
 
@@ -381,7 +381,7 @@ export function EnhancedProductComparison() {
                     {product.ctaType === "stripe" && product.stripeLink ? (
                       <div className="space-y-2">
                         <a href={product.stripeLink} className="block">
-                          <Button className="h-11 w-full rounded-full bg-gradient-to-r from-brand-yellow to-brand-pink hover:from-brand-yellow/90 hover:to-brand-pink/90 text-gray-950 border-0">
+                          <Button className="h-11 w-full rounded-full bg-gradient-to-r from-brand-yellow via-brand-pink to-brand-pink hover:from-brand-yellow/90 hover:via-brand-pink/90 hover:to-brand-pink/90 text-gray-950 border-0">
                             {product.ctaLabel}
                             <ChevronRight className="w-4 h-4 ml-1" />
                           </Button>

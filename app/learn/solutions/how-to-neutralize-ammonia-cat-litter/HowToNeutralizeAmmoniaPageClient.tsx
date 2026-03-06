@@ -21,25 +21,25 @@ export default function HowToNeutralizeAmmoniaPageClient() {
   const howToSteps = [
     {
       name: 'Choose activated carbon as your primary solution',
-      text: 'Activated carbon is the most effective ammonia neutralizer available. It traps ammonia molecules permanently through adsorption, with 92% reduction in lab tests.',
+      text: 'Activated carbon is the most effective cat litter ammonia neutralizer available. It traps ammonia molecules permanently through adsorption, with 92% reduction in lab tests. If you are searching for how to get rid of ammonia smell in a litter box, this is the best first step.',
       tip: 'Look for coconut shell activated carbon—it has the highest surface area and purity.',
     },
     {
       name: 'Remove existing ammonia-soaked litter',
-      text: 'Empty the litter box completely and dispose of old litter. Ammonia has already been released from this waste and cannot be recaptured.',
+      text: 'Empty the litter box completely and dispose of old litter. Ammonia has already been released from this waste and cannot be recaptured, so a full reset is essential for cat urine ammonia smell removal.',
     },
     {
       name: 'Clean the box with enzyme cleaner',
-      text: 'Use an enzyme-based cleaner (not bleach) to break down any urine residue in the box. Let it dry completely before adding fresh litter.',
+      text: 'Use an enzyme-based cleaner (not bleach) to break down urine residue in the box and on nearby surfaces. Let it dry completely before adding fresh litter so you are not trapping moisture that can speed up ammonia formation.',
       tip: 'Bleach + ammonia creates toxic chloramine gas. Never use bleach on litter boxes.',
     },
     {
       name: 'Add fresh litter with activated carbon mixed in',
-      text: "Pour 2-3 inches of clean litter, then add 2-3 tablespoons of activated carbon additive. Mix thoroughly so the carbon contacts urine as soon as it's deposited.",
+      text: "Pour 2-3 inches of clean litter, then add 2-3 tablespoons of activated carbon granules. Mix thoroughly so the carbon contacts urine as soon as it's deposited, giving immediate ammonia odor control.",
     },
     {
       name: 'Maintain with daily scooping and weekly carbon refresh',
-      text: 'Scoop waste daily to remove the source of new ammonia. Add 1 tablespoon of fresh carbon every 2-3 days to maintain continuous protection.',
+      text: 'Scoop waste daily to remove the source of new ammonia. Add 1 tablespoon of fresh carbon every 2-3 days to maintain continuous protection and keep your litter box from smelling like ammonia between full litter changes.',
     },
   ];
 
@@ -47,23 +47,23 @@ export default function HowToNeutralizeAmmoniaPageClient() {
   const faqQuestions = [
     {
       question: 'Why does my litter box smell like ammonia even after cleaning?',
-      answer: "Ammonia forms within 2-4 hours of urination as bacteria break down urea. If you clean once daily, ammonia has already formed. Activated carbon neutralizes it continuously between cleanings, which is why it's more effective than just frequent scooping.",
+      answer: "Ammonia forms within 2-4 hours of urination as bacteria break down urea. If you clean once daily, ammonia has already formed and can linger in the litter box plastic, surrounding floor, and air. Activated carbon neutralizes it continuously between cleanings, which is why it's more effective than just frequent scooping.",
     },
     {
       question: 'Is the ammonia smell harmful to my cat?',
-      answer: "Yes. High ammonia levels can irritate your cat's respiratory system, cause eye problems, and lead to litter box avoidance. Cats have sensitive noses—if you can smell it, it's overwhelming for them. Prolonged exposure can cause chronic respiratory issues.",
+      answer: "Yes. High ammonia levels can irritate your cat's respiratory system, cause eye problems, and lead to litter box avoidance. Cats have sensitive noses, so if you can smell cat litter ammonia, your cat is experiencing a much stronger exposure. Prolonged exposure can contribute to chronic respiratory issues.",
     },
     {
       question: 'How much activated carbon should I use?',
-      answer: 'For a standard litter box, 2-3 tablespoons of activated carbon additive mixed into the litter is sufficient. For multi-cat households or larger boxes, use 3-4 tablespoons. Add more with each litter change or weekly top-up for best results.',
+      answer: 'For a standard litter box, 2-3 tablespoons of activated carbon granules mixed into the litter is sufficient. For multi-cat households or larger boxes, use 3-4 tablespoons. Add more with each litter change or weekly top-up for best cat litter ammonia control results.',
     },
     {
       question: 'Does activated carbon work with all litter types?',
-      answer: 'Yes. Activated carbon additives work with clay, clumping, crystal, wood, paper, and natural litters. Simply mix it into your existing litter—no need to switch brands. The carbon works by trapping ammonia molecules regardless of litter type.',
+      answer: 'Yes. Activated carbon additives work with clay, clumping, crystal, wood, paper, and natural litters. Simply mix it into your existing litter with no need to switch brands. The carbon works by trapping ammonia molecules regardless of litter type.',
     },
     {
       question: 'Why is activated carbon better than baking soda?',
-      answer: 'Baking soda only provides 38% ammonia reduction and lasts 1-2 days. Activated carbon achieves 92% reduction and lasts 5-7 days. This is because carbon physically traps molecules through adsorption, while baking soda relies on a weak chemical reaction.',
+      answer: 'Baking soda only provides 38% ammonia reduction and lasts 1-2 days. Activated carbon achieves 92% reduction and lasts 5-7 days. Carbon physically traps molecules through adsorption, while baking soda relies on a weak chemical reaction and does not provide reliable long-term cat urine smell removal.',
     },
   ];
 
@@ -80,7 +80,8 @@ export default function HowToNeutralizeAmmoniaPageClient() {
           </h1>
           <p className="text-xl text-gray-700 dark:text-gray-200 mb-8 max-w-3xl mx-auto">
             That sharp, eye-watering ammonia smell isn&apos;t just unpleasant—it can harm your cat&apos;s respiratory system.
-            Here are 5 proven methods to eliminate it, ranked by effectiveness.
+            This complete guide explains how to neutralize ammonia in cat litter, how to get rid of cat urine smell in your litter box,
+            and which ammonia absorber methods actually work long term.
           </p>
         </div>
       </section>
@@ -91,7 +92,7 @@ export default function HowToNeutralizeAmmoniaPageClient() {
           <div className="relative rounded-2xl overflow-hidden shadow-xl">
             <Image
               src={heroImage}
-              alt="Person dealing with ammonia smell from cat litter box"
+              alt="Cat owner adding activated carbon granules to a litter box with scientific ammonia molecule visual effects"
               width={1200}
               height={675}
               className="w-full h-auto"
@@ -110,7 +111,7 @@ export default function HowToNeutralizeAmmoniaPageClient() {
             <p className="text-green-700 dark:text-green-300 mb-4">
               <strong>Activated carbon</strong> is the most effective ammonia neutralizer—it traps ammonia molecules permanently
               through adsorption. Unlike baking soda (which only works for 1-2 days), activated carbon continues working for
-              up to 7 days per application.
+              up to 7 days per application and is one of the most reliable ways to remove ammonia smell from cat litter naturally.
             </p>
             <Link
               href={localizePath('/products/trial-size', locale)}
@@ -134,6 +135,10 @@ export default function HowToNeutralizeAmmoniaPageClient() {
               Cat urine contains <strong>urea</strong>, a nitrogen compound. When bacteria in the litter box break down urea,
               they release <strong>ammonia gas (NH₃)</strong>—that sharp, pungent smell that makes your eyes water.
             </p>
+            <p className="text-gray-700 dark:text-gray-200 mb-4">
+              This is why a litter box can smell clean in the morning and strongly of ammonia by evening. Without a true ammonia
+              neutralizer for cat litter, odor molecules keep building in the air, litter bed, and nearby surfaces.
+            </p>
 
             <div className="bg-gray-50 dark:bg-gray-700 rounded-lg p-4 mb-4">
               <p className="text-center font-mono text-gray-600 dark:text-gray-300">
@@ -143,7 +148,8 @@ export default function HowToNeutralizeAmmoniaPageClient() {
 
             <p className="text-gray-700 dark:text-gray-200">
               This process accelerates in warm, humid conditions—which is why litter boxes smell worse in summer
-              or in poorly ventilated areas.
+              or in poorly ventilated areas. Homes with enclosed litter furniture, small laundry rooms, or multiple cats usually
+              notice the strongest ammonia concentration.
             </p>
           </div>
 
@@ -231,7 +237,7 @@ export default function HowToNeutralizeAmmoniaPageClient() {
               </h3>
             </div>
             <p className="text-gray-700 dark:text-gray-200 mb-4">
-              Baking soda neutralizes ammonia through a chemical reaction, but its effectiveness is limited and short-lived.
+              Baking soda can reduce odor briefly, but its ammonia control is limited and short-lived compared with activated carbon granules.
             </p>
             <div className="grid md:grid-cols-2 gap-4">
               <div>
@@ -262,7 +268,7 @@ export default function HowToNeutralizeAmmoniaPageClient() {
               </h3>
             </div>
             <p className="text-gray-700 dark:text-gray-200 mb-4">
-              Natural zeolite minerals can trap ammonia molecules, though less effectively than activated carbon.
+              Natural zeolite minerals can trap ammonia molecules, though less effectively than activated carbon and with less consistent results in humid litter boxes.
             </p>
             <div className="grid md:grid-cols-2 gap-4">
               <div>
@@ -292,7 +298,7 @@ export default function HowToNeutralizeAmmoniaPageClient() {
               </h3>
             </div>
             <p className="text-gray-700 dark:text-gray-200 mb-4">
-              Removing waste before ammonia forms is effective but requires significant time investment.
+              Removing waste before ammonia forms is effective, but it requires significant time investment and usually needs to be combined with a litter deodorizer for ammonia.
             </p>
             <div className="grid md:grid-cols-2 gap-4">
               <div>
@@ -323,7 +329,7 @@ export default function HowToNeutralizeAmmoniaPageClient() {
             </div>
             <p className="text-gray-700 dark:text-gray-200 mb-4">
               Fragrances don&apos;t neutralize ammonia—they just add another smell on top. Worse, they can irritate
-              your cat&apos;s sensitive nose and respiratory system.
+              your cat&apos;s sensitive nose and respiratory system while the ammonia source remains active.
             </p>
             <ul className="text-red-700 dark:text-red-300 space-y-2">
               <li className="flex items-start gap-2">
@@ -338,6 +344,26 @@ export default function HowToNeutralizeAmmoniaPageClient() {
                 <span>✗</span>
                 <span>May trigger respiratory issues in cats</span>
               </li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <section className="py-6 px-4">
+        <div className="max-w-4xl mx-auto">
+          <div className="bg-white dark:bg-gray-800 rounded-xl p-6 shadow-lg">
+            <h2 className="text-2xl font-heading font-bold mb-4 text-gray-900 dark:text-gray-100">
+              Best Litter Box Setup for Long-Term Ammonia Control
+            </h2>
+            <p className="text-gray-700 dark:text-gray-200 mb-4">
+              If you want to stop your litter box from smelling like ammonia, pair the right neutralizer with the right setup.
+              The most effective routine combines daily scooping, moisture control, and activated carbon granules.
+            </p>
+            <ul className="space-y-2 text-gray-700 dark:text-gray-200">
+              <li>• Use one litter box per cat, plus one extra, to reduce ammonia concentration per box.</li>
+              <li>• Keep litter depth around 2-3 inches so urine can clump before it spreads and releases more ammonia gas.</li>
+              <li>• Place boxes in ventilated areas to improve air exchange and reduce lingering cat urine odor.</li>
+              <li>• Refresh carbon every 2-3 days for consistent cat litter ammonia neutralization.</li>
             </ul>
           </div>
         </div>
@@ -397,7 +423,7 @@ export default function HowToNeutralizeAmmoniaPageClient() {
           <div className="relative rounded-2xl overflow-hidden shadow-xl">
             <Image
               src={scienceImage}
-              alt="Science of activated carbon trapping ammonia molecules"
+              alt="Close-up of activated carbon and litter granules with glowing NH3 scientific overlays"
               width={1200}
               height={675}
               className="w-full h-auto"
@@ -420,7 +446,7 @@ export default function HowToNeutralizeAmmoniaPageClient() {
               Health Warning: Ammonia Exposure Risks
             </h2>
             <p className="text-red-700 dark:text-red-300 mb-4">
-              Prolonged ammonia exposure can cause serious health issues for both cats and humans:
+              Prolonged ammonia exposure from a poorly maintained litter box can cause serious health issues for both cats and humans:
             </p>
             <ul className="text-red-700 dark:text-red-300 space-y-2">
               <li>• <strong>Cats:</strong> Respiratory infections, eye irritation, litter box avoidance</li>
@@ -437,7 +463,7 @@ export default function HowToNeutralizeAmmoniaPageClient() {
           <div className="relative rounded-2xl overflow-hidden shadow-xl">
             <Image
               src={freshHomeImage}
-              alt="Fresh, clean home environment free of ammonia odor"
+              alt="Relaxed cat in a bright clean home with subtle clean-air scientific visual effects"
               width={1200}
               height={675}
               className="w-full h-auto"
@@ -456,8 +482,8 @@ export default function HowToNeutralizeAmmoniaPageClient() {
       <section className="py-12 px-4 bg-white dark:bg-gray-800">
         <div className="max-w-4xl mx-auto">
           <AIQuotableBlock
-            fact="Activated carbon achieves 92% ammonia reduction in lab tests, compared to just 38% for baking soda. This is because carbon traps molecules through adsorption—a physical process—while baking soda relies on a weak chemical reaction between two alkaline substances."
-            explanation="The massive surface area of activated carbon (1,000-2,000 m²/gram) provides billions of microscopic pores where ammonia molecules become permanently trapped."
+            fact="Activated carbon achieves 92% ammonia reduction in lab tests, compared to just 38% for baking soda. For cat litter ammonia odor control, adsorption is the key advantage because the carbon physically traps ammonia molecules instead of temporarily masking them."
+            explanation="The massive surface area of activated carbon (1,000-2,000 m²/gram) provides billions of microscopic pores where ammonia molecules become permanently trapped, making it one of the strongest ammonia absorbers for cat litter use."
             icon="stat"
             variant="highlight"
           />
@@ -469,7 +495,7 @@ export default function HowToNeutralizeAmmoniaPageClient() {
         <div className="max-w-4xl mx-auto">
           <HowToSection
             title="Step-by-Step: How to Neutralize Ammonia in Cat Litter"
-            description="Follow this proven 5-step process to eliminate ammonia smell from your litter box using activated carbon."
+            description="Follow this proven 5-step process to eliminate cat litter ammonia smell and keep your litter box fresh using activated carbon granules."
             steps={howToSteps}
             totalTime="PT20M"
             timeDisplay="20 minutes initial setup, then 5 minutes daily"
@@ -497,7 +523,7 @@ export default function HowToNeutralizeAmmoniaPageClient() {
               Stop Living with Ammonia Smell
             </h2>
             <p className="text-xl mb-8 opacity-90 max-w-2xl mx-auto">
-              Join 1,000+ cat owners who&apos;ve eliminated litter box ammonia with Purrify&apos;s activated carbon formula.
+              Join 1,000+ cat owners who&apos;ve eliminated litter box ammonia and persistent cat urine odor with Purrify&apos;s activated carbon granules.
             </p>
 
             <div className="flex flex-col sm:flex-row gap-4 justify-center">

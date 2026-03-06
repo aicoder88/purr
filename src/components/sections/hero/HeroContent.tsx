@@ -20,8 +20,20 @@ function ArrowIcon({ className = "" }: { className?: string }) {
   );
 }
 
+function TrustBadgeIcon({ className = "" }: { className?: string }) {
+  return (
+    <svg className={`h-3.5 w-3.5 ${className}`} viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+      <path
+        fillRule="evenodd"
+        d="M10 1.5 3.5 4.2v5.6c0 4.2 2.8 7.9 6.5 8.9 3.7-1 6.5-4.7 6.5-8.9V4.2L10 1.5Zm3.1 6.2a.75.75 0 1 0-1.2-.9L9.2 10.4 8.1 9.3a.75.75 0 0 0-1.1 1.1l1.7 1.7a.75.75 0 0 0 1.1-.1l3.3-4.3Z"
+        clipRule="evenodd"
+      />
+    </svg>
+  );
+}
+
 const CTA_BUTTON_CLASSES =
-  "w-full sm:w-auto px-8 py-5 bg-gradient-to-r from-brand-yellow to-brand-pink hover:from-brand-yellow/90 hover:to-brand-pink/90 text-gray-950 font-semibold text-base sm:text-lg rounded-full shadow-sm transition-all duration-200 min-h-[56px] flex items-center justify-center gap-2";
+  "w-full sm:w-auto px-8 py-5 bg-gradient-to-r from-brand-yellow via-brand-pink to-brand-pink hover:from-brand-yellow/90 hover:via-brand-pink/90 hover:to-brand-pink/90 text-gray-950 font-semibold text-base sm:text-lg rounded-full shadow-sm transition-all duration-200 min-h-[56px] flex items-center justify-center gap-2";
 
 interface HeroContentProps {
   t: {
@@ -64,6 +76,7 @@ export const HeroContent = ({ t, heroVideo }: HeroContentProps) => {
   const headline = t.hero.headline || t.hero.eliminateCatOdors;
   const supportingCopy = t.hero.simplified?.valueProposition || t.hero.description || t.hero.instantly;
   const eyebrow = t.hero.simplified?.thirtyDayGuarantee || t.hero.socialProof.ratingText;
+  const trustBadge = t.hero.socialProof.ratingText?.trim();
   const canadaBadge = t.madeInCanada.badge;
   const reassurance = t.hero.simplified?.justPayShipping || t.hero.socialProof.trustText;
   const primaryCta = t.hero.buttons.tryFree || t.hero.buttons.shopNow;
@@ -84,10 +97,16 @@ export const HeroContent = ({ t, heroVideo }: HeroContentProps) => {
   return (
     <div className="flex flex-col justify-center space-y-6 md:space-y-7 py-2">
       <div className="flex flex-wrap items-center gap-2 self-start">
-        <div className="inline-flex items-center rounded-full border border-brand-pink/30 px-4 py-1.5 bg-gradient-to-r from-brand-yellow/25 to-brand-pink/25">
+        <div className="inline-flex items-center rounded-full border border-brand-pink/30 px-4 py-1.5 bg-gradient-to-r from-brand-yellow/25 via-brand-pink/25 to-brand-pink/25">
           <span className="text-sm font-medium text-gray-900 dark:text-gray-100">{eyebrow}</span>
         </div>
-        <div className="inline-flex items-center rounded-full border border-brand-pink/30 px-4 py-1.5 bg-gradient-to-r from-brand-yellow/25 to-brand-pink/25">
+        {trustBadge && trustBadge !== eyebrow ? (
+          <div className="inline-flex items-center gap-1.5 rounded-full border border-emerald-500/30 bg-emerald-50/90 px-3 py-1.5 dark:border-emerald-400/40 dark:bg-emerald-950/35">
+            <TrustBadgeIcon className="text-emerald-600 dark:text-emerald-300" />
+            <span className="text-xs font-semibold text-emerald-800 dark:text-emerald-100 sm:text-sm">{trustBadge}</span>
+          </div>
+        ) : null}
+        <div className="inline-flex items-center rounded-full border border-brand-pink/30 px-4 py-1.5 bg-gradient-to-r from-brand-yellow/25 via-brand-pink/25 to-brand-pink/25">
           <span className="text-sm font-medium text-gray-900 dark:text-gray-100">{canadaBadge}</span>
         </div>
       </div>

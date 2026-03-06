@@ -12,7 +12,7 @@ import { Heart, Users, ChevronRight, MapPin, Quote, Home } from 'lucide-react';
 
 // Use English data as default for client component
 const storyData = enStoryData;
-const { values, team, stats } = storyData;
+const { milestones, values, team, salesTeam, stats } = storyData;
 
 // Helper to get initials for team members without photos
 const getInitials = (name: string) => {
@@ -50,6 +50,59 @@ function SimpleBreadcrumbs({
         </span>
       ))}
     </nav>
+  );
+}
+
+function TeamMemberCard({
+  member,
+}: {
+  member: (typeof team)[number];
+}) {
+  const hasPhoto = Boolean(member.image);
+  const photoSrc = member.image ?? null;
+
+  return (
+    <div
+      key={member.name}
+      className="group bg-white dark:bg-gray-800 rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 border border-gray-100 dark:border-gray-700 flex flex-col h-full"
+    >
+      <div className="relative h-64 w-full bg-gray-100 dark:bg-gray-700 overflow-hidden">
+        {hasPhoto && photoSrc ? (
+          <Image
+            src={photoSrc}
+            alt={member.name}
+            fill
+            sizes="(max-width: 768px) 100vw, 25vw"
+            className="object-cover group-hover:scale-105 transition-transform duration-500"
+          />
+        ) : (
+          <div className="w-full h-full flex flex-col items-center justify-center bg-gradient-to-br from-gray-100 to-gray-200 dark:from-gray-700 dark:to-gray-800 group-hover:from-electric-indigo/10 group-hover:to-deep-coral/10 transition-colors duration-300">
+            <div className="w-24 h-24 rounded-full bg-white dark:bg-gray-600 flex items-center justify-center shadow-inner mb-4">
+              <span className="text-3xl font-bold text-electric-indigo dark:text-electric-indigo-300">
+                {getInitials(member.name)}
+              </span>
+            </div>
+            <Users className="w-6 h-6 text-gray-400 dark:text-gray-500 absolute bottom-4 right-4 opacity-50" />
+          </div>
+        )}
+        {/* Overlay gradient */}
+        <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+      </div>
+
+      <div className="p-6 flex-grow flex flex-col">
+        <h3 className="text-xl font-heading font-bold mb-1 text-gray-900 dark:text-gray-100 group-hover:text-electric-indigo transition-colors">
+          {member.name}
+        </h3>
+        <p className="text-deep-coral font-medium text-sm mb-4 uppercase tracking-wide">{member.role}</p>
+        <p className="text-gray-600 dark:text-gray-300 text-sm mb-6 flex-grow leading-relaxed">
+          {member.bio}
+        </p>
+        <div className="flex items-center text-gray-500 dark:text-gray-400 text-sm pt-4 border-t border-gray-100 dark:border-gray-700">
+          <MapPin className="w-4 h-4 mr-2 text-electric-indigo" />
+          {member.location}
+        </div>
+      </div>
+    </div>
   );
 }
 
@@ -159,6 +212,14 @@ export default function AboutPage() {
                   We&apos;re on a mission to create innovative, fragrance-free products designed for use around pets that
                   eliminate odors, reduce waste, and strengthen the bond between cats and their families.
                 </p>
+                <p className="text-lg text-gray-600 dark:text-gray-300 mb-8 leading-relaxed">
+                  What started as one family&apos;s frustration with lingering litter box smells became years of testing,
+                  iteration, and collaboration with specialists in activated carbon and pet-safe product design.
+                </p>
+                <p className="text-lg text-gray-600 dark:text-gray-300 mb-8 leading-relaxed">
+                  Today, every formula update, packaging decision, and customer support workflow is built around one
+                  simple standard: does this make daily life better for cats and the people who care for them?
+                </p>
 
                 <div className="relative bg-gray-50 dark:bg-gray-800 rounded-2xl p-8 border-l-4 border-electric-indigo shadow-sm">
                   <Quote className="absolute top-4 right-4 w-8 h-8 text-electric-indigo/20" />
@@ -183,6 +244,42 @@ export default function AboutPage() {
                   </div>
                 </div>
               </div>
+            </div>
+          </Container>
+        </section>
+
+        {/* Milestones Section */}
+        <section className="py-20 bg-white dark:bg-gray-900">
+          <Container>
+            <div className="text-center mb-16 max-w-3xl mx-auto">
+              <h2 className="text-3xl md:text-4xl font-heading font-bold mb-6 text-gray-900 dark:text-gray-100">
+                How We Got Here
+              </h2>
+              <p className="text-xl text-gray-600 dark:text-gray-300">
+                A focused journey from one household problem to a growing solution trusted by cat families.
+              </p>
+            </div>
+
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+              {milestones.map((milestone) => (
+                <div
+                  key={`${milestone.year}-${milestone.title}`}
+                  className="bg-gray-50 dark:bg-gray-800 rounded-2xl p-8 border border-gray-100 dark:border-gray-700 shadow-sm hover:shadow-lg transition-shadow duration-300"
+                >
+                  <div className="flex items-center justify-between mb-4">
+                    <span className="inline-flex px-3 py-1 rounded-full bg-electric-indigo/10 text-electric-indigo dark:text-electric-indigo-300 text-sm font-semibold">
+                      {milestone.year}
+                    </span>
+                    <div className="w-10 h-10 bg-gradient-to-br from-electric-indigo to-electric-indigo-600 rounded-lg flex items-center justify-center">
+                      <milestone.icon className="w-5 h-5 text-white dark:text-gray-100" />
+                    </div>
+                  </div>
+                  <h3 className="text-xl font-heading font-bold mb-3 text-gray-900 dark:text-gray-100">
+                    {milestone.title}
+                  </h3>
+                  <p className="text-gray-600 dark:text-gray-300 leading-relaxed">{milestone.description}</p>
+                </div>
+              ))}
             </div>
           </Container>
         </section>
@@ -237,54 +334,26 @@ export default function AboutPage() {
               </p>
             </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-              {team.map((member) => {
-                const hasPhoto = Boolean(member.image);
-                const photoSrc = member.image ?? null;
-                return (
-                  <div
-                    key={member.name}
-                    className="group bg-white dark:bg-gray-800 rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 border border-gray-100 dark:border-gray-700 flex flex-col h-full"
-                  >
-                    <div className="relative h-64 w-full bg-gray-100 dark:bg-gray-700 overflow-hidden">
-                      {hasPhoto && photoSrc ? (
-                        <Image
-                          src={photoSrc}
-                          alt={member.name}
-                          fill
-                          sizes="(max-width: 768px) 100vw, 25vw"
-                          className="object-cover group-hover:scale-105 transition-transform duration-500"
-                        />
-                      ) : (
-                        <div className="w-full h-full flex flex-col items-center justify-center bg-gradient-to-br from-gray-100 to-gray-200 dark:from-gray-700 dark:to-gray-800 group-hover:from-electric-indigo/10 group-hover:to-deep-coral/10 transition-colors duration-300">
-                          <div className="w-24 h-24 rounded-full bg-white dark:bg-gray-600 flex items-center justify-center shadow-inner mb-4">
-                            <span className="text-3xl font-bold text-electric-indigo dark:text-electric-indigo-300">
-                              {getInitials(member.name)}
-                            </span>
-                          </div>
-                          <Users className="w-6 h-6 text-gray-400 dark:text-gray-500 absolute bottom-4 right-4 opacity-50" />
-                        </div>
-                      )}
-                      {/* Overlay gradient */}
-                      <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-                    </div>
+            <div className="mb-12">
+              <h3 className="text-2xl font-heading font-bold mb-6 text-gray-900 dark:text-gray-100">Leadership Team</h3>
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                {team.map((member) => (
+                  <TeamMemberCard key={member.name} member={member} />
+                ))}
+              </div>
+            </div>
 
-                    <div className="p-6 flex-grow flex flex-col">
-                      <h3 className="text-xl font-heading font-bold mb-1 text-gray-900 dark:text-gray-100 group-hover:text-electric-indigo transition-colors">
-                        {member.name}
-                      </h3>
-                      <p className="text-deep-coral font-medium text-sm mb-4 uppercase tracking-wide">{member.role}</p>
-                      <p className="text-gray-600 dark:text-gray-300 text-sm mb-6 flex-grow leading-relaxed">
-                        {member.bio}
-                      </p>
-                      <div className="flex items-center text-gray-500 dark:text-gray-400 text-sm pt-4 border-t border-gray-100 dark:border-gray-700">
-                        <MapPin className="w-4 h-4 mr-2 text-electric-indigo" />
-                        {member.location}
-                      </div>
-                    </div>
-                  </div>
-                );
-              })}
+            <div>
+              <h3 className="text-2xl font-heading font-bold mb-6 text-gray-900 dark:text-gray-100">Sales & Partnerships</h3>
+              <p className="text-lg text-gray-600 dark:text-gray-300 mb-8 max-w-3xl">
+                As demand grew, we built a specialized team to support retailers, clinics, and partner locations across
+                Canada with training, merchandising, and practical odor-control expertise.
+              </p>
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                {salesTeam.map((member) => (
+                  <TeamMemberCard key={member.name} member={member} />
+                ))}
+              </div>
             </div>
           </Container>
         </section>
