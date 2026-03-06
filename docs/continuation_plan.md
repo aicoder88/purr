@@ -10,8 +10,8 @@ This document serves as the "source of truth" for completing the visual and cont
 - **Visual Evidence**: [walkthrough.md](./walkthrough.md)
 
 ### Completed Files (Batch 1-7)
-1. `how-to-get-rid-of-cat-pee-smell-apartment.json` (Ghibli)
-2. `how-to-get-rid-of-cat-litter-smell-in-apartment.json` (Ghibli)
+1. `how-to-get-rid-of-cat-pee-smell-apartment.json` (Hyper-realistic / Miyazaki)
+2. `how-to-get-rid-of-cat-litter-smell-in-apartment.json` (Hyper-realistic / Miyazaki)
 3. `how-to-neutralize-ammonia-cat-litter.json` (Realistic/High-Impact)
 4. `why-does-my-house-smell-like-cat-litter.json` (Realistic/High-Impact)
 5. `cat-litter-odor-control-usa.json` (Realistic/Scientific)
@@ -27,7 +27,7 @@ For every JSON blog post in `content/blog/en/`:
 1.  **Analyze Content**: Identify 3-4 key sections that lack visuals or have thin text.
 2.  **Generate High-Impact Images**:
     - Use `generate_image` with prompts for **Realistic, Amazing, Interesting, or Fascinating** visuals.
-    - Style can be "Mixed Ghibli + Realistic" or "8K Photorealistic".
+    - Style can be "hyper-realistic with Miyazaki-style enhancements".
     - **CRITICAL**: Do NOT include the word "Viral" in the prompts, images, or copy.
 3.  **Optimize & Move**:
     - Move generated images from brain folder to `public/optimized/` with descriptive kebab-case names.

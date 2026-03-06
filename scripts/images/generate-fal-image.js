@@ -3,7 +3,8 @@
  * Generate images using fal.ai Flux Pro API
  *
  * Usage:
- *   node scripts/images/generate-fal-image.js --prompt "A fluffy cat..." --output "public/optimized/blog/fresh-home-hero-ghibli.webp"
+ *   node scripts/images/generate-fal-image.js --prompt "A fluffy cat..." --output "public/optimized/blog/fresh-home-hero-miyazaki.webp"
+
  *   node scripts/images/generate-fal-image.js --prompt "A fluffy cat..." --output "my-image.webp" --dir "public/optimized/blog"
  *   node scripts/images/generate-fal-image.js --batch prompts.json  # Generate multiple images from JSON file
  *
@@ -223,7 +224,7 @@ async function downloadImage(url, outputPath) {
         resolve(outputPath);
       });
       file.on('error', (err) => {
-        fs.unlink(outputPath, () => {});
+        fs.unlink(outputPath, () => { });
         reject(err);
       });
     }).on('error', reject);

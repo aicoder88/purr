@@ -6,7 +6,12 @@
 
 ---
 
+## 🖼️ inbuilt Asset Generation
+
+**CRITICAL RULE**: Gemini MUST use the inbuilt `generate_image` tool (Nano Banana Pro) for all image generation tasks. Use of external scripts like `fal.ai` is secondary and should only be used if explicitly directed by the USER.
+
 ## ⚡ Phase 3: Assets & Performance
+
 
 ### Session 3.2.1: Image Optimization Pipeline
 

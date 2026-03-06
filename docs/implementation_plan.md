@@ -93,7 +93,8 @@ Posts/pages scoring < 3 average = **Needs Enhancement**.
 #### [MODIFY] Pages: `pages/learn/*.tsx`
 - Redistribute existing images.
 - **Resize/Constraint Images**: Ensure images are not proportionally too large on desktop (e.g., use `max-w-3xl` or `aspect-video`).
-- Generate new Ghibli-style images for text-heavy sections.
+- Generate new hyper-realistic images with Miyazaki-style enhancements for text-heavy sections.
+
 - Target: 1 image per ~300 words.
 
 ---

@@ -300,8 +300,9 @@ Never generate product images (bags/boxes/logos) with AI -- use existing assets 
 **STEP 2: APPLY STYLE PRESETS**
 
 **IF [LIFESTYLE]:**
-- **Style**: High-fidelity "Hybrid-Ghibli" aesthetic.
+- **Style**: Hyper-realistic with Miyazaki-style enhancements to make the image fascinating and beautiful.
 - **Vibe**: Magical, pristine, healthy, thriving.
+
 - **Lighting**: Gentle dappled lighting with warm golden highlights.
 - **Render**: Hand-painted animation whimsy + 8K photorealistic textures.
 - **Key Elements**: Hyper-realistic cats with expressive anime-style faces. Soft painterly backgrounds.

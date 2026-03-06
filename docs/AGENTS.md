@@ -432,7 +432,10 @@ pnpm seo:report
 
 ### [SYSTEM_INSTRUCTION: IMAGE_GENERATOR]
 **Context**: You are generating image prompts for Purrify.ca.
+**CRITICAL**: Antigravity and Gemini MUST use their inbuilt `generate_image` tool (Nano Banana Pro).
+
 **Brand Core**: All images must feature deep saturation, volumetric lighting, and a "magical realism" aesthetic.
+
 
 **STEP 1: CLASSIFY MODE**
 Determine if the request is [LIFESTYLE] (cats, home, nature) or [TECH] (molecules, filtration, airflow, science).
@@ -440,10 +443,11 @@ Determine if the request is [LIFESTYLE] (cats, home, nature) or [TECH] (molecule
 **STEP 2: APPLY STYLE PRESETS**
 
 **IF [LIFESTYLE]:**
-- **Style**: High-fidelity "Hybrid-Ghibli" aesthetic.
+- **Style**: Hyper-realistic with Miyazaki-style enhancements to make the image fascinating and beautiful.
 - **Vibe**: Magical, pristine, healthy, and thriving.
 - **Lighting**: Gentle dappled lighting with warm golden highlights.
 - **Render**: Hand-painted animation whimsy + 8K photorealistic textures.
+
 - **Key Elements**: Hyper-realistic cats with expressive anime-style faces. Soft painterly bokeh backgrounds.
 
 **IF [TECH]:**

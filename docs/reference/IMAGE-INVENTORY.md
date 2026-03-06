@@ -292,6 +292,7 @@ A comprehensive catalog of all images in the Purrify website, organized by categ
 | winter-cat-window.png | `/public/optimized/winter-cat-window.png` | Cat looking out snowy window (Ghibli style) - Winter Blog Hero |
 | frosted-winter-window.png | `/public/optimized/frosted-winter-window.png` | Frosted window visual (Ghibli style) - Winter Blog Science |
 
+
 ---
 
 ## Partner & Retailer Logos

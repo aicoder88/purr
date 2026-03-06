@@ -1,7 +1,7 @@
 # Visual Improvements Walkthrough
 
 ## Batch 1: `how-to-get-rid-of-cat-pee-smell-apartment.json`
-**Status**: ✅ Completed (Ghibli Style)
+**Status**: ✅ Completed (Hyper-realistic / Miyazaki Style)
 
 ### Blacklight Inspection
 ![Blacklight Inspection](/Users/macmini/.gemini/antigravity/brain/cc36f754-052f-497b-9603-9aebb99fc983/cat-pee-blacklight-inspection.png)
@@ -69,6 +69,7 @@ Fascinating close-up of odor molecules being trapped at the molecular level.
 
 ### Health Risk Visual
 ![Health Risk](/Users/macpro/dev/purr/public/optimized/ammonia-haze-ghibli.webp)
+
 
 ## Batch 7: `how-activated-carbon-works.tsx`
 **Status**: ✅ Completed (Reused High-Impact Assets)

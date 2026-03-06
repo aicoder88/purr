@@ -69,12 +69,17 @@ export const HeroContent = ({ t, heroVideo }: HeroContentProps) => {
   const primaryCta = t.hero.buttons.tryFree || t.hero.buttons.shopNow;
   const secondaryCta = t.hero.buttons.learnMore;
   const retailerQuote = t.hero.socialProof.retailerQuote;
-  const trustPoints = [
-    t.hero.socialProof.trustText ? `${t.hero.socialProof.trustNumber || ""} ${t.hero.socialProof.trustText}`.trim() : ""
-  ]
-    .filter((value): value is string => Boolean(value && value.trim()))
-    .filter((value, index, arr) => arr.indexOf(value) === index)
-    .slice(0, 3);
+  const trustNumber = t.hero.socialProof.trustNumber?.trim();
+  const trustText = t.hero.socialProof.trustText?.trim();
+  const trustLine = [trustNumber, trustText].filter(Boolean).join(" ").trim();
+  const quoteSource = retailerQuote?.trim();
+  const attributionSeparatorIndex = quoteSource?.lastIndexOf("—") ?? -1;
+  const quoteBody = (
+    attributionSeparatorIndex > -1 ? quoteSource?.slice(0, attributionSeparatorIndex) : quoteSource
+  )?.trim().replace(/^["“]|["”]$/g, "");
+  const quoteAttribution = attributionSeparatorIndex > -1
+    ? quoteSource?.slice(attributionSeparatorIndex + 1).trim()
+    : "";
 
   return (
     <div className="flex flex-col justify-center space-y-6 md:space-y-7 py-2">
@@ -123,22 +128,38 @@ export const HeroContent = ({ t, heroVideo }: HeroContentProps) => {
           ) : null}
         </div>
         <div className="space-y-2">
-          <p className="text-sm text-gray-600 dark:text-gray-400">{reassurance}</p>
-          {trustPoints.length > 0 ? (
-            <div className="flex items-center gap-2 pt-1 text-sm text-gray-600 dark:text-gray-400">
-              <svg className="w-4 h-4 text-green-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
-              </svg>
-              <span>{trustPoints[0]}</span>
+          <div className="rounded-3xl border border-stone-200/80 bg-white/85 p-4 shadow-[0_18px_50px_-30px_rgba(15,23,42,0.4)] backdrop-blur-sm dark:border-gray-800 dark:bg-gray-950/45">
+            <div className="space-y-4">
+              <div className="space-y-1.5">
+                <p className="text-[0.68rem] font-semibold uppercase tracking-[0.24em] text-gray-500 dark:text-gray-400">
+                  {reassurance}
+                </p>
+                {trustLine ? (
+                  <div className="flex flex-wrap items-baseline gap-x-2 gap-y-1">
+                    {trustNumber ? (
+                      <span className="text-xl font-semibold tracking-tight text-gray-900 dark:text-gray-100">{trustNumber}</span>
+                    ) : null}
+                    {trustText ? (
+                      <span className="text-sm sm:text-base font-medium text-gray-700 dark:text-gray-300">{trustText}</span>
+                    ) : null}
+                  </div>
+                ) : null}
+              </div>
+
+              {quoteBody ? (
+                <blockquote className="border-l-2 border-stone-300 pl-4 dark:border-gray-700">
+                  <p className="font-heading text-base leading-relaxed text-gray-900 dark:text-gray-100 sm:text-lg">
+                    "{quoteBody}"
+                  </p>
+                  {quoteAttribution ? (
+                    <footer className="mt-2 text-sm font-medium text-gray-600 dark:text-gray-300">
+                      {quoteAttribution}
+                    </footer>
+                  ) : null}
+                </blockquote>
+              ) : null}
             </div>
-          ) : null}
-          {retailerQuote && (
-            <div className="pt-2 border-t border-gray-100 dark:border-gray-800">
-              <p className="text-sm italic text-gray-600 dark:text-gray-400 leading-relaxed">
-                {retailerQuote}
-              </p>
-            </div>
-          )}
+          </div>
         </div>
       </div>
     </div>
