@@ -38,10 +38,10 @@ export function ScienceSection() {
     : [];
 
   return (
-    <section id="science" className="py-14 md:py-16 bg-white dark:bg-gray-950">
+    <section id="science" className="py-12 md:py-14 bg-white dark:bg-gray-950">
       <Container>
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 md:gap-10 items-center">
-          <div>
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 md:gap-10 items-start">
+          <div className="lg:col-span-7">
             <div className="inline-flex items-center gap-2 rounded-full border border-gray-200 dark:border-gray-700 bg-gray-50 dark:bg-gray-900 px-4 py-1.5 mb-4">
               <IconSciencePores className="w-4 h-4 text-gray-700 dark:text-gray-300" />
               <span className="text-sm font-medium text-gray-700 dark:text-gray-300">{t("scienceSection.badge")}</span>
@@ -56,33 +56,34 @@ export function ScienceSection() {
               {t("scienceSection.description")}
             </p>
 
-            <div className="mt-6 space-y-4">
-              {features.map((feature, index) => (
-                <div key={feature.title} className="flex items-start gap-3">
-                  <div className="mt-0.5 rounded-full border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 p-2">
-                    {featureIcons[index] || featureIcons[0]}
-                  </div>
-                  <div>
-                    <h3 className="font-semibold text-gray-900 dark:text-white">{feature.title}</h3>
-                    <p className="text-sm md:text-base text-gray-600 dark:text-gray-400 leading-relaxed">
-                      {feature.description}
-                    </p>
-                  </div>
-                </div>
-              ))}
-            </div>
-
-            <div className="mt-8 bg-gray-50 dark:bg-gray-800/50 rounded-xl p-5 border-l-4 border-gray-300 dark:border-gray-600 shadow-sm transition-colors duration-300">
-              <span className="block text-xs font-semibold uppercase tracking-wider text-gray-500 dark:text-gray-400 mb-2">{t("scienceSection.expertInsightTitle")}</span>
-              <p className="text-sm text-gray-700 dark:text-gray-300 mb-2">
-                {t("scienceSection.expertInsightBody")}
-              </p>
+            <div className="mt-5">
               <a href="https://www.epa.gov/indoor-air-quality-iaq/volatile-organic-compounds-impact-indoor-air-quality" target="_blank" rel="nofollow noopener noreferrer" className="text-xs font-medium text-gray-500 dark:text-gray-400 hover:text-gray-800 dark:hover:text-gray-200 underline decoration-gray-300 dark:decoration-gray-600 underline-offset-4 transition-colors">
                 {t("scienceSection.expertInsightSource")}
               </a>
             </div>
 
-            <div className="mt-7 flex flex-wrap items-center gap-3">
+            <div className="mt-6 grid grid-cols-1 md:grid-cols-2 gap-3">
+              {features.map((feature, index) => (
+                <article key={feature.title} className="rounded-2xl border border-gray-200 dark:border-gray-700 bg-gray-50/70 dark:bg-gray-900/60 p-4">
+                  <div className="mb-3 inline-flex rounded-full border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-950 p-2">
+                    {featureIcons[index] || featureIcons[0]}
+                  </div>
+                  <h3 className="font-semibold text-gray-900 dark:text-white">{feature.title}</h3>
+                  <p className="mt-2 text-sm text-gray-600 dark:text-gray-400 leading-relaxed">
+                    {feature.description}
+                  </p>
+                </article>
+              ))}
+            </div>
+
+            <div className="mt-6 bg-gray-50 dark:bg-gray-800/50 rounded-xl p-4 border border-gray-200 dark:border-gray-700 transition-colors duration-300">
+              <span className="block text-xs font-semibold uppercase tracking-wider text-gray-500 dark:text-gray-400 mb-2">{t("scienceSection.expertInsightTitle")}</span>
+              <p className="text-sm text-gray-700 dark:text-gray-300">
+                {t("scienceSection.expertInsightBody")}
+              </p>
+            </div>
+
+            <div className="mt-6 flex flex-wrap items-center gap-3">
               <Button asChild className="rounded-full bg-gray-900 hover:bg-gray-800 text-gray-50 dark:bg-gray-100 dark:hover:bg-gray-200 dark:text-gray-900">
                 <Link href={`${locale === "fr" ? "/fr" : ""}/learn/science`}>
                   {t("scienceSection.learnMore")} <ArrowRight className="w-4 h-4 ml-2" />
@@ -97,7 +98,7 @@ export function ScienceSection() {
             </div>
           </div>
 
-          <div>
+          <div className="lg:col-span-5">
             <div className="relative overflow-hidden rounded-2xl border border-gray-200 dark:border-gray-700 aspect-square bg-gray-100 dark:bg-gray-900">
               <Image
                 src="/optimized/blog/Carbon-sktech.webp"

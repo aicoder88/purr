@@ -10,7 +10,6 @@ import { ScrollingAnnouncementBar } from '@/components/sections/scrolling-announ
 import { Stores } from '@/components/sections/stores';
 import { WaitlistSection } from '@/components/sections/newsletter';
 import { ErrorBoundary } from '@/components/ui/error-boundary';
-import { TrustBadges } from '@/components/social-proof/TrustBadges';
 import { LazyClientLocationsMap } from '@/components/maps/LazyClientLocationsMap';
 
 import { SITE_NAME, SITE_DESCRIPTION, SITE_URL } from '@/lib/constants';
@@ -109,62 +108,52 @@ export default async function LocalizedHomePage({ params }: LocalizedHomepagePro
             <ScopedIntlProvider locale={locale} scopes={['root', 'home']}>
                 <main
                     id="main-content"
-                    className="bg-gradient-to-br from-purple-50 via-pink-50 to-orange-50 dark:from-gray-950 dark:via-purple-950/20 dark:to-gray-900"
+                    className="overflow-x-clip bg-[linear-gradient(180deg,#fffdf7_0%,#fdf8f1_36%,#fffdf8_100%)] dark:bg-[linear-gradient(180deg,#030712_0%,#0b1220_52%,#030712_100%)]"
                 >
-                    {/* Section 1: Hero */}
                     <ErrorBoundary>
                         <Hero />
                     </ErrorBoundary>
 
                     <ScrollingAnnouncementBar />
 
-                    {/* Section 4: The Story ("The Embarrassed Cat Owner") */}
-                    <ErrorBoundary>
-                        <AgitationSection />
-                    </ErrorBoundary>
-
-                    {/* Section 2: How It Works (Three-Step) */}
                     <ErrorBoundary>
                         <HowItWorks />
                     </ErrorBoundary>
 
-                    {/* Section 5: Why Cat Parents Keep Coming Back (Features) */}
                     <ErrorBoundary>
                         <WhyPurrify />
                     </ErrorBoundary>
 
-                    {/* Section 6: The Science ("The Secret Sauce") */}
                     <ErrorBoundary>
-                        <ScienceSection />
+                        <HomepageTestimonials />
                     </ErrorBoundary>
 
-                    {/* Section 7: Products / Offer + CTA */}
                     <HomepageClient
                         priceValidUntil={priceValidUntil}
                         locale={locale}
                         currency={currency}
                     />
 
-                    {/* Social Proof: Named Testimonials */}
                     <ErrorBoundary>
-                        <HomepageTestimonials />
+                        <ScienceSection />
                     </ErrorBoundary>
 
-                    <section className="py-10 cv-auto cis-480">
-                        <div className="container mx-auto px-4">
-                            <TrustBadges variant="elegant" showIcons={true} />
-                        </div>
-                    </section>
+                    <ErrorBoundary>
+                        <AgitationSection />
+                    </ErrorBoundary>
 
                     <div className="cv-auto cis-720">
                         <ErrorBoundary>
-                            <LazyClientLocationsMap height="400" />
+                            <Stores />
                         </ErrorBoundary>
                     </div>
 
                     <div className="cv-auto cis-720">
                         <ErrorBoundary>
-                            <Stores />
+                            <LazyClientLocationsMap
+                                className="bg-[linear-gradient(180deg,#fffdf7_0%,#fdf8f1_36%,#fffdf8_100%)] dark:bg-[linear-gradient(180deg,#030712_0%,#0b1220_52%,#030712_100%)]"
+                                height="400"
+                            />
                         </ErrorBoundary>
                     </div>
 

@@ -2,6 +2,7 @@
 
 import { Button } from "@/components/ui/button";
 import { getPaymentLink } from "@/lib/payment-links";
+import Link from "next/link";
 
 function LightningIcon({ className = "" }: { className?: string }) {
   return (
@@ -40,6 +41,7 @@ interface HeroContentProps {
       buttons: {
         shopNow: string;
         tryFree?: string;
+        learnMore?: string;
       };
       ariaLabels: {
         shopNow: string;
@@ -61,6 +63,11 @@ export const HeroContent = ({ t }: HeroContentProps) => {
   const canadaBadge = t.madeInCanada.badge;
   const reassurance = t.hero.simplified?.justPayShipping || t.hero.socialProof.trustText;
   const primaryCta = t.hero.buttons.tryFree || t.hero.buttons.shopNow;
+  const secondaryCta = t.hero.buttons.learnMore;
+  const trustPoints = [t.hero.socialProof.trustText, t.hero.simplified?.moneyBackGuarantee, t.hero.simplified?.thirtyDayGuarantee]
+    .filter((value): value is string => Boolean(value && value.trim()))
+    .filter((value, index, arr) => arr.indexOf(value) === index)
+    .slice(0, 3);
 
   return (
     <div className="flex flex-col justify-center space-y-6 md:space-y-7 py-2">
@@ -82,15 +89,38 @@ export const HeroContent = ({ t }: HeroContentProps) => {
         </p>
       </div>
 
-      <div className="flex flex-col gap-3 pt-2 max-w-md">
-        <Button asChild className={CTA_BUTTON_CLASSES} aria-label={t.hero.ariaLabels.shopNow}>
-          <a href={getPaymentLink("trialSingle") || "#"}>
-            <LightningIcon />
-            <span>{primaryCta}</span>
-            <ArrowIcon />
-          </a>
-        </Button>
+      <div className="flex flex-col gap-3 pt-2 max-w-xl">
+        <div className="flex flex-col sm:flex-row gap-3">
+          <Button asChild className={CTA_BUTTON_CLASSES} aria-label={t.hero.ariaLabels.shopNow}>
+            <a href={getPaymentLink("trialSingle") || "#"}>
+              <LightningIcon />
+              <span>{primaryCta}</span>
+              <ArrowIcon />
+            </a>
+          </Button>
+          {secondaryCta ? (
+            <Button
+              asChild
+              variant="outline"
+              className="w-full sm:w-auto px-6 py-5 border-gray-300 dark:border-gray-700 bg-transparent hover:bg-gray-100 dark:hover:bg-gray-900 text-gray-900 dark:text-gray-100 font-semibold text-base rounded-full min-h-[56px]"
+            >
+              <Link href="#how-it-works">
+                {secondaryCta}
+              </Link>
+            </Button>
+          ) : null}
+        </div>
         <p className="text-sm text-gray-600 dark:text-gray-400">{reassurance}</p>
+        {trustPoints.length > 0 ? (
+          <ul className="flex flex-wrap items-center gap-x-4 gap-y-2 pt-1">
+            {trustPoints.map((point) => (
+              <li key={point} className="text-xs sm:text-sm text-gray-600 dark:text-gray-400">
+                <span className="mr-2 text-gray-400 dark:text-gray-500">•</span>
+                {point}
+              </li>
+            ))}
+          </ul>
+        ) : null}
       </div>
     </div>
   );

@@ -132,65 +132,55 @@ export default async function HomePage() {
         <main
           id="main-content"
           role="main"
-          className="overflow-x-clip bg-gradient-to-br from-purple-50 via-pink-50 to-orange-50 dark:from-gray-950 dark:via-purple-950/20 dark:to-gray-900"
+          className="overflow-x-clip bg-[linear-gradient(180deg,#fffdf7_0%,#fdf8f1_36%,#fffdf8_100%)] dark:bg-[linear-gradient(180deg,#030712_0%,#0b1220_52%,#030712_100%)]"
         >
-          {/* Section 1: Hero */}
           <ErrorBoundary>
             <Hero />
           </ErrorBoundary>
 
           <ScrollingAnnouncementBar />
 
-          {/* Section 4: The Story ("The Embarrassed Cat Owner") */}
-          <ErrorBoundary>
-            <AgitationSection />
-          </ErrorBoundary>
-
-          {/* Section 2: How It Works (Three-Step) */}
           <ErrorBoundary>
             <HowItWorks />
           </ErrorBoundary>
 
-          {/* Section 5: Why Cat Parents Keep Coming Back (Features) */}
           <ErrorBoundary>
             <WhyPurrify />
           </ErrorBoundary>
 
-          {/* Section 6: The Science ("The Secret Sauce") */}
           <ErrorBoundary>
-            <ScienceSection />
+            <HomepageTestimonials />
           </ErrorBoundary>
 
-          {/* Section 7: Products / Offer + CTA */}
           <HomepageClient
             priceValidUntil={priceValidUntil}
             locale={defaultLocale}
             currency={currency}
           />
 
-          {/* Social Proof: Named Testimonials */}
           <ErrorBoundary>
-            <HomepageTestimonials />
+            <ScienceSection />
           </ErrorBoundary>
 
-          {/* Client Locations Map */}
-          <div className="cv-auto cis-720">
-            <ErrorBoundary>
-              <LazyClientLocationsMap
-                className="bg-gradient-to-br from-purple-50 via-pink-50 to-orange-50 dark:from-gray-950 dark:via-purple-950/20 dark:to-gray-900"
-                height="400"
-              />
-            </ErrorBoundary>
-          </div>
+          <ErrorBoundary>
+            <AgitationSection />
+          </ErrorBoundary>
 
-          {/* Retail Store Locations */}
           <div className="cv-auto cis-720">
             <ErrorBoundary>
               <Stores />
             </ErrorBoundary>
           </div>
 
-          {/* Blog Preview */}
+          <div className="cv-auto cis-720">
+            <ErrorBoundary>
+              <LazyClientLocationsMap
+                className="bg-[linear-gradient(180deg,#fffdf7_0%,#fdf8f1_36%,#fffdf8_100%)] dark:bg-[linear-gradient(180deg,#030712_0%,#0b1220_52%,#030712_100%)]"
+                height="400"
+              />
+            </ErrorBoundary>
+          </div>
+
           <div className="cv-auto cis-720">
             <ErrorBoundary>
               <BlogPreview />

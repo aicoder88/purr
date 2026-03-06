@@ -18,23 +18,23 @@ export function HomepageTestimonials() {
   const t = useTranslations('testimonialsSection');
 
   return (
-    <section className="py-16 md:py-20 bg-gradient-to-br from-purple-50 via-pink-50 to-orange-50 dark:from-gray-950 dark:via-purple-950/20 dark:to-gray-900">
+    <section className="py-14 md:py-16 bg-[linear-gradient(180deg,#fffdf8_0%,#fff8ee_100%)] dark:bg-[linear-gradient(180deg,#030712_0%,#111827_100%)]">
       <Container>
-        <div className="text-center mb-12">
-          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/80 dark:bg-gray-800/80 border border-purple-200 dark:border-purple-800 mb-6">
+        <div className="text-center mb-10">
+          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/90 dark:bg-gray-900/80 border border-amber-200 dark:border-gray-700 mb-5">
             <Star className="w-4 h-4 text-yellow-500 dark:text-yellow-400 fill-yellow-500 dark:fill-yellow-400" />
-            <span className="text-purple-700 dark:text-purple-300 font-semibold text-sm">{t('customerLove')}</span>
+            <span className="text-amber-700 dark:text-amber-300 font-semibold text-sm">{t('customerLove')}</span>
           </div>
           <h2 className="font-heading text-3xl md:text-4xl font-bold text-gray-900 dark:text-white">
             {t('littersOfLove')}
           </h2>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl mx-auto">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 max-w-6xl mx-auto">
           {testimonials.map((testimonial, index) => (
             <div
               key={index}
-              className="bg-white dark:bg-gray-800 rounded-2xl p-6 shadow-md border border-gray-100 dark:border-gray-700 hover:shadow-lg transition-shadow duration-300 flex flex-col"
+              className="bg-white/95 dark:bg-gray-900/95 rounded-2xl p-6 border border-amber-100 dark:border-gray-800 hover:border-amber-200 dark:hover:border-gray-700 transition-colors duration-300 flex flex-col"
             >
               {/* Stars */}
               <div className="flex gap-0.5 mb-4">
