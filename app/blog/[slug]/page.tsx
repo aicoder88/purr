@@ -1,8 +1,8 @@
 import type { Metadata } from 'next';
 import LocalizedBlogPostPage, {
   generateMetadata as generateLocalizedMetadata,
-  generateStaticParams as generateLocalizedStaticParams,
 } from '@/app/[locale]/blog/[slug]/page';
+import { ContentStore } from '@/lib/blog/content-store';
 import { defaultLocale } from '@/i18n/config';
 
 interface BlogPostPageProps {
@@ -14,11 +14,9 @@ interface BlogPostPageProps {
 export const dynamic = 'force-static';
 
 export async function generateStaticParams() {
-  const localizedParams = await generateLocalizedStaticParams();
-
-  return localizedParams
-    .filter((param) => param.locale === defaultLocale)
-    .map((param) => ({ slug: param.slug }));
+  const store = new ContentStore();
+  const posts = await store.getAllPosts(defaultLocale, false);
+  return posts.map((post) => ({ slug: post.slug }));
 }
 
 export const dynamicParams = false;

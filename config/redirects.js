@@ -170,11 +170,6 @@ const REDIRECTS = [
     permanent: true
   },
   {
-    source: "/:locale(fr)/learn/solutions/apartment-cat-smell-solution",
-    destination: "/:locale/blog/best-litter-odor-remover-small-apartments/",
-    permanent: true
-  },
-  {
     source: "/:locale(fr)/learn/using-deodorizers-with-kittens",
     destination: "/:locale/blog/using-deodorizers-with-kittens/",
     permanent: true
@@ -185,38 +180,8 @@ const REDIRECTS = [
     permanent: true
   },
   {
-    source: "/:locale(fr)/learn/solutions/ammonia-smell-cat-litter",
-    destination: "/:locale/blog/how-to-neutralize-ammonia-cat-litter/",
-    permanent: true
-  },
-  {
-    source: "/:locale(fr)/learn/solutions/litter-box-smell-elimination",
-    destination: "/:locale/blog/how-to-eliminate-cat-litter-odor/",
-    permanent: true
-  },
-  {
-    source: "/:locale(fr)/learn/solutions/multiple-cats-odor-control",
-    destination: "/:locale/blog/best-cat-litter-multiple-cats-odor-control/",
-    permanent: true
-  },
-  {
-    source: "/:locale(fr)/learn/solutions/natural-cat-litter-additive",
-    destination: "/:locale/blog/best-natural-cat-litter-odor-control/",
-    permanent: true
-  },
-  {
-    source: "/:locale(fr)/learn/solutions/senior-cat-litter-solutions",
-    destination: "/:locale/blog/best-cat-litter-multiple-cats-odor-control/",
-    permanent: true
-  },
-  {
     source: "/:locale(fr)/learn/activated-carbon-benefits",
     destination: "/:locale/blog/activated-carbon-litter-additive-benefits/",
-    permanent: true
-  },
-  {
-    source: "/:locale(fr)/learn/solutions",
-    destination: "/:locale/learn/",
     permanent: true
   },
   {
@@ -303,12 +268,6 @@ const REDIRECTS = [
     destination: "/blog/activated-carbon-vs-baking-soda-comparison/",
     permanent: true
   },
-  // Apartment smell
-  {
-    source: "/learn/solutions/apartment-cat-smell-solution",
-    destination: "/blog/best-litter-odor-remover-small-apartments/",
-    permanent: true
-  },
   // Kitten safety
   {
     source: "/learn/using-deodorizers-with-kittens",
@@ -321,51 +280,10 @@ const REDIRECTS = [
     destination: "/blog/how-to-use-cat-litter-deodorizer/",
     permanent: true
   },
-  // Ammonia solutions
-  {
-    source: "/learn/solutions/ammonia-smell-cat-litter",
-    destination: "/blog/how-to-neutralize-ammonia-cat-litter/",
-    permanent: true
-  },
-  {
-    source: "/learn/solutions/how-to-neutralize-ammonia-cat-litter",
-    destination: "/blog/how-to-neutralize-ammonia-cat-litter/",
-    permanent: true
-  },
-  // Litter box smell elimination
-  {
-    source: "/learn/solutions/litter-box-smell-elimination",
-    destination: "/blog/how-to-eliminate-cat-litter-odor/",
-    permanent: true
-  },
-  // Multiple cats
-  {
-    source: "/learn/solutions/multiple-cats-odor-control",
-    destination: "/blog/best-cat-litter-multiple-cats-odor-control/",
-    permanent: true
-  },
-  // Natural additive
-  {
-    source: "/learn/solutions/natural-cat-litter-additive",
-    destination: "/blog/best-natural-cat-litter-odor-control/",
-    permanent: true
-  },
-  // Senior cat litter
-  {
-    source: "/learn/solutions/senior-cat-litter-solutions",
-    destination: "/blog/best-cat-litter-multiple-cats-odor-control/",
-    permanent: true
-  },
   // Activated carbon benefits
   {
     source: "/learn/activated-carbon-benefits",
     destination: "/blog/activated-carbon-litter-additive-benefits/",
-    permanent: true
-  },
-  // Solutions hub (no more sub-pages)
-  {
-    source: "/learn/solutions",
-    destination: "/learn/",
     permanent: true
   },
   // Cat litter answers legacy hub
