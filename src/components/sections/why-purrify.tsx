@@ -10,12 +10,14 @@ import {
   IconOdor,
 } from "@/components/icons/custom-benefit-icons";
 import Image from "next/image";
-import { useTranslations } from "next-intl";
+import Link from "next/link";
+import { useLocale, useTranslations } from "next-intl";
 import type { ComponentType } from "react";
 
 type CardConfig = {
   icon: ComponentType<{ className?: string }>;
   image: string;
+  href: string;
   titleKeys: string[];
   descriptionKeys: string[];
 };
@@ -24,36 +26,42 @@ const CARD_CONFIG: CardConfig[] = [
   {
     icon: IconOdor,
     image: "/optimized/marketing/catcoco.webp",
+    href: "/learn/solutions/natural-cat-litter-additive",
     titleKeys: ["features.odorElimination.title"],
     descriptionKeys: ["features.odorElimination.description"],
   },
   {
     icon: IconCatFriendly,
     image: "/optimized/marketing/cats-and-filters.webp",
+    href: "/learn/science",
     titleKeys: ["features.catFriendly.title"],
     descriptionKeys: ["features.catFriendly.description"],
   },
   {
     icon: IconLongLasting,
     image: "/optimized/marketing/catonbed.avif",
+    href: "/blog/litter-deodorizer-frequency-guide",
     titleKeys: ["features.longLasting.title", "features.longLastingFreshness.title"],
     descriptionKeys: ["features.longLasting.description", "features.longLastingFreshness.description"],
   },
   {
     icon: IconAnyLitter,
     image: "/optimized/blog/cat-favorite-litter.webp",
+    href: "/blog/how-to-use-cat-litter-deodorizer",
     titleKeys: ["features.anyLitter.title", "features.worksWithAnyLitter.title"],
     descriptionKeys: ["features.anyLitter.description", "features.worksWithAnyLitter.description"],
   },
   {
     icon: IconCostEffective,
     image: "/optimized/marketing/cost-effective.webp",
+    href: "/blog/how-often-change-cat-litter",
     titleKeys: ["features.costEffective.title"],
     descriptionKeys: ["features.costEffective.description"],
   },
   {
     icon: IconBeforeAfter,
     image: "/optimized/marketing/before-after.webp",
+    href: "/learn/solutions/litter-box-smell-elimination",
     titleKeys: ["features.beforeAfter.title"],
     descriptionKeys: ["features.beforeAfter.description"],
   },
@@ -61,6 +69,8 @@ const CARD_CONFIG: CardConfig[] = [
 
 export function WhyPurrify() {
   const t = useTranslations();
+  const locale = useLocale();
+  const localePrefix = locale === "fr" ? "/fr" : "";
 
   const read = (keys: string[]): string => {
     for (const key of keys) {
@@ -79,6 +89,7 @@ export function WhyPurrify() {
   const cards = CARD_CONFIG.map((card) => ({
     icon: card.icon,
     image: card.image,
+    href: `${localePrefix}${card.href}`,
     title: read(card.titleKeys),
     description: read(card.descriptionKeys),
   })).filter((card) => card.title && card.description);
@@ -104,30 +115,33 @@ export function WhyPurrify() {
           {cards.map((card) => {
             const Icon = card.icon;
             return (
-              <article
+              <Link
                 key={card.title}
-                className="overflow-hidden rounded-2xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-950"
+                href={card.href}
+                className="group block h-full overflow-hidden rounded-2xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-950 transition-all duration-200 hover:-translate-y-1 hover:border-gray-300 hover:shadow-lg focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gray-400 dark:hover:border-gray-600 dark:hover:bg-gray-900 dark:hover:shadow-black/20 dark:focus-visible:ring-gray-500"
               >
-                <div className="relative aspect-[4/3] w-full">
-                  <Image
-                    src={card.image}
-                    alt={card.title}
-                    fill
-                    sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 400px"
-                    className="object-cover"
-                    loading="lazy"
-                  />
-                </div>
-                <div className="p-5">
-                  <div className="flex items-center gap-2 mb-2">
-                    <Icon className="w-6 h-6 text-gray-700 dark:text-gray-300" />
-                    <h3 className="text-lg font-semibold text-gray-900 dark:text-white">{card.title}</h3>
+                <article className="h-full">
+                  <div className="relative aspect-[4/3] w-full overflow-hidden">
+                    <Image
+                      src={card.image}
+                      alt=""
+                      fill
+                      sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 400px"
+                      className="object-cover transition-transform duration-300 group-hover:scale-[1.02]"
+                      loading="lazy"
+                    />
                   </div>
-                  <p className="text-sm md:text-base leading-relaxed text-gray-600 dark:text-gray-400">
-                    {card.description}
-                  </p>
-                </div>
-              </article>
+                  <div className="p-5">
+                    <div className="mb-2 flex items-center gap-2">
+                      <Icon className="h-6 w-6 text-gray-700 dark:text-gray-300" />
+                      <h3 className="text-lg font-semibold text-gray-900 dark:text-white">{card.title}</h3>
+                    </div>
+                    <p className="text-sm md:text-base leading-relaxed text-gray-600 dark:text-gray-400">
+                      {card.description}
+                    </p>
+                  </div>
+                </article>
+              </Link>
             );
           })}
         </div>

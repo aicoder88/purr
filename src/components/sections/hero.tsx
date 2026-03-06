@@ -12,8 +12,12 @@ export function Hero() {
     <section className="relative w-full overflow-x-clip border-b border-stone-200/70 bg-[radial-gradient(circle_at_top_left,#fff9ec_0%,#ffffff_58%)] pb-12 pt-16 transition-colors duration-300 md:pb-16 md:pt-20 dark:border-gray-800 dark:bg-[radial-gradient(circle_at_top_left,#1f2937_0%,#030712_64%)]">
       <Container className="relative z-10">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 md:gap-12 lg:gap-16 items-center">
-          <HeroContent t={t} locale={locale} />
-          <div className="relative h-full flex items-center justify-center lg:justify-end">
+          <HeroContent
+            t={t}
+            locale={locale}
+            heroVideo={<HeroVideo playLabel={t.hero.ariaLabels.playVideo} posterAlt={t.hero.ariaLabels.posterAlt} />}
+          />
+          <div className="hidden lg:flex relative h-full items-center justify-center lg:justify-end">
             <HeroVideo playLabel={t.hero.ariaLabels.playVideo} posterAlt={t.hero.ariaLabels.posterAlt} />
           </div>
         </div>

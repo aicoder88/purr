@@ -35,6 +35,7 @@ interface HeroContentProps {
       instantly: string;
       description: string;
       socialProof: {
+        trustNumber?: string;
         trustText: string;
         ratingText: string;
       };
@@ -55,9 +56,10 @@ interface HeroContentProps {
     };
   };
   locale: string;
+  heroVideo?: React.ReactNode;
 }
 
-export const HeroContent = ({ t }: HeroContentProps) => {
+export const HeroContent = ({ t, heroVideo }: HeroContentProps) => {
   const headline = t.hero.headline || t.hero.eliminateCatOdors;
   const supportingCopy = t.hero.simplified?.valueProposition || t.hero.description || t.hero.instantly;
   const eyebrow = t.hero.simplified?.thirtyDayGuarantee || t.hero.socialProof.ratingText;
@@ -65,7 +67,9 @@ export const HeroContent = ({ t }: HeroContentProps) => {
   const reassurance = t.hero.simplified?.justPayShipping || t.hero.socialProof.trustText;
   const primaryCta = t.hero.buttons.tryFree || t.hero.buttons.shopNow;
   const secondaryCta = t.hero.buttons.learnMore;
-  const trustPoints = [t.hero.socialProof.trustText, t.hero.simplified?.moneyBackGuarantee, t.hero.simplified?.thirtyDayGuarantee]
+  const trustPoints = [
+    t.hero.socialProof.trustText ? `${t.hero.socialProof.trustNumber || ""} ${t.hero.socialProof.trustText}`.trim() : ""
+  ]
     .filter((value): value is string => Boolean(value && value.trim()))
     .filter((value, index, arr) => arr.indexOf(value) === index)
     .slice(0, 3);
@@ -85,6 +89,11 @@ export const HeroContent = ({ t }: HeroContentProps) => {
         <h1 className="font-heading text-4xl sm:text-5xl md:text-6xl font-semibold tracking-tight leading-[1.05] text-gray-900 dark:text-white">
           {headline}
         </h1>
+        {heroVideo && (
+          <div className="block lg:hidden w-full py-4 -mx-4 px-4 sm:mx-0 sm:px-0">
+            {heroVideo}
+          </div>
+        )}
         <p className="text-lg sm:text-xl text-gray-600 dark:text-gray-400 max-w-xl leading-relaxed">
           {supportingCopy}
         </p>
@@ -113,14 +122,12 @@ export const HeroContent = ({ t }: HeroContentProps) => {
         </div>
         <p className="text-sm text-gray-600 dark:text-gray-400">{reassurance}</p>
         {trustPoints.length > 0 ? (
-          <ul className="flex flex-wrap items-center gap-x-4 gap-y-2 pt-1">
-            {trustPoints.map((point) => (
-              <li key={point} className="text-xs sm:text-sm text-gray-600 dark:text-gray-400">
-                <span className="mr-2 text-gray-400 dark:text-gray-500">•</span>
-                {point}
-              </li>
-            ))}
-          </ul>
+          <div className="flex items-center gap-2 pt-1 text-sm text-gray-600 dark:text-gray-400">
+            <svg className="w-4 h-4 text-green-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+            </svg>
+            <span>{trustPoints[0]}</span>
+          </div>
         ) : null}
       </div>
     </div>
