@@ -108,7 +108,7 @@ export function LanguageSwitcher() {
       <Button
         variant="ghost"
         size="sm"
-        className="flex items-center space-x-1 px-1.5 sm:px-2 py-1 hover:bg-[#FFFFF5] dark:hover:bg-gray-800"
+        className="flex items-center space-x-1 px-1.5 sm:px-2 py-1 hover:bg-gray-100 dark:hover:bg-gray-800"
         onClick={toggleDropdown}
         onMouseEnter={cancelClose}
         onMouseLeave={scheduleClose}
@@ -125,7 +125,7 @@ export function LanguageSwitcher() {
           className="w-4 h-4 sm:w-5 sm:h-5 rounded-full object-cover"
         />
         <span className="sr-only">{currentLanguage.name}</span>
-        <ChevronDown className="h-4 w-4 text-[#FF3131] dark:text-[#FF5050]" />
+        <ChevronDown className="h-4 w-4 text-brand-pink dark:text-brand-pink-400" />
       </Button>
 
       {isOpen && (
@@ -141,8 +141,8 @@ export function LanguageSwitcher() {
               <li key={language.locale}>
                 <button
                   className={`flex items-center px-3 py-2 text-sm w-full text-left ${locale === language.locale
-                    ? 'bg-[#FFFFF5] dark:bg-gray-700 text-[#FF3131] dark:text-[#FF5050] font-medium'
-                    : 'text-gray-700 dark:text-gray-200 hover:bg-[#FFFFF5] dark:hover:bg-gray-700 hover:text-[#FF3131] dark:hover:text-[#FF5050]'
+                    ? 'bg-gray-100 dark:bg-gray-700 text-brand-pink dark:text-brand-pink-400 font-medium'
+                    : 'text-gray-700 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-700 hover:text-brand-pink dark:hover:text-brand-pink-400'
                     }`}
                   onClick={createLanguageClickHandler(language.locale)}
                   type="button"

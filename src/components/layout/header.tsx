@@ -31,11 +31,11 @@ interface NavigationItem {
 
 // Base class shared by every desktop dropdown link — ~290 chars defined once.
 const dropdownLinkBase =
-  'block py-2 text-sm text-gray-700 dark:text-gray-200 hover:text-brand-red dark:hover:text-brand-red-400 focus:text-brand-red dark:focus:text-brand-red-400 hover:bg-gray-50 dark:bg-gray-900/80 dark:hover:bg-gray-700/80 focus:bg-gray-50 dark:focus:bg-gray-700/80 transition-colors rounded-md mx-1 my-0.5 focus:outline-none focus:ring-2 focus:ring-brand-red dark:focus:ring-brand-red-400 focus:ring-offset-1';
+  'block py-2 text-sm text-gray-700 dark:text-gray-200 hover:text-brand-pink dark:hover:text-brand-pink-400 focus:text-brand-pink dark:focus:text-brand-pink-400 hover:bg-gray-50 dark:bg-gray-900/80 dark:hover:bg-gray-700/80 focus:bg-gray-50 dark:focus:bg-gray-700/80 transition-colors rounded-md mx-1 my-0.5 focus:outline-none focus:ring-2 focus:ring-brand-pink dark:focus:ring-brand-pink-400 focus:ring-offset-1';
 
 // Base class shared by every mobile dropdown link.
 const mobileDropdownLinkBase =
-  'block py-3 min-h-[44px] flex items-center text-gray-700 dark:text-gray-200 hover:text-brand-red dark:hover:text-brand-red-400 hover:bg-gray-50 dark:bg-gray-900/80 dark:hover:bg-gray-700/80 transition-colors font-medium rounded-md mx-2 my-0.5';
+  'block py-3 min-h-[44px] flex items-center text-gray-700 dark:text-gray-200 hover:text-brand-pink dark:hover:text-brand-pink-400 hover:bg-gray-50 dark:bg-gray-900/80 dark:hover:bg-gray-700/80 transition-colors font-medium rounded-md mx-2 my-0.5';
 
 export function Header() {
   const mobileMenuId = 'mobile-navigation-menu';
@@ -370,7 +370,7 @@ export function Header() {
                   <>
                     <button
                       id={`dropdown-${item.id}`}
-                      className="flex items-center text-gray-700 dark:text-gray-200 hover:text-brand-red dark:hover:text-brand-red-400 focus:text-brand-red dark:focus:text-brand-red-400 transition-colors font-medium focus:outline-none focus:ring-2 focus:ring-brand-red dark:focus:ring-brand-red-400 focus:ring-offset-2 focus:ring-offset-white dark:focus:ring-offset-gray-800 rounded-sm"
+                      className="flex items-center text-gray-700 dark:text-gray-200 hover:text-brand-pink dark:hover:text-brand-pink-400 focus:text-brand-pink dark:focus:text-brand-pink-400 transition-colors font-medium focus:outline-none focus:ring-2 focus:ring-brand-pink dark:focus:ring-brand-pink-400 focus:ring-offset-2 focus:ring-offset-white dark:focus:ring-offset-gray-800 rounded-sm"
                       data-dropdown
                       data-menu-id={item.id}
                       aria-expanded={activeDropdown === item.id ? "true" : "false"}
@@ -419,7 +419,7 @@ export function Header() {
                   <Link
                     href={item.href}
                     prefetch={false}
-                    className="text-gray-700 dark:text-gray-200 hover:text-brand-red dark:hover:text-brand-red-400 transition-colors font-medium"
+                    className="text-gray-700 dark:text-gray-200 hover:text-brand-pink dark:hover:text-brand-pink-400 transition-colors font-medium"
                   >
                     {item.label}
                   </Link>
@@ -431,7 +431,7 @@ export function Header() {
           <div className="hidden md:flex items-center space-x-3">
             <Button
               asChild
-              className="flex items-center gap-2 bg-gradient-to-r from-brand-red to-brand-red/80 dark:from-brand-red-700 dark:to-brand-red-600 hover:from-brand-red/90 hover:to-brand-red dark:hover:from-brand-red-800 dark:hover:to-brand-red-700 text-white font-semibold shadow-md hover:shadow-lg transition-all duration-200"
+              className="flex items-center gap-2 bg-gradient-to-r from-brand-pink to-brand-pink/80 dark:from-brand-pink-700 dark:to-brand-pink-600 hover:from-brand-pink/90 hover:to-brand-pink dark:hover:from-brand-pink-800 dark:hover:to-brand-pink-700 text-white font-semibold shadow-md hover:shadow-lg transition-all duration-200"
             >
               <Link href="/stores/" prefetch={false}>
                 <MapPin className="w-4 h-4" />
@@ -473,7 +473,7 @@ export function Header() {
                       <button
                         type="button"
                         onClick={() => setExpandedMobileSection(expandedMobileSection === item.id ? null : item.id)}
-                        className="w-full flex items-center justify-between px-3 py-3 min-h-[44px] text-sm font-semibold text-gray-700 dark:text-gray-200 hover:text-brand-red dark:hover:text-brand-red-400 hover:bg-gray-50 dark:hover:bg-gray-700/80 transition-colors rounded-md mx-1"
+                        className="w-full flex items-center justify-between px-3 py-3 min-h-[44px] text-sm font-semibold text-gray-700 dark:text-gray-200 hover:text-brand-pink dark:hover:text-brand-pink-400 hover:bg-gray-50 dark:hover:bg-gray-700/80 transition-colors rounded-md mx-1"
                         aria-expanded={expandedMobileSection === item.id}
                       >
                         <span className="uppercase tracking-wider">{item.label}</span>
@@ -511,7 +511,7 @@ export function Header() {
                     <Link
                       href={item.href}
                       prefetch={false}
-                      className="block px-3 py-3 min-h-[44px] flex items-center text-gray-700 dark:text-gray-200 hover:text-brand-red dark:hover:text-brand-red-400 hover:bg-gray-50 dark:bg-gray-900/80 dark:hover:bg-gray-700/80 transition-colors font-medium rounded-md mx-2 my-1"
+                      className="block px-3 py-3 min-h-[44px] flex items-center text-gray-700 dark:text-gray-200 hover:text-brand-pink dark:hover:text-brand-pink-400 hover:bg-gray-50 dark:bg-gray-900/80 dark:hover:bg-gray-700/80 transition-colors font-medium rounded-md mx-2 my-1"
                       onClick={closeMenu}
                     >
                       {item.label}
@@ -524,7 +524,7 @@ export function Header() {
               <div className="border-t border-gray-200 dark:border-gray-700 pt-2 mt-2 space-y-2">
                 <Button
                   asChild
-                  className="w-full flex items-center justify-center gap-2 bg-gradient-to-r from-brand-red to-brand-red/80 dark:from-brand-red-700 dark:to-brand-red-600 hover:from-brand-red/90 hover:to-brand-red dark:hover:from-brand-red-800 dark:hover:to-brand-red-700 text-white font-semibold shadow-md hover:shadow-lg transition-all duration-200"
+                  className="w-full flex items-center justify-center gap-2 bg-gradient-to-r from-brand-pink to-brand-pink/80 dark:from-brand-pink-700 dark:to-brand-pink-600 hover:from-brand-pink/90 hover:to-brand-pink dark:hover:from-brand-pink-800 dark:hover:to-brand-pink-700 text-white font-semibold shadow-md hover:shadow-lg transition-all duration-200"
                 >
                   <Link href="/stores/" prefetch={false} onClick={closeMenu}>
                     <MapPin className="w-4 h-4" />

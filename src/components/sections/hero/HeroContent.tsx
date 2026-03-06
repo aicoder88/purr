@@ -73,11 +73,11 @@ export const HeroContent = ({ t }: HeroContentProps) => {
   return (
     <div className="flex flex-col justify-center space-y-6 md:space-y-7 py-2">
       <div className="flex flex-wrap items-center gap-2 self-start">
-        <div className="inline-flex items-center rounded-full border border-gray-200 dark:border-gray-700 px-4 py-1.5 bg-gray-50 dark:bg-gray-900">
-          <span className="text-sm font-medium text-gray-700 dark:text-gray-300">{eyebrow}</span>
+        <div className="inline-flex items-center rounded-full border border-gray-200 dark:border-brand-yellow/50 px-4 py-1.5 bg-gray-50 dark:bg-brand-yellow/10">
+          <span className="text-sm font-medium text-gray-700 dark:text-brand-yellow">{eyebrow}</span>
         </div>
-        <div className="inline-flex items-center rounded-full border border-gray-200 dark:border-gray-700 px-4 py-1.5 bg-gray-50 dark:bg-gray-900">
-          <span className="text-sm font-medium text-gray-700 dark:text-gray-300">{canadaBadge}</span>
+        <div className="inline-flex items-center rounded-full border border-gray-200 dark:border-brand-yellow/50 px-4 py-1.5 bg-gray-50 dark:bg-brand-yellow/10">
+          <span className="text-sm font-medium text-gray-700 dark:text-brand-yellow">{canadaBadge}</span>
         </div>
       </div>
 

@@ -56,7 +56,7 @@ export default function ChatWidget() {
     }
 
     const isPriorityPath = normalizedPath === '/' || normalizedPath.startsWith('/products');
-    const delayMs = isPriorityPath ? 5000 : 15000;
+    const delayMs = isPriorityPath ? 1000 : 3000;
 
     setIsFabVisible(false);
     const timer = window.setTimeout(() => {
@@ -185,8 +185,8 @@ export default function ChatWidget() {
           aria-label={t('chat.fabAriaLabel')}
           onClick={openChat}
           className={`fixed bottom-36 right-4 z-50 inline-flex items-center gap-2 rounded-full bg-gray-900 px-5 py-3.5 text-sm font-bold text-white shadow-2xl ring-2 ring-gray-900/20 transition-all hover:bg-black ${prefersReducedMotion
-              ? ''
-              : 'translate-y-0 opacity-100 duration-300 hover:-translate-y-1 hover:shadow-[0_8px_30px_rgb(0,0,0,0.24)]'
+            ? ''
+            : 'translate-y-0 opacity-100 duration-300 hover:-translate-y-1 hover:shadow-[0_8px_30px_rgb(0,0,0,0.24)]'
             } dark:bg-white dark:text-gray-900 dark:ring-white/20 dark:hover:bg-gray-50 md:bottom-6 md:right-6`}
         >
           <Sparkles className="h-5 w-5 text-[#FF3131]" aria-hidden="true" />
