@@ -4,6 +4,8 @@ import dynamic from 'next/dynamic';
 import { ErrorBoundary } from '@/components/ui/error-boundary';
 import { ScrollAnchor } from '@/components/ui/scroll-anchor';
 import { CurrencyProvider } from '@/lib/currency-context';
+import { TrustBadges } from '@/components/social-proof/TrustBadges';
+import { Container } from '@/components/ui/container';
 import type { Currency } from '@/lib/geo/currency-detector';
 
 // Section skeleton for loading states
@@ -48,6 +50,13 @@ export function HomepageClient({ currency }: HomepageClientProps) {
       <ErrorBoundary>
         <EnhancedProductComparison />
       </ErrorBoundary>
+
+      {/* Trust Badges */}
+      <section className="py-8 bg-gray-900/80 border-y border-gray-800">
+        <Container>
+          <TrustBadges variant="horizontal" maxBadges={5} />
+        </Container>
+      </section>
 
       {/* CTA Section */}
       <ErrorBoundary>

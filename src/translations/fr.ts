@@ -871,7 +871,8 @@ export const fr = {
     trustpilot: "Trustpilot",
     googleReviews: "Avis Google",
     // SEO
-    sitemap: "Plan du site"
+    sitemap: "Plan du site",
+    shippingReturns: "Livraison & Retours",
   },
 
   // Free Trial
@@ -918,7 +919,9 @@ export const fr = {
     averageRating: "Note Moyenne",
     satisfactionRate: "Taux de Satisfaction",
     odorFreeGuarantee: "Air frais à chaque application",
-    moneyBackGuaranteeText: "Des questions ? Notre équipe vous aide à garder une maison sans odeurs."
+    moneyBackGuaranteeText: "Des questions ? Notre équipe vous aide à garder une maison sans odeurs.",
+    guarantee30Day: "Garantie 30 Jours",
+    shippingAndReturns: "Livraison & Retours",
   },
 
   // Subscription Offer

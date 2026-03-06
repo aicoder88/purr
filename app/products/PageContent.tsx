@@ -1,5 +1,6 @@
 "use client";
 
+import { useRef } from 'react';
 import Link from 'next/link';
 import { Home, ChevronRight } from 'lucide-react';
 import { Container } from '@/components/ui/container';
@@ -7,9 +8,12 @@ import { useLocale } from 'next-intl';
 import { useCurrency } from '@/lib/currency-context';
 import { ProductsHero } from '@/components/products/ProductsHero';
 import { EnhancedProductComparison } from '@/components/sections/enhanced-product-comparison';
+import { TrustBadges } from '@/components/social-proof/TrustBadges';
+import { StickyAddToCart } from '@/components/product/StickyAddToCart';
 import { buildAvailabilityUrl, getPriceValidityDate, generateWebsiteSchema, stripContext } from '@/lib/seo-utils';
 import { useEnhancedSEO } from '@/hooks/useEnhancedSEO';
 import { formatProductPrice } from '@/lib/pricing';
+import { getPaymentLink } from '@/lib/payment-links';
 
 // Section components
 import { SocialProofSection } from './components/SocialProofSection';
@@ -29,6 +33,8 @@ export default function ProductsPage({ locale: localeProp }: PageContentProps = 
   const detectedLocale = useLocale();
   const locale = localeProp || detectedLocale;
   const { currency } = useCurrency();
+  const comparisonRef = useRef<HTMLDivElement>(null);
+  const trialLink = getPaymentLink('trialSingle');
   const breadcrumbAriaLabel = locale === 'fr' ? 'Fil d Ariane' : 'Breadcrumb';
 
   const trialPrice = formatProductPrice('trial', currency, locale);
@@ -205,11 +211,32 @@ export default function ProductsPage({ locale: localeProp }: PageContentProps = 
         <ScienceSection />
         <TrustSignalsSection />
         <QuickDecisionSection />
-        <EnhancedProductComparison />
+        <div ref={comparisonRef}>
+          <EnhancedProductComparison />
+        </div>
+
+        {/* Trust Badges */}
+        <section className="py-8 bg-white dark:bg-gray-800 border-b border-gray-200 dark:border-gray-700">
+          <Container>
+            <TrustBadges variant="horizontal" maxBadges={5} />
+          </Container>
+        </section>
+
         <WhatYouGetSection />
         <UsageCalculatorSection />
         <ProductsCTASection />
         <RelatedPagesSection />
+
+        {/* Sticky Add-to-Cart for trial product */}
+        {trialLink && (
+          <StickyAddToCart
+            productName="Purrify"
+            productSize={locale === 'fr' ? 'Essai 12g' : '12g Trial'}
+            price={trialPrice}
+            checkoutUrl={trialLink}
+            targetRef={comparisonRef}
+          />
+        )}
       </main>
     </>
   );

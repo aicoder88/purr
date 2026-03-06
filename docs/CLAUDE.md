@@ -35,7 +35,6 @@ pnpm test:e2e           # Playwright E2E (base URL: localhost:3010)
 pnpm test:e2e:ui        # Playwright with browser UI
 pnpm seo:validate       # Lenient SEO check (same as prebuild)
 pnpm seo:validate:strict # Strict SEO check (fails on any error)
-pnpm validate-dark-mode # Check dark: variants exist for all elements
 pnpm validate-i18n:hardcoded # Check hardcoded UI string regressions (writes reports/i18n-hardcoded-sweep.md)
 pnpm validate-hydration # Check for hydration anti-patterns
 pnpm prisma generate    # Regenerate Prisma client (also runs on postinstall)
@@ -109,7 +108,6 @@ pnpm clear-cache        # Clear webpack cache
 - **Import order**: React → External libs → Internal modules → Types
 - **Named function components** with explicit Props interfaces
 - **File naming**: PascalCase for components (.tsx), camelCase for utilities (.ts), kebab-case for routes
-- **Dark mode required**: Every `text-white` needs a dark variant or colored background. Every `bg-white` needs `dark:bg-gray-900`. Validate with `pnpm validate-dark-mode`.
 - **Hydration safety**: Never conditionally `return null` in page components. Use server-side `redirect()` or return a loading/error component instead. See `docs/HYDRATION_SAFETY.md`.
 - **Next.js App Router Rules**:
   - **Metadata**: NEVER export `metadata` from a file with `'use client'`. If you need metadata + interactivity, create a Server Component `page.tsx` that exports metadata and imports a Client Component for the UI.

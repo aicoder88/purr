@@ -6,7 +6,7 @@ import Link from "next/link";
 import { useTranslations, useLocale } from "next-intl";
 import { useCurrency } from "@/lib/currency-context";
 import { useEffect, useState } from "react";
-import { CheckCircle2, ChevronRight, MapPin } from "lucide-react";
+import { CheckCircle2, ChevronRight, MapPin, ShieldCheck } from "lucide-react";
 import Image from "next/image";
 import { formatProductPrice } from "@/lib/pricing";
 import { getOrCreateFreshnessSessionId } from "@/lib/freshness-session";
@@ -43,6 +43,19 @@ type FreshnessProfileSummary = {
   recommendedProductId: string | null;
   recommendationReason: string | null;
   source: 'QUIZ' | 'CHAT';
+};
+
+type TopReview = {
+  authorName: string;
+  rating: number;
+  content: string;
+};
+
+// Map card IDs to the primary product IDs stored in the review DB
+const REVIEW_PRODUCT_ID_BY_CARD: Record<string, string> = {
+  trial: 'purrify-12g',
+  regular: 'purrify-50g',
+  large: 'purrify-120g',
 };
 
 const IMAGE_BY_ID: Record<string, { image: string; imageSize: "sm" | "md" | "lg"; ctaType: "stripe" | "store" }> = {
@@ -108,6 +121,35 @@ export function EnhancedProductComparison() {
 
   const trialPrice = formatProductPrice("trial", currency, locale);
   const trialLink = getPaymentLink("trialSingle");
+  const [topReviews, setTopReviews] = useState<Record<string, TopReview>>({});
+
+  useEffect(() => {
+    const cardIds = Object.keys(REVIEW_PRODUCT_ID_BY_CARD);
+    Promise.all(
+      cardIds.map(async (cardId) => {
+        const productId = REVIEW_PRODUCT_ID_BY_CARD[cardId];
+        try {
+          const res = await fetch(
+            `/api/reviews?productId=${encodeURIComponent(productId)}&sort=helpful&limit=1`,
+            { cache: 'no-store' }
+          );
+          if (!res.ok) return null;
+          const data = (await res.json()) as { reviews?: Array<{ authorName: string; rating: number; content: string }> };
+          const review = data.reviews?.[0];
+          if (!review) return null;
+          return { cardId, review: { authorName: review.authorName, rating: review.rating, content: review.content } };
+        } catch {
+          return null;
+        }
+      })
+    ).then((results) => {
+      const map: Record<string, TopReview> = {};
+      for (const r of results) {
+        if (r) map[r.cardId] = r.review;
+      }
+      setTopReviews(map);
+    });
+  }, []);
 
   useEffect(() => {
     let isCancelled = false;
@@ -207,7 +249,7 @@ export function EnhancedProductComparison() {
           <h2 className="font-heading text-3xl md:text-4xl font-semibold tracking-tight text-gray-900 dark:text-white">
             {t("productComparison.title")}
           </h2>
-          <p className="mt-3 text-base md:text-lg text-gray-600 dark:text-gray-400">
+          <p className="mt-3 text-base md:text-lg text-gray-600 dark:text-gray-300">
             {t("productComparison.subtitle")}
           </p>
         </div>
@@ -269,7 +311,7 @@ export function EnhancedProductComparison() {
                     </div>
                     <div className="min-w-0">
                       <h3 className="text-2xl font-semibold tracking-tight text-gray-900 dark:text-white">{product.name}</h3>
-                      <p className="mt-1 text-sm text-gray-600 dark:text-gray-400">{product.subtitle}</p>
+                      <p className="mt-1 text-sm text-gray-600 dark:text-gray-300">{product.subtitle}</p>
                     </div>
                   </div>
                 </div>
@@ -277,13 +319,13 @@ export function EnhancedProductComparison() {
                 <div className="flex flex-1 flex-col px-6 pb-6 pt-5">
                   <div className="mb-6 grid grid-cols-2 gap-4 border-y border-gray-200/80 py-4 dark:border-gray-800">
                     <div>
-                      <p className="text-[11px] font-medium uppercase tracking-[0.14em] text-gray-500 dark:text-gray-400">
+                      <p className="text-[11px] font-medium uppercase tracking-[0.14em] text-gray-500 dark:text-gray-300">
                         {t("productComparison.duration")}
                       </p>
                       <p className="mt-2 text-sm font-semibold text-gray-900 dark:text-white">{product.duration}</p>
                     </div>
                     <div>
-                      <p className="text-[11px] font-medium uppercase tracking-[0.14em] text-gray-500 dark:text-gray-400">
+                      <p className="text-[11px] font-medium uppercase tracking-[0.14em] text-gray-500 dark:text-gray-300">
                         {t("productComparison.idealFor")}
                       </p>
                       <p className="mt-2 text-sm font-semibold text-gray-900 dark:text-white">{product.idealFor}</p>
@@ -291,12 +333,12 @@ export function EnhancedProductComparison() {
                   </div>
 
                   <div className="mb-6">
-                    <h4 className="mb-3 text-[11px] font-medium uppercase tracking-[0.14em] text-gray-500 dark:text-gray-400">
+                    <h4 className="mb-3 text-[11px] font-medium uppercase tracking-[0.14em] text-gray-500 dark:text-gray-300">
                       {t("productComparison.features")}
                     </h4>
                     <ul className="space-y-2.5">
                       {product.features.map((feature) => (
-                        <li key={feature} className="flex items-start gap-2 text-sm text-gray-600 dark:text-gray-400">
+                        <li key={feature} className="flex items-start gap-2 text-sm text-gray-600 dark:text-gray-300">
                           <CheckCircle2 className={["mt-0.5 h-4 w-4 shrink-0", tone.dot].join(" ")} />
                           <span>{feature}</span>
                         </li>
@@ -310,6 +352,30 @@ export function EnhancedProductComparison() {
                       {product.bestFor}
                     </p>
                   </div>
+
+                  {topReviews[product.id] && (
+                    <div className="mb-5 rounded-2xl border border-gray-200/60 bg-white/60 p-4 dark:border-gray-700/60 dark:bg-gray-900/60">
+                      <div className="flex items-center gap-1 mb-2">
+                        {Array.from({ length: 5 }).map((_, i) => (
+                          <svg
+                            key={i}
+                            className={["w-3.5 h-3.5", i < topReviews[product.id].rating ? "text-brand-yellow" : "text-gray-600"].join(" ")}
+                            fill="currentColor"
+                            viewBox="0 0 20 20"
+                            aria-hidden="true"
+                          >
+                            <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+                          </svg>
+                        ))}
+                      </div>
+                      <p className="text-xs text-gray-600 dark:text-gray-400 leading-relaxed line-clamp-3">
+                        {'\u201c'}{topReviews[product.id].content}{'\u201d'}
+                      </p>
+                      <p className="mt-1.5 text-xs font-medium text-gray-400">
+                        — {topReviews[product.id].authorName}
+                      </p>
+                    </div>
+                  )}
 
                   <div className="mt-auto">
                     {product.ctaType === "stripe" && product.stripeLink ? (
@@ -332,6 +398,19 @@ export function EnhancedProductComparison() {
                         </Button>
                       </Link>
                     )}
+                    <div className="mt-3 flex items-center justify-center gap-1.5">
+                      <ShieldCheck className="w-3.5 h-3.5 text-emerald-500 shrink-0" />
+                      <span className="text-xs text-gray-400">
+                        {t("enhancedProductComparison.guarantee30Day")}
+                      </span>
+                      <span className="text-gray-600 text-xs">·</span>
+                      <Link
+                        href={`${locale === "fr" ? "/fr" : ""}/support/shipping/`}
+                        className="text-xs text-gray-400 hover:text-gray-700 dark:hover:text-gray-200 underline underline-offset-2"
+                      >
+                        {t("enhancedProductComparison.shippingAndReturns")}
+                      </Link>
+                    </div>
                   </div>
                 </div>
               </article>

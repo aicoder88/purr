@@ -101,13 +101,13 @@ const footerUiCopy: Record<SupportedLocale, {
 
 // Shared class strings — defined once to avoid repeating long strings on every element.
 const footerLinkClass =
-  'text-[#333333]/80 dark:text-gray-300 hover:text-[#991D1D] dark:hover:text-[#FF8585] transition-colors duration-300';
+  'text-gray-300 hover:text-brand-pink transition-colors duration-300';
 
 const footerLegalLinkClass =
-  'inline-flex min-h-[44px] items-center px-1 text-xs text-[#333333]/80 dark:text-gray-300 hover:text-[#991D1D] dark:hover:text-[#FF8585] transition-colors duration-300';
+  'inline-flex min-h-[44px] items-center px-1 text-xs text-gray-300 hover:text-brand-pink transition-colors duration-300';
 
 const footerHeadingClass =
-  'font-heading text-sm font-semibold text-[#333333] dark:text-gray-100';
+  'font-heading text-sm font-semibold text-gray-100';
 
 export function Footer() {
   const currentYear = new Date().getFullYear();
@@ -119,7 +119,7 @@ export function Footer() {
   const localePrefix = locale === 'en' ? '' : `/${locale}`;
 
   return (
-    <footer className="bg-[#FFFFF5] dark:bg-gray-900 border-t border-[#E0EFC7] dark:border-gray-800 transition-colors duration-300">
+    <footer className="bg-gray-900 border-t border-gray-800 transition-colors duration-300">
       <Container>
         {/* Main Footer Content */}
         <div className="py-12">
@@ -129,24 +129,17 @@ export function Footer() {
                 <Link prefetch={false} href={localePrefix || '/'} className="group">
                   <div className="h-6 w-auto mr-2 flex items-center">
                     <Image
-                      src="/optimized/logos/logo-light-pink.webp"
-                      alt={copy.logoAlt}
-                      width={120}
-                      height={24}
-                      className="h-6 w-auto object-contain dark:hidden"
-                    />
-                    <Image
                       src="/optimized/logos/logo-dark.webp"
                       alt={copy.logoAlt}
                       width={84}
                       height={40}
                       loading="lazy"
-                      className="h-full w-auto filter drop-shadow-sm transition-all duration-300 hidden dark:block"
+                      className="h-full w-auto filter drop-shadow-sm transition-all duration-300"
                     />
                   </div>
                 </Link>
               </div>
-              <p className="text-sm text-[#333333]/80 dark:text-gray-300">
+              <p className="text-sm text-gray-300">
                 {t('siteDescription')}
               </p>
               <div className="flex flex-wrap gap-3">
@@ -154,7 +147,7 @@ export function Footer() {
                   href={SOCIAL_LINKS.instagram}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex h-11 w-11 items-center justify-center rounded-full text-[#333333]/70 dark:text-gray-400 hover:text-[#991D1D] dark:hover:text-[#FF8585] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#991D1D] dark:focus-visible:ring-[#FF8585] focus-visible:ring-offset-2 focus-visible:ring-offset-[#FFFFF5] dark:focus-visible:ring-offset-gray-900 transition-colors duration-300"
+                  className="inline-flex h-11 w-11 items-center justify-center rounded-full text-gray-400 hover:text-brand-pink focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-pink focus-visible:ring-offset-2 focus-visible:ring-offset-gray-900 transition-colors duration-300"
                   aria-label={copy.socialAria.instagram}
                 >
                   <Instagram className="h-5 w-5" />
@@ -163,7 +156,7 @@ export function Footer() {
                   href={SOCIAL_LINKS.facebook}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex h-11 w-11 items-center justify-center rounded-full text-[#333333]/70 dark:text-gray-400 hover:text-[#991D1D] dark:hover:text-[#FF8585] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#991D1D] dark:focus-visible:ring-[#FF8585] focus-visible:ring-offset-2 focus-visible:ring-offset-[#FFFFF5] dark:focus-visible:ring-offset-gray-900 transition-colors duration-300"
+                  className="inline-flex h-11 w-11 items-center justify-center rounded-full text-gray-400 hover:text-brand-pink focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-pink focus-visible:ring-offset-2 focus-visible:ring-offset-gray-900 transition-colors duration-300"
                   aria-label={copy.socialAria.facebook}
                 >
                   <Facebook className="h-5 w-5" />
@@ -172,7 +165,7 @@ export function Footer() {
                   href={SOCIAL_LINKS.linkedin}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex h-11 w-11 items-center justify-center rounded-full text-[#333333]/70 dark:text-gray-400 hover:text-[#991D1D] dark:hover:text-[#FF8585] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#991D1D] dark:focus-visible:ring-[#FF8585] focus-visible:ring-offset-2 focus-visible:ring-offset-[#FFFFF5] dark:focus-visible:ring-offset-gray-900 transition-colors duration-300"
+                  className="inline-flex h-11 w-11 items-center justify-center rounded-full text-gray-400 hover:text-brand-pink focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-pink focus-visible:ring-offset-2 focus-visible:ring-offset-gray-900 transition-colors duration-300"
                   aria-label={copy.socialAria.linkedin}
                 >
                   <Linkedin className="h-5 w-5" />
@@ -181,7 +174,7 @@ export function Footer() {
                   href={SOCIAL_LINKS.youtube}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex h-11 w-11 items-center justify-center rounded-full text-[#333333]/70 dark:text-gray-400 hover:text-[#991D1D] dark:hover:text-[#FF8585] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#991D1D] dark:focus-visible:ring-[#FF8585] focus-visible:ring-offset-2 focus-visible:ring-offset-[#FFFFF5] dark:focus-visible:ring-offset-gray-900 transition-colors duration-300"
+                  className="inline-flex h-11 w-11 items-center justify-center rounded-full text-gray-400 hover:text-brand-pink focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-pink focus-visible:ring-offset-2 focus-visible:ring-offset-gray-900 transition-colors duration-300"
                   aria-label={copy.socialAria.youtube}
                 >
                   <Youtube className="h-5 w-5" />
@@ -190,7 +183,7 @@ export function Footer() {
                   href={SOCIAL_LINKS.tiktok}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex h-11 w-11 items-center justify-center rounded-full text-[#333333]/70 dark:text-gray-400 hover:text-[#991D1D] dark:hover:text-[#FF8585] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#991D1D] dark:focus-visible:ring-[#FF8585] focus-visible:ring-offset-2 focus-visible:ring-offset-[#FFFFF5] dark:focus-visible:ring-offset-gray-900 transition-colors duration-300"
+                  className="inline-flex h-11 w-11 items-center justify-center rounded-full text-gray-400 hover:text-brand-pink focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-pink focus-visible:ring-offset-2 focus-visible:ring-offset-gray-900 transition-colors duration-300"
                   aria-label={copy.socialAria.tiktok}
                 >
                   <TikTokIcon className="h-5 w-5" />
@@ -199,7 +192,7 @@ export function Footer() {
                   href={SOCIAL_LINKS.medium}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex h-11 w-11 items-center justify-center rounded-full text-[#333333]/70 dark:text-gray-400 hover:text-[#991D1D] dark:hover:text-[#FF8585] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#991D1D] dark:focus-visible:ring-[#FF8585] focus-visible:ring-offset-2 focus-visible:ring-offset-[#FFFFF5] dark:focus-visible:ring-offset-gray-900 transition-colors duration-300"
+                  className="inline-flex h-11 w-11 items-center justify-center rounded-full text-gray-400 hover:text-brand-pink focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-pink focus-visible:ring-offset-2 focus-visible:ring-offset-gray-900 transition-colors duration-300"
                   aria-label={copy.socialAria.medium}
                 >
                   <MediumIcon className="h-5 w-5" />
@@ -208,7 +201,7 @@ export function Footer() {
                   href={SOCIAL_LINKS.pinterest}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex h-11 w-11 items-center justify-center rounded-full text-[#333333]/70 dark:text-gray-400 hover:text-[#991D1D] dark:hover:text-[#FF8585] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#991D1D] dark:focus-visible:ring-[#FF8585] focus-visible:ring-offset-2 focus-visible:ring-offset-[#FFFFF5] dark:focus-visible:ring-offset-gray-900 transition-colors duration-300"
+                  className="inline-flex h-11 w-11 items-center justify-center rounded-full text-gray-400 hover:text-brand-pink focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-pink focus-visible:ring-offset-2 focus-visible:ring-offset-gray-900 transition-colors duration-300"
                   aria-label={copy.socialAria.pinterest}
                 >
                   <PinterestIcon className="h-5 w-5" />
@@ -436,7 +429,7 @@ export function Footer() {
                     href={`${localePrefix}/support/shipping/`}
                     className={footerLinkClass}
                   >
-                    {t('nav.faq')}
+                    {t('footerNav.shippingReturns')}
                   </Link>
                 </li>
               </ul>
@@ -492,7 +485,7 @@ export function Footer() {
 
 
 
-          <div className="mt-12 pt-8 border-t border-[#E0EFC7] dark:border-gray-800">
+          <div className="mt-12 pt-8 border-t border-gray-800">
             <div className="flex flex-col md:flex-row justify-center items-center space-y-2 md:space-y-0 md:space-x-4 mb-4">
               <Link prefetch={false}
                 href={`${localePrefix}/privacy-policy/`}
@@ -513,9 +506,9 @@ export function Footer() {
                 {t('footerNav.sitemap') || "Sitemap"}
               </Link>
             </div>
-            <p className="text-center text-xs text-[#333333]/80 dark:text-gray-300">
+            <p className="text-center text-xs text-gray-400">
               © {currentYear}{" "}
-              <span className="text-[#991D1D] dark:text-[#FF8585] font-medium">
+              <span className="text-brand-pink font-medium">
                 {t('siteName')}
               </span>{" "}
               | {t('footer.allRightsReserved')}

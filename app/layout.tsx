@@ -191,13 +191,6 @@ export default async function RootLayout({
         <link rel="preconnect" href="https://www.googletagmanager.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
 
-        <link
-          rel="preload"
-          as="image"
-          href="/optimized/marketing/purrify-demo-poster.webp"
-          type="image/webp"
-          fetchPriority="high"
-        />
         {gtmId ? (
           /* Raw <script> so data-cfasync="false" lands on the element itself.
              Next.js <Script> wraps content in its loader JSON, hiding the

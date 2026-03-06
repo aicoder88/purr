@@ -13,6 +13,7 @@ import { optimizeMetaTitle } from '@/lib/seo/meta-optimizer';
 import { ArrowLeft, User, Clock } from 'lucide-react';
 import { sanitizeHTML } from '@/lib/security/sanitize';
 import { localizeInternalHrefAttributes } from '@/lib/i18n/locale-path';
+import { BlogProductCTA } from '@/components/blog/BlogProductCTA';
 
 // Force static generation - no dynamic data fetching
 export const dynamic = 'force-static';
@@ -176,6 +177,8 @@ interface BlogPost {
   howTo?: DataBlogPost['howTo'];
   faq?: DataBlogPost['faq'];
   citations?: DataBlogPost['citations'];
+  categories?: string[];
+  tags?: string[];
 }
 
 async function getPost(slug: string, locale: string): Promise<BlogPost | null> {
@@ -211,6 +214,8 @@ async function getPost(slug: string, locale: string): Promise<BlogPost | null> {
         howTo: (blogPost as unknown as { howTo?: BlogPost['howTo'] }).howTo ?? null,
         faq: blogPost.faq ?? null,
         citations: blogPost.citations ?? null,
+        categories: blogPost.categories ?? [],
+        tags: blogPost.tags ?? [],
       };
     }
   } catch (error) {
@@ -485,6 +490,9 @@ export default async function LocalizedBlogPostPage({ params }: BlogPostPageProp
                   <p className="text-gray-600 dark:text-gray-300">{post.excerpt}</p>
                 )}
               </article>
+
+              {/* Product CTA */}
+              <BlogProductCTA locale={locale} categories={post.categories} tags={post.tags} />
 
               {/* Citations */}
               {post.citations && post.citations.length > 0 && (

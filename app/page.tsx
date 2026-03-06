@@ -1,6 +1,7 @@
 export const dynamic = 'force-static';
 
 import { Metadata } from 'next';
+import ReactDOM from 'react-dom';
 import { Hero } from '@/components/sections/hero';
 import { HowItWorks } from '@/components/sections/how-it-works';
 import { AgitationSection } from '@/components/sections/agitation-section';
@@ -110,6 +111,12 @@ async function generateStructuredData(locale: string, currency: Currency) {
 
 // Async server component for the homepage
 export default async function HomePage() {
+  ReactDOM.preload('/optimized/marketing/purrify-demo-poster.webp', {
+    as: 'image',
+    type: 'image/webp',
+    fetchPriority: 'high',
+  });
+
   // For static generation, use default locale and currency
   // The actual currency/locale detection happens client-side via HomepageClient
   const currency: Currency = 'CAD';

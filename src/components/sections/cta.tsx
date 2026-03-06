@@ -107,7 +107,7 @@ export const CTA = React.memo(function CTA() {
             >
               <Button
                 size="lg"
-                className="w-full md:w-auto bg-gradient-to-r from-orange-500 to-orange-600 hover:from-orange-400 hover:to-orange-500 text-white font-bold py-7 px-10 rounded-xl shadow-lg hover:shadow-2xl hover:shadow-orange-500/30 hover:-translate-y-1 active:translate-y-0 active:scale-95 transition-all duration-200 text-lg cursor-pointer relative overflow-hidden"
+                className="w-full md:w-auto bg-gradient-to-r from-brand-pink to-brand-yellow hover:from-brand-pink/90 hover:to-brand-yellow/90 text-gray-950 font-bold py-7 px-10 rounded-xl shadow-lg hover:shadow-2xl hover:shadow-brand-pink/30 hover:-translate-y-1 active:translate-y-0 active:scale-95 transition-all duration-200 text-lg cursor-pointer relative overflow-hidden"
               >
                 <span className="relative z-10 flex items-center gap-2">
                   {t('cta.buttonText') || "Get My Free Trial"}

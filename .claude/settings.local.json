@@ -43,7 +43,6 @@
       "Bash(pnpm add:*)",
       "Bash(pnpm dev)",
       "Bash(PORT=3010 pnpm dev:*)",
-      "Bash(pnpm validate-dark-mode:*)",
       "Bash(pnpm validate-hydration:*)",
       "Bash(for img in \"purrify-logo-text.webp\" \"three_bags_no_bg.webp\" \"affiliate-dashboard.webp\" \"benefits-happy-cats.webp\" \"quality-control-lab.webp\" \"activated-carbon-granules.webp\" \"certification-quality.webp\" \"coconut-shell-natural.webp\" \"safe-cat-litter.webp\")",
       "Bash(do)",

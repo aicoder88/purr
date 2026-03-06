@@ -2,7 +2,6 @@
 import {
   TrendingUp,
   Users,
-  Shield,
   Award,
   Package,
   DollarSign,
@@ -38,14 +37,7 @@ export function RetailVertical({ locale }: RetailVerticalProps) {
           ? 'Matériel promotionnel gratuit, formation produit et support publicitaire local pour vos équipes.'
           : 'Free promotional materials, product training, and local advertising support for your teams.',
     },
-    {
-      icon: <Shield className="h-8 w-8 text-purple-600 dark:text-purple-400" />,
-      title: locale === 'fr' ? 'Protection en Ligne' : 'Online Protection',
-      description:
-        locale === 'fr'
-          ? 'Protection stricte contre la vente en ligne directe pour protéger vos ventes en magasin.'
-          : 'Strict protection from direct online selling to protect your brick-and-mortar sales.',
-    },
+
     {
       icon: <Package className="h-8 w-8 text-orange-600 dark:text-orange-400" />,
       title: locale === 'fr' ? 'Livraison Rapide' : 'Fast Delivery',
@@ -201,8 +193,8 @@ export function RetailVertical({ locale }: RetailVerticalProps) {
             <div
               key={index}
               className={`rounded-lg p-8 ${tier.highlighted
-                  ? 'bg-blue-50 dark:bg-blue-900/20 border-2 border-blue-300 dark:border-blue-600 shadow-lg'
-                  : 'bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 shadow-sm'
+                ? 'bg-blue-50 dark:bg-blue-900/20 border-2 border-blue-300 dark:border-blue-600 shadow-lg'
+                : 'bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 shadow-sm'
                 }`}
             >
               {tier.highlighted && (

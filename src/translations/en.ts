@@ -887,7 +887,8 @@ export const en = {
     sitemap: "Sitemap",
     caseStudies: "Case Studies",
     fun: "Fun & Games",
-    viral: "Viral"
+    viral: "Viral",
+    shippingReturns: "Shipping & Returns",
   },
 
   // Free Trial
@@ -933,7 +934,9 @@ export const en = {
     averageRating: "Average Rating",
     satisfactionRate: "Satisfaction Rate",
     odorFreeGuarantee: "Fresh air with every application",
-    moneyBackGuaranteeText: "Questions? Our cat-care team is ready to help you get results."
+    moneyBackGuaranteeText: "Questions? Our cat-care team is ready to help you get results.",
+    guarantee30Day: "30-Day Guarantee",
+    shippingAndReturns: "Shipping & Returns",
   },
 
   // Subscription Offer

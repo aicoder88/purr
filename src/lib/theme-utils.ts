@@ -19,6 +19,24 @@ export const COLORS = {
       border: 'border-[#FF3131]/30 dark:border-[#FF5050]/30',
       text: 'text-[#FF3131] dark:text-[#FF5050]'
     },
+    pink: {
+      light: '#FF2D87',
+      dark: '#FF2D87',
+      gradient: 'from-brand-pink to-brand-pink/80',
+      gradientDark: 'dark:from-brand-pink dark:to-brand-pink/80',
+      bg: 'bg-brand-pink/10 dark:bg-brand-pink/15',
+      border: 'border-brand-pink/30 dark:border-brand-pink/40',
+      text: 'text-brand-pink dark:text-brand-pink'
+    },
+    yellow: {
+      light: '#FFD60A',
+      dark: '#FFD60A',
+      gradient: 'from-brand-yellow to-brand-yellow/80',
+      gradientDark: 'dark:from-brand-yellow dark:to-brand-yellow/80',
+      bg: 'bg-brand-yellow/10 dark:bg-brand-yellow/15',
+      border: 'border-brand-yellow/30 dark:border-brand-yellow/40',
+      text: 'text-brand-yellow dark:text-brand-yellow'
+    },
     purple: {
       light: '#5B2EFF',
       dark: '#3694FF',
@@ -69,15 +87,18 @@ export const GRADIENTS = {
   background: {
     light: 'bg-gradient-to-br from-[#FFFFFF] via-[#FFFFF5] to-[#FFFFFF]',
     dark: 'dark:from-gray-900 dark:via-gray-950 dark:to-gray-900',
-    primary: 'bg-gradient-to-r from-[#FF3131] to-[#5B2EFF] dark:from-[#FF5050] dark:to-[#3694FF]',
-    cta: 'bg-gradient-to-r from-[#5B2EFF] to-[#03E46A] dark:from-[#3694FF] dark:to-[#FF5050]',
+    primary: 'bg-gradient-to-r from-brand-pink to-brand-yellow dark:from-brand-pink dark:to-brand-yellow',
+    cta: 'bg-gradient-to-r from-gray-900 to-gray-800 dark:from-gray-800 dark:to-gray-900',
     purpleToRed: 'bg-gradient-to-r from-[#5B2EFF] to-[#FF3131]',
-    purpleToRedLight: 'bg-gradient-to-r from-[#5B2EFF]/20 to-[#FF3131]/20'
+    purpleToRedLight: 'bg-gradient-to-r from-[#5B2EFF]/20 to-[#FF3131]/20',
+    pinkYellow: 'bg-gradient-to-r from-brand-pink to-brand-yellow',
+    pinkYellowSubtle: 'bg-gradient-to-r from-brand-pink/10 to-brand-yellow/10'
   },
   text: {
-    primary: 'bg-gradient-to-r from-[#FF3131] to-[#5B2EFF] bg-clip-text text-transparent',
-    primaryDark: 'dark:from-[#FF5050] dark:to-[#3694FF]',
-    purple: 'bg-gradient-to-br from-[#6D28D9] via-[#8B5CF6] to-[#A78BFA] dark:from-[#9333EA] dark:via-[#A855F7] dark:to-[#C084FC] bg-clip-text text-transparent'
+    primary: 'bg-gradient-to-r from-brand-pink to-brand-yellow bg-clip-text text-transparent',
+    primaryDark: 'dark:from-brand-pink dark:to-brand-yellow',
+    purple: 'bg-gradient-to-br from-[#6D28D9] via-[#8B5CF6] to-[#A78BFA] dark:from-[#9333EA] dark:via-[#A855F7] dark:to-[#C084FC] bg-clip-text text-transparent',
+    pinkYellow: 'bg-gradient-to-r from-brand-pink to-brand-yellow bg-clip-text text-transparent'
   }
 } as const;
 
@@ -125,7 +146,7 @@ export const ANIMATIONS = {
  * // Returns: { bg: 'bg-[#FF3131]/10...', border: '...', text: '...', iconColor: '#FF3131' }
  * ```
  */
-export const createColorClasses = (colorScheme: 'red' | 'purple' | 'green') => {
+export const createColorClasses = (colorScheme: 'red' | 'pink' | 'yellow' | 'purple' | 'green') => {
   const color = COLORS.primary[colorScheme];
   return {
     bg: color.bg,
