@@ -84,7 +84,7 @@ export function ScienceSection() {
             </div>
 
             <div className="mt-6 flex flex-wrap items-center gap-3">
-              <Button asChild className="rounded-full bg-gradient-to-r from-brand-yellow via-brand-pink to-brand-pink hover:from-brand-yellow/90 hover:via-brand-pink/90 hover:to-brand-pink/90 text-gray-950 border-0">
+              <Button asChild className="rounded-full bg-brand-red-600 hover:bg-brand-red-700 text-white dark:text-gray-100 border-0">
                 <Link href={`${locale === "fr" ? "/fr" : ""}/learn/science`}>
                   {t("scienceSection.learnMore")} <ArrowRight className="w-4 h-4 ml-2" />
                 </Link>
@@ -101,7 +101,7 @@ export function ScienceSection() {
           <div className="lg:col-span-5">
             <div className="relative overflow-hidden rounded-2xl border border-gray-200 dark:border-gray-700 aspect-square bg-gray-100 dark:bg-gray-900">
               <Image
-                src="/optimized/blog/Carbon-sktech.webp"
+                src="/optimized/blog/Carbon-sktech-640w.webp"
                 alt={t("homepage.altText.scientificDiagram")}
                 fill
                 sizes="(max-width: 1024px) 100vw, 600px"

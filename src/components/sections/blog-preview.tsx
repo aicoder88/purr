@@ -18,6 +18,14 @@ interface BlogPost {
 }
 
 const FALLBACK_BLOG_IMAGE = '/optimized/logos/purrify-logo.avif';
+const BLOG_CARD_IMAGE_OVERRIDES: Record<string, string> = {
+  '/optimized/blog/scientific-odor-control.webp': '/optimized/blog/scientific-odor-control-640w.webp',
+  '/optimized/blog/cat-litter-hero.webp': '/optimized/blog/cat-litter-hero-640w.webp',
+};
+
+function getBlogCardImageSrc(image: string): string {
+  return BLOG_CARD_IMAGE_OVERRIDES[image] || image;
+}
 
 function normalizeBlogPosts(data: unknown): BlogPost[] {
   if (!Array.isArray(data)) {
@@ -44,7 +52,7 @@ function normalizeBlogPosts(data: unknown): BlogPost[] {
         ? candidate.date
         : '';
       const image = typeof candidate.image === 'string' && candidate.image.trim().length > 0
-        ? candidate.image
+        ? getBlogCardImageSrc(candidate.image)
         : FALLBACK_BLOG_IMAGE;
       const link = typeof candidate.link === 'string' && candidate.link.trim().length > 0
         ? candidate.link
@@ -107,7 +115,9 @@ export function BlogPreview() {
           {blogPosts.map((post, index) => {
             const slug = post.link.split('/').filter(Boolean).pop();
             const href = slug ? `/blog/${slug}` : '/blog';
-            const imageSrc = post.image && post.image.trim().length > 0 ? post.image : FALLBACK_BLOG_IMAGE;
+            const imageSrc = post.image && post.image.trim().length > 0
+              ? getBlogCardImageSrc(post.image)
+              : FALLBACK_BLOG_IMAGE;
 
             return (
               <Link
@@ -123,9 +133,8 @@ export function BlogPreview() {
                       src={imageSrc}
                       alt={`Featured image for blog post: ${post.title} - Purrify cat litter knowledge`}
                       fill
-                      sizes="(max-width: 768px) 100vw, 50vw"
+                      sizes="(max-width: 768px) 100vw, 33vw"
                       className={`w-full h-full ${imageSrc.includes('carbon_magnified') ? 'object-contain' : 'object-cover'} transition-transform duration-700 group-hover:scale-110`}
-                      priority={index === 0}
                       quality={75}
                     />
                   </div>
@@ -173,7 +182,7 @@ export function BlogPreview() {
         <div className="mt-16 text-center">
           <Button
             asChild
-            className="bg-gradient-to-r from-brand-yellow via-brand-pink to-brand-pink hover:from-brand-yellow/90 hover:via-brand-pink/90 hover:to-brand-pink/90 text-gray-950 font-semibold py-4 px-8 rounded-full transition-all duration-300 border-0"
+            className="bg-brand-red-600 hover:bg-brand-red-700 text-white dark:text-gray-100 font-semibold py-4 px-8 rounded-full transition-all duration-300 border-0"
           >
             <Link href={locale === 'fr' ? '/fr/blog' : '/blog'}>
               {t.blogSection.viewAllArticles}

@@ -31,7 +31,7 @@ export function AgitationSection() {
           <div className="order-2 lg:order-1">
             <div className="relative overflow-hidden rounded-2xl border border-gray-200 dark:border-gray-700">
               <Image
-                src="/optimized/marketing/holdnose.png"
+                src="/optimized/marketing/holdnose.webp"
                 alt={t("ui.imageAlt")}
                 width={800}
                 height={600}

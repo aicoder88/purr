@@ -33,7 +33,7 @@ function TrustBadgeIcon({ className = "" }: { className?: string }) {
 }
 
 const CTA_BUTTON_CLASSES =
-  "w-full sm:w-auto px-8 py-5 bg-gradient-to-r from-brand-yellow via-brand-pink to-brand-pink hover:from-brand-yellow/90 hover:via-brand-pink/90 hover:to-brand-pink/90 text-gray-950 font-semibold text-base sm:text-lg rounded-full shadow-sm transition-all duration-200 min-h-[56px] flex items-center justify-center gap-2";
+  "w-full sm:w-auto px-8 py-5 bg-brand-red-600 hover:bg-brand-red-700 text-white dark:text-gray-100 font-semibold text-base sm:text-lg rounded-full shadow-sm transition-all duration-200 min-h-[56px] flex items-center justify-center gap-2";
 
 interface HeroContentProps {
   t: {
@@ -68,44 +68,24 @@ interface HeroContentProps {
       };
     };
   };
-  locale: string;
-  heroVideo?: React.ReactNode;
 }
 
-export const HeroContent = ({ t, heroVideo }: HeroContentProps) => {
+export const HeroContent = ({ t }: HeroContentProps) => {
   const headline = t.hero.headline || t.hero.eliminateCatOdors;
   const supportingCopy = t.hero.simplified?.valueProposition || t.hero.description || t.hero.instantly;
   const eyebrow = t.hero.simplified?.thirtyDayGuarantee || t.hero.socialProof.ratingText;
-  const trustBadge = t.hero.socialProof.ratingText?.trim();
   const canadaBadge = t.madeInCanada.badge;
   const reassurance = t.hero.simplified?.justPayShipping || t.hero.socialProof.trustText;
   const primaryCta = t.hero.buttons.tryFree || t.hero.buttons.shopNow;
   const secondaryCta = t.hero.buttons.learnMore;
-  const retailerQuote = t.hero.socialProof.retailerQuote;
-  const trustNumber = t.hero.socialProof.trustNumber?.trim();
-  const trustText = t.hero.socialProof.trustText?.trim();
-  const trustLine = [trustNumber, trustText].filter(Boolean).join(" ").trim();
-  const quoteSource = retailerQuote?.trim();
-  const attributionSeparatorIndex = quoteSource?.lastIndexOf("—") ?? -1;
-  const quoteBody = (
-    attributionSeparatorIndex > -1 ? quoteSource?.slice(0, attributionSeparatorIndex) : quoteSource
-  )?.trim().replace(/^["“]|["”]$/g, "");
-  const quoteAttribution = attributionSeparatorIndex > -1
-    ? quoteSource?.slice(attributionSeparatorIndex + 1).trim()
-    : "";
 
   return (
     <div className="flex flex-col justify-center space-y-6 md:space-y-7 py-2">
       <div className="flex flex-wrap items-center gap-2 self-start">
-        <div className="inline-flex items-center rounded-full border border-brand-pink/30 px-4 py-1.5 bg-gradient-to-r from-brand-yellow/25 via-brand-pink/25 to-brand-pink/25">
+        <div className="inline-flex items-center gap-1.5 rounded-full border border-brand-pink/30 px-4 py-1.5 bg-gradient-to-r from-brand-yellow/25 via-brand-pink/25 to-brand-pink/25">
+          <TrustBadgeIcon className="text-emerald-600 dark:text-emerald-300" />
           <span className="text-sm font-medium text-gray-900 dark:text-gray-100">{eyebrow}</span>
         </div>
-        {trustBadge && trustBadge !== eyebrow ? (
-          <div className="inline-flex items-center gap-1.5 rounded-full border border-emerald-500/30 bg-emerald-50/90 px-3 py-1.5 dark:border-emerald-400/40 dark:bg-emerald-950/35">
-            <TrustBadgeIcon className="text-emerald-600 dark:text-emerald-300" />
-            <span className="text-xs font-semibold text-emerald-800 dark:text-emerald-100 sm:text-sm">{trustBadge}</span>
-          </div>
-        ) : null}
         <div className="inline-flex items-center rounded-full border border-brand-pink/30 px-4 py-1.5 bg-gradient-to-r from-brand-yellow/25 via-brand-pink/25 to-brand-pink/25">
           <span className="text-sm font-medium text-gray-900 dark:text-gray-100">{canadaBadge}</span>
         </div>
@@ -115,11 +95,6 @@ export const HeroContent = ({ t, heroVideo }: HeroContentProps) => {
         <h1 className="font-heading text-4xl sm:text-5xl md:text-6xl font-semibold tracking-tight leading-[1.05] text-gray-900 dark:text-white">
           {headline}
         </h1>
-        {heroVideo && (
-          <div className="block lg:hidden w-full py-4 -mx-4 px-4 sm:mx-0 sm:px-0">
-            {heroVideo}
-          </div>
-        )}
         <p className="text-lg sm:text-xl text-gray-600 dark:text-gray-400 max-w-xl leading-relaxed">
           {supportingCopy}
         </p>
@@ -150,37 +125,6 @@ export const HeroContent = ({ t, heroVideo }: HeroContentProps) => {
               </Link>
             </Button>
           ) : null}
-        </div>
-        <div className="space-y-2">
-          <div className="rounded-3xl border border-stone-200/80 bg-white/85 p-4 shadow-[0_18px_50px_-30px_rgba(15,23,42,0.4)] backdrop-blur-sm dark:border-gray-800 dark:bg-gray-950/45">
-            <div className="space-y-4">
-              <div className="space-y-1.5">
-                {trustLine ? (
-                  <div className="flex flex-wrap items-baseline gap-x-2 gap-y-1">
-                    {trustNumber ? (
-                      <span className="text-xl font-semibold tracking-tight text-gray-900 dark:text-gray-100">{trustNumber}</span>
-                    ) : null}
-                    {trustText ? (
-                      <span className="text-sm sm:text-base font-medium text-gray-700 dark:text-gray-300">{trustText}</span>
-                    ) : null}
-                  </div>
-                ) : null}
-              </div>
-
-              {quoteBody ? (
-                <blockquote className="border-l-2 border-stone-300 pl-4 dark:border-gray-700">
-                  <p className="font-heading text-base leading-relaxed text-gray-900 dark:text-gray-100 sm:text-lg">
-                    "{quoteBody}"
-                  </p>
-                  {quoteAttribution ? (
-                    <footer className="mt-2 text-sm font-medium text-gray-600 dark:text-gray-300">
-                      {quoteAttribution}
-                    </footer>
-                  ) : null}
-                </blockquote>
-              ) : null}
-            </div>
-          </div>
         </div>
       </div>
     </div>

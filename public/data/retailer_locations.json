@@ -204,7 +204,7 @@
     "province": "QC",
     "postal_code": "G0X 1L0",
     "phone": "819-695-2329",
-    "website": "",
+    "website": "https://animalerienathamo.square.site/",
     "lat": 46.5496755,
     "lng": -72.745301
   },
@@ -243,14 +243,14 @@
   },
   {
     "store_name": "Viva Pets",
-    "address": "Edmonton",
+    "address": "15004 107 Avenue Northwest, Edmonton, AB, Canada, T5P 4S1",
     "city": "Edmonton",
     "province": "AB",
-    "postal_code": "",
+    "postal_code": "T5P 4S1",
     "phone": "780-489-7387",
-    "website": "https://www.vivapets.ca/",
-    "lat": 53.578902,
-    "lng": -113.5307188
+    "website": "https://web.facebook.com/people/Viva-Pets-YEG/61582377628485",
+    "lat": 53.5514904,
+    "lng": -113.5804093
   },
   {
     "store_name": "Best Cat",

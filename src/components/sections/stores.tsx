@@ -269,7 +269,7 @@ const getStoresWithTranslations = (t: ReturnType<typeof import('../../lib/transl
     location: "Shawinigan, QC G0X 1L0",
     address: "161 Rue de l'Hydravion, Shawinigan, QC G0X 1L0",
     phone: "819-695-2329",
-    url: "",
+    url: "https://animalerienathamo.square.site/",
     description: t.storesSection?.storeDescriptions?.completePetCareAndSupplies || 'Complete pet care and supplies'
   },
   {
@@ -298,10 +298,10 @@ const getStoresWithTranslations = (t: ReturnType<typeof import('../../lib/transl
   },
   {
     name: "Viva Pets",
-    location: "Montreal, QC",
-    address: "Montreal, QC",
+    location: "Edmonton, AB T5P 4S1",
+    address: "15004 107 Avenue Northwest, Edmonton, AB T5P 4S1",
     phone: "780-489-7387",
-    url: "https://www.vivapets.ca/",
+    url: "https://web.facebook.com/people/Viva-Pets-YEG/61582377628485",
     description: t.storesSection?.storeDescriptions?.premiumPetProductsAndSupplies || 'Premium pet products and supplies'
   },
   {
@@ -613,7 +613,7 @@ export function Stores() {
                 <button
                   type="submit"
                   disabled={isSubmitting || submitStatus === 'success'}
-                  className="bg-gradient-to-r from-brand-yellow via-brand-pink to-brand-pink hover:from-brand-yellow/90 hover:via-brand-pink/90 hover:to-brand-pink/90 text-gray-950 font-bold py-4 px-8 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 active:scale-95 border-0 flex items-center justify-center gap-2 mx-auto min-w-[240px] disabled:opacity-70 disabled:cursor-not-allowed"
+                  className="bg-brand-red-600 hover:bg-brand-red-700 text-white dark:text-gray-100 font-bold py-4 px-8 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 active:scale-95 border-0 flex items-center justify-center gap-2 mx-auto min-w-[240px] disabled:opacity-70 disabled:cursor-not-allowed"
                 >
                   {isSubmitting ? (
                     <>

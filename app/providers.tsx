@@ -3,7 +3,6 @@
 import { ReactNode } from 'react';
 import { NextIntlClientProvider } from 'next-intl';
 import { CurrencyProvider } from '@/lib/currency-context';
-import { TranslationProvider } from '@/lib/translation-context';
 import { ClientLogic } from '@/components/layout/ClientLogic';
 
 interface ProvidersProps {
@@ -26,10 +25,8 @@ export function Providers({
       onError={(error) => console.warn('i18n client error:', error)}
     >
       <CurrencyProvider detectedCurrency="CAD">
-        <TranslationProvider language={locale}>
-          <ClientLogic />
-          {children}
-        </TranslationProvider>
+        <ClientLogic />
+        {children}
       </CurrencyProvider>
     </NextIntlClientProvider>
   );

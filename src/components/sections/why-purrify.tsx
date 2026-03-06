@@ -25,28 +25,28 @@ type CardConfig = {
 const CARD_CONFIG: CardConfig[] = [
   {
     icon: IconOdor,
-    image: "/optimized/marketing/catcoco.webp",
+    image: "/optimized/marketing/catcoco-640w.webp",
     href: "/learn/how-activated-carbon-works",
     titleKeys: ["features.odorElimination.title"],
     descriptionKeys: ["features.odorElimination.description"],
   },
   {
     icon: IconCatFriendly,
-    image: "/optimized/marketing/cats-and-filters.webp",
+    image: "/optimized/marketing/cats-and-filters-640w.webp",
     href: "/learn/science",
     titleKeys: ["features.catFriendly.title"],
     descriptionKeys: ["features.catFriendly.description"],
   },
   {
     icon: IconLongLasting,
-    image: "/optimized/marketing/catonbed.avif",
+    image: "/optimized/marketing/catonbed-640w.webp",
     href: "/learn/how-it-works",
     titleKeys: ["features.longLasting.title", "features.longLastingFreshness.title"],
     descriptionKeys: ["features.longLasting.description", "features.longLastingFreshness.description"],
   },
   {
     icon: IconAnyLitter,
-    image: "/optimized/blog/cat-favorite-litter.webp",
+    image: "/optimized/blog/cat-favorite-litter-640w.webp",
     href: "/products",
     titleKeys: ["features.anyLitter.title", "features.worksWithAnyLitter.title"],
     descriptionKeys: ["features.anyLitter.description", "features.worksWithAnyLitter.description"],
@@ -60,7 +60,7 @@ const CARD_CONFIG: CardConfig[] = [
   },
   {
     icon: IconBeforeAfter,
-    image: "/optimized/marketing/before-after.webp",
+    image: "/optimized/marketing/before-after-640w.webp",
     href: "/reviews",
     titleKeys: ["features.beforeAfter.title"],
     descriptionKeys: ["features.beforeAfter.description"],

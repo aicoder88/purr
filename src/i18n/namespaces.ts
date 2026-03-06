@@ -45,6 +45,8 @@ const NAMESPACE_KEY_MAP: Record<TranslationNamespace, (keyof TranslationType)[]>
     'scrollingBar',
   ],
   home: [
+    'blogSection',
+    'contactPage',
     'hero',
     'features',
     'benefits',
@@ -62,12 +64,14 @@ const NAMESPACE_KEY_MAP: Record<TranslationNamespace, (keyof TranslationType)[]>
     'reviewsSection',
     'freeGiveaway',
     'enhancedProductComparison',
+    'madeInCanada',
     'productComparison',
     'subscriptionOffer',
     'urgencyBanner',
     'agitationSection',
     'calculatorSection',
     'socialProofBadges',
+    'storesSection',
   ],
   products: [
     'products',
@@ -110,6 +114,7 @@ const NAMESPACE_KEY_MAP: Record<TranslationNamespace, (keyof TranslationType)[]>
     'catCafes',
     'shelters',
     'hospitality',
+    'storesSection',
   ],
   contact: [
     'contact',

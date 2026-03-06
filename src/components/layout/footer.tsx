@@ -1,9 +1,8 @@
-'use client';
 import Link from "next/link";
 import type { SVGProps } from "react";
 import { Container } from "@/components/ui/container";
 import Image from "next/image";
-import { useTranslations, useLocale } from "next-intl";
+import { getLocale, getTranslations } from "next-intl/server";
 import {
   Instagram,
   Linkedin,
@@ -109,14 +108,15 @@ const footerLegalLinkClass =
 const footerHeadingClass =
   'font-heading text-sm font-semibold text-gray-100';
 
-export function Footer() {
+export async function Footer() {
   const currentYear = new Date().getFullYear();
-  const t = useTranslations();
-  const locale = useLocale();
-  const copy = footerUiCopy[locale as SupportedLocale] || footerUiCopy.en;
+  const t = await getTranslations();
+  const locale = await getLocale();
+  const resolvedLocale: SupportedLocale = locale === 'fr' ? 'fr' : 'en';
+  const copy = footerUiCopy[resolvedLocale];
 
   // Create localized path prefix
-  const localePrefix = locale === 'en' ? '' : `/${locale}`;
+  const localePrefix = resolvedLocale === 'en' ? '' : `/${resolvedLocale}`;
 
   return (
     <footer className="bg-gray-900 border-t border-gray-800 transition-colors duration-300">
@@ -218,7 +218,7 @@ export function Footer() {
               <ul className="space-y-2 text-sm dark:text-sm">
                 <li>
                   <Link prefetch={false}
-                    href={locale === "fr" ? "/fr/stores/" : "/stores/"}
+                    href={resolvedLocale === "fr" ? "/fr/stores/" : "/stores/"}
                     className={`${footerLinkClass} font-medium`}
                   >
                     {t('nav.findStore') || "Find a Store"}
@@ -226,7 +226,7 @@ export function Footer() {
                 </li>
                 <li>
                   <Link prefetch={false}
-                    href={locale === "fr" ? "/fr/products/" : "/products/"}
+                    href={resolvedLocale === "fr" ? "/fr/products/" : "/products/"}
                     className={footerLinkClass}
                   >
                     {t('footerNav.compareSizes')}

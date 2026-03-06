@@ -144,19 +144,19 @@
         "number": "01",
         "title": "Ouvrir le sac",
         "description": "Ouvrez et saupoudrez. Aucun dosage nécessaire.",
-        "image": "/optimized/marketing/step-01-open-bag.png"
+      "image": "/optimized/marketing/step-01-open-bag.webp"
       },
       {
         "number": "02",
         "title": "Saupoudrer sur la litière fraîche",
         "description": "Utilisez une fine couche sur la litière actuelle de votre chat.",
-        "image": "/optimized/marketing/step-02-sprinkle.png"
+      "image": "/optimized/marketing/step-02-sprinkle.webp"
       },
       {
         "number": "03",
         "title": "Mélanger et c'est tout",
         "description": "Remuez une fois et profitez d'une maison plus saine.",
-        "image": "/optimized/marketing/step-03-mix.png"
+      "image": "/optimized/marketing/step-03-mix.webp"
       }
     ],
     "litterTypes": {

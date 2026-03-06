@@ -340,19 +340,19 @@ export const fr = {
         number: "01",
         title: "Ouvrez le Sachet",
         description: "Ouvrez et saupoudrez. Pas besoin de mesurer.",
-        image: "/optimized/marketing/step-01-open-bag.png"
+        image: "/optimized/marketing/step-01-open-bag.webp"
       },
       {
         number: "02",
         title: "Saupoudrez sur la Litière",
         description: "Appliquez une fine couche sur la litière actuelle.",
-        image: "/optimized/marketing/step-02-sprinkle.png"
+        image: "/optimized/marketing/step-02-sprinkle.webp"
       },
       {
         number: "03",
         title: "Mélangez et Respirez",
         description: "Mélangez une fois et profitez de l'air frais.",
-        image: "/optimized/marketing/step-03-mix.png"
+        image: "/optimized/marketing/step-03-mix.webp"
       }
     ],
     litterTypes: {
@@ -1132,11 +1132,11 @@ export const fr = {
   },
 
   chat: {
-    fabLabel: "Besoin d'aide?",
-    fabAriaLabel: "Ouvrir l'assistant de chat",
-    panelTitle: "Conseiller Fraicheur Purrify",
+    fabLabel: "Discuter avec l'IA",
+    fabAriaLabel: "Ouvrir l'assistant",
+    panelTitle: "Conseiller fraîcheur Purrify",
     closeAriaLabel: "Fermer le chat",
-    inputPlaceholder: "Posez votre question sur les odeurs...",
+    inputPlaceholder: "Posez votre question...",
     sendAriaLabel: "Envoyer le message",
     greeting: "Bonjour! Je vous aide a trouver le bon format Purrify. Combien de chats avez-vous, et comment sont les odeurs de litiere?",
     errorMessage: "Un probleme est survenu. Veuillez reessayer.",

@@ -20,7 +20,7 @@ interface Store {
   phone: string;
   url: string;
   description: string;
-  region: 'montreal' | 'laval' | 'quebec' | 'ontario' | 'bc';
+  region: 'montreal' | 'laval' | 'quebec' | 'ontario' | 'bc' | 'alberta';
   type: 'independent' | 'franchise' | 'chain';
 }
 
@@ -266,7 +266,7 @@ const STORES: Store[] = [
     location: "Shawinigan, QC G0X 1L0",
     address: "161 Rue de l'Hydravion, Shawinigan, QC G0X 1L0",
     phone: "819-695-2329",
-    url: "",
+    url: "https://animalerienathamo.square.site/",
     description: "Complete pet care and supplies store",
     region: 'quebec',
     type: 'independent'
@@ -303,12 +303,12 @@ const STORES: Store[] = [
   },
   {
     name: "Viva Pets",
-    location: "Montreal, QC",
-    address: "Montreal, QC",
+    location: "Edmonton, AB T5P 4S1",
+    address: "15004 107 Avenue Northwest, Edmonton, AB T5P 4S1",
     phone: "780-489-7387",
-    url: "https://www.vivapets.ca/",
+    url: "https://web.facebook.com/people/Viva-Pets-YEG/61582377628485",
     description: "Premium pet products and supplies",
-    region: 'montreal',
+    region: 'alberta',
     type: 'independent'
   },
 ];
@@ -394,6 +394,7 @@ export default function StoresPage() {
     { value: 'quebec', label: 'Other Quebec Regions' },
     { value: 'ontario', label: 'Ontario' },
     { value: 'bc', label: 'British Columbia' },
+    { value: 'alberta', label: 'Alberta' },
   ];
 
   const storeTypes = [
@@ -409,6 +410,7 @@ export default function StoresPage() {
     quebec: 'Other Quebec Regions',
     ontario: 'Ontario',
     bc: 'British Columbia',
+    alberta: 'Alberta',
   };
 
   // Structured data for store locator
@@ -429,11 +431,11 @@ export default function StoresPage() {
             "@type": "PostalAddress",
             "streetAddress": store.address.split(',')[0],
             "addressLocality": store.location.split(',')[0],
-            "addressRegion": store.location.includes('QC') ? 'QC' : store.location.includes('ON') ? 'ON' : 'BC',
+            "addressRegion": store.location.includes('QC') ? 'QC' : store.location.includes('ON') ? 'ON' : store.location.includes('AB') ? 'AB' : 'BC',
             "addressCountry": "CA"
           }
         };
-        
+
         // Only add optional fields if they exist
         if (store.phone) {
           storeItem["telephone"] = store.phone;
@@ -441,7 +443,7 @@ export default function StoresPage() {
         if (store.url) {
           storeItem["url"] = store.url;
         }
-        
+
         return {
           "@type": "ListItem",
           "position": index + 1,

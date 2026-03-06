@@ -6,10 +6,7 @@ import { defaultLocale, getLocaleFromPathname, Locale } from '@/i18n/config';
 import { AppLayout } from '@/components/layout/AppLayout';
 import { Providers } from './providers';
 import { SITE_NAME, SITE_DESCRIPTION, SITE_URL } from '@/lib/constants';
-import { Analytics } from '@vercel/analytics/react';
-import { SpeedInsights } from '@vercel/speed-insights/next';
-import { MetaPixel } from '@/components/analytics/MetaPixel';
-import { ChatWidgetMount } from '@/components/chat/ChatWidgetMount';
+import { DeferredThirdPartyMounts } from '@/components/performance/DeferredThirdPartyMounts';
 import { getScopedMessages } from '@/i18n/scoped-messages';
 import { getUserLocale } from '@/lib/locale';
 
@@ -233,10 +230,7 @@ export default async function RootLayout({
           <AppLayout>
             {children}
           </AppLayout>
-          {hasAnthropicApiKey ? <ChatWidgetMount /> : null}
-          <Analytics />
-          <SpeedInsights />
-          <MetaPixel />
+          <DeferredThirdPartyMounts hasChatWidget={hasAnthropicApiKey} />
         </Providers>
       </body>
     </html >

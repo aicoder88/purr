@@ -1,0 +1,518 @@
+- generic [active] [ref=e1]:
+  - generic [ref=e2]:
+    - button "Scroll to top":
+      - img
+    - banner [ref=e3]:
+      - generic [ref=e5]:
+        - link "Purrify - Premium Activated Carbon Cat Litter Additive - Home" [ref=e7]:
+          - /url: /
+          - img "Purrify - Premium Activated Carbon Cat Litter Additive - Home" [ref=e8]
+        - navigation [ref=e9]:
+          - button "Products" [ref=e11]:
+            - text: Products
+            - img [ref=e12]
+          - button "For Retailers" [ref=e15]:
+            - text: For Retailers
+            - img [ref=e16]
+          - button "Learn" [ref=e19]:
+            - text: Learn
+            - img [ref=e20]
+          - link "Blog" [ref=e23]:
+            - /url: /blog/
+          - link "Fun & Games" [ref=e25]:
+            - /url: /fun/
+          - button "About" [ref=e27]:
+            - text: About
+            - img [ref=e28]
+        - generic [ref=e30]:
+          - link "Get Purrify Near You" [ref=e31]:
+            - /url: /stores/
+            - img [ref=e32]
+            - text: Get Purrify Near You
+          - button "English Flag English" [ref=e36]:
+            - img "English Flag" [ref=e37]
+            - generic [ref=e38]: English
+            - img [ref=e39]
+    - generic [ref=e42]:
+      - generic [ref=e44]:
+        - generic [ref=e45]: Complete Ammonia Control Guide
+        - heading "How to Neutralize Ammonia in Cat Litter" [level=1] [ref=e46]
+        - paragraph [ref=e47]: That sharp, eye-watering ammonia smell isn't just unpleasant—it can harm your cat's respiratory system. This complete guide explains how to neutralize ammonia in cat litter, how to get rid of cat urine smell in your litter box, and which ammonia absorber methods actually work long term.
+      - img "Cat owner adding activated carbon granules to a litter box with scientific ammonia molecule visual effects" [ref=e51]
+      - generic [ref=e54]:
+        - 'heading "Quick Answer: What Neutralizes Ammonia in Cat Litter?" [level=2] [ref=e55]'
+        - paragraph [ref=e56]:
+          - strong [ref=e57]: Activated carbon
+          - text: is the most effective ammonia neutralizer—it traps ammonia molecules permanently through adsorption. Unlike baking soda (which only works for 1-2 days), activated carbon continues working for up to 7 days per application and is one of the most reliable ways to remove ammonia smell from cat litter naturally.
+        - link "Try Activated Carbon Solution →" [ref=e58]:
+          - /url: /products/trial-size/
+      - generic [ref=e60]:
+        - heading "Why Does Cat Litter Smell Like Ammonia?" [level=2] [ref=e61]
+        - generic [ref=e62]:
+          - paragraph [ref=e63]:
+            - text: Cat urine contains
+            - strong [ref=e64]: urea
+            - text: ", a nitrogen compound. When bacteria in the litter box break down urea, they release"
+            - strong [ref=e65]: ammonia gas (NH₃)
+            - text: —that sharp, pungent smell that makes your eyes water.
+          - paragraph [ref=e66]: This is why a litter box can smell clean in the morning and strongly of ammonia by evening. Without a true ammonia neutralizer for cat litter, odor molecules keep building in the air, litter bed, and nearby surfaces.
+          - paragraph [ref=e68]: Urea + Bacteria → Ammonia + Carbon Dioxide + Water
+          - paragraph [ref=e69]: This process accelerates in warm, humid conditions—which is why litter boxes smell worse in summer or in poorly ventilated areas. Homes with enclosed litter furniture, small laundry rooms, or multiple cats usually notice the strongest ammonia concentration.
+        - generic [ref=e70]:
+          - generic [ref=e71]:
+            - generic [ref=e72]: 🌡️
+            - heading "Heat Accelerates It" [level=3] [ref=e73]
+            - paragraph [ref=e74]: Warm temperatures speed up bacterial activity and ammonia release
+          - generic [ref=e75]:
+            - generic [ref=e76]: 💧
+            - heading "Moisture Makes It Worse" [level=3] [ref=e77]
+            - paragraph [ref=e78]: High humidity keeps urine liquid, allowing more ammonia to evaporate
+          - generic [ref=e79]:
+            - generic [ref=e80]: 🐱
+            - heading "More Cats = More Ammonia" [level=3] [ref=e81]
+            - paragraph [ref=e82]: Multiple cats produce more urine, overwhelming standard litter
+      - generic [ref=e84]:
+        - heading "5 Methods to Neutralize Ammonia (Ranked)" [level=2] [ref=e85]
+        - generic [ref=e86]:
+          - generic [ref=e87]:
+            - generic [ref=e88]: BEST
+            - heading "1. Activated Carbon Additive" [level=3] [ref=e89]
+          - generic [ref=e90]:
+            - generic [ref=e91]:
+              - paragraph [ref=e92]:
+                - text: Activated carbon works through
+                - strong [ref=e93]: adsorption
+                - text: —ammonia molecules stick to its massive surface area (one gram = surface area of a football field). Once trapped, molecules can't escape back into the air.
+              - list [ref=e94]:
+                - listitem [ref=e95]:
+                  - generic [ref=e96]: ✓
+                  - generic [ref=e97]: Neutralizes ammonia at the molecular level
+                - listitem [ref=e98]:
+                  - generic [ref=e99]: ✓
+                  - generic [ref=e100]: Lasts up to 7 days per application
+                - listitem [ref=e101]:
+                  - generic [ref=e102]: ✓
+                  - generic [ref=e103]: 100% natural and safe for cats
+                - listitem [ref=e104]:
+                  - generic [ref=e105]: ✓
+                  - generic [ref=e106]: No fragrances or chemicals
+            - generic [ref=e108]:
+              - generic [ref=e109]: 92%
+              - generic [ref=e110]: Ammonia reduction in lab tests
+        - generic [ref=e111]:
+          - generic [ref=e112]:
+            - generic [ref=e113]: "#2"
+            - heading "Baking Soda (Sodium Bicarbonate)" [level=3] [ref=e114]
+          - paragraph [ref=e115]: Baking soda can reduce odor briefly, but its ammonia control is limited and short-lived compared with activated carbon granules.
+          - generic [ref=e116]:
+            - generic [ref=e117]:
+              - heading "Pros:" [level=4] [ref=e118]
+              - list [ref=e119]:
+                - listitem [ref=e120]: • Cheap and widely available
+                - listitem [ref=e121]: • Safe for cats
+                - listitem [ref=e122]: • Works immediately
+            - generic [ref=e123]:
+              - heading "Cons:" [level=4] [ref=e124]
+              - list [ref=e125]:
+                - listitem [ref=e126]: • Only lasts 1-2 days
+                - listitem [ref=e127]: • Needs constant reapplication
+                - listitem [ref=e128]: • Only 38% ammonia reduction
+        - generic [ref=e129]:
+          - generic [ref=e130]:
+            - generic [ref=e131]: "#3"
+            - heading "Zeolite Additives" [level=3] [ref=e132]
+          - paragraph [ref=e133]: Natural zeolite minerals can trap ammonia molecules, though less effectively than activated carbon and with less consistent results in humid litter boxes.
+          - generic [ref=e134]:
+            - generic [ref=e135]:
+              - heading "Pros:" [level=4] [ref=e136]
+              - list [ref=e137]:
+                - listitem [ref=e138]: • Natural mineral product
+                - listitem [ref=e139]: • Good for moisture control
+            - generic [ref=e140]:
+              - heading "Cons:" [level=4] [ref=e141]
+              - list [ref=e142]:
+                - listitem [ref=e143]: • Less surface area than carbon
+                - listitem [ref=e144]: • ~45% ammonia reduction
+                - listitem [ref=e145]: • Some cats dislike texture
+        - generic [ref=e146]:
+          - generic [ref=e147]:
+            - generic [ref=e148]: "#4"
+            - heading "More Frequent Scooping" [level=3] [ref=e149]
+          - paragraph [ref=e150]: Removing waste before ammonia forms is effective, but it requires significant time investment and usually needs to be combined with a litter deodorizer for ammonia.
+          - generic [ref=e151]:
+            - generic [ref=e152]:
+              - heading "Pros:" [level=4] [ref=e153]
+              - list [ref=e154]:
+                - listitem [ref=e155]: • Addresses root cause
+                - listitem [ref=e156]: • No products needed
+            - generic [ref=e157]:
+              - heading "Cons:" [level=4] [ref=e158]
+              - list [ref=e159]:
+                - listitem [ref=e160]: • Time-consuming (2-3x daily)
+                - listitem [ref=e161]: • Not practical for busy schedules
+                - listitem [ref=e162]: • Ammonia forms within hours
+        - generic [ref=e163]:
+          - generic [ref=e164]:
+            - generic [ref=e165]: AVOID
+            - heading "5. Scented Litters & Air Fresheners" [level=3] [ref=e166]
+          - paragraph [ref=e167]: Fragrances don't neutralize ammonia—they just add another smell on top. Worse, they can irritate your cat's sensitive nose and respiratory system while the ammonia source remains active.
+          - list [ref=e168]:
+            - listitem [ref=e169]:
+              - generic [ref=e170]: ✗
+              - generic [ref=e171]: Doesn't eliminate ammonia at all
+            - listitem [ref=e172]:
+              - generic [ref=e173]: ✗
+              - generic [ref=e174]: Can cause litter box avoidance
+            - listitem [ref=e175]:
+              - generic [ref=e176]: ✗
+              - generic [ref=e177]: May trigger respiratory issues in cats
+      - generic [ref=e180]:
+        - heading "Best Litter Box Setup for Long-Term Ammonia Control" [level=2] [ref=e181]
+        - paragraph [ref=e182]: If you want to stop your litter box from smelling like ammonia, pair the right neutralizer with the right setup. The most effective routine combines daily scooping, moisture control, and activated carbon granules.
+        - list [ref=e183]:
+          - listitem [ref=e184]: • Use one litter box per cat, plus one extra, to reduce ammonia concentration per box.
+          - listitem [ref=e185]: • Keep litter depth around 2-3 inches so urine can clump before it spreads and releases more ammonia gas.
+          - listitem [ref=e186]: • Place boxes in ventilated areas to improve air exchange and reduce lingering cat urine odor.
+          - listitem [ref=e187]: • Refresh carbon every 2-3 days for consistent cat litter ammonia neutralization.
+      - generic [ref=e189]:
+        - heading "Ammonia Neutralizer Comparison" [level=2] [ref=e190]
+        - table [ref=e192]:
+          - rowgroup [ref=e193]:
+            - row "Method Effectiveness Duration Cat Safe" [ref=e194]:
+              - columnheader "Method" [ref=e195]
+              - columnheader "Effectiveness" [ref=e196]
+              - columnheader "Duration" [ref=e197]
+              - columnheader "Cat Safe" [ref=e198]
+          - rowgroup [ref=e199]:
+            - row "Activated Carbon 92% 5-7 days ✓" [ref=e200]:
+              - cell "Activated Carbon" [ref=e201]
+              - cell "92%" [ref=e202]
+              - cell "5-7 days" [ref=e203]
+              - cell "✓" [ref=e204]
+            - row "Zeolite 45% 3-5 days ✓" [ref=e205]:
+              - cell "Zeolite" [ref=e206]
+              - cell "45%" [ref=e207]
+              - cell "3-5 days" [ref=e208]
+              - cell "✓" [ref=e209]
+            - row "Baking Soda 38% 1-2 days ✓" [ref=e210]:
+              - cell "Baking Soda" [ref=e211]
+              - cell "38%" [ref=e212]
+              - cell "1-2 days" [ref=e213]
+              - cell "✓" [ref=e214]
+            - row "Scented Products 0% Hours ✗" [ref=e215]:
+              - cell "Scented Products" [ref=e216]
+              - cell "0%" [ref=e217]
+              - cell "Hours" [ref=e218]
+              - cell "✗" [ref=e219]
+      - generic [ref=e222]:
+        - img "Close-up of activated carbon and litter granules with glowing NH3 scientific overlays" [ref=e223]
+        - generic [ref=e225]:
+          - heading "Molecular-Level Protection" [level=3] [ref=e226]
+          - paragraph [ref=e227]: Activated carbon traps ammonia permanently in microscopic pores
+      - generic [ref=e230]:
+        - 'heading "Health Warning: Ammonia Exposure Risks" [level=2] [ref=e231]'
+        - paragraph [ref=e232]: "Prolonged ammonia exposure from a poorly maintained litter box can cause serious health issues for both cats and humans:"
+        - list [ref=e233]:
+          - listitem [ref=e234]:
+            - text: •
+            - strong [ref=e235]: "Cats:"
+            - text: Respiratory infections, eye irritation, litter box avoidance
+          - listitem [ref=e236]:
+            - text: •
+            - strong [ref=e237]: "Humans:"
+            - text: Headaches, nausea, respiratory irritation
+          - listitem [ref=e238]:
+            - text: •
+            - strong [ref=e239]: "At-risk groups:"
+            - text: Children, elderly, those with asthma especially vulnerable
+      - generic [ref=e242]:
+        - img "Relaxed cat in a bright clean home with subtle clean-air scientific visual effects" [ref=e243]
+        - generic [ref=e245]:
+          - heading "Breathe Easy Again" [level=3] [ref=e246]
+          - paragraph [ref=e247]: No more embarrassment when guests visit
+      - note "Key fact" [ref=e250]:
+        - generic [ref=e251]:
+          - img [ref=e253]
+          - generic [ref=e255]:
+            - paragraph [ref=e256]: Activated carbon achieves 92% ammonia reduction in lab tests, compared to just 38% for baking soda. For cat litter ammonia odor control, adsorption is the key advantage because the carbon physically traps ammonia molecules instead of temporarily masking them.
+            - paragraph [ref=e257]: The massive surface area of activated carbon (1,000-2,000 m²/gram) provides billions of microscopic pores where ammonia molecules become permanently trapped, making it one of the strongest ammonia absorbers for cat litter use.
+            - paragraph [ref=e258]: — Purrify Research Team
+      - generic [ref=e261]:
+        - generic [ref=e262]:
+          - 'heading "Step-by-Step: How to Neutralize Ammonia in Cat Litter" [level=2] [ref=e263]'
+          - paragraph [ref=e264]: Follow this proven 5-step process to eliminate cat litter ammonia smell and keep your litter box fresh using activated carbon granules.
+          - paragraph [ref=e265]: "Time needed: 20 minutes initial setup, then 5 minutes daily"
+        - list [ref=e266]:
+          - listitem [ref=e267]:
+            - generic [ref=e268]: "1"
+            - generic [ref=e269]:
+              - heading "Choose activated carbon as your primary solution" [level=3] [ref=e270]
+              - paragraph [ref=e271]: Activated carbon is the most effective cat litter ammonia neutralizer available. It traps ammonia molecules permanently through adsorption, with 92% reduction in lab tests. If you are searching for how to get rid of ammonia smell in a litter box, this is the best first step.
+              - paragraph [ref=e273]: "Pro tip: Look for coconut shell activated carbon—it has the highest surface area and purity."
+          - listitem [ref=e274]:
+            - generic [ref=e275]: "2"
+            - generic [ref=e276]:
+              - heading "Remove existing ammonia-soaked litter" [level=3] [ref=e277]
+              - paragraph [ref=e278]: Empty the litter box completely and dispose of old litter. Ammonia has already been released from this waste and cannot be recaptured, so a full reset is essential for cat urine ammonia smell removal.
+          - listitem [ref=e279]:
+            - generic [ref=e280]: "3"
+            - generic [ref=e281]:
+              - heading "Clean the box with enzyme cleaner" [level=3] [ref=e282]
+              - paragraph [ref=e283]: Use an enzyme-based cleaner (not bleach) to break down urine residue in the box and on nearby surfaces. Let it dry completely before adding fresh litter so you are not trapping moisture that can speed up ammonia formation.
+              - paragraph [ref=e285]: "Pro tip: Bleach + ammonia creates toxic chloramine gas. Never use bleach on litter boxes."
+          - listitem [ref=e286]:
+            - generic [ref=e287]: "4"
+            - generic [ref=e288]:
+              - heading "Add fresh litter with activated carbon mixed in" [level=3] [ref=e289]
+              - paragraph [ref=e290]: Pour 2-3 inches of clean litter, then add 2-3 tablespoons of activated carbon granules. Mix thoroughly so the carbon contacts urine as soon as it's deposited, giving immediate ammonia odor control.
+          - listitem [ref=e291]:
+            - generic [ref=e292]: "5"
+            - generic [ref=e293]:
+              - heading "Maintain with daily scooping and weekly carbon refresh" [level=3] [ref=e294]
+              - paragraph [ref=e295]: Scoop waste daily to remove the source of new ammonia. Add 1 tablespoon of fresh carbon every 2-3 days to maintain continuous protection and keep your litter box from smelling like ammonia between full litter changes.
+      - generic [ref=e298]:
+        - heading "Ammonia Neutralization FAQ" [level=2] [ref=e299]
+        - generic [ref=e300]:
+          - generic [ref=e301]:
+            - button "Why does my litter box smell like ammonia even after cleaning?" [expanded] [ref=e302]:
+              - generic [ref=e303]: Why does my litter box smell like ammonia even after cleaning?
+              - img [ref=e304]
+            - region [ref=e306]:
+              - generic [ref=e308]: Ammonia forms within 2-4 hours of urination as bacteria break down urea. If you clean once daily, ammonia has already formed and can linger in the litter box plastic, surrounding floor, and air. Activated carbon neutralizes it continuously between cleanings, which is why it's more effective than just frequent scooping.
+          - generic [ref=e309]:
+            - button "Is the ammonia smell harmful to my cat?" [ref=e310]:
+              - generic [ref=e311]: Is the ammonia smell harmful to my cat?
+              - img [ref=e312]
+            - region:
+              - generic [ref=e315]: Yes. High ammonia levels can irritate your cat's respiratory system, cause eye problems, and lead to litter box avoidance. Cats have sensitive noses, so if you can smell cat litter ammonia, your cat is experiencing a much stronger exposure. Prolonged exposure can contribute to chronic respiratory issues.
+          - generic [ref=e316]:
+            - button "How much activated carbon should I use?" [ref=e317]:
+              - generic [ref=e318]: How much activated carbon should I use?
+              - img [ref=e319]
+            - region:
+              - generic [ref=e322]: For a standard litter box, 2-3 tablespoons of activated carbon granules mixed into the litter is sufficient. For multi-cat households or larger boxes, use 3-4 tablespoons. Add more with each litter change or weekly top-up for best cat litter ammonia control results.
+          - generic [ref=e323]:
+            - button "Does activated carbon work with all litter types?" [ref=e324]:
+              - generic [ref=e325]: Does activated carbon work with all litter types?
+              - img [ref=e326]
+            - region:
+              - generic [ref=e329]: Yes. Activated carbon additives work with clay, clumping, crystal, wood, paper, and natural litters. Simply mix it into your existing litter with no need to switch brands. The carbon works by trapping ammonia molecules regardless of litter type.
+          - generic [ref=e330]:
+            - button "Why is activated carbon better than baking soda?" [ref=e331]:
+              - generic [ref=e332]: Why is activated carbon better than baking soda?
+              - img [ref=e333]
+            - region:
+              - generic [ref=e336]: Baking soda only provides 38% ammonia reduction and lasts 1-2 days. Activated carbon achieves 92% reduction and lasts 5-7 days. Carbon physically traps molecules through adsorption, while baking soda relies on a weak chemical reaction and does not provide reliable long-term cat urine smell removal.
+      - generic [ref=e339]:
+        - heading "Stop Living with Ammonia Smell" [level=2] [ref=e340]
+        - paragraph [ref=e341]: Join 1,000+ cat owners who've eliminated litter box ammonia and persistent cat urine odor with Purrify's activated carbon granules.
+        - generic [ref=e342]:
+          - link "Try Purrify Risk-Free" [ref=e343]:
+            - /url: /products/trial-size/
+          - link "Compare All Sizes" [ref=e344]:
+            - /url: /products/
+      - generic [ref=e346]:
+        - heading "Related Guides" [level=2] [ref=e347]
+        - generic [ref=e348]:
+          - link "Cat Litter Smells Like Ammonia? Quick fixes for immediate relief" [ref=e349]:
+            - /url: /learn/solutions/ammonia-smell-cat-litter/
+            - heading "Cat Litter Smells Like Ammonia?" [level=3] [ref=e350]
+            - paragraph [ref=e351]: Quick fixes for immediate relief
+          - link "Activated Carbon vs Baking Soda Side-by-side comparison results" [ref=e352]:
+            - /url: /learn/activated-carbon-vs-baking-soda-deodorizers/
+            - heading "Activated Carbon vs Baking Soda" [level=3] [ref=e353]
+            - paragraph [ref=e354]: Side-by-side comparison results
+          - link "Apartment Odor Solutions For small spaces with poor ventilation" [ref=e355]:
+            - /url: /learn/solutions/apartment-cat-smell-solution/
+            - heading "Apartment Odor Solutions" [level=3] [ref=e356]
+            - paragraph [ref=e357]: For small spaces with poor ventilation
+      - generic [ref=e359]:
+        - heading "Related Solutions" [level=2] [ref=e360]
+        - generic [ref=e361]:
+          - link "Ammonia Smell Solutions Stop sharp ammonia odors at the source" [ref=e362]:
+            - /url: /learn/solutions/ammonia-smell-cat-litter/
+            - img [ref=e364]
+            - generic [ref=e368]:
+              - heading "Ammonia Smell Solutions" [level=3] [ref=e369]
+              - paragraph [ref=e370]: Stop sharp ammonia odors at the source
+            - img [ref=e371]
+          - link "Apartment Cat Smell Keep small spaces fresh and odor-free" [ref=e373]:
+            - /url: /learn/solutions/apartment-cat-smell-solution/
+            - img [ref=e375]
+            - generic [ref=e379]:
+              - heading "Apartment Cat Smell" [level=3] [ref=e380]
+              - paragraph [ref=e381]: Keep small spaces fresh and odor-free
+            - img [ref=e382]
+          - link "Litter Box Odor Elimination Complete guide to litter box freshness" [ref=e384]:
+            - /url: /learn/solutions/litter-box-smell-elimination/
+            - img [ref=e386]
+            - generic [ref=e389]:
+              - heading "Litter Box Odor Elimination" [level=3] [ref=e390]
+              - paragraph [ref=e391]: Complete guide to litter box freshness
+            - img [ref=e392]
+        - link "View all solutions" [ref=e395]:
+          - /url: /learn/solutions/
+          - text: View all solutions
+          - img [ref=e396]
+    - contentinfo [ref=e398]:
+      - generic [ref=e400]:
+        - generic [ref=e401]:
+          - generic [ref=e402]:
+            - link "Purrify - Premium Activated Carbon Cat Litter Additive - Return to Home Page" [ref=e404]:
+              - /url: /
+              - img "Purrify - Premium Activated Carbon Cat Litter Additive - Return to Home Page" [ref=e406]
+            - paragraph [ref=e407]: Love your cat, lose the smell. Water-filter grade activated carbon eliminates ammonia odors — no perfumes, just science. Try FREE (just pay shipping). Made in Canada, ships across North America.
+            - generic [ref=e408]:
+              - link "Follow Purrify on Instagram" [ref=e409]:
+                - /url: https://www.instagram.com/purrifyhq/
+                - img [ref=e410]
+              - link "Follow Purrify on Facebook" [ref=e413]:
+                - /url: https://www.facebook.com/Purrifyhq
+                - img [ref=e414]
+              - link "Follow Purrify on LinkedIn" [ref=e416]:
+                - /url: https://www.linkedin.com/company/purrifyhq/
+                - img [ref=e417]
+              - link "Subscribe to Purrify on YouTube" [ref=e421]:
+                - /url: https://www.youtube.com/@PurrifyHQ
+                - img [ref=e422]
+              - link "Follow Purrify on TikTok" [ref=e425]:
+                - /url: https://www.tiktok.com/@purrifyhq
+                - img [ref=e426]
+              - link "Read Purrify on Medium" [ref=e428]:
+                - /url: https://medium.com/@purrify
+                - img [ref=e429]
+              - link "Follow Purrify on Pinterest" [ref=e431]:
+                - /url: https://ca.pinterest.com/purrifyhq
+                - img [ref=e432]
+          - generic [ref=e434]:
+            - heading "Products" [level=3] [ref=e435]
+            - list [ref=e436]:
+              - listitem [ref=e437]:
+                - link "Get Purrify Near You" [ref=e438]:
+                  - /url: /stores/
+              - listitem [ref=e439]:
+                - link "Compare Sizes" [ref=e440]:
+                  - /url: /products/
+          - generic [ref=e441]:
+            - heading "Learn" [level=3] [ref=e442]
+            - list [ref=e443]:
+              - listitem [ref=e444]:
+                - link "How It Works" [ref=e445]:
+                  - /url: /learn/how-it-works/
+              - listitem [ref=e446]:
+                - link "FAQ" [ref=e447]:
+                  - /url: /learn/faq/
+              - listitem [ref=e448]:
+                - link "Science" [ref=e449]:
+                  - /url: /learn/science/
+              - listitem [ref=e450]:
+                - link "Carbon vs Baking Soda" [ref=e451]:
+                  - /url: /blog/activated-carbon-vs-baking-soda-comparison/
+              - listitem [ref=e452]:
+                - link "Safety Info" [ref=e453]:
+                  - /url: /learn/safety/
+              - listitem [ref=e454]:
+                - link "Cat Litter Guide" [ref=e455]:
+                  - /url: /learn/cat-litter-guide/
+              - listitem [ref=e456]:
+                - link "Litter Calculator" [ref=e457]:
+                  - /url: /tools/cat-litter-calculator/
+              - listitem [ref=e458]:
+                - link "Smell Quiz" [ref=e459]:
+                  - /url: /tools/smell-quiz/
+              - listitem [ref=e460]:
+                - link "All Tools" [ref=e461]:
+                  - /url: /tools/
+              - listitem [ref=e462]:
+                - link "Solutions" [ref=e463]:
+                  - /url: /learn/solutions/
+              - listitem [ref=e464]:
+                - link "Ammonia Smell Control" [ref=e465]:
+                  - /url: /learn/solutions/ammonia-smell-cat-litter/
+              - listitem [ref=e466]:
+                - link "Apartment Living" [ref=e467]:
+                  - /url: /learn/solutions/apartment-cat-smell-solution/
+              - listitem [ref=e468]:
+                - link "Multiple Cats" [ref=e469]:
+                  - /url: /learn/solutions/multiple-cats-odor-control/
+              - listitem [ref=e470]:
+                - link "Natural Additive" [ref=e471]:
+                  - /url: /learn/solutions/natural-cat-litter-additive/
+              - listitem [ref=e472]:
+                - link "Senior Cats" [ref=e473]:
+                  - /url: /learn/solutions/senior-cat-litter-solutions/
+          - generic [ref=e474]:
+            - heading "Popular Articles" [level=3] [ref=e475]
+            - list [ref=e476]:
+              - listitem [ref=e477]:
+                - link "House Smells Like Cat Litter?" [ref=e478]:
+                  - /url: /blog/house-smells-like-cat-litter-solutions/
+              - listitem [ref=e479]:
+                - link "Multi-Cat Deodorizer Guide" [ref=e480]:
+                  - /url: /blog/multi-cat-litter-deodorizer-guide/
+              - listitem [ref=e481]:
+                - link "Tried Everything for Cat Smell?" [ref=e482]:
+                  - /url: /blog/tried-everything-cat-litter-smell-solutions/
+              - listitem [ref=e483]:
+                - link "Most Powerful Odor Absorber" [ref=e484]:
+                  - /url: /blog/most-powerful-odor-absorber/
+              - listitem [ref=e485]:
+                - link "Best for Small Apartments" [ref=e486]:
+                  - /url: /blog/best-litter-odor-remover-small-apartments/
+          - generic [ref=e487]:
+            - heading "Company" [level=3] [ref=e488]
+            - list [ref=e489]:
+              - listitem [ref=e490]:
+                - link "About Us" [ref=e491]:
+                  - /url: /about/our-story/
+              - listitem [ref=e492]:
+                - link "Blog" [ref=e493]:
+                  - /url: /blog/
+              - listitem [ref=e494]:
+                - link "Fun & Games" [ref=e495]:
+                  - /url: /fun/
+              - listitem [ref=e496]:
+                - link "For Retailers" [ref=e497]:
+                  - /url: /retailers/
+              - listitem [ref=e498]:
+                - link "B2B Inquiry" [ref=e499]:
+                  - /url: /b2b/
+              - listitem [ref=e500]:
+                - link "Affiliate Program" [ref=e501]:
+                  - /url: /affiliate/
+              - listitem [ref=e502]:
+                - link "Contact" [ref=e503]:
+                  - /url: /support/
+              - listitem [ref=e504]:
+                - link "Shipping & Returns" [ref=e505]:
+                  - /url: /support/shipping/
+          - generic [ref=e506]:
+            - heading "Locations" [level=3] [ref=e507]
+            - list [ref=e508]:
+              - listitem [ref=e509]:
+                - link "All Locations" [ref=e510]:
+                  - /url: /locations/
+              - listitem [ref=e511]:
+                - link "British Columbia" [ref=e512]:
+                  - /url: /locations/province/british-columbia/
+              - listitem [ref=e513]:
+                - link "Alberta" [ref=e514]:
+                  - /url: /locations/province/alberta/
+              - listitem [ref=e515]:
+                - link "Ontario" [ref=e516]:
+                  - /url: /locations/province/ontario/
+              - listitem [ref=e517]:
+                - link "Quebec" [ref=e518]:
+                  - /url: /locations/province/quebec/
+        - generic [ref=e519]:
+          - generic [ref=e520]:
+            - link "Privacy Policy" [ref=e521]:
+              - /url: /privacy-policy/
+            - link "Terms of Service" [ref=e522]:
+              - /url: /terms/
+            - link "Sitemap" [ref=e523]:
+              - /url: /sitemap.xml
+          - paragraph [ref=e524]: © 2026 Purrify | All Rights Reserved
+  - button "Open Next.js Dev Tools" [ref=e530] [cursor=pointer]:
+    - img [ref=e531]
+  - alert [ref=e534]

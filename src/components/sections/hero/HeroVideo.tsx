@@ -9,6 +9,7 @@ interface HeroVideoProps {
 }
 
 export const HeroVideo = ({ playLabel }: HeroVideoProps) => {
+  const desktopWebmSrc = "/videos/purrify-activated-carbon-litter-additive-demo.webm";
   const desktopSrc = "/videos/purrify-activated-carbon-litter-additive-demo.mp4";
   const posterSrc = "/optimized/marketing/purrify-demo-poster.webp";
   const videoRef = useRef<HTMLVideoElement>(null);
@@ -65,6 +66,7 @@ export const HeroVideo = ({ playLabel }: HeroVideoProps) => {
           poster={posterSrc}
           aria-label={playLabel}
         >
+          <source src={desktopWebmSrc} type="video/webm" />
           <source src={desktopSrc} type="video/mp4" />
         </video>
         <button
