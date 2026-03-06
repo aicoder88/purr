@@ -31,7 +31,7 @@ const PinterestIcon = (props: SVGProps<SVGSVGElement>) => (
 );
 
 
-type SupportedLocale = 'en' | 'fr' | 'zh' | 'es';
+type SupportedLocale = 'en' | 'fr';
 
 const footerUiCopy: Record<SupportedLocale, {
   logoAlt: string;
@@ -94,48 +94,6 @@ const footerUiCopy: Record<SupportedLocale, {
       atlanticCanada: 'Canada atlantique',
       prairies: 'Prairies',
       north: 'Le Nord',
-    },
-  },
-  zh: {
-    logoAlt: 'Purrify - 高端活性炭猫砂添加剂 - 返回首页',
-    socialAria: {
-      instagram: '在 Instagram 关注 Purrify',
-      facebook: '在 Facebook 关注 Purrify',
-      linkedin: '在 LinkedIn 关注 Purrify',
-      youtube: '在 YouTube 订阅 Purrify',
-      tiktok: '在 TikTok 关注 Purrify',
-      medium: '在 Medium 阅读 Purrify',
-      pinterest: '在 Pinterest 关注 Purrify',
-    },
-    regions: {
-      britishColumbia: '不列颠哥伦比亚省',
-      alberta: '阿尔伯塔省',
-      ontario: '安大略省',
-      quebec: '魁北克省',
-      atlanticCanada: '加拿大大西洋地区',
-      prairies: '草原省份',
-      north: '北部地区',
-    },
-  },
-  es: {
-    logoAlt: 'Purrify - Aditivo premium de carbon activado para arena - Volver al inicio',
-    socialAria: {
-      instagram: 'Seguir a Purrify en Instagram',
-      facebook: 'Seguir a Purrify en Facebook',
-      linkedin: 'Seguir a Purrify en LinkedIn',
-      youtube: 'Suscribirse a Purrify en YouTube',
-      tiktok: 'Seguir a Purrify en TikTok',
-      medium: 'Leer Purrify en Medium',
-      pinterest: 'Seguir a Purrify en Pinterest',
-    },
-    regions: {
-      britishColumbia: 'Columbia Britanica',
-      alberta: 'Alberta',
-      ontario: 'Ontario',
-      quebec: 'Quebec',
-      atlanticCanada: 'Canada Atlantico',
-      prairies: 'Praderas',
-      north: 'El Norte',
     },
   },
 };

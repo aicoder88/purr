@@ -62,7 +62,7 @@ async function handler(req: NextRequest): Promise<Response> {
         }
 
         // Validate locale
-        const validLocales = ['en', 'fr', 'zh'];
+        const validLocales = ['en', 'fr'];
         const emailLocale = validLocales.includes(locale) ? locale : 'en';
 
         // Generate email HTML

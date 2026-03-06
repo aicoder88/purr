@@ -11,7 +11,7 @@ import { BlogPreview } from '@/components/sections/blog-preview';
 import { ScrollingAnnouncementBar } from '@/components/sections/scrolling-announcement-bar';
 import { Stores } from '@/components/sections/stores';
 import { ErrorBoundary } from '@/components/ui/error-boundary';
-import { LazyClientLocationsMap } from '@/components/maps/LazyClientLocationsMap';
+import { ClientLocationsMap } from '@/components/maps/ClientLocationsMap';
 
 import { SITE_NAME, SITE_DESCRIPTION } from '@/lib/constants';
 import { getSEOMeta } from '@/translations/seo-meta';
@@ -166,26 +166,20 @@ export default async function HomePage() {
             <AgitationSection />
           </ErrorBoundary>
 
-          <div className="cv-auto cis-720">
-            <ErrorBoundary>
-              <Stores />
-            </ErrorBoundary>
-          </div>
+          <ErrorBoundary>
+            <Stores />
+          </ErrorBoundary>
 
-          <div className="cv-auto cis-720">
-            <ErrorBoundary>
-              <LazyClientLocationsMap
-                className="bg-[linear-gradient(180deg,#fffdf7_0%,#fdf8f1_36%,#fffdf8_100%)] dark:bg-[linear-gradient(180deg,#030712_0%,#0b1220_52%,#030712_100%)]"
-                height="400"
-              />
-            </ErrorBoundary>
-          </div>
+          <ErrorBoundary>
+            <ClientLocationsMap
+              className="bg-[linear-gradient(180deg,#fffdf7_0%,#fdf8f1_36%,#fffdf8_100%)] dark:bg-[linear-gradient(180deg,#030712_0%,#0b1220_52%,#030712_100%)]"
+              height="400"
+            />
+          </ErrorBoundary>
 
-          <div className="cv-auto cis-720">
-            <ErrorBoundary>
-              <BlogPreview />
-            </ErrorBoundary>
-          </div>
+          <ErrorBoundary>
+            <BlogPreview />
+          </ErrorBoundary>
         </main>
       </ScopedIntlProvider>
     </>

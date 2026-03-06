@@ -88,7 +88,7 @@ export class MediaLibrary {
    */
   async getMediaUsage(filename: string): Promise<string[]> {
     try {
-      const locales = ['en', 'fr', 'zh'];
+      const locales = ['en', 'fr'];
       const usedIn: string[] = [];
 
       for (const locale of locales) {

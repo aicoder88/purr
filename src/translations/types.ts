@@ -54,7 +54,6 @@ export interface TranslationType {
     seniorCats?: string;
     // UI elements
     toggleMenu?: string;
-    toggleTheme?: string;
     signOut?: string;
     signedIn?: string;
     // SEO FIX (Feb 2026): Added missing nav keys

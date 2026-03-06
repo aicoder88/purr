@@ -121,8 +121,8 @@ export default function ContactForm({ translations, locale }: ContactFormProps) 
       {submitStatus.message && (
         <div
           className={`mb-8 p-6 rounded-2xl flex items-center text-lg font-semibold ${submitStatus.success
-              ? 'bg-gradient-to-r from-green-100 to-emerald-100 dark:from-green-900/30 dark:to-emerald-900/30 text-green-700 dark:text-green-300 border-2 border-green-300 dark:border-green-700'
-              : 'bg-gradient-to-r from-red-100 to-pink-100 dark:from-red-900/30 dark:to-pink-900/30 text-red-700 dark:text-red-300 border-2 border-red-300 dark:border-red-700'
+            ? 'bg-gradient-to-r from-green-100 to-emerald-100 dark:from-green-900/30 dark:to-emerald-900/30 text-green-700 dark:text-green-300 border-2 border-green-300 dark:border-green-700'
+            : 'bg-gradient-to-r from-red-100 to-pink-100 dark:from-red-900/30 dark:to-pink-900/30 text-red-700 dark:text-red-300 border-2 border-red-300 dark:border-red-700'
             }`}
           aria-live="polite"
           aria-atomic="true"
@@ -147,11 +147,11 @@ export default function ContactForm({ translations, locale }: ContactFormProps) 
               maxLength={50}
               value={formData.name}
               onChange={handleInputChange}
-              placeholder={locale === 'es' ? 'Tu nombre completo' : locale === 'fr' ? 'Votre nom complet' : 'Your full name'}
+              placeholder={locale === 'fr' ? 'Votre nom complet' : 'Your full name'}
               className="h-12 bg-white dark:bg-gray-800 border-gray-200 dark:border-gray-700 focus:border-purple-500 dark:focus:border-purple-500 focus:ring-purple-500/20"
             />
             <p className="text-[10px] text-gray-400 dark:text-gray-500">
-              {locale === 'es' ? '2-50 caracteres' : locale === 'fr' ? '2-50 caractères' : '2-50 characters'}
+              {locale === 'fr' ? '2-50 caractères' : '2-50 characters'}
             </p>
           </div>
           <div className="space-y-2">
@@ -187,7 +187,7 @@ export default function ContactForm({ translations, locale }: ContactFormProps) 
             className="h-12 bg-white dark:bg-gray-800 border-gray-200 dark:border-gray-700 focus:border-purple-500 dark:focus:border-purple-500 focus:ring-purple-500/20"
           />
           <p className="text-[10px] text-gray-400 dark:text-gray-500">
-            {locale === 'es' ? 'Al menos 3 caracteres' : locale === 'fr' ? 'Au moins 3 caractères' : 'At least 3 characters'}
+            {locale === 'fr' ? 'Au moins 3 caractères' : 'At least 3 characters'}
           </p>
         </div>
 

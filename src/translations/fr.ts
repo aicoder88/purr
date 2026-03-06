@@ -59,7 +59,6 @@ export const fr = {
     seniorCats: "Chats Âgés",
     // UI elements
     toggleMenu: "Basculer le menu",
-    toggleTheme: "Basculer le thème",
     signOut: "Se Déconnecter",
     signedIn: "Connecté",
     // SEO FIX (Feb 2026): Added missing nav keys

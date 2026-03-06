@@ -1,7 +1,7 @@
 import { Container } from '@/components/ui/container';
 import { useTranslations, useLocale } from 'next-intl';
 
-type SupportedLocale = 'en' | 'fr' | 'zh' | 'es';
+type SupportedLocale = 'en' | 'fr';
 
 const marketingSupportUiCopy: Record<SupportedLocale, {
   coopBenefits: [string, string, string];
@@ -40,34 +40,6 @@ const marketingSupportUiCopy: Record<SupportedLocale, {
     partnershipDurationValue: '6+ mois',
     creditLimitLabel: 'Plafond de credit',
     creditLimitValue: '500 $/mois',
-  },
-  zh: {
-    coopBenefits: [
-      '最高可获得 50% 广告费用支持',
-      '预审通过的广告模板与文案',
-      '效果追踪与投资回报分析',
-    ],
-    qualificationTitle: '申请条件',
-    minimumMonthlyOrderLabel: '每月最低订单',
-    minimumMonthlyOrderValue: '48 件',
-    partnershipDurationLabel: '合作时长',
-    partnershipDurationValue: '6 个月以上',
-    creditLimitLabel: '补贴上限',
-    creditLimitValue: '$500/月',
-  },
-  es: {
-    coopBenefits: [
-      'Hasta 50% de cobertura en costos publicitarios',
-      'Plantillas y textos publicitarios preaprobados',
-      'Seguimiento de rendimiento y analisis de ROI',
-    ],
-    qualificationTitle: 'Requisitos de calificacion',
-    minimumMonthlyOrderLabel: 'Pedido minimo mensual',
-    minimumMonthlyOrderValue: '48 unidades',
-    partnershipDurationLabel: 'Duracion de la alianza',
-    partnershipDurationValue: '6+ meses',
-    creditLimitLabel: 'Limite de credito',
-    creditLimitValue: '$500/mes',
   },
 };
 

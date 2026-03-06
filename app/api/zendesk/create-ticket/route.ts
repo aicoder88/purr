@@ -15,7 +15,7 @@ const contactTicketSchema = z.object({
   name: z.string().min(2).max(100).trim(),
   email: z.string().email().trim().toLowerCase(),
   message: z.string().min(10).max(5000).trim(),
-  locale: z.enum(['en', 'fr', 'zh']).optional().default('en'),
+  locale: z.enum(['en', 'fr']).optional().default('en'),
   orderNumber: z.string().max(50).optional(),
   product: z.string().max(100).optional(),
 });
@@ -30,7 +30,7 @@ const b2bTicketSchema = z.object({
   location: z.string().max(200).optional(),
   catCount: z.number().min(0).max(10000).optional(),
   message: z.string().min(10).max(5000).trim(),
-  locale: z.enum(['en', 'fr', 'zh']).optional().default('en'),
+  locale: z.enum(['en', 'fr']).optional().default('en'),
 });
 
 const refundTicketSchema = z.object({

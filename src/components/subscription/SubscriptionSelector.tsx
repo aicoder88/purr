@@ -18,7 +18,7 @@ interface SubscriptionSelectorProps {
   selectedPlan?: SubscriptionPlan | null;
 }
 
-type SupportedLocale = 'en' | 'fr' | 'zh' | 'es';
+type SupportedLocale = 'en' | 'fr';
 
 const SUBSCRIPTION_UI_COPY: Record<SupportedLocale, {
   heading: string;
@@ -97,58 +97,6 @@ const SUBSCRIPTION_UI_COPY: Record<SupportedLocale, {
     vipDescription: 'Support prioritaire et avantages exclusifs',
     faqPrompt: 'Des questions ?',
     faqLink: "Voir la FAQ d'abonnement",
-  },
-  zh: {
-    heading: '订阅更省',
-    subtitle: '自动配送 Purrify，最高可节省 30%',
-    mostPopular: '最受欢迎',
-    perMonth: '每月',
-    billedQuarterly: '每月（按季度计费）',
-    billedBiannual: '每月（每6个月计费）',
-    savePrefix: '节省',
-    annualValue: '年度价值：',
-    retentionRate: '续订率：',
-    buttonSelected: '已选择',
-    buttonGetStarted: '立即开始',
-    buttonChoosePlan: '选择套餐',
-    trustSecure: '安全支付',
-    trustFreeShipping: '免费配送',
-    trustCancelAnytime: '随时取消',
-    whySubscribe: '为什么订阅？',
-    saveMoneyTitle: '更省钱',
-    saveMoneyDescription: '相比单次购买最高可省 30%',
-    freeShippingTitle: '免费配送',
-    freeShippingDescription: '始终免费，准时送达',
-    vipTitle: 'VIP 体验',
-    vipDescription: '优先支持与专属权益',
-    faqPrompt: '有问题？',
-    faqLink: '查看订阅常见问题',
-  },
-  es: {
-    heading: 'Suscribete y ahorra',
-    subtitle: 'Recibe Purrify automaticamente y ahorra hasta 30%',
-    mostPopular: 'MAS POPULAR',
-    perMonth: 'por mes',
-    billedQuarterly: 'por mes (facturado trimestralmente)',
-    billedBiannual: 'por mes (facturado cada 6 meses)',
-    savePrefix: 'Ahorra',
-    annualValue: 'Valor anual:',
-    retentionRate: 'Tasa de retencion:',
-    buttonSelected: 'Seleccionado',
-    buttonGetStarted: 'Comenzar',
-    buttonChoosePlan: 'Elegir plan',
-    trustSecure: 'Seguro',
-    trustFreeShipping: 'Envio gratis',
-    trustCancelAnytime: 'Cancela cuando quieras',
-    whySubscribe: 'Por que suscribirte?',
-    saveMoneyTitle: 'Ahorra dinero',
-    saveMoneyDescription: 'Hasta 30% de ahorro vs compras individuales',
-    freeShippingTitle: 'Envio gratis',
-    freeShippingDescription: 'Siempre gratis y a tiempo',
-    vipTitle: 'Beneficios VIP',
-    vipDescription: 'Soporte prioritario y ventajas exclusivas',
-    faqPrompt: 'Preguntas?',
-    faqLink: 'Ver FAQ de suscripcion',
   },
 };
 

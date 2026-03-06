@@ -9,7 +9,7 @@ import {
 
 interface JSONLDSchemaProps {
   type: 'homepage' | 'product' | 'article' | 'location';
-  locale?: 'en' | 'fr' | 'zh';
+  locale?: 'en' | 'fr';
   currency?: 'CAD' | 'USD';
   data?: {
     // Product page data
@@ -99,7 +99,7 @@ export const JSONLDSchema: React.FC<JSONLDSchemaProps> = ({
 
 // Convenience components for specific page types
 export const HomepageSchema: React.FC<{
-  locale?: 'en' | 'fr' | 'zh';
+  locale?: 'en' | 'fr';
   currency?: 'CAD' | 'USD';
 }> = ({ locale = 'en', currency = 'CAD' }) => (
   <JSONLDSchema type="homepage" locale={locale} currency={currency} />
@@ -107,7 +107,7 @@ export const HomepageSchema: React.FC<{
 
 export const ProductSchema: React.FC<{
   productId: string;
-  locale?: 'en' | 'fr' | 'zh';
+  locale?: 'en' | 'fr';
   currency?: 'CAD' | 'USD';
 }> = ({ productId, locale = 'en', currency = 'CAD' }) => (
   <JSONLDSchema type="product" locale={locale} currency={currency} data={{ productId }} />
@@ -117,7 +117,7 @@ export const ArticleSchema: React.FC<{
   title: string;
   description: string;
   path: string;
-  locale?: 'en' | 'fr' | 'zh';
+  locale?: 'en' | 'fr';
   options?: {
     author?: string;
     datePublished?: string;
@@ -144,7 +144,7 @@ export const ArticleSchema: React.FC<{
 export const LocationSchema: React.FC<{
   cityName: string;
   province: string;
-  locale?: 'en' | 'fr' | 'zh';
+  locale?: 'en' | 'fr';
 }> = ({ cityName, province, locale = 'en' }) => (
   <JSONLDSchema 
     type="location" 

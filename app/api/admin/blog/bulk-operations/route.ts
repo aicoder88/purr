@@ -76,7 +76,7 @@ export async function POST(request: Request) {
 
   try {
     // Get all posts across all locales
-    const locales = ['en', 'fr', 'zh'];
+    const locales = ['en', 'fr'];
     
     for (const slug of postSlugs) {
       try {

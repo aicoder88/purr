@@ -299,7 +299,7 @@ export async function createContactTicket(params: {
   const { name, email, message, locale, orderNumber, product } = params;
 
   // Determine language tag based on locale
-  const languageTag = locale === 'fr' ? 'french' : locale === 'zh' ? 'chinese' : 'english';
+  const languageTag = locale === 'fr' ? 'french' : 'english';
 
   // Build tags array
   const tags = ['contact-form', 'website', languageTag];
@@ -380,7 +380,7 @@ export async function createB2BTicket(params: {
   } = params;
 
   // Determine language tag
-  const languageTag = locale === 'fr' ? 'french' : locale === 'zh' ? 'chinese' : 'english';
+  const languageTag = locale === 'fr' ? 'french' : 'english';
 
   // Build tags
   const tags = [

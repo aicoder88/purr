@@ -13,7 +13,7 @@ const b2bContactSchema = z.object({
   location: z.string().max(200).trim().optional(),
   catCount: z.string().max(20).trim().optional(),
   message: z.string().max(2000).trim().optional(),
-  locale: z.enum(['en', 'fr', 'zh']).optional().default('en'),
+  locale: z.enum(['en', 'fr']).optional().default('en'),
 });
 
 // Rate limiting setup

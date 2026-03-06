@@ -89,7 +89,7 @@ interface MobilePaymentProps {
   className?: string;
 }
 
-type SupportedLocale = 'en' | 'fr' | 'zh' | 'es';
+type SupportedLocale = 'en' | 'fr';
 
 const mobilePaymentUiCopy: Record<SupportedLocale, {
   choosePaymentMethod: string;
@@ -133,35 +133,9 @@ const mobilePaymentUiCopy: Record<SupportedLocale, {
     payWithGooglePay: 'Payer avec Google Pay',
     regularCheckoutHint: 'ou continuez avec le paiement standard ci-dessous',
   },
-  zh: {
-    choosePaymentMethod: '选择支付方式',
-    applePayDescription: '使用 Touch ID 或 Face ID 安全支付',
-    googlePayDescription: '快速安全的 Google 支付',
-    cardName: '信用卡/借记卡',
-    cardDescription: 'Visa、Mastercard、American Express',
-    notAvailableSuffix: '（不可用）',
-    notSupportedOnDevice: '此设备/浏览器不支持',
-    biometricTip: '提示：使用生物识别可更快完成结账',
-    expressCheckout: '快速结账',
-    payWithApplePay: '使用 Apple Pay 支付',
-    payWithGooglePay: '使用 Google Pay 支付',
-    regularCheckoutHint: '或继续使用下方常规结账',
-  },
-  es: {
-    choosePaymentMethod: 'Elige metodo de pago',
-    applePayDescription: 'Paga de forma segura con Touch ID o Face ID',
-    googlePayDescription: 'Pagos de Google rapidos y seguros',
-    cardName: 'Tarjeta de credito/debito',
-    cardDescription: 'Visa, Mastercard, American Express',
-    notAvailableSuffix: '(No disponible)',
-    notSupportedOnDevice: 'No compatible con este dispositivo/navegador',
-    biometricTip: 'Consejo: usa autenticacion biometrica para pagar mas rapido',
-    expressCheckout: 'Pago express',
-    payWithApplePay: 'Pagar con Apple Pay',
-    payWithGooglePay: 'Pagar con Google Pay',
-    regularCheckoutHint: 'o continua con el pago normal abajo',
-  },
 };
+
+
 
 export const MobilePayment: React.FC<MobilePaymentProps> = ({
   amount,

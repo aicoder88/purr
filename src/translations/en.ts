@@ -58,7 +58,6 @@ export const en = {
     shipsToUSA: "Ships to USA",
     // Menu controls
     toggleMenu: "Toggle menu",
-    toggleTheme: "Toggle theme",
     signOut: "Sign Out",
     signedIn: "Signed in",
     // SEO FIX (Feb 2026): Added missing nav keys

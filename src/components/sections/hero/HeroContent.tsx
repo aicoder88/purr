@@ -50,6 +50,7 @@ interface HeroContentProps {
         justPayShipping: string;
         valueProposition: string;
         thirtyDayGuarantee: string;
+        moneyBackGuarantee?: string;
       };
     };
   };

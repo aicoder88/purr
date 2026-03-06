@@ -8,7 +8,7 @@ import { Button } from '../../src/components/ui/button';
 import { CONTACT_INFO } from '../../src/lib/constants';
 import { useTranslations, useLocale } from 'next-intl';
 
-type SupportedLocale = 'en' | 'fr' | 'zh' | 'es';
+type SupportedLocale = 'en' | 'fr';
 
 interface SupportOption {
   title: string;
@@ -163,121 +163,9 @@ const SUPPORT_COPY: Record<SupportedLocale, SupportCopy> = {
       { title: 'Avis clients', link: '/reviews' },
     ],
   },
-  zh: {
-    breadcrumbLabel: '支持',
-    heroBadge: '我们随时为你提供帮助',
-    heroTitle: '客户支持',
-    heroDescriptionTop: '订单需要帮助，或对 Purrify 有疑问？',
-    heroDescriptionBottom: '我们的支持团队随时为你服务。',
-    learnMoreLabel: '了解更多',
-    instantTitlePrefix: '立即',
-    instantTitleHighlight: '联系支持',
-    instantSubtitle: '选择你偏好的联系方式',
-    emailLabel: '邮箱',
-    responseLabel: '24小时内回复',
-    phoneLabel: '电话',
-    phoneHours: '周一至周五 9:00-17:00 EST',
-    whatsappLabel: 'WhatsApp',
-    whatsappDescription: '与我们聊天',
-    whatsappResponse: '通常 1 小时内回复',
-    popularTitlePrefix: '热门',
-    popularTitleHighlight: '帮助主题',
-    ctaTitle: '还有问题吗？',
-    ctaDescription: '关于 Purrify 产品、订单或物流，我们的支持团队都可以帮你。',
-    ctaButton: '立即联系支持',
-    supportOptions: [
-      {
-        title: '联系我们',
-        description: '通过邮箱、电话或 WhatsApp 联系客户支持团队',
-        link: '/contact',
-        color: 'from-purple-500 to-pink-500',
-      },
-      {
-        title: '物流信息',
-        description: '了解配送时效、运费和订单追踪',
-        link: '/support/shipping',
-        color: 'from-blue-500 to-cyan-500',
-      },
-      {
-        title: '常见问题',
-        description: '快速查看关于 Purrify 的常见问题解答',
-        link: '/#faq',
-        color: 'from-green-500 to-emerald-500',
-      },
-      {
-        title: '订单状态',
-        description: '追踪订单并查看购买记录',
-        link: '/customer/portal',
-        color: 'from-orange-500 to-red-500',
-      },
-    ],
-    quickLinks: [
-      { title: '工作原理', link: '/learn/how-it-works' },
-      { title: '产品对比', link: '/products' },
-      { title: '安全信息', link: '/learn/safety' },
-      { title: '退货与退款', link: '/contact' },
-      { title: '批发合作', link: '/b2b' },
-      { title: '客户评价', link: '/reviews' },
-    ],
-  },
-  es: {
-    breadcrumbLabel: 'Soporte',
-    heroBadge: 'Estamos aqui para ayudarte',
-    heroTitle: 'Atencion al cliente',
-    heroDescriptionTop: 'Necesitas ayuda con tu pedido o tienes dudas sobre Purrify?',
-    heroDescriptionBottom: 'Nuestro equipo de soporte esta listo para ayudarte.',
-    learnMoreLabel: 'Aprender mas',
-    instantTitlePrefix: 'Contactanos',
-    instantTitleHighlight: 'al instante',
-    instantSubtitle: 'Elige tu forma preferida de contactarnos',
-    emailLabel: 'Email',
-    responseLabel: 'Respuesta en 24h',
-    phoneLabel: 'Telefono',
-    phoneHours: 'Lun-Vie 9AM-5PM EST',
-    whatsappLabel: 'WhatsApp',
-    whatsappDescription: 'Chatea con nosotros',
-    whatsappResponse: 'Normalmente en 1 hora',
-    popularTitlePrefix: 'Temas de ayuda',
-    popularTitleHighlight: 'populares',
-    ctaTitle: 'Todavia tienes preguntas?',
-    ctaDescription: 'Nuestro equipo de soporte puede ayudarte con cualquier duda sobre productos Purrify, pedidos o envios.',
-    ctaButton: 'Contactar soporte ahora',
-    supportOptions: [
-      {
-        title: 'Contactanos',
-        description: 'Habla con nuestro equipo por email, telefono o WhatsApp',
-        link: '/contact',
-        color: 'from-purple-500 to-pink-500',
-      },
-      {
-        title: 'Informacion de envio',
-        description: 'Conoce tiempos de entrega, costos de envio y seguimiento',
-        link: '/support/shipping',
-        color: 'from-blue-500 to-cyan-500',
-      },
-      {
-        title: 'FAQ',
-        description: 'Respuestas rapidas a preguntas frecuentes sobre Purrify',
-        link: '/#faq',
-        color: 'from-green-500 to-emerald-500',
-      },
-      {
-        title: 'Estado del pedido',
-        description: 'Rastrea tu pedido y revisa tu historial de compras',
-        link: '/customer/portal',
-        color: 'from-orange-500 to-red-500',
-      },
-    ],
-    quickLinks: [
-      { title: 'Como funciona', link: '/learn/how-it-works' },
-      { title: 'Comparacion de productos', link: '/products' },
-      { title: 'Informacion de seguridad', link: '/learn/safety' },
-      { title: 'Devoluciones y reembolsos', link: '/contact' },
-      { title: 'Consultas mayoristas', link: '/b2b' },
-      { title: 'Resenas de clientes', link: '/reviews' },
-    ],
-  },
 };
+
+
 
 export default function SupportPageClient() {
   const t = useTranslations();

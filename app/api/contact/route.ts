@@ -251,7 +251,7 @@ export async function POST(request: NextRequest) {
           name,
           email,
           message,
-          locale: acceptLanguage.includes('fr') ? 'fr' : acceptLanguage.includes('zh') ? 'zh' : 'en',
+          locale: acceptLanguage.includes('fr') ? 'fr' : 'en',
         });
 
         return NextResponse.json(

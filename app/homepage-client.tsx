@@ -44,19 +44,15 @@ export function HomepageClient({ currency }: HomepageClientProps) {
   return (
     <CurrencyProvider detectedCurrency={currency}>
       {/* Enhanced Product Comparison - Track conversion when user scrolls here */}
-      <div className="cv-auto cis-960">
-        <ScrollAnchor id="products" />
-        <ErrorBoundary>
-          <EnhancedProductComparison />
-        </ErrorBoundary>
-      </div>
+      <ScrollAnchor id="products" />
+      <ErrorBoundary>
+        <EnhancedProductComparison />
+      </ErrorBoundary>
 
       {/* CTA Section */}
-      <div className="cv-auto cis-480">
-        <ErrorBoundary>
-          <CTA />
-        </ErrorBoundary>
-      </div>
+      <ErrorBoundary>
+        <CTA />
+      </ErrorBoundary>
     </CurrencyProvider>
   );
 }

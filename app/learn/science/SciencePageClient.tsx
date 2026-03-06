@@ -10,7 +10,7 @@ import { ArrowLeft, Atom, Zap, Shield, Microscope, FlaskConical, BarChart3, Home
 import Image from 'next/image';
 import { RelatedContent } from '@/components/seo/RelatedContent';
 
-type SupportedLocale = 'en' | 'fr' | 'zh' | 'es';
+type SupportedLocale = 'en' | 'fr';
 
 const SCIENCE_UI_COPY: Record<SupportedLocale, {
   breadcrumbAriaLabel: string;
@@ -63,41 +63,9 @@ const SCIENCE_UI_COPY: Record<SupportedLocale, {
     stableValue: 'Stable',
     minimalValue: 'Minimale',
   },
-  zh: {
-    breadcrumbAriaLabel: '面包屑导航',
-    smellLabel: '气味：',
-    moleculeSizeLabel: '分子大小：',
-    problemLabel: '问题：',
-    whyHardLabel: '难点：',
-    targetLabel: '目标：',
-    densityLabel: '密度：',
-    functionLabel: '作用：',
-    happyCatAlt: '干净清新家庭环境中的快乐猫咪',
-    contentCatAlt: '在无异味环境中放松的猫咪',
-    microscopeAlt: '用于活性炭研究的实验室显微镜',
-    chemistryAlt: '化学实验室测试活性炭样品',
-    molecularAlt: '展示孔隙结构的分子结构可视化图',
-    stableValue: '稳定',
-    minimalValue: '极低',
-  },
-  es: {
-    breadcrumbAriaLabel: 'Miga de pan',
-    smellLabel: 'El olor:',
-    moleculeSizeLabel: 'Tamano molecular:',
-    problemLabel: 'El problema:',
-    whyHardLabel: 'Por que es dificil:',
-    targetLabel: 'Objetivo:',
-    densityLabel: 'Densidad:',
-    functionLabel: 'Funcion:',
-    happyCatAlt: 'Gato feliz en un hogar limpio y fresco',
-    contentCatAlt: 'Gato relajado disfrutando un entorno sin olores',
-    microscopeAlt: 'Microscopio de laboratorio para investigacion de carbon activado',
-    chemistryAlt: 'Laboratorio de quimica probando muestras de carbon activado',
-    molecularAlt: 'Visualizacion de estructura molecular que muestra la arquitectura de poros',
-    stableValue: 'Estable',
-    minimalValue: 'Minima',
-  },
 };
+
+
 
 export default function SciencePageClient() {
   const t = useTranslations();
@@ -109,50 +77,50 @@ export default function SciencePageClient() {
     : [];
 
   const scienceFacts = [
-      {
-        icon: Atom,
-        title: t('sciencePage.scienceFacts.facts.0.title') || "Engineered Pore Architecture",
-        description: t('sciencePage.scienceFacts.facts.0.description') || "Working with research scientists, we optimized the exact ratio of micropores (< 2nm), mesopores (2-50nm), and macropores (> 50nm) to create the perfect trap for cat litter odor molecules."
-      },
-      {
-        icon: Microscope,
-        title: t('sciencePage.scienceFacts.facts.1.title') || "Ammonia Capture Mastery",
-        description: t('sciencePage.scienceFacts.facts.1.description') || "Ammonia molecules (NH\u2083) from cat urine are tiny\u2014only 0.26 nanometers. Our micropore-rich structure creates millions of perfectly sized capture sites that lock away ammonia before you can smell it."
-      },
-      {
-        icon: Zap,
-        title: t('sciencePage.scienceFacts.facts.2.title') || "Mercaptan Elimination",
-        description: t('sciencePage.scienceFacts.facts.2.description') || "Mercaptans (sulfur compounds) give feces that distinctive rotten-egg smell. Our mesopore channels are specifically sized to trap these larger, more complex molecules permanently."
-      },
-      {
-        icon: Shield,
-        title: t('sciencePage.scienceFacts.facts.3.title') || "Triple-Pore Synergy",
-        description: t('sciencePage.scienceFacts.facts.3.description') || "Macropores act as highways delivering odor molecules deep into the carbon. Mesopores catch medium-sized sulfur compounds. Micropores trap the smallest ammonia molecules. Nothing escapes."
-      }
-    ];
+    {
+      icon: Atom,
+      title: t('sciencePage.scienceFacts.facts.0.title') || "Engineered Pore Architecture",
+      description: t('sciencePage.scienceFacts.facts.0.description') || "Working with research scientists, we optimized the exact ratio of micropores (< 2nm), mesopores (2-50nm), and macropores (> 50nm) to create the perfect trap for cat litter odor molecules."
+    },
+    {
+      icon: Microscope,
+      title: t('sciencePage.scienceFacts.facts.1.title') || "Ammonia Capture Mastery",
+      description: t('sciencePage.scienceFacts.facts.1.description') || "Ammonia molecules (NH\u2083) from cat urine are tiny\u2014only 0.26 nanometers. Our micropore-rich structure creates millions of perfectly sized capture sites that lock away ammonia before you can smell it."
+    },
+    {
+      icon: Zap,
+      title: t('sciencePage.scienceFacts.facts.2.title') || "Mercaptan Elimination",
+      description: t('sciencePage.scienceFacts.facts.2.description') || "Mercaptans (sulfur compounds) give feces that distinctive rotten-egg smell. Our mesopore channels are specifically sized to trap these larger, more complex molecules permanently."
+    },
+    {
+      icon: Shield,
+      title: t('sciencePage.scienceFacts.facts.3.title') || "Triple-Pore Synergy",
+      description: t('sciencePage.scienceFacts.facts.3.description') || "Macropores act as highways delivering odor molecules deep into the carbon. Mesopores catch medium-sized sulfur compounds. Micropores trap the smallest ammonia molecules. Nothing escapes."
+    }
+  ];
 
   const processSteps = [
-      {
-        step: "1",
-        title: t('sciencePage.processTimeline.steps.0.title') || "The Culprits: Ammonia & Mercaptans",
-        description: t('sciencePage.processTimeline.steps.0.description') || "Cat urine breaks down into ammonia (NH\u2083)\u2014that sharp, eye-watering smell. Feces releases mercaptans\u2014sulfur compounds that smell like rotten eggs or sewage. These are the molecules we engineered Purrify to capture."
-      },
-      {
-        step: "2",
-        title: t('sciencePage.processTimeline.steps.1.title') || "Macropores: The Express Lanes",
-        description: t('sciencePage.processTimeline.steps.1.description') || "Large macropores (> 50nm) act as highways, rapidly transporting odor molecules deep into the carbon structure. Think of them as the entry points that prevent bottlenecks."
-      },
-      {
-        step: "3",
-        title: t('sciencePage.processTimeline.steps.2.title') || "Mesopores: The Mercaptan Traps",
-        description: t('sciencePage.processTimeline.steps.2.description') || "Medium-sized mesopores (2-50nm) are perfectly sized to capture mercaptans and other sulfur compounds from feces. These pores create a tight grip that won't let go."
-      },
-      {
-        step: "4",
-        title: t('sciencePage.processTimeline.steps.3.title') || "Micropores: The Ammonia Eliminators",
-        description: t('sciencePage.processTimeline.steps.3.description') || "Tiny micropores (< 2nm) are optimized for ammonia's 0.26nm size. With millions of these capture sites per gram, ammonia molecules get locked away permanently before you can smell them."
-      }
-    ];
+    {
+      step: "1",
+      title: t('sciencePage.processTimeline.steps.0.title') || "The Culprits: Ammonia & Mercaptans",
+      description: t('sciencePage.processTimeline.steps.0.description') || "Cat urine breaks down into ammonia (NH\u2083)\u2014that sharp, eye-watering smell. Feces releases mercaptans\u2014sulfur compounds that smell like rotten eggs or sewage. These are the molecules we engineered Purrify to capture."
+    },
+    {
+      step: "2",
+      title: t('sciencePage.processTimeline.steps.1.title') || "Macropores: The Express Lanes",
+      description: t('sciencePage.processTimeline.steps.1.description') || "Large macropores (> 50nm) act as highways, rapidly transporting odor molecules deep into the carbon structure. Think of them as the entry points that prevent bottlenecks."
+    },
+    {
+      step: "3",
+      title: t('sciencePage.processTimeline.steps.2.title') || "Mesopores: The Mercaptan Traps",
+      description: t('sciencePage.processTimeline.steps.2.description') || "Medium-sized mesopores (2-50nm) are perfectly sized to capture mercaptans and other sulfur compounds from feces. These pores create a tight grip that won't let go."
+    },
+    {
+      step: "4",
+      title: t('sciencePage.processTimeline.steps.3.title') || "Micropores: The Ammonia Eliminators",
+      description: t('sciencePage.processTimeline.steps.3.description') || "Tiny micropores (< 2nm) are optimized for ammonia's 0.26nm size. With millions of these capture sites per gram, ammonia molecules get locked away permanently before you can smell them."
+    }
+  ];
 
   // Breadcrumb items
   const breadcrumbItems = [

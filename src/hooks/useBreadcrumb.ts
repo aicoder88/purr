@@ -53,22 +53,6 @@ const SEGMENT_LABELS: Record<string, Record<string, string>> = {
     'best-litter-odor-remover-small-apartments': 'Meilleur éliminateur d\'odeur pour petits appartements',
     'most-powerful-odor-absorber': 'Absorbeur d\'odeur le plus puissant',
   },
-  zh: {
-    products: '产品',
-    'trial-size': '免费试用',
-    standard: '标准装',
-    'family-pack': '家庭装',
-    learn: '了解更多',
-    'how-it-works': '工作原理',
-    faq: '常见问题',
-    science: '科学原理',
-    safety: '安全性',
-    blog: '博客',
-    about: '关于我们',
-    contact: '联系我们',
-    'best-litter-odor-remover-small-apartments': '小公寓最佳除臭剂',
-    'most-powerful-odor-absorber': '最强效除臭剂',
-  },
 };
 
 /**
@@ -88,7 +72,6 @@ function getHomeLabel(locale: string): string {
   const homeLabels: Record<string, string> = {
     en: 'Home',
     fr: 'Accueil',
-    zh: '首页',
   };
   return homeLabels[locale] || homeLabels.en;
 }

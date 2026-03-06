@@ -198,7 +198,7 @@ export async function POST(req: Request): Promise<Response> {
 
     // Validate locale if provided
     if (payload.locale) {
-      const validLocales = ['en', 'fr', 'zh', 'es'];
+      const validLocales = ['en', 'fr'];
       if (!validLocales.includes(payload.locale)) {
         return Response.json({
           success: false,

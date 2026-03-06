@@ -100,7 +100,7 @@ export async function GET(req: Request): Promise<Response> {
           image: post.heroImageUrl,
           link: `/${isValidLocale(String(post.locale || '').toLowerCase()) ? String(post.locale).toLowerCase() : 'en'}/blog/${post.slug}`,
           content: post.content,
-          locale: (post.locale as 'en' | 'fr' | 'zh' | 'es' | undefined) ?? 'en',
+          locale: (post.locale as 'en' | 'fr' | undefined) ?? 'en',
         }))
       );
     }

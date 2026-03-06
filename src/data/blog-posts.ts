@@ -29,7 +29,7 @@ export type BlogPost = {
   image: string;
   link: string;
   content?: string;
-  locale?: 'en' | 'fr' | 'zh';
+  locale?: 'en' | 'fr';
   heroImageAlt?: string;
   heroImageCaption?: string;
   heroImageCredit?: string;

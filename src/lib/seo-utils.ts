@@ -77,38 +77,18 @@ export const SEO_TRANSLATIONS = {
       'elimination des odeurs d\'animaux',
       'controle moleculaire des odeurs',
       'produits de soins pour chats'
-    ],
-    zh: [
-      '猫砂异味控制',
-      '活性炭猫砂',
-      '天然猫砂添加剂',
-      '无香宠物异味控制',
-      '猫砂除臭剂',
-      '宠物异味消除',
-      '分子级异味控制',
-      '猫咪护理产品'
-    ],
-    es: [
-      'control de olores arena gatos',
-      'arena gatos carbon activado',
-      'aditivo natural arena gatos',
-      'control olores mascotas sin fragancia',
-      'desodorizante arena gatos',
-      'eliminacion olores mascotas',
-      'control molecular olores',
-      'productos cuidado gatos'
     ]
   },
   breadcrumbNames: {
-    home: { en: 'Home', fr: 'Accueil', zh: '首页', es: 'Inicio' },
-    products: { en: 'Products', fr: 'Produits', zh: '产品', es: 'Productos' },
-    learn: { en: 'Learn', fr: 'Apprendre', zh: '了解', es: 'Aprender' },
-    faq: { en: 'FAQ', fr: 'FAQ', zh: '常见问题', es: 'FAQ' },
-    'trial-size': { en: 'Trial Size', fr: 'Taille d\'Essai', zh: '试用装', es: 'Prueba' },
-    'activated-carbon-benefits': { en: 'Activated Carbon Benefits', fr: 'Avantages du Charbon Actif', zh: '活性炭的好处', es: 'Beneficios del Carbon Activado' },
-    'how-it-works': { en: 'How It Works', fr: 'Comment Ca Marche', zh: '工作原理', es: 'Como Funciona' },
-    contact: { en: 'Contact', fr: 'Contact', zh: '联系我们', es: 'Contacto' },
-    testimonials: { en: 'Testimonials', fr: 'Temoignages', zh: '客户评价', es: 'Testimonios' }
+    home: { en: 'Home', fr: 'Accueil' },
+    products: { en: 'Products', fr: 'Produits' },
+    learn: { en: 'Learn', fr: 'Apprendre' },
+    faq: { en: 'FAQ', fr: 'FAQ' },
+    'trial-size': { en: 'Trial Size', fr: 'Taille d\'Essai' },
+    'activated-carbon-benefits': { en: 'Activated Carbon Benefits', fr: 'Avantages du Charbon Actif' },
+    'how-it-works': { en: 'How It Works', fr: 'Comment Ca Marche' },
+    contact: { en: 'Contact', fr: 'Contact' },
+    testimonials: { en: 'Testimonials', fr: 'Temoignages' }
   }
 };
 
@@ -131,7 +111,7 @@ export const getLocalizedUrl = (path: string, localeInput: string) => {
     return `${baseUrl}/`;
   }
 
-  return `${baseUrl}${localePrefix}${normalizedPath.replace(/^\/(en|fr|zh|es)(\/|$)/, '/')}`;
+  return `${baseUrl}${localePrefix}${normalizedPath.replace(/^\/(en|fr)(\/|$)/, '/')}`;
 };
 
 export type LanguageAlternate = {
@@ -265,71 +245,51 @@ export const generateLocalizedFAQs = (localeInput: string) => {
     {
       question: {
         en: 'What is Purrify and how does it work?',
-        fr: 'Qu\'est-ce que Purrify et comment ca marche ?',
-        zh: 'Purrify是什么，它是如何工作的？',
-        es: 'Que es Purrify y como funciona?'
+        fr: 'Qu\'est-ce que Purrify et comment ca marche ?'
       },
       answer: {
         en: 'Purrify is an activated carbon additive for cat litter that eliminates odors at the molecular level. The activated carbon has millions of microscopic pores that trap and neutralize odor-causing compounds.',
-        fr: 'Purrify est un additif au charbon actif pour litiere de chat qui elimine les odeurs au niveau moleculaire. Le charbon actif contient des millions de pores microscopiques qui piegent et neutralisent les composes responsables des odeurs.',
-        zh: 'Purrify是一种用于猫砂的活性炭添加剂，在分子级别消除异味。活性炭含有数百万个微观孔隙，可以捕获和中和产生异味的化合物。',
-        es: 'Purrify es un aditivo de carbon activado para arena de gatos que elimina olores a nivel molecular. El carbon activado tiene millones de poros microscopicos que atrapan y neutralizan compuestos que causan olores.'
+        fr: 'Purrify est un additif au charbon actif pour litiere de chat qui elimine les odeurs au niveau moleculaire. Le charbon actif contient des millions de pores microscopiques qui piegent et neutralisent les composes responsables des odeurs.'
       }
     },
     {
       question: {
         en: 'Can Purrify be used around cats and people?',
-        fr: 'Peut-on utiliser Purrify pres des chats et des personnes ?',
-        zh: 'Purrify可以在猫和人周围使用吗？',
-        es: 'Se puede usar Purrify cerca de gatos y personas?'
+        fr: 'Peut-on utiliser Purrify pres des chats et des personnes ?'
       },
       answer: {
         en: 'Purrify uses the same type of activated carbon commonly found in household water and air filtration and contains no added fragrances or dyes.',
-        fr: 'Purrify utilise le meme type de charbon actif que l\'on retrouve couramment dans les filtres a eau et a air domestiques, sans parfums ni colorants ajoutes.',
-        zh: 'Purrify采用与家用净水和空气过滤中常见的同类活性炭，不添加香精或染料。',
-        es: 'Purrify usa el mismo tipo de carbon activado que se encuentra comunmente en filtros de agua y aire domesticos y no contiene fragancias ni colorantes agregados.'
+        fr: 'Purrify utilise le meme type de charbon actif que l\'on retrouve couramment dans les filtres a eau et a air domestiques, sans parfums ni colorants ajoutes.'
       }
     },
     {
       question: {
         en: 'How much Purrify should I use?',
-        fr: 'Combien de Purrify dois-je utiliser ?',
-        zh: '我应该使用多少Purrify？',
-        es: 'Cuanto Purrify debo usar?'
+        fr: 'Combien de Purrify dois-je utiliser ?'
       },
       answer: {
         en: 'For optimal results, use approximately 1-2 tablespoons of Purrify per standard litter box. Mix it thoroughly with your existing litter when you do a complete change.',
-        fr: 'Pour des resultats optimaux, utilisez environ 1 a 2 cuilleres a soupe de Purrify par bac a litiere standard. Melangez-le soigneusement avec votre litiere existante lors d\'un changement complet.',
-        zh: '为获得最佳效果，每个标准猫砂盆大约使用1-2汤匙Purrify。在完全更换时，将其与现有猫砂充分混合。',
-        es: 'Para resultados optimos, usa aproximadamente 1-2 cucharadas de Purrify por caja de arena estandar. Mezclalo completamente con tu arena existente cuando hagas un cambio completo.'
+        fr: 'Pour des resultats optimaux, utilisez environ 1 a 2 cuilleres a soupe de Purrify par bac a litiere standard. Melangez-le soigneusement avec votre litiere existante lors d\'un changement complet.'
       }
     },
     {
       question: {
         en: 'Does Purrify work with all types of litter?',
-        fr: 'Purrify fonctionne-t-il avec tous les types de litiere ?',
-        zh: 'Purrify适用于所有类型的猫砂吗？',
-        es: 'Funciona Purrify con todos los tipos de arena?'
+        fr: 'Purrify fonctionne-t-il avec tous les types de litiere ?'
       },
       answer: {
         en: 'Yes! Purrify is designed to work with any type of cat litter - clay, clumping, crystal, natural, or biodegradable. It enhances the odor control properties of whatever litter you\'re already using.',
-        fr: 'Oui ! Purrify est concu pour fonctionner avec tout type de litiere pour chat - argile, agglomerante, cristal, naturelle ou biodegradable. Il ameliore les proprietes de controle des odeurs de la litiere que vous utilisez deja.',
-        zh: '是的！Purrify设计为适用于任何类型的猫砂 - 黏土、结团、水晶、天然或可生物降解的。它增强了您已经使用的任何猫砂的异味控制特性。',
-        es: 'Si! Purrify esta disenado para funcionar con cualquier tipo de arena para gatos - arcilla, aglomerante, cristal, natural o biodegradable. Mejora las propiedades de control de olores de cualquier arena que ya estes usando.'
+        fr: 'Oui ! Purrify est concu pour fonctionner avec tout type de litiere pour chat - argile, agglomerante, cristal, naturelle ou biodegradable. Il ameliore les proprietes de controle des odeurs de la litiere que vous utilisez deja.'
       }
     },
     {
       question: {
         en: 'How long does Purrify last?',
-        fr: 'Combien de temps dure Purrify ?',
-        zh: 'Purrify能持续多长时间？',
-        es: 'Cuanto dura Purrify?'
+        fr: 'Combien de temps dure Purrify ?'
       },
       answer: {
         en: 'Purrify extends the life of your litter by 2-3 times. Instead of changing litter weekly, you can typically go 2-3 weeks with the same litter when using Purrify, depending on usage frequency.',
-        fr: 'Purrify prolonge la duree de vie de votre litiere de 2 a 3 fois. Au lieu de changer la litiere chaque semaine, vous pouvez generalement utiliser la meme litiere pendant 2 a 3 semaines avec Purrify, selon la frequence d\'utilisation.',
-        zh: 'Purrify可以将猫砂的使用寿命延长2-3倍。使用Purrify时，您通常可以使用同一批猫砂2-3周，而不是每周更换，具体取决于使用频率。',
-        es: 'Purrify extiende la vida de tu arena por 2-3 veces. En lugar de cambiar la arena semanalmente, tipicamente puedes pasar 2-3 semanas con la misma arena usando Purrify, dependiendo de la frecuencia de uso.'
+        fr: 'Purrify prolonge la duree de vie de votre litiere de 2 a 3 fois. Au lieu de changer la litiere chaque semaine, vous pouvez generalement utiliser la meme litiere pendant 2 a 3 semaines avec Purrify, selon la frequence d\'utilisation.'
       }
     }
   ];
