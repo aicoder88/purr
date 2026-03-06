@@ -19,6 +19,8 @@ Purrify is an e-commerce site for an activated carbon cat litter additive. Serve
 - For UI copy changes, run `pnpm validate-i18n:hardcoded` and review `reports/i18n-hardcoded-sweep.md` before handoff.
 - When requirements are ambiguous, state assumptions explicitly in the final handoff.
 - If a new recurring preference appears, persist it in both `docs/AGENTS.md` and `docs/CLAUDE.md`.
+- For AI image generation, default to creating one image at a time unless the user explicitly requests multiple.
+- Image direction should favor hyper-realistic scenes with a subtle Miyazaki-inspired illustrative enhancement so the result feels custom, beautiful, fascinating, and shareable rather than generic stock art.
 
 ## Commands
 

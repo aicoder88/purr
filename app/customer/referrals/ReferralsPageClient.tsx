@@ -12,13 +12,53 @@ import { Share2, Trophy, Gift, Users, ArrowLeft, Plus, Sparkles } from 'lucide-r
 import { generateReferralCode, getUserReferralStats } from '@/lib/referral-tracking';
 import { formatProductPrice } from '@/lib/pricing';
 
-// In a real app, this would come from authentication
-const DEFAULT_USER_ID = 'demo_user_001';
-const DEFAULT_USER_NAME = 'Sarah M.';
-const DEFAULT_USER_EMAIL = 'sarah@example.com';
+interface CustomerIdentity {
+  id: string;
+  email: string;
+  name: string;
+}
+
+function getCustomerIdentity(): CustomerIdentity | null {
+  if (typeof globalThis.window === 'undefined') return null;
+
+  try {
+    const sessionData = localStorage.getItem('customer_session');
+    if (!sessionData) return null;
+
+    const parsed = JSON.parse(sessionData) as {
+      customer?: { id?: string; email?: string };
+      expiresAt?: string;
+    };
+
+    if (!parsed.customer?.id || !parsed.customer?.email) {
+      return null;
+    }
+
+    if (parsed.expiresAt && new Date(parsed.expiresAt) <= new Date()) {
+      localStorage.removeItem('customer_session');
+      return null;
+    }
+
+    const email = parsed.customer.email.toLowerCase().trim();
+    const emailPrefix = email.split('@')[0] || 'Friend';
+    const name = emailPrefix
+      .replace(/[._-]+/g, ' ')
+      .replace(/\b\w/g, (char) => char.toUpperCase());
+
+    return {
+      id: parsed.customer.id,
+      email,
+      name,
+    };
+  } catch {
+    return null;
+  }
+}
 
 export default function ReferralsPageClient() {
   const trialPrice = formatProductPrice('trial');
+  const [customer, setCustomer] = useState<CustomerIdentity | null>(null);
+  const [hasCheckedSession, setHasCheckedSession] = useState(false);
   const [hasReferralCode, setHasReferralCode] = useState(false);
   const [referralCode, setReferralCode] = useState<string>('');
   const [shareUrl, setShareUrl] = useState<string>('');
@@ -26,10 +66,17 @@ export default function ReferralsPageClient() {
   const [activeTab, setActiveTab] = useState('dashboard');
 
   useEffect(() => {
+    setCustomer(getCustomerIdentity());
+    setHasCheckedSession(true);
+  }, []);
+
+  useEffect(() => {
+    if (!customer) return;
+
     // Check if user already has a referral code
     const checkExistingReferralCode = async () => {
       try {
-        const stats = await getUserReferralStats(DEFAULT_USER_ID);
+        const stats = await getUserReferralStats(customer.email);
         if (stats && stats.referralCode) {
           setReferralCode(stats.referralCode);
           setShareUrl(stats.shareUrl);
@@ -41,17 +88,21 @@ export default function ReferralsPageClient() {
     };
 
     checkExistingReferralCode();
-  }, []);
+  }, [customer]);
 
   const handleGenerateReferralCode = async () => {
+    if (!customer) return;
     setIsGeneratingCode(true);
 
     try {
-      const newCode = await generateReferralCode(DEFAULT_USER_ID, DEFAULT_USER_NAME, DEFAULT_USER_EMAIL);
+      const newCode = await generateReferralCode(customer.id, customer.name, customer.email);
 
       if (newCode) {
         setReferralCode(newCode);
-        setShareUrl(`https://www.purrify.ca/refer/${newCode}`);
+        const currentOrigin = typeof globalThis.window !== 'undefined'
+          ? window.location.origin
+          : 'https://www.purrify.ca';
+        setShareUrl(`${currentOrigin}/refer/${newCode}`);
         setHasReferralCode(true);
 
         // Track referral code generation
@@ -59,7 +110,7 @@ export default function ReferralsPageClient() {
           window.gtag('event', 'referral_code_created', {
             event_category: 'referrals',
             event_label: 'first_time_generation',
-            custom_parameter_1: DEFAULT_USER_ID,
+            custom_parameter_1: customer.id,
           });
         }
       }
@@ -69,6 +120,40 @@ export default function ReferralsPageClient() {
       setIsGeneratingCode(false);
     }
   };
+
+  if (!hasCheckedSession) {
+    return (
+      <main className="min-h-screen bg-gray-50 dark:bg-gray-900">
+        <Container className="py-16">
+          <div className="max-w-4xl mx-auto text-center text-gray-600 dark:text-gray-400">
+            Loading your referral account...
+          </div>
+        </Container>
+      </main>
+    );
+  }
+
+  if (!customer) {
+    return (
+      <main className="min-h-screen bg-gray-50 dark:bg-gray-900">
+        <Container className="py-16">
+          <div className="max-w-3xl mx-auto">
+            <Card className="p-8 text-center">
+              <h1 className="font-heading text-2xl font-bold text-gray-900 dark:text-gray-100 mb-3">
+                Sign In Required
+              </h1>
+              <p className="text-gray-600 dark:text-gray-400 mb-6">
+                Please sign in to your customer portal before opening the referral dashboard.
+              </p>
+              <Button asChild>
+                <Link href="/customer/portal/">Go to Customer Portal</Link>
+              </Button>
+            </Card>
+          </div>
+        </Container>
+      </main>
+    );
+  }
 
   // No referral code state - show onboarding
   if (!hasReferralCode) {
@@ -232,7 +317,7 @@ export default function ReferralsPageClient() {
                 Referral Center
               </h2>
               <p className="text-gray-600 dark:text-gray-400">
-                Welcome back, {DEFAULT_USER_NAME}!
+                Welcome back, {customer.name}!
               </p>
             </div>
           </div>
@@ -256,7 +341,7 @@ export default function ReferralsPageClient() {
 
             <TabsContent value="dashboard" className="space-y-6">
               <ReferralDashboard
-                userId={DEFAULT_USER_ID}
+                userId={customer.email}
                 className="max-w-none"
               />
             </TabsContent>
@@ -265,7 +350,7 @@ export default function ReferralsPageClient() {
               <SocialShareTools
                 referralCode={referralCode}
                 shareUrl={shareUrl}
-                referrerName={DEFAULT_USER_NAME}
+                referrerName={customer.name}
                 className="max-w-none"
               />
             </TabsContent>

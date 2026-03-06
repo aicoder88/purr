@@ -1,4 +1,4 @@
-import { useState, useCallback, useRef } from 'react';
+import { useState, useCallback, useRef, useEffect } from 'react';
 import { Share2, Copy, Mail, MessageSquare, Facebook, Send, Linkedin, QrCode, Download } from 'lucide-react';
 import type { LucideIcon } from 'lucide-react';
 import { Button } from '@/components/ui/button';
@@ -126,34 +126,34 @@ export function SocialShareTools({ referralCode, shareUrl, referrerName, classNa
   const handleSocialShare = useCallback((template: ShareTemplate) => {
     const personalizedMessage = generatePersonalizedMessage(template.template);
 
-    let shareUrl = '';
+    let platformShareUrl = '';
 
     switch (template.platform) {
       case 'email':
         const subject = personalizedMessage.split('\n')[0].replace('Subject: ', '');
         const body = personalizedMessage.split('\n').slice(2).join('\n');
-        shareUrl = `mailto:?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+        platformShareUrl = `mailto:?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
         break;
 
       case 'sms':
-        shareUrl = `sms:?body=${encodeURIComponent(personalizedMessage)}`;
+        platformShareUrl = `sms:?body=${encodeURIComponent(personalizedMessage)}`;
         break;
 
       case 'whatsapp':
-        shareUrl = `https://wa.me/?text=${encodeURIComponent(personalizedMessage)}`;
+        platformShareUrl = `https://wa.me/?text=${encodeURIComponent(personalizedMessage)}`;
         break;
 
       case 'facebook':
-        shareUrl = `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(shareUrl)}&quote=${encodeURIComponent(personalizedMessage)}`;
+        platformShareUrl = `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(shareUrl)}&quote=${encodeURIComponent(personalizedMessage)}`;
         break;
 
       case 'linkedin':
-        shareUrl = `https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(shareUrl)}&summary=${encodeURIComponent(personalizedMessage)}`;
+        platformShareUrl = `https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(shareUrl)}&summary=${encodeURIComponent(personalizedMessage)}`;
         break;
     }
 
-    if (shareUrl) {
-      window.open(shareUrl, '_blank', 'width=600,height=400');
+    if (platformShareUrl) {
+      window.open(platformShareUrl, '_blank', 'width=600,height=400');
 
       // Track social share
       if (typeof globalThis.window !== 'undefined' && window.gtag) {
@@ -164,7 +164,7 @@ export function SocialShareTools({ referralCode, shareUrl, referrerName, classNa
         });
       }
     }
-  }, [generatePersonalizedMessage, referralCode]);
+  }, [generatePersonalizedMessage, referralCode, shareUrl]);
 
   // Generate QR code
   const generateQRCode = useCallback(() => {
@@ -192,6 +192,12 @@ export function SocialShareTools({ referralCode, shareUrl, referrerName, classNa
       }
     }
   }, []);
+
+  useEffect(() => {
+    if (showQR) {
+      generateQRCode();
+    }
+  }, [showQR, generateQRCode]);
 
   // Download QR code
   const downloadQRCode = useCallback(() => {

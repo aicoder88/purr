@@ -8,8 +8,6 @@ interface BlogIndexPageProps {
   searchParams: Promise<{ page?: string }>;
 }
 
-export const dynamic = 'force-static';
-
 export async function generateMetadata({ searchParams }: BlogIndexPageProps): Promise<Metadata> {
   const metadata = await generateLocalizedMetadata({
     params: Promise.resolve({ locale: defaultLocale }),

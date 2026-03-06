@@ -109,10 +109,15 @@ export const HeroContent = ({ t, heroVideo }: HeroContentProps) => {
       <div className="flex flex-col gap-3 pt-2 max-w-xl">
         <div className="flex flex-col sm:flex-row gap-3">
           <Button asChild className={CTA_BUTTON_CLASSES} aria-label={t.hero.ariaLabels.shopNow}>
-            <a href={getPaymentLink("trialSingle") || "#"}>
-              <LightningIcon />
-              <span>{primaryCta}</span>
-              <ArrowIcon />
+            <a href={getPaymentLink("trialSingle") || "#"} className="flex flex-col items-center gap-0.5">
+              <span className="flex items-center gap-2">
+                <LightningIcon />
+                <span>{primaryCta}</span>
+                <ArrowIcon />
+              </span>
+              {reassurance && (
+                <span className="text-[0.65rem] font-normal opacity-75 leading-none">{reassurance}</span>
+              )}
             </a>
           </Button>
           {secondaryCta ? (
@@ -131,9 +136,6 @@ export const HeroContent = ({ t, heroVideo }: HeroContentProps) => {
           <div className="rounded-3xl border border-stone-200/80 bg-white/85 p-4 shadow-[0_18px_50px_-30px_rgba(15,23,42,0.4)] backdrop-blur-sm dark:border-gray-800 dark:bg-gray-950/45">
             <div className="space-y-4">
               <div className="space-y-1.5">
-                <p className="text-[0.68rem] font-semibold uppercase tracking-[0.24em] text-gray-500 dark:text-gray-400">
-                  {reassurance}
-                </p>
                 {trustLine ? (
                   <div className="flex flex-wrap items-baseline gap-x-2 gap-y-1">
                     {trustNumber ? (

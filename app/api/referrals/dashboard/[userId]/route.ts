@@ -1,4 +1,7 @@
 import { auth } from '@/auth';
+import prisma from '@/lib/prisma';
+import { calculateMilestoneProgress, generateShareUrls } from '@/lib/referral';
+import { verifyOrigin } from '@/lib/security/origin-check';
 
 interface ReferralStats {
   userId: string;
@@ -80,87 +83,55 @@ function checkRateLimit(ip: string): { allowed: boolean; remaining: number } {
   return { allowed: true, remaining: MAX_REQUESTS_PER_WINDOW - record.count };
 }
 
-// Mock data - replace with database queries
-const _getMockReferralStats = (userId: string): ReferralStats => {
-  return {
-    userId,
-    referralCode: 'SARAH15-CAT',
-    shareUrl: 'https://www.purrify.ca/refer/SARAH15-CAT',
-    totalReferrals: 12,
-    completedReferrals: 8,
-    pendingReferrals: 4,
-    totalEarnings: 47.94, // 8 * $5.99 (estimated value per successful referral)
-    availableRewards: [
-      {
-        id: 'reward_001',
-        type: 'discount',
-        value: 15,
-        description: '15% off your next purchase',
-        code: 'REF15-SARAH',
-        expiresAt: new Date(Date.now() + 30 * 24 * 60 * 60 * 1000).toISOString(),
-        isUsed: false,
-        createdAt: '2024-01-20T10:30:00Z'
-      },
-      {
-        id: 'reward_002',
-        type: 'free_product',
-        value: 19.99,
-        description: 'Free 50g Standard Size (Milestone Reward)',
-        expiresAt: new Date(Date.now() + 90 * 24 * 60 * 60 * 1000).toISOString(),
-        isUsed: false,
-        createdAt: '2024-01-22T15:45:00Z'
-      }
-    ],
-    recentActivity: [
-      {
-        id: 'activity_001',
-        refereeEmail: 'jen@example.com',
-        refereeName: 'Jennifer L.',
-        status: 'purchased',
-        createdAt: '2024-01-22T10:30:00Z',
-        completedAt: '2024-01-22T11:15:00Z',
-        orderValue: 19.99,
-        rewardIssued: true
-      },
-      {
-        id: 'activity_002',
-        refereeEmail: 'mike@example.com',
-        refereeName: 'Mike K.',
-        status: 'signed_up',
-        createdAt: '2024-01-21T14:20:00Z',
-        rewardIssued: false
-      },
-      {
-        id: 'activity_003',
-        refereeEmail: 'anna@example.com',
-        status: 'clicked',
-        createdAt: '2024-01-20T16:45:00Z',
-        rewardIssued: false
-      }
-    ],
-    milestoneProgress: {
-      current: 8,
-      target: 9, // Next milestone at 9 referrals
-      nextReward: 'Free 120g Family Pack',
-      progress: 88.9 // (8/9) * 100
-    },
-    socialShares: {
-      email: 15,
-      sms: 8,
-      facebook: 12,
-      twitter: 5,
-      whatsapp: 20,
-      linkedin: 3,
-      total: 63
-    }
-  };
-};
+function maskEmail(email: string): string {
+  return email.replace(/(.{2}).+(@.+)/, '$1***$2');
+}
+
+function mapRewardType(type: string): Reward['type'] {
+  if (type === 'MILESTONE_BONUS') {
+    return 'free_product';
+  }
+
+  if (type === 'PROMOTIONAL') {
+    return 'discount';
+  }
+
+  return 'credit';
+}
+
+function mapActivityStatus(redemption: {
+  status: string;
+  signedUpAt: Date | null;
+  purchasedAt: Date | null;
+}): ReferralActivity['status'] {
+  if (redemption.status === 'COMPLETED' || redemption.purchasedAt) {
+    return 'purchased';
+  }
+
+  if (redemption.status === 'EXPIRED' || redemption.status === 'CANCELLED') {
+    return 'expired';
+  }
+
+  if (redemption.signedUpAt) {
+    return 'signed_up';
+  }
+
+  return 'clicked';
+}
 
 export async function GET(
   req: Request,
   { params }: { params: Promise<{ userId: string }> }
 ): Promise<Response> {
+  if (!verifyOrigin(req)) {
+    return Response.json({
+      success: false,
+      error: 'Forbidden',
+    }, { status: 403 });
+  }
+
   const { userId } = await params;
+  const identifier = decodeURIComponent(userId || '').trim();
 
   // Get client IP for rate limiting
   const forwardedFor = req.headers.get('x-forwarded-for');
@@ -178,61 +149,172 @@ export async function GET(
     }, { status: 429, headers });
   }
 
-  if (!userId) {
+  if (!identifier) {
     return Response.json({
       success: false,
       error: 'User ID is required'
     }, { status: 400, headers });
   }
 
-  // Validate userId format (alphanumeric, hyphens, underscores only)
-  const USER_ID_PATTERN = /^[a-zA-Z0-9_-]+$/;
-  if (!USER_ID_PATTERN.test(userId) || userId.length > 100) {
+  if (!prisma) {
     return Response.json({
       success: false,
-      error: 'Invalid user ID format'
-    }, { status: 400, headers });
+      error: 'Database not available',
+    }, { status: 503, headers });
   }
 
   try {
-    // CRITICAL SECURITY FIX: Verify the user is authenticated
     const session = await auth();
 
-    if (!session || !session.user) {
-      return Response.json({
-        success: false,
-        error: 'Unauthorized: Please sign in to view your referral dashboard'
-      }, { status: 401, headers });
+    if (session?.user) {
+      const sessionUser = session.user as { id?: string; userId?: string; email?: string; role?: string };
+      const isAdmin = ['admin', 'superadmin'].includes(sessionUser.role || '');
+
+      if (!isAdmin) {
+        const normalizedIdentifier = identifier.toLowerCase();
+        const isEmailLookup = normalizedIdentifier.includes('@');
+        const isOwnerByEmail = isEmailLookup && sessionUser.email?.toLowerCase() === normalizedIdentifier;
+        const sessionId = sessionUser.userId || sessionUser.id;
+        const isOwnerById = !isEmailLookup && !!sessionId && sessionId === identifier;
+
+        if (!isOwnerByEmail && !isOwnerById) {
+          return Response.json({
+            success: false,
+            error: 'Forbidden: You can only view your own referral dashboard'
+          }, { status: 403, headers });
+        }
+      }
     }
 
-    // CRITICAL SECURITY FIX: Verify the user can only access their own dashboard
-    // Compare the requested userId with the authenticated user's ID/email
-    const authenticatedUserId = (session.user as { id?: string; email?: string }).id ||
-      (session.user as { email?: string }).email;
+    const normalizedIdentifier = identifier.toLowerCase();
+    const isEmailLookup = normalizedIdentifier.includes('@');
 
-    if (!authenticatedUserId) {
+    const user = await prisma.user.findUnique({
+      where: isEmailLookup ? { email: normalizedIdentifier } : { id: identifier },
+      include: {
+        referralCode: {
+          include: {
+            redemptions: {
+              orderBy: { createdAt: 'desc' },
+              take: 20,
+            },
+          },
+        },
+        referralRewards: {
+          orderBy: { createdAt: 'desc' },
+          take: 20,
+        },
+      },
+    });
+
+    if (!user) {
       return Response.json({
         success: false,
-        error: 'Unauthorized: Unable to verify user identity'
-      }, { status: 401, headers });
+        error: 'User not found',
+      }, { status: 404, headers });
     }
 
-    // Only allow users to access their own dashboard (or admins)
-    const userRole = (session.user as { role?: string }).role || '';
-    const isAdmin = ['admin', 'superadmin'].includes(userRole);
+    const userName = user.name?.split(' ')[0] || user.email?.split('@')[0] || 'Friend';
 
-    if (userId !== authenticatedUserId && !isAdmin) {
+    if (!user.referralCode) {
+      const emptyStats: ReferralStats = {
+        userId: user.id,
+        referralCode: '',
+        shareUrl: '',
+        totalReferrals: 0,
+        completedReferrals: 0,
+        pendingReferrals: 0,
+        totalEarnings: 0,
+        availableRewards: [],
+        recentActivity: [],
+        milestoneProgress: {
+          current: 0,
+          target: 5,
+          nextReward: '$10 bonus',
+          progress: 0,
+        },
+        socialShares: {
+          email: 0,
+          sms: 0,
+          facebook: 0,
+          twitter: 0,
+          whatsapp: 0,
+          linkedin: 0,
+          total: 0,
+        },
+      };
+
       return Response.json({
-        success: false,
-        error: 'Forbidden: You can only view your own referral dashboard'
-      }, { status: 403, headers });
+        success: true,
+        data: emptyStats,
+      }, { headers });
     }
+
+    const codeRecord = user.referralCode;
+    const pendingReferrals = codeRecord.redemptions.filter((r) => r.status === 'PENDING').length;
+    const completedReferrals = codeRecord.totalOrders;
+    const totalReferrals = Math.max(
+      codeRecord.totalSignups,
+      codeRecord.totalClicks,
+      completedReferrals + pendingReferrals
+    );
+
+    const shareUrls = generateShareUrls(codeRecord.code, userName);
+    const milestone = calculateMilestoneProgress(completedReferrals);
+
+    const availableRewards: Reward[] = user.referralRewards
+      .filter((reward) => reward.status === 'AVAILABLE')
+      .map((reward) => ({
+        id: reward.id,
+        type: mapRewardType(reward.type),
+        value: reward.amount,
+        description: reward.description || `$${reward.amount.toFixed(2)} referral credit`,
+        expiresAt: reward.expiresAt?.toISOString() || new Date(Date.now() + 90 * 24 * 60 * 60 * 1000).toISOString(),
+        isUsed: reward.status === 'USED',
+        createdAt: reward.createdAt.toISOString(),
+      }));
+
+    const recentActivity: ReferralActivity[] = codeRecord.redemptions.slice(0, 10).map((redemption) => ({
+      id: redemption.id,
+      refereeEmail: maskEmail(redemption.refereeEmail),
+      status: mapActivityStatus(redemption),
+      createdAt: redemption.clickedAt?.toISOString() || redemption.createdAt.toISOString(),
+      completedAt: redemption.purchasedAt?.toISOString() || redemption.signedUpAt?.toISOString(),
+      orderValue: redemption.referrerCredit || undefined,
+      rewardIssued: redemption.status === 'COMPLETED',
+    }));
+
+    const stats: ReferralStats = {
+      userId: user.id,
+      referralCode: codeRecord.code,
+      shareUrl: shareUrls.shareUrl,
+      totalReferrals,
+      completedReferrals,
+      pendingReferrals,
+      totalEarnings: codeRecord.totalEarnings,
+      availableRewards,
+      recentActivity,
+      milestoneProgress: {
+        current: milestone.current,
+        target: milestone.target,
+        nextReward: milestone.nextReward,
+        progress: milestone.progress,
+      },
+      socialShares: {
+        email: 0,
+        sms: 0,
+        facebook: 0,
+        twitter: 0,
+        whatsapp: 0,
+        linkedin: 0,
+        total: 0,
+      },
+    };
 
     return Response.json({
-      success: false,
-      error: 'Referral dashboard is not yet available'
-    }, { status: 501, headers });
-
+      success: true,
+      data: stats,
+    }, { headers });
   } catch {
     return Response.json({
       success: false,

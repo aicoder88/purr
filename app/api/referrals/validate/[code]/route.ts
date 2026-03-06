@@ -142,6 +142,17 @@ export async function GET(
       }
     }
 
+    const allowMockFallback =
+      process.env.NODE_ENV !== 'production' ||
+      process.env.ENABLE_REFERRAL_MOCKS === 'true';
+
+    if (!allowMockFallback) {
+      return Response.json({
+        isValid: false,
+        error: 'Referral code not found',
+      }, { status: 404 });
+    }
+
     // Fallback to mock data (for demo/development)
     const mockCode = getMockReferralCode(normalizedCode);
 

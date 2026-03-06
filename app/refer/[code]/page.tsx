@@ -37,7 +37,6 @@ async function getReferralData(code: string): Promise<{ code: string; referralDa
         body: JSON.stringify({
           action: 'click',
           referralCode: code,
-          refereeEmail: '',
           trackingData: {
             source: 'referral_link',
             medium: 'direct',

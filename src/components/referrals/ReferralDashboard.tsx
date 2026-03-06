@@ -81,7 +81,8 @@ export function ReferralDashboard({ userId, className }: ReferralDashboardProps)
   const fetchReferralStats = useCallback(async () => {
     try {
       setLoading(true);
-      const response = await fetch(`/api/referrals/dashboard/${userId}`);
+      const encodedIdentifier = encodeURIComponent(userId.trim());
+      const response = await fetch(`/api/referrals/dashboard/${encodedIdentifier}`);
       const data = await response.json();
 
       if (data.success) {

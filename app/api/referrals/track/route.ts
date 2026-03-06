@@ -74,10 +74,17 @@ export async function POST(req: Request): Promise<Response> {
       orderValue,
     } = body;
 
-    if (!action || !referralCode || !refereeEmail) {
+    if (!action || !referralCode) {
       return Response.json({
         success: false,
-        error: 'Missing required fields: action, referralCode, refereeEmail'
+        error: 'Missing required fields: action, referralCode'
+      } satisfies TrackingResponse, { status: 400 });
+    }
+
+    if ((action === 'signup' || action === 'purchase') && !refereeEmail) {
+      return Response.json({
+        success: false,
+        error: 'refereeEmail is required for signup and purchase tracking'
       } satisfies TrackingResponse, { status: 400 });
     }
 
@@ -110,7 +117,7 @@ export async function POST(req: Request): Promise<Response> {
     }
 
     // Prevent self-referral
-    if (referralCodeRecord.user.email && referralCodeRecord.user.email === refereeEmail.toLowerCase()) {
+    if (refereeEmail && referralCodeRecord.user.email && referralCodeRecord.user.email === refereeEmail.toLowerCase()) {
       return Response.json({
         success: false,
         error: 'Cannot use your own referral code'
@@ -122,12 +129,12 @@ export async function POST(req: Request): Promise<Response> {
         return await handleClick(referralCodeRecord.id, refereeEmail);
 
       case 'signup':
-        return await handleSignup(referralCodeRecord.id, refereeEmail, refereeId);
+        return await handleSignup(referralCodeRecord.id, refereeEmail!, refereeId);
 
       case 'purchase':
         return await handlePurchase(
           referralCodeRecord,
-          refereeEmail,
+          refereeEmail!,
           refereeId,
           orderId,
           orderValue
@@ -149,8 +156,20 @@ export async function POST(req: Request): Promise<Response> {
 
 async function handleClick(
   referralCodeId: string,
-  refereeEmail: string
+  refereeEmail?: string
 ): Promise<Response> {
+  if (!refereeEmail) {
+    await prisma!.referralCode.update({
+      where: { id: referralCodeId },
+      data: { totalClicks: { increment: 1 } },
+    });
+
+    return Response.json({
+      success: true,
+      message: 'Referral click tracked successfully'
+    } satisfies TrackingResponse);
+  }
+
   // Find or create a redemption record for this click
   const existing = await prisma!.referralRedemption.findFirst({
     where: {

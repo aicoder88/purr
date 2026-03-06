@@ -290,7 +290,8 @@ export function isEligibleForReferrals(
  */
 export async function getUserReferralStats(userId: string) {
   try {
-    const response = await fetch(`/api/referrals/dashboard/${userId}`);
+    const encodedIdentifier = encodeURIComponent(userId.trim());
+    const response = await fetch(`/api/referrals/dashboard/${encodedIdentifier}`);
     const data = await response.json();
 
     if (data.success) {

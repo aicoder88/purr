@@ -17,6 +17,13 @@ import { verifyOrigin } from '@/lib/security/origin-check';
 // Rate limiting setup
 import { checkRateLimit } from '@/lib/rate-limit';
 
+const EMAIL_PATTERN = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+interface GenerateReferralRequestBody {
+  email?: string;
+  userName?: string;
+}
+
 export async function POST(req: Request): Promise<Response> {
   // Verify request origin before exposing rate limit information
   if (!verifyOrigin(req)) {
@@ -48,24 +55,9 @@ export async function POST(req: Request): Promise<Response> {
 
   headers.set('X-RateLimit-Remaining', remaining.toString());
 
-  // Verify request origin
-  if (!verifyOrigin(req)) {
-    return Response.json({
-      success: false,
-      error: 'Forbidden',
-    }, { status: 403, headers });
-  }
-
   try {
-    // Get session - user must be logged in
+    const body = (await req.json().catch(() => ({}))) as GenerateReferralRequestBody;
     const session = await auth();
-
-    if (!session?.user?.email) {
-      return Response.json({
-        success: false,
-        error: 'You must be logged in to generate a referral code',
-      }, { status: 401, headers });
-    }
 
     if (!prisma) {
       return Response.json({
@@ -74,20 +66,38 @@ export async function POST(req: Request): Promise<Response> {
       }, { status: 503, headers });
     }
 
-    const userEmail = session.user.email;
-    const userName = session.user.name || userEmail.split('@')[0];
+    let userEmail = session?.user?.email?.toLowerCase().trim();
+    const fallbackEmail = typeof body.email === 'string' ? body.email.toLowerCase().trim() : '';
+
+    if (!userEmail) {
+      if (!EMAIL_PATTERN.test(fallbackEmail)) {
+        return Response.json({
+          success: false,
+          error: 'You must be logged in or provide a valid email to generate a referral code',
+        }, { status: 401, headers });
+      }
+      userEmail = fallbackEmail;
+    }
+
+    const fallbackName = typeof body.userName === 'string' ? body.userName.trim() : '';
+    const userName = (session?.user?.name || fallbackName || userEmail.split('@')[0] || 'Friend')
+      .trim()
+      .slice(0, 80);
 
     // Find user by email
-    const user = await prisma.user.findUnique({
+    let user = await prisma.user.findUnique({
       where: { email: userEmail },
       include: { referralCode: true },
     });
 
     if (!user) {
-      return Response.json({
-        success: false,
-        error: 'User not found',
-      }, { status: 404, headers });
+      user = await prisma.user.create({
+        data: {
+          email: userEmail,
+          name: userName,
+        },
+        include: { referralCode: true },
+      });
     }
 
     // Check if user already has a referral code
