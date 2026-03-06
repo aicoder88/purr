@@ -26,14 +26,14 @@ const CARD_CONFIG: CardConfig[] = [
   {
     icon: IconOdor,
     image: "/optimized/marketing/catcoco.webp",
-    href: "/learn/solutions/natural-cat-litter-additive",
+    href: "/blog/best-natural-cat-litter-odor-control",
     titleKeys: ["features.odorElimination.title"],
     descriptionKeys: ["features.odorElimination.description"],
   },
   {
     icon: IconCatFriendly,
     image: "/optimized/marketing/cats-and-filters.webp",
-    href: "/learn/science",
+    href: "/blog/activated-carbon-litter-additive-benefits",
     titleKeys: ["features.catFriendly.title"],
     descriptionKeys: ["features.catFriendly.description"],
   },
@@ -61,7 +61,7 @@ const CARD_CONFIG: CardConfig[] = [
   {
     icon: IconBeforeAfter,
     image: "/optimized/marketing/before-after.webp",
-    href: "/learn/solutions/litter-box-smell-elimination",
+    href: "/blog/how-to-eliminate-cat-litter-odor",
     titleKeys: ["features.beforeAfter.title"],
     descriptionKeys: ["features.beforeAfter.description"],
   },

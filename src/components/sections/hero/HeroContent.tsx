@@ -38,6 +38,7 @@ interface HeroContentProps {
         trustNumber?: string;
         trustText: string;
         ratingText: string;
+        retailerQuote?: string;
       };
       buttons: {
         shopNow: string;
@@ -67,6 +68,7 @@ export const HeroContent = ({ t, heroVideo }: HeroContentProps) => {
   const reassurance = t.hero.simplified?.justPayShipping || t.hero.socialProof.trustText;
   const primaryCta = t.hero.buttons.tryFree || t.hero.buttons.shopNow;
   const secondaryCta = t.hero.buttons.learnMore;
+  const retailerQuote = t.hero.socialProof.retailerQuote;
   const trustPoints = [
     t.hero.socialProof.trustText ? `${t.hero.socialProof.trustNumber || ""} ${t.hero.socialProof.trustText}`.trim() : ""
   ]
@@ -120,15 +122,24 @@ export const HeroContent = ({ t, heroVideo }: HeroContentProps) => {
             </Button>
           ) : null}
         </div>
-        <p className="text-sm text-gray-600 dark:text-gray-400">{reassurance}</p>
-        {trustPoints.length > 0 ? (
-          <div className="flex items-center gap-2 pt-1 text-sm text-gray-600 dark:text-gray-400">
-            <svg className="w-4 h-4 text-green-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
-            </svg>
-            <span>{trustPoints[0]}</span>
-          </div>
-        ) : null}
+        <div className="space-y-2">
+          <p className="text-sm text-gray-600 dark:text-gray-400">{reassurance}</p>
+          {trustPoints.length > 0 ? (
+            <div className="flex items-center gap-2 pt-1 text-sm text-gray-600 dark:text-gray-400">
+              <svg className="w-4 h-4 text-green-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+              </svg>
+              <span>{trustPoints[0]}</span>
+            </div>
+          ) : null}
+          {retailerQuote && (
+            <div className="pt-2 border-t border-gray-100 dark:border-gray-800">
+              <p className="text-sm italic text-gray-600 dark:text-gray-400 leading-relaxed">
+                {retailerQuote}
+              </p>
+            </div>
+          )}
+        </div>
       </div>
     </div>
   );

@@ -65,7 +65,6 @@ export const HeroVideo = ({ playLabel }: HeroVideoProps) => {
           poster={posterSrc}
           aria-label={playLabel}
         >
-          <source src={desktopSrc.replace(".mp4", ".webm")} type="video/webm" />
           <source src={desktopSrc} type="video/mp4" />
         </video>
         <button

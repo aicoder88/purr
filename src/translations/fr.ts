@@ -205,7 +205,8 @@ export const fr = {
     socialProof: {
       trustNumber: "Sans parfum",
       trustText: "additif au charbon actif",
-      ratingText: "Controle des odeurs sans parfums"
+      ratingText: "Controle des odeurs sans parfums",
+      retailerQuote: "\"Mes clients me disent que ça élimine la plupart, voire la totalité de l'odeur, et les chats ne le remarquent même pas !\" — Gabriel, propriétaire d'une chaîne d'animaleries Pitou Minou"
     },
     pricing: {
       trial: "Essai GRATUIT (4,76 $ frais de port)",

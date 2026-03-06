@@ -205,7 +205,8 @@ export const en = {
     socialProof: {
       trustNumber: "1,000+",
       trustText: "happy cat parents across Canada",
-      ratingText: "4.8/5 — 'I can finally have guests over without apologizing!'"
+      ratingText: "4.8/5 — 'I can finally have guests over without apologizing!'",
+      retailerQuote: "\"My clients tell me it gets rid of most, or all of the smell, and the cats don't even notice it!\" — Gabriel, owner of a Pitou Minou chain pet store"
     },
     pricing: {
       trial: "FREE Trial (just pay $4.76 S&H)",
