@@ -260,32 +260,32 @@ export function Header() {
         { label: t('nav.solutions'), isGroupHeader: true },
         {
           label: t('nav.ammoniaSmellControl'),
-          href: `/blog/how-to-neutralize-ammonia-cat-litter/`,
+          href: `${localePrefix}/learn/solutions/ammonia-smell-cat-litter/`,
           indent: true,
         },
         {
           label: t('nav.apartmentLiving'),
-          href: `/blog/best-litter-odor-remover-small-apartments/`,
+          href: `${localePrefix}/learn/solutions/apartment-cat-smell-solution/`,
           indent: true,
         },
         {
           label: t('nav.litterBoxOdor'),
-          href: `/blog/how-to-eliminate-cat-litter-odor/`,
+          href: `${localePrefix}/learn/solutions/litter-box-smell-elimination/`,
           indent: true,
         },
         {
           label: t('nav.multipleCats'),
-          href: `/blog/best-cat-litter-multiple-cats-odor-control/`,
+          href: `${localePrefix}/learn/solutions/multiple-cats-odor-control/`,
           indent: true,
         },
         {
           label: t('nav.naturalAdditive'),
-          href: `/blog/best-natural-cat-litter-odor-control/`,
+          href: `${localePrefix}/learn/solutions/natural-cat-litter-additive/`,
           indent: true,
         },
         {
           label: t('nav.seniorCats'),
-          href: `/blog/best-cat-litter-multiple-cats-odor-control/`,
+          href: `${localePrefix}/learn/solutions/senior-cat-litter-solutions/`,
           indent: true,
         },
       ],
@@ -294,6 +294,11 @@ export function Header() {
       id: "blog",
       label: t('nav.blog') || "Blog",
       href: `${localePrefix}/blog/`,
+    },
+    {
+      id: "fun",
+      label: t('nav.fun') || "Fun & Games",
+      href: "/fun/",
     },
     {
       id: "about",

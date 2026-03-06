@@ -21,6 +21,7 @@ export const en = {
     leaveReview: "Leave a Review",
     contact: "Contact",
     blog: "Blog",
+    fun: "Fun & Games",
     privacyPolicy: "Privacy Policy",
     termsOfService: "Terms of Service",
     // Dropdown items

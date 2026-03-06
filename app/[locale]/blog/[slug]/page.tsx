@@ -14,6 +14,7 @@ import { ArrowLeft, User, Clock } from 'lucide-react';
 import { sanitizeHTML } from '@/lib/security/sanitize';
 import { localizeInternalHrefAttributes } from '@/lib/i18n/locale-path';
 import { BlogProductCTA } from '@/components/blog/BlogProductCTA';
+import { RelatedSolutions } from '@/components/learn/RelatedSolutions';
 
 // Force static generation - no dynamic data fetching
 export const dynamic = 'force-static';
@@ -544,6 +545,8 @@ export default async function LocalizedBlogPostPage({ params }: BlogPostPageProp
             </div>
           </Container>
         </section>
+
+        <RelatedSolutions currentPath={getBlogPostPath(locale, slug)} limit={4} />
 
         {/* Navigation Footer */}
         <section className="py-8 border-t border-gray-100 dark:border-gray-800">

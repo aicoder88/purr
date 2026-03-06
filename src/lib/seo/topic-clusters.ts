@@ -4,6 +4,8 @@
  */
 
 import { sampleBlogPosts } from '../../data/blog-posts';
+import type { Locale } from '@/i18n/config';
+import { localizePath } from '@/lib/i18n/locale-path';
 
 
 export interface TopicCluster {
@@ -19,7 +21,6 @@ type RelatedPage = { url: string; title: string; type: 'hub' | 'spoke' };
 type FallbackPage = { url: string; title: string };
 
 const LOCALE_PREFIX_REGEX = /^\/(en|fr|es|zh)(?=\/|$)/;
-const BLOG_PATH_REGEX = /^\/blog(?:\/|$)/;
 
 function normalizePath(path: string): string {
   const withoutQuery = path.split('?')[0].split('#')[0];
@@ -44,11 +45,7 @@ function localizeBlogPath(path: string, locale: string): string {
     return localeAgnosticPath;
   }
 
-  if (!BLOG_PATH_REGEX.test(localeAgnosticPath)) {
-    return localeAgnosticPath;
-  }
-
-  return `/${locale}${localeAgnosticPath}`;
+  return localizePath(localeAgnosticPath, locale as Locale);
 }
 
 /**
@@ -70,6 +67,14 @@ export const TOPIC_CLUSTERS: TopicCluster[] = [
       '/blog/embarrassed-guests-visit-cat-litter-smell',
       '/blog/tried-everything-cat-litter-smell-solutions',
       '/learn/how-it-works',
+      '/learn/solutions',
+      '/learn/solutions/ammonia-smell-cat-litter',
+      '/learn/solutions/how-to-neutralize-ammonia-cat-litter',
+      '/learn/solutions/apartment-cat-smell-solution',
+      '/learn/solutions/litter-box-smell-elimination',
+      '/learn/solutions/multiple-cats-odor-control',
+      '/learn/solutions/natural-cat-litter-additive',
+      '/learn/solutions/senior-cat-litter-solutions',
       '/blog/activated-carbon-vs-baking-soda-comparison',
       '/learn/ammonia-science',
       '/learn/cat-litter-ammonia-health-risks',
@@ -94,6 +99,9 @@ export const TOPIC_CLUSTERS: TopicCluster[] = [
       '/blog/most-powerful-odor-absorber',
       '/learn/how-activated-carbon-works',
       '/learn/how-it-works',
+      '/learn/solutions/how-to-neutralize-ammonia-cat-litter',
+      '/learn/solutions/ammonia-smell-cat-litter',
+      '/learn/solutions/natural-cat-litter-additive',
       '/learn/science',
       '/learn/ammonia-science',
       '/learn/glossary',
@@ -116,6 +124,8 @@ export const TOPIC_CLUSTERS: TopicCluster[] = [
       '/blog/house-smells-like-cat-litter-solutions',
       '/blog/embarrassed-guests-visit-cat-litter-smell',
       '/blog/how-to-eliminate-cat-litter-odor',
+      '/learn/solutions/apartment-cat-smell-solution',
+      '/learn/solutions/litter-box-smell-elimination',
       '/learn/faq',
       '/tools/cat-litter-calculator',
       '/products/trial-size',
@@ -132,6 +142,8 @@ export const TOPIC_CLUSTERS: TopicCluster[] = [
       '/blog/multi-cat-litter-deodorizer-guide',
       '/blog/strong-cat-urine-smell-litter-box',
       '/blog/tried-everything-cat-litter-smell-solutions',
+      '/learn/solutions/multiple-cats-odor-control',
+      '/learn/solutions/senior-cat-litter-solutions',
       '/learn/faq',
       '/tools/cat-litter-calculator',
       '/products',
@@ -162,6 +174,8 @@ export const TOPIC_CLUSTERS: TopicCluster[] = [
     spokes: [
       '/blog/using-deodorizers-with-kittens',
       '/blog/best-cat-litter-multiple-cats-odor-control',
+      '/learn/solutions/senior-cat-litter-solutions',
+      '/learn/solutions/natural-cat-litter-additive',
       '/learn/safety',
       '/learn/faq',
       '/products/trial-size',
@@ -191,6 +205,8 @@ export const TOPIC_CLUSTERS: TopicCluster[] = [
     spokes: [
       '/learn/cat-litter-ammonia-health-risks',
       '/learn/safety',
+      '/learn/solutions/ammonia-smell-cat-litter',
+      '/learn/solutions/how-to-neutralize-ammonia-cat-litter',
       '/learn/faq',
       '/science',
     ],

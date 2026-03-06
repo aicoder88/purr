@@ -1,4 +1,9 @@
+'use client';
+
+import type { Locale } from '@/i18n/config';
+import { localizePath } from '@/lib/i18n/locale-path';
 import Link from 'next/link';
+import { useLocale } from 'next-intl';
 import { Container } from '@/components/ui/container';
 import { ChevronRight, Wind, Sparkles, Building2, Cat, Users, Leaf, Heart } from 'lucide-react';
 
@@ -60,7 +65,9 @@ interface RelatedSolutionsProps {
 }
 
 export function RelatedSolutions({ currentPath, limit = 3 }: RelatedSolutionsProps) {
-  const solutions = ALL_SOLUTIONS.filter(s => s.href !== currentPath).slice(0, limit);
+  const locale = useLocale() as Locale;
+  const normalizedCurrentPath = currentPath.replace(/^\/(en|fr)(?=\/|$)/, '') || '/';
+  const solutions = ALL_SOLUTIONS.filter(s => s.href !== normalizedCurrentPath).slice(0, limit);
 
   if (solutions.length === 0) return null;
 
@@ -76,7 +83,7 @@ export function RelatedSolutions({ currentPath, limit = 3 }: RelatedSolutionsPro
             return (
               <Link
                 key={solution.href}
-                href={solution.href}
+                href={localizePath(solution.href, locale)}
                 className="group flex items-start gap-4 p-4 bg-white dark:bg-gray-800 rounded-xl border border-gray-200 dark:border-gray-700 hover:border-[#03E46A] dark:hover:border-[#03E46A] transition-all hover:shadow-md"
               >
                 <div className="flex-shrink-0 p-2 bg-[#5B2EFF]/10 dark:bg-[#3694FF]/10 rounded-lg">
@@ -97,7 +104,7 @@ export function RelatedSolutions({ currentPath, limit = 3 }: RelatedSolutionsPro
         </div>
         <div className="mt-6 text-center">
           <Link
-            href="/learn/solutions"
+            href={localizePath('/learn/solutions', locale)}
             className="inline-flex items-center text-[#5B2EFF] dark:text-[#3694FF] font-medium hover:underline"
           >
             View all solutions

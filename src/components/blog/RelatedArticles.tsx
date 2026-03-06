@@ -2,6 +2,8 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { Container } from '@/components/ui/container';
 import { useTranslations, useLocale } from 'next-intl';
+import type { Locale } from '@/i18n/config';
+import { localizePath } from '@/lib/i18n/locale-path';
 
 type Article = {
   title: string;
@@ -103,25 +105,25 @@ const ALL_ARTICLES: Article[] = [
   },
   {
     title: 'Ammonia Smell from Cat Litter Solution',
-    href: '/blog/how-to-neutralize-ammonia-cat-litter',
+    href: '/learn/solutions/ammonia-smell-cat-litter',
     image: '/optimized/marketing/catonbed.avif',
     alt: 'Cat relaxing on a freshly made bed in a clean home'
   },
   {
     title: 'Apartment Cat Smell Solution',
-    href: '/blog/best-litter-odor-remover-small-apartments',
+    href: '/learn/solutions/apartment-cat-smell-solution',
     image: '/optimized/blog/small-apartment-odor-control.webp',
     alt: 'Modern apartment living space'
   },
   {
     title: 'Natural Cat Litter Additive Guide',
-    href: '/blog/best-natural-cat-litter-odor-control',
+    href: '/learn/solutions/natural-cat-litter-additive',
     image: '/optimized/blog/natural-cat-litter.webp',
     alt: 'Natural ingredients for cat care'
   },
   {
     title: 'Multiple Cats Odor Control Solutions',
-    href: '/blog/best-cat-litter-multiple-cats-odor-control',
+    href: '/learn/solutions/multiple-cats-odor-control',
     image: '/optimized/blog/multiple-cats-together.webp',
     alt: 'Multiple cats in a home environment'
   },
@@ -145,19 +147,19 @@ const ALL_ARTICLES: Article[] = [
   },
   {
     title: 'How to Neutralize Ammonia in Cat Litter',
-    href: '/blog/how-to-neutralize-ammonia-cat-litter',
+    href: '/learn/solutions/how-to-neutralize-ammonia-cat-litter',
     image: '/optimized/blog/ammonia-science.webp',
     alt: 'Scientific approach to neutralizing ammonia odors'
   },
   {
     title: 'Litter Box Smell Elimination Guide',
-    href: '/blog/how-to-eliminate-cat-litter-odor',
+    href: '/learn/solutions/litter-box-smell-elimination',
     image: '/optimized/blog/litter-box-hero.webp',
     alt: 'Clean litter box in a fresh home'
   },
   {
     title: 'Senior Cat Litter Solutions',
-    href: '/blog/best-cat-litter-multiple-cats-odor-control',
+    href: '/learn/solutions/senior-cat-litter-solutions',
     image: '/optimized/marketing/cat-long-lasting-freshness-800x500.webp',
     alt: 'Comfortable litter solutions for senior cats'
   },
@@ -166,7 +168,8 @@ const ALL_ARTICLES: Article[] = [
 export function RelatedArticles({ currentPath, limit = 3 }: { currentPath?: string; limit?: number }) {
   const t = useTranslations();
   const locale = useLocale();
-  const items = ALL_ARTICLES.filter(a => a.href !== currentPath).slice(0, limit);
+  const normalizedCurrentPath = currentPath ? currentPath.replace(/^\/(en|fr)(?=\/|$)/, '') : undefined;
+  const items = ALL_ARTICLES.filter(a => a.href !== normalizedCurrentPath).slice(0, limit);
   const relatedAriaLabel =
     locale === 'fr'
       ? 'Articles connexes'
@@ -183,7 +186,7 @@ export function RelatedArticles({ currentPath, limit = 3 }: { currentPath?: stri
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
           {items.map((item) => (
             <article key={item.href} className="group rounded-xl overflow-hidden border border-[#E0EFC7] dark:border-gray-700 bg-white dark:bg-gray-800/80 shadow-sm hover:shadow-md transition-all">
-              <Link href={item.href} prefetch={false} className="block focus:outline-none focus:ring-2 focus:ring-[#03E46A]">
+              <Link href={localizePath(item.href, locale as Locale)} prefetch={false} className="block focus:outline-none focus:ring-2 focus:ring-[#03E46A]">
                 <div className="relative aspect-video overflow-hidden">
                   <Image src={item.image} alt={item.alt} fill sizes="(max-width: 768px) 100vw, 33vw" className="object-cover transition-transform duration-500 group-hover:scale-105" />
                 </div>

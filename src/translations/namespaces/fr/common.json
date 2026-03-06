@@ -13,6 +13,7 @@
     "leaveReview": "Laisser un Avis",
     "contact": "Contact",
     "blog": "Blog",
+    "fun": "Jeux & Fun",
     "privacyPolicy": "Politique de Confidentialité",
     "termsOfService": "Conditions d'Utilisation",
     "trialSize": "Essai GRATUIT (Frais envoi seul.)",
@@ -113,7 +114,8 @@
     "termsOfService": "Conditions d'Utilisation",
     "trustpilot": "Trustpilot",
     "googleReviews": "Avis Google",
-    "sitemap": "Plan du site"
+    "sitemap": "Plan du site",
+    "fun": "Jeux & Fun"
   },
   "notFoundPage": {
     "title": "404 - Page Non Trouvée",

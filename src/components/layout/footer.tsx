@@ -314,10 +314,50 @@ export function Footer() {
                 </li>
                 <li>
                   <Link prefetch={false}
-                    href={`${localePrefix}/blog/how-to-neutralize-ammonia-cat-litter/`}
+                    href={`${localePrefix}/learn/solutions/`}
                     className={footerLinkClass}
                   >
-                    {t('footerNav.ammoniaSolutions') || "Ammonia Smell Control"}
+                    {t('nav.solutions')}
+                  </Link>
+                </li>
+                <li>
+                  <Link prefetch={false}
+                    href={`${localePrefix}/learn/solutions/ammonia-smell-cat-litter/`}
+                    className={footerLinkClass}
+                  >
+                    {t('nav.ammoniaSmellControl')}
+                  </Link>
+                </li>
+                <li>
+                  <Link prefetch={false}
+                    href={`${localePrefix}/learn/solutions/apartment-cat-smell-solution/`}
+                    className={footerLinkClass}
+                  >
+                    {t('nav.apartmentLiving')}
+                  </Link>
+                </li>
+                <li>
+                  <Link prefetch={false}
+                    href={`${localePrefix}/learn/solutions/multiple-cats-odor-control/`}
+                    className={footerLinkClass}
+                  >
+                    {t('nav.multipleCats')}
+                  </Link>
+                </li>
+                <li>
+                  <Link prefetch={false}
+                    href={`${localePrefix}/learn/solutions/natural-cat-litter-additive/`}
+                    className={footerLinkClass}
+                  >
+                    {t('nav.naturalAdditive')}
+                  </Link>
+                </li>
+                <li>
+                  <Link prefetch={false}
+                    href={`${localePrefix}/learn/solutions/senior-cat-litter-solutions/`}
+                    className={footerLinkClass}
+                  >
+                    {t('nav.seniorCats')}
                   </Link>
                 </li>
               </ul>
@@ -390,6 +430,14 @@ export function Footer() {
                     className={footerLinkClass}
                   >
                     {t('footerNav.blog')}
+                  </Link>
+                </li>
+                <li>
+                  <Link prefetch={false}
+                    href="/fun/"
+                    className={footerLinkClass}
+                  >
+                    {t('footerNav.fun') || "Fun & Games"}
                   </Link>
                 </li>
                 <li>

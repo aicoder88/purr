@@ -21,6 +21,7 @@ export const fr = {
     leaveReview: "Laisser un Avis",
     contact: "Contact",
     blog: "Blog",
+    fun: "Jeux & Fun",
     privacyPolicy: "Politique de Confidentialité",
     termsOfService: "Conditions d'Utilisation",
     // Dropdown items
@@ -873,6 +874,7 @@ export const fr = {
     googleReviews: "Avis Google",
     // SEO
     sitemap: "Plan du site",
+    fun: "Jeux & Fun",
     shippingReturns: "Livraison & Retours",
   },
 

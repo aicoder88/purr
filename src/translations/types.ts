@@ -16,6 +16,7 @@ export interface TranslationType {
     leaveReview: string;
     contact: string;
     blog: string;
+    fun?: string;
     privacyPolicy: string;
     termsOfService: string;
     // Dropdown items
