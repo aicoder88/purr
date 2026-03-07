@@ -258,7 +258,12 @@ async function handleConsumerOrder(data: CheckoutSessionData): Promise<void> {
   // Check current order status (idempotency guard)
   const currentOrder = await prisma.order.findUnique({
     where: { id: orderId },
-    select: { status: true },
+    select: {
+      status: true,
+      freshnessScore: true,
+      freshnessRiskLevel: true,
+      freshnessRecommendedProductId: true,
+    },
   });
 
   if (!currentOrder || currentOrder.status === 'PAID' || currentOrder.status === 'CANCELLED') {
@@ -310,7 +315,10 @@ async function handleConsumerOrder(data: CheckoutSessionData): Promise<void> {
       productName,
       quantity,
       amount,
-      locale
+      locale,
+      riskLevel: currentOrder.freshnessRiskLevel ?? undefined,
+      score: currentOrder.freshnessScore ?? undefined,
+      recommendedProductId: currentOrder.freshnessRecommendedProductId ?? undefined,
     });
 
     if (!emailResult.success) {

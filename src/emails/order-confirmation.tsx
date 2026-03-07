@@ -2,6 +2,7 @@
  * Email Template: Order Confirmation / Thank You
  * Sent immediately after successful payment via Stripe
  */
+import { renderFreshnessPlanSection } from '@/emails/freshness-plan-section';
 
 interface OrderConfirmationEmailProps {
     customerName?: string;
@@ -11,6 +12,13 @@ interface OrderConfirmationEmailProps {
     quantity: number;
     amount: number;
     locale?: string;
+    catCount?: number;
+    homeType?: string;
+    odorSeverity?: string;
+    currentRemedy?: string;
+    riskLevel?: string;
+    score?: number;
+    recommendedProductId?: string;
 }
 
 export const OrderConfirmationEmailHTML = ({
@@ -20,8 +28,29 @@ export const OrderConfirmationEmailHTML = ({
     productName,
     quantity,
     amount,
-    locale = 'en'
+    locale = 'en',
+    catCount,
+    homeType,
+    odorSeverity,
+    currentRemedy,
+    riskLevel,
+    score,
+    recommendedProductId,
 }: OrderConfirmationEmailProps) => {
+    const freshnessPlanSection = renderFreshnessPlanSection(
+        {
+            locale,
+            catCount,
+            homeType,
+            odorSeverity,
+            currentRemedy,
+            riskLevel,
+            score,
+            recommendedProductId,
+        },
+        { backgroundColor: '#f0fdf4' }
+    );
+
     const content = {
         en: {
             subject: 'Thank You for Your Order! 🎉',
@@ -165,6 +194,17 @@ export const OrderConfirmationEmailHTML = ({
               </div>
             </td>
           </tr>
+
+          ${
+            freshnessPlanSection
+              ? `
+          <tr>
+            <td style="padding: 0 40px 30px;">
+              ${freshnessPlanSection}
+            </td>
+          </tr>`
+              : ''
+          }
 
           <!-- What's Next Section -->
           <tr>

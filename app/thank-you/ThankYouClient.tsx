@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useMemo } from 'react';
 import {
   CheckCircle2,
   Package,
@@ -20,6 +20,8 @@ import { Button } from '@/components/ui/button';
 import { useTranslations, useLocale } from 'next-intl';
 import { CONTACT_INFO } from '@/lib/constants';
 import type { TranslationType } from '@/translations/types';
+import { buildFreshnessPlan } from '@/lib/freshness-plan';
+import { FreshnessPlanCard } from '@/components/freshness/FreshnessPlanCard';
 
 interface OrderDetails {
   customerEmail?: string;
@@ -30,6 +32,14 @@ interface OrderDetails {
   orderNumber?: string;
   isSubscription?: boolean;
   shippingCountry?: string;
+  freshnessSessionId?: string;
+  riskLevel?: string;
+  score?: number;
+  recommendedProductId?: string;
+  catCount?: number;
+  homeType?: string;
+  odorSeverity?: string;
+  currentRemedy?: string;
 }
 
 interface ThankYouClientProps {
@@ -50,6 +60,22 @@ export default function ThankYouClient({ orderDetails, error, sessionId: _sessio
   const [referralCode, setReferralCode] = useState<string | null>(null);
   const [copied, setCopied] = useState(false);
   const [referralLoading, setReferralLoading] = useState(false);
+  const freshnessPlan = useMemo(
+    () =>
+      orderDetails
+        ? buildFreshnessPlan({
+            locale,
+            catCount: orderDetails.catCount,
+            homeType: orderDetails.homeType,
+            odorSeverity: orderDetails.odorSeverity,
+            currentRemedy: orderDetails.currentRemedy,
+            riskLevel: orderDetails.riskLevel,
+            score: orderDetails.score,
+            recommendedProductId: orderDetails.recommendedProductId,
+          })
+        : null,
+    [locale, orderDetails]
+  );
 
   // Determine delivery timeline based on shipping country
   const getDeliveryTimeline = () => {
@@ -199,6 +225,12 @@ export default function ThankYouClient({ orderDetails, error, sessionId: _sessio
           )}
         </div>
       )}
+
+      {freshnessPlan ? (
+        <div className="mb-8">
+          <FreshnessPlanCard plan={freshnessPlan} compact />
+        </div>
+      ) : null}
 
       {/* What to Expect Section */}
       <div className="bg-white dark:bg-gray-800 rounded-2xl shadow-xl p-6 md:p-8 mb-8 border border-gray-100 dark:border-gray-700">

@@ -104,6 +104,13 @@ interface ThankYouEmailParams {
   quantity: number;
   amount: number;
   locale?: string;
+  catCount?: number;
+  homeType?: string;
+  odorSeverity?: string;
+  currentRemedy?: string;
+  riskLevel?: string;
+  score?: number;
+  recommendedProductId?: string;
 }
 
 /**
@@ -116,7 +123,14 @@ export async function sendThankYouEmail({
   productName,
   quantity,
   amount,
-  locale = 'en'
+  locale = 'en',
+  catCount,
+  homeType,
+  odorSeverity,
+  currentRemedy,
+  riskLevel,
+  score,
+  recommendedProductId,
 }: ThankYouEmailParams): Promise<{ success: boolean; error?: string }> {
   if (!process.env.RESEND_API_KEY) {
     return { success: false, error: 'Email service not configured' };
@@ -130,7 +144,14 @@ export async function sendThankYouEmail({
       productName,
       quantity,
       amount,
-      locale
+      locale,
+      catCount,
+      homeType,
+      odorSeverity,
+      currentRemedy,
+      riskLevel,
+      score,
+      recommendedProductId,
     });
 
     const emailSubject = getOrderConfirmationEmailSubject(locale);

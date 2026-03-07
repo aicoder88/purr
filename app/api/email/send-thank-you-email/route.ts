@@ -14,6 +14,13 @@ interface SendThankYouEmailRequest {
     quantity: number;
     amount: number; // Amount in cents
     locale?: string;
+    catCount?: number;
+    homeType?: string;
+    odorSeverity?: string;
+    currentRemedy?: string;
+    riskLevel?: string;
+    score?: number;
+    recommendedProductId?: string;
 }
 
 async function handler(req: NextRequest): Promise<Response> {
@@ -42,7 +49,14 @@ async function handler(req: NextRequest): Promise<Response> {
             productName,
             quantity,
             amount,
-            locale = 'en'
+            locale = 'en',
+            catCount,
+            homeType,
+            odorSeverity,
+            currentRemedy,
+            riskLevel,
+            score,
+            recommendedProductId,
         } = body;
 
         // Validate required fields
@@ -73,7 +87,14 @@ async function handler(req: NextRequest): Promise<Response> {
             productName,
             quantity,
             amount,
-            locale: emailLocale
+            locale: emailLocale,
+            catCount,
+            homeType,
+            odorSeverity,
+            currentRemedy,
+            riskLevel,
+            score,
+            recommendedProductId,
         });
 
         const emailSubject = getOrderConfirmationEmailSubject(emailLocale);

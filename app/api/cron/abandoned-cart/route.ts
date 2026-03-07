@@ -16,6 +16,7 @@ import {
 import { AbandonedCartEmailHTML, getAbandonedCartEmailSubject } from '@/emails/abandoned-cart';
 import { resend } from '@/lib/resend';
 import { RESEND_CONFIG, isResendConfigured } from '@/lib/resend-config';
+import { getFreshnessProfileBySessionId } from '@/lib/freshness-profile';
 
 export async function GET(request: NextRequest): Promise<NextResponse> {
   // Validate cron secret to prevent unauthorized invocations
@@ -47,6 +48,8 @@ export async function GET(request: NextRequest): Promise<NextResponse> {
     const discountCode = isSecondEmail ? generateDiscountCode() : undefined;
     const totalAmount = calculateCartTotal(cart.items);
     const locale = cart.locale === 'fr' ? 'fr' : 'en';
+    const freshnessProfile = await getFreshnessProfileBySessionId(cart.sessionId);
+    const fallbackProductId = typeof cart.items[0]?.productId === 'string' ? cart.items[0].productId : undefined;
 
     const recoveryUrl = `${siteUrl}${locale === 'fr' ? '/fr' : ''}/`;
 
@@ -59,6 +62,13 @@ export async function GET(request: NextRequest): Promise<NextResponse> {
       locale,
       recoveryUrl,
       isSecondEmail,
+      catCount: freshnessProfile?.catCount ?? undefined,
+      homeType: freshnessProfile?.homeType ?? undefined,
+      odorSeverity: freshnessProfile?.odorSeverity ?? undefined,
+      currentRemedy: freshnessProfile?.currentRemedy ?? undefined,
+      riskLevel: freshnessProfile?.riskLevel ?? undefined,
+      score: freshnessProfile?.score ?? undefined,
+      recommendedProductId: freshnessProfile?.recommendedProductId ?? fallbackProductId,
     });
 
     const subject = getAbandonedCartEmailSubject(locale, isSecondEmail);

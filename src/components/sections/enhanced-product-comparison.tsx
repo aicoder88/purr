@@ -14,6 +14,8 @@ import {
   getStoredFreshnessProfile,
 } from "@/lib/freshness-session";
 import { getPaymentLink } from "@/lib/payment-links";
+import { buildFreshnessPlan, hasFreshnessPlanInputs } from "@/lib/freshness-plan";
+import { FreshnessPlanCard } from "@/components/freshness/FreshnessPlanCard";
 
 type LocalizedProduct = {
   id: string;
@@ -46,6 +48,13 @@ type FreshnessProfileSummary = {
   recommendedProductId: string | null;
   recommendationReason: string | null;
   source: 'QUIZ' | 'CHAT';
+  locale?: string | null;
+  catCount?: number | null;
+  homeType?: string | null;
+  odorSeverity?: string | null;
+  currentRemedy?: string | null;
+  riskLevel?: string | null;
+  score?: number | null;
 };
 
 const IMAGE_BY_ID: Record<string, { image: string; imageSize: "sm" | "md" | "lg"; ctaType: "stripe" | "store" }> = {
@@ -127,7 +136,9 @@ export function EnhancedProductComparison() {
           if (!isCancelled) {
             setFreshnessProfile(storedProfile);
           }
-          return;
+          if (hasFreshnessPlanInputs(storedProfile)) {
+            return;
+          }
         }
 
         const response = await fetch(`/api/freshness-profile?sessionId=${encodeURIComponent(sessionId)}`, {
@@ -214,6 +225,18 @@ export function EnhancedProductComparison() {
     }, []);
   const recommendedCardId = mapRecommendedProductIdToCardId(freshnessProfile?.recommendedProductId);
   const recommendedProduct = products.find((product) => product.id === recommendedCardId) ?? null;
+  const freshnessPlan = freshnessProfile
+    ? buildFreshnessPlan({
+        locale: freshnessProfile.locale ?? locale,
+        catCount: freshnessProfile.catCount,
+        homeType: freshnessProfile.homeType,
+        odorSeverity: freshnessProfile.odorSeverity,
+        currentRemedy: freshnessProfile.currentRemedy,
+        riskLevel: freshnessProfile.riskLevel,
+        score: freshnessProfile.score,
+        recommendedProductId: freshnessProfile.recommendedProductId,
+      })
+    : null;
 
   return (
     <section className="relative overflow-hidden bg-[linear-gradient(180deg,#f8fafc_0%,#eef2ff_40%,#f8fafc_100%)] py-14 md:py-16 dark:bg-[linear-gradient(180deg,#020617_0%,#0f172a_45%,#020617_100%)]">
@@ -238,6 +261,12 @@ export function EnhancedProductComparison() {
             <p className="mt-2 text-sm text-gray-600 dark:text-gray-300">
               {freshnessProfile?.recommendationReason || t("productComparison.personalizedDescription")}
             </p>
+          </div>
+        ) : null}
+
+        {freshnessPlan ? (
+          <div className="mx-auto mb-8 max-w-4xl">
+            <FreshnessPlanCard plan={freshnessPlan} compact />
           </div>
         ) : null}
 

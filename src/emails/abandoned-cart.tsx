@@ -4,6 +4,7 @@
  */
 
 import type { CartItem } from '../lib/cart-tracking';
+import { renderFreshnessPlanSection } from '@/emails/freshness-plan-section';
 
 interface AbandonedCartEmailProps {
   customerName?: string;
@@ -14,6 +15,13 @@ interface AbandonedCartEmailProps {
   locale?: string;
   recoveryUrl: string;
   isSecondEmail?: boolean;
+  catCount?: number;
+  homeType?: string;
+  odorSeverity?: string;
+  currentRemedy?: string;
+  riskLevel?: string;
+  score?: number;
+  recommendedProductId?: string;
 }
 
 export const AbandonedCartEmailHTML = ({
@@ -25,7 +33,28 @@ export const AbandonedCartEmailHTML = ({
   locale = 'en',
   recoveryUrl,
   isSecondEmail = false,
+  catCount,
+  homeType,
+  odorSeverity,
+  currentRemedy,
+  riskLevel,
+  score,
+  recommendedProductId,
 }: AbandonedCartEmailProps) => {
+  const freshnessPlanSection = renderFreshnessPlanSection(
+    {
+      locale,
+      catCount,
+      homeType,
+      odorSeverity,
+      currentRemedy,
+      riskLevel,
+      score,
+      recommendedProductId,
+    },
+    { backgroundColor: '#f0fdf4', maxActions: 3 }
+  );
+
   const content = {
     en: {
       subject: isSecondEmail
@@ -235,6 +264,18 @@ export const AbandonedCartEmailHTML = ({
               </a>
             </td>
           </tr>
+
+          ${
+            freshnessPlanSection
+              ? `
+          <tr>
+            <td style="padding: 0 40px 30px;">
+              ${freshnessPlanSection}
+            </td>
+          </tr>
+          `
+              : ''
+          }
 
           <!-- Why Purrify Section -->
           <tr>

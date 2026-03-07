@@ -1,10 +1,16 @@
 import { SITE_URL } from '@/lib/constants';
+import { renderFreshnessPlanSection } from '@/emails/freshness-plan-section';
 
 interface QuizResultEmailProps {
   customerEmail: string;
   locale?: string;
   score: number;
   riskLevel: string;
+  catCount?: number;
+  homeType?: string;
+  odorSeverity?: string;
+  currentRemedy?: string;
+  recommendedProductId?: string;
   recommendedProductName: string;
   recommendationReason?: string | null;
   productUrl: string;
@@ -23,12 +29,16 @@ export function QuizResultEmailHTML({
   locale = 'en',
   score,
   riskLevel,
+  catCount,
+  homeType,
+  odorSeverity,
+  currentRemedy,
+  recommendedProductId,
   recommendedProductName,
   recommendationReason,
   productUrl,
 }: QuizResultEmailProps) {
   const isFrench = locale === 'fr';
-
   const copy = isFrench
     ? {
         title: 'Voici votre resultat Quiz Odeur',
@@ -102,6 +112,17 @@ export function QuizResultEmailHTML({
                       : ''
                   }
                 </div>
+
+                ${renderFreshnessPlanSection({
+                  locale,
+                  catCount,
+                  homeType,
+                  odorSeverity,
+                  currentRemedy,
+                  riskLevel,
+                  score,
+                  recommendedProductId,
+                })}
 
                 <div style="margin-top:28px;">
                   <a href="${productUrl}" style="display:inline-block;padding:14px 22px;border-radius:999px;background:#111827;color:#ffffff;text-decoration:none;font-weight:700;">

@@ -3,6 +3,7 @@ import { Container } from '@/components/ui/container';
 import ThankYouClient from './ThankYouClient';
 import Stripe from 'stripe';
 import { SITE_NAME } from '@/lib/constants';
+import { getFreshnessProfileBySessionId } from '@/lib/freshness-profile';
 
 const getStripeInstance = () => {
   const secretKey = process.env.STRIPE_SECRET_KEY;
@@ -23,6 +24,14 @@ interface OrderDetails {
   orderNumber?: string;
   isSubscription?: boolean;
   shippingCountry?: string;
+  freshnessSessionId?: string;
+  riskLevel?: string;
+  score?: number;
+  recommendedProductId?: string;
+  catCount?: number;
+  homeType?: string;
+  odorSeverity?: string;
+  currentRemedy?: string;
 }
 
 async function getOrderDetails(sessionId: string | undefined): Promise<{ orderDetails: OrderDetails | null; error?: string }> {
@@ -44,6 +53,10 @@ async function getOrderDetails(sessionId: string | undefined): Promise<{ orderDe
     const session = await stripe.checkout.sessions.retrieve(sessionId, {
       expand: ['shipping_details', 'line_items']
     });
+    const freshnessSessionId = session.metadata?.freshnessSessionId || undefined;
+    const freshnessProfile = freshnessSessionId
+      ? await getFreshnessProfileBySessionId(freshnessSessionId)
+      : null;
 
     const orderDetails: OrderDetails = {
       customerEmail: session.customer_details?.email || session.customer_email || undefined,
@@ -52,6 +65,14 @@ async function getOrderDetails(sessionId: string | undefined): Promise<{ orderDe
       orderNumber: session.metadata?.orderId || sessionId.slice(-8).toUpperCase(),
       isSubscription: session.mode === 'subscription',
       shippingCountry: (session as unknown as { shipping_details?: { address?: { country?: string } } }).shipping_details?.address?.country || session.customer_details?.address?.country || undefined,
+      freshnessSessionId,
+      riskLevel: freshnessProfile?.riskLevel || session.metadata?.freshnessRiskLevel || undefined,
+      score: freshnessProfile?.score ?? (session.metadata?.freshnessScore ? Number(session.metadata.freshnessScore) : undefined),
+      recommendedProductId: freshnessProfile?.recommendedProductId || session.metadata?.freshnessRecommendedProductId || undefined,
+      catCount: freshnessProfile?.catCount ?? undefined,
+      homeType: freshnessProfile?.homeType ?? undefined,
+      odorSeverity: freshnessProfile?.odorSeverity ?? undefined,
+      currentRemedy: freshnessProfile?.currentRemedy ?? undefined,
     };
 
     try {

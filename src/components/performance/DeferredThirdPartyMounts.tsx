@@ -2,6 +2,7 @@
 
 import dynamic from 'next/dynamic';
 import { useEffect, useState } from 'react';
+import { ConsentType, hasConsent } from '@/lib/analytics';
 
 const Analytics = dynamic(
   () => import('@vercel/analytics/react').then((mod) => ({ default: mod.Analytics })),
@@ -21,6 +22,36 @@ const ChatWidgetMount = dynamic(
 interface DeferredThirdPartyMountsProps {
   hasChatWidget: boolean;
   gtmId?: string;
+}
+
+function readTrackingConsent() {
+  if (typeof window === 'undefined') {
+    return false;
+  }
+
+  return hasConsent(ConsentType.ANALYTICS) || hasConsent(ConsentType.MARKETING);
+}
+
+function useTrackingConsent() {
+  const [hasTrackingConsent, setHasTrackingConsent] = useState(false);
+
+  useEffect(() => {
+    const syncConsent = () => {
+      setHasTrackingConsent(readTrackingConsent());
+    };
+
+    syncConsent();
+
+    window.addEventListener('storage', syncConsent);
+    window.addEventListener('consentUpdated', syncConsent as EventListener);
+
+    return () => {
+      window.removeEventListener('storage', syncConsent);
+      window.removeEventListener('consentUpdated', syncConsent as EventListener);
+    };
+  }, []);
+
+  return hasTrackingConsent;
 }
 
 function useDeferredThirdPartyReady(delayMs: number = 2500) {
@@ -84,9 +115,10 @@ export function DeferredThirdPartyMounts({
   gtmId,
 }: DeferredThirdPartyMountsProps) {
   const isReady = useDeferredThirdPartyReady();
+  const hasTrackingConsent = useTrackingConsent();
 
   useEffect(() => {
-    if (!isReady || !gtmId || typeof document === 'undefined') {
+    if (!isReady || !hasTrackingConsent || !gtmId || typeof document === 'undefined') {
       return;
     }
 
@@ -107,13 +139,13 @@ export function DeferredThirdPartyMounts({
     script.dataset.purrifyGtm = gtmId;
     script.setAttribute('data-cfasync', 'false');
     document.head.appendChild(script);
-  }, [gtmId, isReady]);
+  }, [gtmId, hasTrackingConsent, isReady]);
 
   return (
     <>
       {isReady && hasChatWidget ? <ChatWidgetMount /> : null}
-      {isReady ? <Analytics /> : null}
-      {isReady ? <SpeedInsights /> : null}
+      {isReady && hasTrackingConsent ? <Analytics /> : null}
+      {isReady && hasTrackingConsent ? <SpeedInsights /> : null}
     </>
   );
 }

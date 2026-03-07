@@ -14,6 +14,8 @@ import {
   persistFreshnessProfileSummary,
 } from '@/lib/freshness-session';
 import { localizePath } from '@/lib/i18n/locale-path';
+import { buildFreshnessPlan } from '@/lib/freshness-plan';
+import { FreshnessPlanCard } from '@/components/freshness/FreshnessPlanCard';
 
 type Language = 'en' | 'fr';
 type QuestionId = 'q1' | 'q2' | 'q3' | 'q4' | 'q5';
@@ -551,6 +553,13 @@ async function persistFreshnessProfile({
     recommendedProductId: result.productId,
     recommendationReason: recommendationReason ?? null,
     source: 'QUIZ',
+    locale: language,
+    catCount: answers.q1 ? CAT_COUNT_BY_ANSWER[answers.q1] : null,
+    homeType: answers.q3 ? HOME_TYPE_BY_ANSWER[answers.q3] : null,
+    odorSeverity: answers.q4 ? ODOR_SEVERITY_BY_ANSWER[answers.q4] : null,
+    currentRemedy: answers.q5 ? CURRENT_REMEDY_BY_ANSWER[answers.q5] : null,
+    riskLevel: result.risk,
+    score: result.score,
   });
 
   await fetch('/api/freshness-profile', {
@@ -594,6 +603,20 @@ export default function SmellQuizContent() {
   const result = useMemo(() => calculateResult(copy.questions, answers), [answers, copy.questions]);
   const causeInsights = useMemo(() => buildCauseInsights(answers, copy), [answers, copy]);
   const learningArticles = useMemo(() => selectLearningArticles(answers), [answers]);
+  const freshnessPlan = useMemo(
+    () =>
+      buildFreshnessPlan({
+        locale: language,
+        catCount: answers.q1 ? CAT_COUNT_BY_ANSWER[answers.q1] : undefined,
+        homeType: answers.q3 ? HOME_TYPE_BY_ANSWER[answers.q3] : undefined,
+        odorSeverity: answers.q4 ? ODOR_SEVERITY_BY_ANSWER[answers.q4] : undefined,
+        currentRemedy: answers.q5 ? CURRENT_REMEDY_BY_ANSWER[answers.q5] : undefined,
+        riskLevel: result.risk,
+        score: result.score,
+        recommendedProductId: result.productId,
+      }),
+    [answers, language, result.productId, result.risk, result.score]
+  );
 
   const progress = useMemo(() => {
     if (currentStep <= 0) {
@@ -724,6 +747,10 @@ export default function SmellQuizContent() {
           locale: language,
           score: result.score,
           riskLevel: result.risk,
+          catCount: answers.q1 ? CAT_COUNT_BY_ANSWER[answers.q1] : undefined,
+          homeType: answers.q3 ? HOME_TYPE_BY_ANSWER[answers.q3] : undefined,
+          odorSeverity: answers.q4 ? ODOR_SEVERITY_BY_ANSWER[answers.q4] : undefined,
+          currentRemedy: answers.q5 ? CURRENT_REMEDY_BY_ANSWER[answers.q5] : undefined,
           recommendedProductId: result.productId,
           recommendationReason: copy.whySize[result.risk],
         }),
@@ -1014,6 +1041,8 @@ export default function SmellQuizContent() {
                       </Button>
                     </div>
                   </div>
+
+                  {freshnessPlan ? <FreshnessPlanCard plan={freshnessPlan} /> : null}
 
                   <div className="rounded-2xl border border-gray-200 dark:border-gray-800 bg-gray-100 dark:bg-gray-900 p-5 md:p-6">
                     <h4 className="text-lg font-bold text-gray-900 dark:text-gray-100 mb-2">

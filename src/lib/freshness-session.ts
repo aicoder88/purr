@@ -7,6 +7,13 @@ export interface StoredFreshnessProfileSummary {
   recommendedProductId: string | null;
   recommendationReason: string | null;
   source: 'QUIZ' | 'CHAT';
+  locale?: string | null;
+  catCount?: number | null;
+  homeType?: string | null;
+  odorSeverity?: string | null;
+  currentRemedy?: string | null;
+  riskLevel?: string | null;
+  score?: number | null;
 }
 
 function readCookieValue(name: string): string | null {
@@ -71,6 +78,13 @@ export function getStoredFreshnessProfile(
       recommendationReason:
         typeof parsed.recommendationReason === 'string' ? parsed.recommendationReason : null,
       source: parsed.source,
+      locale: typeof parsed.locale === 'string' ? parsed.locale : null,
+      catCount: typeof parsed.catCount === 'number' ? parsed.catCount : null,
+      homeType: typeof parsed.homeType === 'string' ? parsed.homeType : null,
+      odorSeverity: typeof parsed.odorSeverity === 'string' ? parsed.odorSeverity : null,
+      currentRemedy: typeof parsed.currentRemedy === 'string' ? parsed.currentRemedy : null,
+      riskLevel: typeof parsed.riskLevel === 'string' ? parsed.riskLevel : null,
+      score: typeof parsed.score === 'number' ? parsed.score : null,
     };
   } catch {
     return null;
