@@ -12,6 +12,7 @@ const LOCALIZED_ROUTE_PREFIXES = [
 const LOCALIZED_EXACT_ROUTE_PATHS = new Set([
   '/',
   '/reviews',
+  '/search',
   '/support',
   '/support/shipping',
   '/case-studies',

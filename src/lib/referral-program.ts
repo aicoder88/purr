@@ -626,7 +626,7 @@ export async function completeReferralPurchase({
   referralCode,
   refereeEmail,
   orderId,
-  orderValue,
+  orderValue: _orderValue,
 }: CompleteReferralPurchaseOptions): Promise<{
   success: boolean;
   alreadyProcessed: boolean;

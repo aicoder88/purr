@@ -17,9 +17,11 @@ describe('Translation Completeness', () => {
   let translations;
 
   beforeAll(() => {
+    const expectedLocales = ['en', 'fr'];
+
     // Discover translation files
     translationFiles = fs.readdirSync(TRANSLATION_DIR)
-      .filter(file => file.endsWith('.ts') && !['types.ts', 'index.ts', 'common.ts', 'seo-meta.ts'].includes(file))
+      .filter(file => expectedLocales.includes(path.basename(file, '.ts')))
       .map(file => ({
         locale: path.basename(file, '.ts'),
         path: path.join(TRANSLATION_DIR, file)

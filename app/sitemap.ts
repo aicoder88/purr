@@ -1,6 +1,12 @@
 import type { MetadataRoute } from 'next';
 import fs from 'node:fs';
 import path from 'node:path';
+import { ContentStore } from '@/lib/blog/content-store';
+import {
+  buildTaxonomyHubData,
+  CANONICAL_CATEGORY_SLUGS,
+  CANONICAL_TAG_SLUGS,
+} from '@/lib/blog/taxonomy';
 
 const SITE_URL = 'https://www.purrify.ca';
 
@@ -41,6 +47,12 @@ const SOLUTION_SLUGS = [
   'multiple-cats-odor-control',
   'natural-cat-litter-additive',
   'senior-cat-litter-solutions',
+];
+
+const COMPARISON_LAB_SLUGS = [
+  'activated-carbon-vs-baking-soda',
+  'best-cat-litter-odor-control',
+  'arm-and-hammer-alternative',
 ];
 
 const REDIRECTED_BLOG_SLUGS = new Set([
@@ -155,8 +167,9 @@ function entry(
   return item;
 }
 
-export default function sitemap(): MetadataRoute.Sitemap {
+export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const entries: MetadataRoute.Sitemap = [];
+  const store = new ContentStore();
 
   // === HOMEPAGE ===
   entries.push(entry('/', { priority: 1.0, changeFrequency: 'daily' }));
@@ -167,6 +180,14 @@ export default function sitemap(): MetadataRoute.Sitemap {
 
   // === BLOG INDEX ===
   entries.push(entry('/blog/', { priority: 0.8, changeFrequency: 'daily' }));
+
+  // === SEARCH HUB ===
+  entries.push(entry('/search/', { priority: 0.65, changeFrequency: 'daily', frPath: '/fr/search/' }));
+  entries.push(entry('/fr/search/', {
+    priority: 0.55,
+    changeFrequency: 'daily',
+    frPath: false,
+  }));
 
   // === EN BLOG POSTS ===
   const enPosts = getBlogSlugsWithDates('en');
@@ -208,6 +229,36 @@ export default function sitemap(): MetadataRoute.Sitemap {
     frPath: false,
   }));
 
+  // === BLOG TAXONOMY HUBS ===
+  for (const locale of ['en', 'fr'] as const) {
+    const posts = await store.getAllPosts(locale, false);
+    const localePrefix = locale === 'en' ? '' : '/fr';
+
+    for (const slug of CANONICAL_CATEGORY_SLUGS) {
+      if (!buildTaxonomyHubData(posts, 'category', slug)) {
+        continue;
+      }
+
+      entries.push(entry(`${localePrefix}/blog/category/${slug}/`, {
+        priority: locale === 'en' ? 0.65 : 0.55,
+        changeFrequency: 'weekly',
+        frPath: locale === 'en' ? `/fr/blog/category/${slug}/` : false,
+      }));
+    }
+
+    for (const slug of CANONICAL_TAG_SLUGS) {
+      if (!buildTaxonomyHubData(posts, 'tag', slug)) {
+        continue;
+      }
+
+      entries.push(entry(`${localePrefix}/blog/tag/${slug}/`, {
+        priority: locale === 'en' ? 0.55 : 0.45,
+        changeFrequency: 'weekly',
+        frPath: locale === 'en' ? `/fr/blog/tag/${slug}/` : false,
+      }));
+    }
+  }
+
   // === LEARN PAGES ===
   entries.push(entry('/learn/', { priority: 0.75, changeFrequency: 'weekly', frPath: false }));
   entries.push(entry('/learn/how-it-works/', { priority: 0.8, changeFrequency: 'monthly', frPath: false }));
@@ -224,6 +275,23 @@ export default function sitemap(): MetadataRoute.Sitemap {
     changeFrequency: 'monthly',
     frPath: false,
   }));
+  entries.push(entry('/learn/comparison-lab/', {
+    priority: 0.75,
+    changeFrequency: 'monthly',
+    frPath: '/fr/learn/comparison-lab/',
+  }));
+  entries.push(entry('/learn/comparison-lab/methodology/', {
+    priority: 0.7,
+    changeFrequency: 'monthly',
+    frPath: '/fr/learn/comparison-lab/methodology/',
+  }));
+  for (const slug of COMPARISON_LAB_SLUGS) {
+    entries.push(entry(`/learn/comparison-lab/${slug}/`, {
+      priority: 0.7,
+      changeFrequency: 'monthly',
+      frPath: `/fr/learn/comparison-lab/${slug}/`,
+    }));
+  }
 
   // === LEARN SOLUTIONS ===
   entries.push(entry('/learn/solutions/', { priority: 0.7, changeFrequency: 'monthly', frPath: false }));

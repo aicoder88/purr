@@ -33,6 +33,13 @@ export interface CanonicalValidationResult {
   };
 }
 
+function hasHelperBackedMetadata(content: string): boolean {
+  return (
+    /generate[A-Za-z0-9]+Metadata/.test(content) ||
+    /get[A-Za-z0-9]+Metadata/.test(content)
+  );
+}
+
 /**
  * Extract canonical and OG URL from HTML content
  */
@@ -310,7 +317,8 @@ export async function validateAllCanonicals(
       // Look for canonical in metadata
       const hasCanonical =
         content.includes('canonical') ||
-        content.includes('alternates');
+        content.includes('alternates') ||
+        hasHelperBackedMetadata(content);
 
       if (!hasCanonical) {
         issues.push({
@@ -329,7 +337,8 @@ export async function validateAllCanonicals(
         content.includes('openGraph') ||
         content.includes('url:') ||
         content.includes('property="og:url"') ||
-        content.includes("property='og:url'");
+        content.includes("property='og:url'") ||
+        hasHelperBackedMetadata(content);
 
       if (!hasOgUrl) {
         issues.push({

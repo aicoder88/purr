@@ -6,6 +6,7 @@
 import { validateAllPages } from './validate-seo-compliance';
 import { validateAllImages } from './lib/image-validator';
 import { validateAllCanonicals } from './lib/canonical-validator';
+import { validateSupportedLocaleSurface } from './validate-supported-locales';
 
 interface ValidationSummary {
   passed: boolean;
@@ -26,6 +27,10 @@ interface ValidationSummary {
       passed: boolean;
       errors: number;
       warnings: number;
+    };
+    supportedLocales?: {
+      passed: boolean;
+      errors: number;
     };
   };
 }
@@ -136,6 +141,32 @@ async function runPrebuildValidation(): Promise<ValidationSummary> {
     // Don't fail build on canonical validation errors
   }
 
+  // 4. Prevent unsupported locales from leaking into crawlable SEO surfaces.
+  console.log('4️⃣  Validating Supported Locale SEO Surface...\n');
+  try {
+    const localeResult = await validateSupportedLocaleSurface();
+
+    summary.details.supportedLocales = {
+      passed: localeResult.passed,
+      errors: localeResult.issues.length,
+    };
+
+    summary.errors += localeResult.issues.length;
+
+    if (!localeResult.passed) {
+      summary.passed = false;
+      console.error(
+        `   ✗ Supported locales: ${localeResult.issues.length} unsupported locale leak(s) found\n`
+      );
+    } else {
+      console.log('   ✓ Supported locales: no unsupported locale leaks found\n');
+    }
+  } catch (error) {
+    console.error(`   ✗ Supported locale validation failed: ${error}\n`);
+    summary.passed = false;
+    summary.errors++;
+  }
+
   return summary;
 }
 
@@ -165,6 +196,10 @@ async function main() {
 
     if (summary.details.canonicals) {
       console.log(`Canonicals: ${summary.details.canonicals.errors} errors, ${summary.details.canonicals.warnings} warnings`);
+    }
+
+    if (summary.details.supportedLocales) {
+      console.log(`Supported locales: ${summary.details.supportedLocales.errors} errors`);
     }
 
     console.log('═'.repeat(70));
