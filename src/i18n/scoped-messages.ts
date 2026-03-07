@@ -78,6 +78,7 @@ const SCOPE_MESSAGE_KEYS: Record<MessageScope, string[]> = {
   ],
   learn: [
     'ammonia',
+    'comparisonLab',
     'faq',
     'faqPage',
     'howItWorks',

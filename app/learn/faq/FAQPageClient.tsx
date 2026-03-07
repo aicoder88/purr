@@ -1,7 +1,7 @@
 'use client';
 
 import Link from 'next/link';
-import { useState, useCallback, type ComponentType } from 'react';
+import { useState, useCallback, useEffect, type ComponentType } from 'react';
 import { Container } from '@/components/ui/container';
 import { Button } from '@/components/ui/button';
 import { useTranslation } from '@/lib/translation-context';
@@ -163,6 +163,34 @@ export default function FAQPageClient() {
         ? prev.filter(item => item !== id)
         : [...prev, id]
     );
+  }, []);
+
+  useEffect(() => {
+    if (typeof window === 'undefined') {
+      return;
+    }
+
+    const syncOpenItemWithHash = () => {
+      const hash = window.location.hash;
+      const match = hash.match(/^#faq-(\d+)$/);
+
+      if (!match) {
+        return;
+      }
+
+      const targetId = Number.parseInt(match[1], 10);
+
+      if (!Number.isNaN(targetId)) {
+        setOpenItems((prev) => (prev.includes(targetId) ? prev : [...prev, targetId]));
+      }
+    };
+
+    syncOpenItemWithHash();
+    window.addEventListener('hashchange', syncOpenItemWithHash);
+
+    return () => {
+      window.removeEventListener('hashchange', syncOpenItemWithHash);
+    };
   }, []);
 
   const handleSearchChange = useCallback((e: React.ChangeEvent<HTMLInputElement>) => {
@@ -442,7 +470,11 @@ export default function FAQPageClient() {
 
                         <div className="space-y-4">
                           {categoryFAQs.map((item: FAQItem) => (
-                            <div key={item.id} className="bg-white/80 dark:bg-gray-800/80 backdrop-blur-lg rounded-xl shadow-sm border border-electric-indigo/10 dark:border-electric-indigo/20 overflow-hidden hover:shadow-md transition-all duration-300">
+                            <div
+                              id={`faq-${item.id}`}
+                              key={item.id}
+                              className="scroll-mt-24 bg-white/80 dark:bg-gray-800/80 backdrop-blur-lg rounded-xl shadow-sm border border-electric-indigo/10 dark:border-electric-indigo/20 overflow-hidden hover:shadow-md transition-all duration-300"
+                            >
                               <button
                                 onClick={() => handleToggleItem(item.id)}
                                 className="w-full p-6 text-left flex items-center justify-between bg-white/80 dark:bg-gray-800/80 backdrop-blur-lg hover:bg-gray-50 dark:hover:bg-gray-700/50 transition-all duration-300"
