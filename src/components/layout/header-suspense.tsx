@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { ChevronDown, MapPin, Menu, X } from 'lucide-react';
@@ -31,6 +31,131 @@ interface HeaderMobileMenuProps {
 
 const mobileDropdownLinkBase =
   'mx-2 my-0.5 flex min-h-[44px] items-center rounded-md py-3 text-gray-700 transition-colors hover:bg-gray-50 hover:text-brand-pink dark:bg-gray-900/80 dark:text-gray-200 dark:hover:bg-gray-700/80 dark:hover:text-brand-pink-400';
+const desktopDropdownLinkBase =
+  'block rounded-md px-4 py-2 text-sm text-gray-700 transition-colors hover:bg-gray-50 hover:text-brand-pink focus:bg-gray-50 focus:text-brand-pink focus:outline-none focus:ring-2 focus:ring-brand-pink focus:ring-offset-1 dark:bg-gray-900/80 dark:text-gray-200 dark:hover:bg-gray-700/80 dark:hover:text-brand-pink-400 dark:focus:bg-gray-700/80 dark:focus:ring-brand-pink-400';
+const desktopMenuCloseDelayMs = 500;
+
+function DesktopNavigationItem({ item }: { item: NavigationItem }) {
+  const [isOpen, setIsOpen] = useState(false);
+  const closeTimeoutRef = useRef<NodeJS.Timeout | null>(null);
+
+  useEffect(() => {
+    return () => {
+      if (closeTimeoutRef.current) {
+        clearTimeout(closeTimeoutRef.current);
+      }
+    };
+  }, []);
+
+  function clearCloseTimer() {
+    if (closeTimeoutRef.current) {
+      clearTimeout(closeTimeoutRef.current);
+      closeTimeoutRef.current = null;
+    }
+  }
+
+  function openImmediately() {
+    clearCloseTimer();
+    setIsOpen(true);
+  }
+
+  function closeWithDelay() {
+    if (!isOpen) {
+      return;
+    }
+
+    clearCloseTimer();
+    closeTimeoutRef.current = setTimeout(() => {
+      setIsOpen(false);
+      closeTimeoutRef.current = null;
+    }, desktopMenuCloseDelayMs);
+  }
+
+  function closeImmediately() {
+    clearCloseTimer();
+    setIsOpen(false);
+  }
+
+  if (!item.hasDropdown) {
+    return (
+      <Link
+        href={item.href}
+        prefetch={false}
+        className="font-medium text-gray-700 transition-colors hover:text-brand-pink dark:text-gray-200 dark:hover:text-brand-pink-400"
+      >
+        {item.label}
+      </Link>
+    );
+  }
+
+  return (
+    <div
+      className="relative"
+      onMouseEnter={openImmediately}
+      onMouseLeave={closeWithDelay}
+      onFocus={openImmediately}
+      onBlur={(event) => {
+        if (!event.currentTarget.contains(event.relatedTarget as Node | null)) {
+          closeImmediately();
+        }
+      }}
+    >
+      <Link
+        href={item.href}
+        prefetch={false}
+        className="flex items-center rounded-sm font-medium text-gray-700 transition-colors hover:text-brand-pink focus:text-brand-pink focus:outline-none focus:ring-2 focus:ring-brand-pink focus:ring-offset-2 focus:ring-offset-white dark:text-gray-200 dark:hover:text-brand-pink-400 dark:focus:text-brand-pink-400 dark:focus:ring-brand-pink-400 dark:focus:ring-offset-gray-800"
+        aria-haspopup="menu"
+        aria-expanded={isOpen}
+      >
+        {item.label}
+        <ChevronDown className={`ml-1 h-4 w-4 transition-transform duration-200 ${isOpen ? 'rotate-180' : ''}`} />
+      </Link>
+      <div
+        className={`absolute left-0 top-full z-50 mt-1 max-h-96 w-64 overflow-y-auto rounded-lg border border-gray-200 bg-white p-2 shadow-xl transition-all duration-150 dark:border-gray-600/50 dark:bg-gray-800/95 ${
+          isOpen ? 'visible opacity-100' : 'invisible pointer-events-none opacity-0'
+        }`}
+        role="menu"
+        onMouseEnter={openImmediately}
+        onMouseLeave={closeWithDelay}
+      >
+        {item.dropdownItems?.map((dropdownItem) =>
+          dropdownItem.isGroupHeader ? (
+            <div
+              key={dropdownItem.label}
+              className="mt-2 px-4 py-2 text-xs font-bold uppercase tracking-wider text-gray-500 first:mt-0 dark:text-gray-400"
+            >
+              {dropdownItem.label}
+            </div>
+          ) : (
+            <Link
+              key={dropdownItem.label}
+              href={dropdownItem.href || ''}
+              prefetch={false}
+              className={`${desktopDropdownLinkBase} ${dropdownItem.indent ? 'pl-6' : ''}`}
+              role="menuitem"
+            >
+              {dropdownItem.label}
+            </Link>
+          ),
+        )}
+      </div>
+    </div>
+  );
+}
+
+export function HeaderDesktopNavigation({
+  navigationItems,
+}: {
+  navigationItems: NavigationItem[];
+}) {
+  return (
+    <nav className="hidden items-center space-x-8 md:flex">
+      {navigationItems.map((item) => (
+        <DesktopNavigationItem key={item.id} item={item} />
+      ))}
+    </nav>
+  );
+}
 
 export function HeaderMobileMenu({
   navigationItems,

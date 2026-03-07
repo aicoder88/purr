@@ -2,6 +2,7 @@ import { NextResponse } from 'next/server';
 import type { NextRequest } from 'next/server';
 import { getToken } from 'next-auth/jwt';
 import { getLocaleFromPath, localizePath } from './src/lib/i18n/locale-path';
+import { shouldRedirectToLocalizedPath } from './src/lib/i18n/locale-redirect';
 import type { Locale } from './src/i18n/config';
 
 const ADMIN_ONLY_ROUTES = ['/admin/blog/categories', '/admin/blog/tags'];
@@ -194,7 +195,7 @@ export async function proxy(request: NextRequest) {
     const preferredLocale = detectPreferredLocale(request);
     if (preferredLocale === 'fr') {
       const localizedPath = localizePath(pathname, preferredLocale);
-      if (localizedPath !== pathname) {
+      if (shouldRedirectToLocalizedPath(pathname, localizedPath)) {
         const localizedUrl = request.nextUrl.clone();
         localizedUrl.pathname = localizedPath;
 

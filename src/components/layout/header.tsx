@@ -1,11 +1,11 @@
 import Link from "next/link";
 import Image from "next/image";
-import { ChevronDown, MapPin } from "lucide-react";
+import { MapPin } from "lucide-react";
 import { getLocale, getTranslations } from "next-intl/server";
 import { Button } from "@/components/ui/button";
 import { Container } from "@/components/ui/container";
 import { LanguageSwitcher } from "@/components/ui/language-switcher";
-import { HeaderMobileMenu } from "./header-suspense";
+import { HeaderDesktopNavigation, HeaderMobileMenu } from "./header-suspense";
 
 interface DropdownItem {
   label: string;
@@ -32,9 +32,6 @@ const headerUiCopy: Record<SupportedLocale, { logoAlt: string }> = {
     logoAlt: "Purrify - additif premium de charbon actif pour litiere - accueil",
   },
 };
-
-const dropdownLinkBase =
-  "block rounded-md px-4 py-2 text-sm text-gray-700 transition-colors hover:bg-gray-50 hover:text-brand-pink focus:bg-gray-50 focus:text-brand-pink focus:outline-none focus:ring-2 focus:ring-brand-pink focus:ring-offset-1 dark:text-gray-200 dark:bg-gray-900/80 dark:hover:bg-gray-700/80 dark:hover:text-brand-pink-400 dark:focus:bg-gray-700/80 dark:focus:ring-brand-pink-400";
 
 function getNavigationItems(
   t: Awaited<ReturnType<typeof getTranslations>>,
@@ -226,59 +223,6 @@ function getNavigationItems(
   ];
 }
 
-function DesktopNavigationItem({ item }: { item: NavigationItem }) {
-  if (!item.hasDropdown) {
-    return (
-      <Link
-        href={item.href}
-        prefetch={false}
-        className="text-gray-700 transition-colors font-medium hover:text-brand-pink dark:text-gray-200 dark:hover:text-brand-pink-400"
-      >
-        {item.label}
-      </Link>
-    );
-  }
-
-  return (
-    <div className="group relative">
-      <Link
-        href={item.href}
-        prefetch={false}
-        className="flex items-center rounded-sm font-medium text-gray-700 transition-colors hover:text-brand-pink focus:text-brand-pink focus:outline-none focus:ring-2 focus:ring-brand-pink focus:ring-offset-2 focus:ring-offset-white dark:text-gray-200 dark:hover:text-brand-pink-400 dark:focus:text-brand-pink-400 dark:focus:ring-brand-pink-400 dark:focus:ring-offset-gray-800"
-        aria-haspopup="menu"
-      >
-        {item.label}
-        <ChevronDown className="ml-1 h-4 w-4" />
-      </Link>
-      <div
-        className="invisible pointer-events-none absolute left-0 top-full z-50 mt-1 max-h-96 w-64 overflow-y-auto rounded-lg border border-gray-200 bg-white p-2 opacity-0 shadow-xl transition-all group-hover:visible group-hover:pointer-events-auto group-hover:opacity-100 group-focus-within:visible group-focus-within:pointer-events-auto group-focus-within:opacity-100 dark:border-gray-600/50 dark:bg-gray-800/95"
-        role="menu"
-      >
-        {item.dropdownItems?.map((dropdownItem) =>
-          dropdownItem.isGroupHeader ? (
-            <div
-              key={dropdownItem.label}
-              className="mt-2 px-4 py-2 text-xs font-bold uppercase tracking-wider text-gray-500 first:mt-0 dark:text-gray-400"
-            >
-              {dropdownItem.label}
-            </div>
-          ) : (
-            <Link
-              key={dropdownItem.label}
-              href={dropdownItem.href || ""}
-              prefetch={false}
-              className={`${dropdownLinkBase} ${dropdownItem.indent ? "pl-6" : ""}`}
-              role="menuitem"
-            >
-              {dropdownItem.label}
-            </Link>
-          ),
-        )}
-      </div>
-    </div>
-  );
-}
-
 export async function Header() {
   const t = await getTranslations();
   const locale = await getLocale();
@@ -317,11 +261,7 @@ export async function Header() {
             </Link>
           </div>
 
-          <nav className="hidden items-center space-x-8 md:flex">
-            {navigationItems.map((item) => (
-              <DesktopNavigationItem key={item.id} item={item} />
-            ))}
-          </nav>
+          <HeaderDesktopNavigation navigationItems={navigationItems} />
 
           <div className="hidden items-center space-x-3 md:flex">
             <Button
