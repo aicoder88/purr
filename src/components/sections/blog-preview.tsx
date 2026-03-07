@@ -1,11 +1,9 @@
-"use client";
-
 import { Container } from "@/components/ui/container";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
-import { useTranslation } from "@/lib/translation-context";
 import Image from 'next/image';
 import { sampleBlogPosts } from "@/data/blog-posts";
+import { getLocale, getTranslations } from "next-intl/server";
 
 interface BlogPost {
   title: string;
@@ -62,8 +60,9 @@ function normalizeBlogPosts(data: unknown): BlogPost[] {
     .filter((post): post is BlogPost => post !== null);
 }
 
-export function BlogPreview() {
-  const { t, locale } = useTranslation();
+export async function BlogPreview() {
+  const t = await getTranslations();
+  const locale = await getLocale();
   const blogPosts = normalizeBlogPosts(sampleBlogPosts.slice(0, 3));
 
   return (
@@ -74,13 +73,13 @@ export function BlogPreview() {
       <Container>
         <div className="max-w-3xl mx-auto text-center mb-16">
           <div className="inline-block px-4 py-1 bg-gradient-to-r from-brand-yellow/25 via-brand-pink/25 to-brand-pink/25 rounded-full border border-brand-pink/30 text-gray-900 dark:text-gray-100 font-medium text-sm mb-4">
-            {t.blogSection.catCareTips}
+            {t('blogSection.catCareTips')}
           </div>
           <h2 className="font-heading text-3xl md:text-5xl font-bold tracking-tight mb-4 text-gray-900 dark:text-white">
-            {t.blogSection.fromOurBlog}
+            {t('blogSection.fromOurBlog')}
           </h2>
           <p className="text-lg sm:text-xl text-gray-600 dark:text-gray-300">
-            {t.blogSection.description}
+            {t('blogSection.description')}
           </p>
         </div>
 
@@ -112,7 +111,7 @@ export function BlogPreview() {
                     />
                   </div>
                   <div className="absolute top-3 right-3 sm:top-4 sm:right-4 bg-gradient-to-r from-brand-yellow via-brand-pink to-brand-pink px-2 py-1 sm:px-3 sm:py-1 rounded-full shadow-md text-xs text-gray-950 font-medium">
-                    {t.blogSection.newPost}
+                    {t('blogSection.newPost')}
                   </div>
                 </div>
                 <div className="p-4 sm:p-6">
@@ -131,7 +130,7 @@ export function BlogPreview() {
                 </div>
                 <div className="px-6 pb-6 pt-0">
                   <div className="text-gray-700 dark:text-gray-300 font-medium flex items-center hover:text-gray-900 dark:hover:text-white transition-colors">
-                    {t.blogSection.readFullArticle}
+                    {t('blogSection.readFullArticle')}
                     <svg
                       className="w-4 h-4 ml-2 transform group-hover:translate-x-1 transition-transform duration-300"
                       fill="none"
@@ -158,7 +157,7 @@ export function BlogPreview() {
             className="bg-brand-red-600 hover:bg-brand-red-700 text-white dark:text-gray-100 font-semibold py-4 px-8 rounded-full transition-all duration-300 border-0"
           >
             <Link href={locale === 'fr' ? '/fr/blog' : '/blog'}>
-              {t.blogSection.viewAllArticles}
+              {t('blogSection.viewAllArticles')}
             </Link>
           </Button>
         </div>

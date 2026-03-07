@@ -3,7 +3,7 @@
 import { Container } from '@/components/ui/container';
 import { useTranslations, useLocale } from 'next-intl';
 import { Sparkles, Building2, Shield, Clock, Leaf, DollarSign, Quote } from 'lucide-react';
-import { TESTIMONIALS } from '@/lib/constants';
+import type { TranslationType } from '@/translations/types';
 
 export interface B2BPartnerBenefit {
   id: string;
@@ -11,7 +11,7 @@ export interface B2BPartnerBenefit {
   challenge: string;
   benefits: string[];
   idealFor: string;
-  testimonialIndex?: number; // Index in TESTIMONIALS array for real customer quote
+  testimonialId?: string;
 }
 
 // B2B Partner Benefits by Business Type
@@ -27,7 +27,7 @@ export const b2bPartnerBenefits: B2BPartnerBenefit[] = [
       'Wholesale pricing for clinics',
     ],
     idealFor: 'Clinics with boarding facilities, cat-only practices, and animal hospitals',
-    testimonialIndex: 7, // Dr. Amara Chen, veterinarian
+    testimonialId: 'eloise-martel',
   },
   {
     id: 'catCafe',
@@ -40,7 +40,7 @@ export const b2bPartnerBenefits: B2BPartnerBenefit[] = [
       'Helps maintain positive guest reviews',
     ],
     idealFor: 'Cat cafes, cat lounges, and cat-themed restaurants',
-    testimonialIndex: 3, // François B. - about keeping spaces fresh
+    testimonialId: 'maiwenn-cote',
   },
   {
     id: 'shelter',
@@ -53,7 +53,7 @@ export const b2bPartnerBenefits: B2BPartnerBenefit[] = [
       'Extends litter life to reduce costs',
     ],
     idealFor: 'Animal shelters, rescue organizations, and foster networks',
-    testimonialIndex: 11, // Noor A. - three cats
+    testimonialId: 'zelie-paquin',
   },
 ];
 
@@ -92,6 +92,10 @@ export function B2BCaseStudies({
 }: B2BPartnerBenefitsProps) {
   const t = useTranslations();
   const locale = useLocale();
+  const testimonialLibrary = t.raw('testimonialLibrary') as TranslationType['testimonialLibrary'];
+  const consumerTestimonials = new Map(
+    testimonialLibrary.consumer.map((testimonial) => [testimonial.id, testimonial])
+  );
   const challengeLabel =
     locale === 'fr'
       ? 'Le defi'
@@ -129,11 +133,16 @@ export function B2BCaseStudies({
             <p className="text-xl text-gray-700 dark:text-gray-200 max-w-2xl mx-auto">
               {sectionSubtitle}
             </p>
-          </div>
+        </div>
 
-          {/* Benefits Grid */}
-          <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
-            {benefitsToShow.map((benefit) => (
+        {/* Benefits Grid */}
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+          {benefitsToShow.map((benefit) => {
+            const testimonial = benefit.testimonialId
+              ? consumerTestimonials.get(benefit.testimonialId)
+              : undefined;
+
+            return (
               <div
                 key={benefit.id}
                 className="bg-white dark:bg-gray-900 rounded-2xl shadow-xl border border-gray-200 dark:border-gray-700 overflow-hidden hover:shadow-2xl transition-shadow duration-300"
@@ -184,16 +193,16 @@ export function B2BCaseStudies({
                   </div>
 
                   {/* Real Customer Testimonial */}
-                  {benefit.testimonialIndex !== undefined && TESTIMONIALS[benefit.testimonialIndex] && (
+                  {testimonial && (
                     <div className="mt-6 pt-6 border-t border-gray-200 dark:border-gray-700">
                       <div className="flex items-start gap-3">
                         <Quote className="w-5 h-5 text-[#3694FF] dark:text-[#60A5FA] flex-shrink-0 mt-1" />
                         <div>
                           <p className="text-sm text-gray-600 dark:text-gray-400 italic leading-relaxed">
-                            “{TESTIMONIALS[benefit.testimonialIndex].text}”
+                            “{testimonial.quote}”
                           </p>
                           <p className="mt-2 text-xs font-semibold text-gray-800 dark:text-gray-200">
-                            — {TESTIMONIALS[benefit.testimonialIndex].author}
+                            — {testimonial.author}
                           </p>
                         </div>
                       </div>
@@ -201,7 +210,8 @@ export function B2BCaseStudies({
                   )}
                 </div>
               </div>
-            ))}
+            );
+          })}
           </div>
 
           {/* CTA */}

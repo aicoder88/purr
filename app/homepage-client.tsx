@@ -3,7 +3,6 @@
 import dynamic from 'next/dynamic';
 import { ErrorBoundary } from '@/components/ui/error-boundary';
 import { ScrollAnchor } from '@/components/ui/scroll-anchor';
-import { CurrencyProvider } from '@/lib/currency-context';
 import { TrustBadges } from '@/components/social-proof/TrustBadges';
 import { Container } from '@/components/ui/container';
 import type { Currency } from '@/lib/geo/currency-detector';
@@ -39,12 +38,12 @@ interface HomepageClientProps {
   currency: Currency;
 }
 
-export function HomepageClient({ currency }: HomepageClientProps) {
+export function HomepageClient(_props: HomepageClientProps) {
   // A/B Test: Social Proof Position (badges moved to bottom of page)
   // Removed
 
   return (
-    <CurrencyProvider detectedCurrency={currency}>
+    <>
       {/* Enhanced Product Comparison - Track conversion when user scrolls here */}
       <ScrollAnchor id="products" />
       <ErrorBoundary>
@@ -62,6 +61,6 @@ export function HomepageClient({ currency }: HomepageClientProps) {
       <ErrorBoundary>
         <CTA />
       </ErrorBoundary>
-    </CurrencyProvider>
+    </>
   );
 }

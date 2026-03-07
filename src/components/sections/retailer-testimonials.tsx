@@ -2,6 +2,7 @@ import { Container } from '@/components/ui/container';
 import { useTranslations, useLocale } from 'next-intl';
 import Image from 'next/image';
 import { ReactNode } from 'react';
+import type { TranslationType } from '@/translations/types';
 
 // Types
 interface TestimonialLogo {
@@ -13,15 +14,13 @@ interface TestimonialLogo {
 }
 
 interface Testimonial {
-  name: string;
-  title: string;
+  id: string;
+  businessName: string;
+  businessType: string;
   location: string;
   quote: string;
   logo: TestimonialLogo;
-  stats: {
-    label: string;
-    value: string;
-  };
+  metric?: string;
 }
 
 interface BusinessMetric {
@@ -74,60 +73,36 @@ function ClockIcon() {
   );
 }
 
-// Data
-const TESTIMONIALS: Testimonial[] = [
-  {
-    name: 'Pattes et Griffes – Sainte‑Thérèse',
-    title: 'Store Owner / Manager',
-    location: 'Sainte‑Thérèse, QC',
-    quote: "Our customers ask for Purrify by name now. It's an easy recommendation at the counter and reorders have been consistent month after month.",
-    logo: {
-      src: 'https://pattesgriffes.com/static/frontend/Sm/petshop_child/fr_FR/images/fonts/logo.svg',
-      alt: 'Pattes et Griffes Logo',
-      width: 64,
-      height: 64,
-      whiteBg: true
-    },
-    stats: {
-      label: 'Average Reorder Cycle',
-      value: '30 days'
-    }
+const RETAILER_LOGOS: Record<string, TestimonialLogo> = {
+  'pattes-et-griffes-sainte-therese': {
+    src: 'https://pattesgriffes.com/static/frontend/Sm/petshop_child/fr_FR/images/fonts/logo.svg',
+    alt: 'Pattes et Griffes Logo',
+    width: 64,
+    height: 64,
+    whiteBg: true,
   },
-  {
-    name: 'Chico – Boul. St‑Laurent (Montreal)',
-    title: 'Store Manager',
-    location: 'Montreal, QC',
-    quote: 'Simple to stock, strong margins, and it moves. The POS materials helped our team explain the benefits quickly to shoppers.',
-    logo: {
-      src: 'https://www.chico.ca/wp-content/themes/boutiquechico/img/chico.svg',
-      alt: "Chico - Boutique d'animaux Logo",
-      width: 64,
-      height: 64,
-      whiteBg: true
-    },
-    stats: {
-      label: 'Shelf Sell‑Through',
-      value: 'High'
-    }
+  'chico-arthur-sauve-laval': {
+    src: 'https://www.chico.ca/wp-content/themes/boutiquechico/img/chico.svg',
+    alt: "Chico - Boutique d'animaux Logo",
+    width: 64,
+    height: 64,
+    whiteBg: true,
   },
-  {
-    name: 'KONG ANIMALERIE',
-    title: 'Owner',
-    location: 'Montreal, QC',
-    quote: "Great add‑on at checkout. Customers come back for the larger sizes after trying it once, which tells us it's delivering results.",
-    logo: {
-      src: '/optimized/stores/kong-animalerie.webp',
-      alt: 'KONG ANIMALERIE - Montreal Pet Store Logo',
-      width: 64,
-      height: 64,
-      whiteBg: true
-    },
-    stats: {
-      label: 'Repeat Purchases',
-      value: 'Strong',
-    },
+  'kong-animalerie-montreal': {
+    src: '/optimized/stores/kong-animalerie.webp',
+    alt: 'KONG ANIMALERIE - Montreal Pet Store Logo',
+    width: 64,
+    height: 64,
+    whiteBg: true,
   },
-];
+  'chico-st-laurent-montreal': {
+    src: 'https://www.chico.ca/wp-content/themes/boutiquechico/img/chico.svg',
+    alt: "Chico - Boutique d'animaux Logo",
+    width: 64,
+    height: 64,
+    whiteBg: true,
+  },
+};
 
 const BUSINESS_METRICS: BusinessMetric[] = [
   {
@@ -159,6 +134,23 @@ const BUSINESS_METRICS: BusinessMetric[] = [
 export function RetailerTestimonials() {
   const t = useTranslations();
   const locale = useLocale();
+  const testimonialLibrary = t.raw('testimonialLibrary') as TranslationType['testimonialLibrary'];
+  const testimonials: Testimonial[] = testimonialLibrary.retailer.flatMap((testimonial) => {
+      const logo = RETAILER_LOGOS[testimonial.id];
+      if (!logo) {
+        return [];
+      }
+
+      return [{
+        id: testimonial.id,
+        businessName: testimonial.businessName,
+        businessType: testimonial.businessType,
+        location: testimonial.location,
+        quote: testimonial.quote,
+        metric: testimonial.metric,
+        logo,
+      }];
+    });
   const caseStudyCopy =
     locale === 'fr'
       ? {
@@ -188,9 +180,9 @@ export function RetailerTestimonials() {
 
         {/* Testimonials Grid */}
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 mb-16">
-          {TESTIMONIALS.map((testimonial, index) => (
+          {testimonials.map((testimonial) => (
             <div
-              key={index}
+              key={testimonial.id}
               className="bg-white dark:bg-gray-900 rounded-xl p-6 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2"
             >
               <div className="flex items-center mb-4">
@@ -200,8 +192,8 @@ export function RetailerTestimonials() {
                   )}
                 </div>
                 <div>
-                  <h4 className="font-bold text-gray-900 dark:text-gray-50">{testimonial.name}</h4>
-                  <p className="text-sm text-gray-600 dark:text-gray-300">{testimonial.title}</p>
+                  <h4 className="font-bold text-gray-900 dark:text-gray-50">{testimonial.businessName}</h4>
+                  <p className="text-sm text-gray-600 dark:text-gray-300">{testimonial.businessType}</p>
                   <p className="text-xs text-gray-500 dark:text-gray-400">{testimonial.location}</p>
                 </div>
               </div>
@@ -210,12 +202,11 @@ export function RetailerTestimonials() {
                 "{testimonial.quote}"
               </blockquote>
 
-              <div className="pt-4 border-t border-gray-200 dark:border-gray-700">
-                <div className="flex justify-between items-center">
-                  <span className="text-sm text-gray-600 dark:text-gray-300">{testimonial.stats.label}</span>
-                  <span className={`font-bold ${BRAND_TEXT}`}>{testimonial.stats.value}</span>
+              {testimonial.metric ? (
+                <div className="pt-4 border-t border-gray-200 dark:border-gray-700">
+                  <span className={`font-bold ${BRAND_TEXT}`}>{testimonial.metric}</span>
                 </div>
-              </div>
+              ) : null}
             </div>
           ))}
         </div>

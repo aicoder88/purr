@@ -1,5 +1,3 @@
-"use client";
-
 import { Container } from "@/components/ui/container";
 import {
   IconAnyLitter,
@@ -11,8 +9,8 @@ import {
 } from "@/components/icons/custom-benefit-icons";
 import Image from "next/image";
 import Link from "next/link";
-import { useLocale, useTranslations } from "next-intl";
 import type { ComponentType } from "react";
+import { getLocale, getTranslations } from "next-intl/server";
 
 type CardConfig = {
   icon: ComponentType<{ className?: string }>;
@@ -67,20 +65,18 @@ const CARD_CONFIG: CardConfig[] = [
   },
 ];
 
-export function WhyPurrify() {
-  const t = useTranslations();
-  const locale = useLocale();
+export async function WhyPurrify() {
+  const t = await getTranslations();
+  const locale = await getLocale();
   const localePrefix = locale === "fr" ? "/fr" : "";
 
   const read = (keys: string[]): string => {
     for (const key of keys) {
-      try {
+      if (t.has(key as never)) {
         const value = t(key as never);
         if (value && typeof value === "string" && value.trim().length > 0) {
           return value;
         }
-      } catch {
-        continue;
       }
     }
     return "";
@@ -104,11 +100,11 @@ export function WhyPurrify() {
           <h2 className="font-heading text-3xl md:text-4xl font-semibold tracking-tight text-gray-900 dark:text-white">
             {t("whyPurrify.title")}
           </h2>
-          {t("whyPurrify.subtitle") && (
+          {t.has("whyPurrify.subtitle") ? (
             <p className="mt-3 text-base md:text-lg text-gray-600 dark:text-gray-400 leading-relaxed">
               {t("whyPurrify.subtitle")}
             </p>
-          )}
+          ) : null}
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">

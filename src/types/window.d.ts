@@ -3,7 +3,6 @@
 declare global {
   interface Window {
     gtag?: (...args: unknown[]) => void;
-    fbq?: (...args: unknown[]) => void;
     ttq?: {
       load: (pixelId: string) => void;
       page: () => void;

@@ -62,7 +62,7 @@ const nextConfig = {
   poweredByHeader: false,
   generateEtags: true,
   experimental: {
-    // optimizeCss: true, // Disabled: incompatible with Next.js 16 Turbopack (requires lightningcss native binary)
+    optimizeCss: true,
     scrollRestoration: true,
     esmExternals: true,
     optimizePackageImports: OPTIMIZE_PACKAGE_IMPORTS,

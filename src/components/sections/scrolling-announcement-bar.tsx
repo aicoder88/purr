@@ -1,10 +1,8 @@
-"use client";
-
 import { Leaf, ShieldCheck, Truck } from "lucide-react";
-import { useTranslations } from "next-intl";
+import { getTranslations } from "next-intl/server";
 
-export function ScrollingAnnouncementBar() {
-  const t = useTranslations();
+export async function ScrollingAnnouncementBar() {
+  const t = await getTranslations();
 
   const chips = [
     {

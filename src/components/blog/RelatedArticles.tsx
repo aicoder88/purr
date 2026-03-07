@@ -106,7 +106,7 @@ const ALL_ARTICLES: Article[] = [
   {
     title: 'Ammonia Smell from Cat Litter Solution',
     href: '/learn/solutions/ammonia-smell-cat-litter',
-    image: '/optimized/marketing/catonbed.avif',
+    image: '/optimized/marketing/catonbed-640w.avif',
     alt: 'Cat relaxing on a freshly made bed in a clean home'
   },
   {

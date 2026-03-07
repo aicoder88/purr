@@ -85,7 +85,7 @@ export const PAGE_IMAGES: Record<string, PageImage> = {
 
   // Learn pages
   '/learn/solutions/ammonia-smell-cat-litter': {
-    image: '/optimized/marketing/catonbed.avif',
+    image: '/optimized/marketing/catonbed-640w.avif',
     alt: 'Cat relaxing on a freshly made bed in a clean home',
   },
   '/learn/solutions/apartment-cat-smell-solution': {
@@ -149,7 +149,7 @@ export const PAGE_IMAGES: Record<string, PageImage> = {
     alt: 'Frequently asked questions',
   },
   '/learn/cat-litter-ammonia-health-risks': {
-    image: '/optimized/marketing/catonbed.avif',
+    image: '/optimized/marketing/catonbed-640w.avif',
     alt: 'Understanding cat litter ammonia risks',
   },
 
@@ -172,7 +172,7 @@ export const PAGE_IMAGES: Record<string, PageImage> = {
     image: '/optimized/products/three-bags-no-bg.webp',
     alt: 'Shipping information',
   },
-  
+
   // SEO FIX (Feb 2026): Added images for /learn/answers/ pages
   '/learn/answers/does-activated-carbon-work-for-cat-litter': {
     image: '/optimized/blog/activated-carbon-benefits.webp',
@@ -222,13 +222,13 @@ export const PAGE_IMAGES: Record<string, PageImage> = {
     image: '/optimized/blog/cat-fresh-home-ammonia.jpg',
     alt: 'House smelling like cat pee solutions',
   },
-  
+
   // SEO FIX (Feb 2026): Added images for alternatives pages
   '/learn/alternatives/arm-and-hammer-cat-litter-deodorizer-alternative': {
     image: '/optimized/blog/activated-carbon-vs-baking-soda-comparison.webp',
     alt: 'Better alternative to Arm & Hammer cat litter deodorizer',
   },
-  
+
   // SEO FIX (Feb 2026): Added images for tools and science pages
   '/tools/cat-litter-calculator': {
     image: '/optimized/blog/cat-litter-deodorizer-guide.webp',

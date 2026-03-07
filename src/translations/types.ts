@@ -1394,6 +1394,39 @@ export interface TranslationType {
     readMoreReviews: string;
   };
 
+  testimonialLibrary: {
+    consumer: Array<{
+      id: string;
+      author: string;
+      location: string;
+      quote: string;
+      rating?: number;
+      verified?: boolean;
+    }>;
+    retailer: Array<{
+      id: string;
+      businessName: string;
+      businessType: string;
+      location: string;
+      quote: string;
+      metric?: string;
+    }>;
+    contextual: {
+      homepageSubscription: {
+        quote: string;
+      };
+      upsell: {
+        quote: string;
+        author: string;
+      };
+      armAndHammer: Array<{
+        id: string;
+        quote: string;
+        author: string;
+      }>;
+    };
+  };
+
   // Trust Badges
   trustBadges?: {
     moneyBack: {
@@ -1550,7 +1583,6 @@ export interface TranslationType {
       moneyBackPromise: string;
       fiveStarRated: string;
       reviewsRating: string;
-      testimonialQuote: string;
     };
   };
 
@@ -2064,8 +2096,6 @@ export interface TranslationType {
     feature2Description: string;
     feature3Title: string;
     feature3Description: string;
-    testimonialText: string;
-    testimonialAuthor: string;
     faqTitle: string;
     faq1Question: string;
     faq1Answer: string;

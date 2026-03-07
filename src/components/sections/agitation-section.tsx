@@ -1,20 +1,18 @@
-"use client";
-
 import Image from "next/image";
 import { Container } from "@/components/ui/container";
-import { useTranslations } from "next-intl";
+import { getTranslations } from "next-intl/server";
 
-export function AgitationSection() {
-  const t = useTranslations("agitationSection");
+export async function AgitationSection() {
+  const t = await getTranslations("agitationSection");
 
   const paragraphs: string[] = [];
   for (let i = 0; i < 4; i += 1) {
-    try {
+    if (t.has(`paragraphs.${i}`)) {
       const copy = t(`paragraphs.${i}`);
       if (copy && !copy.startsWith("agitationSection.")) {
         paragraphs.push(copy);
       }
-    } catch {
+    } else {
       break;
     }
   }

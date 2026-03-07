@@ -5,6 +5,7 @@ import { useTranslations, useLocale } from "next-intl";
 import { Check, Star, Truck, Shield, Clock, Zap } from 'lucide-react';
 import { formatProductPrice, getProductPrice, formatCurrencyValue } from '@/lib/pricing';
 import { getPaymentLink, PaymentLinkKey } from '@/lib/payment-links';
+import type { TranslationType } from "@/translations/types";
 
 type SubscriptionPlan = {
   id: string;
@@ -26,6 +27,7 @@ type SubscriptionPlan = {
 export function SubscriptionOffer() {
   const t = useTranslations();
   const locale = useLocale();
+  const testimonialLibrary = t.raw('testimonialLibrary') as TranslationType['testimonialLibrary'];
   const familyPrice = getProductPrice('family');
   const familyAutoshipPrice = getProductPrice('familyAutoship');
 
@@ -268,7 +270,7 @@ export function SubscriptionOffer() {
               </span>
             </div>
             <p className="text-lg text-gray-600 dark:text-gray-300 italic font-medium max-w-2xl mx-auto leading-relaxed">
-              "{t('homepage.subscription.testimonialQuote')}"
+              "{testimonialLibrary.contextual.homepageSubscription.quote}"
             </p>
           </div>
         </div>

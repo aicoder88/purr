@@ -1,17 +1,17 @@
 'use client';
 
 import { Container } from "@/components/ui/container";
-import { TESTIMONIALS } from "@/lib/constants";
 import SectionHeader from "@/components/ui/section-header";
 import Image from "next/image";
 import { useTranslations } from "next-intl";
 import { createColorClasses, createSectionClasses, GRADIENTS, COLORS } from "@/lib/theme-utils";
 import { generateStarRating, generateAvatarUrl, QuoteIcon, createStaggeredAnimation } from "@/lib/component-utils";
+import type { TranslationType } from "@/translations/types";
 
 interface TestimonialCardProps {
   testimonial: {
     author: string;
-    text: string;
+    quote: string;
     rating?: number;
   };
   index: number;
@@ -47,7 +47,7 @@ const TestimonialCard = ({ testimonial, index, colorScheme }: TestimonialCardPro
           {generateStarRating(testimonial.rating || 5)}
         </div>
         <p className={`${COLORS.text.primary} italic mb-6 leading-relaxed text-sm md:text-base line-clamp-4 md:line-clamp-6`}>
-          “{testimonial.text}”
+          “{testimonial.quote}”
         </p>
         <div className="flex items-center justify-between">
           <p className={`font-bold ${colors.text} text-sm md:text-base`}>
@@ -61,6 +61,8 @@ const TestimonialCard = ({ testimonial, index, colorScheme }: TestimonialCardPro
 
 export function Testimonials() {
   const t = useTranslations();
+  const testimonialLibrary = t.raw('testimonialLibrary') as TranslationType['testimonialLibrary'];
+  const testimonials = testimonialLibrary.consumer;
 
   const colorSchemes: ('red' | 'purple' | 'green')[] = ['red', 'purple', 'green'];
 
@@ -117,7 +119,7 @@ export function Testimonials() {
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-          {TESTIMONIALS.slice(0, 6).map((testimonial, index) => {
+          {testimonials.slice(0, 6).map((testimonial, index) => {
             const colorScheme = colorSchemes[index % colorSchemes.length];
             return (
               <TestimonialCard

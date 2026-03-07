@@ -12,10 +12,14 @@ import {
 } from 'lucide-react';
 import { CONTACT_INFO, PHONE_MESSAGING } from '@/lib/constants';
 import { formatProductPrice } from '@/lib/pricing';
+import { useTranslations } from 'next-intl';
+import type { TranslationType } from '@/translations/types';
 interface RetailVerticalProps {
   locale: string;
 }
 export function RetailVertical({ locale }: RetailVerticalProps) {
+  const t = useTranslations();
+  const testimonialLibrary = t.raw('testimonialLibrary') as TranslationType['testimonialLibrary'];
   const partnerEmail = 'partners@purrify.ca';
   const trialPrice = formatProductPrice('trial', locale);
   const standardPrice = formatProductPrice('standard', locale);
@@ -102,38 +106,18 @@ export function RetailVertical({ locale }: RetailVerticalProps) {
       highlighted: false,
     },
   ];
-  const successStories = [
-    {
-      store: "Chico Boutique d'animaux",
-      location: 'Montréal, QC',
-      quote:
-        locale === 'fr'
-          ? '"Purrify se vend facilement grâce à sa qualité exceptionnelle. Nos clients reviennent spécifiquement pour ce produit."'
-          : '"Purrify sells itself thanks to its exceptional quality. Our customers come back specifically for this product."',
-      results: locale === 'fr' ? "300% d'augmentation des ventes" : '300% sales increase',
-      avatar: 'CB',
-    },
-    {
-      store: 'Global Pet Foods',
-      location: 'Toronto, ON',
-      quote:
-        locale === 'fr'
-          ? '"Le support marketing de Purrify nous a aidés à devenir le magasin #1 pour les additifs de litière dans notre région."'
-          : "\"Purrify's marketing support helped us become the #1 store for litter additives in our area.\"",
-      results: locale === 'fr' ? 'Magasin #1 regional' : '#1 regional store',
-      avatar: 'GPF',
-    },
-    {
-      store: 'Urban Pet Supply',
-      location: 'Vancouver, BC',
-      quote:
-        locale === 'fr'
-          ? '"La marge et le support client font de Purrify notre produit d\'additif de litière le plus rentable."'
-          : '"The margin and customer support make Purrify our most profitable litter additive product."',
-      results: locale === 'fr' ? 'Marge la plus élevée' : 'Highest margins',
-      avatar: 'UPS',
-    },
-  ];
+  const successStories = testimonialLibrary.retailer.slice(0, 3).map((story) => ({
+    store: story.businessName,
+    location: story.location,
+    quote: `"${story.quote}"`,
+    results: story.metric,
+    avatar: story.businessName
+      .split(/\s+/)
+      .map((segment) => segment[0])
+      .join('')
+      .slice(0, 3)
+      .toUpperCase(),
+  }));
   return (
     <div className="space-y-16">
       {/* Hero Stats */}
@@ -266,9 +250,11 @@ export function RetailVertical({ locale }: RetailVerticalProps) {
               </p>
               <div className="flex items-center justify-between">
                 <div className="text-yellow-400 dark:text-yellow-300">★★★★★</div>
-                <div className="text-sm font-semibold text-green-600 dark:text-green-400">
-                  {story.results}
-                </div>
+                {story.results ? (
+                  <div className="text-sm font-semibold text-green-600 dark:text-green-400">
+                    {story.results}
+                  </div>
+                ) : null}
               </div>
             </div>
           ))}

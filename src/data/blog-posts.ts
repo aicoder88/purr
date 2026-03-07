@@ -263,7 +263,7 @@ function generateLatestBlogPosts(): BlogPost[] {
       excerpt: 'Automatic litter boxes promise hands-off convenience, but do they actually control odour? We compare top self-cleaning boxes and reveal how to maximize their odour-fighting potential.',
       author: 'Purrify Team',
       date: '2026-01-03',
-      image: '/optimized/marketing/catcoco-1080w.jpg',
+      image: '/optimized/marketing/catcoco-640w.webp',
       link: '/blog/best-self-cleaning-litter-box-odor-control'
     },
     {

@@ -60,6 +60,29 @@ const GRADIENTS = {
   formCard: 'bg-gradient-to-br from-white to-gray-50 dark:from-gray-800 dark:to-gray-900',
 } as const;
 
+const RETAILER_STORY_STYLES = [
+  {
+    id: 'pattes-et-griffes-sainte-therese',
+    gradient: GRADIENTS.green,
+    metricColor: 'text-brand-green-700 dark:text-[#34D399]',
+  },
+  {
+    id: 'chico-arthur-sauve-laval',
+    gradient: GRADIENTS.redOrange,
+    metricColor: 'text-[#FF6B6B] dark:text-[#FF8E8E]',
+  },
+  {
+    id: 'kong-animalerie-montreal',
+    gradient: GRADIENTS.purpleBlue,
+    metricColor: 'text-[#5B2EFF] dark:text-[#8B5CF6]',
+  },
+  {
+    id: 'chico-st-laurent-montreal',
+    gradient: GRADIENTS.redOrange,
+    metricColor: 'text-[#FF6B6B] dark:text-[#FF8E8E]',
+  },
+] as const;
+
 // ============================================================================
 // Subcomponents
 // ============================================================================
@@ -106,7 +129,7 @@ interface SuccessStoryCardProps {
   businessName: string;
   businessType: string;
   quote: string;
-  metric: string;
+  metric?: string;
   metricColor: string;
 }
 
@@ -123,7 +146,9 @@ function SuccessStoryCard({ icon, gradient, businessName, businessType, quote, m
         </div>
       </div>
       <p className="text-gray-700 dark:text-gray-300 italic mb-5 text-sm leading-relaxed flex-grow">"{quote}"</p>
-      <div className={`text-xl font-black ${metricColor} mt-auto pt-4 border-t border-gray-100 dark:border-gray-700`}>{metric}</div>
+      {metric ? (
+        <div className={`text-xl font-black ${metricColor} mt-auto pt-4 border-t border-gray-100 dark:border-gray-700`}>{metric}</div>
+      ) : null}
     </div>
   );
 }
@@ -145,6 +170,15 @@ export function RetailerContact() {
   const form = contact?.form;
   const success = contact?.success;
   const stories = contact?.successStories;
+  const testimonialLibrary = t.raw('testimonialLibrary') as TranslationType['testimonialLibrary'];
+  const retailerTestimonials = testimonialLibrary.retailer.map((story, index) => {
+    const style = RETAILER_STORY_STYLES.find((entry) => entry.id === story.id) ?? RETAILER_STORY_STYLES[index % RETAILER_STORY_STYLES.length];
+    return {
+      ...story,
+      gradient: style.gradient,
+      metricColor: style.metricColor,
+    };
+  });
   const contactInfo = contact?.contactInfo;
   const errors = contact?.errors;
 
@@ -601,25 +635,18 @@ export function RetailerContact() {
                 </h3>
 
                 <div className="space-y-5">
-                  <SuccessStoryCard
-                    icon="🏪"
-                    gradient={GRADIENTS.green}
-                    businessName={stories?.stories?.pattesEtGriffes?.businessName || 'Pattes et Griffes – Sainte‑Thérèse'}
-                    businessType={stories?.stories?.pattesEtGriffes?.businessType || 'Store Owner / Manager'}
-                    quote={stories?.stories?.pattesEtGriffes?.quote || 'Our customers ask for Purrify by name now. It\'s an easy recommendation at the counter and reorders have been consistent month after month.'}
-                    metric={stories?.stories?.pattesEtGriffes?.metric || '30 day reorder cycle'}
-                    metricColor="text-brand-green-700 dark:text-[#34D399]"
-                  />
-
-                  <SuccessStoryCard
-                    icon="🏪"
-                    gradient={GRADIENTS.redOrange}
-                    businessName={stories?.stories?.chico?.businessName || 'Chico – Boul. St‑Laurent (Montreal)'}
-                    businessType={stories?.stories?.chico?.businessType || 'Store Manager'}
-                    quote={stories?.stories?.chico?.quote || 'Simple to stock, strong margins, and it moves. The POS materials helped our team explain the benefits quickly to shoppers.'}
-                    metric={stories?.stories?.chico?.metric || 'High shelf sell‑through'}
-                    metricColor="text-[#FF6B6B] dark:text-[#FF8E8E]"
-                  />
+                  {retailerTestimonials.map((story) => (
+                    <SuccessStoryCard
+                      key={story.id}
+                      icon="🏪"
+                      gradient={story.gradient}
+                      businessName={story.businessName}
+                      businessType={story.businessType}
+                      quote={story.quote}
+                      metric={story.metric}
+                      metricColor={story.metricColor}
+                    />
+                  ))}
                 </div>
               </div>
 

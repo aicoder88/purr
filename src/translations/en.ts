@@ -296,19 +296,19 @@ export const en = {
         number: "01",
         title: "Open the Bag",
         description: "Easy zipper-style bag",
-        image: "/optimized/marketing/step-01-open-bag.webp"
+        image: "/optimized/marketing/step-01-open-bag-640w.webp"
       },
       {
         number: "02",
         title: "Sprinkle on Litter",
         description: "No measuring needed. More works better.",
-        image: "/optimized/marketing/step-02-sprinkle.webp"
+        image: "/optimized/marketing/step-02-sprinkle-640w.webp"
       },
       {
         number: "03",
         title: "(Optional) Mix it in",
         description: "Or let your cat(s) do it.",
-        image: "/optimized/marketing/step-03-mix.webp"
+        image: "/optimized/marketing/step-03-mix-640w.webp"
       }
     ],
     litterTypes: {
@@ -1075,16 +1075,132 @@ export const en = {
     customerLove: "Customer Love",
     littersOfLove: "Real Results From Happy Cat Parents",
     dontJustTakeOurWord: "Don't just take our word for it. Here's what our customers have to say about Purrify.",
-    readMoreReviews: "Read More Reviews",
-    namedTestimonials: [
-      { name: "Maïwenn Côté", location: "Hochelaga, Montréal", quote: "My cat's litter box is in my bedroom. Was. Now I can have guests over again." },
-      { name: "Anaïs Roberge", location: "Verdun, Montréal", quote: "It doesn't smell like flowers- it smells like nothing." },
-      { name: "Darian Kovacevic", location: "Saint-Henri, Montréal", quote: "I thought my apartment just smelled like cats but it was the ammonia. Huge difference now- thank you!!" },
-      { name: "Koralie Thibodeau", location: "Terrebonne, QC", quote: "My cat didn't notice I changed anything. My guests noticed immediately." },
-      { name: "Yanis Beaulieu", location: "Villeray, Montréal", quote: "Real pet tax, is the litter box. Always paying with the smell. With Purrify, fini. I don't pay that anymore." },
-      { name: "Éloïse Martel", location: "Boucherville, QC", quote: "Tried every spray, every powder, every litter, every 'odour eliminator.' This is the first one that actually eliminated the odour." },
-      { name: "Zélie Paquin", location: "Outremont, Montréal", quote: "I have 3 cats. One box in the basement, one on the main floor. Even in February with the windows shut, my house smells like exactly 0 cats. Explain that." }
-    ]
+    readMoreReviews: "Read More Reviews"
+  },
+
+  testimonialLibrary: {
+    consumer: [
+      {
+        id: "maiwenn-cote",
+        author: "Maïwenn Côté",
+        location: "Hochelaga, Montréal",
+        quote: "My cat's litter box is in my bedroom. Was. Now I can have guests over again.",
+        rating: 5,
+        verified: true
+      },
+      {
+        id: "anais-roberge",
+        author: "Anaïs Roberge",
+        location: "Verdun, Montréal",
+        quote: "It doesn't smell like flowers - it smells like nothing.",
+        rating: 5,
+        verified: true
+      },
+      {
+        id: "darian-kovacevic",
+        author: "Darian Kovacevic",
+        location: "Saint-Henri, Montréal",
+        quote: "I thought my apartment just smelled like cats, but it was the ammonia. Huge difference now - thank you!!",
+        rating: 5,
+        verified: true
+      },
+      {
+        id: "koralie-thibodeau",
+        author: "Koralie Thibodeau",
+        location: "Terrebonne, QC",
+        quote: "My cat didn't notice I changed anything. My guests noticed immediately.",
+        rating: 5,
+        verified: true
+      },
+      {
+        id: "yanis-beaulieu",
+        author: "Yanis Beaulieu",
+        location: "Villeray, Montréal",
+        quote: "The real pet tax is the litter box smell. With Purrify, I don't pay that anymore.",
+        rating: 5,
+        verified: true
+      },
+      {
+        id: "eloise-martel",
+        author: "Éloïse Martel",
+        location: "Boucherville, QC",
+        quote: "I tried every spray, every powder, every litter, every odour eliminator. This is the first one that actually eliminated the odour.",
+        rating: 5,
+        verified: true
+      },
+      {
+        id: "zelie-paquin",
+        author: "Zélie Paquin",
+        location: "Outremont, Montréal",
+        quote: "I have 3 cats. One box in the basement, one on the main floor. Even in February with the windows shut, my house smells like exactly 0 cats. Explain that.",
+        rating: 5,
+        verified: true
+      }
+    ],
+    retailer: [
+      {
+        id: "pattes-et-griffes-sainte-therese",
+        businessName: "Pattes et Griffes – Sainte‑Thérèse",
+        businessType: "Store Owner / Manager",
+        location: "Sainte‑Thérèse, QC",
+        quote: "Our customers ask for Purrify by name now. It's an easy recommendation at the counter and reorders have been consistent month after month.",
+        metric: "30 day reorder cycle"
+      },
+      {
+        id: "chico-arthur-sauve-laval",
+        businessName: "Chico - Boutique d'animaux | Bd Arthur-Sauvé, Laval",
+        businessType: "Owner",
+        location: "Laval, QC",
+        quote: "I've honestly received a lot from all my employees who use it. It's very good. It's... it's magic."
+      },
+      {
+        id: "kong-animalerie-montreal",
+        businessName: "KONG ANIMALERIE",
+        businessType: "Owner",
+        location: "Montreal, QC",
+        quote: "Great add-on at checkout. Customers come back for the larger sizes after trying it once, which tells us it's delivering results.",
+        metric: "Strong repeat purchases"
+      },
+      {
+        id: "chico-st-laurent-montreal",
+        businessName: "Chico – Boul. St‑Laurent (Montreal)",
+        businessType: "Store Manager",
+        location: "Montreal, QC",
+        quote: "Simple to stock, strong margins, and it moves. The POS materials helped our team explain the benefits quickly to shoppers.",
+        metric: "High shelf sell-through"
+      }
+    ],
+    contextual: {
+      homepageSubscription: {
+        quote: "I used to notice litter box odor the second I walked in. Now my home smells neutral every day."
+      },
+      upsell: {
+        quote: "I almost skipped the autoship offer, but I'm so glad I didn't! It's one less thing to remember, and the savings add up. Plus, I never run out right when I need it most.",
+        author: "Sarah M., Toronto"
+      },
+      armAndHammer: [
+        {
+          id: "jennifer-m",
+          quote: "I stopped daily baking soda top-ups and the weekly freshness is far more consistent now.",
+          author: "Jennifer M., 2 cats"
+        },
+        {
+          id: "alex-t",
+          quote: "Apartment odor complaints disappeared after switching to activated carbon.",
+          author: "Alex T., shared apartment"
+        },
+        {
+          id: "sarah-k",
+          quote: "Once I understood the pH issue, the switch was obvious.",
+          author: "Sarah K., multi-cat household"
+        },
+        {
+          id: "michael-r",
+          quote: "For me, weekly refresh beats constant reapplication.",
+          author: "Michael R., studio apartment"
+        }
+      ]
+    }
   },
 
   // Trust Badges
@@ -2184,8 +2300,7 @@ export const en = {
       thirtyDayGuarantee: "Ongoing odor support",
       moneyBackPromise: "Dedicated customer care",
       fiveStarRated: "Fragrance-free approach",
-      reviewsRating: "Customer reviews",
-      testimonialQuote: "I used to notice litter box odor the second I walked in. Now my home smells neutral every day."
+      reviewsRating: "Customer reviews"
     }
   },
 
@@ -2573,21 +2688,7 @@ export const en = {
       },
       // Success stories
       successStories: {
-        title: "Partner Success Stories",
-        stories: {
-          pattesEtGriffes: {
-            businessName: "Pattes et Griffes – Sainte‑Thérèse",
-            businessType: "Store Owner / Manager",
-            quote: "Our customers ask for Purrify by name now. It's an easy recommendation at the counter and reorders have been consistent month after month.",
-            metric: "30 day reorder cycle"
-          },
-          chico: {
-            businessName: "Chico – Boul. St‑Laurent (Montreal)",
-            businessType: "Store Manager",
-            quote: "Simple to stock, strong margins, and it moves. The POS materials helped our team explain the benefits quickly to shoppers.",
-            metric: "High shelf sell‑through"
-          }
-        }
+        title: "Partner Success Stories"
       },
       // Contact info section
       contactInfo: {
@@ -2660,8 +2761,6 @@ export const en = {
     feature2Description: "30-day money-back guarantee on every shipment",
     feature3Title: "Flexible Control",
     feature3Description: "Skip, pause, or cancel online anytime",
-    testimonialText: "I almost skipped the autoship offer, but I'm so glad I didn't! It's one less thing to remember, and the savings add up. Plus, I never run out right when I need it most.",
-    testimonialAuthor: "— Sarah M., Toronto",
     faqTitle: "Common Questions",
     faq1Question: "Can I cancel anytime?",
     faq1Answer: "Absolutely! Cancel, skip, or modify your subscription anytime from your account dashboard. No fees, no hassles.",

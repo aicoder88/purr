@@ -1,21 +1,12 @@
-"use client";
-
 import { Container } from "@/components/ui/container";
-import { useTranslations } from "next-intl";
 import { MapPin, Star } from "lucide-react";
+import { getTranslations } from "next-intl/server";
+import type { TranslationType } from "@/translations/types";
 
-const testimonials = [
-  { name: "Maïwenn Côté", location: "Hochelaga, Montréal", quote: "My cat's litter box is in my bedroom. Was. Now I can have guests over again." },
-  { name: "Anaïs Roberge", location: "Verdun, Montréal", quote: "It doesn't smell like flowers- it smells like nothing." },
-  { name: "Darian Kovacevic", location: "Saint-Henri, Montréal", quote: "I thought my apartment just smelled like cats but it was the ammonia. Huge difference now- thank you!!" },
-  { name: "Koralie Thibodeau", location: "Terrebonne, QC", quote: "My cat didn't notice I changed anything. My guests noticed immediately." },
-  { name: "Yanis Beaulieu", location: "Villeray, Montréal", quote: "Real pet tax, is the litter box. Always paying with the smell. With Purrify, fini. I don't pay that anymore." },
-  { name: "Éloïse Martel", location: "Boucherville, QC", quote: "Tried every spray, every powder, every litter, every 'odour eliminator.' This is the first one that actually eliminated the odour." },
-  { name: "Zélie Paquin", location: "Outremont, Montréal", quote: "I have 3 cats. One box in the basement, one on the main floor. Even in February with the windows shut, my house smells like exactly 0 cats. Explain that." },
-];
-
-export function HomepageTestimonials() {
-  const t = useTranslations('testimonialsSection');
+export async function HomepageTestimonials() {
+  const t = await getTranslations();
+  const testimonialLibrary = t.raw('testimonialLibrary') as TranslationType['testimonialLibrary'];
+  const testimonials = testimonialLibrary.consumer;
 
   return (
     <section className="py-14 md:py-16 bg-[linear-gradient(180deg,#fffdf8_0%,#fff8ee_100%)] dark:bg-[linear-gradient(180deg,#030712_0%,#111827_100%)]">
@@ -23,10 +14,10 @@ export function HomepageTestimonials() {
         <div className="text-center mb-10">
           <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-gradient-to-r from-brand-yellow/25 via-brand-pink/25 to-brand-pink/25 border border-brand-pink/30 mb-5">
             <Star className="w-4 h-4 text-yellow-500 dark:text-yellow-400 fill-yellow-500 dark:fill-yellow-400" />
-            <span className="text-gray-900 dark:text-gray-100 font-semibold text-sm">{t('customerLove')}</span>
+            <span className="text-gray-900 dark:text-gray-100 font-semibold text-sm">{t('testimonialsSection.customerLove')}</span>
           </div>
           <h2 className="font-heading text-3xl md:text-4xl font-bold text-gray-900 dark:text-white">
-            {t('littersOfLove')}
+            {t('testimonialsSection.littersOfLove')}
           </h2>
         </div>
 
@@ -51,7 +42,7 @@ export function HomepageTestimonials() {
               {/* Attribution */}
               <div className="flex items-center gap-2 pt-4 border-t border-gray-100 dark:border-gray-700">
                 <div>
-                  <p className="font-bold text-sm text-gray-900 dark:text-white">{testimonial.name}</p>
+                  <p className="font-bold text-sm text-gray-900 dark:text-white">{testimonial.author}</p>
                   <p className="text-xs text-gray-500 dark:text-gray-400 flex items-center gap-1">
                     <MapPin className="w-3 h-3" />
                     {testimonial.location}

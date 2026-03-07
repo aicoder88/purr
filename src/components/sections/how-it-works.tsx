@@ -1,8 +1,6 @@
-"use client";
-
 import Image from "next/image";
 import { Container } from "@/components/ui/container";
-import { useTranslations } from "next-intl";
+import { getTranslations } from "next-intl/server";
 
 interface Step {
   number: string;
@@ -11,8 +9,8 @@ interface Step {
   image: string;
 }
 
-export function HowItWorks() {
-  const t = useTranslations("howItWorks");
+export async function HowItWorks() {
+  const t = await getTranslations("howItWorks");
 
   const steps = t.raw("steps") as Step[];
 

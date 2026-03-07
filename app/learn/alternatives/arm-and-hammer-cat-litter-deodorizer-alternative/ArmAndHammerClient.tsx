@@ -10,6 +10,7 @@ import { localizePath } from '@/lib/i18n/locale-path';
 import { getPaymentLink } from '@/lib/payment-links';
 import { formatProductPrice } from '@/lib/pricing';
 import { useTranslations, useLocale } from 'next-intl';
+import type { TranslationType } from '@/translations/types';
 
 type ComparisonRow = {
     feature: string;
@@ -63,7 +64,6 @@ type AlternativeCopy = {
     faqTitle: string;
     relatedTitle: string;
     related: Array<{ title: string; description: string; href: string }>;
-    testimonials: Array<{ quote: string; author: string }>;
     comparison: ComparisonRow[];
     limits: string[];
     howTo: Array<{ title: string; body: string }>;
@@ -128,24 +128,6 @@ const EN_COPY: AlternativeCopy = {
             title: 'Neutralization Methods',
             description: 'Methods ranked by effectiveness.',
             href: '/blog/how-to-neutralize-ammonia-cat-litter',
-        },
-    ],
-    testimonials: [
-        {
-            quote: 'I stopped daily baking soda top-ups and the weekly freshness is far more consistent now.',
-            author: 'Jennifer M., 2 cats',
-        },
-        {
-            quote: 'Apartment odor complaints disappeared after switching to activated carbon.',
-            author: 'Alex T., shared apartment',
-        },
-        {
-            quote: 'Once I understood the pH issue, the switch was obvious.',
-            author: 'Sarah K., multi-cat household',
-        },
-        {
-            quote: 'For me, weekly refresh beats constant reapplication.',
-            author: 'Michael R., studio apartment',
         },
     ],
     comparison: [
@@ -238,10 +220,12 @@ const COPY: Record<'en' | 'fr', AlternativeCopy> = {
 
 export default function ArmAndHammerClient() {
     const t = useTranslations();
-  const locale = useLocale() as 'en' | 'fr';
+    const testimonialLibrary = t.raw('testimonialLibrary') as TranslationType['testimonialLibrary'];
+    const locale = useLocale() as 'en' | 'fr';
     const { currency } = useCurrency();
     const language = locale === 'fr' ? locale : 'en';
     const copy = COPY[language];
+    const testimonials = testimonialLibrary.contextual.armAndHammer;
 
     const trialPrice = formatProductPrice('trial', currency, locale);
     const trialCheckoutUrl = getPaymentLink('trialSingle') || localizePath('/products/trial-size', locale);
@@ -445,7 +429,7 @@ export default function ArmAndHammerClient() {
                     <div className="bg-white dark:bg-gray-800 rounded-2xl p-8 shadow-lg border border-gray-200 dark:border-gray-700">
                         <h2 className="text-2xl font-heading font-bold text-gray-900 dark:text-gray-100 mb-6 text-center">{copy.socialTitle}</h2>
                         <div className="grid md:grid-cols-2 gap-6">
-                            {copy.testimonials.map((item) => (
+                            {testimonials.map((item) => (
                                 <blockquote key={item.author} className="bg-gray-50 dark:bg-gray-700/50 rounded-xl p-6">
                                     <p className="text-gray-700 dark:text-gray-300 italic mb-4">{item.quote}</p>
                                     <footer className="text-sm text-gray-500 dark:text-gray-400">{item.author}</footer>

@@ -340,19 +340,19 @@ export const fr = {
         number: "01",
         title: "Ouvrez le Sachet",
         description: "Ouvrez et saupoudrez. Pas besoin de mesurer.",
-        image: "/optimized/marketing/step-01-open-bag.webp"
+        image: "/optimized/marketing/step-01-open-bag-640w.webp"
       },
       {
         number: "02",
         title: "Saupoudrez sur la Litière",
         description: "Appliquez une fine couche sur la litière actuelle.",
-        image: "/optimized/marketing/step-02-sprinkle.webp"
+        image: "/optimized/marketing/step-02-sprinkle-640w.webp"
       },
       {
         number: "03",
         title: "Mélangez et Respirez",
         description: "Mélangez une fois et profitez de l'air frais.",
-        image: "/optimized/marketing/step-03-mix.webp"
+        image: "/optimized/marketing/step-03-mix-640w.webp"
       }
     ],
     litterTypes: {
@@ -1067,6 +1067,131 @@ export const fr = {
     littersOfLove: "Des Portées d'Amour de la Communauté des Propriétaires d'Animaux",
     dontJustTakeOurWord: "Ne nous croyez pas sur parole. Voici ce que nos clients disent de Purrify.",
     readMoreReviews: "Lire Plus d'Avis"
+  },
+
+  testimonialLibrary: {
+    consumer: [
+      {
+        id: "maiwenn-cote",
+        author: "Maïwenn Côté",
+        location: "Hochelaga, Montréal",
+        quote: "La litière de mon chat est dans ma chambre. Enfin, était. Maintenant, je peux recevoir des invités de nouveau.",
+        rating: 5,
+        verified: true
+      },
+      {
+        id: "anais-roberge",
+        author: "Anaïs Roberge",
+        location: "Verdun, Montréal",
+        quote: "Ça ne sent pas les fleurs, ça ne sent rien. C'est exactement le but.",
+        rating: 5,
+        verified: true
+      },
+      {
+        id: "darian-kovacevic",
+        author: "Darian Kovacevic",
+        location: "Saint-Henri, Montréal",
+        quote: "Je pensais que mon appartement sentait juste le chat, mais c'était l'ammoniac. Énorme différence maintenant, merci!!",
+        rating: 5,
+        verified: true
+      },
+      {
+        id: "koralie-thibodeau",
+        author: "Koralie Thibodeau",
+        location: "Terrebonne, QC",
+        quote: "Mon chat n'a même pas remarqué que j'avais changé quelque chose. Mes invités, eux, l'ont remarqué tout de suite.",
+        rating: 5,
+        verified: true
+      },
+      {
+        id: "yanis-beaulieu",
+        author: "Yanis Beaulieu",
+        location: "Villeray, Montréal",
+        quote: "La vraie taxe d'avoir un animal, c'est l'odeur de la litière. Avec Purrify, je ne la paie plus.",
+        rating: 5,
+        verified: true
+      },
+      {
+        id: "eloise-martel",
+        author: "Éloïse Martel",
+        location: "Boucherville, QC",
+        quote: "J'ai essayé tous les sprays, toutes les poudres, toutes les litières, tous les éliminateurs d'odeur. C'est le premier qui élimine vraiment l'odeur.",
+        rating: 5,
+        verified: true
+      },
+      {
+        id: "zelie-paquin",
+        author: "Zélie Paquin",
+        location: "Outremont, Montréal",
+        quote: "J'ai 3 chats. Une litière au sous-sol, une au rez-de-chaussée. Même en février, fenêtres fermées, ma maison sent exactement 0 chat. Expliquez-moi ça.",
+        rating: 5,
+        verified: true
+      }
+    ],
+    retailer: [
+      {
+        id: "pattes-et-griffes-sainte-therese",
+        businessName: "Pattes et Griffes – Sainte‑Thérèse",
+        businessType: "Propriétaire / Gérant",
+        location: "Sainte‑Thérèse, QC",
+        quote: "Nos clients demandent Purrify par son nom maintenant. C'est une recommandation facile au comptoir et les commandes sont constantes mois après mois.",
+        metric: "Cycle de 30 jours"
+      },
+      {
+        id: "chico-arthur-sauve-laval",
+        businessName: "Chico - Boutique d'animaux | Bd Arthur-Sauvé, Laval",
+        businessType: "Propriétaire",
+        location: "Laval, QC",
+        quote: "J'en ai reçu beaucoup honnêtement sur toutes mes employés qui l'utilisent. C'est très bon ça. C'est...C'est magique."
+      },
+      {
+        id: "kong-animalerie-montreal",
+        businessName: "KONG ANIMALERIE",
+        businessType: "Propriétaire",
+        location: "Montréal, QC",
+        quote: "Excellent ajout à la caisse. Les clients reviennent pour les plus grands formats après un essai, ce qui nous montre que le produit livre vraiment des résultats.",
+        metric: "Forts achats répétés"
+      },
+      {
+        id: "chico-st-laurent-montreal",
+        businessName: "Chico – Boul. St‑Laurent (Montréal)",
+        businessType: "Gérant de Magasin",
+        location: "Montréal, QC",
+        quote: "Simple à stocker, bonnes marges, et ça se vend bien. Les matériels POS ont aidé notre équipe à expliquer les avantages rapidement aux clients.",
+        metric: "Rotation élevée"
+      }
+    ],
+    contextual: {
+      homepageSubscription: {
+        quote: "Avant, l'odeur de litière revenait chaque soir. Maintenant, l'air reste neutre et propre."
+      },
+      upsell: {
+        quote: "J'ai failli sauter l'offre d'abonnement automatique, mais je suis si content de ne pas l'avoir fait! C'est une chose de moins à retenir, et les économies s'accumulent. De plus, je ne manque jamais quand j'en ai le plus besoin.",
+        author: "Sarah M., Toronto"
+      },
+      armAndHammer: [
+        {
+          id: "jennifer-m",
+          quote: "J'ai arrêté les rajouts quotidiens de bicarbonate et la fraîcheur tient beaucoup plus régulièrement toute la semaine.",
+          author: "Jennifer M., 2 chats"
+        },
+        {
+          id: "alex-t",
+          quote: "Les plaintes sur l'odeur dans l'appartement ont disparu après le passage au charbon actif.",
+          author: "Alex T., appartement partagé"
+        },
+        {
+          id: "sarah-k",
+          quote: "Une fois que j'ai compris le problème de pH, le changement était évident.",
+          author: "Sarah K., foyer multi-chats"
+        },
+        {
+          id: "michael-r",
+          quote: "Pour moi, un rafraîchissement hebdomadaire est bien meilleur qu'une réapplication constante.",
+          author: "Michael R., studio"
+        }
+      ]
+    }
   },
 
   // Trust Badges
@@ -1932,21 +2057,7 @@ export const fr = {
         needHelp: "Besoin d'aide immédiate?"
       },
       successStories: {
-        title: "Histoires de Succès de Partenaires",
-        stories: {
-          pattesEtGriffes: {
-            businessName: "Pattes et Griffes – Sainte‑Thérèse",
-            businessType: "Propriétaire / Gérant",
-            quote: "Nos clients demandent Purrify par son nom maintenant. C'est une recommandation facile au comptoir et les commandes sont constantes mois après mois.",
-            metric: "Cycle de 30 jours"
-          },
-          chico: {
-            businessName: "Chico – Boul. St‑Laurent (Montréal)",
-            businessType: "Gérant de Magasin",
-            quote: "Simple à stocker, bonnes marges, et ça se vend bien. Les matériels POS ont aidé notre équipe à expliquer les avantages rapidement aux clients.",
-            metric: "Rotation élevée"
-          }
-        }
+        title: "Histoires de Succès de Partenaires"
       },
       contactInfo: {
         title: "Besoin d'Aide Immédiate?",
@@ -2333,8 +2444,7 @@ export const fr = {
       thirtyDayGuarantee: "Support continu",
       moneyBackPromise: "Engagement service client",
       fiveStarRated: "Approche sans parfum",
-      reviewsRating: "Avis clients",
-      testimonialQuote: "Avant, l'odeur de litière revenait chaque soir. Maintenant, l'air reste neutre et propre."
+      reviewsRating: "Avis clients"
     }
   },
 
@@ -2421,8 +2531,6 @@ export const fr = {
     feature2Description: "Garantie de remboursement de 30 jours sur chaque expédition",
     feature3Title: "Contrôle Flexible",
     feature3Description: "Sautez, suspendez ou annulez en ligne à tout moment",
-    testimonialText: "J'ai failli sauter l'offre d'abonnement automatique, mais je suis si content de ne pas l'avoir fait! C'est une chose de moins à retenir, et les économies s'accumulent. De plus, je ne manque jamais quand j'en ai le plus besoin.",
-    testimonialAuthor: "— Sarah M., Toronto",
     faqTitle: "Questions Courantes",
     faq1Question: "Puis-je annuler à tout moment?",
     faq1Answer: "Absolument! Annulez, sautez ou modifiez votre abonnement à tout moment depuis votre tableau de bord. Pas de frais, pas de tracas.",

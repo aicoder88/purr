@@ -299,7 +299,7 @@ export async function Header() {
               className="flex flex-shrink-0 items-center space-x-2"
             >
               <Image
-                src="/optimized/logos/logo-light-pink.webp"
+                src="/optimized/logos/logo-light-pink-640w.webp"
                 alt={copy.logoAlt}
                 width={120}
                 height={57}
@@ -307,7 +307,7 @@ export async function Header() {
                 className="h-10 w-auto filter drop-shadow-sm transition-all duration-300 dark:hidden"
               />
               <Image
-                src="/optimized/logos/logo-dark.webp"
+                src="/optimized/logos/logo-dark-640w.webp"
                 alt={copy.logoAlt}
                 width={84}
                 height={40}

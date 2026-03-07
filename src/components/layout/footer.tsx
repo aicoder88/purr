@@ -129,7 +129,7 @@ export async function Footer() {
                 <Link prefetch={false} href={localePrefix || '/'} className="group">
                   <div className="h-6 w-auto mr-2 flex items-center">
                     <Image
-                      src="/optimized/logos/logo-dark.webp"
+                      src="/optimized/logos/logo-dark-640w.webp"
                       alt={copy.logoAlt}
                       width={84}
                       height={40}

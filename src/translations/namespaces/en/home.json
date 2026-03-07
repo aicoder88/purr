@@ -145,19 +145,19 @@
         "number": "01",
         "title": "Open the Bag",
         "description": "Easy zipper-style bag",
-      "image": "/optimized/marketing/step-01-open-bag.webp"
+        "image": "/optimized/marketing/step-01-open-bag-640w.webp"
       },
       {
         "number": "02",
         "title": "Sprinkle on Litter",
         "description": "No measuring needed. More works better.",
-      "image": "/optimized/marketing/step-02-sprinkle.webp"
+        "image": "/optimized/marketing/step-02-sprinkle-640w.webp"
       },
       {
         "number": "03",
         "title": "(Optional) Mix it in",
         "description": "Or let your cat(s) do it.",
-      "image": "/optimized/marketing/step-03-mix.webp"
+        "image": "/optimized/marketing/step-03-mix-640w.webp"
       }
     ],
     "litterTypes": {

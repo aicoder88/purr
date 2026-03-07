@@ -185,7 +185,36 @@ export default async function RootLayout({
         <link rel="dns-prefetch" href="https://www.googletagmanager.com" />
         <link rel="preconnect" href="https://www.googletagmanager.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
-
+        <style
+          dangerouslySetInnerHTML={{
+            __html: `
+              :root,.dark {
+                --background: 222.2 84% 4.9%;
+                --foreground: 210 40% 98%;
+                --card: 222.2 84% 4.9%;
+                --card-foreground: 210 40% 98%;
+                --popover: 222.2 84% 4.9%;
+                --popover-foreground: 210 40% 98%;
+                --primary: 246 86% 67%;
+                --primary-foreground: 222.2 47.4% 11.2%;
+                --secondary: 217.2 32.6% 17.5%;
+                --secondary-foreground: 210 40% 98%;
+                --muted: 217.2 32.6% 17.5%;
+                --muted-foreground: 215 20.2% 65.1%;
+                --accent: 330 100% 59%;
+                --accent-foreground: 210 40% 98%;
+                --destructive: 0 62.8% 30.6%;
+                --destructive-foreground: 210 40% 98%;
+                --border: 217.2 32.6% 17.5%;
+                --input: 217.2 32.6% 17.5%;
+                --ring: 330 100% 59%;
+                --radius: 0.75rem;
+              }
+              html { background-color: hsl(222.2 84% 4.9%); color: hsl(210 40% 98%); color-scheme: dark; }
+              body { margin: 0; min-height: 100vh; font-family: ui-sans-serif, system-ui, -apple-system, sans-serif; }
+            `
+          }}
+        />
         {gtmId ? (
           /* Raw <script> so data-cfasync="false" lands on the element itself.
              Next.js <Script> wraps content in its loader JSON, hiding the

@@ -8,6 +8,7 @@ import { formatProductPrice } from '@/lib/pricing';
 import Image from 'next/image';
 import Link from 'next/link';
 import { Clock, Check, Package, Zap, Shield } from 'lucide-react';
+import type { TranslationType } from '@/translations/types';
 
 const TIMER_DURATION = 10 * 60; // 10 minutes in seconds
 
@@ -48,6 +49,8 @@ interface UpsellClientProps {
 export default function UpsellClient({ initialEmail, sessionId }: UpsellClientProps) {
   const t = useTranslations();
   const locale = useLocale();
+  const testimonialLibrary = t.raw('testimonialLibrary') as TranslationType['testimonialLibrary'];
+  const upsellTestimonial = testimonialLibrary.contextual.upsell;
   const [timeLeft, setTimeLeft] = useState(TIMER_DURATION);
   const [isLoading, setIsLoading] = useState(false);
   const [customerEmail, setCustomerEmail] = useState<string | null>(initialEmail || null);
@@ -346,10 +349,10 @@ export default function UpsellClient({ initialEmail, sessionId }: UpsellClientPr
       {/* Testimonial */}
       <div className="bg-gradient-to-r from-[#5B2EFF]/10 to-[#FF3131]/10 dark:from-[#3694FF]/10 dark:to-[#FF5050]/10 rounded-xl p-8 mb-8 border border-gray-200 dark:border-gray-700">
         <p className="text-lg md:text-xl text-gray-700 dark:text-gray-300 mb-4 italic">
-          “{t('upsell.testimonialText') || 'I almost skipped the autoship offer, but I\'m so glad I didn\'t! It\'s one less thing to remember, and the savings add up. Plus, I never run out right when I need it most.'}”
+          “{upsellTestimonial.quote}”
         </p>
         <p className="font-semibold text-gray-900 dark:text-gray-50">
-          {t('upsell.testimonialAuthor') || '— Sarah M., Toronto'}
+          — {upsellTestimonial.author}
         </p>
       </div>
 

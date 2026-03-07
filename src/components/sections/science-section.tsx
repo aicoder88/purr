@@ -1,13 +1,11 @@
-"use client";
-
 import { Container } from "@/components/ui/container";
 import Image from "next/image";
-import { useLocale, useTranslations } from "next-intl";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
 import { ArrowRight } from "lucide-react";
 import { IconOdor } from "@/components/icons/custom-benefit-icons";
 import { IconSciencePores, IconZeroPerfumes } from "@/components/icons/custom-trust-icons";
+import { getLocale, getTranslations } from "next-intl/server";
 
 type ScienceFeature = {
   title: string;
@@ -20,9 +18,9 @@ const featureIcons = [
   <IconOdor key="odor" className="w-5 h-5 text-gray-700 dark:text-gray-300" />,
 ];
 
-export function ScienceSection() {
-  const t = useTranslations();
-  const locale = useLocale();
+export async function ScienceSection() {
+  const t = await getTranslations();
+  const locale = await getLocale();
 
   const rawFeatures = t.raw("scienceSection.features");
   const features: ScienceFeature[] = Array.isArray(rawFeatures)

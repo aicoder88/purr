@@ -12,11 +12,6 @@ const SpeedInsights = dynamic(
   { ssr: false }
 );
 
-const MetaPixel = dynamic(
-  () => import('@/components/analytics/MetaPixel').then((mod) => ({ default: mod.MetaPixel })),
-  { ssr: false }
-);
-
 const ChatWidgetMount = dynamic(
   () => import('@/components/chat/ChatWidgetMount').then((mod) => ({ default: mod.ChatWidgetMount })),
   { ssr: false }
@@ -34,7 +29,6 @@ export function DeferredThirdPartyMounts({
       {hasChatWidget ? <ChatWidgetMount /> : null}
       <Analytics />
       <SpeedInsights />
-      <MetaPixel />
     </>
   );
 }
