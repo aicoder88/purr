@@ -1,9 +1,15 @@
-import { getLocaleFromPath, localizePath, stripLocaleFromPath } from '@/lib/i18n/locale-path';
+import {
+  getLocaleFromPath,
+  localizePath,
+  normalizeLocalePathCasing,
+  stripLocaleFromPath,
+} from '@/lib/i18n/locale-path';
 
 describe('locale-path helpers', () => {
   describe('getLocaleFromPath', () => {
     it('extracts locale from prefixed paths', () => {
       expect(getLocaleFromPath('/fr/blog')).toBe('fr');
+      expect(getLocaleFromPath('/FR/blog')).toBe('fr');
     });
 
     it('returns null for non-localized paths', () => {
@@ -33,7 +39,7 @@ describe('locale-path helpers', () => {
     });
 
     it('keeps unsupported paths unprefixed', () => {
-      expect(localizePath('/learn/faq', 'fr')).toBe('/learn/faq');
+      expect(localizePath('/contact', 'fr')).toBe('/contact');
     });
 
     it('localizes supported commercial routes', () => {
@@ -44,6 +50,14 @@ describe('locale-path helpers', () => {
     it('preserves query strings and hash fragments', () => {
       expect(localizePath('/en/blog?tag=odor', 'fr')).toBe('/fr/blog?tag=odor');
       expect(localizePath('/en/blog#latest', 'fr')).toBe('/fr/blog#latest');
+    });
+  });
+
+  describe('normalizeLocalePathCasing', () => {
+    it('lowercases locale prefixes without changing the rest of the path', () => {
+      expect(normalizeLocalePathCasing('/FR')).toBe('/fr');
+      expect(normalizeLocalePathCasing('/FR/products/trial-size')).toBe('/fr/products/trial-size');
+      expect(normalizeLocalePathCasing('/learn/faq')).toBe('/learn/faq');
     });
   });
 });

@@ -1,6 +1,7 @@
 import type { Metadata, Viewport } from 'next';
 import { Inter } from 'next/font/google';
 import { headers } from 'next/headers';
+import { setRequestLocale } from 'next-intl/server';
 import '../src/index.css';
 import { defaultLocale, getLocaleFromPathname, Locale } from '@/i18n/config';
 import { AppLayout } from '@/components/layout/AppLayout';
@@ -173,6 +174,7 @@ export default async function RootLayout({
   const headersList = await headers();
   const pathname = headersList.get('x-pathname') || '';
   const locale: Locale = getLocaleFromPathname(pathname);
+  setRequestLocale(locale);
   const messages = await getScopedMessages(locale, ['root']);
   const accessibilityMessages = (messages as Record<string, unknown>).accessibility as
     | { gtmNoscriptTitle?: string }

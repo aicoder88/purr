@@ -1,6 +1,6 @@
 import type { Locale } from '@/i18n/config';
 
-const LOCALE_SEGMENT_PATTERN = /^\/(en|fr)(?=\/|$)/;
+const LOCALE_SEGMENT_PATTERN = /^\/(en|fr)(?=\/|$)/i;
 
 const LOCALIZED_ROUTE_PREFIXES = [
   '/products',
@@ -86,13 +86,25 @@ export function getLocaleFromPath(pathname: string): Locale | null {
     return null;
   }
 
-  return match[1] as Locale;
+  return match[1].toLowerCase() as Locale;
 }
 
 export function stripLocaleFromPath(pathname: string): string {
   const normalizedPath = normalizePathname(pathname);
   const stripped = normalizedPath.replace(LOCALE_SEGMENT_PATTERN, '');
   return stripped.length === 0 ? '/' : stripped;
+}
+
+export function normalizeLocalePathCasing(pathname: string): string {
+  if (!pathname) {
+    return '/';
+  }
+
+  const withLeadingSlash = pathname.startsWith('/') ? pathname : `/${pathname}`;
+  return withLeadingSlash.replace(
+    LOCALE_SEGMENT_PATTERN,
+    (_match, locale: string) => `/${locale.toLowerCase()}`
+  );
 }
 
 export function localizePath(path: string, locale: Locale): string {

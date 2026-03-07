@@ -40,6 +40,7 @@ export function useTranslation() {
     const targetLocale: Locale = VALID_LOCALES.includes(newLocale) ? newLocale : 'en';
     const secure = window.location.protocol === 'https:' ? ';Secure' : '';
     document.cookie = `NEXT_LOCALE=${targetLocale};path=/;max-age=31536000;SameSite=Strict${secure}`;
+    document.cookie = `NEXT_LOCALE_SOURCE=manual;path=/;max-age=31536000;SameSite=Strict${secure}`;
 
     const currentPath = pathname || '/';
     const query = window.location.search;

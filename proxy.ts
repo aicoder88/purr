@@ -1,7 +1,11 @@
 import { NextResponse } from 'next/server';
 import type { NextRequest } from 'next/server';
 import { getToken } from 'next-auth/jwt';
-import { getLocaleFromPath, localizePath } from './src/lib/i18n/locale-path';
+import {
+  getLocaleFromPath,
+  localizePath,
+  normalizeLocalePathCasing,
+} from './src/lib/i18n/locale-path';
 import { shouldRedirectToLocalizedPath } from './src/lib/i18n/locale-redirect';
 import type { Locale } from './src/i18n/config';
 
@@ -40,6 +44,7 @@ const FUNCTIONAL_QUERY_PARAMS_BY_PREFIX: Array<{
   },
 ];
 const LOCALE_COOKIE_NAME = 'NEXT_LOCALE';
+const LOCALE_COOKIE_SOURCE_NAME = 'NEXT_LOCALE_SOURCE';
 const LOCALE_COOKIE_MAX_AGE = 60 * 60 * 24 * 365;
 const QUEBEC_REGION_CODES = new Set(['QC']);
 
@@ -49,67 +54,59 @@ function isLocalHost(hostname: string): boolean {
     || hostname.endsWith('.local');
 }
 
+function normalizeRequestedLocale(locale: string | null | undefined): Locale | null {
+  const normalizedLocale = locale?.trim().toLowerCase();
+  return normalizedLocale === 'fr' || normalizedLocale === 'en' ? normalizedLocale : null;
+}
+
 function getCookieLocale(request: NextRequest): Locale | null {
-  const locale = request.cookies.get(LOCALE_COOKIE_NAME)?.value;
-  return locale === 'fr' || locale === 'en' ? locale : null;
+  return normalizeRequestedLocale(request.cookies.get(LOCALE_COOKIE_NAME)?.value);
 }
 
-function getLocaleFromAcceptLanguage(headerValue: string | null): Locale | null {
-  if (!headerValue) {
-    return null;
-  }
+export function getLocaleFromGeo(country: string | null | undefined, region: string | null | undefined): Locale | null {
+  const normalizedCountry = country?.toUpperCase();
+  const normalizedRegion = region?.toUpperCase();
 
-  const preferredLocales = headerValue
-    .split(',')
-    .map((part) => {
-      const [languageRange, ...params] = part.trim().split(';');
-      let q = 1;
-
-      for (const param of params) {
-        const [key, value] = param.trim().split('=');
-        if (key === 'q') {
-          const parsed = Number.parseFloat(value);
-          if (Number.isFinite(parsed)) {
-            q = parsed;
-          }
-        }
-      }
-
-      return { languageRange: languageRange.toLowerCase(), q };
-    })
-    .filter(({ languageRange }) => languageRange.startsWith('fr') || languageRange.startsWith('en'))
-    .sort((a, b) => b.q - a.q);
-
-  const preferred = preferredLocales[0]?.languageRange;
-  if (!preferred) {
-    return null;
-  }
-
-  return preferred.startsWith('fr') ? 'fr' : 'en';
-}
-
-function getLocaleFromGeoHeaders(request: NextRequest): Locale | null {
-  const country = request.headers.get('x-vercel-ip-country')?.toUpperCase();
-  const region = request.headers.get('x-vercel-ip-country-region')?.toUpperCase();
-
-  if (country === 'CA' && region && QUEBEC_REGION_CODES.has(region)) {
+  if (normalizedCountry === 'CA' && normalizedRegion && QUEBEC_REGION_CODES.has(normalizedRegion)) {
     return 'fr';
   }
 
   return null;
 }
 
-function detectPreferredLocale(request: NextRequest): Locale {
+function getLocaleFromGeoHeaders(request: NextRequest): Locale | null {
+  return getLocaleFromGeo(
+    request.headers.get('x-vercel-ip-country'),
+    request.headers.get('x-vercel-ip-country-region')
+  );
+}
+
+export function detectPreferredLocale({
+  cookieLocale,
+  cookieSource,
+  country,
+  region,
+}: {
+  cookieLocale?: string | null;
+  cookieSource?: string | null;
+  country?: string | null;
+  region?: string | null;
+}): Locale {
   return (
-    getCookieLocale(request)
-    ?? getLocaleFromAcceptLanguage(request.headers.get('accept-language'))
-    ?? getLocaleFromGeoHeaders(request)
+    (cookieSource === 'manual' ? normalizeRequestedLocale(cookieLocale) : null)
+    ?? getLocaleFromGeo(country, region)
     ?? 'en'
   );
 }
 
 function setLocaleCookie(response: NextResponse, request: NextRequest, locale: Locale) {
   response.cookies.set(LOCALE_COOKIE_NAME, locale, {
+    path: '/',
+    maxAge: LOCALE_COOKIE_MAX_AGE,
+    sameSite: 'strict',
+    secure: request.nextUrl.protocol === 'https:',
+  });
+  response.cookies.set(LOCALE_COOKIE_SOURCE_NAME, 'manual', {
     path: '/',
     maxAge: LOCALE_COOKIE_MAX_AGE,
     sameSite: 'strict',
@@ -182,6 +179,13 @@ export async function proxy(request: NextRequest) {
     }
   }
 
+  const normalizedLocalePath = normalizeLocalePathCasing(pathname);
+  if (normalizedLocalePath !== pathname) {
+    const normalizedUrl = request.nextUrl.clone();
+    normalizedUrl.pathname = normalizedLocalePath;
+    return NextResponse.redirect(normalizedUrl, 301);
+  }
+
   const pathnameLocale = getLocaleFromPath(pathname);
   if (!pathname.startsWith('/admin')) {
     if (pathnameLocale) {
@@ -192,16 +196,19 @@ export async function proxy(request: NextRequest) {
       return response;
     }
 
-    const preferredLocale = detectPreferredLocale(request);
+    const preferredLocale = detectPreferredLocale({
+      cookieLocale: request.cookies.get(LOCALE_COOKIE_NAME)?.value,
+      cookieSource: request.cookies.get(LOCALE_COOKIE_SOURCE_NAME)?.value,
+      country: request.headers.get('x-vercel-ip-country'),
+      region: request.headers.get('x-vercel-ip-country-region'),
+    });
     if (preferredLocale === 'fr') {
       const localizedPath = localizePath(pathname, preferredLocale);
       if (shouldRedirectToLocalizedPath(pathname, localizedPath)) {
         const localizedUrl = request.nextUrl.clone();
         localizedUrl.pathname = localizedPath;
 
-        const response = NextResponse.redirect(localizedUrl, 307);
-        setLocaleCookie(response, request, preferredLocale);
-        return response;
+        return NextResponse.redirect(localizedUrl, 307);
       }
     }
   }
