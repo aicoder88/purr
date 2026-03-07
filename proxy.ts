@@ -26,23 +26,23 @@ const FUNCTIONAL_QUERY_PARAMS_BY_PREFIX: Array<{
   prefix: string;
   keys: string[];
 }> = [
-  {
-    prefix: '/blog',
-    keys: ['page'],
-  },
-  {
-    prefix: '/fr/blog',
-    keys: ['page'],
-  },
-  {
-    prefix: '/tools/cat-litter-calculator',
-    keys: ['cats', 'litter'],
-  },
-  {
-    prefix: '/thank-you',
-    keys: ['session_id', 'sessionId', 'checkout_session_id', 'payment_intent', 'redirect_status'],
-  },
-];
+    {
+      prefix: '/blog',
+      keys: ['page'],
+    },
+    {
+      prefix: '/fr/blog',
+      keys: ['page'],
+    },
+    {
+      prefix: '/tools/cat-litter-calculator',
+      keys: ['cats', 'litter'],
+    },
+    {
+      prefix: '/thank-you',
+      keys: ['session_id', 'sessionId', 'checkout_session_id', 'payment_intent', 'redirect_status'],
+    },
+  ];
 const LOCALE_COOKIE_NAME = 'NEXT_LOCALE';
 const LOCALE_COOKIE_SOURCE_NAME = 'NEXT_LOCALE_SOURCE';
 const LOCALE_COOKIE_MAX_AGE = 60 * 60 * 24 * 365;
@@ -74,12 +74,6 @@ export function getLocaleFromGeo(country: string | null | undefined, region: str
   return null;
 }
 
-function getLocaleFromGeoHeaders(request: NextRequest): Locale | null {
-  return getLocaleFromGeo(
-    request.headers.get('x-vercel-ip-country'),
-    request.headers.get('x-vercel-ip-country-region')
-  );
-}
 
 export function detectPreferredLocale({
   cookieLocale,
