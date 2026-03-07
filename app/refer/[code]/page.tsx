@@ -29,23 +29,6 @@ async function getReferralData(code: string): Promise<{ code: string; referralDa
     });
     const referralData: ReferralData = await response.json();
 
-    // Track referral click (fire and forget)
-    if (referralData.isValid) {
-      fetch(`${siteUrl}/api/referrals/track`, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          action: 'click',
-          referralCode: code,
-          trackingData: {
-            source: 'referral_link',
-            medium: 'direct',
-            campaign: 'referral_program'
-          }
-        })
-      }).catch(console.error);
-    }
-
     return {
       code,
       referralData
@@ -69,11 +52,11 @@ export async function generateMetadata({ params }: ReferralPageProps): Promise<M
   const trialPrice = formatProductPrice('trial');
 
   const pageTitle = referralData.isValid
-    ? `${referralData.referrerName} recommends ${SITE_NAME} - Get Your FREE Trial!`
+    ? `${referralData.referrerName} recommends ${SITE_NAME} - Get $5 Off Your First Order!`
     : `Invalid Referral Code - ${SITE_NAME}`;
 
   const pageDescription = referralData.isValid
-    ? `${referralData.referrerName} has shared Purrify with you! Get a FREE 12g trial size (normally ${trialPrice}) and see why they love this cat litter deodorizer.`
+    ? `${referralData.referrerName} has shared Purrify with you! Get $5 off your first order and see why they love this cat litter deodorizer. Trial size currently starts at ${trialPrice}.`
     : 'This referral code is not valid or has expired.';
 
   const canonicalUrl = `https://www.purrify.ca/refer/${code}/`;

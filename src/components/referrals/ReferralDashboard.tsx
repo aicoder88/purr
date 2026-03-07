@@ -143,7 +143,7 @@ export function ReferralDashboard({ userId, className }: ReferralDashboardProps)
   const handleSocialShare = useCallback((platform: string) => {
     if (!stats) return;
 
-    const message = `I love this cat litter deodorizer that completely eliminates odors! You can get a FREE trial with my code: ${stats.referralCode}`;
+    const message = `I love this cat litter deodorizer that completely eliminates odors! You can get $5 off your first order with my code: ${stats.referralCode}`;
     const url = stats.shareUrl;
 
     let shareUrl = '';
@@ -309,7 +309,7 @@ export function ReferralDashboard({ userId, className }: ReferralDashboardProps)
           Share & Earn
         </h2>
         <p className="text-gray-600 dark:text-gray-300 mb-4">
-          Share your referral code with friends and family. They get a free trial, you earn rewards!
+          Share your referral code with friends and family. They get $5 off their first order, and you earn $5 credit when they buy.
         </p>
 
         <div className="grid grid-cols-3 md:grid-cols-5 gap-3">

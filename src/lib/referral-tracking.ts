@@ -1,5 +1,6 @@
 // Referral tracking utility functions
 import { getProductPrice } from './pricing';
+import { REFERRAL_COOKIE_MAX_AGE_SECONDS, REFERRAL_COOKIE_NAME } from './referral-cookie';
 
 interface ReferralInfo {
   code: string;
@@ -36,6 +37,13 @@ export function clearReferralInfo(): void {
   if (typeof globalThis.window === 'undefined') return;
 
   localStorage.removeItem('referralInfo');
+  document.cookie = `${REFERRAL_COOKIE_NAME}=; path=/; max-age=0; SameSite=Lax`;
+}
+
+export function persistReferralCode(code: string): void {
+  if (typeof globalThis.window === 'undefined') return;
+
+  document.cookie = `${REFERRAL_COOKIE_NAME}=${encodeURIComponent(code)}; path=/; max-age=${REFERRAL_COOKIE_MAX_AGE_SECONDS}; SameSite=Lax`;
 }
 
 /**

@@ -2,6 +2,8 @@ import { NextRequest, NextResponse } from 'next/server';
 import prisma from '@/lib/prisma';
 import { attachEmailToFreshnessProfile, getFreshnessSnapshotBySessionId } from '@/lib/freshness-profile';
 import { FRESHNESS_SESSION_COOKIE } from '@/lib/freshness-session';
+import { REFERRAL_COOKIE_NAME } from '@/lib/referral-cookie';
+import { validateReferralCodeForEmail } from '@/lib/referral-program';
 import { checkRateLimit, getClientIp } from '@/lib/rate-limit';
 import { signOrderId } from '@/lib/security/checkout-token';
 interface CartItem {
@@ -102,10 +104,13 @@ export async function POST(request: NextRequest) {
       currency: string;
       total?: number;
       sessionId?: string;
+      referralCode?: string;
     };
     const sessionId = typeof body.sessionId === 'string'
       ? body.sessionId
       : request.cookies.get(FRESHNESS_SESSION_COOKIE)?.value;
+    const referralCodeFromBody =
+      typeof body.referralCode === 'string' ? body.referralCode : undefined;
     // Validate required fields
     if (!items || !Array.isArray(items) || items.length === 0) {
       return NextResponse.json(
@@ -128,6 +133,25 @@ export async function POST(request: NextRequest) {
     }
     // Recalculate total server-side to prevent price tampering
     const { total: serverTotal, validatedItems } = await recalculateOrderTotal(items);
+    const referralCodeCandidate =
+      referralCodeFromBody ||
+      request.cookies.get(REFERRAL_COOKIE_NAME)?.value ||
+      undefined;
+    let referralCodeUsed: string | undefined;
+    let referralDiscount = 0;
+
+    if (referralCodeCandidate) {
+      try {
+        const referral = await validateReferralCodeForEmail(referralCodeCandidate, customer.email);
+        referralCodeUsed = referral.code;
+        referralDiscount = referral.discount;
+      } catch {
+        referralCodeUsed = undefined;
+        referralDiscount = 0;
+      }
+    }
+
+    const totalAfterReferral = Math.max(0, Math.round((serverTotal - referralDiscount) * 100) / 100);
     const freshness = sessionId
       ? await getFreshnessSnapshotBySessionId(sessionId)
       : null;
@@ -140,9 +164,11 @@ export async function POST(request: NextRequest) {
     }
     const order = await prisma.order.create({
       data: {
-        totalAmount: serverTotal, // Use server-calculated total only
+        totalAmount: totalAfterReferral, // Use server-calculated total only
         currency: currency,
         status: 'PENDING',
+        referralCodeUsed,
+        referralDiscount: referralDiscount > 0 ? referralDiscount : null,
         freshnessSessionId: freshness?.sessionId,
         freshnessSource: freshness?.source,
         freshnessScore: freshness?.score,

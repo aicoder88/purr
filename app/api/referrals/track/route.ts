@@ -1,11 +1,12 @@
 import prisma from '@/lib/prisma';
-import { getProductPrice } from '@/lib/pricing';
-import { verifyOrigin } from '@/lib/security/origin-check';
+import { REFERRAL_CONFIG } from '@/lib/referral';
 import {
-  REFERRAL_MAX_CREDITS_PER_USER,
-  REFERRAL_CREDIT_AMOUNT,
-  REFERRAL_MILESTONE_INTERVAL,
-} from '@/lib/config/ui-constants';
+  completeReferralPurchase,
+  normalizeEmail,
+  normalizeReferralCode,
+  validateReferralCodeForEmail,
+} from '@/lib/referral-program';
+import { verifyOrigin } from '@/lib/security/origin-check';
 
 interface TrackingData {
   source?: string;
@@ -45,11 +46,6 @@ interface TrackReferralRequestBody {
   orderValue?: number;
   trackingData?: TrackingData;
 }
-
-// Maximum milestone rewards a single user can accumulate
-const MAX_MILESTONE_REWARDS_PER_USER = 5;
-const REWARD_EXPIRY_DAYS = 90;
-const MILESTONE_EXPIRY_DAYS = 180;
 
 const SECURITY_HEADERS = {
   'X-Content-Type-Options': 'nosniff',
@@ -95,9 +91,12 @@ export async function POST(req: Request): Promise<Response> {
       } satisfies TrackingResponse, { status: 500 });
     }
 
+    const normalizedCode = normalizeReferralCode(referralCode);
+    const normalizedRefereeEmail = refereeEmail ? normalizeEmail(refereeEmail) : undefined;
+
     // Validate referral code exists and is active
     const referralCodeRecord = await prisma.referralCode.findUnique({
-      where: { code: referralCode },
+      where: { code: normalizedCode },
       include: { user: { select: { id: true, email: true } } },
     });
 
@@ -117,7 +116,11 @@ export async function POST(req: Request): Promise<Response> {
     }
 
     // Prevent self-referral
-    if (refereeEmail && referralCodeRecord.user.email && referralCodeRecord.user.email === refereeEmail.toLowerCase()) {
+    if (
+      normalizedRefereeEmail &&
+      referralCodeRecord.user.email &&
+      normalizeEmail(referralCodeRecord.user.email) === normalizedRefereeEmail
+    ) {
       return Response.json({
         success: false,
         error: 'Cannot use your own referral code'
@@ -126,15 +129,15 @@ export async function POST(req: Request): Promise<Response> {
 
     switch (action) {
       case 'click':
-        return await handleClick(referralCodeRecord.id, refereeEmail);
+        return await handleClick(referralCodeRecord.id, normalizedRefereeEmail);
 
       case 'signup':
-        return await handleSignup(referralCodeRecord.id, refereeEmail!, refereeId);
+        return await handleSignup(referralCodeRecord.id, normalizedRefereeEmail!, refereeId);
 
       case 'purchase':
         return await handlePurchase(
-          referralCodeRecord,
-          refereeEmail!,
+          normalizedCode,
+          normalizedRefereeEmail!,
           refereeId,
           orderId,
           orderValue
@@ -174,7 +177,7 @@ async function handleClick(
   const existing = await prisma!.referralRedemption.findFirst({
     where: {
       referralCodeId,
-      refereeEmail: refereeEmail.toLowerCase(),
+      refereeEmail,
       status: 'PENDING',
     },
   });
@@ -196,7 +199,7 @@ async function handleClick(
   const redemption = await prisma!.referralRedemption.create({
     data: {
       referralCodeId,
-      refereeEmail: refereeEmail.toLowerCase(),
+      refereeEmail,
       status: 'PENDING',
       clickedAt: new Date(),
     },
@@ -224,7 +227,7 @@ async function handleSignup(
   const existing = await prisma!.referralRedemption.findFirst({
     where: {
       referralCodeId,
-      refereeEmail: refereeEmail.toLowerCase(),
+      refereeEmail,
       status: 'PENDING',
     },
   });
@@ -255,7 +258,7 @@ async function handleSignup(
   const redemption = await prisma!.referralRedemption.create({
     data: {
       referralCodeId,
-      refereeEmail: refereeEmail.toLowerCase(),
+      refereeEmail,
       status: 'PENDING',
       signedUpAt: new Date(),
     },
@@ -274,18 +277,8 @@ async function handleSignup(
   } satisfies TrackingResponse);
 }
 
-interface ReferralCodeWithUser {
-  id: string;
-  code: string;
-  userId: string;
-  isActive: boolean;
-  totalOrders: number;
-  totalEarnings: number;
-  user: { id: string; email: string | null };
-}
-
 async function handlePurchase(
-  referralCodeRecord: ReferralCodeWithUser,
+  referralCode: string,
   refereeEmail: string,
   _refereeId?: string,
   orderId?: string,
@@ -298,145 +291,44 @@ async function handlePurchase(
     } satisfies TrackingResponse, { status: 400 });
   }
 
-  // Check if this order was already tracked (idempotency)
-  const existingForOrder = await prisma!.referralRedemption.findFirst({
-    where: {
-      referralCodeId: referralCodeRecord.id,
-      refereeOrderId: orderId,
-      status: 'COMPLETED',
-    },
+  const validation = await validateReferralCodeForEmail(referralCode, refereeEmail);
+  const completion = await completeReferralPurchase({
+    referralCode,
+    refereeEmail,
+    orderId,
+    orderValue: _orderValue,
   });
 
-  if (existingForOrder) {
+  if (completion.alreadyProcessed) {
     return Response.json({
       success: true,
-      referralId: existingForOrder.id,
-      message: 'Referral purchase already tracked'
+      referralId: completion.referralId,
+      rewardEligible: completion.rewardIssued,
+      rewards: completion.rewards,
+      message: 'Referral purchase already tracked',
     } satisfies TrackingResponse);
   }
-
-  // Check reward caps for the referrer
-  const existingRewardCount = await prisma!.referralReward.count({
-    where: {
-      userId: referralCodeRecord.userId,
-      type: 'REFERRAL_CREDIT',
-      status: { in: ['AVAILABLE', 'USED'] },
-    },
-  });
-
-  if (existingRewardCount >= REFERRAL_MAX_CREDITS_PER_USER) {
-    // Still track the redemption but don't issue more rewards
-    return Response.json({
-      success: true,
-      rewardEligible: false,
-      message: 'Referral tracked but referrer has reached maximum rewards'
-    } satisfies TrackingResponse);
-  }
-
-  const now = new Date();
-
-  // Find pending redemption or create completed one
-  const pendingRedemption = await prisma!.referralRedemption.findFirst({
-    where: {
-      referralCodeId: referralCodeRecord.id,
-      refereeEmail: refereeEmail.toLowerCase(),
-      status: 'PENDING',
-    },
-  });
-
-  let redemptionId: string;
-
-  if (pendingRedemption) {
-    await prisma!.referralRedemption.update({
-      where: { id: pendingRedemption.id },
-      data: {
-        status: 'COMPLETED',
-        refereeOrderId: orderId,
-        purchasedAt: now,
-        rewardIssuedAt: now,
-      },
-    });
-    redemptionId = pendingRedemption.id;
-  } else {
-    const newRedemption = await prisma!.referralRedemption.create({
-      data: {
-        referralCodeId: referralCodeRecord.id,
-        refereeEmail: refereeEmail.toLowerCase(),
-        refereeOrderId: orderId,
-        status: 'COMPLETED',
-        purchasedAt: now,
-        rewardIssuedAt: now,
-      },
-    });
-    redemptionId = newRedemption.id;
-  }
-
-  // Issue referrer reward ($5 credit)
-  await prisma!.referralReward.create({
-    data: {
-      userId: referralCodeRecord.userId,
-      amount: REFERRAL_CREDIT_AMOUNT,
-      type: 'REFERRAL_CREDIT',
-      description: `Referral from ${refereeEmail}`,
-      status: 'AVAILABLE',
-      expiresAt: new Date(now.getTime() + REWARD_EXPIRY_DAYS * 24 * 60 * 60 * 1000),
-    },
-  });
-
-  // Update referral code stats
-  await prisma!.referralCode.update({
-    where: { id: referralCodeRecord.id },
-    data: {
-      totalOrders: { increment: 1 },
-      totalEarnings: { increment: REFERRAL_CREDIT_AMOUNT },
-    },
-  });
-
-  // Check for milestone rewards (every 3 referrals = free 50g)
-  const completedCount = referralCodeRecord.totalOrders + 1; // +1 for this one
-  const existingMilestoneCount = await prisma!.referralReward.count({
-    where: {
-      userId: referralCodeRecord.userId,
-      type: 'MILESTONE_BONUS',
-      status: { in: ['AVAILABLE', 'USED'] },
-    },
-  });
-
-  if (
-    completedCount % REFERRAL_MILESTONE_INTERVAL === 0 &&
-    completedCount > 0 &&
-    existingMilestoneCount < MAX_MILESTONE_REWARDS_PER_USER
-  ) {
-    await prisma!.referralReward.create({
-      data: {
-        userId: referralCodeRecord.userId,
-        amount: getProductPrice('standard'),
-        type: 'MILESTONE_BONUS',
-        description: `Free 50g Standard Size (${completedCount} referrals milestone)`,
-        status: 'AVAILABLE',
-        expiresAt: new Date(now.getTime() + MILESTONE_EXPIRY_DAYS * 24 * 60 * 60 * 1000),
-      },
-    });
-  }
-
-  const rewards: TrackingResponse['rewards'] = {
-    referrer: {
-      type: 'credit',
-      value: REFERRAL_CREDIT_AMOUNT,
-      description: `$${REFERRAL_CREDIT_AMOUNT} credit on your next purchase`
-    },
-    referee: {
-      type: 'product',
-      value: getProductPrice('trial'),
-      description: 'Free 12g Trial Size'
-    }
-  };
 
   return Response.json({
     success: true,
-    referralId: redemptionId,
-    rewardEligible: true,
-    rewards,
-    message: 'Referral purchase completed - rewards issued!'
+    referralId: completion.referralId,
+    rewardEligible: completion.rewardIssued,
+    rewards: completion.rewardIssued
+      ? completion.rewards
+      : {
+          referrer: {
+            type: 'credit',
+            value: REFERRAL_CONFIG.REFERRER_CREDIT,
+            description: `$${REFERRAL_CONFIG.REFERRER_CREDIT} credit on the next order`,
+          },
+          referee: {
+            type: 'discount',
+            value: validation.discount,
+            description: `$${validation.discount} off the first order`,
+          },
+        },
+    message: completion.rewardIssued
+      ? 'Referral purchase completed - rewards issued!'
+      : 'Referral purchase completed - referral recorded',
   } satisfies TrackingResponse);
 }

@@ -19,6 +19,7 @@ import Link from 'next/link';
 import { Button } from '@/components/ui/button';
 import { useTranslations, useLocale } from 'next-intl';
 import { CONTACT_INFO } from '@/lib/constants';
+import { clearReferralInfo } from '@/lib/referral-tracking';
 import type { TranslationType } from '@/translations/types';
 import { buildFreshnessPlan } from '@/lib/freshness-plan';
 import { FreshnessPlanCard } from '@/components/freshness/FreshnessPlanCard';
@@ -91,6 +92,10 @@ export default function ThankYouClient({ orderDetails, error, sessionId: _sessio
   const deliveryInfo = getDeliveryTimeline();
 
   // Generate referral code on mount if we have customer info
+  useEffect(() => {
+    clearReferralInfo();
+  }, []);
+
   useEffect(() => {
     const generateReferralCode = async () => {
       if (!orderDetails?.customerEmail || !orderDetails?.customerName) return;

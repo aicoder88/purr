@@ -193,10 +193,10 @@ export default function ReferralsPageClient() {
                   <Gift className="w-8 h-8 text-green-600 dark:text-green-400" />
                 </div>
                 <h3 className="font-heading text-xl font-bold text-gray-900 dark:text-gray-100 mb-3">
-                  15% Off Every Referral
+                  $5 Credit Per Referral
                 </h3>
                 <p className="text-gray-600 dark:text-gray-400">
-                  Earn 15% discount on your next purchase for every friend who buys Purrify
+                  Earn a $5 credit each time a referred friend completes their first order
                 </p>
               </Card>
 
@@ -208,7 +208,7 @@ export default function ReferralsPageClient() {
                   Milestone Bonuses
                 </h3>
                 <p className="text-gray-600 dark:text-gray-400">
-                  Get FREE products after every 3 successful referrals - no limits!
+                  Unlock bonus rewards at 5, 10, and 25 successful referrals
                 </p>
               </Card>
 
@@ -220,7 +220,7 @@ export default function ReferralsPageClient() {
                   Help Cat Parents
                 </h3>
                 <p className="text-gray-600 dark:text-gray-400">
-                  Your friends get a FREE trial - everyone wins when they try Purrify!
+                  Your friends get $5 off their first order while you share a product that solves a real problem
                 </p>
               </Card>
             </div>
@@ -246,9 +246,9 @@ export default function ReferralsPageClient() {
                   <div className="w-12 h-12 bg-orange-100 dark:bg-orange-900/20 rounded-full flex items-center justify-center mx-auto mb-4">
                     <span className="text-xl font-bold text-orange-600 dark:text-orange-400">2</span>
                   </div>
-                  <h3 className="font-heading font-bold text-gray-900 dark:text-gray-100 mb-2">They Get FREE Trial</h3>
+                  <h3 className="font-heading font-bold text-gray-900 dark:text-gray-100 mb-2">They Get $5 Off</h3>
                   <p className="text-gray-600 dark:text-gray-400 text-sm">
-                    {`Your friends receive a free 12g trial size (normally ${trialPrice})`}
+                    {`Their first order gets an instant $5 referral discount. Trial size currently starts at ${trialPrice}.`}
                   </p>
                 </div>
 
@@ -258,7 +258,7 @@ export default function ReferralsPageClient() {
                   </div>
                   <h3 className="font-heading font-bold text-gray-900 dark:text-gray-100 mb-2">You Earn Rewards</h3>
                   <p className="text-gray-600 dark:text-gray-400 text-sm">
-                    Get 15% off + milestone bonuses when they make their first purchase
+                    Collect a $5 credit for every completed referral plus milestone bonuses as your impact grows
                   </p>
                 </div>
               </div>

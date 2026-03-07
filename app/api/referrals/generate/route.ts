@@ -6,12 +6,11 @@
  */
 
 import { auth } from '@/auth';
-import prisma from '@/lib/prisma';
 import {
-  generateReferralCode,
   generateShareUrls,
   REFERRAL_CONFIG,
 } from '@/lib/referral';
+import { ensureReferralCodeForEmail } from '@/lib/referral-program';
 import { verifyOrigin } from '@/lib/security/origin-check';
 
 // Rate limiting setup
@@ -59,13 +58,6 @@ export async function POST(req: Request): Promise<Response> {
     const body = (await req.json().catch(() => ({}))) as GenerateReferralRequestBody;
     const session = await auth();
 
-    if (!prisma) {
-      return Response.json({
-        success: false,
-        error: 'Database not available',
-      }, { status: 503, headers });
-    }
-
     let userEmail = session?.user?.email?.toLowerCase().trim();
     const fallbackEmail = typeof body.email === 'string' ? body.email.toLowerCase().trim() : '';
 
@@ -84,96 +76,11 @@ export async function POST(req: Request): Promise<Response> {
       .trim()
       .slice(0, 80);
 
-    // Find user by email
-    let user = await prisma.user.findUnique({
-      where: { email: userEmail },
-      include: { referralCode: true },
+    const { referralCode } = await ensureReferralCodeForEmail({
+      email: userEmail,
+      userName,
     });
-
-    if (!user) {
-      user = await prisma.user.create({
-        data: {
-          email: userEmail,
-          name: userName,
-        },
-        include: { referralCode: true },
-      });
-    }
-
-    // Check if user already has a referral code
-    if (user.referralCode) {
-      const shareUrls = generateShareUrls(user.referralCode.code, userName);
-      return Response.json({
-        success: true,
-        data: {
-          code: user.referralCode.code,
-          shareUrl: shareUrls.shareUrl,
-          shareUrls,
-          expiresAt: user.referralCode.expiresAt?.toISOString(),
-          maxReferrals: REFERRAL_CONFIG.MAX_REFERRALS_PER_USER,
-        },
-      }, { headers });
-    }
-
-    // Generate new unique code
-    let code = generateReferralCode(userName);
-    let attempts = 0;
-    const maxAttempts = 10;
-
-    // Ensure code is unique
-    while (attempts < maxAttempts) {
-      const existingCode = await prisma.referralCode.findUnique({
-        where: { code },
-      });
-
-      if (!existingCode) {
-        break;
-      }
-
-      // Regenerate with different random suffix
-      code = generateReferralCode(userName);
-      attempts++;
-    }
-
-    if (attempts >= maxAttempts) {
-      // Fallback: use a completely random code
-      code = `REF${Date.now().toString(36).toUpperCase()}-PURR`;
-    }
-
-    // Create the referral code
-    const referralCode = await prisma.referralCode.create({
-      data: {
-        code,
-        userId: user.id,
-        isActive: true,
-        totalClicks: 0,
-        totalSignups: 0,
-        totalOrders: 0,
-        totalEarnings: 0,
-      },
-    });
-
-    // Get client info from headers
-    const ipAddress = forwardedFor?.split(',')[0] || 'unknown';
-    const userAgent = req.headers.get('user-agent');
-
-    // Log audit event
-    await prisma.auditLog.create({
-      data: {
-        action: 'REFERRAL_CODE_GENERATED',
-        entity: 'referral_codes',
-        entityId: referralCode.id,
-        userId: user.id,
-        ipAddress,
-        userAgent: userAgent || undefined,
-        changes: {
-          code: referralCode.code,
-          generatedAt: new Date().toISOString(),
-        },
-      },
-    });
-
-    const shareUrls = generateShareUrls(code, userName);
+    const shareUrls = generateShareUrls(referralCode.code, userName);
 
     return Response.json({
       success: true,
@@ -184,7 +91,7 @@ export async function POST(req: Request): Promise<Response> {
         expiresAt: referralCode.expiresAt?.toISOString(),
         maxReferrals: REFERRAL_CONFIG.MAX_REFERRALS_PER_USER,
       },
-    }, { status: 201, headers });
+    }, { status: 200, headers });
   } catch {
     return Response.json({
       success: false,

@@ -4,6 +4,8 @@ import { z } from 'zod';
 import prisma from '@/lib/prisma';
 import { attachEmailToFreshnessProfile, getFreshnessSnapshotBySessionId } from '@/lib/freshness-profile';
 import { FRESHNESS_SESSION_COOKIE } from '@/lib/freshness-session';
+import { REFERRAL_COOKIE_NAME } from '@/lib/referral-cookie';
+import { validateReferralCodeForEmail } from '@/lib/referral-program';
 import { checkRateLimit, createRateLimitHeaders } from '@/lib/rate-limit';
 import { verifyCheckoutToken, isOrderExpired } from '@/lib/security/checkout-token';
 
@@ -18,9 +20,60 @@ function getStripe(): Stripe {
   return stripeInstance;
 }
 
+interface CheckoutOrderItem {
+  quantity: number;
+  price: number;
+  product: {
+    name: string;
+    description: string;
+    image: string;
+  };
+}
+
+function buildCheckoutLineItems(
+  order: { items: CheckoutOrderItem[] },
+  currency: 'CAD' | 'USD',
+  referralDiscount = 0
+) {
+  const expandedItems = order.items.flatMap((item) =>
+    Array.from({ length: item.quantity }, () => ({
+      product: item.product,
+      unitAmountCents: Math.round(item.price * 100),
+    }))
+  );
+
+  let remainingDiscountCents = Math.max(0, Math.round(referralDiscount * 100));
+  const discountedUnits = expandedItems.map((item) => {
+    if (remainingDiscountCents <= 0) {
+      return item;
+    }
+
+    const appliedDiscount = Math.min(item.unitAmountCents, remainingDiscountCents);
+    remainingDiscountCents -= appliedDiscount;
+
+    return {
+      ...item,
+      unitAmountCents: item.unitAmountCents - appliedDiscount,
+    };
+  });
+
+  return discountedUnits.map((item) => ({
+    price_data: {
+      currency: currency.toLowerCase(),
+      product_data: {
+        name: item.product.name,
+        description: item.product.description,
+        images: item.product.image ? [item.product.image] : undefined,
+      },
+      unit_amount: item.unitAmountCents,
+    },
+    quantity: 1,
+  }));
+}
+
 // Input validation schema
 const createCheckoutSchema = z.object({
-  orderId: z.string().uuid('Invalid order ID format'),
+  orderId: z.string().min(1, 'Order ID is required').max(64, 'Invalid order ID format'),
   checkoutToken: z.string().min(1, 'Checkout token is required'),
   currency: z.enum(['CAD', 'USD'], { message: 'Currency must be CAD or USD' }),
   locale: z.enum(['en', 'fr']).default('en'),
@@ -28,6 +81,7 @@ const createCheckoutSchema = z.object({
     email: z.string().email('Invalid email format').max(254, 'Email too long'),
     name: z.string().min(1, 'Name is required').max(100, 'Name too long').optional(),
   }),
+  referralCode: z.string().trim().min(1).max(20).optional(),
   sessionId: z
     .string()
     .trim()
@@ -73,7 +127,7 @@ export async function POST(request: NextRequest) {
       );
     }
 
-    const { orderId, checkoutToken, currency, locale, customer, sessionId: bodySessionId } = validationResult.data;
+    const { orderId, checkoutToken, currency, locale, customer, referralCode, sessionId: bodySessionId } = validationResult.data;
     const sessionId = bodySessionId ?? request.cookies.get(FRESHNESS_SESSION_COOKIE)?.value;
 
     // Verify checkout token for ownership
@@ -142,21 +196,36 @@ export async function POST(request: NextRequest) {
       });
     }
 
+    const referralCodeCandidate =
+      order.referralCodeUsed ||
+      referralCode ||
+      request.cookies.get(REFERRAL_COOKIE_NAME)?.value ||
+      undefined;
+    let persistedReferralCode = order.referralCodeUsed || undefined;
+    let persistedReferralDiscount = order.referralDiscount || undefined;
+
+    if (referralCodeCandidate && !order.referralCodeUsed) {
+      try {
+        const referral = await validateReferralCodeForEmail(referralCodeCandidate, customer.email);
+        persistedReferralCode = referral.code;
+        persistedReferralDiscount = referral.discount;
+        await prisma.order.update({
+          where: { id: order.id },
+          data: {
+            referralCodeUsed: referral.code,
+            referralDiscount: referral.discount,
+          },
+        });
+      } catch {
+        persistedReferralCode = undefined;
+        persistedReferralDiscount = undefined;
+      }
+    }
+
     // Create Stripe checkout session
     const session = await getStripe().checkout.sessions.create({
       payment_method_types: ['card'],
-      line_items: order.items.map((item) => ({
-        price_data: {
-          currency: currency.toLowerCase(),
-          product_data: {
-            name: item.product.name,
-            description: item.product.description,
-            images: item.product.image ? [item.product.image] : undefined,
-          },
-          unit_amount: Math.round(item.price * 100),
-        },
-        quantity: item.quantity,
-      })),
+      line_items: buildCheckoutLineItems(order, currency, persistedReferralDiscount || 0),
       mode: 'payment',
       success_url: `${process.env.NEXTAUTH_URL}/thank-you?session_id={CHECKOUT_SESSION_ID}`,
       cancel_url: `${process.env.NEXTAUTH_URL}/products`,
@@ -170,6 +239,8 @@ export async function POST(request: NextRequest) {
         freshnessScore: String(order.freshnessScore ?? freshness?.score ?? ''),
         freshnessRiskLevel: order.freshnessRiskLevel ?? freshness?.riskLevel ?? '',
         freshnessRecommendedProductId: order.freshnessRecommendedProductId ?? freshness?.recommendedProductId ?? '',
+        referralCodeUsed: persistedReferralCode ?? '',
+        referralDiscount: persistedReferralDiscount ? String(persistedReferralDiscount) : '',
       },
     });
 

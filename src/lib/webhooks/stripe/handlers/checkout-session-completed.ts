@@ -11,7 +11,7 @@ import prisma from '@/lib/prisma';
 import { getStripe } from '../config';
 import { sendAdminNotification, sendThankYouEmail, sendAffiliateActivationEmail } from '../emails';
 import { recordAffiliateConversion, parseAffiliateMetadata } from '@/lib/affiliate/conversion';
-import { randomBytes } from 'crypto';
+import { completeReferralPurchase, ensureReferralCodeForEmail } from '@/lib/referral-program';
 
 interface CheckoutSessionData {
   session: Stripe.Checkout.Session;
@@ -216,38 +216,6 @@ async function handleRetailerOrder(data: CheckoutSessionData): Promise<void> {
 }
 
 /**
- * Generate referral code for first-time customers
- */
-async function generateReferralCode(orderId: string): Promise<void> {
-  if (!prisma) return;
-
-  const order = await prisma.order.findUnique({
-    where: { id: orderId },
-    include: {
-      user: {
-        include: {
-          orders: true,
-        },
-      },
-    },
-  });
-
-  if (order?.user && order.user.orders.length === 1) {
-    // Generate cryptographically secure referral code
-    const referralCode = randomBytes(3).toString('hex').toUpperCase();
-
-    await prisma.referral.create({
-      data: {
-        code: referralCode,
-        orderId,
-        referrerId: order.user.id,
-        refereeId: order.user.id,
-      },
-    });
-  }
-}
-
-/**
  * Handle consumer order
  */
 async function handleConsumerOrder(data: CheckoutSessionData): Promise<void> {
@@ -263,6 +231,7 @@ async function handleConsumerOrder(data: CheckoutSessionData): Promise<void> {
       freshnessScore: true,
       freshnessRiskLevel: true,
       freshnessRecommendedProductId: true,
+      referralCodeUsed: true,
     },
   });
 
@@ -303,8 +272,25 @@ async function handleConsumerOrder(data: CheckoutSessionData): Promise<void> {
     });
   }
 
-  // Generate referral code if first-time customer
-  await generateReferralCode(orderId);
+  if (customerEmail) {
+    await ensureReferralCodeForEmail({
+      email: customerEmail,
+      userName: customerName || undefined,
+    });
+  }
+
+  if (customerEmail && currentOrder.referralCodeUsed) {
+    try {
+      await completeReferralPurchase({
+        referralCode: currentOrder.referralCodeUsed,
+        refereeEmail: customerEmail,
+        orderId,
+        orderValue: amount / 100,
+      });
+    } catch (referralError) {
+      console.error('[Webhook] Failed to complete referral purchase:', referralError);
+    }
+  }
 
   // Send thank you email
   if (customerEmail) {

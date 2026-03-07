@@ -29,7 +29,7 @@ const SHARE_TEMPLATES: ShareTemplate[] = [
     icon: Mail,
     color: 'text-blue-600 dark:text-blue-400',
     title: 'Email',
-    template: `Subject: Get your FREE Purrify trial - eliminates cat litter odor instantly!
+    template: `Subject: Get $5 off Purrify - eliminates cat litter odor instantly!
 
 Hi!
 
@@ -37,7 +37,7 @@ I discovered this amazing cat litter deodorizer that ACTUALLY works. No more hol
 
 I was embarrassed about the smell in my home, but Purrify completely eliminated it in 24 hours. The activated carbon technology destroys odors instead of just masking them.
 
-You can get a FREE 12g trial with my referral code: {code}
+You can get $5 off your first order with my referral code: {code}
 
 Try it here: {url}
 
@@ -51,14 +51,14 @@ Best!
     icon: MessageSquare,
     color: 'text-green-600 dark:text-green-400',
     title: 'SMS',
-    template: `Hey! Found this cat litter deodorizer that actually WORKS. No more embarrassing smell! Get a FREE trial with my code {code}: {url}`
+    template: `Hey! Found this cat litter deodorizer that actually WORKS. No more embarrassing smell! Get $5 off your first order with my code {code}: {url}`
   },
   {
     platform: 'whatsapp',
     icon: Send,
     color: 'text-green-500 dark:text-green-400',
     title: 'WhatsApp',
-    template: `🐱 Finally found something that eliminates cat litter smell completely! I was so embarrassed before, but Purrify actually works. Get your FREE trial with my code {code}: {url} #CatParentLife`
+    template: `🐱 Finally found something that eliminates cat litter smell completely! I was so embarrassed before, but Purrify actually works. Get $5 off your first order with my code {code}: {url} #CatParentLife`
   },
   {
     platform: 'facebook',
@@ -69,7 +69,7 @@ Best!
 
 No more embarrassing litter box smell when guests come over. Purrify's activated carbon completely eliminates odors (not just masks them).
 
-My friend can get a FREE trial with code {code}. If you're tired of holding your breath near the litter box, this is for you: {url}
+My friend can get $5 off the first order with code {code}. If you're tired of holding your breath near the litter box, this is for you: {url}
 
 #CatParentLife #PurrifyWorks #CatLitter #OdorControl`
   },
@@ -83,7 +83,7 @@ My friend can get a FREE trial with code {code}. If you're tired of holding your
 
 Purrify's activated carbon technology has completely transformed my home environment - no more litter box odors affecting my work-from-home setup.
 
-Professional recommendation for fellow pet owners: try the free sample with code {code}: {url}
+Professional recommendation for fellow pet owners: save $5 on your first order with code {code}: {url}
 
 #PetOwners #HomeOffice #ProductRecommendation`
   }
@@ -360,7 +360,7 @@ export function SocialShareTools({ referralCode, shareUrl, referrerName, classNa
                 />
                 <div className="text-center mt-2">
                   <p className="text-sm text-gray-600 dark:text-gray-400 font-mono">{referralCode}</p>
-                  <p className="text-xs text-gray-500 dark:text-gray-400">Free Trial Code</p>
+                  <p className="text-xs text-gray-500 dark:text-gray-400">Referral Code</p>
                 </div>
               </div>
             </div>
@@ -412,7 +412,7 @@ export function SocialShareTools({ referralCode, shareUrl, referrerName, classNa
             <ul className="text-sm text-gray-600 dark:text-gray-400 space-y-1">
               <li>• Focus on embarrassment/relief</li>
               <li>• Mention "actually works" vs other products</li>
-              <li>• Emphasize the FREE trial</li>
+              <li>• Emphasize the $5 first-order savings</li>
               <li>• Share your personal transformation</li>
             </ul>
           </div>

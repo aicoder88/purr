@@ -1,73 +1,10 @@
 /**
  * GET /api/referrals/validate/[code]
- * Validate a referral code and return referrer details
- *
- * Sprint 6C: "Give $5, Get $5" Referral Program
+ * Validate a referral code and return referrer details.
  */
 
-import prisma from '@/lib/prisma';
 import { REFERRAL_CONFIG } from '@/lib/referral';
-import { getProductPrice, formatProductPrice } from '@/lib/pricing';
-
-// Fallback mock data for when database is not available
-interface MockReferralCode {
-  id: string;
-  userId: string;
-  code: string;
-  referrerName: string;
-  isActive: boolean;
-  maxUses: number;
-  currentUses: number;
-  expiresAt: string;
-}
-
-const getMockReferralCode = (code: string): MockReferralCode | null => {
-  const mockCodes: Record<string, MockReferralCode> = {
-    'SARAH15-PURR': {
-      id: 'ref_001',
-      userId: 'user_001',
-      code: 'SARAH15-PURR',
-      referrerName: 'Sarah M.',
-      isActive: true,
-      maxUses: 100,
-      currentUses: 12,
-      expiresAt: new Date(Date.now() + 365 * 24 * 60 * 60 * 1000).toISOString(),
-    },
-    'MIKE42-PURR': {
-      id: 'ref_002',
-      userId: 'user_002',
-      code: 'MIKE42-PURR',
-      referrerName: 'Michael R.',
-      isActive: true,
-      maxUses: 100,
-      currentUses: 7,
-      expiresAt: new Date(Date.now() + 365 * 24 * 60 * 60 * 1000).toISOString(),
-    },
-    // Legacy format support
-    'SARAH15-CAT': {
-      id: 'ref_003',
-      userId: 'user_001',
-      code: 'SARAH15-CAT',
-      referrerName: 'Sarah M.',
-      isActive: true,
-      maxUses: 100,
-      currentUses: 12,
-      expiresAt: new Date(Date.now() + 365 * 24 * 60 * 60 * 1000).toISOString(),
-    },
-    'MIKE42-CAT': {
-      id: 'ref_004',
-      userId: 'user_002',
-      code: 'MIKE42-CAT',
-      referrerName: 'Michael R.',
-      isActive: true,
-      maxUses: 100,
-      currentUses: 7,
-      expiresAt: new Date(Date.now() + 365 * 24 * 60 * 60 * 1000).toISOString(),
-    },
-  };
-
-  return mockCodes[code] ?? null;
-};
+import { validateReferralCodeForEmail } from '@/lib/referral-program';
 
 export async function GET(
   _req: Request,
@@ -76,134 +13,41 @@ export async function GET(
   const { code } = await params;
 
   if (!code) {
-    return Response.json({
-      isValid: false,
-      error: 'Referral code is required',
-    }, { status: 400 });
+    return Response.json(
+      {
+        isValid: false,
+        error: 'Referral code is required',
+      },
+      { status: 400 }
+    );
   }
 
-  const normalizedCode = code.toUpperCase().trim();
-
   try {
-    // Try database first
-    if (prisma) {
-      const referralCode = await prisma.referralCode.findUnique({
-        where: { code: normalizedCode },
-        include: {
-          user: {
-            select: {
-              name: true,
-            },
-          },
-        },
-      });
-
-      if (referralCode) {
-        // Check if code is active
-        if (!referralCode.isActive) {
-          return Response.json({
-            isValid: false,
-            error: 'This referral code is no longer active',
-          }, { status: 400 });
-        }
-
-        // Check expiration
-        if (referralCode.expiresAt && referralCode.expiresAt < new Date()) {
-          return Response.json({
-            isValid: false,
-            error: 'This referral code has expired',
-          }, { status: 400 });
-        }
-
-        // Check max uses
-        if (referralCode.totalOrders >= REFERRAL_CONFIG.MAX_REFERRALS_PER_USER) {
-          return Response.json({
-            isValid: false,
-            error: 'This referral code has reached its maximum uses',
-          }, { status: 400 });
-        }
-
-        const referrerName = referralCode.user.name?.split(' ')[0] || 'A friend';
-        const usesRemaining = REFERRAL_CONFIG.MAX_REFERRALS_PER_USER - referralCode.totalOrders;
-
-        return Response.json({
-          isValid: true,
-          code: referralCode.code,
-          referrerName,
-          discount: {
-            type: 'fixed',
-            value: REFERRAL_CONFIG.REFEREE_DISCOUNT,
-            description: `$${REFERRAL_CONFIG.REFEREE_DISCOUNT} off your first order`,
-          },
-          expiresAt: referralCode.expiresAt?.toISOString(),
-          usesRemaining,
-          message: `${referrerName} has shared Purrify with you! Get $${REFERRAL_CONFIG.REFEREE_DISCOUNT} off your first order.`,
-        });
-      }
-    }
-
-    const allowMockFallback =
-      process.env.NODE_ENV !== 'production' ||
-      process.env.ENABLE_REFERRAL_MOCKS === 'true';
-
-    if (!allowMockFallback) {
-      return Response.json({
-        isValid: false,
-        error: 'Referral code not found',
-      }, { status: 404 });
-    }
-
-    // Fallback to mock data (for demo/development)
-    const mockCode = getMockReferralCode(normalizedCode);
-
-    if (!mockCode) {
-      return Response.json({
-        isValid: false,
-        error: 'Referral code not found',
-      }, { status: 404 });
-    }
-
-    // Validate mock code
-    if (!mockCode.isActive) {
-      return Response.json({
-        isValid: false,
-        error: 'This referral code is no longer active',
-      }, { status: 400 });
-    }
-
-    if (new Date() > new Date(mockCode.expiresAt)) {
-      return Response.json({
-        isValid: false,
-        error: 'This referral code has expired',
-      }, { status: 400 });
-    }
-
-    if (mockCode.currentUses >= mockCode.maxUses) {
-      return Response.json({
-        isValid: false,
-        error: 'This referral code has reached its maximum uses',
-      }, { status: 400 });
-    }
-
-    const usesRemaining = mockCode.maxUses - mockCode.currentUses;
+    const result = await validateReferralCodeForEmail(code);
 
     return Response.json({
       isValid: true,
-      code: mockCode.code,
-      referrerName: mockCode.referrerName,
+      code: result.code,
+      referrerName: result.referrerName,
       discount: {
-        type: 'free_trial',
-        value: getProductPrice('trial'),
-        description: `Free 12g Trial Size (normally ${formatProductPrice('trial')})`,
+        type: 'fixed',
+        value: REFERRAL_CONFIG.REFEREE_DISCOUNT,
+        description: `$${REFERRAL_CONFIG.REFEREE_DISCOUNT} off your first order`,
       },
-      expiresAt: mockCode.expiresAt,
-      usesRemaining,
-      message: `${mockCode.referrerName} has shared Purrify with you! Get your free trial size and see why they love it.`,
+      expiresAt: result.expiresAt,
+      usesRemaining: result.usesRemaining,
+      message: `${result.referrerName} has shared Purrify with you! Get $${REFERRAL_CONFIG.REFEREE_DISCOUNT} off your first order.`,
     });
-  } catch {
-    return Response.json({
-      isValid: false,
-      error: 'Failed to validate referral code',
-    }, { status: 500 });
+  } catch (error) {
+    const message = error instanceof Error ? error.message : 'Failed to validate referral code';
+    const status = message === 'Referral code not found' ? 404 : 400;
+
+    return Response.json(
+      {
+        isValid: false,
+        error: message,
+      },
+      { status }
+    );
   }
 }

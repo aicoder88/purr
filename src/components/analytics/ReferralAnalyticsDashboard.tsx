@@ -117,6 +117,7 @@ interface ReferralAnalyticsDashboardProps {
 export function ReferralAnalyticsDashboard({ className }: ReferralAnalyticsDashboardProps) {
   const [analyticsData, setAnalyticsData] = useState<AnalyticsData | null>(null);
   const [loading, setLoading] = useState(true);
+  const [error, setError] = useState<string | null>(null);
   const [timeframe, setTimeframe] = useState<string>('30d');
   const [activeTab, setActiveTab] = useState<string>('overview');
   const [refreshing, setRefreshing] = useState(false);
@@ -125,14 +126,20 @@ export function ReferralAnalyticsDashboard({ className }: ReferralAnalyticsDashb
   const fetchAnalytics = useCallback(async (selectedTimeframe?: string) => {
     try {
       setLoading(true);
+      setError(null);
       const response = await fetch(`/api/analytics/referrals?timeframe=${selectedTimeframe || timeframe}`);
       const result = await response.json();
 
       if (result.success) {
         setAnalyticsData(result.data);
+      } else {
+        setAnalyticsData(null);
+        setError(result.error || 'Failed to load referral analytics');
       }
     } catch (error) {
       console.error('Failed to fetch analytics:', error);
+      setAnalyticsData(null);
+      setError('Failed to load referral analytics');
     } finally {
       setLoading(false);
     }
@@ -204,13 +211,31 @@ export function ReferralAnalyticsDashboard({ className }: ReferralAnalyticsDashb
     [handleTabSelect, tabConfigs]
   );
 
-  if (loading || !analyticsData) {
+  if (loading) {
     return (
       <div className={cn("space-y-6", className)}>
         <div className="flex items-center justify-center p-12">
           <RefreshCw className="w-8 h-8 animate-spin text-gray-400 dark:text-gray-600" />
           <span className="ml-3 text-gray-600 dark:text-gray-400">Loading analytics...</span>
         </div>
+      </div>
+    );
+  }
+
+  if (error || !analyticsData) {
+    return (
+      <div className={cn("space-y-6", className)}>
+        <Card className="p-6">
+          <h3 className="font-heading text-lg font-semibold text-gray-900 dark:text-gray-100 mb-2">
+            Referral Analytics Unavailable
+          </h3>
+          <p className="text-gray-600 dark:text-gray-400 mb-4">
+            {error || 'No analytics data is available yet.'}
+          </p>
+          <Button onClick={() => void fetchAnalytics()} variant="outline">
+            Retry
+          </Button>
+        </Card>
       </div>
     );
   }

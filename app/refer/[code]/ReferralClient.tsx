@@ -8,6 +8,7 @@ import { Badge } from '@/components/ui/badge';
 import Link from 'next/link';
 import { Container } from '@/components/ui/container';
 import { formatProductPrice } from '@/lib/pricing';
+import { persistReferralCode } from '@/lib/referral-tracking';
 
 interface ReferralData {
   isValid: boolean;
@@ -41,6 +42,21 @@ export function ReferralClient({ code, referralData }: ReferralClientProps) {
     return () => clearInterval(timer);
   }, []);
 
+  useEffect(() => {
+    if (!referralData.isValid) return;
+
+    void fetch('/api/referrals/track', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        action: 'click',
+        referralCode: code,
+      }),
+    }).catch(() => undefined);
+  }, [code, referralData.isValid]);
+
   // Format time for display
   const formatTime = (seconds: number) => {
     const hours = Math.floor(seconds / 3600);
@@ -61,7 +77,7 @@ export function ReferralClient({ code, referralData }: ReferralClientProps) {
       if (typeof globalThis.window !== 'undefined' && window.gtag) {
         window.gtag('event', 'referral_offer_claimed', {
           event_category: 'referrals',
-          event_label: 'free_trial_claimed',
+          event_label: 'referral_offer_claimed',
           custom_parameter_1: code,
           custom_parameter_2: referralData.referrerName
         });
@@ -73,9 +89,10 @@ export function ReferralClient({ code, referralData }: ReferralClientProps) {
         referrerName: referralData.referrerName,
         claimedAt: new Date().toISOString()
       }));
+      persistReferralCode(code);
 
       // Redirect to product page
-      window.location.href = '/products/trial-size/';
+      window.location.href = '/products/';
 
     } catch (error) {
       console.error('Failed to claim referral offer:', error);
@@ -97,8 +114,8 @@ export function ReferralClient({ code, referralData }: ReferralClientProps) {
             {referralData.error || 'This referral code may have expired or reached its maximum uses.'}
           </p>
           <div className="space-x-4">
-            <Link href="/products/trial-size/">
-              <Button>Shop Trial Size</Button>
+            <Link href="/products/">
+              <Button>Shop Products</Button>
             </Link>
             <Link href="/">
               <Button variant="outline">Back to Home</Button>
@@ -133,7 +150,7 @@ export function ReferralClient({ code, referralData }: ReferralClientProps) {
 
             <p className="text-xl text-gray-600 dark:text-gray-400 mb-8 leading-relaxed">
               {referralData.referrerName} has shared Purrify with you because they know how embarrassing
-              litter box smell can be. Get your <strong>FREE 12g trial</strong> and see why they love it!
+              litter box smell can be. Get <strong>$5 off your first order</strong> and see why they love it.
             </p>
 
             {/* Urgency Timer */}
@@ -151,12 +168,12 @@ export function ReferralClient({ code, referralData }: ReferralClientProps) {
               </div>
             </Card>
 
-            {/* Free Trial Offer */}
+            {/* Referral Offer */}
             <Card className="bg-gradient-to-r from-green-50 to-blue-50 dark:from-green-900/20 dark:to-blue-900/20 border-green-200 dark:border-green-800 p-8 mb-8">
               <div className="flex items-center justify-center space-x-4 mb-4">
                 <Gift className="w-8 h-8 text-green-600 dark:text-green-400" />
                 <Badge className="bg-green-100 dark:bg-green-900/30 text-green-800 dark:text-green-200 text-lg px-4 py-2">
-                  FREE TRIAL
+                  GIVE $5, GET $5
                 </Badge>
               </div>
 
@@ -165,7 +182,7 @@ export function ReferralClient({ code, referralData }: ReferralClientProps) {
               </h2>
 
               <p className="text-gray-600 dark:text-gray-400 mb-6">
-                {`Normally ${trialPrice} - perfect for testing before you buy the full size`}
+                {`Apply your referral savings at checkout. Trial size currently starts at ${trialPrice}.`}
               </p>
 
               <Button
@@ -175,10 +192,10 @@ export function ReferralClient({ code, referralData }: ReferralClientProps) {
                 className="bg-gradient-to-r from-green-500 to-blue-500 hover:from-green-600 hover:to-blue-600 text-white dark:text-gray-100 px-8 py-4 text-lg font-bold shadow-lg"
               >
                 {isClaimingOffer ? (
-                  'Adding to Cart...'
+                  'Opening Shop...'
                 ) : (
                   <>
-                    Claim Your FREE Trial
+                    Claim Your $5 Off
                     <ArrowRight className="w-5 h-5 ml-2" />
                   </>
                 )}

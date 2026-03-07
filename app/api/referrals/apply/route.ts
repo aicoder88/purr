@@ -6,11 +6,10 @@
  */
 
 import { z } from 'zod';
-import prisma from '@/lib/prisma';
 import {
   validateReferralCodeFormat,
-  REFERRAL_CONFIG,
 } from '@/lib/referral';
+import { upsertPendingReferralRedemption } from '@/lib/referral-program';
 import { verifyOrigin } from '@/lib/security/origin-check';
 
 // Input validation schema
@@ -86,13 +85,6 @@ export async function POST(req: Request): Promise<Response> {
     const normalizedCode = code.toUpperCase().trim();
     const normalizedEmail = email.toLowerCase().trim();
 
-    if (!prisma) {
-      return Response.json({
-        success: false,
-        error: 'Database not available',
-      }, { status: 503, headers });
-    }
-
     // Validate code format
     if (!validateReferralCodeFormat(normalizedCode)) {
       return Response.json({
@@ -101,109 +93,27 @@ export async function POST(req: Request): Promise<Response> {
       }, { status: 400, headers });
     }
 
-    // Find the referral code
-    const referralCode = await prisma.referralCode.findUnique({
-      where: { code: normalizedCode },
-      include: {
-        user: {
-          select: {
-            id: true,
-            name: true,
-            email: true,
-          },
-        },
-      },
+    const result = await upsertPendingReferralRedemption({
+      code: normalizedCode,
+      email: normalizedEmail,
     });
-
-    if (!referralCode) {
-      return Response.json({
-        success: false,
-        error: 'Referral code not found',
-      }, { status: 404, headers });
-    }
-
-    // Check if code is active
-    if (!referralCode.isActive) {
-      return Response.json({
-        success: false,
-        error: 'This referral code is no longer active',
-      }, { status: 400, headers });
-    }
-
-    // Check if code has expired
-    if (referralCode.expiresAt && referralCode.expiresAt < new Date()) {
-      return Response.json({
-        success: false,
-        error: 'This referral code has expired',
-      }, { status: 400, headers });
-    }
-
-    // Check if user is trying to use their own code
-    if (referralCode.user.email?.toLowerCase() === normalizedEmail) {
-      return Response.json({
-        success: false,
-        error: 'You cannot use your own referral code',
-      }, { status: 400, headers });
-    }
-
-    // Check if this email has already used a referral code
-    const existingRedemption = await prisma.referralRedemption.findFirst({
-      where: {
-        refereeEmail: normalizedEmail,
-        status: { in: ['PENDING', 'COMPLETED'] },
-      },
-    });
-
-    if (existingRedemption) {
-      return Response.json({
-        success: false,
-        error: 'You have already used a referral code',
-      }, { status: 400, headers });
-    }
-
-    // Check if referrer has reached max referrals
-    if (referralCode.totalOrders >= REFERRAL_CONFIG.MAX_REFERRALS_PER_USER) {
-      return Response.json({
-        success: false,
-        error: 'This referral code has reached its maximum uses',
-      }, { status: 400, headers });
-    }
-
-    // Create pending redemption
-    await prisma.referralRedemption.create({
-      data: {
-        referralCodeId: referralCode.id,
-        refereeEmail: normalizedEmail,
-        status: 'PENDING',
-        refereeDiscount: REFERRAL_CONFIG.REFEREE_DISCOUNT,
-        referrerCredit: REFERRAL_CONFIG.REFERRER_CREDIT,
-        clickedAt: new Date(),
-      },
-    });
-
-    // Increment click count
-    await prisma.referralCode.update({
-      where: { id: referralCode.id },
-      data: {
-        totalClicks: { increment: 1 },
-      },
-    });
-
-    const referrerName = referralCode.user.name?.split(' ')[0] || 'A friend';
 
     return Response.json({
       success: true,
       data: {
-        code: normalizedCode,
-        discount: REFERRAL_CONFIG.REFEREE_DISCOUNT,
-        referrerName,
-        message: `$${REFERRAL_CONFIG.REFEREE_DISCOUNT} discount applied from ${referrerName}'s referral!`,
+        code: result.code,
+        discount: result.discount,
+        referrerName: result.referrerName,
+        message: `$${result.discount} discount applied from ${result.referrerName}'s referral!`,
       },
     }, { headers });
-  } catch (_error) {
+  } catch (error) {
+    const message = error instanceof Error ? error.message : 'Failed to apply referral code. Please try again.';
+    const status = message === 'Referral code not found' ? 404 : 400;
+
     return Response.json({
       success: false,
-      error: 'Failed to apply referral code. Please try again.',
-    }, { status: 500, headers });
+      error: message,
+    }, { status, headers });
   }
 }
