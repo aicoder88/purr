@@ -3,7 +3,6 @@
  * Analyzes internal linking structure and identifies issues
  */
 
-import * as cheerio from 'cheerio';
 import { LinkGraphNode, LinkSuggestion } from './types';
 
 export class LinkGraphAnalyzer {
@@ -219,18 +218,20 @@ export function extractLinks(
   basePath: string,
   domain: string = 'purrify.ca'
 ): ExtractedLink[] {
-  const $ = cheerio.load(html);
   const links: ExtractedLink[] = [];
+  const anchorPattern = /<a\b([^>]*)>([\s\S]*?)<\/a>/gi;
 
-  // Extract from <a> tags
-  $('a').each((_, element) => {
-    const $el = $(element);
-    const href = $el.attr('href');
+  for (const match of html.matchAll(anchorPattern)) {
+    const attributes = match[1] ?? '';
+    const hrefMatch = attributes.match(/\bhref\s*=\s*(?:"([^"]*)"|'([^']*)'|([^\s>]+))/i);
+    const href = hrefMatch?.[1] ?? hrefMatch?.[2] ?? hrefMatch?.[3];
 
-    if (!href) return;
+    if (!href) {
+      continue;
+    }
 
-    const anchorText = $el.text().trim();
-    const context = extractContext($, element, 50); // 50 chars of surrounding text
+    const anchorText = stripHtml(match[2] ?? '');
+    const context = extractContext(html, match.index ?? 0, match[0]?.length ?? 0, 50);
 
     links.push({
       href,
@@ -238,7 +239,7 @@ export function extractLinks(
       context,
       isInternal: isInternalLink(href, domain),
     });
-  });
+  }
 
   return links;
 }
@@ -332,39 +333,35 @@ export function normalizeLinkHref(href: string, basePath: string): string {
  * @returns Context string
  */
 function extractContext(
-  $: cheerio.CheerioAPI,
-  element: NonNullable<Parameters<cheerio.CheerioAPI>[0]>,
+  html: string,
+  anchorStart: number,
+  anchorLength: number,
   maxLength: number = 50
 ): string {
-  const $el = $(element);
-  const $parent = $el.parent();
+  const before = stripHtml(html.slice(Math.max(0, anchorStart - maxLength), anchorStart));
+  const anchorText = stripHtml(html.slice(anchorStart, anchorStart + anchorLength));
+  const after = stripHtml(html.slice(anchorStart + anchorLength, anchorStart + anchorLength + maxLength));
 
-  if (!$parent.length) {
-    return '';
-  }
+  return `...${before}${anchorText}${after}...`.trim();
+}
 
-  // Get parent text content
-  const parentText = $parent.text().trim();
-
-  // Find the link text within parent
-  const linkText = $el.text().trim();
-  const linkIndex = parentText.indexOf(linkText);
-
-  if (linkIndex === -1) {
-    return parentText.substring(0, maxLength);
-  }
-
-  // Extract text before and after the link
-  const before = parentText.substring(
-    Math.max(0, linkIndex - maxLength / 2),
-    linkIndex
+function stripHtml(html: string): string {
+  return decodeHtmlEntities(
+    html
+      .replace(/<[^>]+>/g, ' ')
+      .replace(/\s+/g, ' ')
+      .trim(),
   );
-  const after = parentText.substring(
-    linkIndex + linkText.length,
-    linkIndex + linkText.length + maxLength / 2
-  );
+}
 
-  return `...${before}${linkText}${after}...`.trim();
+function decodeHtmlEntities(text: string): string {
+  return text
+    .replace(/&nbsp;/gi, ' ')
+    .replace(/&amp;/gi, '&')
+    .replace(/&quot;/gi, '"')
+    .replace(/&#39;|&apos;/gi, "'")
+    .replace(/&lt;/gi, '<')
+    .replace(/&gt;/gi, '>');
 }
 
 /**

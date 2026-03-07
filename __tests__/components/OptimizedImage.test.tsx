@@ -24,7 +24,8 @@ jest.mock('next/image', () => ({
     loading,
     sizes,
     quality,
-    ...props
+    placeholder: _placeholder,
+    blurDataURL: _blurDataURL,
   }: {
     src: string;
     alt: string;
@@ -38,14 +39,9 @@ jest.mock('next/image', () => ({
     loading?: 'eager' | 'lazy';
     sizes?: string;
     quality?: number;
+    placeholder?: string;
+    blurDataURL?: string;
   }) {
-    // Trigger onLoad immediately for testing
-    React.useEffect(() => {
-      if (onLoad) {
-        setTimeout(onLoad, 0);
-      }
-    }, [onLoad]);
-
     return (
       // eslint-disable-next-line @next/next/no-img-element
       <img
@@ -59,8 +55,8 @@ jest.mock('next/image', () => ({
         data-loading={loading}
         data-sizes={sizes}
         data-quality={quality}
+        onLoad={onLoad}
         onError={onError}
-        {...props}
       />
     );
   },
@@ -232,8 +228,8 @@ describe('OptimizedImage', () => {
       />
     );
 
-    // Wait for the setTimeout in mock
-    await new Promise(resolve => setTimeout(resolve, 10));
+    const image = screen.getByTestId('next-image');
+    fireEvent.load(image);
     expect(onLoad).toHaveBeenCalled();
   });
 
@@ -267,16 +263,6 @@ describe('OptimizedImage', () => {
   });
 
   it('shows loading placeholder initially', () => {
-    // Override the mock to not auto-trigger onLoad
-    jest.resetModules();
-    jest.doMock('next/image', () => ({
-      __esModule: true,
-      default: function MockImage({ onLoad: _onLoad }: { onLoad?: () => void }) {
-        // eslint-disable-next-line @next/next/no-img-element
-        return <img data-testid="next-image" alt="" />;
-      },
-    }));
-
     const { container } = render(
       <OptimizedImage src="/test.webp" alt="Test" />
     );

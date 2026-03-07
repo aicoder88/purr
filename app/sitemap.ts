@@ -287,8 +287,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   addLocalizedEntries(entries, '/learn/alternatives/arm-and-hammer-cat-litter-deodorizer-alternative/', {
     priority: 0.6,
     changeFrequency: 'monthly',
-    frPath: false,
-  }));
+  });
   entries.push(entry('/learn/comparison-lab/methodology/', {
     priority: 0.7,
     changeFrequency: 'monthly',

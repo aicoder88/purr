@@ -20,10 +20,30 @@ const priceById = PRODUCTS.reduce<Record<ProductCatalogId, number>>((acc, produc
   return acc;
 }, {} as Record<ProductCatalogId, number>);
 
-const resolveLocale = (locale?: string) => {
-  if (locale === 'fr') return 'fr-CA';
-  return locale ?? 'en-CA';
+const LEGACY_LOCALE_MAP: Record<string, string> = {
+  en: 'en-CA',
+  fr: 'fr-CA',
+  es: 'es-ES',
+  zh: 'zh-CN',
 };
+
+const LEGACY_LOCALES = Object.keys(LEGACY_LOCALE_MAP);
+
+const resolveLocale = (locale?: string) => {
+  if (!locale) return 'en-CA';
+
+  const normalizedLocale = locale.replace('_', '-');
+  return LEGACY_LOCALE_MAP[normalizedLocale] ?? normalizedLocale;
+};
+
+const isLegacyLocaleArg = (value: string) =>
+  value !== 'CAD' &&
+  value !== 'USD' &&
+  (
+    value.includes('-') ||
+    value.includes('_') ||
+    LEGACY_LOCALES.includes(value)
+  );
 
 const formatCurrency = (value: number, currency: Currency = 'CAD', locale: string = 'en-CA') => {
   const resolvedLocale = resolveLocale(locale);
@@ -66,11 +86,7 @@ export const formatProductPrice = (
 ): string => {
   // Backward compatibility: if currencyOrLocale looks like a locale, treat it as such
   // Explicitly check for all known locale codes and locale patterns
-  const knownLocales = ['en', 'fr'];
-  const isLocale = currencyOrLocale !== 'CAD' && currencyOrLocale !== 'USD' &&
-    (currencyOrLocale.includes('-') ||
-      currencyOrLocale.includes('_') ||
-      knownLocales.includes(currencyOrLocale));
+  const isLocale = isLegacyLocaleArg(currencyOrLocale);
 
   if (isLocale) {
     // Old signature: formatProductPrice(idOrKey, locale)
@@ -86,11 +102,7 @@ export const formatProductPrice = (
 
 export const getPriceRange = (currencyOrLocale: Currency | string = 'CAD', locale?: string) => {
   // Backward compatibility: if first param looks like a locale, treat it as such
-  const knownLocales = ['en', 'fr'];
-  const isLocale = currencyOrLocale !== 'CAD' && currencyOrLocale !== 'USD' &&
-    (currencyOrLocale.includes('-') ||
-      currencyOrLocale.includes('_') ||
-      knownLocales.includes(currencyOrLocale));
+  const isLocale = isLegacyLocaleArg(currencyOrLocale);
 
   let currency: Currency;
   let resolvedLocale: string;
@@ -130,11 +142,7 @@ export const PRODUCT_PRICES = (Object.keys(PRODUCT_ID_ALIAS) as ProductPriceKey[
 
 export const formatCurrencyValue = (value: number, currencyOrLocale: Currency | string = 'CAD', locale?: string): string => {
   // Backward compatibility: if second param looks like a locale, treat it as such
-  const knownLocales = ['en', 'fr'];
-  const isLocale = currencyOrLocale !== 'CAD' && currencyOrLocale !== 'USD' &&
-    (currencyOrLocale.includes('-') ||
-      currencyOrLocale.includes('_') ||
-      knownLocales.includes(currencyOrLocale));
+  const isLocale = isLegacyLocaleArg(currencyOrLocale);
 
   if (isLocale) {
     // Old signature: formatCurrencyValue(value, locale)

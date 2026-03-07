@@ -1,133 +1,60 @@
-/// <reference types="@testing-library/jest-dom" />
-import { render, screen, fireEvent } from '@testing-library/react';
+import React from 'react';
+import { render, screen } from '@testing-library/react';
 import { Header } from '@/components/layout/header';
-// Create a mutable mock that we can change per test
-let mockSession: { data: { user?: { email: string; name: string } } | null } = { data: null };
-// Mock next/link
+
+const mockGetLocale = jest.fn();
+const mockGetTranslations = jest.fn();
+
 jest.mock('next/link', () => ({
   __esModule: true,
   default: function MockLink({
     href,
     children,
     className,
-    onClick,
-    'aria-label': ariaLabel,
+    prefetch: _prefetch,
+    ...props
   }: {
     href: string;
     children: React.ReactNode;
     className?: string;
-    onClick?: () => void;
-    'aria-label'?: string;
+    prefetch?: boolean;
   }) {
     return (
-      <a href={href} className={className} onClick={onClick} aria-label={ariaLabel}>
+      <a href={href} className={className} {...props}>
         {children}
       </a>
     );
   },
 }));
-// Mock next/image
+
 jest.mock('next/image', () => ({
   __esModule: true,
-  default: function MockImage({
-    src,
-    alt,
-    className,
-    priority,
-  }: {
-    src: string;
-    alt: string;
-    className?: string;
-    priority?: boolean;
-  }) {
+  default: function MockImage(props: React.ImgHTMLAttributes<HTMLImageElement>) {
     // eslint-disable-next-line @next/next/no-img-element
-    return <img src={src} alt={alt} className={className} data-priority={priority} />;
+    return <img {...props} alt={props.alt} />;
   },
 }));
-// Mock next/navigation
-jest.mock('next/navigation', () => ({
-  usePathname: jest.fn(() => '/'),
-  useSearchParams: jest.fn(() => new URLSearchParams()),
+
+jest.mock('next-intl/server', () => ({
+  getLocale: () => mockGetLocale(),
+  getTranslations: () => mockGetTranslations(),
 }));
-// Mock next-auth/react with mutable session
-jest.mock('next-auth/react', () => ({
-  useSession: jest.fn(() => mockSession),
-  signOut: jest.fn(),
+
+jest.mock('@/components/ui/container', () => ({
+  Container: function MockContainer({ children }: { children: React.ReactNode }) {
+    return <div data-testid="container">{children}</div>;
+  },
 }));
-// Mock translation context
-jest.mock('@/lib/translation-context', () => ({
-  useTranslation: jest.fn(() => ({
-    t: {
-      nav: {
-        products: 'Products',
-        trialSize: 'Trial Size',
-        compareSizes: 'Compare Sizes',
-        shipsToUSA: 'Ships to USA',
-        retailers: 'Retailers',
-        wholesalePricing: 'Wholesale Pricing',
-        becomePartner: 'Become a Partner',
-        marketingSupport: 'Marketing Support',
-        forGroomers: 'For Groomers',
-        forShelters: 'For Shelters',
-        affiliateProgram: 'Affiliate Program',
-        b2bInquiry: 'B2B Inquiry',
-        learn: 'Learn',
-        howItWorksPage: 'How It Works',
-        faq: 'FAQ',
-        science: 'Science',
-        safetyInfo: 'Safety Info',
-        activatedCarbonBenefits: 'Benefits',
-        catLitterGuide: 'Guide',
-        howToUse: 'How to Use',
-        technologyComparison: 'Comparison',
-        solutions: 'Solutions',
-        ammoniaSmellControl: 'Ammonia Control',
-        apartmentLiving: 'Apartment Living',
-        litterBoxOdor: 'Litter Box Odor',
-        multipleCats: 'Multiple Cats',
-        naturalAdditive: 'Natural Additive',
-        seniorCats: 'Senior Cats',
-        blog: 'Blog',
-        about: 'About',
-        ourStory: 'Our Story',
-        customerReviews: 'Reviews',
-        contact: 'Contact',
-        signOut: 'Sign Out',
-        signedIn: 'Signed In',
-        toggleMenu: 'Toggle Menu',
-        findStore: 'Find a Store',
-        partnerPrograms: 'Partner Programs',
-      },
-    },
-    locale: 'en',
-  })),
-}));
-// Mock ThemeToggle
-jest.mock('@/components/theme/theme-toggle', () => ({
-  ThemeToggle: () => <button data-testid="theme-toggle">Theme</button>,
-}));
-// Mock LanguageSwitcher
-jest.mock('@/components/ui/language-switcher', () => ({
-  LanguageSwitcher: () => <button data-testid="language-switcher">Lang</button>,
-}));
-// Mock Button component
+
 jest.mock('@/components/ui/button', () => ({
   Button: function MockButton({
     children,
-    onClick,
-    variant,
-    size,
-    className,
     asChild,
-    'aria-label': ariaLabel,
+    className,
   }: {
     children: React.ReactNode;
-    onClick?: () => void;
-    variant?: string;
-    size?: string;
-    className?: string;
     asChild?: boolean;
-    'aria-label'?: string;
+    className?: string;
   }) {
     if (asChild && React.isValidElement(children)) {
       const child = children as React.ReactElement<{ className?: string }>;
@@ -135,145 +62,167 @@ jest.mock('@/components/ui/button', () => ({
         className: `${child.props.className || ''} ${className || ''}`.trim(),
       });
     }
-    return (
-      <button
-        onClick={onClick}
-        data-variant={variant}
-        data-size={size}
-        className={className}
-        aria-label={ariaLabel}
-      >
-        {children}
-      </button>
-    );
+
+    return <button className={className}>{children}</button>;
   },
 }));
-// Mock Container
-jest.mock('@/components/ui/container', () => ({
-  Container: function MockContainer({ children }: { children: React.ReactNode }) {
-    return <div data-testid="container">{children}</div>;
-  },
+
+jest.mock('@/components/ui/language-switcher', () => ({
+  LanguageSwitcher: () => <button data-testid="language-switcher">Lang</button>,
 }));
-import React from 'react';
+
+jest.mock('@/components/layout/header-suspense', () => ({
+  HeaderDesktopNavigation: ({ navigationItems }: { navigationItems: Array<{ label: string }> }) => (
+    <nav aria-label="desktop-nav">
+      {navigationItems.map((item) => (
+        <span key={item.label}>{item.label}</span>
+      ))}
+    </nav>
+  ),
+  HeaderMobileMenu: ({
+    findStoreHref,
+    findStoreLabel,
+    toggleMenuLabel,
+  }: {
+    findStoreHref: string;
+    findStoreLabel: string;
+    toggleMenuLabel: string;
+  }) => (
+    <div>
+      <button aria-label={toggleMenuLabel}>Menu</button>
+      <a href={findStoreHref}>{findStoreLabel}</a>
+    </div>
+  ),
+}));
+
+function createTranslator(values: Record<string, string>) {
+  return (key: string) => values[key] ?? key;
+}
+
 describe('Header', () => {
   beforeEach(() => {
-    // Reset session to unauthenticated by default
-    mockSession = { data: null };
     jest.clearAllMocks();
+    mockGetLocale.mockResolvedValue('en');
+    mockGetTranslations.mockResolvedValue(
+      createTranslator({
+        'nav.products': 'Products',
+        'nav.trialSize': 'Trial Size',
+        'nav.compareSizes': 'Compare Sizes',
+        'nav.shipsToUSA': 'Ships to USA',
+        'nav.retailers': 'Retailers',
+        'nav.becomePartner': 'Become a Partner',
+        'nav.marketingSupport': 'Marketing Support',
+        'nav.partnerPrograms': 'Partner Programs',
+        'nav.forGroomers': 'For Groomers',
+        'nav.forShelters': 'For Shelters',
+        'nav.affiliateProgram': 'Affiliate Program',
+        'nav.b2bInquiry': 'B2B Inquiry',
+        'nav.learn': 'Learn',
+        'nav.howItWorksPage': 'How It Works',
+        'nav.faq': 'FAQ',
+        'nav.science': 'Science',
+        'nav.safetyInfo': 'Safety Info',
+        'nav.activatedCarbonBenefits': 'Benefits',
+        'nav.catLitterGuide': 'Guide',
+        'nav.howToUse': 'How to Use',
+        'nav.technologyComparison': 'Comparison',
+        'nav.comparisonLab': 'Comparison Lab',
+        'nav.catLitterAnswers': 'Cat Litter Q&A',
+        'nav.scienceHub': 'Research Citations',
+        'nav.litterCalculator': 'Litter Calculator',
+        'nav.smellQuiz': 'Smell Quiz',
+        'nav.toolsHub': 'All Tools',
+        'nav.solutions': 'Solutions',
+        'nav.ammoniaSmellControl': 'Ammonia Control',
+        'nav.apartmentLiving': 'Apartment Living',
+        'nav.litterBoxOdor': 'Litter Box Odor',
+        'nav.multipleCats': 'Multiple Cats',
+        'nav.naturalAdditive': 'Natural Additive',
+        'nav.seniorCats': 'Senior Cats',
+        'nav.blog': 'Blog',
+        'nav.fun': 'Fun & Games',
+        'nav.about': 'About',
+        'nav.ourStory': 'Our Story',
+        'nav.customerReviews': 'Reviews',
+        'nav.contact': 'Contact',
+        'nav.findStore': 'Find a Store',
+        'nav.toggleMenu': 'Toggle menu',
+      }),
+    );
   });
-  it('renders the header with logo', () => {
-    render(<Header />);
-    // Check for logo images (both light and dark mode)
-    const logos = screen.getAllByAltText(/Purrify/);
-    expect(logos.length).toBeGreaterThanOrEqual(1);
-  });
-  it('renders main navigation items', () => {
-    render(<Header />);
+
+  it('renders the English header shell with logo and main navigation', async () => {
+    render(await Header());
+
+    expect(screen.getByAltText(/Purrify - Premium Activated Carbon Cat Litter Additive - Home/i)).toBeInTheDocument();
     expect(screen.getByText('Products')).toBeInTheDocument();
     expect(screen.getByText('Retailers')).toBeInTheDocument();
     expect(screen.getByText('Learn')).toBeInTheDocument();
     expect(screen.getByText('Blog')).toBeInTheDocument();
-    expect(screen.getByText('About')).toBeInTheDocument();
+    expect(screen.getByText('Fun & Games')).toBeInTheDocument();
+    expect(screen.getAllByText('Find a Store')).toHaveLength(2);
+    expect(screen.getByRole('button', { name: 'Toggle menu' })).toBeInTheDocument();
   });
-  it('renders Find a Store button', () => {
-    render(<Header />);
-    expect(screen.getByText('Find a Store')).toBeInTheDocument();
-  });
-  it('renders theme toggle', () => {
-    render(<Header />);
-    // Theme toggle appears twice (desktop and mobile), so use getAllByTestId
-    const toggles = screen.getAllByTestId('theme-toggle');
-    expect(toggles.length).toBeGreaterThanOrEqual(1);
-  });
-  it('renders language switcher', () => {
-    render(<Header />);
-    // Language switcher appears twice (desktop and mobile)
-    const switchers = screen.getAllByTestId('language-switcher');
-    expect(switchers.length).toBeGreaterThanOrEqual(1);
-  });
-  it('has correct header structure', () => {
-    const { container } = render(<Header />);
-    const header = container.querySelector('header');
-    expect(header).toBeInTheDocument();
-    expect(header).toHaveClass('sticky');
-    expect(header).toHaveClass('top-0');
-  });
-  it('has navigation with correct role', () => {
-    render(<Header />);
-    const nav = screen.getByRole('navigation');
-    expect(nav).toBeInTheDocument();
-  });
-  it('has dropdown buttons with correct aria attributes', () => {
-    render(<Header />);
-    const productsDropdown = screen.getByRole('button', { name: /Products/i });
-    expect(productsDropdown).toHaveAttribute('aria-haspopup', 'true');
-    expect(productsDropdown).toHaveAttribute('aria-expanded');
-  });
-  it('toggles mobile menu when menu button is clicked', () => {
-    render(<Header />);
-    // Find the menu toggle button by aria-label
-    const menuButton = screen.getByRole('button', { name: /toggle menu/i });
-    // Initially, mobile menu should be closed
-    expect(screen.queryByRole('link', { name: /our story/i })).not.toBeInTheDocument();
-    // Click to open menu
-    fireEvent.click(menuButton);
-    // Mobile menu should now show some navigation items
-    expect(screen.getByText('Products')).toBeInTheDocument();
-  });
-});
-describe('Header with authenticated user', () => {
-  beforeEach(() => {
-    // Set session to authenticated
-    mockSession = {
-      data: {
-        user: {
-          email: 'test@example.com',
-          name: 'Test User',
-        },
-      },
-    };
-  });
-  afterEach(() => {
-    mockSession = { data: null };
-  });
-  it('displays user email when authenticated', () => {
-    render(<Header />);
-    // Should show username (part before @) - use getAllByText since it appears in multiple places
-    const usernameElements = screen.getAllByText((content) => content.includes('test'));
-    expect(usernameElements.length).toBeGreaterThanOrEqual(1);
-  });
-  it('shows sign out button when authenticated', () => {
-    render(<Header />);
-    // Sign Out appears in multiple places (desktop and mobile)
-    const signOutButtons = screen.getAllByText('Sign Out');
-    expect(signOutButtons.length).toBeGreaterThanOrEqual(1);
-  });
-});
-describe('Header navigation links', () => {
-  beforeEach(() => {
-    mockSession = { data: null };
-  });
-  it('renders Products button with dropdown attributes', () => {
-    render(<Header />);
-    // Check Products button has correct attributes
-    const productsButton = screen.getByRole('button', { name: /Products/i });
-    expect(productsButton).toHaveAttribute('aria-haspopup', 'true');
-    expect(productsButton).toHaveAttribute('data-menu-id', 'products');
-  });
-  it('renders correct href for Blog link', () => {
-    render(<Header />);
-    const blogLink = screen.getByRole('link', { name: /^Blog$/i });
-    expect(blogLink).toHaveAttribute('href', '/blog');
-  });
-  it('renders correct href for Find a Store button', () => {
-    render(<Header />);
-    const findStoreLink = screen.getByRole('link', { name: /Find a Store/i });
-    expect(findStoreLink).toHaveAttribute('href', '/stores');
-  });
-  it('renders logo link to home page', () => {
-    render(<Header />);
-    const logoLinks = screen.getAllByRole('link');
-    const homeLink = logoLinks.find(link => link.getAttribute('href') === '/');
-    expect(homeLink).toBeDefined();
+
+  it('uses French locale prefixes and French logo copy', async () => {
+    mockGetLocale.mockResolvedValue('fr');
+    mockGetTranslations.mockResolvedValue(
+      createTranslator({
+        'nav.products': 'Produits',
+        'nav.trialSize': 'Essai',
+        'nav.compareSizes': 'Comparer',
+        'nav.shipsToUSA': 'Vers les USA',
+        'nav.retailers': 'Detaillants',
+        'nav.becomePartner': 'Devenir partenaire',
+        'nav.marketingSupport': 'Soutien marketing',
+        'nav.partnerPrograms': 'Programmes',
+        'nav.forGroomers': 'Toiletteurs',
+        'nav.forShelters': 'Refuges',
+        'nav.affiliateProgram': 'Affiliation',
+        'nav.b2bInquiry': 'Demande B2B',
+        'nav.learn': 'Apprendre',
+        'nav.howItWorksPage': 'Comment ca marche',
+        'nav.faq': 'FAQ',
+        'nav.science': 'Science',
+        'nav.safetyInfo': 'Securite',
+        'nav.activatedCarbonBenefits': 'Benefices',
+        'nav.catLitterGuide': 'Guide',
+        'nav.howToUse': 'Utilisation',
+        'nav.technologyComparison': 'Comparaison',
+        'nav.comparisonLab': 'Lab Comparatif',
+        'nav.catLitterAnswers': 'Q&R Litiere',
+        'nav.scienceHub': 'Recherche',
+        'nav.litterCalculator': 'Calculatrice',
+        'nav.smellQuiz': 'Quiz Odeur',
+        'nav.toolsHub': 'Outils',
+        'nav.solutions': 'Solutions',
+        'nav.ammoniaSmellControl': 'Ammoniac',
+        'nav.apartmentLiving': 'Appartement',
+        'nav.litterBoxOdor': 'Odeur litiere',
+        'nav.multipleCats': 'Plusieurs chats',
+        'nav.naturalAdditive': 'Additif naturel',
+        'nav.seniorCats': 'Chats ages',
+        'nav.blog': 'Blog',
+        'nav.fun': 'Jeux',
+        'nav.about': 'A propos',
+        'nav.ourStory': 'Notre histoire',
+        'nav.customerReviews': 'Avis',
+        'nav.contact': 'Contact',
+        'nav.findStore': 'Trouver un magasin',
+        'nav.toggleMenu': 'Ouvrir le menu',
+      }),
+    );
+
+    render(await Header());
+
+    const homeLink = screen.getByRole('link', {
+      name: /Purrify - additif premium de charbon actif pour litiere - accueil/i,
+    });
+    expect(homeLink).toHaveAttribute('href', '/fr');
+
+    const storeLinks = screen.getAllByRole('link', { name: 'Trouver un magasin' });
+    storeLinks.forEach((link) => {
+      expect(link).toHaveAttribute('href', '/fr/stores/');
+    });
   });
 });

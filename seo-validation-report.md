@@ -1,14 +1,22 @@
 # SEO Validation Report
-Generated: 2026-03-01T21:30:39.270Z
+Generated: 2026-03-07T23:11:13.071Z
 ---
 
 ## Summary
 - **Status**: ✅ PASSED
-- **Total Pages**: 71
+- **Total Pages**: 76
 - **Pages with Errors**: 0
-- **Pages with Warnings**: 0
+- **Pages with Warnings**: 1
 - **Total Errors**: 0
-- **Total Warnings**: 0
+- **Total Warnings**: 1
+
+## Warnings
+
+1. **/Users/macmini/dev/purr/public/optimized/blog/coconut-carbon-pores-ghibli.jpg**
+   - Type: images
+   - Field: format
+   - Message: Referenced JPG/JPEG has no same-basename WebP/AVIF sibling
+   - Fix: Add .webp or .avif version with the same basename
 
 ## Link Structure
 
@@ -18,8 +26,8 @@ Generated: 2026-03-01T21:30:39.270Z
 
 ## Image SEO
 
-- **Total Images**: 266
-- **Images with Issues**: 0
+- **Total Images**: 284
+- **Images with Issues**: 1
 - **Images Missing Alt**: 0
 
 ## OG/Canonical URLs

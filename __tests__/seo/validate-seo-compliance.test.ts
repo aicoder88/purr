@@ -38,12 +38,22 @@ jest.mock('../../scripts/seo/lib/image-validator');
 jest.mock('../../src/lib/seo/og-canonical-validator');
 
 describe('SEO Compliance Validation System', () => {
+  beforeEach(() => {
+    jest.spyOn(console, 'log').mockImplementation(() => {});
+    jest.spyOn(console, 'error').mockImplementation(() => {});
+  });
+
+  afterEach(() => {
+    jest.restoreAllMocks();
+  });
+
   describe('Main Validation Script', () => {
     it('should validate all pages without errors when everything is correct', async () => {
       // Mock successful validation
       const mockImageValidation = {
         totalImages: 10,
         validImages: 10,
+        actionableIssues: [],
         issues: [],
         stats: {
           missingAlt: 0,
@@ -74,6 +84,14 @@ describe('SEO Compliance Validation System', () => {
       const mockImageValidation = {
         totalImages: 10,
         validImages: 8,
+        actionableIssues: [
+          {
+            filePath: '/test.jpg',
+            severity: 'error' as const,
+            type: 'alt-text' as const,
+            message: 'Missing alt text',
+          },
+        ],
         issues: [
           {
             filePath: '/test.jpg',
@@ -379,6 +397,14 @@ describe('SEO Compliance Validation System', () => {
       const mockImageValidation = {
         totalImages: 20,
         validImages: 18,
+        actionableIssues: [
+          {
+            filePath: '/image1.jpg',
+            severity: 'error' as const,
+            type: 'alt-text' as const,
+            message: 'Missing alt text',
+          },
+        ],
         issues: [
           {
             filePath: '/image1.jpg',
@@ -415,7 +441,7 @@ describe('SEO Compliance Validation System', () => {
 
       // Should include stats from all validators
       expect(result.stats.totalImages).toBe(20);
-      expect(result.stats.imagesWithIssues).toBe(2);
+      expect(result.stats.imagesWithIssues).toBe(1);
       expect(result.stats.ogCanonicalMismatches).toBe(1);
     });
   });

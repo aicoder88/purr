@@ -269,6 +269,7 @@ describe('Quality Patterns', () => {
 
   describe('Validation Summary', () => {
     it('should generate quality report for English', () => {
+      const consoleLogSpy = jest.spyOn(console, 'log').mockImplementation(() => {});
       const pages = getAllPageMetas(seoMetaEn);
       const results = pages.map(({ key, pageMeta }) => ({
         key,
@@ -289,16 +290,20 @@ describe('Quality Patterns', () => {
       const averageScore = totalScore / results.length;
 
       // Log summary for debugging
-      if (pagesWithIssues.length > 0) {
-        console.log('Pages with issues:');
-        pagesWithIssues.forEach((r) => {
-          console.log(`  ${r.key}: ${r.issues.join(', ')}`);
-        });
-      }
-      console.log(`Average SEO score: ${averageScore.toFixed(1)}/100`);
+      try {
+        if (pagesWithIssues.length > 0) {
+          console.log('Pages with issues:');
+          pagesWithIssues.forEach((r) => {
+            console.log(`  ${r.key}: ${r.issues.join(', ')}`);
+          });
+        }
+        console.log(`Average SEO score: ${averageScore.toFixed(1)}/100`);
 
-      // Expect average score to be at least 80
-      expect(averageScore).toBeGreaterThanOrEqual(80);
+        // Expect average score to be at least 80
+        expect(averageScore).toBeGreaterThanOrEqual(80);
+      } finally {
+        consoleLogSpy.mockRestore();
+      }
     });
   });
 });
