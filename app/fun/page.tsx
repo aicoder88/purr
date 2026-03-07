@@ -177,12 +177,12 @@ export default function FunPage() {
               FEATURED ARCADE
             </div>
             <h2 className="text-4xl font-bold bg-gradient-to-r from-rose-500 via-orange-500 to-sky-500 bg-clip-text text-transparent mb-4">
-              Kitty Comet
+              Whisker Run
             </h2>
             <p className="text-lg text-gray-600 dark:text-gray-400 max-w-3xl mx-auto">
-              A cute side-scrolling shooter with pastel space vibes, mice to zap, tuna to collect,
-              laser-pointer boosts, a local hall of fame, and a lazy-load cabinet so it stays off the
-              page budget until someone actually opens it.
+              A cute left-to-right run-and-gun with real levels to finish, mice to blast, tuna to grab,
+              laser-pointer power-ups, a local hall of fame, and an overall mission to bring the Star Pointer
+              back home, all behind a lazy-load cabinet so it stays off the page budget until someone opens it.
             </p>
           </div>
 
@@ -207,42 +207,6 @@ export default function FunPage() {
           <div className="grid lg:grid-cols-2 gap-8 items-start">
             <CatNameGenerator />
             <CatTrivia />
-          </div>
-        </section>
-
-        {/* Sound Feature Highlight */}
-        <section className="relative">
-          <div className="bg-gradient-to-r from-purple-600 via-pink-600 to-orange-500 rounded-3xl p-8 md:p-12 text-white text-center">
-            <div className="max-w-3xl mx-auto">
-              <div className="inline-flex items-center gap-2 bg-white/20 backdrop-blur-sm px-4 py-2 rounded-full text-sm font-bold mb-6">
-                <Volume2 className="w-4 h-4" />
-                NEW: Realistic Sound Engine
-              </div>
-              <h2 className="text-3xl md:text-4xl font-bold mb-4">
-                🎵 Every Meow is Unique
-              </h2>
-              <p className="text-lg text-white/90 dark:text-white/90 mb-6">
-                We've replaced those robotic beeps with a rotating library of realistic cat sounds.
-                Standard meows, kitten mews, demanding meows, happy greetings, and even soothing purrs!
-              </p>
-              <div className="grid md:grid-cols-3 gap-4 text-left">
-                <div className="bg-white/10 backdrop-blur-sm rounded-xl p-4">
-                  <div className="text-3xl mb-2">🎲</div>
-                  <h3 className="font-bold mb-1">10+ Meow Variations</h3>
-                  <p className="text-sm text-white/80 dark:text-white/80">Randomly rotated so it never gets repetitive</p>
-                </div>
-                <div className="bg-white/10 backdrop-blur-sm rounded-xl p-4">
-                  <div className="text-3xl mb-2">💤</div>
-                  <h3 className="font-bold mb-1">5+ Purr Sounds</h3>
-                  <p className="text-sm text-white/80 dark:text-white/80">Soft, loud, happy, sleepy - all the purrs!</p>
-                </div>
-                <div className="bg-white/10 backdrop-blur-sm rounded-xl p-4">
-                  <div className="text-3xl mb-2">🔧</div>
-                  <h3 className="font-bold mb-1">Easy to Add More</h3>
-                  <p className="text-sm text-white/80 dark:text-white/80">Just drop MP3 files in the sounds folder</p>
-                </div>
-              </div>
-            </div>
           </div>
         </section>
 

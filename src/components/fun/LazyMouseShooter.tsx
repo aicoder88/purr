@@ -15,7 +15,7 @@ const MouseShooter = dynamic(
                     Loading Arcade Mode
                 </p>
                 <p className="mt-2 text-sm text-gray-500 dark:text-gray-400">
-                    Spinning up the cat ship, polishing the lasers, and packing the tuna bonus.
+                    Rolling out the cushions, polishing the laser blaster, and waking up the mouse mob.
                 </p>
             </div>
         ),
@@ -42,23 +42,23 @@ export function LazyMouseShooter() {
                         New Lazy-Load Game
                     </div>
                     <h3 className="mt-5 font-serif text-4xl font-black text-gray-900 dark:text-white md:text-5xl">
-                        Kitty Comet
+                        Whisker Run
                     </h3>
                     <p className="mt-4 max-w-2xl text-base leading-7 text-gray-600 dark:text-gray-300 md:text-lg">
-                        A pastel 2D shooter where a tiny cat cruiser zips through a starry sky, dodging mischievous mice,
-                        scooping up tuna treats, and charging laser-pointer power-ups.
+                        A cute side-scrolling run-and-gun where a cat dashes across rooftops, cushions, and moonlit lounges,
+                        blasting laser-pointer shots at mice while chasing the stolen Star Pointer.
                     </p>
 
                     <div className="mt-6 grid gap-3 sm:grid-cols-3">
                         <div className="rounded-2xl border border-rose-200/70 bg-white/70 p-4 dark:border-rose-900/40 dark:bg-white/5">
                             <Rocket className="h-5 w-5 text-rose-500 dark:text-rose-300" />
-                            <p className="mt-2 text-sm font-semibold text-gray-800 dark:text-gray-100">Smooth side-scroll feel</p>
-                            <p className="mt-1 text-sm text-gray-500 dark:text-gray-400">Gentle, cute, and fast without feeling harsh.</p>
+                            <p className="mt-2 text-sm font-semibold text-gray-800 dark:text-gray-100">Run left to right</p>
+                            <p className="mt-1 text-sm text-gray-500 dark:text-gray-400">A proper side-scroller with jumps, levels, and a finish goal.</p>
                         </div>
                         <div className="rounded-2xl border border-sky-200/70 bg-white/70 p-4 dark:border-sky-900/40 dark:bg-white/5">
                             <Fish className="h-5 w-5 text-sky-500 dark:text-sky-300" />
                             <p className="mt-2 text-sm font-semibold text-gray-800 dark:text-gray-100">Tuna and laser pickups</p>
-                            <p className="mt-1 text-sm text-gray-500 dark:text-gray-400">Collect treats for points and sweet little power bursts.</p>
+                            <p className="mt-1 text-sm text-gray-500 dark:text-gray-400">Collect treats, power up, and finish each district.</p>
                         </div>
                         <div className="rounded-2xl border border-amber-200/70 bg-white/70 p-4 dark:border-amber-900/40 dark:bg-white/5">
                             <Heart className="h-5 w-5 text-amber-500 dark:text-amber-300" />
@@ -88,19 +88,20 @@ export function LazyMouseShooter() {
                         <div className="mt-6 rounded-[1.5rem] border border-white/10 bg-gradient-to-b from-[#281a45] to-[#43235a] p-6">
                             <div className="mx-auto flex max-w-xs items-center justify-between text-white">
                                 <span className="text-3xl">🐭</span>
-                                <span className="text-sm font-black uppercase tracking-[0.3em] text-rose-100">Laser Lane</span>
+                                <span className="text-sm font-black uppercase tracking-[0.3em] text-rose-100">Moonbeam Sprint</span>
                                 <span className="text-3xl">🐟</span>
                             </div>
                             <div className="mt-5 rounded-[1.5rem] border border-white/10 bg-[radial-gradient(circle_at_top,_rgba(255,181,208,0.42),_transparent_35%),linear-gradient(180deg,_rgba(23,13,41,1)_0%,_rgba(73,35,86,1)_100%)] p-6">
                                 <div className="relative h-56 overflow-hidden rounded-[1.25rem] border border-white/10 bg-[#1c1130]">
                                     <div className="absolute inset-x-0 top-0 h-24 bg-gradient-to-b from-sky-300/15 to-transparent" />
+                                    <div className="absolute left-[8%] bottom-[26%] h-6 w-24 rounded-full bg-white/10" />
                                     <div className="absolute left-[12%] top-[18%] text-3xl">🐭</div>
-                                    <div className="absolute right-[10%] top-[22%] text-3xl">🐭</div>
+                                    <div className="absolute right-[18%] bottom-[36%] text-3xl">🐭</div>
                                     <div className="absolute left-[48%] top-[14%] text-2xl">🔦</div>
-                                    <div className="absolute right-[38%] top-[40%] text-2xl">🐟</div>
-                                    <div className="absolute bottom-10 left-1/2 -translate-x-1/2 text-5xl">😺</div>
-                                    <div className="absolute bottom-20 left-1/2 h-12 w-1 -translate-x-1/2 rounded-full bg-gradient-to-t from-transparent to-pink-300 shadow-[0_0_18px_rgba(249,168,212,0.95)]" />
-                                    <div className="absolute bottom-4 left-6 rounded-full bg-white/10 px-3 py-1 text-xs font-bold text-white/90">Cute arcade, not chaotic</div>
+                                    <div className="absolute right-[35%] top-[22%] text-2xl">🐟</div>
+                                    <div className="absolute bottom-8 left-[28%] text-5xl">😺</div>
+                                    <div className="absolute bottom-[28%] left-[39%] h-1 w-16 rounded-full bg-gradient-to-r from-transparent via-pink-300 to-white shadow-[0_0_18px_rgba(249,168,212,0.95)]" />
+                                    <div className="absolute bottom-4 left-6 rounded-full bg-white/10 px-3 py-1 text-xs font-bold text-white/90">Cute side-scroller, not a top-down ship game</div>
                                 </div>
                             </div>
                         </div>
@@ -111,7 +112,7 @@ export function LazyMouseShooter() {
                             className="mt-6 inline-flex w-full items-center justify-center gap-2 rounded-full bg-white px-6 py-3 text-sm font-black uppercase tracking-[0.25em] text-rose-500 transition hover:bg-rose-50"
                         >
                             <Rocket className="h-4 w-4" />
-                            Load Kitty Comet
+                            Load Whisker Run
                         </button>
                     </div>
                 </div>
