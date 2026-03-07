@@ -124,10 +124,6 @@ export const PAGE_IMAGES: Record<string, PageImage> = {
     image: '/optimized/blog/cat-litter-deodorizer-guide.webp',
     alt: 'Complete cat care setup guide',
   },
-  '/learn/activated-carbon-vs-baking-soda-deodorizers': {
-    image: '/optimized/blog/activated-carbon-vs-baking-soda-comparison.webp',
-    alt: 'Comparison of activated carbon vs baking soda for cat litter',
-  },
   '/learn/how-to-use-deodorizer': {
     image: '/optimized/marketing/before-after.webp',
     alt: 'How to use cat litter deodorizer',

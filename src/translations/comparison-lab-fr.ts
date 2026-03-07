@@ -3,9 +3,9 @@ export const comparisonLabFr = {
     breadcrumbHome: 'Accueil',
     breadcrumbLearn: 'Apprendre',
     intentLabels: {
-      vs: 'Lab VS',
-      best: 'Lab Meilleur',
-      alternative: 'Lab Alternative',
+      vs: 'Audit VS',
+      best: 'Audit requete meilleur',
+      alternative: 'Audit requete alternative',
     },
     updatedLabel: 'Mise a jour',
     publishedLabel: 'Publication',
@@ -24,23 +24,29 @@ export const comparisonLabFr = {
     openReadingLabel: 'Ouvrir le guide',
     faqEyebrow: 'Questions',
     faqTitle: 'Questions frequentes',
+    publicAuthorLabel: 'Auteur public',
+    publicReviewerLabel: 'Relecteur public',
+    editorialPolicyLabel: 'Politique editoriale',
+    testingPolicyLabel: 'Politique de test',
+    limitedIndexingLabel: 'Indexation limitee :',
+    limitedIndexingBody: 'Cette page reste accessible pour les lecteurs qui ont besoin de cet audit, mais elle ne fait pas partie de nos cibles principales d indexation car la preuve est plus etroite et plus conditionnelle.',
   },
   hub: {
     metaTitle: 'Comparison Lab pour les odeurs de litiere | Purrify',
     metaDescription:
-      'Comparaisons transparentes sur les odeurs de litiere avec methodologie, dates de mise a jour, preuves first-party, tableaux et FAQ pour les requetes vs, meilleur et alternative.',
+      'Audits comparatifs transparents sur les odeurs de litiere avec methodologie, dates de mise a jour, preuves first-party, tableaux et FAQ.',
     metaImageAlt: 'Hub de methodologie et de preuves du Comparison Lab',
     breadcrumbLabel: 'Comparison Lab',
     hero: {
       eyebrow: 'Systeme de comparaison transparent',
-      title: 'Comparison Lab : des comparaisons reproductibles pour les requetes vs, meilleur et alternative',
+      title: 'Comparison Lab : des audits structures pour les decisions recurrentes sur les odeurs',
       description:
-        'Chaque comparaison montre comment nous avons teste, ce que nous avons mis a jour, quelles preuves sont first-party et ou la confiance reste forte ou limitee.',
+        'Chaque page montre comment nous avons teste, ce que nous avons mis a jour, quelles preuves sont first-party et ou la confiance reste forte, etroite ou limitee.',
       primaryCta: 'Lire la methodologie',
-      secondaryCta: 'Voir les modeles',
+      secondaryCta: 'Voir les audits',
     },
     metrics: {
-      templatesLabel: 'Modeles initiaux',
+      templatesLabel: 'Pages auditees',
       standardsLabel: 'Standards de preuve',
       evidenceLabel: 'Sources de preuve liees',
     },
@@ -52,15 +58,15 @@ export const comparisonLabFr = {
         {
           title: 'Comparaisons VS',
           description:
-            'Evaluations face a face avec un seul cadre de score, un claim review et des liens directs vers les pages first-party qui ont guide le verdict.',
+            'Evaluations face a face avec un seul cadre de score, un claim review et des liens directs vers les pages first-party qui ont guide la conclusion.',
         },
         {
-          title: 'Pages meilleur choix',
+          title: 'Audits requete meilleur',
           description:
-            'Jeux d options classes qui montrent pourquoi chaque option merite sa place, ou la preuve est la plus forte et quel contexte change la recommandation.',
+            'Classements conditionnels qui montrent ou la preuve est la plus forte, ou elle depend du contexte et pourquoi les grandes affirmations de type meilleur doivent etre resserrees.',
         },
         {
-          title: 'Pages alternative',
+          title: 'Audits requete alternative',
           description:
             'Guides de bascule qui expliquent ou la solution actuelle echoue, quoi chercher a la place et a quel point la preuve est solide.',
         },
@@ -68,11 +74,11 @@ export const comparisonLabFr = {
     },
     featured: {
       eyebrow: 'Bibliotheque de modeles',
-      title: 'Des pages de comparaison structurees a partir du contenu existant',
+      title: 'Des audits comparatifs structures a partir du contenu existant',
       description:
-        'Chaque modele relie le blog, les pages de science et le support ClaimReview pour permettre au systeme de grandir sans perdre la transparence.',
+        'Chaque page relie le blog, les pages de science et le support ClaimReview pour que la couche comparative reste tracable au lieu de devenir un simple resume thin.',
       methodologyLinkLabel: 'Exigences de methodologie',
-      openTemplateLabel: 'Ouvrir le modele',
+      openTemplateLabel: 'Ouvrir l audit',
     },
     standards: {
       eyebrow: 'Standards du lab',
@@ -108,7 +114,7 @@ export const comparisonLabFr = {
       {
         question: 'Pourquoi creer un lab de comparaison au lieu d ajouter seulement des articles de blog ?',
         answer:
-          'Le lab transforme les comparaisons en actifs durables. Les mises a jour sont plus simples, la preuve plus explicite et la citation plus probable.',
+          'Le lab transforme les comparaisons en audits structures. Les mises a jour sont plus simples, la preuve plus explicite et les conclusions faibles plus faciles a reperer.',
       },
       {
         question: 'Chaque page renvoie-t-elle vers la methodologie ?',
@@ -252,7 +258,7 @@ export const comparisonLabFr = {
       {
         question: 'Pourquoi ne pas utiliser un seul enorme article de comparaison ?',
         answer:
-          'Un seul article peut se positionner, mais il se met mal a l echelle. Des modeles separes donnent a chaque requete son verdict, son tableau, sa FAQ et sa piste de mise a jour.',
+          'Un seul article peut rester utile, mais des pages d audit separees rendent plus visibles les limites, la fraicheur de la preuve et les tableaux lies a une affirmation precise.',
       },
       {
         question: 'Une page peut-elle bien fonctionner si la preuve est limitee ?',

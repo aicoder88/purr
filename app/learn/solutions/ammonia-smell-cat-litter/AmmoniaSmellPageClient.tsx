@@ -354,7 +354,7 @@ export default function AmmoniaSmellPageClient() {
               </p>
             </Link>
             <Link
-              href="/learn/activated-carbon-vs-baking-soda-deodorizers"
+              href="/blog/activated-carbon-vs-baking-soda-comparison"
               className="bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-xl p-6 hover:shadow-lg hover:border-[#FF3131] dark:hover:border-[#FF5050] transition-all group"
             >
               <div className="text-3xl mb-3">⚖️</div>

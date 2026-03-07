@@ -35,6 +35,13 @@ type Question = {
 };
 
 type Answers = Partial<Record<QuestionId, string>>;
+type OutcomeTrack = 'habit' | 'cleaning' | 'ventilation' | 'vet' | 'product';
+
+type OutcomeCopy = {
+  title: string;
+  summary: string;
+  actions: string[];
+};
 
 type ToolCopy = {
   breadcrumbAria: string;
@@ -51,7 +58,10 @@ type ToolCopy = {
   finish: string;
   scoreLabel: string;
   riskLabel: string;
+  nextStepLabel: string;
   recommendationTitle: string;
+  optionalProductTitle: string;
+  optionalProductDescription: string;
   whyThisSize: string;
   cta: string;
   ctaTrial: string;
@@ -82,6 +92,7 @@ type ToolCopy = {
   riskText: Record<RiskLevel, string>;
   riskDescription: Record<RiskLevel, string>;
   whySize: Record<RiskLevel, string>;
+  outcomes: Record<OutcomeTrack, OutcomeCopy>;
   questions: Question[];
 };
 
@@ -102,7 +113,10 @@ const COPY: Record<Language, ToolCopy> = {
     finish: 'See Results',
     scoreLabel: 'Smell Risk Score',
     riskLabel: 'Risk Level',
+    nextStepLabel: 'Recommended next step',
     recommendationTitle: 'Recommended Product',
+    optionalProductTitle: 'Optional product support',
+    optionalProductDescription: 'If you want extra odor support after fixing the root issue, this size fits your setup.',
     whyThisSize: 'Why this size',
     cta: 'Shop Recommended Size',
     ctaTrial: 'Try Trial Size',
@@ -147,6 +161,53 @@ const COPY: Record<Language, ToolCopy> = {
       moderate: 'A regular size gives enough volume for consistent weekly use in typical homes.',
       high: 'A larger bag supports heavier odor load from multi-cat or high-impact setups.',
       severe: 'Maximum size helps maintain reliable coverage where odor accumulates quickly.',
+    },
+    outcomes: {
+      habit: {
+        title: 'Change the routine before you buy anything',
+        summary: 'Your answers point to masking habits and timing gaps more than a product shortage.',
+        actions: [
+          'Stop relying on fragrance, sprays, or quick fixes as the main solution.',
+          'Scoop on a fixed schedule for one full week.',
+          'Notice whether odor appears after missed cleanings or in spite of them.',
+        ],
+      },
+      cleaning: {
+        title: 'Tighten the cleaning protocol',
+        summary: 'The strongest signal here is waste sitting long enough to turn into ammonia.',
+        actions: [
+          'Scoop morning and evening for the next 7 days.',
+          'Reset the box on a schedule instead of waiting for the room to smell.',
+          'Keep litter depth consistent so wet spots are easier to remove completely.',
+        ],
+      },
+      ventilation: {
+        title: 'Fix airflow around the box first',
+        summary: 'The box location is likely concentrating odor faster than your litter can manage it.',
+        actions: [
+          'Move the box out of closets or sealed furniture if you can.',
+          'Use an exhaust fan or cracked door to keep air moving.',
+          'Avoid warm, humid corners where odor pools and lingers.',
+        ],
+      },
+      vet: {
+        title: 'Rule out a health issue',
+        summary: 'A strong or suddenly persistent urine odor can point to concentrated urine or a medical problem, not just litter performance.',
+        actions: [
+          'If this smell changed suddenly, call your vet.',
+          'Watch for straining, frequent small trips, or avoiding the box.',
+          'Ask your clinic whether they want a fresh urine sample.',
+        ],
+      },
+      product: {
+        title: 'Add stronger odor capture',
+        summary: 'Your setup has enough odor load that extra molecule-level control is reasonable now.',
+        actions: [
+          'Keep a fixed scooping schedule so the additive is not doing all the work.',
+          'Mix granules through fresh litter instead of only topping the surface.',
+          'Reassess after one full litter cycle and tighten the schedule if odor comes back early.',
+        ],
+      },
     },
     questions: [
       {
@@ -221,7 +282,10 @@ const COPY: Record<Language, ToolCopy> = {
     finish: 'Voir les resultats',
     scoreLabel: 'Score de risque d odeur',
     riskLabel: 'Niveau de risque',
+    nextStepLabel: 'Prochaine etape recommande',
     recommendationTitle: 'Produit recommande',
+    optionalProductTitle: 'Soutien produit optionnel',
+    optionalProductDescription: 'Si vous voulez un renfort apres avoir corrige la cause, cette taille convient a votre configuration.',
     whyThisSize: 'Pourquoi cette taille',
     cta: 'Voir la taille recommandee',
     ctaTrial: 'Essayer le format essai',
@@ -266,6 +330,53 @@ const COPY: Record<Language, ToolCopy> = {
       moderate: 'Un format regulier offre assez de volume pour une utilisation hebdomadaire constante.',
       high: 'Un plus grand format soutient une charge d odeur plus elevee dans les foyers occupes.',
       severe: 'Le format maximal aide a maintenir une couverture fiable quand l odeur s accumule vite.',
+    },
+    outcomes: {
+      habit: {
+        title: 'Changez la routine avant d acheter autre chose',
+        summary: 'Vos reponses indiquent surtout des habitudes de masquage et des ecarts de cadence.',
+        actions: [
+          'Ne comptez plus sur les parfums, sprays ou solutions rapides comme base principale.',
+          'Ramassez a heure fixe pendant une semaine complete.',
+          'Notez si l odeur apparait apres un oubli ou malgre une bonne regularite.',
+        ],
+      },
+      cleaning: {
+        title: 'Resserrez le protocole de nettoyage',
+        summary: 'Le signal principal ici est un dechet qui reste assez longtemps pour devenir de l ammoniac.',
+        actions: [
+          'Ramassez matin et soir pendant les 7 prochains jours.',
+          'Faites un reset du bac selon un calendrier, pas seulement quand la piece sent mauvais.',
+          'Gardez une profondeur de litiere stable pour retirer completement les zones humides.',
+        ],
+      },
+      ventilation: {
+        title: 'Corrigez d abord la circulation d air',
+        summary: 'L emplacement du bac concentre probablement l odeur plus vite que la litiere ne peut la gerer.',
+        actions: [
+          'Sortez le bac des placards ou meubles fermes si possible.',
+          'Utilisez un ventilateur d extraction ou laissez la porte entrouverte pour faire circuler l air.',
+          'Evitez les coins chauds et humides ou l odeur reste prisonniere.',
+        ],
+      },
+      vet: {
+        title: 'Ecartez une cause de sante',
+        summary: 'Une odeur d urine forte ou soudainement persistante peut venir d une urine concentree ou d un probleme medical.',
+        actions: [
+          'Si cette odeur a change soudainement, appelez votre veterinaire.',
+          'Surveillez les efforts, les petits passages frequents, ou l evitement du bac.',
+          'Demandez a la clinique si elle veut un echantillon d urine frais.',
+        ],
+      },
+      product: {
+        title: 'Ajoutez une capture d odeur plus forte',
+        summary: 'Votre configuration a assez de charge d odeur pour justifier un controle supplementaire des molecules.',
+        actions: [
+          'Gardez une cadence fixe de ramassage pour que l additif ne fasse pas tout seul le travail.',
+          'Melangez les granules dans la litiere fraiche au lieu de les laisser seulement en surface.',
+          'Reevaluez apres un cycle complet de litiere et resserrez la cadence si l odeur revient trop tot.',
+        ],
+      },
     },
     questions: [
       {
@@ -395,6 +506,11 @@ type QuizResult = {
   risk: RiskLevel;
   productId: 'purrify-12g' | 'purrify-50g' | 'purrify-120g' | 'purrify-240g';
   productHref: string;
+};
+
+type QuizOutcome = OutcomeCopy & {
+  track: OutcomeTrack;
+  showProductSupport: boolean;
 };
 
 const CAT_COUNT_BY_ANSWER: Record<string, number> = {
@@ -533,6 +649,36 @@ function selectLearningArticles(answers: Answers): LearningArticle[] {
   return Array.from(new Set(orderedIds)).slice(0, 4).map((articleId) => LEARNING_ARTICLES[articleId]);
 }
 
+function buildPrimaryOutcome(answers: Answers, result: QuizResult, copy: ToolCopy): QuizOutcome {
+  const catCount = answers.q1 ? CAT_COUNT_BY_ANSWER[answers.q1] ?? 0 : 0;
+  const constantOdor = answers.q4 === 'q4-4';
+  const noticeableOdor = answers.q4 === 'q4-2' || answers.q4 === 'q4-3';
+  const enclosedSpace = answers.q3 === 'q3-4' || answers.q3 === 'q3-5';
+  const livingSpace = answers.q3 === 'q3-3';
+  const alreadyTryingHard = answers.q5 === 'q5-5' || answers.q2 === 'q2-6' || answers.q2 === 'q2-3';
+  const usesMasking = answers.q5 === 'q5-2' || answers.q5 === 'q5-3' || answers.q5 === 'q5-4';
+  const needsCleaningDiscipline = answers.q5 === 'q5-1' || answers.q5 === 'q5-5' || answers.q2 === 'q2-2';
+  const heavyLoad = catCount >= 3 || result.risk === 'high' || result.risk === 'severe';
+
+  let track: OutcomeTrack = 'product';
+
+  if (constantOdor && catCount <= 1 && alreadyTryingHard) {
+    track = 'vet';
+  } else if ((enclosedSpace || livingSpace) && (noticeableOdor || constantOdor) && !heavyLoad) {
+    track = 'ventilation';
+  } else if (needsCleaningDiscipline && !heavyLoad) {
+    track = 'cleaning';
+  } else if (usesMasking && result.risk !== 'severe') {
+    track = 'habit';
+  }
+
+  return {
+    track,
+    ...copy.outcomes[track],
+    showProductSupport: track === 'product' || result.risk === 'severe',
+  };
+}
+
 async function persistFreshnessProfile({
   sessionId,
   language,
@@ -601,21 +747,23 @@ export default function SmellQuizContent() {
   const persistedResultRef = useRef<string | null>(null);
 
   const result = useMemo(() => calculateResult(copy.questions, answers), [answers, copy.questions]);
+  const primaryOutcome = useMemo(() => buildPrimaryOutcome(answers, result, copy), [answers, copy, result]);
   const causeInsights = useMemo(() => buildCauseInsights(answers, copy), [answers, copy]);
   const learningArticles = useMemo(() => selectLearningArticles(answers), [answers]);
   const freshnessPlan = useMemo(
-    () =>
-      buildFreshnessPlan({
-        locale: language,
-        catCount: answers.q1 ? CAT_COUNT_BY_ANSWER[answers.q1] : undefined,
-        homeType: answers.q3 ? HOME_TYPE_BY_ANSWER[answers.q3] : undefined,
-        odorSeverity: answers.q4 ? ODOR_SEVERITY_BY_ANSWER[answers.q4] : undefined,
-        currentRemedy: answers.q5 ? CURRENT_REMEDY_BY_ANSWER[answers.q5] : undefined,
-        riskLevel: result.risk,
-        score: result.score,
-        recommendedProductId: result.productId,
-      }),
-    [answers, language, result.productId, result.risk, result.score]
+    () => (primaryOutcome.track === 'product'
+      ? buildFreshnessPlan({
+          locale: language,
+          catCount: answers.q1 ? CAT_COUNT_BY_ANSWER[answers.q1] : undefined,
+          homeType: answers.q3 ? HOME_TYPE_BY_ANSWER[answers.q3] : undefined,
+          odorSeverity: answers.q4 ? ODOR_SEVERITY_BY_ANSWER[answers.q4] : undefined,
+          currentRemedy: answers.q5 ? CURRENT_REMEDY_BY_ANSWER[answers.q5] : undefined,
+          riskLevel: result.risk,
+          score: result.score,
+          recommendedProductId: result.productId,
+        })
+      : null),
+    [answers, language, primaryOutcome.track, result.productId, result.risk, result.score]
   );
 
   const progress = useMemo(() => {
@@ -700,11 +848,11 @@ export default function SmellQuizContent() {
       language,
       answers,
       result,
-      recommendationReason: copy.whySize[result.risk],
+      recommendationReason: primaryOutcome.summary,
     }).catch(() => {
       persistedResultRef.current = null;
     });
-  }, [answers, copy.whySize, currentStep, language, result]);
+  }, [answers, currentStep, language, primaryOutcome.summary, result]);
 
   const selectedProduct = PRODUCTS.find((product) => product.id === result.productId);
   const selectedPrice = selectedProduct ? `$${selectedProduct.price.toFixed(2)}` : '$0.00';
@@ -752,7 +900,7 @@ export default function SmellQuizContent() {
           odorSeverity: answers.q4 ? ODOR_SEVERITY_BY_ANSWER[answers.q4] : undefined,
           currentRemedy: answers.q5 ? CURRENT_REMEDY_BY_ANSWER[answers.q5] : undefined,
           recommendedProductId: result.productId,
-          recommendationReason: copy.whySize[result.risk],
+          recommendationReason: primaryOutcome.summary,
         }),
       });
 
@@ -1007,42 +1155,83 @@ export default function SmellQuizContent() {
                     <p className="mt-5 text-gray-700 dark:text-gray-300">{copy.riskDescription[result.risk]}</p>
                   </div>
 
-                  <div className="rounded-2xl border border-green-200 dark:border-green-800 bg-green-50/70 dark:bg-green-900/15 p-5 md:p-6">
-                    <p className="text-sm uppercase tracking-wide font-semibold text-green-700 dark:text-green-400 mb-2">
-                      {copy.recommendationTitle}
+                  <div className="rounded-2xl border border-emerald-200 dark:border-emerald-800 bg-emerald-50/80 dark:bg-emerald-900/15 p-5 md:p-6">
+                    <p className="text-sm uppercase tracking-wide font-semibold text-emerald-700 dark:text-emerald-400 mb-2">
+                      {copy.nextStepLabel}
                     </p>
-                    <h3 className="text-2xl font-bold text-gray-900 dark:text-gray-100">{selectedName}</h3>
-                    <p className="text-gray-700 dark:text-gray-300 mt-1">{selectedSize} • {selectedPrice}</p>
-                    <p className="mt-4 text-gray-700 dark:text-gray-300">
-                      <span className="font-semibold text-gray-900 dark:text-gray-100">{copy.whyThisSize}: </span>
-                      {copy.whySize[result.risk]}
-                    </p>
-                    <div className="mt-6 flex flex-col sm:flex-row gap-3">
-                      <Link href={localizePath(result.productHref, language)}>
-                        <Button className="bg-green-600 hover:bg-green-700 dark:bg-green-700 dark:hover:bg-green-600 text-gray-50 dark:text-gray-900 border-none">
-                          {result.risk === 'low' ? copy.ctaTrial : copy.cta}
+                    <h3 className="text-2xl font-bold text-gray-900 dark:text-gray-100">{primaryOutcome.title}</h3>
+                    <p className="mt-3 text-gray-700 dark:text-gray-300">{primaryOutcome.summary}</p>
+                    <ul className="mt-5 space-y-3">
+                      {primaryOutcome.actions.map((action) => (
+                        <li key={action} className="flex items-start gap-3">
+                          <span className="mt-1 h-2.5 w-2.5 rounded-full bg-emerald-600 dark:bg-emerald-500 flex-shrink-0" />
+                          <p className="text-gray-700 dark:text-gray-300">{action}</p>
+                        </li>
+                      ))}
+                    </ul>
+                    {!primaryOutcome.showProductSupport && (
+                      <div className="mt-6 flex flex-col sm:flex-row gap-3">
+                        <Button
+                          variant="outline"
+                          onClick={handleShare}
+                          className="border-emerald-300 dark:border-emerald-700 bg-gray-100 dark:bg-gray-900 text-gray-900 dark:text-gray-100"
+                        >
+                          <Share2 className="w-4 h-4 mr-2" />
+                          {shareCopied ? copy.shareCopied : copy.share}
                         </Button>
-                      </Link>
-                      <Button
-                        variant="outline"
-                        onClick={handleShare}
-                        className="border-green-300 dark:border-green-700 bg-gray-100 dark:bg-gray-900 text-gray-900 dark:text-gray-100"
-                      >
-                        <Share2 className="w-4 h-4 mr-2" />
-                        {shareCopied ? copy.shareCopied : copy.share}
-                      </Button>
-                      <Button
-                        variant="outline"
-                        onClick={resetQuiz}
-                        className="border-gray-300 dark:border-gray-700 bg-gray-100 dark:bg-gray-900 text-gray-900 dark:text-gray-100"
-                      >
-                        <RotateCcw className="w-4 h-4 mr-2" />
-                        {copy.retake}
-                      </Button>
-                    </div>
+                        <Button
+                          variant="outline"
+                          onClick={resetQuiz}
+                          className="border-gray-300 dark:border-gray-700 bg-gray-100 dark:bg-gray-900 text-gray-900 dark:text-gray-100"
+                        >
+                          <RotateCcw className="w-4 h-4 mr-2" />
+                          {copy.retake}
+                        </Button>
+                      </div>
+                    )}
                   </div>
 
-                  {freshnessPlan ? <FreshnessPlanCard plan={freshnessPlan} /> : null}
+                  {primaryOutcome.showProductSupport && (
+                    <div className="rounded-2xl border border-green-200 dark:border-green-800 bg-green-50/70 dark:bg-green-900/15 p-5 md:p-6">
+                      <p className="text-sm uppercase tracking-wide font-semibold text-green-700 dark:text-green-400 mb-2">
+                        {primaryOutcome.track === 'product' ? copy.recommendationTitle : copy.optionalProductTitle}
+                      </p>
+                      <h3 className="text-2xl font-bold text-gray-900 dark:text-gray-100">{selectedName}</h3>
+                      <p className="text-gray-700 dark:text-gray-300 mt-1">{selectedSize} • {selectedPrice}</p>
+                      {primaryOutcome.track !== 'product' && (
+                        <p className="mt-4 text-gray-700 dark:text-gray-300">{copy.optionalProductDescription}</p>
+                      )}
+                      <p className="mt-4 text-gray-700 dark:text-gray-300">
+                        <span className="font-semibold text-gray-900 dark:text-gray-100">{copy.whyThisSize}: </span>
+                        {copy.whySize[result.risk]}
+                      </p>
+                      <div className="mt-6 flex flex-col sm:flex-row gap-3">
+                        <Link href={localizePath(result.productHref, language)}>
+                          <Button className="bg-green-600 hover:bg-green-700 dark:bg-green-700 dark:hover:bg-green-600 text-gray-50 dark:text-gray-900 border-none">
+                            {result.risk === 'low' ? copy.ctaTrial : copy.cta}
+                          </Button>
+                        </Link>
+                        <Button
+                          variant="outline"
+                          onClick={handleShare}
+                          className="border-green-300 dark:border-green-700 bg-gray-100 dark:bg-gray-900 text-gray-900 dark:text-gray-100"
+                        >
+                          <Share2 className="w-4 h-4 mr-2" />
+                          {shareCopied ? copy.shareCopied : copy.share}
+                        </Button>
+                        <Button
+                          variant="outline"
+                          onClick={resetQuiz}
+                          className="border-gray-300 dark:border-gray-700 bg-gray-100 dark:bg-gray-900 text-gray-900 dark:text-gray-100"
+                        >
+                          <RotateCcw className="w-4 h-4 mr-2" />
+                          {copy.retake}
+                        </Button>
+                      </div>
+                    </div>
+                  )}
+
+                  {primaryOutcome.track === 'product' && freshnessPlan ? <FreshnessPlanCard plan={freshnessPlan} /> : null}
 
                   <div className="rounded-2xl border border-gray-200 dark:border-gray-800 bg-gray-100 dark:bg-gray-900 p-5 md:p-6">
                     <h4 className="text-lg font-bold text-gray-900 dark:text-gray-100 mb-2">

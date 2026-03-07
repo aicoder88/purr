@@ -3,9 +3,9 @@ export const comparisonLabEn = {
     breadcrumbHome: 'Home',
     breadcrumbLearn: 'Learn',
     intentLabels: {
-      vs: 'VS Lab',
-      best: 'Best Lab',
-      alternative: 'Alternative Lab',
+      vs: 'VS review',
+      best: 'Best-query audit',
+      alternative: 'Alternative-query audit',
     },
     updatedLabel: 'Updated',
     publishedLabel: 'Published',
@@ -24,23 +24,29 @@ export const comparisonLabEn = {
     openReadingLabel: 'Open guide',
     faqEyebrow: 'Questions',
     faqTitle: 'Frequently asked questions',
+    publicAuthorLabel: 'Public author',
+    publicReviewerLabel: 'Public reviewer',
+    editorialPolicyLabel: 'Editorial policy',
+    testingPolicyLabel: 'Testing policy',
+    limitedIndexingLabel: 'Limited indexing:',
+    limitedIndexingBody: 'This page is kept available for users who need the audit, but it is not one of our primary index targets because the evidence is narrower and more conditional.',
   },
   hub: {
     metaTitle: 'Comparison Lab for Cat Litter Odor Control | Purrify',
     metaDescription:
-      'Transparent cat litter odor comparisons with methodology, update dates, first-party evidence, tables, and FAQs for vs, best, and alternative queries.',
+      'Transparent cat litter odor comparison audits with methodology, update dates, first-party evidence, tables, and FAQs.',
     metaImageAlt: 'Comparison Lab methodology and evidence hub',
     breadcrumbLabel: 'Comparison Lab',
     hero: {
       eyebrow: 'Transparent comparison system',
-      title: 'Comparison Lab: repeatable comparisons for vs, best, and alternative queries',
+      title: 'Comparison Lab: structured evidence audits for recurring odor-control decisions',
       description:
-        'Every comparison in this lab shows how we tested, what we updated, which evidence was first-party, and where confidence is high or limited.',
+        'Every page in this lab shows how we tested, what we updated, which evidence was first-party, and where confidence is high, narrow, or limited.',
       primaryCta: 'Read methodology',
-      secondaryCta: 'Browse templates',
+      secondaryCta: 'Browse audits',
     },
     metrics: {
-      templatesLabel: 'Seed templates',
+      templatesLabel: 'Audit pages',
       standardsLabel: 'Evidence standards',
       evidenceLabel: 'Linked evidence sources',
     },
@@ -52,15 +58,15 @@ export const comparisonLabEn = {
         {
           title: 'VS comparisons',
           description:
-            'Head-to-head evaluations with one scoring frame, one claim review, and direct links to the first-party pages that shaped the verdict.',
+            'Head-to-head evaluations with one scoring frame, one claim review, and direct links to the first-party pages that shaped the conclusion.',
         },
         {
-          title: 'Best pages',
+          title: 'Best-query audits',
           description:
-            'Ranked option sets that show why each choice earned its place, where the evidence is strongest, and which user context changes the recommendation.',
+            'Conditional rankings that show where evidence is strongest, where it is context-bound, and why broad “best” claims need narrowing.',
         },
         {
-          title: 'Alternative pages',
+          title: 'Alternative-query audits',
           description:
             'Switching guides that explain where a current solution breaks down, what to look for instead, and how strong the evidence really is.',
         },
@@ -68,11 +74,11 @@ export const comparisonLabEn = {
     },
     featured: {
       eyebrow: 'Template library',
-      title: 'Structured comparison pages seeded from existing content',
+      title: 'Structured comparison audits built from existing content',
       description:
-        'Each template cross-links into the blog, science pages, and ClaimReview support so the system can scale without losing transparency.',
+        'Each page cross-links into the blog, science pages, and ClaimReview support so the comparison layer stays traceable instead of turning into thin summary pages.',
       methodologyLinkLabel: 'Methodology requirements',
-      openTemplateLabel: 'Open template',
+      openTemplateLabel: 'Open audit',
     },
     standards: {
       eyebrow: 'Lab standards',
@@ -108,7 +114,7 @@ export const comparisonLabEn = {
       {
         question: 'Why build a separate comparison lab instead of more blog posts?',
         answer:
-          'The lab turns comparisons into durable assets with repeatable structure. That makes updates easier, evidence more explicit, and citations more likely.',
+          'The lab turns comparisons into structured audits. That makes updates easier, evidence more explicit, and unsupported conclusions easier to spot.',
       },
       {
         question: 'Does every lab page link to methodology?',
@@ -252,7 +258,7 @@ export const comparisonLabEn = {
       {
         question: 'Why not use only one giant comparison article?',
         answer:
-          'A single article can rank, but it does not scale cleanly. Separate templates let each query have its own verdict, table, FAQ, and update trail.',
+          'A single article can still be useful, but separate audit pages make it easier to show limits, evidence freshness, and claim-specific tables without overloading one URL.',
       },
       {
         question: 'Can a page still rank if evidence is limited?',

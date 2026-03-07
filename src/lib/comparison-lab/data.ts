@@ -1,4 +1,5 @@
 import type { ClaimRating } from '@/components/seo/ClaimReviewBlock';
+import type { EditorialEntitySlug } from '@/lib/editorial/entities';
 
 export type ComparisonIntent = 'vs' | 'best' | 'alternative';
 
@@ -13,10 +14,13 @@ export interface ComparisonEntry {
   slug: string;
   translationKey: string;
   intent: ComparisonIntent;
+  indexable: boolean;
   publishedAt: string;
   updatedAt: string;
   heroImage: string;
   claimRating: ClaimRating;
+  authorEntitySlug: EditorialEntitySlug;
+  reviewerEntitySlug: EditorialEntitySlug;
   evidence: ComparisonEvidenceSource[];
   relatedReadings: string[];
 }
@@ -30,10 +34,13 @@ export const COMPARISON_ENTRIES: ComparisonEntry[] = [
     slug: 'activated-carbon-vs-baking-soda',
     translationKey: 'activatedCarbonVsBakingSoda',
     intent: 'vs',
+    indexable: true,
     publishedAt: '2026-03-07',
     updatedAt: '2026-03-07',
     heroImage: '/optimized/blog/activated-carbon-vs-baking-soda-comparison.webp',
     claimRating: 1,
+    authorEntitySlug: 'purrify-research-lab',
+    reviewerEntitySlug: 'purrify-science-team',
     evidence: [
       {
         href: '/blog/activated-carbon-vs-baking-soda-comparison/',
@@ -61,10 +68,13 @@ export const COMPARISON_ENTRIES: ComparisonEntry[] = [
     slug: 'best-cat-litter-odor-control',
     translationKey: 'bestCatLitterOdorControl',
     intent: 'best',
+    indexable: false,
     publishedAt: '2026-03-07',
     updatedAt: '2026-03-07',
     heroImage: '/optimized/blog/best-litter-smell-ghibli.webp',
     claimRating: 2,
+    authorEntitySlug: 'purrify-research-lab',
+    reviewerEntitySlug: 'purrify-science-team',
     evidence: [
       {
         href: '/blog/best-cat-litter-odor-control-2026/',
@@ -92,10 +102,13 @@ export const COMPARISON_ENTRIES: ComparisonEntry[] = [
     slug: 'arm-and-hammer-alternative',
     translationKey: 'armAndHammerAlternative',
     intent: 'alternative',
+    indexable: false,
     publishedAt: '2026-03-07',
     updatedAt: '2026-03-07',
     heroImage: '/optimized/blog/activated-carbon-vs-baking-soda-comparison.webp',
     claimRating: 2,
+    authorEntitySlug: 'purrify-research-lab',
+    reviewerEntitySlug: 'purrify-science-team',
     evidence: [
       {
         href: '/learn/alternatives/arm-and-hammer-cat-litter-deodorizer-alternative/',
