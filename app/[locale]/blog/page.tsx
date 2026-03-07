@@ -8,6 +8,7 @@ import { sampleBlogPosts } from '@/data/blog-posts';
 import { SITE_NAME, SITE_DESCRIPTION, SITE_URL } from '@/lib/constants';
 import { locales, isValidLocale, defaultLocale } from '@/i18n/config';
 import { ArrowRight, Calendar, User } from 'lucide-react';
+import { getPublicEditorialName } from '@/lib/editorial/entities';
 
 interface BlogIndexPageProps {
   params: Promise<{
@@ -131,7 +132,7 @@ async function getBlogPosts(locale: string): Promise<BlogPost[]> {
         .map((post) => ({
           title: post.title,
           excerpt: post.excerpt,
-          author: post.author,
+          author: getPublicEditorialName(post.author),
           date: post.date,
           image: post.image,
           link: `${getBlogBasePath(locale)}${post.link.replace('/blog', '')}`,
@@ -155,7 +156,7 @@ async function getBlogPosts(locale: string): Promise<BlogPost[]> {
       return {
         title: post.title,
         excerpt: post.excerpt,
-        author: post.author?.name || 'Purrify Team',
+        author: getPublicEditorialName(post.author?.name),
         date: dateStr,
         image: post.featuredImage?.url || '/optimized/blog/cat-litter-hero.webp',
         link: `${getBlogBasePath(locale)}/${post.slug}`,
@@ -170,7 +171,7 @@ async function getBlogPosts(locale: string): Promise<BlogPost[]> {
       .map((post) => ({
         title: post.title,
         excerpt: post.excerpt,
-        author: post.author,
+        author: getPublicEditorialName(post.author),
         date: post.date,
         image: post.image,
         link: `${getBlogBasePath(locale)}${post.link.replace('/blog', '')}`,

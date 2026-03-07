@@ -12,11 +12,16 @@ import { SITE_NAME, SITE_URL } from '@/lib/constants';
 import { locales, isValidLocale, defaultLocale, type Locale } from '@/i18n/config';
 import { generateArticlePageSchema, stripContext } from '@/lib/seo-utils';
 import { optimizeMetaTitle } from '@/lib/seo/meta-optimizer';
-import { ArrowLeft, User, Clock } from 'lucide-react';
+import { ArrowLeft } from 'lucide-react';
 import { sanitizeHTML } from '@/lib/security/sanitize';
 import { localizeInternalHrefAttributes } from '@/lib/i18n/locale-path';
 import { BlogProductCTA } from '@/components/blog/BlogProductCTA';
 import { RelatedSolutions } from '@/components/learn/RelatedSolutions';
+import {
+  getEditorialEntityByName,
+  getPublicEditorialEntity,
+  getPublicEditorialName,
+} from '@/lib/editorial/entities';
 
 // Force static generation - no dynamic data fetching
 export const dynamic = 'force-static';
@@ -202,7 +207,8 @@ export async function generateMetadata({ params }: BlogPostPageProps): Promise<M
       url: canonicalSlugPath,
       type: 'article',
       publishedTime: post.date,
-      authors: [post.author],
+      modifiedTime: post.modifiedDate || post.date,
+      authors: [getPublicEditorialName(post.author)],
       images: [
         {
           url: metaImageUrl,
@@ -229,6 +235,9 @@ interface BlogPost {
   excerpt: string;
   author: string;
   date: string;
+  modifiedDate?: string;
+  reviewer?: string;
+  reviewedDate?: string;
   image: string;
   heroImageAlt?: string;
   heroImageCaption?: string;
@@ -267,8 +276,11 @@ async function getPost(slug: string, locale: string): Promise<BlogPost | null> {
       return {
         title: blogPost.title,
         excerpt: blogPost.excerpt,
-        author: blogPost.author?.name || 'Purrify Team',
+        author: getPublicEditorialName(blogPost.author?.name),
         date: dateStr,
+        modifiedDate: blogPost.modifiedDate || dateStr,
+        reviewer: getEditorialEntityByName(blogPost.reviewer?.name)?.name,
+        reviewedDate: blogPost.reviewedDate || undefined,
         image: blogPost.featuredImage?.url || '/optimized/blog/cat-litter-hero.webp',
         heroImageAlt: blogPost.featuredImage?.alt || blogPost.title,
         link: getBlogPostPath(locale, blogPost.slug),
@@ -302,6 +314,7 @@ async function getPost(slug: string, locale: string): Promise<BlogPost | null> {
       link: `${getBlogBasePath(locale)}${samplePost.link.replace('/blog', '')}`,
       content: content || samplePost.excerpt,
       locale: samplePost.locale || locale,
+      modifiedDate: samplePost.lastUpdated || samplePost.date,
     };
   }
 
@@ -310,7 +323,23 @@ async function getPost(slug: string, locale: string): Promise<BlogPost | null> {
 }
 
 // Locale-specific UI strings
-const uiStrings: Record<string, { backToBlog: string; allArticles: string; visitStore: string; references: string; minRead: string; faqTitle: string }> = {
+const uiStrings: Record<string, {
+  backToBlog: string;
+  allArticles: string;
+  visitStore: string;
+  references: string;
+  minRead: string;
+  faqTitle: string;
+  published: string;
+  updated: string;
+  reviewed: string;
+  by: string;
+  reviewer: string;
+  reviewProcess: string;
+  editorialPolicy: string;
+  testingPolicy: string;
+  noReviewer: string;
+}> = {
   fr: {
     backToBlog: 'Retour au Blog',
     allArticles: 'Tous les Articles',
@@ -318,6 +347,15 @@ const uiStrings: Record<string, { backToBlog: string; allArticles: string; visit
     references: 'Références',
     minRead: 'min de lecture',
     faqTitle: 'Questions Fréquemment Posées',
+    published: 'Publié',
+    updated: 'Mis à jour',
+    reviewed: 'Révisé',
+    by: 'Auteur public',
+    reviewer: 'Réviseur public',
+    reviewProcess: 'Processus éditorial',
+    editorialPolicy: 'Politique éditoriale',
+    testingPolicy: 'Politique de test',
+    noReviewer: "Cet article utilise une attribution organisationnelle. Les détails de révision n'apparaissent que lorsqu'une entité publique de révision est attachée à la page.",
   },
   en: {
     backToBlog: 'Back to Blog',
@@ -326,6 +364,15 @@ const uiStrings: Record<string, { backToBlog: string; allArticles: string; visit
     references: 'References',
     minRead: 'min read',
     faqTitle: 'Frequently Asked Questions',
+    published: 'Published',
+    updated: 'Updated',
+    reviewed: 'Reviewed',
+    by: 'Public author',
+    reviewer: 'Public reviewer',
+    reviewProcess: 'Editorial process',
+    editorialPolicy: 'Editorial policy',
+    testingPolicy: 'Testing policy',
+    noReviewer: 'This article uses organization-level attribution. Reviewer details appear only when a specific public reviewer entity is attached to the page.',
   },
 };
 
@@ -354,6 +401,10 @@ export default async function LocalizedBlogPostPage({ params }: BlogPostPageProp
   const localizedContentHtml = post.content
     ? localizeInternalHrefAttributes(sanitizeHTML(post.content), contentLocale)
     : '';
+  const authorEntity = getPublicEditorialEntity(post.author);
+  const reviewerEntity = post.reviewer ? getEditorialEntityByName(post.reviewer) : null;
+  const visibleUpdatedDate = post.modifiedDate || post.date;
+  const visibleReviewedDate = reviewerEntity && post.reviewedDate ? post.reviewedDate : null;
 
   // Generate comprehensive Article schema using centralized utility
   const wordCount = post.content ? post.content.split(/\s+/).length : 0;
@@ -365,9 +416,13 @@ export default async function LocalizedBlogPostPage({ params }: BlogPostPageProp
     getBlogPostPath(locale, slug, true),
     locale,
     {
-      author: post.author,
+      author: {
+        name: authorEntity.name,
+        type: 'Organization',
+        url: `${SITE_URL}${authorEntity.canonicalPath}`,
+      },
       datePublished: post.date,
-      dateModified: post.date,
+      dateModified: visibleUpdatedDate,
       keywords: undefined,
       category: undefined,
       image: post.image.startsWith('http') ? post.image : `${SITE_URL}${post.image}`,
@@ -498,21 +553,6 @@ export default async function LocalizedBlogPostPage({ params }: BlogPostPageProp
           <section className="py-12 md:py-16">
             <Container>
               <div className="max-w-4xl mx-auto">
-                {/* Meta Info */}
-                <div className="flex flex-wrap items-center gap-4 text-sm text-gray-500 dark:text-gray-400 mb-6">
-                  <span>{formatDate(post.date)}</span>
-                  <span className="flex items-center gap-1">
-                    <User className="w-4 h-4" />
-                    {post.author}
-                  </span>
-                  {post.content && (
-                    <span className="flex items-center gap-1">
-                      <Clock className="w-4 h-4" />
-                      {Math.ceil(post.content.split(' ').length / 200)} {t.minRead}
-                    </span>
-                  )}
-                </div>
-
                 {/* Title */}
                 <h1 className="font-heading text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 dark:text-white mb-6 leading-tight">
                   {post.title}
@@ -550,6 +590,58 @@ export default async function LocalizedBlogPostPage({ params }: BlogPostPageProp
         <section className="py-8 md:py-12">
           <Container>
             <div className="max-w-4xl mx-auto">
+              <section className="mb-10 rounded-3xl border border-gray-200 bg-white p-6 shadow-sm dark:border-gray-800 dark:bg-gray-900">
+                <div className="flex flex-wrap gap-x-6 gap-y-2 text-sm text-gray-600 dark:text-gray-300">
+                  <span>{t.published} {formatDate(post.date)}</span>
+                  <span>{t.updated} {formatDate(visibleUpdatedDate)}</span>
+                  {visibleReviewedDate && <span>{t.reviewed} {formatDate(visibleReviewedDate)}</span>}
+                  {readingTime > 0 && <span>{readingTime} {t.minRead}</span>}
+                </div>
+
+                <div className="mt-6 grid gap-6 md:grid-cols-2">
+                  <div>
+                    <p className="text-xs font-semibold uppercase tracking-[0.2em] text-brand-red-600">{t.by}</p>
+                    <Link
+                      href={authorEntity.canonicalPath}
+                      className="mt-2 inline-flex text-lg font-semibold text-gray-900 hover:text-brand-red-600 dark:text-gray-50 dark:hover:text-brand-red-500"
+                    >
+                      {authorEntity.name}
+                    </Link>
+                    <p className="mt-2 text-sm leading-6 text-gray-700 dark:text-gray-300">{authorEntity.summary}</p>
+                  </div>
+
+                  <div>
+                    <p className="text-xs font-semibold uppercase tracking-[0.2em] text-brand-red-600">
+                      {reviewerEntity && visibleReviewedDate ? t.reviewer : t.reviewProcess}
+                    </p>
+                    {reviewerEntity && visibleReviewedDate ? (
+                      <>
+                        <Link
+                          href={reviewerEntity.canonicalPath}
+                          className="mt-2 inline-flex text-lg font-semibold text-gray-900 hover:text-brand-red-600 dark:text-gray-50 dark:hover:text-brand-red-500"
+                        >
+                          {reviewerEntity.name}
+                        </Link>
+                        <p className="mt-2 text-sm leading-6 text-gray-700 dark:text-gray-300">
+                          {reviewerEntity.summary}
+                        </p>
+                      </>
+                    ) : (
+                      <p className="mt-2 text-sm leading-6 text-gray-700 dark:text-gray-300">{t.noReviewer}</p>
+                    )}
+                  </div>
+                </div>
+
+                <div className="mt-6 flex flex-wrap gap-4 text-sm font-semibold">
+                  <Link href="/about/editorial-policy" className="text-brand-red-600 hover:text-brand-red-700">
+                    {t.editorialPolicy}
+                  </Link>
+                  <Link href="/about/testing-policy" className="text-brand-red-600 hover:text-brand-red-700">
+                    {t.testingPolicy}
+                  </Link>
+                </div>
+              </section>
+
               <article className="prose prose-lg dark:prose-invert prose-headings:font-heading prose-a:text-electric-indigo max-w-none">
                 {post.content ? (
                   <div dangerouslySetInnerHTML={{ __html: localizedContentHtml }} />

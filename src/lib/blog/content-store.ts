@@ -1,7 +1,14 @@
 import fs from 'node:fs';
 import path from 'node:path';
 import type { BlogPost, Category, Tag } from '@/types/blog';
+import { defaultLocale, isValidLocale, type Locale } from '@/i18n/config';
 import { syncPreviewAndHeroImage } from '@/lib/blog/hero-preview-image-sync';
+import {
+  getCanonicalCategorySlugsForPost,
+  postMatchesCategorySlug,
+  postMatchesTagSlug,
+} from './taxonomy';
+import { getTaxonomyTerm } from '@/translations/blog-taxonomy';
 import type { ValidationResult, ValidationError, ValidationWarning } from './content-validator';
 
 export interface SaveOptions {
@@ -112,7 +119,7 @@ export class ContentStore {
       let post: BlogPost;
       try {
         const content = fs.readFileSync(filePath, 'utf-8');
-        post = JSON.parse(content) as BlogPost;
+        post = normalizePostTaxonomyLabels(JSON.parse(content) as BlogPost, safeLocale);
       } catch (_parseError) {
         // Failed to parse JSON file
         return null;
@@ -172,7 +179,7 @@ export class ContentStore {
         try {
           const filePath = path.join(localeDir, file);
           const content = fs.readFileSync(filePath, 'utf-8');
-          const post = JSON.parse(content) as BlogPost;
+          const post = normalizePostTaxonomyLabels(JSON.parse(content) as BlogPost, safeLocale);
 
           // Validate required fields
           if (!post.title || !post.slug) {
@@ -217,19 +224,19 @@ export class ContentStore {
 
   async getPostsByCategory(category: string, locale: string): Promise<BlogPost[]> {
     const allPosts = await this.getAllPosts(locale, false);
-    return allPosts.filter(post => post.categories.includes(category));
+    return allPosts.filter((post) => postMatchesCategorySlug(post, category));
   }
 
   async getPostsByTag(tag: string, locale: string): Promise<BlogPost[]> {
     const allPosts = await this.getAllPosts(locale, false);
-    return allPosts.filter(post => post.tags.includes(tag));
+    return allPosts.filter((post) => postMatchesTagSlug(post, tag));
   }
 
   async savePost(post: BlogPost, _options: SaveOptions = {}): Promise<SaveResult> {
     try {
       // Keep the first content image (hero) and preview image in sync.
       const syncResult = syncPreviewAndHeroImage(post);
-      const syncedPost = syncResult.post as BlogPost;
+      const syncedPost = normalizePostTaxonomyLabels(syncResult.post as BlogPost);
 
       // Sanitize slug and locale
       const safeSlug = sanitizeSlug(syncedPost.slug);
@@ -381,4 +388,43 @@ export class ContentStore {
 
     fs.writeFileSync(filePath, JSON.stringify(tags, null, 2));
   }
+}
+
+function normalizePostTaxonomyLabels(post: BlogPost, localeHint?: string): BlogPost {
+  const locale = resolveLocale(post.locale || localeHint);
+  const canonicalCategorySlugs = getCanonicalCategorySlugsForPost(post);
+
+  if (canonicalCategorySlugs.length === 0) {
+    return {
+      ...post,
+      categories: dedupeValues(post.categories ?? []),
+    };
+  }
+
+  return {
+    ...post,
+    categories: canonicalCategorySlugs.map((slug) => getTaxonomyTerm(locale, 'category', slug).label),
+  };
+}
+
+function dedupeValues(values: string[]): string[] {
+  const seen = new Set<string>();
+  const result: string[] = [];
+
+  for (const value of values) {
+    const trimmed = value.trim();
+
+    if (!trimmed || seen.has(trimmed)) {
+      continue;
+    }
+
+    seen.add(trimmed);
+    result.push(trimmed);
+  }
+
+  return result;
+}
+
+function resolveLocale(locale?: string): Locale {
+  return locale && isValidLocale(locale) ? locale : defaultLocale;
 }

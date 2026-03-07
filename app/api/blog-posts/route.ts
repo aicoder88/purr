@@ -2,6 +2,7 @@ import { sampleBlogPosts, BlogPost } from '@/data/blog-posts';
 import prisma from '@/lib/prisma';
 import { ContentStore } from '@/lib/blog/content-store';
 import { isValidLocale } from '@/i18n/config';
+import { getPublicEditorialName } from '@/lib/editorial/entities';
 
 export const revalidate = 3600;
 
@@ -53,7 +54,7 @@ export async function GET(req: Request): Promise<Response> {
           posts.slice(0, take).map((post) => ({
             title: post.title,
             excerpt: post.excerpt,
-            author: post.author?.name || 'Purrify Team',
+            author: getPublicEditorialName(post.author?.name),
             date: post.publishDate?.includes('T') ? post.publishDate.split('T')[0] : post.publishDate,
             image: post.featuredImage.url,
             link: `/${locale}/blog/${post.slug}`,
@@ -95,7 +96,7 @@ export async function GET(req: Request): Promise<Response> {
         automatedPosts.map((post) => ({
           title: post.title,
           excerpt: post.excerpt,
-          author: post.author ?? 'Purrify Research Lab',
+          author: getPublicEditorialName(post.author ?? 'Purrify Research Lab'),
           date: (post.publishedAt ?? post.createdAt).toISOString().split('T')[0],
           image: post.heroImageUrl,
           link: `/${isValidLocale(String(post.locale || '').toLowerCase()) ? String(post.locale).toLowerCase() : 'en'}/blog/${post.slug}`,
@@ -129,7 +130,7 @@ export async function GET(req: Request): Promise<Response> {
     const posts: BlogPost[] = wpPosts.map((post: WpPost) => ({
       title: post.title.rendered,
       excerpt: post.excerpt.rendered.replaceAll(/<\/?[^>]+(>|$)/g, "").substring(0, 150) + "...",
-      author: post._embedded?.author?.[0]?.name || "Purrify Team",
+      author: getPublicEditorialName(post._embedded?.author?.[0]?.name || "Purrify Team"),
       date: new Date(post.date).toISOString().split('T')[0],
       image: post._embedded?.['wp:featuredmedia']?.[0]?.source_url || "/optimized/logos/purrify-logo.avif",
       link: `/${locale}/blog/${post.slug}`,
