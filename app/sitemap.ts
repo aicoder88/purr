@@ -1,6 +1,4 @@
 import type { MetadataRoute } from 'next';
-import fs from 'node:fs';
-import path from 'node:path';
 import { ContentStore } from '@/lib/blog/content-store';
 import {
   buildTaxonomyHubData,
@@ -8,8 +6,16 @@ import {
   CANONICAL_TAG_SLUGS,
 } from '@/lib/blog/taxonomy';
 import { COMPARISON_ENTRIES } from '@/lib/comparison-lab/data';
+import {
+  getBlogSitemapPosts,
+  getLatestContentDate,
+  getStaticRouteLastModified,
+} from '@/lib/seo/sitemap-lastmod';
 
-const SITE_URL = 'https://www.purrify.ca';
+const SITE_URL =
+  process.env.NEXT_PUBLIC_SITE_URL ||
+  process.env.SITE_URL ||
+  'https://www.purrify.ca';
 
 // Cities that have indexed: true (no indexed: false flag in seeds)
 const INDEXED_CITIES = [
@@ -72,56 +78,6 @@ const REDIRECTED_FR_BLOG_SLUGS = new Set([
   'best-cat-litter-multiple-cats',
 ]);
 
-type BlogSitemapPost = {
-  slug: string;
-  lastmod: string;
-  frTranslationSlug: string | null;
-};
-
-const normalizeTranslatedBlogSlug = (value: string | undefined): string | null => {
-  if (!value) {
-    return null;
-  }
-
-  const trimmed = value.trim();
-  if (!trimmed) {
-    return null;
-  }
-
-  const withoutOrigin = trimmed.replace(/^https?:\/\/[^/]+/i, '');
-  const withoutBlogPrefix = withoutOrigin
-    .replace(/^\/?(?:en|fr)(?:-[a-z]{2})?\/blog\//i, '')
-    .replace(/^\/?blog\//i, '');
-  const slug = withoutBlogPrefix.replace(/^\/+|\/+$/g, '');
-
-  return /^[a-z0-9-]+$/.test(slug) ? slug : null;
-};
-
-function getBlogSlugsWithDates(locale: string): BlogSitemapPost[] {
-  const dir = path.join(process.cwd(), 'content', 'blog', locale);
-  if (!fs.existsSync(dir)) return [];
-
-  return fs.readdirSync(dir)
-    .filter(f => f.endsWith('.json'))
-    .map(f => {
-      const slug = f.replace('.json', '');
-      let lastmod = new Date().toISOString().split('T')[0];
-      let frTranslationSlug: string | null = null;
-      try {
-        const data = JSON.parse(fs.readFileSync(path.join(dir, f), 'utf-8'));
-        if (data.modifiedDate) lastmod = data.modifiedDate;
-        else if (data.publishDate) lastmod = data.publishDate;
-
-        if (locale === 'en') {
-          frTranslationSlug = normalizeTranslatedBlogSlug(
-            typeof data?.translations?.fr === 'string' ? data.translations.fr : undefined
-          );
-        }
-      } catch { /* use default */ }
-      return { slug, lastmod, frTranslationSlug };
-    });
-}
-
 type SitemapEntry = MetadataRoute.Sitemap[number];
 
 function entry(
@@ -136,16 +92,19 @@ function entry(
   const {
     priority = 0.7,
     changeFrequency = 'monthly',
-    lastModified = new Date(),
+    lastModified = getStaticRouteLastModified(pathname),
     frPath,
   } = opts;
 
   const item: SitemapEntry = {
     url: `${SITE_URL}${pathname}`,
-    lastModified,
     changeFrequency,
     priority,
   };
+
+  if (lastModified) {
+    item.lastModified = lastModified;
+  }
 
   // Add hreflang alternates for EN/FR pairs
   if (frPath !== false) {
@@ -184,6 +143,14 @@ function addLocalizedEntries(
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const entries: MetadataRoute.Sitemap = [];
   const store = new ContentStore();
+  const taxonomyPostsByLocale = {
+    en: await store.getAllPosts('en', false),
+    fr: await store.getAllPosts('fr', false),
+  };
+  const blogIndexLastModified = {
+    en: getLatestContentDate(taxonomyPostsByLocale.en) ?? getStaticRouteLastModified('/blog/'),
+    fr: getLatestContentDate(taxonomyPostsByLocale.fr) ?? getStaticRouteLastModified('/fr/blog/'),
+  };
 
   // === HOMEPAGE ===
   entries.push(entry('/', { priority: 1.0, changeFrequency: 'daily' }));
@@ -193,19 +160,15 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   entries.push(entry('/products/trial-size/', { priority: 0.9, changeFrequency: 'weekly' }));
 
   // === BLOG INDEX ===
-  entries.push(entry('/blog/', { priority: 0.8, changeFrequency: 'daily' }));
-
-  // === SEARCH HUB ===
-  entries.push(entry('/search/', { priority: 0.65, changeFrequency: 'daily', frPath: '/fr/search/' }));
-  entries.push(entry('/fr/search/', {
-    priority: 0.55,
+  entries.push(entry('/blog/', {
+    priority: 0.8,
     changeFrequency: 'daily',
-    frPath: false,
+    lastModified: blogIndexLastModified.en,
   }));
 
   // === EN BLOG POSTS ===
-  const enPosts = getBlogSlugsWithDates('en');
-  const frPosts = getBlogSlugsWithDates('fr');
+  const enPosts = getBlogSitemapPosts('en');
+  const frPosts = getBlogSitemapPosts('fr');
   const frSlugs = new Set(frPosts.map((post) => post.slug));
 
   for (const post of enPosts) {
@@ -240,34 +203,41 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   entries.push(entry('/fr/blog/', {
     priority: 0.7,
     changeFrequency: 'daily',
+    lastModified: blogIndexLastModified.fr,
     frPath: false,
   }));
 
   // === BLOG TAXONOMY HUBS ===
   for (const locale of ['en', 'fr'] as const) {
-    const posts = await store.getAllPosts(locale, false);
+    const posts = taxonomyPostsByLocale[locale];
     const localePrefix = locale === 'en' ? '' : '/fr';
 
     for (const slug of CANONICAL_CATEGORY_SLUGS) {
-      if (!buildTaxonomyHubData(posts, 'category', slug)) {
+      const hub = buildTaxonomyHubData(posts, 'category', slug);
+      if (!hub) {
         continue;
       }
 
       entries.push(entry(`${localePrefix}/blog/category/${slug}/`, {
         priority: locale === 'en' ? 0.65 : 0.55,
         changeFrequency: 'weekly',
+        lastModified: getLatestContentDate(hub.posts)
+          ?? getStaticRouteLastModified(`${localePrefix}/blog/category/${slug}/`),
         frPath: locale === 'en' ? `/fr/blog/category/${slug}/` : false,
       }));
     }
 
     for (const slug of CANONICAL_TAG_SLUGS) {
-      if (!buildTaxonomyHubData(posts, 'tag', slug)) {
+      const hub = buildTaxonomyHubData(posts, 'tag', slug);
+      if (!hub) {
         continue;
       }
 
       entries.push(entry(`${localePrefix}/blog/tag/${slug}/`, {
         priority: locale === 'en' ? 0.55 : 0.45,
         changeFrequency: 'weekly',
+        lastModified: getLatestContentDate(hub.posts)
+          ?? getStaticRouteLastModified(`${localePrefix}/blog/tag/${slug}/`),
         frPath: locale === 'en' ? `/fr/blog/tag/${slug}/` : false,
       }));
     }
@@ -275,19 +245,25 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
 
   // === LEARN PAGES ===
   addLocalizedEntries(entries, '/learn/', { priority: 0.75, changeFrequency: 'weekly' });
-  addLocalizedEntries(entries, '/learn/how-it-works/', { priority: 0.8, changeFrequency: 'monthly' });
-  addLocalizedEntries(entries, '/learn/faq/', { priority: 0.8, changeFrequency: 'monthly' });
-  addLocalizedEntries(entries, '/learn/science/', { priority: 0.7, changeFrequency: 'monthly' });
-  addLocalizedEntries(entries, '/learn/safety/', { priority: 0.7, changeFrequency: 'monthly' });
-  addLocalizedEntries(entries, '/learn/cat-litter-guide/', { priority: 0.7, changeFrequency: 'monthly' });
-  addLocalizedEntries(entries, '/learn/glossary/', { priority: 0.6, changeFrequency: 'monthly' });
-  addLocalizedEntries(entries, '/learn/ammonia-science/', { priority: 0.7, changeFrequency: 'monthly' });
-  addLocalizedEntries(entries, '/learn/cat-litter-ammonia-health-risks/', { priority: 0.7, changeFrequency: 'monthly' });
-  addLocalizedEntries(entries, '/learn/how-activated-carbon-works/', { priority: 0.7, changeFrequency: 'monthly' });
-  addLocalizedEntries(entries, '/learn/alternatives/arm-and-hammer-cat-litter-deodorizer-alternative/', {
+  entries.push(entry('/learn/how-it-works/', { priority: 0.8, changeFrequency: 'monthly', frPath: false }));
+  entries.push(entry('/learn/faq/', { priority: 0.8, changeFrequency: 'monthly', frPath: false }));
+  entries.push(entry('/learn/science/', { priority: 0.7, changeFrequency: 'monthly', frPath: false }));
+  entries.push(entry('/learn/safety/', { priority: 0.7, changeFrequency: 'monthly', frPath: false }));
+  entries.push(entry('/learn/cat-litter-guide/', { priority: 0.7, changeFrequency: 'monthly', frPath: false }));
+  entries.push(entry('/learn/glossary/', { priority: 0.6, changeFrequency: 'monthly', frPath: false }));
+  entries.push(entry('/learn/ammonia-science/', { priority: 0.7, changeFrequency: 'monthly', frPath: false }));
+  entries.push(entry('/learn/cat-litter-ammonia-health-risks/', { priority: 0.7, changeFrequency: 'monthly', frPath: false }));
+  entries.push(entry('/learn/how-activated-carbon-works/', { priority: 0.7, changeFrequency: 'monthly', frPath: false }));
+  entries.push(entry('/learn/alternatives/arm-and-hammer-cat-litter-deodorizer-alternative/', {
     priority: 0.6,
     changeFrequency: 'monthly',
-  });
+    frPath: false,
+  }));
+  entries.push(entry('/learn/comparison-lab/', {
+    priority: 0.7,
+    changeFrequency: 'monthly',
+    frPath: '/fr/learn/comparison-lab/',
+  }));
   entries.push(entry('/learn/comparison-lab/methodology/', {
     priority: 0.7,
     changeFrequency: 'monthly',
@@ -297,6 +273,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     entries.push(entry(`/learn/comparison-lab/${comparisonEntry.slug}/`, {
       priority: 0.7,
       changeFrequency: 'monthly',
+      lastModified: comparisonEntry.updatedAt || comparisonEntry.publishedAt,
       frPath: `/fr/learn/comparison-lab/${comparisonEntry.slug}/`,
     }));
   }
@@ -330,16 +307,33 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   }
 
   // === SUPPORT ===
-  addLocalizedEntries(entries, '/support/', { priority: 0.6, changeFrequency: 'monthly' });
+  entries.push(entry('/support/', { priority: 0.6, changeFrequency: 'monthly', frPath: false }));
   entries.push(entry('/support/shipping/', { priority: 0.5, changeFrequency: 'monthly', frPath: false }));
+  entries.push(entry('/support/subscription/', {
+    priority: 0.6,
+    changeFrequency: 'monthly',
+    frPath: false,
+  }));
 
   // === ABOUT / CONTACT ===
   entries.push(entry('/contact/', { priority: 0.6, changeFrequency: 'monthly', frPath: false }));
   entries.push(entry('/about/our-story/', { priority: 0.6, changeFrequency: 'monthly', frPath: false }));
+  entries.push(entry('/about/editorial-policy/', {
+    priority: 0.4,
+    changeFrequency: 'yearly',
+    frPath: false,
+  }));
+  entries.push(entry('/about/testing-policy/', {
+    priority: 0.4,
+    changeFrequency: 'yearly',
+    frPath: false,
+  }));
+  entries.push(entry('/about/team/', { priority: 0.5, changeFrequency: 'monthly', frPath: false }));
 
   // === REVIEWS / CASE STUDIES ===
   entries.push(entry('/reviews/', { priority: 0.7, changeFrequency: 'weekly', frPath: `/fr/reviews/` })); // FR reviews exist
   entries.push(entry('/case-studies/', { priority: 0.6, changeFrequency: 'monthly', frPath: false }));
+  entries.push(entry('/results/', { priority: 0.6, changeFrequency: 'monthly', frPath: false }));
 
   // === STORES / RETAILERS / B2B ===
   entries.push(entry('/stores/', { priority: 0.7, changeFrequency: 'weekly', frPath: false }));
@@ -351,11 +345,11 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   entries.push(entry('/science/', { priority: 0.7, changeFrequency: 'monthly', frPath: false }));
 
   // === TOOLS ===
+  entries.push(entry('/tools/', { priority: 0.6, changeFrequency: 'monthly', frPath: false }));
   entries.push(entry('/tools/cat-litter-calculator/', { priority: 0.6, changeFrequency: 'monthly', frPath: false }));
   entries.push(entry('/tools/smell-quiz/', { priority: 0.6, changeFrequency: 'monthly', frPath: false }));
 
-  // === REFERRAL / AFFILIATE ===
-  entries.push(entry('/referral/', { priority: 0.6, changeFrequency: 'monthly', frPath: false }));
+  // === AFFILIATE ===
   entries.push(entry('/affiliate/', { priority: 0.7, changeFrequency: 'weekly', frPath: false }));
 
   // === GEO PAGES ===
@@ -365,10 +359,10 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
 
   // === FUN ===
   entries.push(entry('/fun/', { priority: 0.5, changeFrequency: 'monthly', frPath: false }));
+  entries.push(entry('/viral/', { priority: 0.5, changeFrequency: 'monthly', frPath: false }));
 
   // === LEGAL ===
   entries.push(entry('/privacy-policy/', { priority: 0.3, changeFrequency: 'yearly', frPath: false }));
-  entries.push(entry('/terms/', { priority: 0.3, changeFrequency: 'yearly', frPath: false }));
 
   return entries;
 }
