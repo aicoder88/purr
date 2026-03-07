@@ -1,6 +1,7 @@
 'use client';
 
 import { useEffect } from 'react';
+import { initializeConsent } from '@/lib/analytics';
 import { captureUTM } from '@/lib/tracking/utm';
 
 
@@ -11,6 +12,7 @@ import { captureUTM } from '@/lib/tracking/utm';
  */
 function useUTMCapture() {
     useEffect(() => {
+        initializeConsent();
         captureUTM();
     }, []);
 }

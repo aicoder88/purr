@@ -1,7 +1,7 @@
 
 "use client";
 
-import React from "react";
+import { useEffect, useRef, useState } from "react";
 import dynamic from "next/dynamic";
 import { useTranslations } from "next-intl";
 
@@ -37,21 +37,45 @@ function normalizeHeight(height?: string): number {
   return Number.isFinite(parsedHeight) ? parsedHeight : 600;
 }
 
-export const ClientLocationsMap: React.FC<ClientLocationsMapProps> = ({
+export const ClientLocationsMap = ({
   className = "",
   height,
   showHeader = true,
   headerTitle,
   headerDescription,
-}) => {
+}: ClientLocationsMapProps) => {
   const t = useTranslations();
   const mapHeight = normalizeHeight(height);
+  const sectionRef = useRef<HTMLElement | null>(null);
+  const [shouldLoadMap, setShouldLoadMap] = useState(false);
 
   const title = headerTitle ?? t('maps.findNearYou') ?? "";
   const description = headerDescription ?? t('maps.discoverWhere') ?? "";
 
+  useEffect(() => {
+    if (shouldLoadMap || !sectionRef.current || typeof IntersectionObserver === 'undefined') {
+      return;
+    }
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        if (entries.some((entry) => entry.isIntersecting)) {
+          setShouldLoadMap(true);
+          observer.disconnect();
+        }
+      },
+      { rootMargin: '300px 0px' }
+    );
+
+    observer.observe(sectionRef.current);
+
+    return () => {
+      observer.disconnect();
+    };
+  }, [shouldLoadMap]);
+
   return (
-    <section className={`overflow-x-clip py-12 md:py-20 ${className}`}>
+    <section ref={sectionRef} className={`overflow-x-clip py-12 md:py-20 ${className}`}>
       {showHeader && (
         <div className="container mx-auto px-4 mb-10 md:mb-14">
           <div className="max-w-4xl mx-auto text-center">
@@ -66,7 +90,7 @@ export const ClientLocationsMap: React.FC<ClientLocationsMapProps> = ({
       )}
 
       <div className="container mx-auto px-4">
-        <RetailerMap height={mapHeight} />
+        {shouldLoadMap ? <RetailerMap height={mapHeight} /> : <LocationsMapLoading />}
       </div>
     </section>
   );

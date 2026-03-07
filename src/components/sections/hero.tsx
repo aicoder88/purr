@@ -81,15 +81,15 @@ export async function Hero() {
 
             <div className="flex flex-col gap-3 pt-2 max-w-xl">
               <div className="flex flex-col sm:flex-row gap-3">
-                <Button asChild className={CTA_BUTTON_CLASSES} aria-label={t("hero.ariaLabels.shopNow")}>
+                <Button asChild className={CTA_BUTTON_CLASSES}>
                   <a href={checkoutUrl} className="flex flex-col items-center gap-0.5">
                     <span className="flex items-center gap-2">
-                      <LightningIcon />
+                      <LightningIcon className="shrink-0" />
                       <span>{primaryCta}</span>
-                      <ArrowIcon />
+                      <ArrowIcon className="shrink-0" />
                     </span>
                     {reassurance ? (
-                      <span className="text-[0.65rem] font-normal opacity-75 leading-none">{reassurance}</span>
+                      <span className="text-xs font-medium text-white/90 dark:text-gray-100/90 leading-none">{reassurance}</span>
                     ) : null}
                   </a>
                 </Button>

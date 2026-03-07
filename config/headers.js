@@ -3,19 +3,19 @@ const isDev = process.env.NODE_ENV === 'development';
 // CSP: 'unsafe-eval' allowed only in dev mode for debugging/hot reload
 // 'unsafe-inline' kept for GTM compatibility
 const scriptSrc = isDev
-  ? "'self' 'unsafe-eval' 'unsafe-inline' *.google.com *.gstatic.com *.googletagmanager.com static.hotjar.com analytics.ahrefs.com va.vercel-scripts.com *.facebook.net connect.facebook.net"
-  : "'self' 'unsafe-inline' *.google.com *.gstatic.com *.googletagmanager.com static.hotjar.com analytics.ahrefs.com va.vercel-scripts.com *.facebook.net connect.facebook.net";
+  ? "'self' 'unsafe-eval' 'unsafe-inline' *.google.com *.gstatic.com *.googletagmanager.com static.hotjar.com analytics.ahrefs.com va.vercel-scripts.com *.facebook.net connect.facebook.net analytics.tiktok.com *.contentsquare.net static.cloudflareinsights.com"
+  : "'self' 'unsafe-inline' *.google.com *.gstatic.com *.googletagmanager.com static.hotjar.com analytics.ahrefs.com va.vercel-scripts.com *.facebook.net connect.facebook.net analytics.tiktok.com *.contentsquare.net static.cloudflareinsights.com";
 
-const connectSrc = "'self' *.googletagmanager.com *.google-analytics.com *.analytics.google.com *.g.doubleclick.net *.hotjar.com *.hotjar.io analytics.ahrefs.com *.ahrefs.com wss://*.hotjar.com v.vercel-insights.com va.vercel-scripts.com *.facebook.com *.facebook.net connect.facebook.net";
+const connectSrc = "'self' *.googletagmanager.com *.google-analytics.com *.analytics.google.com *.g.doubleclick.net *.google.com *.hotjar.com *.hotjar.io analytics.ahrefs.com *.ahrefs.com wss://*.hotjar.com v.vercel-insights.com va.vercel-scripts.com *.facebook.com *.facebook.net connect.facebook.net *.madgicx.ai analytics.tiktok.com *.contentsquare.net cloudflareinsights.com";
 const frameSrc = "'self' https://www.google.com https://maps.google.com https://www.googletagmanager.com https://tagassistant.google.com";
-const trackingImgSrc = "*.google-analytics.com *.googletagmanager.com *.g.doubleclick.net *.hotjar.com *.hotjar.io analytics.ahrefs.com *.ahrefs.com";
+const trackingImgSrc = "*.google-analytics.com *.googletagmanager.com *.g.doubleclick.net *.google.ca *.hotjar.com *.hotjar.io analytics.ahrefs.com *.ahrefs.com *.tiktok.com";
 
 // Next.js dev runtimes can register extra Trusted Types policy names
 // (for example `nextjs#bundler` with webpack). Keep this list explicit
 // and environment-aware so local hydration does not break.
 const trustedTypesPolicies = isDev
-  ? "'allow-duplicates' nextjs nextjs-hydration nextjs#bundler gtm googletagmanager"
-  : "'allow-duplicates' nextjs nextjs-hydration gtm googletagmanager";
+  ? "'allow-duplicates' nextjs nextjs-hydration nextjs#bundler gtm googletagmanager goog#html connect.facebook.net/fbevents facebook.com/signals/iwl"
+  : "'allow-duplicates' nextjs nextjs-hydration gtm googletagmanager goog#html connect.facebook.net/fbevents facebook.com/signals/iwl";
 
 const SECURITY_HEADERS = [
   { key: "Strict-Transport-Security", value: "max-age=63072000; includeSubDomains; preload" },

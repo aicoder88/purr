@@ -156,38 +156,52 @@ export default async function HomePage() {
             <WhyPurrify />
           </ErrorBoundary>
 
-          <ErrorBoundary>
-            <HomepageTestimonials />
-          </ErrorBoundary>
+          <div className="cv-auto cis-720">
+            <ErrorBoundary>
+              <HomepageTestimonials />
+            </ErrorBoundary>
+          </div>
 
-          <HomepageClient
-            priceValidUntil={priceValidUntil}
-            locale={defaultLocale}
-            currency={currency}
-          />
-
-          <ErrorBoundary>
-            <ScienceSection />
-          </ErrorBoundary>
-
-          <ErrorBoundary>
-            <AgitationSection />
-          </ErrorBoundary>
-
-          <ErrorBoundary>
-            <Stores />
-          </ErrorBoundary>
-
-          <ErrorBoundary>
-            <ClientLocationsMap
-              className="bg-[linear-gradient(180deg,#fffdf7_0%,#fdf8f1_36%,#fffdf8_100%)] dark:bg-[linear-gradient(180deg,#030712_0%,#0b1220_52%,#030712_100%)]"
-              height="400"
+          <div className="cv-auto cis-960">
+            <HomepageClient
+              priceValidUntil={priceValidUntil}
+              locale={defaultLocale}
+              currency={currency}
             />
-          </ErrorBoundary>
+          </div>
 
-          <ErrorBoundary>
-            <BlogPreview />
-          </ErrorBoundary>
+          <div className="cv-auto cis-720">
+            <ErrorBoundary>
+              <ScienceSection />
+            </ErrorBoundary>
+          </div>
+
+          <div className="cv-auto cis-720">
+            <ErrorBoundary>
+              <AgitationSection />
+            </ErrorBoundary>
+          </div>
+
+          <div className="cv-auto cis-960">
+            <ErrorBoundary>
+              <Stores />
+            </ErrorBoundary>
+          </div>
+
+          <div className="cv-auto cis-720">
+            <ErrorBoundary>
+              <ClientLocationsMap
+                className="bg-[linear-gradient(180deg,#fffdf7_0%,#fdf8f1_36%,#fffdf8_100%)] dark:bg-[linear-gradient(180deg,#030712_0%,#0b1220_52%,#030712_100%)]"
+                height="400"
+              />
+            </ErrorBoundary>
+          </div>
+
+          <div className="cv-auto cis-720">
+            <ErrorBoundary>
+              <BlogPreview />
+            </ErrorBoundary>
+          </div>
         </main>
       </ScopedIntlProvider>
     </>
