@@ -4,7 +4,8 @@ import {
   generateProductPageSchema,
   generateArticlePageSchema,
   generateLocationPageSchema,
-  generateJSONLD
+  generateJSONLD,
+  type StructuredAuthor,
 } from '@/lib/seo-utils';
 
 interface JSONLDSchemaProps {
@@ -19,7 +20,7 @@ interface JSONLDSchemaProps {
     title?: string;
     description?: string;
     path?: string;
-    author?: string;
+    author?: string | StructuredAuthor;
     datePublished?: string;
     dateModified?: string;
     keywords?: string[];
@@ -119,7 +120,7 @@ export const ArticleSchema: React.FC<{
   path: string;
   locale?: 'en' | 'fr';
   options?: {
-    author?: string;
+    author?: string | StructuredAuthor;
     datePublished?: string;
     dateModified?: string;
     keywords?: string[];

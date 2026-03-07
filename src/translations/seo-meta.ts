@@ -163,10 +163,9 @@ export const seoMetaEn: SEOMetaContent = {
         headline: 'How Activated Carbon Eliminates Cat Litter Odor Fast',
         description: 'Discover how water-filter grade activated carbon neutralizes ammonia in 30 seconds. See the science behind 99% odor elimination.',
         author: {
-          '@type': 'Person',
-          name: 'Dr. Sarah Chen',
-          jobTitle: 'Veterinary Consultant',
-          url: `${SITE_URL}/about/our-story/`
+          '@type': 'Organization',
+          name: 'Purrify Team',
+          url: `${SITE_URL}/about/team/purrify-team/`
         },
         publisher: { '@type': 'Organization', name: 'Purrify' }
       },
@@ -182,10 +181,9 @@ export const seoMetaEn: SEOMetaContent = {
         headline: 'Activated Carbon Cat Litter Benefits [2026 Guide]',
         description: '7+ proven benefits of activated carbon for cat litter odor control. Eliminates 99% of ammonia, lasts 30 days, 100% natural.',
         author: {
-          '@type': 'Person',
-          name: 'Dr. Sarah Chen',
-          jobTitle: 'Veterinary Consultant',
-          url: `${SITE_URL}/about/our-story/`
+          '@type': 'Organization',
+          name: 'Purrify Team',
+          url: `${SITE_URL}/about/team/purrify-team/`
         },
         publisher: { '@type': 'Organization', name: 'Purrify' }
       },
@@ -201,10 +199,9 @@ export const seoMetaEn: SEOMetaContent = {
         headline: 'Baking Soda vs Activated Carbon: Which Works Better?',
         description: 'Baking soda masks odor, activated carbon eliminates it. See the science behind why cat owners switch.',
         author: {
-          '@type': 'Person',
-          name: 'Dr. Sarah Chen',
-          jobTitle: 'Veterinary Consultant',
-          url: `${SITE_URL}/about/our-story/`
+          '@type': 'Organization',
+          name: 'Purrify Team',
+          url: `${SITE_URL}/about/team/purrify-team/`
         },
         publisher: { '@type': 'Organization', name: 'Purrify' }
       },
@@ -220,10 +217,9 @@ export const seoMetaEn: SEOMetaContent = {
         headline: 'Is Cat Litter Deodorizer Safe for Kittens? [Expert Guide]',
         description: 'Not all deodorizers are kitten-safe. Learn which ingredients to avoid, what\'s safe, and how to protect your kitten\'s respiratory system.',
         author: {
-          '@type': 'Person',
-          name: 'Dr. Sarah Chen',
-          jobTitle: 'Veterinary Consultant',
-          url: `${SITE_URL}/about/our-story/`
+          '@type': 'Organization',
+          name: 'Purrify Team',
+          url: `${SITE_URL}/about/team/purrify-team/`
         },
         publisher: { '@type': 'Organization', name: 'Purrify' }
       },
@@ -239,10 +235,9 @@ export const seoMetaEn: SEOMetaContent = {
         headline: 'Cat Litter Odor Control FAQ - Your Questions Answered',
         description: 'Get answers about activated carbon cat litter additive. Safety, usage, effectiveness & more.',
         author: {
-          '@type': 'Person',
-          name: 'Dr. Sarah Chen',
-          jobTitle: 'Veterinary Consultant',
-          url: `${SITE_URL}/about/our-story/`
+          '@type': 'Organization',
+          name: 'Purrify Team',
+          url: `${SITE_URL}/about/team/purrify-team/`
         },
         publisher: { '@type': 'Organization', name: 'Purrify' }
       },
@@ -258,10 +253,9 @@ export const seoMetaEn: SEOMetaContent = {
         headline: 'Is Activated Carbon Safe for Cats? [Science Review]',
         description: '100% food-grade coconut shell activated carbon. Non-toxic, dust-free, pet-friendly. Used in water filters & air purifiers. Safe for cats & kittens.',
         author: {
-          '@type': 'Person',
-          name: 'Dr. Sarah Chen',
-          jobTitle: 'Veterinary Consultant',
-          url: `${SITE_URL}/about/our-story/`
+          '@type': 'Organization',
+          name: 'Purrify Team',
+          url: `${SITE_URL}/about/team/purrify-team/`
         },
         publisher: { '@type': 'Organization', name: 'Purrify' }
       },
@@ -277,10 +271,9 @@ export const seoMetaEn: SEOMetaContent = {
         headline: 'Cat Litter Ammonia Health Risks: What Owners Must Know',
         description: 'Is ammonia from cat litter dangerous? Learn safe exposure levels, health risks for you and your cat, plus proven solutions.',
         author: {
-          '@type': 'Person',
-          name: 'Dr. Sarah Chen',
-          jobTitle: 'Veterinary Consultant',
-          url: `${SITE_URL}/about/our-story/`
+          '@type': 'Organization',
+          name: 'Purrify Team',
+          url: `${SITE_URL}/about/team/purrify-team/`
         },
         publisher: { '@type': 'Organization', name: 'Purrify' }
       },
@@ -357,10 +350,9 @@ export const seoMetaEn: SEOMetaContent = {
         datePublished: '2025-07-26',
         dateModified: '2026-02-13',
         author: {
-          '@type': 'Person',
-          name: 'Dr. Sarah Chen',
-          jobTitle: 'Veterinary Consultant',
-          url: `${SITE_URL}/about/our-story/`
+          '@type': 'Organization',
+          name: 'Purrify Team',
+          url: `${SITE_URL}/about/team/purrify-team/`
         },
         publisher: {
           '@type': 'Organization',
@@ -383,10 +375,9 @@ export const seoMetaEn: SEOMetaContent = {
         datePublished: '2025-10-06',
         dateModified: '2026-02-13',
         author: {
-          '@type': 'Person',
-          name: 'Dr. Sarah Chen',
-          jobTitle: 'Veterinary Consultant',
-          url: `${SITE_URL}/about/our-story/`
+          '@type': 'Organization',
+          name: 'Purrify Team',
+          url: `${SITE_URL}/about/team/purrify-team/`
         },
         publisher: {
           '@type': 'Organization',
@@ -409,10 +400,9 @@ export const seoMetaEn: SEOMetaContent = {
         datePublished: '2025-10-14',
         dateModified: '2026-02-13',
         author: {
-          '@type': 'Person',
-          name: 'Dr. Sarah Chen',
-          jobTitle: 'Veterinary Consultant',
-          url: `${SITE_URL}/about/our-story/`
+          '@type': 'Organization',
+          name: 'Purrify Team',
+          url: `${SITE_URL}/about/team/purrify-team/`
         },
         publisher: {
           '@type': 'Organization',
@@ -435,10 +425,9 @@ export const seoMetaEn: SEOMetaContent = {
         datePublished: '2025-07-06',
         dateModified: '2026-02-13',
         author: {
-          '@type': 'Person',
-          name: 'Dr. Sarah Chen',
-          jobTitle: 'Veterinary Consultant',
-          url: `${SITE_URL}/about/our-story/`
+          '@type': 'Organization',
+          name: 'Purrify Team',
+          url: `${SITE_URL}/about/team/purrify-team/`
         },
         publisher: {
           '@type': 'Organization',
@@ -461,10 +450,9 @@ export const seoMetaEn: SEOMetaContent = {
         datePublished: '2025-07-13',
         dateModified: '2026-02-13',
         author: {
-          '@type': 'Person',
-          name: 'Dr. Sarah Chen',
-          jobTitle: 'Veterinary Consultant',
-          url: `${SITE_URL}/about/our-story/`
+          '@type': 'Organization',
+          name: 'Purrify Team',
+          url: `${SITE_URL}/about/team/purrify-team/`
         },
         publisher: {
           '@type': 'Organization',
@@ -487,10 +475,9 @@ export const seoMetaEn: SEOMetaContent = {
         datePublished: '2025-09-22',
         dateModified: '2026-02-13',
         author: {
-          '@type': 'Person',
-          name: 'Dr. Sarah Chen',
-          jobTitle: 'Veterinary Consultant',
-          url: `${SITE_URL}/about/our-story/`
+          '@type': 'Organization',
+          name: 'Purrify Team',
+          url: `${SITE_URL}/about/team/purrify-team/`
         },
         publisher: {
           '@type': 'Organization',
@@ -513,10 +500,9 @@ export const seoMetaEn: SEOMetaContent = {
         datePublished: '2025-08-16',
         dateModified: '2026-02-13',
         author: {
-          '@type': 'Person',
-          name: 'Dr. Sarah Chen',
-          jobTitle: 'Veterinary Consultant',
-          url: `${SITE_URL}/about/our-story/`
+          '@type': 'Organization',
+          name: 'Purrify Team',
+          url: `${SITE_URL}/about/team/purrify-team/`
         },
         publisher: {
           '@type': 'Organization',
@@ -539,10 +525,9 @@ export const seoMetaEn: SEOMetaContent = {
         datePublished: '2025-06-22',
         dateModified: '2026-02-13',
         author: {
-          '@type': 'Person',
-          name: 'Dr. Sarah Chen',
-          jobTitle: 'Veterinary Consultant',
-          url: `${SITE_URL}/about/our-story/`
+          '@type': 'Organization',
+          name: 'Purrify Team',
+          url: `${SITE_URL}/about/team/purrify-team/`
         },
         publisher: {
           '@type': 'Organization',
@@ -565,10 +550,9 @@ export const seoMetaEn: SEOMetaContent = {
         datePublished: '2025-07-04',
         dateModified: '2026-02-13',
         author: {
-          '@type': 'Person',
-          name: 'Dr. Sarah Chen',
-          jobTitle: 'Veterinary Consultant',
-          url: `${SITE_URL}/about/our-story/`
+          '@type': 'Organization',
+          name: 'Purrify Team',
+          url: `${SITE_URL}/about/team/purrify-team/`
         },
         publisher: {
           '@type': 'Organization',
@@ -591,10 +575,9 @@ export const seoMetaEn: SEOMetaContent = {
         datePublished: '2025-09-01',
         dateModified: '2026-02-13',
         author: {
-          '@type': 'Person',
-          name: 'Dr. Sarah Chen',
-          jobTitle: 'Veterinary Consultant',
-          url: `${SITE_URL}/about/our-story/`
+          '@type': 'Organization',
+          name: 'Purrify Team',
+          url: `${SITE_URL}/about/team/purrify-team/`
         },
         publisher: {
           '@type': 'Organization',
@@ -617,10 +600,9 @@ export const seoMetaEn: SEOMetaContent = {
         datePublished: '2025-06-11',
         dateModified: '2026-02-13',
         author: {
-          '@type': 'Person',
-          name: 'Dr. Sarah Chen',
-          jobTitle: 'Veterinary Consultant',
-          url: `${SITE_URL}/about/our-story/`
+          '@type': 'Organization',
+          name: 'Purrify Team',
+          url: `${SITE_URL}/about/team/purrify-team/`
         },
         publisher: {
           '@type': 'Organization',
@@ -643,10 +625,9 @@ export const seoMetaEn: SEOMetaContent = {
         datePublished: '2025-10-13',
         dateModified: '2026-02-13',
         author: {
-          '@type': 'Person',
-          name: 'Dr. Sarah Chen',
-          jobTitle: 'Veterinary Consultant',
-          url: `${SITE_URL}/about/our-story/`
+          '@type': 'Organization',
+          name: 'Purrify Team',
+          url: `${SITE_URL}/about/team/purrify-team/`
         },
         publisher: {
           '@type': 'Organization',
@@ -906,10 +887,9 @@ export const seoMetaFr: SEOMetaContent = {
         datePublished: '2025-09-10',
         dateModified: '2026-02-13',
         author: {
-          '@type': 'Person',
-          name: 'Dr. Sarah Chen',
-          jobTitle: 'Veterinary Consultant',
-          url: `${SITE_URL}/about/our-story/`
+          '@type': 'Organization',
+          name: 'Purrify Team',
+          url: `${SITE_URL}/about/team/purrify-team/`
         },
         publisher: {
           '@type': 'Organization',
@@ -932,10 +912,9 @@ export const seoMetaFr: SEOMetaContent = {
         datePublished: '2025-08-03',
         dateModified: '2026-02-13',
         author: {
-          '@type': 'Person',
-          name: 'Dr. Sarah Chen',
-          jobTitle: 'Veterinary Consultant',
-          url: `${SITE_URL}/about/our-story/`
+          '@type': 'Organization',
+          name: 'Purrify Team',
+          url: `${SITE_URL}/about/team/purrify-team/`
         },
         publisher: {
           '@type': 'Organization',
@@ -958,10 +937,9 @@ export const seoMetaFr: SEOMetaContent = {
         datePublished: '2025-06-20',
         dateModified: '2026-02-13',
         author: {
-          '@type': 'Person',
-          name: 'Dr. Sarah Chen',
-          jobTitle: 'Veterinary Consultant',
-          url: `${SITE_URL}/about/our-story/`
+          '@type': 'Organization',
+          name: 'Purrify Team',
+          url: `${SITE_URL}/about/team/purrify-team/`
         },
         publisher: {
           '@type': 'Organization',
@@ -984,10 +962,9 @@ export const seoMetaFr: SEOMetaContent = {
         datePublished: '2025-06-29',
         dateModified: '2026-02-13',
         author: {
-          '@type': 'Person',
-          name: 'Dr. Sarah Chen',
-          jobTitle: 'Veterinary Consultant',
-          url: `${SITE_URL}/about/our-story/`
+          '@type': 'Organization',
+          name: 'Purrify Team',
+          url: `${SITE_URL}/about/team/purrify-team/`
         },
         publisher: {
           '@type': 'Organization',
@@ -1010,10 +987,9 @@ export const seoMetaFr: SEOMetaContent = {
         datePublished: '2025-08-02',
         dateModified: '2026-02-13',
         author: {
-          '@type': 'Person',
-          name: 'Dr. Sarah Chen',
-          jobTitle: 'Veterinary Consultant',
-          url: `${SITE_URL}/about/our-story/`
+          '@type': 'Organization',
+          name: 'Purrify Team',
+          url: `${SITE_URL}/about/team/purrify-team/`
         },
         publisher: {
           '@type': 'Organization',
@@ -1036,10 +1012,9 @@ export const seoMetaFr: SEOMetaContent = {
         datePublished: '2025-05-31',
         dateModified: '2026-02-13',
         author: {
-          '@type': 'Person',
-          name: 'Dr. Sarah Chen',
-          jobTitle: 'Veterinary Consultant',
-          url: `${SITE_URL}/about/our-story/`
+          '@type': 'Organization',
+          name: 'Purrify Team',
+          url: `${SITE_URL}/about/team/purrify-team/`
         },
         publisher: {
           '@type': 'Organization',
@@ -1062,10 +1037,9 @@ export const seoMetaFr: SEOMetaContent = {
         datePublished: '2025-10-03',
         dateModified: '2026-02-13',
         author: {
-          '@type': 'Person',
-          name: 'Dr. Sarah Chen',
-          jobTitle: 'Veterinary Consultant',
-          url: `${SITE_URL}/about/our-story/`
+          '@type': 'Organization',
+          name: 'Purrify Team',
+          url: `${SITE_URL}/about/team/purrify-team/`
         },
         publisher: {
           '@type': 'Organization',
@@ -1088,10 +1062,9 @@ export const seoMetaFr: SEOMetaContent = {
         datePublished: '2025-08-17',
         dateModified: '2026-02-13',
         author: {
-          '@type': 'Person',
-          name: 'Dr. Sarah Chen',
-          jobTitle: 'Veterinary Consultant',
-          url: `${SITE_URL}/about/our-story/`
+          '@type': 'Organization',
+          name: 'Purrify Team',
+          url: `${SITE_URL}/about/team/purrify-team/`
         },
         publisher: {
           '@type': 'Organization',
@@ -1114,10 +1087,9 @@ export const seoMetaFr: SEOMetaContent = {
         datePublished: '2025-06-02',
         dateModified: '2026-02-13',
         author: {
-          '@type': 'Person',
-          name: 'Dr. Sarah Chen',
-          jobTitle: 'Veterinary Consultant',
-          url: `${SITE_URL}/about/our-story/`
+          '@type': 'Organization',
+          name: 'Purrify Team',
+          url: `${SITE_URL}/about/team/purrify-team/`
         },
         publisher: {
           '@type': 'Organization',
@@ -1140,10 +1112,9 @@ export const seoMetaFr: SEOMetaContent = {
         datePublished: '2025-09-14',
         dateModified: '2026-02-13',
         author: {
-          '@type': 'Person',
-          name: 'Dr. Sarah Chen',
-          jobTitle: 'Veterinary Consultant',
-          url: `${SITE_URL}/about/our-story/`
+          '@type': 'Organization',
+          name: 'Purrify Team',
+          url: `${SITE_URL}/about/team/purrify-team/`
         },
         publisher: {
           '@type': 'Organization',
@@ -1166,10 +1137,9 @@ export const seoMetaFr: SEOMetaContent = {
         datePublished: '2025-09-20',
         dateModified: '2026-02-13',
         author: {
-          '@type': 'Person',
-          name: 'Dr. Sarah Chen',
-          jobTitle: 'Veterinary Consultant',
-          url: `${SITE_URL}/about/our-story/`
+          '@type': 'Organization',
+          name: 'Purrify Team',
+          url: `${SITE_URL}/about/team/purrify-team/`
         },
         publisher: {
           '@type': 'Organization',
@@ -1192,10 +1162,9 @@ export const seoMetaFr: SEOMetaContent = {
         datePublished: '2025-07-10',
         dateModified: '2026-02-13',
         author: {
-          '@type': 'Person',
-          name: 'Dr. Sarah Chen',
-          jobTitle: 'Veterinary Consultant',
-          url: `${SITE_URL}/about/our-story/`
+          '@type': 'Organization',
+          name: 'Purrify Team',
+          url: `${SITE_URL}/about/team/purrify-team/`
         },
         publisher: {
           '@type': 'Organization',
@@ -1455,10 +1424,9 @@ export const seoMetaZh: SEOMetaContent = {
         datePublished: '2025-09-19',
         dateModified: '2026-02-13',
         author: {
-          '@type': 'Person',
-          name: 'Dr. Sarah Chen',
-          jobTitle: 'Veterinary Consultant',
-          url: `${SITE_URL}/about/our-story/`
+          '@type': 'Organization',
+          name: 'Purrify Team',
+          url: `${SITE_URL}/about/team/purrify-team/`
         },
         publisher: {
           '@type': 'Organization',
@@ -1481,10 +1449,9 @@ export const seoMetaZh: SEOMetaContent = {
         datePublished: '2025-10-25',
         dateModified: '2026-02-13',
         author: {
-          '@type': 'Person',
-          name: 'Dr. Sarah Chen',
-          jobTitle: 'Veterinary Consultant',
-          url: `${SITE_URL}/about/our-story/`
+          '@type': 'Organization',
+          name: 'Purrify Team',
+          url: `${SITE_URL}/about/team/purrify-team/`
         },
         publisher: {
           '@type': 'Organization',
@@ -1507,10 +1474,9 @@ export const seoMetaZh: SEOMetaContent = {
         datePublished: '2025-06-06',
         dateModified: '2026-02-13',
         author: {
-          '@type': 'Person',
-          name: 'Dr. Sarah Chen',
-          jobTitle: 'Veterinary Consultant',
-          url: `${SITE_URL}/about/our-story/`
+          '@type': 'Organization',
+          name: 'Purrify Team',
+          url: `${SITE_URL}/about/team/purrify-team/`
         },
         publisher: {
           '@type': 'Organization',
@@ -1533,10 +1499,9 @@ export const seoMetaZh: SEOMetaContent = {
         datePublished: '2025-08-25',
         dateModified: '2026-02-13',
         author: {
-          '@type': 'Person',
-          name: 'Dr. Sarah Chen',
-          jobTitle: 'Veterinary Consultant',
-          url: `${SITE_URL}/about/our-story/`
+          '@type': 'Organization',
+          name: 'Purrify Team',
+          url: `${SITE_URL}/about/team/purrify-team/`
         },
         publisher: {
           '@type': 'Organization',
@@ -1559,10 +1524,9 @@ export const seoMetaZh: SEOMetaContent = {
         datePublished: '2025-07-20',
         dateModified: '2026-02-13',
         author: {
-          '@type': 'Person',
-          name: 'Dr. Sarah Chen',
-          jobTitle: 'Veterinary Consultant',
-          url: `${SITE_URL}/about/our-story/`
+          '@type': 'Organization',
+          name: 'Purrify Team',
+          url: `${SITE_URL}/about/team/purrify-team/`
         },
         publisher: {
           '@type': 'Organization',
@@ -1585,10 +1549,9 @@ export const seoMetaZh: SEOMetaContent = {
         datePublished: '2025-07-12',
         dateModified: '2026-02-13',
         author: {
-          '@type': 'Person',
-          name: 'Dr. Sarah Chen',
-          jobTitle: 'Veterinary Consultant',
-          url: `${SITE_URL}/about/our-story/`
+          '@type': 'Organization',
+          name: 'Purrify Team',
+          url: `${SITE_URL}/about/team/purrify-team/`
         },
         publisher: {
           '@type': 'Organization',
@@ -1611,10 +1574,9 @@ export const seoMetaZh: SEOMetaContent = {
         datePublished: '2025-09-27',
         dateModified: '2026-02-13',
         author: {
-          '@type': 'Person',
-          name: 'Dr. Sarah Chen',
-          jobTitle: 'Veterinary Consultant',
-          url: `${SITE_URL}/about/our-story/`
+          '@type': 'Organization',
+          name: 'Purrify Team',
+          url: `${SITE_URL}/about/team/purrify-team/`
         },
         publisher: {
           '@type': 'Organization',

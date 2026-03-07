@@ -1,7 +1,8 @@
-import { SITE_NAME, SITE_DESCRIPTION, PRODUCTS, CONTACT_INFO, SOCIAL_LINKS } from './constants';
+import { SITE_NAME, SITE_DESCRIPTION, SITE_URL, PRODUCTS, CONTACT_INFO, SOCIAL_LINKS } from './constants';
 import { getProductPrice, getPriceRange } from './pricing';
 import type { Currency } from './geo/currency-detector';
 import { getLocalBusinessStructuredData, getPrimaryLocation } from './business-profile';
+import { getEditorialEntityByName, getPublicEditorialEntity } from './editorial/entities';
 
 // SEO utilities for comprehensive structured data and multilingual support
 
@@ -347,7 +348,7 @@ export const generateProductStructuredData = (productId: string, localeInput: st
 
 // Generate article structured data with localization
 export const generateArticleStructuredData = (title: string, description: string, path: string, localeInput: string, options?: {
-  author?: string;
+  author?: string | StructuredAuthor;
   datePublished?: string;
   dateModified?: string;
   keywords?: string[];
@@ -365,12 +366,7 @@ export const generateArticleStructuredData = (title: string, description: string
     description: description,
     url: url,
     image: options?.image || 'https://www.purrify.ca/optimized/logos/purrify-logo.png',
-    author: {
-      '@type': 'Person',
-      name: options?.author || 'Dr. Sarah Chen',
-      jobTitle: 'Veterinary Consultant',
-      url: 'https://www.purrify.ca/about/our-story/'
-    },
+    author: toStructuredAuthor(options?.author),
     publisher: {
       '@type': 'Organization',
       name: SITE_NAME,
@@ -489,6 +485,7 @@ export const generateWebsiteSchema = (localeInput: string) => {
   const locale = normalizeLocale(localeInput);
   const baseUrl = 'https://www.purrify.ca/';
   const localizedUrl = getLocalizedUrl('', locale);
+  const localizedSearchUrl = getLocalizedUrl('/search', locale);
 
   return {
     '@context': 'https://schema.org',
@@ -505,7 +502,7 @@ export const generateWebsiteSchema = (localeInput: string) => {
       '@type': 'SearchAction',
       target: {
         '@type': 'EntryPoint',
-        urlTemplate: `${localizedUrl || baseUrl}/search?q={search_term_string}`
+        urlTemplate: `${localizedSearchUrl}?q={search_term_string}`
       },
       'query-input': 'required name=search_term_string'
     }
@@ -824,8 +821,35 @@ export const generateProductPageSchema = (productId: string, localeInput: string
 };
 
 // Generate article page schema for learn pages
+export type StructuredAuthor = {
+  name: string;
+  type?: 'Person' | 'Organization';
+  url?: string;
+  jobTitle?: string;
+};
+
+const toStructuredAuthor = (author?: string | StructuredAuthor) => {
+  if (author && typeof author !== 'string') {
+    return {
+      '@type': author.type || 'Organization',
+      name: author.name,
+      ...(author.url ? { url: author.url } : {}),
+      ...(author.type === 'Person' && author.jobTitle ? { jobTitle: author.jobTitle } : {}),
+    };
+  }
+
+  const namedEntity = typeof author === 'string' ? getEditorialEntityByName(author) : null;
+  const publicEntity = namedEntity ?? getPublicEditorialEntity();
+
+  return {
+    '@type': 'Organization',
+    name: publicEntity.name,
+    url: `${SITE_URL}${publicEntity.canonicalPath}`,
+  };
+};
+
 export const generateArticlePageSchema = (title: string, description: string, path: string, localeInput: string, options?: {
-  author?: string;
+  author?: string | StructuredAuthor;
   datePublished?: string;
   dateModified?: string;
   keywords?: string[];
@@ -859,12 +883,7 @@ export const generateArticlePageSchema = (title: string, description: string, pa
     description,
     url,
     image: options?.image || `${baseUrl}optimized/logos/purrify-logo.png`,
-    author: {
-      '@type': 'Person',
-      name: options?.author || 'Dr. Sarah Chen',
-      jobTitle: 'Veterinary Consultant',
-      url: 'https://www.purrify.ca/about/our-story/'
-    },
+    author: toStructuredAuthor(options?.author),
     publisher: {
       '@type': 'Organization',
       name: SITE_NAME,

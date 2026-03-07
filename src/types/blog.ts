@@ -10,8 +10,13 @@ export interface BlogPost {
     name: string;
     avatar?: string;
   };
+  reviewer?: {
+    name: string;
+    avatar?: string;
+  };
   publishDate: string; // ISO 8601
   modifiedDate: string;
+  reviewedDate?: string;
   status: 'draft' | 'scheduled' | 'published';
   scheduledDate?: string;
   featuredImage: {

@@ -334,6 +334,28 @@ export default function AboutPage() {
               </p>
             </div>
 
+            <div className="mb-12 rounded-3xl border border-gray-200 bg-gray-50 p-6 dark:border-gray-800 dark:bg-gray-900/60">
+              <h3 className="text-2xl font-heading font-bold text-gray-900 dark:text-gray-100">
+                Public article entities
+              </h3>
+              <p className="mt-3 max-w-3xl text-base leading-7 text-gray-700 dark:text-gray-300">
+                Our marketing and operations team is larger than our public article bylines. For published content,
+                we use organization-level author and reviewer pages so readers can see who owns editorial work,
+                science review, and testing standards without inventing individual expert profiles.
+              </p>
+              <div className="mt-5 flex flex-wrap gap-4">
+                <Link href="/about/team" className="text-sm font-semibold text-deep-coral hover:text-deep-coral/80">
+                  View about/team
+                </Link>
+                <Link href="/about/editorial-policy" className="text-sm font-semibold text-deep-coral hover:text-deep-coral/80">
+                  Editorial policy
+                </Link>
+                <Link href="/about/testing-policy" className="text-sm font-semibold text-deep-coral hover:text-deep-coral/80">
+                  Testing policy
+                </Link>
+              </div>
+            </div>
+
             <div className="mb-12">
               <h3 className="text-2xl font-heading font-bold mb-6 text-gray-900 dark:text-gray-100">Leadership Team</h3>
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
