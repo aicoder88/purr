@@ -18,55 +18,41 @@ export async function generateMetadata({ params }: LocalizedShippingPageProps): 
     return { title: 'Not Found' };
   }
 
-  const isFrench = locale === 'fr';
-  const baseUrl = 'https://www.purrify.ca/';
-  const canonicalPath = `${baseUrl}${isFrench ? '/fr' : ''}/support/shipping/`;
+  const baseUrl = 'https://www.purrify.ca';
+  const canonicalPath = `${baseUrl}/support/shipping/`;
 
   return {
-    title: isFrench
-      ? `Informations d'Expédition - Centre d'Aide ${SITE_NAME}`
-      : `Shipping Information - ${SITE_NAME} Help Center`,
-    description: isFrench
-      ? "Informations sur les options d'expédition Purrify, délais de livraison, coûts et suivi. Nous expédions aux USA et au Canada avec livraison rapide et fiable."
-      : 'Learn about Purrify shipping options, delivery times, costs, and tracking. We ship to USA and Canada with fast, reliable delivery.',
-    keywords: isFrench
-      ? ['expédition', 'livraison', 'suivi', 'coûts expédition', 'expédition internationale']
-      : ['shipping', 'delivery', 'tracking', 'shipping costs', 'international shipping'],
+    title: `Shipping Information - ${SITE_NAME} Help Center`,
+    description: 'Learn about Purrify shipping options, delivery times, costs, and tracking. We ship to USA and Canada with fast, reliable delivery.',
+    keywords: ['shipping', 'delivery', 'tracking', 'shipping costs', 'international shipping'],
     alternates: {
       canonical: canonicalPath,
       languages: {
-        'en-CA': `${baseUrl}/support/shipping/`,
-        'x-default': `${baseUrl}/support/shipping/`,
+        'en-CA': canonicalPath,
+        'en-US': canonicalPath,
+        'x-default': canonicalPath,
       },
     },
     openGraph: {
       type: 'website',
       url: canonicalPath,
       siteName: SITE_NAME,
-      title: isFrench
-        ? `Expédition - ${SITE_NAME}`
-        : `Shipping - ${SITE_NAME}`,
-      description: isFrench
-        ? "Options d'expédition, délais et coûts."
-        : 'Shipping options, delivery times and costs.',
-      locale: isFrench ? 'fr_CA' : 'en_CA',
+      title: `Shipping - ${SITE_NAME}`,
+      description: 'Shipping options, delivery times and costs.',
+      locale: 'en_CA',
     },
     twitter: {
       card: 'summary_large_image',
       site: '@purrifyhq',
       creator: '@purrifyhq',
-      title: isFrench
-        ? `Expédition | ${SITE_NAME}`
-        : `Shipping | ${SITE_NAME}`,
-      description: isFrench
-        ? 'Informations de livraison.'
-        : 'Delivery information.',
+      title: `Shipping | ${SITE_NAME}`,
+      description: 'Delivery information.',
     },
     robots: {
-      index: true,
+      index: false,
       follow: true,
       googleBot: {
-        index: true,
+        index: false,
         follow: true,
         'max-image-preview': 'large',
         'max-snippet': -1,
@@ -75,6 +61,6 @@ export async function generateMetadata({ params }: LocalizedShippingPageProps): 
   };
 }
 
-// Re-export the English page component since content is the same
-// The page will be translated later
+// Locale-prefixed shipping routes reuse the English body copy until translation lands.
+// Keep them accessible for navigation, but out of the index and canonicalized to English.
 export { default } from '@/app/support/shipping/page';

@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 import { locales, isValidLocale } from '@/i18n/config';
 import { SITE_NAME } from '@/lib/constants';
+import { buildLocalizedMetadataAlternates } from '@/lib/seo-utils';
 import CatLitterGuidePageContent from '@/app/learn/cat-litter-guide/CatLitterGuidePageContent';
 
 interface LocalizedCatLitterGuidePageProps {
@@ -20,8 +21,9 @@ export async function generateMetadata({ params }: LocalizedCatLitterGuidePagePr
   }
 
   const isFrench = locale === 'fr';
-  const baseUrl = 'https://www.purrify.ca/';
-  const canonicalPath = `${baseUrl}${isFrench ? '/fr' : ''}/learn/cat-litter-guide/`;
+  const baseUrl = 'https://www.purrify.ca';
+  const alternates = buildLocalizedMetadataAlternates('/learn/cat-litter-guide/', locale);
+  const canonicalPath = alternates.canonical;
 
   return {
     title: isFrench
@@ -33,13 +35,7 @@ export async function generateMetadata({ params }: LocalizedCatLitterGuidePagePr
     keywords: isFrench
       ? ['guide litière chat', 'types litière', 'conseils maintenance litière', 'litière agglomérante']
       : ['cat litter guide', 'cat litter types', 'litter maintenance tips', 'clumping litter'],
-    alternates: {
-      canonical: canonicalPath,
-      languages: {
-        'en-CA': `${baseUrl}/learn/cat-litter-guide/`,
-        'x-default': `${baseUrl}/learn/cat-litter-guide/`,
-      },
-    },
+    alternates,
     openGraph: {
       type: 'article',
       url: canonicalPath,

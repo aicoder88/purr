@@ -2,7 +2,13 @@ import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 import { locales, isValidLocale } from '@/i18n/config';
 import { SITE_NAME } from '@/lib/constants';
+import { buildLocalizedMetadataAlternates } from '@/lib/seo-utils';
 import CatLitterAmmoniaHealthRisksClient from '@/app/learn/cat-litter-ammonia-health-risks/CatLitterAmmoniaHealthRisksClient';
+import {
+  createBreadcrumbSchema,
+  createIndexedArticleSchema,
+  serializeSchemaGraph,
+} from '@/lib/seo/indexed-content-schema';
 
 interface LocalizedCatLitterAmmoniaHealthRisksPageProps {
   params: Promise<{ locale: string }>;
@@ -20,8 +26,9 @@ export async function generateMetadata({ params }: LocalizedCatLitterAmmoniaHeal
   }
 
   const isFrench = locale === 'fr';
-  const baseUrl = 'https://www.purrify.ca/';
-  const canonicalPath = `${baseUrl}${isFrench ? '/fr' : ''}/learn/cat-litter-ammonia-health-risks/`;
+  const baseUrl = 'https://www.purrify.ca';
+  const alternates = buildLocalizedMetadataAlternates('/learn/cat-litter-ammonia-health-risks/', locale);
+  const canonicalPath = alternates.canonical;
 
   return {
     title: isFrench
@@ -33,13 +40,7 @@ export async function generateMetadata({ params }: LocalizedCatLitterAmmoniaHeal
     keywords: isFrench
       ? ['ammoniac litière danger', 'risques santé ammoniac', 'toxicité ammoniac chat', 'problèmes respiratoires']
       : ['cat litter ammonia dangerous', 'ammonia health risks', 'ammonia toxicity', 'respiratory problems'],
-    alternates: {
-      canonical: canonicalPath,
-      languages: {
-        'en-CA': `${baseUrl}/learn/cat-litter-ammonia-health-risks/`,
-        'x-default': `${baseUrl}/learn/cat-litter-ammonia-health-risks/`,
-      },
-    },
+    alternates,
     openGraph: {
       type: 'article',
       url: canonicalPath,
@@ -92,5 +93,40 @@ export default async function LocalizedCatLitterAmmoniaHealthRisksPage({ params 
     notFound();
   }
 
-  return <CatLitterAmmoniaHealthRisksClient />;
+  const isFrench = locale === 'fr';
+  const articleSchema = createIndexedArticleSchema({
+    locale,
+    path: '/learn/cat-litter-ammonia-health-risks/',
+    title: isFrench
+      ? `La Litière Ammoniac est-elle Dangereuse ? Guide Santé | ${SITE_NAME}`
+      : `Is Cat Litter Ammonia Dangerous? Health Guide | ${SITE_NAME}`,
+    description: isFrench
+      ? "Guide complet sur les risques santé de l'ammoniac dans la litière. Effets respiratoires, toxicité et comment se protéger."
+      : 'Complete guide on ammonia health risks from cat litter. Respiratory effects, toxicity, and how to protect yourself.',
+    image: 'https://www.purrify.ca/optimized/blog/ammonia-hero.webp',
+    datePublished: '2025-01-22T10:00:00Z',
+    dateModified: '2025-12-09T00:00:00Z',
+    section: 'Pet Health & Safety',
+    keywords: isFrench
+      ? ['ammoniac litière danger', 'risques santé ammoniac', 'toxicité ammoniac chat', 'problèmes respiratoires']
+      : ['cat litter ammonia dangerous', 'ammonia health risks', 'ammonia toxicity', 'respiratory problems'],
+  });
+
+  const breadcrumbSchema = createBreadcrumbSchema(locale, [
+    { name: isFrench ? 'Accueil' : 'Home', path: '/' },
+    { name: 'Learn', path: '/learn/' },
+    { name: isFrench ? 'Risques santé ammoniac' : 'Ammonia Health Risks', path: '/learn/cat-litter-ammonia-health-risks/' },
+  ]);
+
+  return (
+    <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: serializeSchemaGraph(articleSchema, breadcrumbSchema),
+        }}
+      />
+      <CatLitterAmmoniaHealthRisksClient />
+    </>
+  );
 }

@@ -2,7 +2,14 @@ import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 import { locales, isValidLocale } from '@/i18n/config';
 import { SITE_NAME } from '@/lib/constants';
+import { buildLocalizedMetadataAlternates } from '@/lib/seo-utils';
 import HowActivatedCarbonWorksClient from '@/app/learn/how-activated-carbon-works/HowActivatedCarbonWorksClient';
+import {
+  createBreadcrumbSchema,
+  createFaqSchema,
+  createIndexedArticleSchema,
+  serializeSchemaGraph,
+} from '@/lib/seo/indexed-content-schema';
 
 interface LocalizedHowActivatedCarbonWorksPageProps {
   params: Promise<{ locale: string }>;
@@ -20,8 +27,9 @@ export async function generateMetadata({ params }: LocalizedHowActivatedCarbonWo
   }
 
   const isFrench = locale === 'fr';
-  const baseUrl = 'https://www.purrify.ca/';
-  const canonicalPath = `${baseUrl}${isFrench ? '/fr' : ''}/learn/how-activated-carbon-works/`;
+  const baseUrl = 'https://www.purrify.ca';
+  const alternates = buildLocalizedMetadataAlternates('/learn/how-activated-carbon-works/', locale);
+  const canonicalPath = alternates.canonical;
 
   return {
     title: isFrench
@@ -33,13 +41,7 @@ export async function generateMetadata({ params }: LocalizedHowActivatedCarbonWo
     keywords: isFrench
       ? ['comment fonctionne carbone actif', 'guide scientifique', 'adsorption', 'surface spécifique']
       : ['how does activated carbon work', 'science guide', 'adsorption', 'surface area'],
-    alternates: {
-      canonical: canonicalPath,
-      languages: {
-        'en-CA': `${baseUrl}/learn/how-activated-carbon-works/`,
-        'x-default': `${baseUrl}/learn/how-activated-carbon-works/`,
-      },
-    },
+    alternates,
     openGraph: {
       type: 'article',
       url: canonicalPath,
@@ -92,5 +94,51 @@ export default async function LocalizedHowActivatedCarbonWorksPage({ params }: L
     notFound();
   }
 
-  return <HowActivatedCarbonWorksClient />;
+  const isFrench = locale === 'fr';
+  const articleSchema = createIndexedArticleSchema({
+    locale,
+    path: '/learn/how-activated-carbon-works/',
+    title: isFrench
+      ? `Comment Fonctionne le Carbone Actif ? Guide Scientifique | ${SITE_NAME}`
+      : `How Does Activated Carbon Work? Science Guide | ${SITE_NAME}`,
+    description: isFrench
+      ? "Guide scientifique complet sur le fonctionnement du carbone actif. Découvrez l'adsorption, la surface spécifique et les micropores."
+      : 'Comprehensive science guide on how activated carbon works. Learn about adsorption, surface area, and micropores.',
+    image: 'https://www.purrify.ca/optimized/blog/ammonia-science.webp',
+    datePublished: '2024-01-20T12:00:00Z',
+    dateModified: '2025-12-09T00:00:00Z',
+    section: 'Science & Technology',
+    keywords: isFrench
+      ? ['comment fonctionne carbone actif', 'guide scientifique', 'adsorption', 'surface spécifique']
+      : ['how does activated carbon work', 'science guide', 'adsorption', 'surface area'],
+  });
+
+  const breadcrumbSchema = createBreadcrumbSchema(locale, [
+    { name: isFrench ? 'Accueil' : 'Home', path: '/' },
+    { name: 'Learn', path: '/learn/' },
+    { name: isFrench ? 'Fonctionnement du carbone actif' : 'How Activated Carbon Works', path: '/learn/how-activated-carbon-works/' },
+  ]);
+
+  const faqSchema = createFaqSchema([
+    {
+      question: 'How does activated carbon work to remove odors?',
+      answer: 'Activated carbon removes odors through adsorption, a physical process where odor molecules stick to the carbon surface and become trapped inside its porous structure.',
+    },
+    {
+      question: 'What is the difference between adsorption and absorption?',
+      answer: 'Adsorption happens on the surface of a material, while absorption means molecules move into the bulk of a material. Activated carbon removes odors through adsorption.',
+    },
+  ]);
+
+  return (
+    <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: serializeSchemaGraph(articleSchema, breadcrumbSchema, faqSchema),
+        }}
+      />
+      <HowActivatedCarbonWorksClient />
+    </>
+  );
 }

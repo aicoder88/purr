@@ -26,13 +26,9 @@ function getQueryValue(input?: string | string[]) {
   return input;
 }
 
-function getCanonicalPath(locale: Locale, query: string) {
+function getCanonicalPath(locale: Locale) {
   const basePath = locale === 'fr' ? '/fr/search/' : '/search/';
-  if (!query) {
-    return `${SITE_URL}${basePath}`;
-  }
-
-  return `${SITE_URL}${basePath}?q=${encodeURIComponent(query)}`;
+  return `${SITE_URL}${basePath}`;
 }
 
 export async function generateStaticParams() {
@@ -53,8 +49,7 @@ export async function generateMetadata({
 
   const resolvedQuery = getQueryValue((await searchParams).q) ?? '';
   const experience = await getSearchExperience(locale, resolvedQuery);
-  const canonical = getCanonicalPath(locale, experience.query);
-  const querySuffix = experience.query ? `?q=${encodeURIComponent(experience.query)}` : '';
+  const canonical = getCanonicalPath(locale);
   const title = experience.query
     ? `${experience.copy.resultsFor} "${experience.query}" | ${SITE_NAME}`
     : `${experience.copy.title} | ${SITE_NAME}`;
@@ -68,10 +63,10 @@ export async function generateMetadata({
     alternates: {
       canonical,
       languages: {
-        'en-CA': `${SITE_URL}/search/${querySuffix}`,
-        'fr-CA': `${SITE_URL}/fr/search/${querySuffix}`,
-        'en-US': `${SITE_URL}/search/${querySuffix}`,
-        'x-default': `${SITE_URL}/search/${querySuffix}`,
+        'en-CA': `${SITE_URL}/search/`,
+        'fr-CA': `${SITE_URL}/fr/search/`,
+        'en-US': `${SITE_URL}/search/`,
+        'x-default': `${SITE_URL}/search/`,
       },
     },
     openGraph: {
@@ -99,10 +94,10 @@ export async function generateMetadata({
       images: [`${SITE_URL}/optimized/logos/purrify-logo.png`],
     },
     robots: {
-      index: true,
+      index: false,
       follow: true,
       googleBot: {
-        index: true,
+        index: false,
         follow: true,
         'max-image-preview': 'large',
         'max-snippet': -1,
@@ -126,7 +121,7 @@ export default async function LocalizedSearchPage({
   const experience = await getSearchExperience(locale, resolvedQuery);
   const summaryCopy = experience.query ? getSearchSummaryCopy(experience) : null;
   const baseSearchPath = locale === 'fr' ? '/fr/search' : '/search';
-  const pageUrl = getCanonicalPath(locale, experience.query);
+  const pageUrl = getCanonicalPath(locale);
 
   const breadcrumbSchema = {
     '@context': 'https://schema.org',

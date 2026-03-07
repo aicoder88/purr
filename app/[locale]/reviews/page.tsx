@@ -2,6 +2,12 @@ import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 import PageContent from '@/app/reviews/PageContent';
 import { locales, isValidLocale } from '@/i18n/config';
+import { SITE_NAME } from '@/lib/constants';
+import {
+  createBreadcrumbSchema,
+  createIndexedWebPageSchema,
+  serializeSchemaGraph,
+} from '@/lib/seo/indexed-content-schema';
 
 interface LocalizedReviewsPageProps {
   params: Promise<{ locale: string }>;
@@ -57,5 +63,31 @@ export default async function LocalizedReviewsPage({ params }: LocalizedReviewsP
     notFound();
   }
 
-  return <PageContent />;
+  const isFrench = locale === 'fr';
+  const webPageSchema = createIndexedWebPageSchema({
+    locale,
+    path: '/reviews/',
+    title: isFrench ? `Avis Clients | ${SITE_NAME}` : `Customer Reviews | ${SITE_NAME}`,
+    description: isFrench
+      ? "Consultez les avis clients sur Purrify et voyez comment les proprietaires de chats utilisent le carbone actif contre les odeurs de litiere."
+      : 'Read customer feedback about Purrify and learn how cat owners use an activated carbon additive for litter box odor control.',
+    image: 'https://www.purrify.ca/optimized/logos/purrify-logo.png',
+  });
+
+  const breadcrumbSchema = createBreadcrumbSchema(locale, [
+    { name: isFrench ? 'Accueil' : 'Home', path: '/' },
+    { name: isFrench ? 'Avis' : 'Reviews', path: '/reviews/' },
+  ]);
+
+  return (
+    <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: serializeSchemaGraph(webPageSchema, breadcrumbSchema),
+        }}
+      />
+      <PageContent />
+    </>
+  );
 }

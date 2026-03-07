@@ -2,6 +2,10 @@ export const dynamic = 'force-static';
 
 import type { Metadata } from 'next';
 import { SITE_NAME } from '@/lib/constants';
+import {
+  createIndexedWebPageSchema,
+  serializeSchemaGraph,
+} from '@/lib/seo/indexed-content-schema';
 
 export const metadata: Metadata = {
   title: 'Cat Litter Odor FAQ - Activated Carbon Questions',
@@ -70,5 +74,21 @@ export const metadata: Metadata = {
 import FAQPageClient from './FAQPageClient';
 
 export default function FAQPage() {
-  return <FAQPageClient />;
+  const webPageSchema = createIndexedWebPageSchema({
+    locale: 'en',
+    path: '/learn/faq/',
+    title: `Cat Litter Odor FAQ - Activated Carbon Questions | ${SITE_NAME}`,
+    description: 'Get expert answers about activated carbon cat litter additives: how they work, usage tips, safety, and troubleshooting. Coconut shell carbon works best.',
+    image: 'https://www.purrify.ca/optimized/blog/cat-owner-questions-ghibli.webp',
+  });
+
+  return (
+    <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: serializeSchemaGraph(webPageSchema) }}
+      />
+      <FAQPageClient />
+    </>
+  );
 }

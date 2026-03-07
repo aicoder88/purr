@@ -1,5 +1,10 @@
 import type { Metadata } from 'next';
 import { SITE_NAME, CONTACT_INFO } from '../../src/lib/constants';
+import {
+  createBreadcrumbSchema,
+  createIndexedWebPageSchema,
+  serializeSchemaGraph,
+} from '@/lib/seo/indexed-content-schema';
 
 export const metadata: Metadata = {
   title: `Customer Support - ${SITE_NAME} Help Center`,
@@ -69,11 +74,26 @@ const customerServiceSchema = {
 import SupportPageClient from './SupportPageClient';
 
 export default function SupportPage() {
+  const webPageSchema = createIndexedWebPageSchema({
+    locale: 'en',
+    path: '/support/',
+    title: `Customer Support - ${SITE_NAME} Help Center`,
+    description: 'Need help? Fast support for orders, shipping, returns. Email, phone, or WhatsApp available 7 days/week. Response within 24 hours.',
+    image: 'https://www.purrify.ca/customer-support-hero.jpg',
+  });
+
+  const breadcrumbSchema = createBreadcrumbSchema('en', [
+    { name: 'Home', path: '/' },
+    { name: 'Support', path: '/support/' },
+  ]);
+
   return (
     <>
       <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(customerServiceSchema) }}
+        dangerouslySetInnerHTML={{
+          __html: serializeSchemaGraph(webPageSchema, breadcrumbSchema, customerServiceSchema),
+        }}
       />
       <SupportPageClient />
     </>

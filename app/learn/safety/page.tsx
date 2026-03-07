@@ -2,6 +2,10 @@ export const dynamic = 'force-static';
 
 import type { Metadata } from 'next';
 import { SITE_NAME } from '@/lib/constants';
+import {
+  createBreadcrumbSchema,
+  serializeSchemaGraph,
+} from '@/lib/seo/indexed-content-schema';
 
 export const metadata: Metadata = {
   title: `Is Activated Carbon Safe for Cats? | ${SITE_NAME}`,
@@ -91,12 +95,22 @@ const articleSchema = {
 // Client component for the interactive parts
 import SafetyPageClient from './SafetyPageClient';
 
+const breadcrumbSchema = createBreadcrumbSchema('en', [
+  { name: 'Home', path: '/' },
+  { name: 'Learn', path: '/learn/' },
+  { name: 'Safety', path: '/learn/safety/' },
+]);
+
 export default function SafetyPage() {
   return (
     <>
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(articleSchema) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: serializeSchemaGraph(breadcrumbSchema) }}
       />
       <SafetyPageClient />
     </>

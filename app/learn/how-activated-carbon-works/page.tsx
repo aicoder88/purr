@@ -3,6 +3,10 @@ export const dynamic = 'force-static';
 import type { Metadata } from 'next';
 import { SITE_NAME } from '@/lib/constants';
 import { stripContext } from '@/lib/seo-utils';
+import {
+  createBreadcrumbSchema,
+  serializeSchemaGraph,
+} from '@/lib/seo/indexed-content-schema';
 
 export const metadata: Metadata = {
   title: `How Does Activated Carbon Work? Science Guide | ${SITE_NAME}`,
@@ -128,6 +132,12 @@ const faqSchema = {
 // Client component for the interactive parts
 import HowActivatedCarbonWorksClient from './HowActivatedCarbonWorksClient';
 
+const breadcrumbSchema = createBreadcrumbSchema('en', [
+  { name: 'Home', path: '/' },
+  { name: 'Learn', path: '/learn/' },
+  { name: 'How Activated Carbon Works', path: '/learn/how-activated-carbon-works/' },
+]);
+
 export default function HowActivatedCarbonWorksPage() {
   return (
     <>
@@ -143,6 +153,10 @@ export default function HowActivatedCarbonWorksPage() {
             ],
           }),
         }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: serializeSchemaGraph(breadcrumbSchema) }}
       />
       <HowActivatedCarbonWorksClient />
     </>

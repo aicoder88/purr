@@ -2,7 +2,13 @@ import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 import { locales, isValidLocale } from '@/i18n/config';
 import { SITE_NAME } from '@/lib/constants';
+import { buildLocalizedMetadataAlternates } from '@/lib/seo-utils';
 import GlossaryPageClient from '@/app/learn/glossary/GlossaryPageClient';
+import {
+  createBreadcrumbSchema,
+  createIndexedArticleSchema,
+  serializeSchemaGraph,
+} from '@/lib/seo/indexed-content-schema';
 
 interface LocalizedGlossaryPageProps {
   params: Promise<{ locale: string }>;
@@ -20,8 +26,9 @@ export async function generateMetadata({ params }: LocalizedGlossaryPageProps): 
   }
 
   const isFrench = locale === 'fr';
-  const baseUrl = 'https://www.purrify.ca/';
-  const canonicalPath = `${baseUrl}${isFrench ? '/fr' : ''}/learn/glossary/`;
+  const baseUrl = 'https://www.purrify.ca';
+  const alternates = buildLocalizedMetadataAlternates('/learn/glossary/', locale);
+  const canonicalPath = alternates.canonical;
 
   return {
     title: isFrench
@@ -33,13 +40,7 @@ export async function generateMetadata({ params }: LocalizedGlossaryPageProps): 
     keywords: isFrench
       ? ['glossaire litière chat', 'termes carbone actif', 'définitions', 'guide vocabulaire']
       : ['cat litter glossary', 'activated carbon terms', 'definitions', 'vocabulary guide'],
-    alternates: {
-      canonical: canonicalPath,
-      languages: {
-        'en-CA': `${baseUrl}/learn/glossary/`,
-        'x-default': `${baseUrl}/learn/glossary/`,
-      },
-    },
+    alternates,
     openGraph: {
       type: 'article',
       url: canonicalPath,
@@ -92,5 +93,39 @@ export default async function LocalizedGlossaryPage({ params }: LocalizedGlossar
     notFound();
   }
 
-  return <GlossaryPageClient />;
+  const isFrench = locale === 'fr';
+  const articleSchema = createIndexedArticleSchema({
+    locale,
+    path: '/learn/glossary/',
+    title: isFrench
+      ? `Glossaire Litière & Carbone Actif | ${SITE_NAME}`
+      : `Cat Litter & Activated Carbon Glossary | ${SITE_NAME}`,
+    description: isFrench
+      ? 'Glossaire complet des termes liés à la litière pour chat et au carbone actif. Définitions claires de adsorption, micropores, BSA et plus.'
+      : 'Comprehensive glossary of cat litter and activated carbon terms. Clear definitions of adsorption, micropores, BET, and more.',
+    datePublished: '2024-01-15T10:00:00Z',
+    dateModified: '2025-12-09T00:00:00Z',
+    section: 'Pet Care Science',
+    keywords: isFrench
+      ? ['glossaire litière chat', 'termes carbone actif', 'définitions', 'guide vocabulaire']
+      : ['cat litter glossary', 'activated carbon terms', 'definitions', 'vocabulary guide'],
+  });
+
+  const breadcrumbSchema = createBreadcrumbSchema(locale, [
+    { name: isFrench ? 'Accueil' : 'Home', path: '/' },
+    { name: 'Learn', path: '/learn/' },
+    { name: isFrench ? 'Glossaire' : 'Glossary', path: '/learn/glossary/' },
+  ]);
+
+  return (
+    <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: serializeSchemaGraph(articleSchema, breadcrumbSchema),
+        }}
+      />
+      <GlossaryPageClient />
+    </>
+  );
 }

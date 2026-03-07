@@ -2,7 +2,13 @@ import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 import { locales, isValidLocale } from '@/i18n/config';
 import { SITE_NAME } from '@/lib/constants';
+import { buildLocalizedMetadataAlternates } from '@/lib/seo-utils';
 import SafetyPageClient from '@/app/learn/safety/SafetyPageClient';
+import {
+  createBreadcrumbSchema,
+  createIndexedArticleSchema,
+  serializeSchemaGraph,
+} from '@/lib/seo/indexed-content-schema';
 
 interface LocalizedSafetyPageProps {
   params: Promise<{ locale: string }>;
@@ -20,8 +26,9 @@ export async function generateMetadata({ params }: LocalizedSafetyPageProps): Pr
   }
 
   const isFrench = locale === 'fr';
-  const baseUrl = 'https://www.purrify.ca/';
-  const canonicalPath = `${baseUrl}${isFrench ? '/fr' : ''}/learn/safety/`;
+  const baseUrl = 'https://www.purrify.ca';
+  const alternates = buildLocalizedMetadataAlternates('/learn/safety/', locale);
+  const canonicalPath = alternates.canonical;
 
   return {
     title: isFrench
@@ -33,13 +40,7 @@ export async function generateMetadata({ params }: LocalizedSafetyPageProps): Pr
     keywords: isFrench
       ? ['sécurité carbone actif', 'désodorisant sûr animaux', 'carbone qualité alimentaire', 'certifié NSF']
       : ['activated carbon safety', 'pet-safe deodorizer', 'food grade carbon', 'NSF certified'],
-    alternates: {
-      canonical: canonicalPath,
-      languages: {
-        'en-CA': `${baseUrl}/learn/safety/`,
-        'x-default': `${baseUrl}/learn/safety/`,
-      },
-    },
+    alternates,
     openGraph: {
       type: 'article',
       url: canonicalPath,
@@ -92,5 +93,41 @@ export default async function LocalizedSafetyPage({ params }: LocalizedSafetyPag
     notFound();
   }
 
-  return <SafetyPageClient />;
+  const isFrench = locale === 'fr';
+  const articleSchema = createIndexedArticleSchema({
+    locale,
+    path: '/learn/safety/',
+    title: isFrench
+      ? `Le Carbone Actif est-il Sûr pour les Chats ? | ${SITE_NAME}`
+      : `Is Activated Carbon Safe for Cats? | ${SITE_NAME}`,
+    description: isFrench
+      ? "Fiche technique complète et informations de sécurité pour le carbone actif Purrify. Découvrez les certifications, spécifications et lignes directrices d'utilisation sécuritaire."
+      : 'Comprehensive technical datasheet and safety information for Purrify Activated Carbon. Learn about certifications, specs, and safe usage guidelines.',
+    image: 'https://www.purrify.ca/optimized/marketing/quality-control-lab.webp',
+    datePublished: '2024-01-10T10:00:00Z',
+    dateModified: '2025-12-09T00:00:00Z',
+    section: 'Product Safety & Specifications',
+    keywords: isFrench
+      ? ['sécurité carbone actif', 'désodorisant sûr animaux', 'carbone qualité alimentaire', 'certifié NSF']
+      : ['activated carbon safety', 'pet-safe deodorizer', 'food grade carbon', 'NSF certified'],
+    wordCount: 2400,
+  });
+
+  const breadcrumbSchema = createBreadcrumbSchema(locale, [
+    { name: isFrench ? 'Accueil' : 'Home', path: '/' },
+    { name: 'Learn', path: '/learn/' },
+    { name: isFrench ? 'Sécurité' : 'Safety', path: '/learn/safety/' },
+  ]);
+
+  return (
+    <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: serializeSchemaGraph(articleSchema, breadcrumbSchema),
+        }}
+      />
+      <SafetyPageClient />
+    </>
+  );
 }

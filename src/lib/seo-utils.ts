@@ -158,6 +158,13 @@ export const buildLanguageAlternates = (canonicalPath: string): LanguageAlternat
   return result;
 };
 
+export const buildLocalizedMetadataAlternates = (canonicalPath: string, localeInput: string) => ({
+  canonical: getLocalizedUrl(canonicalPath, localeInput),
+  languages: Object.fromEntries(
+    buildLanguageAlternates(canonicalPath).map(({ hrefLang, href }) => [hrefLang, href]),
+  ) as Record<string, string>,
+});
+
 function normalizeCanonicalPath(path: string | undefined) {
   if (!path || path === '/') {
     return '/';

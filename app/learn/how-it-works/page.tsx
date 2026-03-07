@@ -2,6 +2,10 @@ export const dynamic = 'force-static';
 
 import type { Metadata } from 'next';
 import { SITE_NAME } from '@/lib/constants';
+import {
+  createBreadcrumbSchema,
+  serializeSchemaGraph,
+} from '@/lib/seo/indexed-content-schema';
 
 export const metadata: Metadata = {
   title: `How Purrify Works - ${SITE_NAME} Activated Carbon Science`,
@@ -90,12 +94,22 @@ const articleSchema = {
 // Client component for the interactive parts
 import HowItWorksPageClient from './HowItWorksPageClient';
 
+const breadcrumbSchema = createBreadcrumbSchema('en', [
+  { name: 'Home', path: '/' },
+  { name: 'Learn', path: '/learn/' },
+  { name: 'How It Works', path: '/learn/how-it-works/' },
+]);
+
 export default function HowItWorksPage() {
   return (
     <>
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(articleSchema) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: serializeSchemaGraph(breadcrumbSchema) }}
       />
       <HowItWorksPageClient />
     </>

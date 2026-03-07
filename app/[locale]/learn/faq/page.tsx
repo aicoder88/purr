@@ -2,7 +2,12 @@ import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 import { locales, isValidLocale } from '@/i18n/config';
 import { SITE_NAME } from '@/lib/constants';
+import { buildLocalizedMetadataAlternates } from '@/lib/seo-utils';
 import FAQPageClient from '@/app/learn/faq/FAQPageClient';
+import {
+  createIndexedWebPageSchema,
+  serializeSchemaGraph,
+} from '@/lib/seo/indexed-content-schema';
 
 interface LocalizedFAQPageProps {
   params: Promise<{ locale: string }>;
@@ -20,8 +25,9 @@ export async function generateMetadata({ params }: LocalizedFAQPageProps): Promi
   }
 
   const isFrench = locale === 'fr';
-  const baseUrl = 'https://www.purrify.ca/';
-  const canonicalPath = `${baseUrl}${isFrench ? '/fr' : ''}/learn/faq/`;
+  const baseUrl = 'https://www.purrify.ca';
+  const alternates = buildLocalizedMetadataAlternates('/learn/faq/', locale);
+  const canonicalPath = alternates.canonical;
 
   return {
     title: isFrench
@@ -33,13 +39,7 @@ export async function generateMetadata({ params }: LocalizedFAQPageProps): Promi
     keywords: isFrench
       ? ['FAQ carbone actif', 'litière chat carbone actif', 'carbone actif noix de coco', 'contrôle odeur litière']
       : ['activated carbon cat litter FAQ', 'activated carbon vs baking soda', 'coconut shell activated carbon', 'cat litter odor control'],
-    alternates: {
-      canonical: canonicalPath,
-      languages: {
-        'en-CA': `${baseUrl}/learn/faq/`,
-        'x-default': `${baseUrl}/learn/faq/`,
-      },
-    },
+    alternates,
     openGraph: {
       type: 'website',
       url: canonicalPath,
@@ -92,5 +92,26 @@ export default async function LocalizedFAQPage({ params }: LocalizedFAQPageProps
     notFound();
   }
 
-  return <FAQPageClient />;
+  const isFrench = locale === 'fr';
+  const webPageSchema = createIndexedWebPageSchema({
+    locale,
+    path: '/learn/faq/',
+    title: isFrench
+      ? `FAQ Litière pour Chat - Questions sur le Carbone Actif | ${SITE_NAME}`
+      : `Cat Litter Odor FAQ - Activated Carbon Questions | ${SITE_NAME}`,
+    description: isFrench
+      ? "Obtenez des réponses d'experts sur les additifs de litière au carbone actif : comment ils fonctionnent, conseils d'utilisation, sécurité et dépannage."
+      : 'Get expert answers about activated carbon cat litter additives: how they work, usage tips, safety, and troubleshooting. Coconut shell carbon works best.',
+    image: 'https://www.purrify.ca/optimized/blog/cat-owner-questions-ghibli.webp',
+  });
+
+  return (
+    <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: serializeSchemaGraph(webPageSchema) }}
+      />
+      <FAQPageClient />
+    </>
+  );
 }

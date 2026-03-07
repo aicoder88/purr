@@ -2,7 +2,13 @@ import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 import { locales, isValidLocale } from '@/i18n/config';
 import { SITE_NAME } from '@/lib/constants';
+import { buildLocalizedMetadataAlternates } from '@/lib/seo-utils';
 import SciencePageClient from '@/app/learn/science/SciencePageClient';
+import {
+  createBreadcrumbSchema,
+  createIndexedArticleSchema,
+  serializeSchemaGraph,
+} from '@/lib/seo/indexed-content-schema';
 
 interface LocalizedSciencePageProps {
   params: Promise<{ locale: string }>;
@@ -20,8 +26,9 @@ export async function generateMetadata({ params }: LocalizedSciencePageProps): P
   }
 
   const isFrench = locale === 'fr';
-  const baseUrl = 'https://www.purrify.ca/';
-  const canonicalPath = `${baseUrl}${isFrench ? '/fr' : ''}/learn/science/`;
+  const baseUrl = 'https://www.purrify.ca';
+  const alternates = buildLocalizedMetadataAlternates('/learn/science/', locale);
+  const canonicalPath = alternates.canonical;
 
   return {
     title: isFrench
@@ -33,13 +40,7 @@ export async function generateMetadata({ params }: LocalizedSciencePageProps): P
     keywords: isFrench
       ? ['science carbone actif', 'structure microporeuse', 'chimie adsorption', 'carbone noix de coco']
       : ['activated carbon science', 'microporous structure', 'adsorption chemistry', 'coconut shell carbon'],
-    alternates: {
-      canonical: canonicalPath,
-      languages: {
-        'en-CA': `${baseUrl}/learn/science/`,
-        'x-default': `${baseUrl}/learn/science/`,
-      },
-    },
+    alternates,
     openGraph: {
       type: 'article',
       url: canonicalPath,
@@ -92,5 +93,41 @@ export default async function LocalizedSciencePage({ params }: LocalizedScienceP
     notFound();
   }
 
-  return <SciencePageClient />;
+  const isFrench = locale === 'fr';
+  const articleSchema = createIndexedArticleSchema({
+    locale,
+    path: '/learn/science/',
+    title: isFrench
+      ? `La Science du Carbone Actif | ${SITE_NAME}`
+      : `The Science of Activated Carbon | ${SITE_NAME}`,
+    description: isFrench
+      ? "Explorez la science du carbone actif : structure microporeuse, chimie d'adsorption et applications pour le contrôle des odeurs de litière."
+      : 'Explore the science of activated carbon: microporous structure, adsorption chemistry, and applications for cat litter odor control.',
+    image: 'https://www.purrify.ca/optimized/blog/benefits-hero-science.webp',
+    datePublished: '2024-01-15T10:00:00Z',
+    dateModified: '2025-12-09T00:00:00Z',
+    section: 'Pet Care Science',
+    keywords: isFrench
+      ? ['science carbone actif', 'structure microporeuse', 'chimie adsorption', 'carbone noix de coco']
+      : ['activated carbon science', 'microporous structure', 'adsorption chemistry', 'coconut shell carbon'],
+    wordCount: 3200,
+  });
+
+  const breadcrumbSchema = createBreadcrumbSchema(locale, [
+    { name: isFrench ? 'Accueil' : 'Home', path: '/' },
+    { name: 'Learn', path: '/learn/' },
+    { name: 'Science', path: '/learn/science/' },
+  ]);
+
+  return (
+    <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: serializeSchemaGraph(articleSchema, breadcrumbSchema),
+        }}
+      />
+      <SciencePageClient />
+    </>
+  );
 }
