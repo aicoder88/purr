@@ -6,6 +6,9 @@
 import { validateAllPages } from './validate-seo-compliance';
 import { validateAllImages } from './lib/image-validator';
 import { validateAllCanonicals } from './lib/canonical-validator';
+import { validateGeneratedSitemapIndexability } from './lib/sitemap-indexability-validator';
+import { validateNoInlineHeadTags } from './validate-no-inline-head-tags';
+import { validateRenderedSeo } from './validate-rendered-seo';
 import { validateSupportedLocaleSurface } from './validate-supported-locales';
 
 interface ValidationSummary {
@@ -28,9 +31,24 @@ interface ValidationSummary {
       errors: number;
       warnings: number;
     };
+    inlineHead?: {
+      passed: boolean;
+      errors: number;
+      allowedExceptions: number;
+    };
     supportedLocales?: {
       passed: boolean;
       errors: number;
+    };
+    sitemapIndexability?: {
+      passed: boolean;
+      errors: number;
+    };
+    renderedSeo?: {
+      passed: boolean;
+      errors: number;
+      warnings: number;
+      pagesChecked: number;
     };
   };
 }
@@ -141,8 +159,38 @@ async function runPrebuildValidation(): Promise<ValidationSummary> {
     // Don't fail build on canonical validation errors
   }
 
-  // 4. Prevent unsupported locales from leaking into crawlable SEO surfaces.
-  console.log('4️⃣  Validating Supported Locale SEO Surface...\n');
+  // 4. Ban inline title/meta/canonical tags in App Router pages.
+  console.log('4️⃣  Validating App Router Metadata Contract...\n');
+  try {
+    const inlineHeadResult = await validateNoInlineHeadTags();
+
+    summary.details.inlineHead = {
+      passed: inlineHeadResult.passed,
+      errors: inlineHeadResult.issues.length,
+      allowedExceptions: inlineHeadResult.allowedExceptions,
+    };
+
+    summary.criticalIssues += inlineHeadResult.issues.length;
+    summary.errors += inlineHeadResult.issues.length;
+
+    if (!inlineHeadResult.passed) {
+      summary.passed = false;
+      console.error(
+        `   ✗ Inline head tags: ${inlineHeadResult.issues.length} violation(s), ${inlineHeadResult.allowedExceptions} documented exception(s)\n`
+      );
+    } else {
+      console.log(
+        `   ✓ Inline head tags: ${inlineHeadResult.allowedExceptions} documented exception(s), 0 violations\n`
+      );
+    }
+  } catch (error) {
+    console.error(`   ✗ Inline head tag validation failed: ${error}\n`);
+    summary.passed = false;
+    summary.errors++;
+  }
+
+  // 5. Prevent unsupported locales from leaking into crawlable SEO surfaces.
+  console.log('5️⃣  Validating Supported Locale SEO Surface...\n');
   try {
     const localeResult = await validateSupportedLocaleSurface();
 
@@ -163,6 +211,67 @@ async function runPrebuildValidation(): Promise<ValidationSummary> {
     }
   } catch (error) {
     console.error(`   ✗ Supported locale validation failed: ${error}\n`);
+    summary.passed = false;
+    summary.errors++;
+  }
+
+  // 6. Enforce sitemap consistency with redirects, indexability, and canonical URLs.
+  console.log('6️⃣  Validating Sitemap Indexability...\n');
+  try {
+    const sitemapResult = await validateGeneratedSitemapIndexability();
+
+    summary.details.sitemapIndexability = {
+      passed: sitemapResult.passed,
+      errors: sitemapResult.issues.length,
+    };
+
+    summary.errors += sitemapResult.issues.length;
+
+    if (!sitemapResult.passed) {
+      summary.passed = false;
+      console.error(
+        `   ✗ Sitemap indexability: ${sitemapResult.issues.length} blocking issue(s) found\n`
+      );
+    } else {
+      console.log('   ✓ Sitemap indexability: all sitemap URLs are indexable and canonical\n');
+    }
+  } catch (error) {
+    console.error(`   ✗ Sitemap indexability validation failed: ${error}\n`);
+    summary.passed = false;
+    summary.errors++;
+  }
+
+  // 7. Validate the final rendered DOM across sitemap-discovered URLs.
+  console.log('7️⃣  Running Rendered SEO Validation...\n');
+  try {
+    const renderedResult = await validateRenderedSeo();
+    const renderedErrors = renderedResult.issues.filter((issue) => issue.severity === 'error').length;
+    const renderedWarnings = renderedResult.issues.filter(
+      (issue) => issue.severity === 'warning'
+    ).length;
+
+    summary.details.renderedSeo = {
+      passed: renderedResult.passed,
+      errors: renderedErrors,
+      warnings: renderedWarnings,
+      pagesChecked: renderedResult.pagesChecked,
+    };
+
+    summary.errors += renderedErrors;
+    summary.warnings += renderedWarnings;
+
+    if (!renderedResult.passed) {
+      summary.passed = false;
+      console.error(
+        `   ✗ Rendered SEO: ${renderedErrors} errors, ${renderedWarnings} warnings across ${renderedResult.pagesChecked} page(s)\n`
+      );
+    } else {
+      console.log(
+        `   ✓ Rendered SEO: ${renderedWarnings} warnings across ${renderedResult.pagesChecked} page(s)\n`
+      );
+    }
+  } catch (error) {
+    console.error(`   ✗ Rendered SEO validation failed: ${error}\n`);
     summary.passed = false;
     summary.errors++;
   }
@@ -198,8 +307,24 @@ async function main() {
       console.log(`Canonicals: ${summary.details.canonicals.errors} errors, ${summary.details.canonicals.warnings} warnings`);
     }
 
+    if (summary.details.inlineHead) {
+      console.log(
+        `Inline head tags: ${summary.details.inlineHead.errors} errors, ${summary.details.inlineHead.allowedExceptions} documented exceptions`
+      );
+    }
+
     if (summary.details.supportedLocales) {
       console.log(`Supported locales: ${summary.details.supportedLocales.errors} errors`);
+    }
+
+    if (summary.details.sitemapIndexability) {
+      console.log(`Sitemap indexability: ${summary.details.sitemapIndexability.errors} errors`);
+    }
+
+    if (summary.details.renderedSeo) {
+      console.log(
+        `Rendered SEO: ${summary.details.renderedSeo.errors} errors, ${summary.details.renderedSeo.warnings} warnings (${summary.details.renderedSeo.pagesChecked} pages)`
+      );
     }
 
     console.log('═'.repeat(70));

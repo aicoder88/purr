@@ -9,13 +9,14 @@ import {
 } from './lib/canonical-validator';
 import * as fs from 'fs';
 import * as path from 'path';
+import { getSeoSiteUrl } from './lib/site-config';
 
 async function main() {
   const args = process.argv.slice(2);
   const generateReportFile = args.includes('--report');
   const failOnError = args.includes('--fail-on-error');
   const failOnWarning = args.includes('--fail-on-warning');
-  const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://purrify.ca';
+  const siteUrl = getSeoSiteUrl();
 
   console.log('🔗 Canonical URL & OG Tag Validation\n');
   console.log('═'.repeat(60) + '\n');

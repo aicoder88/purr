@@ -5,9 +5,10 @@ import { CanonicalValidator } from '../../src/lib/seo/canonical-validator';
 import { RedirectAnalyzer } from '../../src/lib/seo/redirect-analyzer';
 import { SitemapCleaner } from '../../src/lib/seo/sitemap-cleaner';
 import { ReportGenerator, TechnicalSEOReport } from '../../src/lib/seo/report-generator';
+import { getSeoSiteUrl, getSeoSitemapUrl } from './lib/site-config';
 
-const SITE_URL = process.env.SITE_URL || 'https://purrify.ca';
-const SITEMAP_URL = `${SITE_URL}/sitemap.xml`;
+const SITE_URL = getSeoSiteUrl();
+const SITEMAP_URL = getSeoSitemapUrl();
 
 async function runHealthCheck() {
   console.log('🔍 Starting Technical SEO Health Check...\n');
