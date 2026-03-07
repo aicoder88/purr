@@ -184,6 +184,22 @@ export default async function RootLayout({
   return (
     <html lang={locale} className={`${inter.variable} dark`} suppressHydrationWarning>
       <head>
+        {/* Preconnect to critical third-party origins */}
+        <link rel="preconnect" href="https://www.googletagmanager.com" />
+        <link rel="preconnect" href="https://www.google-analytics.com" />
+        <link rel="preconnect" href="https://connect.facebook.net" />
+        <link rel="preconnect" href="https://t.contentsquare.net" />
+        <link rel="preconnect" href="https://static.cloudflareinsights.com" />
+        <link rel="preconnect" href="https://analytics.ahrefs.com" />
+
+        {/* DNS Prefetch as fallback */}
+        <link rel="dns-prefetch" href="https://www.googletagmanager.com" />
+        <link rel="dns-prefetch" href="https://www.google-analytics.com" />
+        <link rel="dns-prefetch" href="https://connect.facebook.net" />
+        <link rel="dns-prefetch" href="https://t.contentsquare.net" />
+        <link rel="dns-prefetch" href="https://static.cloudflareinsights.com" />
+        <link rel="dns-prefetch" href="https://analytics.ahrefs.com" />
+
         <style
           dangerouslySetInnerHTML={{
             __html: `

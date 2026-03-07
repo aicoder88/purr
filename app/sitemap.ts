@@ -47,6 +47,21 @@ const REDIRECTED_BLOG_SLUGS = new Set([
   'how-to-get-rid-of-cat-litter-smell-apartment',
   'how-to-get-rid-of-cat-litter-smell-in-apartment',
   'how-to-get-rid-of-cat-pee-smell-apartment',
+  'purrify-vs-arm-hammer',
+  'safe-for-kittens',
+  'activated-carbon-science',
+  'beyond-masking-odors',
+  'fresh-home-multiple-cats',
+  'best-cat-litter-multiple-cats',
+  'best-cat-litter-senior-cats',
+  'best-cat-litter-for-odor-small-apartment',
+]);
+
+const REDIRECTED_FR_BLOG_SLUGS = new Set([
+  'activated-carbon-science',
+  'fresh-home-multiple-cats',
+  'beyond-masking-odors',
+  'how-to-get-rid-of-cat-litter-smell-apartment',
   'best-cat-litter-multiple-cats',
 ]);
 
@@ -160,7 +175,9 @@ export default function sitemap(): MetadataRoute.Sitemap {
 
   for (const post of enPosts) {
     if (REDIRECTED_BLOG_SLUGS.has(post.slug)) continue;
-    const frPath = post.frTranslationSlug && frSlugs.has(post.frTranslationSlug)
+    const frPath = post.frTranslationSlug &&
+      frSlugs.has(post.frTranslationSlug) &&
+      !REDIRECTED_FR_BLOG_SLUGS.has(post.frTranslationSlug)
       ? `/fr/blog/${post.frTranslationSlug}/`
       : false;
 
@@ -273,12 +290,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
 
   // === FUN ===
   entries.push(entry('/fun/', { priority: 0.5, changeFrequency: 'monthly', frPath: false }));
-
-  // === FR EQUIVALENTS (pages that exist under [locale] AND are NOT redirected to EN) ===
-  entries.push(entry('/fr/', { priority: 1.0, changeFrequency: 'daily', frPath: false }));
-  entries.push(entry('/fr/products/', { priority: 0.9, changeFrequency: 'weekly', frPath: false }));
-  entries.push(entry('/fr/products/trial-size/', { priority: 0.9, changeFrequency: 'weekly', frPath: false }));
-  entries.push(entry('/fr/reviews/', { priority: 0.7, changeFrequency: 'weekly', frPath: false }));
 
   // === LEGAL ===
   entries.push(entry('/privacy-policy/', { priority: 0.3, changeFrequency: 'yearly', frPath: false }));

@@ -63,7 +63,7 @@ const CACHE_HEADER_CONFIGS = [
   ["/:path*\\.(css|js|woff|woff2|ttf|eot)", "public, max-age=31536000, immutable"],
   [
     "/:path*\\.(jpg|jpeg|png|gif|ico|svg|webp|avif)",
-    "public, max-age=2592000",
+    "public, max-age=31536000, immutable",
     [{ key: "Vary", value: "Accept" }],
   ],
   ["/static/(.*)", "public, max-age=31536000, immutable"],
