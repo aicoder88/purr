@@ -7,7 +7,7 @@ import { LaserChase } from '@/components/fun/LaserChase';
 import { CatTrivia } from '@/components/fun/CatTrivia';
 import { CatNameGenerator } from '@/components/fun/CatNameGenerator';
 import { LazyMouseShooter } from '@/components/fun/LazyMouseShooter';
-import { Volume2, Sparkles, Zap, Brain } from 'lucide-react';
+import { Volume2, Sparkles, Zap, Brain, Rocket, Footprints, Trophy } from 'lucide-react';
 import { SITE_URL } from '@/lib/constants';
 
 export const metadata: Metadata = {
@@ -71,8 +71,50 @@ export default function FunPage() {
       </section>
 
       <div className="container mx-auto px-4 pb-24 space-y-24">
+        <section className="relative">
+          <div className="absolute inset-0 rounded-[2.5rem] bg-[radial-gradient(circle_at_top_left,_rgba(255,220,180,0.24),_transparent_42%),radial-gradient(circle_at_bottom_right,_rgba(125,211,252,0.2),_transparent_36%),linear-gradient(135deg,_rgba(41,20,66,0.92),_rgba(94,39,104,0.88)_45%,_rgba(232,137,107,0.72))]" />
+          <div className="relative overflow-hidden rounded-[2.5rem] border border-white/20 px-6 py-8 shadow-[0_30px_120px_rgba(72,24,86,0.25)] backdrop-blur-sm md:px-10 md:py-12">
+            <div className="absolute inset-y-0 right-0 hidden w-[40%] bg-[url('/original-images/blog/cat-home-sanctuary-realistic-aesthetic.webp')] bg-cover bg-center opacity-30 md:block" />
+            <div className="absolute inset-y-0 right-0 hidden w-[40%] bg-gradient-to-l from-[#2f1738]/30 via-[#2f1738]/65 to-transparent md:block" />
 
-        {/* Featured Tool: Blessing Corner */}
+            <div className="relative grid gap-10 lg:grid-cols-[0.9fr_1.55fr] lg:items-start">
+              <div className="text-white">
+                <div className="inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/10 px-4 py-2 text-xs font-black uppercase tracking-[0.32em] text-orange-100">
+                  <Rocket className="h-4 w-4" />
+                  Lead Game
+                </div>
+                <h2 className="mt-5 font-serif text-4xl font-black md:text-5xl">
+                  WhiskerRun takes the spotlight
+                </h2>
+                <p className="mt-4 max-w-xl text-base leading-7 text-white/80 md:text-lg">
+                  A prettier, tougher side-scroller with a four-leg sprint cycle, cinematic scenery, deliberate shooting,
+                  better mouse enemies, richer pickup effects, and nearby respawns so the run keeps its momentum.
+                </p>
+
+                <div className="mt-7 grid gap-3 sm:grid-cols-3">
+                  <div className="rounded-2xl border border-white/15 bg-white/10 px-4 py-4">
+                    <Footprints className="h-5 w-5 text-orange-200" />
+                    <p className="mt-2 text-sm font-black uppercase tracking-[0.24em] text-orange-100">New movement</p>
+                    <p className="mt-1 text-sm text-white/70">The cat now runs low and fast on all four legs.</p>
+                  </div>
+                  <div className="rounded-2xl border border-white/15 bg-white/10 px-4 py-4">
+                    <Zap className="h-5 w-5 text-sky-200" />
+                    <p className="mt-2 text-sm font-black uppercase tracking-[0.24em] text-sky-100">Higher stakes</p>
+                    <p className="mt-1 text-sm text-white/70">No hold-to-fire. Every shot has to be intentional.</p>
+                  </div>
+                  <div className="rounded-2xl border border-white/15 bg-white/10 px-4 py-4">
+                    <Trophy className="h-5 w-5 text-amber-200" />
+                    <p className="mt-2 text-sm font-black uppercase tracking-[0.24em] text-amber-100">Replay loop</p>
+                    <p className="mt-1 text-sm text-white/70">Checkpoints, combos, and local scores keep runs alive longer.</p>
+                  </div>
+                </div>
+              </div>
+
+              <LazyMouseShooter />
+            </div>
+          </div>
+        </section>
+
         <section className="relative">
           <div className="absolute inset-0 bg-gradient-to-r from-purple-500/10 to-pink-500/10 rounded-3xl transform -rotate-1 skew-x-1" />
           <div className="relative bg-white/40 dark:bg-gray-900/40 backdrop-blur-xl rounded-3xl p-8 md:p-12 border border-white/50 dark:border-white/10 shadow-xl">
@@ -168,25 +210,6 @@ export default function FunPage() {
             <WhacAMouse />
             <LaserChase />
           </div>
-        </section>
-
-        <section>
-          <div className="text-center mb-10">
-            <div className="inline-flex items-center gap-2 bg-rose-100 dark:bg-rose-900/30 text-rose-700 dark:text-rose-200 px-4 py-2 rounded-full text-sm font-bold mb-4">
-              <Zap className="w-4 h-4" />
-              FEATURED ARCADE
-            </div>
-            <h2 className="text-4xl font-bold bg-gradient-to-r from-rose-500 via-orange-500 to-sky-500 bg-clip-text text-transparent mb-4">
-              Whisker Run
-            </h2>
-            <p className="text-lg text-gray-600 dark:text-gray-400 max-w-3xl mx-auto">
-              A cute left-to-right run-and-gun with real levels to finish, mice to blast, tuna to grab,
-              laser-pointer power-ups, a local hall of fame, and an overall mission to bring the Star Pointer
-              back home, all behind a lazy-load cabinet so it stays off the page budget until someone opens it.
-            </p>
-          </div>
-
-          <LazyMouseShooter />
         </section>
 
         {/* Knowledge & Fun Zone */}

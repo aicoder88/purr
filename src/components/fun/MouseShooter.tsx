@@ -22,6 +22,9 @@ const BONUS_EMAIL_KEY = "whisker-run-bonus-email";
 const BONUS_BANK_KEY = "whisker-run-bonus-bank";
 const BONUS_POINTS = 250;
 const MAX_LIVES = 4;
+const RESPAWN_DELAY_MS = 1350;
+const CHECKPOINT_STEP = 180;
+const BACKGROUND_IMAGE_SRC = "/original-images/blog/cat-home-sanctuary-realistic-aesthetic.webp";
 
 interface ScoreEntry {
     id: string;
@@ -79,8 +82,10 @@ interface PlayerState {
     facing: 1 | -1;
     onGround: boolean;
     checkpointX: number;
+    checkpointY: number;
     lastShotAt: number;
     invulnerableUntil: number;
+    isDown: boolean;
 }
 
 interface EnemyState extends EnemySeed {
@@ -132,8 +137,20 @@ interface GameSnapshot {
     stars: { x: number; y: number; size: number; speed: number }[];
     boostUntil: number;
     comboExpireAt: number;
+    respawnAt: number;
+    pickupPulseUntil: number;
+    pickupPulseX: number;
+    pickupPulseY: number;
+    pickupPulseTone: "tuna" | "laser" | null;
     frameId: number | null;
     lastTick: number;
+}
+
+interface StatusBanner {
+    id: number;
+    title: string;
+    copy: string;
+    tone: "bonus" | "danger" | "info";
 }
 
 const LEVELS: LevelDef[] = [
@@ -304,8 +321,10 @@ function createLevelState(levelIndex: number, idSeedRef: React.MutableRefObject<
         facing: 1,
         onGround: true,
         checkpointX: 96,
+        checkpointY: GROUND_Y - 56,
         lastShotAt: 0,
         invulnerableUntil: 0,
+        isDown: false,
     };
 
     const enemies: EnemyState[] = level.enemies.map((enemy) => ({
@@ -337,9 +356,62 @@ function createLevelState(levelIndex: number, idSeedRef: React.MutableRefObject<
         stars: makeStars(),
         boostUntil: 0,
         comboExpireAt: 0,
+        respawnAt: 0,
+        pickupPulseUntil: 0,
+        pickupPulseX: 0,
+        pickupPulseY: 0,
+        pickupPulseTone: null,
         frameId: null as number | null,
         lastTick: 0,
     };
+}
+
+function getRespawnPoint(level: LevelDef, x: number, playerWidth: number, playerHeight: number) {
+    const clampedX = clamp(x, 60, level.worldWidth - playerWidth - 60);
+    const centerX = clampedX + playerWidth / 2;
+    let y = GROUND_Y - playerHeight;
+
+    for (const platform of level.platforms) {
+        if (centerX < platform.x + 14 || centerX > platform.x + platform.width - 14) continue;
+        y = Math.min(y, platform.y - playerHeight);
+    }
+
+    return { x: clampedX, y };
+}
+
+function playGameOverSound() {
+    const ctx = initAudioContext();
+    if (!ctx) return;
+
+    const now = ctx.currentTime;
+    const master = ctx.createGain();
+    master.gain.setValueAtTime(0.0001, now);
+    master.gain.exponentialRampToValueAtTime(0.22, now + 0.03);
+    master.gain.exponentialRampToValueAtTime(0.0001, now + 0.8);
+    master.connect(ctx.destination);
+
+    const carrier = ctx.createOscillator();
+    carrier.type = "triangle";
+    carrier.frequency.setValueAtTime(220, now);
+    carrier.frequency.exponentialRampToValueAtTime(124, now + 0.28);
+    carrier.frequency.exponentialRampToValueAtTime(64, now + 0.78);
+
+    const modulator = ctx.createOscillator();
+    modulator.type = "sine";
+    modulator.frequency.setValueAtTime(8, now);
+
+    const modGain = ctx.createGain();
+    modGain.gain.setValueAtTime(14, now);
+    modGain.gain.exponentialRampToValueAtTime(2, now + 0.78);
+
+    modulator.connect(modGain);
+    modGain.connect(carrier.frequency);
+    carrier.connect(master);
+
+    carrier.start(now);
+    modulator.start(now);
+    carrier.stop(now + 0.82);
+    modulator.stop(now + 0.82);
 }
 
 function addRoundedRect(
@@ -363,12 +435,33 @@ function addRoundedRect(
     ctx.closePath();
 }
 
-function drawSky(ctx: CanvasRenderingContext2D, level: LevelDef, cameraX: number, stars: GameSnapshot["stars"]) {
+function drawSky(
+    ctx: CanvasRenderingContext2D,
+    level: LevelDef,
+    cameraX: number,
+    stars: GameSnapshot["stars"],
+    backgroundImage: HTMLImageElement | null,
+) {
     const sky = ctx.createLinearGradient(0, 0, 0, VIEWPORT_HEIGHT);
     sky.addColorStop(0, level.skyTop);
     sky.addColorStop(1, level.skyBottom);
     ctx.fillStyle = sky;
     ctx.fillRect(0, 0, VIEWPORT_WIDTH, VIEWPORT_HEIGHT);
+
+    if (backgroundImage) {
+        const drawHeight = GROUND_Y + 72;
+        const scale = Math.max(VIEWPORT_WIDTH / backgroundImage.width, drawHeight / backgroundImage.height);
+        const drawWidth = backgroundImage.width * scale;
+        const imageX = clamp((VIEWPORT_WIDTH - drawWidth) / 2 - cameraX * 0.12, VIEWPORT_WIDTH - drawWidth - 46, 46);
+        const imageY = Math.max(0, drawHeight - backgroundImage.height * scale);
+
+        ctx.save();
+        ctx.globalAlpha = 0.28;
+        ctx.drawImage(backgroundImage, imageX, imageY, drawWidth, backgroundImage.height * scale);
+        ctx.fillStyle = "rgba(17, 10, 30, 0.3)";
+        ctx.fillRect(0, 0, VIEWPORT_WIDTH, GROUND_Y + 60);
+        ctx.restore();
+    }
 
     const glow = ctx.createRadialGradient(120, 80, 10, 120, 80, 220);
     glow.addColorStop(0, level.glow);
@@ -488,9 +581,49 @@ function drawPlatform(ctx: CanvasRenderingContext2D, platform: Platform, cameraX
     ctx.restore();
 }
 
-function drawPlayer(ctx: CanvasRenderingContext2D, player: PlayerState, cameraX: number, boosted: boolean) {
+function drawCheckpointFlag(ctx: CanvasRenderingContext2D, player: PlayerState, cameraX: number) {
+    if (player.checkpointX <= 110) return;
+
+    const x = player.checkpointX - cameraX;
+    if (x < -60 || x > VIEWPORT_WIDTH + 60) return;
+
+    ctx.save();
+    ctx.strokeStyle = "rgba(255, 245, 196, 0.78)";
+    ctx.lineWidth = 4;
+    ctx.beginPath();
+    ctx.moveTo(x + 8, GROUND_Y - 10);
+    ctx.lineTo(x + 8, GROUND_Y - 96);
+    ctx.stroke();
+
+    ctx.fillStyle = "rgba(255, 210, 126, 0.94)";
+    ctx.beginPath();
+    ctx.moveTo(x + 8, GROUND_Y - 96);
+    ctx.lineTo(x + 44, GROUND_Y - 82);
+    ctx.lineTo(x + 8, GROUND_Y - 66);
+    ctx.closePath();
+    ctx.fill();
+
+    ctx.fillStyle = "rgba(255, 245, 216, 0.85)";
+    ctx.font = "bold 12px sans-serif";
+    ctx.fillText("RESPAWN", x - 26, GROUND_Y - 108);
+    ctx.restore();
+}
+
+function drawPlayer(
+    ctx: CanvasRenderingContext2D,
+    player: PlayerState,
+    cameraX: number,
+    boosted: boolean,
+    tick: number,
+) {
     const x = player.x - cameraX;
     const y = player.y;
+    const running = Math.abs(player.vx) > 10 && !player.isDown;
+    const gait = running ? tick * 0.015 + player.x * 0.035 : tick * 0.004;
+    const stride = running ? 7 : 2;
+    const bodyBob = player.isDown ? 12 : running ? Math.sin(gait * 2) * 2.5 : 0;
+    const tailSway = player.isDown ? -0.9 : Math.sin(gait) * 0.22;
+
     ctx.save();
     ctx.translate(x + player.width / 2, y + player.height / 2);
     ctx.scale(player.facing, 1);
@@ -501,60 +634,109 @@ function drawPlayer(ctx: CanvasRenderingContext2D, player: PlayerState, cameraX:
 
     ctx.fillStyle = boosted ? "rgba(255,231,141,0.34)" : "rgba(255,181,214,0.28)";
     ctx.beginPath();
-    ctx.ellipse(-12, 18, 15, 8, 0, 0, Math.PI * 2);
+    ctx.ellipse(-3, 21, 20, 7, 0, 0, Math.PI * 2);
+    ctx.fill();
+
+    ctx.translate(0, bodyBob);
+
+    if (player.isDown) {
+        ctx.rotate(-0.42);
+    }
+
+    const body = ctx.createLinearGradient(-18, -18, 26, 22);
+    body.addColorStop(0, "#fff4fb");
+    body.addColorStop(1, "#ffc3d9");
+    ctx.fillStyle = body;
+    ctx.beginPath();
+    ctx.ellipse(2, -2, 22, 14, 0, 0, Math.PI * 2);
     ctx.fill();
 
     ctx.fillStyle = "#ffd8ea";
     ctx.beginPath();
-    ctx.moveTo(-14, -24);
-    ctx.lineTo(-2, -44);
-    ctx.lineTo(3, -22);
+    ctx.moveTo(10, -16);
+    ctx.lineTo(18, -34);
+    ctx.lineTo(21, -14);
     ctx.closePath();
     ctx.fill();
     ctx.beginPath();
-    ctx.moveTo(16, -24);
-    ctx.lineTo(2, -44);
-    ctx.lineTo(-1, -22);
+    ctx.moveTo(-2, -15);
+    ctx.lineTo(6, -32);
+    ctx.lineTo(9, -13);
     ctx.closePath();
     ctx.fill();
 
-    const body = ctx.createLinearGradient(0, -30, 0, 34);
-    body.addColorStop(0, "#fff0f7");
-    body.addColorStop(1, "#ffc1da");
-    ctx.fillStyle = body;
+    ctx.fillStyle = "#fff3f9";
     ctx.beginPath();
-    ctx.ellipse(0, -4, 18, 20, 0, 0, Math.PI * 2);
+    ctx.arc(20, -9, 11, 0, Math.PI * 2);
     ctx.fill();
 
     ctx.fillStyle = "#fff";
     ctx.beginPath();
-    ctx.arc(-6, -10, 3.4, 0, Math.PI * 2);
-    ctx.arc(6, -10, 3.4, 0, Math.PI * 2);
+    ctx.arc(24, -12, 2.8, 0, Math.PI * 2);
+    ctx.arc(16, -11, 2.6, 0, Math.PI * 2);
     ctx.fill();
+
     ctx.fillStyle = "#2c183e";
     ctx.beginPath();
-    ctx.arc(-6, -10, 1.4, 0, Math.PI * 2);
-    ctx.arc(6, -10, 1.4, 0, Math.PI * 2);
+    ctx.arc(24, -12, 1.2, 0, Math.PI * 2);
+    ctx.arc(16, -11, 1.15, 0, Math.PI * 2);
     ctx.fill();
+
     ctx.strokeStyle = "#9d4b71";
-    ctx.lineWidth = 2;
+    ctx.lineWidth = 1.8;
     ctx.beginPath();
-    ctx.moveTo(-2, -3);
-    ctx.quadraticCurveTo(0, -1, 2, -3);
+    ctx.moveTo(29, -5);
+    ctx.quadraticCurveTo(34, -3, 29, -1);
     ctx.stroke();
+
+    ctx.strokeStyle = "#9d4b71";
+    ctx.lineWidth = 1.4;
+    ctx.beginPath();
+    ctx.moveTo(31, -7);
+    ctx.lineTo(39, -10);
+    ctx.moveTo(31, -4);
+    ctx.lineTo(40, -4);
+    ctx.moveTo(31, -1);
+    ctx.lineTo(39, 2);
+    ctx.stroke();
+
+    ctx.save();
+    ctx.rotate(tailSway);
+    ctx.strokeStyle = "#ff8fbc";
+    ctx.lineWidth = 5;
+    ctx.beginPath();
+    ctx.moveTo(-17, -3);
+    ctx.quadraticCurveTo(-31, -14, -33, -32);
+    ctx.stroke();
+    ctx.restore();
+
+    const legBaseY = 11;
+    const frontStride = player.isDown ? 0 : Math.sin(gait) * stride;
+    const rearStride = player.isDown ? 0 : Math.sin(gait + Math.PI) * stride;
+    const legColor = "#ff8fbc";
+    const drawLeg = (legX: number, phase: number, lift: number) => {
+        ctx.strokeStyle = legColor;
+        ctx.lineWidth = 4.6;
+        ctx.lineCap = "round";
+        ctx.beginPath();
+        ctx.moveTo(legX, legBaseY - 2);
+        ctx.lineTo(legX + phase * 0.55, legBaseY + 8 - lift);
+        ctx.lineTo(legX + phase, legBaseY + 18);
+        ctx.stroke();
+    };
+
+    drawLeg(12, frontStride, Math.abs(frontStride) * 0.35);
+    drawLeg(4, -frontStride, Math.abs(frontStride) * 0.1);
+    drawLeg(-7, rearStride, Math.abs(rearStride) * 0.35);
+    drawLeg(-15, -rearStride, Math.abs(rearStride) * 0.1);
 
     ctx.fillStyle = boosted ? "#ffe784" : "#ff72b1";
-    addRoundedRect(ctx, 6, 2, 22, 10, 5);
+    addRoundedRect(ctx, -1, -10, 20, 10, 5);
+    ctx.fill();
+    ctx.fillStyle = "rgba(255,255,255,0.58)";
+    addRoundedRect(ctx, 2, -8, 9, 3, 2);
     ctx.fill();
 
-    ctx.strokeStyle = "#ff72b1";
-    ctx.lineWidth = 6;
-    ctx.beginPath();
-    ctx.moveTo(-10, 18);
-    ctx.lineTo(-18, 32);
-    ctx.moveTo(10, 18);
-    ctx.lineTo(20, 30);
-    ctx.stroke();
     ctx.restore();
 }
 
@@ -563,38 +745,88 @@ function drawEnemy(ctx: CanvasRenderingContext2D, enemy: EnemyState, cameraX: nu
     const y = enemy.y;
     ctx.save();
     ctx.translate(x + enemy.width / 2, y + enemy.height / 2);
+    ctx.scale(enemy.vx > 0 ? 1 : -1, 1);
 
-    ctx.fillStyle = enemy.type === "roller" ? "#cbd5ff" : "#d6d3e1";
+    ctx.strokeStyle = enemy.type === "roller" ? "#b2b8e4" : "#b8b0c8";
+    ctx.lineWidth = 3.2;
     ctx.beginPath();
-    ctx.arc(-9, -8, 8, 0, Math.PI * 2);
-    ctx.arc(9, -8, 8, 0, Math.PI * 2);
+    ctx.moveTo(-18, 3);
+    ctx.quadraticCurveTo(-31, -8, -35, -20);
+    ctx.stroke();
+
+    ctx.fillStyle = enemy.type === "roller" ? "#d7ddff" : "#ddd7e7";
+    ctx.beginPath();
+    ctx.arc(-10, -9, 8, 0, Math.PI * 2);
+    ctx.arc(2, -10, 8, 0, Math.PI * 2);
     ctx.fill();
-    const body = ctx.createLinearGradient(0, -18, 0, 24);
-    body.addColorStop(0, enemy.type === "roller" ? "#eef2ff" : "#efeff4");
-    body.addColorStop(1, enemy.type === "roller" ? "#bbc8ff" : "#c8c4d3");
+
+    const body = ctx.createLinearGradient(-12, -10, 22, 20);
+    body.addColorStop(0, enemy.type === "roller" ? "#f2f5ff" : "#f2f0f5");
+    body.addColorStop(1, enemy.type === "roller" ? "#c0cbff" : "#cfc7da");
     ctx.fillStyle = body;
     ctx.beginPath();
-    ctx.ellipse(0, 3, 18, 16, 0, 0, Math.PI * 2);
-    ctx.fill();
-    ctx.fillStyle = "#fff";
-    ctx.beginPath();
-    ctx.arc(-5, -2, 3, 0, Math.PI * 2);
-    ctx.arc(5, -2, 3, 0, Math.PI * 2);
-    ctx.fill();
-    ctx.fillStyle = "#2c183e";
-    ctx.beginPath();
-    ctx.arc(-5, -2, 1.4, 0, Math.PI * 2);
-    ctx.arc(5, -2, 1.4, 0, Math.PI * 2);
+    ctx.ellipse(5, 2, 19, 14, 0, 0, Math.PI * 2);
     ctx.fill();
 
+    ctx.fillStyle = "#fefefe";
+    ctx.beginPath();
+    ctx.arc(14, -2, 9, 0, Math.PI * 2);
+    ctx.fill();
+
+    ctx.fillStyle = "#fff";
+    ctx.beginPath();
+    ctx.arc(17, -5, 2.2, 0, Math.PI * 2);
+    ctx.arc(11, -4, 2.2, 0, Math.PI * 2);
+    ctx.fill();
+
+    ctx.fillStyle = "#2c183e";
+    ctx.beginPath();
+    ctx.arc(17, -5, 1.05, 0, Math.PI * 2);
+    ctx.arc(11, -4, 1.05, 0, Math.PI * 2);
+    ctx.fill();
+
+    ctx.fillStyle = "#f5a6bc";
+    ctx.beginPath();
+    ctx.arc(23, -1, 3.1, 0, Math.PI * 2);
+    ctx.fill();
+
+    ctx.strokeStyle = "#86667f";
+    ctx.lineWidth = 1.2;
+    ctx.beginPath();
+    ctx.moveTo(24, -1);
+    ctx.lineTo(33, -4);
+    ctx.moveTo(24, 1);
+    ctx.lineTo(34, 1);
+    ctx.moveTo(24, 3);
+    ctx.lineTo(33, 6);
+    ctx.stroke();
+
+    ctx.strokeStyle = "#9e90b4";
+    ctx.lineWidth = 3.8;
+    ctx.lineCap = "round";
+    ctx.beginPath();
+    ctx.moveTo(-2, 11);
+    ctx.lineTo(-4, 19);
+    ctx.moveTo(8, 12);
+    ctx.lineTo(7, 20);
+    ctx.moveTo(15, 11);
+    ctx.lineTo(16, 19);
+    ctx.stroke();
+
     if (enemy.type === "roller") {
-        ctx.fillStyle = "#83b4ff";
-        addRoundedRect(ctx, -15, 12, 30, 8, 4);
+        ctx.fillStyle = "#7e8fd3";
+        addRoundedRect(ctx, -4, -20, 20, 6, 3);
         ctx.fill();
-        ctx.fillStyle = "#6270aa";
+        ctx.fillStyle = "#5d6898";
         ctx.beginPath();
-        ctx.arc(-10, 23, 5, 0, Math.PI * 2);
-        ctx.arc(10, 23, 5, 0, Math.PI * 2);
+        ctx.arc(0, 20, 5, 0, Math.PI * 2);
+        ctx.arc(16, 20, 5, 0, Math.PI * 2);
+        ctx.fill();
+    } else {
+        ctx.fillStyle = "#d0c7db";
+        ctx.beginPath();
+        ctx.arc(0, 20, 2.4, 0, Math.PI * 2);
+        ctx.arc(13, 20, 2.4, 0, Math.PI * 2);
         ctx.fill();
     }
 
@@ -697,11 +929,32 @@ function drawParticles(ctx: CanvasRenderingContext2D, particles: ParticleState[]
     }
 }
 
+function drawPickupPulse(ctx: CanvasRenderingContext2D, snapshot: GameSnapshot, cameraX: number, tick: number) {
+    if (snapshot.pickupPulseUntil <= tick || !snapshot.pickupPulseTone) return;
+
+    const x = snapshot.pickupPulseX - cameraX;
+    const y = snapshot.pickupPulseY;
+    const life = (snapshot.pickupPulseUntil - tick) / 650;
+    const radius = (1 - life) * 54 + 24;
+
+    ctx.save();
+    ctx.globalAlpha = Math.max(0, Math.min(0.85, life));
+    ctx.strokeStyle = snapshot.pickupPulseTone === "laser" ? "rgba(255, 225, 132, 0.92)" : "rgba(144, 233, 240, 0.92)";
+    ctx.lineWidth = 4;
+    ctx.beginPath();
+    ctx.arc(x, y, radius, 0, Math.PI * 2);
+    ctx.stroke();
+    ctx.beginPath();
+    ctx.arc(x, y, radius * 0.62, 0, Math.PI * 2);
+    ctx.stroke();
+    ctx.restore();
+}
+
 export function MouseShooter() {
     const canvasRef = useRef<HTMLCanvasElement>(null);
     const gameRef = useRef<GameSnapshot>(createLevelState(0, { current: 1 }));
     const keysRef = useRef<Record<string, boolean>>({});
-    const pointerShootRef = useRef(false);
+    const shootQueuedRef = useRef(false);
     const idSeedRef = useRef(1000);
     const scoreRef = useRef(0);
     const livesRef = useRef(MAX_LIVES);
@@ -709,6 +962,8 @@ export function MouseShooter() {
     const bonusBankRef = useRef(0);
     const pilotNameRef = useRef("Captain Noodle");
     const jumpLatchRef = useRef(false);
+    const backgroundImageRef = useRef<HTMLImageElement | null>(null);
+    const bannerTimeoutRef = useRef<NodeJS.Timeout | null>(null);
 
     const [mode, setMode] = useState<"idle" | "playing" | "levelComplete" | "won" | "gameOver">("idle");
     const [levelIndex, setLevelIndex] = useState(0);
@@ -724,7 +979,9 @@ export function MouseShooter() {
     const [bonusBank, setBonusBank] = useState(0);
     const [hasClaimedBonus, setHasClaimedBonus] = useState(false);
     const [overlayTitle, setOverlayTitle] = useState("Whisker Run");
-    const [overlayCopy, setOverlayCopy] = useState("Run, jump, and blast your way to the Moonlight Lounge.");
+    const [overlayCopy, setOverlayCopy] = useState("Run, jump, and time every shot to bring the Star Pointer home.");
+    const [statusBanner, setStatusBanner] = useState<StatusBanner | null>(null);
+    const [isRespawning, setIsRespawning] = useState(false);
 
     useEffect(() => {
         pilotNameRef.current = pilotName || "Captain Noodle";
@@ -741,6 +998,22 @@ export function MouseShooter() {
     useEffect(() => {
         comboRef.current = combo;
     }, [combo]);
+
+    useEffect(() => {
+        if (typeof window === "undefined") return;
+
+        const image = new window.Image();
+        image.src = BACKGROUND_IMAGE_SRC;
+        image.onload = () => {
+            backgroundImageRef.current = image;
+        };
+    }, []);
+
+    useEffect(() => {
+        return () => {
+            if (bannerTimeoutRef.current) clearTimeout(bannerTimeoutRef.current);
+        };
+    }, []);
 
     useEffect(() => {
         setBestScores(loadScores());
@@ -765,6 +1038,19 @@ export function MouseShooter() {
         if (typeof window !== "undefined") {
             window.localStorage.setItem(BONUS_BANK_KEY, String(value));
         }
+    }, []);
+
+    const showStatusBanner = useCallback((title: string, copy: string, tone: StatusBanner["tone"]) => {
+        if (bannerTimeoutRef.current) clearTimeout(bannerTimeoutRef.current);
+        setStatusBanner({
+            id: Date.now(),
+            title,
+            copy,
+            tone,
+        });
+        bannerTimeoutRef.current = setTimeout(() => {
+            setStatusBanner(null);
+        }, 1500);
     }, []);
 
     const addParticles = useCallback((x: number, y: number, color: string, kind: ParticleState["kind"]) => {
@@ -823,15 +1109,19 @@ export function MouseShooter() {
         persistBonusBank(0);
         const snapshot = createLevelState(0, idSeedRef);
         snapshot.player.checkpointX = 96;
+        snapshot.player.checkpointY = GROUND_Y - snapshot.player.height;
         gameRef.current = snapshot;
         scoreRef.current = openingScore;
         livesRef.current = MAX_LIVES;
         jumpLatchRef.current = false;
+        shootQueuedRef.current = false;
         setLevelIndex(0);
         setScore(openingScore);
         setLives(MAX_LIVES);
         setCombo(0);
         setBoostSeconds(0);
+        setIsRespawning(false);
+        setStatusBanner(null);
         setOverlayTitle(LEVELS[0].name);
         setOverlayCopy(LEVELS[0].goal);
         setMode("playing");
@@ -856,9 +1146,12 @@ export function MouseShooter() {
         const snapshot = createLevelState(nextIndex, idSeedRef);
         gameRef.current = snapshot;
         jumpLatchRef.current = false;
+        shootQueuedRef.current = false;
         setLevelIndex(nextIndex);
         setCombo(0);
         setBoostSeconds(0);
+        setIsRespawning(false);
+        setStatusBanner(null);
         setOverlayTitle(LEVELS[nextIndex].name);
         setOverlayCopy(LEVELS[nextIndex].goal);
         setMode("playing");
@@ -867,28 +1160,35 @@ export function MouseShooter() {
     const loseLife = useCallback(() => {
         resetCombo();
         const snapshot = gameRef.current;
+        const level = LEVELS[snapshot.levelIndex];
         const nextLives = livesRef.current - 1;
         livesRef.current = nextLives;
         setLives(nextLives);
+        shootQueuedRef.current = false;
+        playGameOverSound();
 
         if (nextLives <= 0) {
             snapshot.running = false;
             pushScore(scoreRef.current);
-            setOverlayTitle("Caught By The Mouse Mob");
-            setOverlayCopy("Try again and keep your jumps tighter. The Star Pointer is still out there.");
+            setOverlayTitle("Whiskers Down");
+            setOverlayCopy("The mouse mob finally caught you. Tighten the timing and take another run.");
             setMode("gameOver");
-            playRandomPurr();
+            setIsRespawning(false);
             return;
         }
 
-        snapshot.player.x = snapshot.player.checkpointX;
-        snapshot.player.y = GROUND_Y - snapshot.player.height;
-        snapshot.player.vx = 0;
-        snapshot.player.vy = 0;
-        snapshot.player.onGround = true;
-        snapshot.player.invulnerableUntil = performance.now() + 1500;
-        playRandomMeow();
-    }, [pushScore, resetCombo]);
+        const player = snapshot.player;
+        const nearbyRespawn = getRespawnPoint(level, Math.max(player.checkpointX, player.x - 140), player.width, player.height);
+        player.checkpointX = nearbyRespawn.x;
+        player.checkpointY = nearbyRespawn.y;
+        player.vx = 0;
+        player.vy = 0;
+        player.onGround = false;
+        player.isDown = true;
+        snapshot.respawnAt = performance.now() + RESPAWN_DELAY_MS;
+        setIsRespawning(true);
+        showStatusBanner("Cat nap interrupted", "Respawning from the nearest safe cushion...", "danger");
+    }, [pushScore, resetCombo, showStatusBanner]);
 
     useEffect(() => {
         if (mode !== "playing") return;
@@ -911,81 +1211,101 @@ export function MouseShooter() {
             const previousTick = snapshot.lastTick || time;
             const delta = Math.min((time - previousTick) / 1000, 0.033);
             snapshot.lastTick = time;
+            const player = snapshot.player;
+            const boosted = snapshot.boostUntil > time;
+            const nextBoostSeconds = boosted ? Math.ceil((snapshot.boostUntil - time) / 1000) : 0;
+            setBoostSeconds((prev) => (prev === nextBoostSeconds ? prev : nextBoostSeconds));
+
+            if (player.isDown && snapshot.respawnAt && snapshot.respawnAt <= time) {
+                player.x = player.checkpointX;
+                player.y = player.checkpointY;
+                player.vx = 0;
+                player.vy = 0;
+                player.onGround = true;
+                player.isDown = false;
+                player.invulnerableUntil = time + 1500;
+                snapshot.respawnAt = 0;
+                setIsRespawning(false);
+                showStatusBanner("Back on paws", "Nearby checkpoint reached. Keep the run alive.", "info");
+                playRandomMeow();
+            }
 
             const moveLeft = Boolean(keysRef.current.ArrowLeft || keysRef.current.a || keysRef.current.left);
             const moveRight = Boolean(keysRef.current.ArrowRight || keysRef.current.d || keysRef.current.right);
             const jumpPressed = Boolean(keysRef.current.ArrowUp || keysRef.current.w || keysRef.current.jump);
-            const shootPressed = Boolean(keysRef.current.j || keysRef.current.f || keysRef.current.shoot || pointerShootRef.current);
-            const boosted = snapshot.boostUntil > time;
-            setBoostSeconds(boosted ? Math.ceil((snapshot.boostUntil - time) / 1000) : 0);
+            const isRespawnPause = player.isDown && snapshot.respawnAt > time;
 
-            const player = snapshot.player;
-            const moveDirection = (moveRight ? 1 : 0) - (moveLeft ? 1 : 0);
-            const runSpeed = boosted ? 310 : 260;
-            player.vx = moveDirection * runSpeed;
-            if (moveDirection !== 0) {
-                player.facing = moveDirection > 0 ? 1 : -1;
-            }
+            if (!isRespawnPause) {
+                const moveDirection = (moveRight ? 1 : 0) - (moveLeft ? 1 : 0);
+                const runSpeed = boosted ? 310 : 260;
+                player.vx = moveDirection * runSpeed;
+                if (moveDirection !== 0) {
+                    player.facing = moveDirection > 0 ? 1 : -1;
+                }
 
-            if (jumpPressed && !jumpLatchRef.current && player.onGround) {
-                player.vy = -560;
-                player.onGround = false;
-                jumpLatchRef.current = true;
-                playRandomMeow();
-            }
-            if (!jumpPressed) {
-                jumpLatchRef.current = false;
-            }
+                if (jumpPressed && !jumpLatchRef.current && player.onGround) {
+                    player.vy = -560;
+                    player.onGround = false;
+                    jumpLatchRef.current = true;
+                    playRandomMeow();
+                }
+                if (!jumpPressed) {
+                    jumpLatchRef.current = false;
+                }
 
-            const fireDelay = boosted ? 110 : 190;
-            if (shootPressed && time - player.lastShotAt > fireDelay) {
-                player.lastShotAt = time;
-                snapshot.bullets.push({
-                    id: idSeedRef.current++,
-                    x: player.x + (player.facing > 0 ? player.width : -20),
-                    y: player.y + 24,
-                    vx: player.facing * (boosted ? 680 : 560),
-                    width: boosted ? 20 : 16,
-                    height: boosted ? 6 : 5,
-                });
-
-                if (boosted) {
+                const fireDelay = boosted ? 180 : 260;
+                if (shootQueuedRef.current && time - player.lastShotAt > fireDelay) {
+                    shootQueuedRef.current = false;
+                    player.lastShotAt = time;
                     snapshot.bullets.push({
                         id: idSeedRef.current++,
                         x: player.x + (player.facing > 0 ? player.width : -20),
-                        y: player.y + 14,
-                        vx: player.facing * 580,
-                        width: 14,
-                        height: 4,
+                        y: player.y + 16,
+                        vx: player.facing * (boosted ? 700 : 560),
+                        width: boosted ? 22 : 18,
+                        height: boosted ? 6 : 5,
                     });
+
+                    if (boosted) {
+                        snapshot.bullets.push({
+                            id: idSeedRef.current++,
+                            x: player.x + (player.facing > 0 ? player.width - 6 : -14),
+                            y: player.y + 24,
+                            vx: player.facing * 610,
+                            width: 14,
+                            height: 4,
+                        });
+                    }
                 }
-            }
 
-            player.vy += GRAVITY * delta;
-            player.x = clamp(player.x + player.vx * delta, 0, level.worldWidth - player.width);
-            const previousBottom = player.y + player.height;
-            player.y += player.vy * delta;
-            player.onGround = false;
+                player.vy += GRAVITY * delta;
+                player.x = clamp(player.x + player.vx * delta, 0, level.worldWidth - player.width);
+                const previousBottom = player.y + player.height;
+                player.y += player.vy * delta;
+                player.onGround = false;
 
-            if (player.y + player.height >= GROUND_Y) {
-                player.y = GROUND_Y - player.height;
-                player.vy = 0;
-                player.onGround = true;
-            }
-
-            for (const platform of level.platforms) {
-                const nextBottom = player.y + player.height;
-                const overlappingX = player.x + player.width > platform.x + 6 && player.x < platform.x + platform.width - 6;
-                const landed = previousBottom <= platform.y && nextBottom >= platform.y && player.vy >= 0;
-                if (overlappingX && landed) {
-                    player.y = platform.y - player.height;
+                if (player.y + player.height >= GROUND_Y) {
+                    player.y = GROUND_Y - player.height;
                     player.vy = 0;
                     player.onGround = true;
                 }
-            }
 
-            if (player.x > player.checkpointX + 360) {
-                player.checkpointX = player.x;
+                for (const platform of level.platforms) {
+                    const nextBottom = player.y + player.height;
+                    const overlappingX = player.x + player.width > platform.x + 6 && player.x < platform.x + platform.width - 6;
+                    const landed = previousBottom <= platform.y && nextBottom >= platform.y && player.vy >= 0;
+                    if (overlappingX && landed) {
+                        player.y = platform.y - player.height;
+                        player.vy = 0;
+                        player.onGround = true;
+                    }
+                }
+
+                if (player.onGround && player.x >= player.checkpointX + CHECKPOINT_STEP) {
+                    const checkpoint = getRespawnPoint(level, player.x - 42, player.width, player.height);
+                    player.checkpointX = checkpoint.x;
+                    player.checkpointY = checkpoint.y;
+                }
             }
 
             snapshot.cameraX = clamp(player.x - VIEWPORT_WIDTH * 0.32, 0, level.worldWidth - VIEWPORT_WIDTH);
@@ -1049,6 +1369,10 @@ export function MouseShooter() {
                 if (pickup.collected) continue;
                 if (!rectsOverlap(player.x, player.y, player.width, player.height, pickup.x, pickup.y, pickup.width, pickup.height)) continue;
                 pickup.collected = true;
+                snapshot.pickupPulseUntil = time + 650;
+                snapshot.pickupPulseX = pickup.x + 14;
+                snapshot.pickupPulseY = pickup.y + 14;
+                snapshot.pickupPulseTone = pickup.type;
                 if (pickup.type === "tuna") {
                     setScore((prev) => {
                         const next = prev + 120;
@@ -1056,6 +1380,10 @@ export function MouseShooter() {
                         return next;
                     });
                     addParticles(pickup.x + 14, pickup.y + 14, "#9fe6f0", "heart");
+                    player.checkpointX = Math.max(player.checkpointX, getRespawnPoint(level, player.x - 30, player.width, player.height).x);
+                    player.checkpointY = getRespawnPoint(level, player.checkpointX, player.width, player.height).y;
+                    showStatusBanner("Tuna bonus", "+120 points and a fresher checkpoint.", "bonus");
+                    playRandomPurr();
                 } else {
                     snapshot.boostUntil = time + 8500;
                     setScore((prev) => {
@@ -1064,6 +1392,7 @@ export function MouseShooter() {
                         return next;
                     });
                     addParticles(pickup.x + 14, pickup.y + 14, "#ffe08a", "spark");
+                    showStatusBanner("Laser burst", "Boost active. Shots are faster and brighter.", "bonus");
                     playRandomPurr();
                 }
             }
@@ -1074,7 +1403,7 @@ export function MouseShooter() {
                 resetCombo();
             }
 
-            if (player.invulnerableUntil < time) {
+            if (!player.isDown && player.invulnerableUntil < time) {
                 for (const enemy of snapshot.enemies) {
                     if (!enemy.alive) continue;
                     if (!rectsOverlap(player.x, player.y, player.width, player.height, enemy.x, enemy.y, enemy.width, enemy.height)) continue;
@@ -1087,11 +1416,11 @@ export function MouseShooter() {
 
             snapshot.enemies = snapshot.enemies.filter((enemy) => enemy.alive);
 
-            if (player.y > VIEWPORT_HEIGHT + 140) {
+            if (!player.isDown && player.y > VIEWPORT_HEIGHT + 140) {
                 loseLife();
             }
 
-            if (player.x >= level.goalX) {
+            if (!player.isDown && player.x >= level.goalX) {
                 snapshot.running = false;
                 setOverlayTitle(`${level.name} Cleared`);
                 setOverlayCopy(level.tagline);
@@ -1105,15 +1434,17 @@ export function MouseShooter() {
                 return;
             }
 
-            drawSky(ctx, level, snapshot.cameraX, snapshot.stars);
+            drawSky(ctx, level, snapshot.cameraX, snapshot.stars, backgroundImageRef.current);
             drawGround(ctx, snapshot.cameraX, level.worldWidth);
+            drawCheckpointFlag(ctx, player, snapshot.cameraX);
             for (const platform of level.platforms) drawPlatform(ctx, platform, snapshot.cameraX);
             drawGoal(ctx, level, snapshot.cameraX);
             drawParticles(ctx, snapshot.particles, snapshot.cameraX);
+            drawPickupPulse(ctx, snapshot, snapshot.cameraX, time);
             for (const pickup of snapshot.pickups) drawPickup(ctx, pickup, snapshot.cameraX, time);
             for (const bullet of snapshot.bullets) drawBullet(ctx, bullet, snapshot.cameraX, boosted);
             for (const enemy of snapshot.enemies) drawEnemy(ctx, enemy, snapshot.cameraX);
-            drawPlayer(ctx, player, snapshot.cameraX, boosted);
+            drawPlayer(ctx, player, snapshot.cameraX, boosted, time);
 
             snapshot.frameId = requestAnimationFrame(loop);
         };
@@ -1126,7 +1457,7 @@ export function MouseShooter() {
                 snapshot.frameId = null;
             }
         };
-    }, [addParticles, levelIndex, loseLife, mode, registerCombo, resetCombo]);
+    }, [addParticles, levelIndex, loseLife, mode, registerCombo, resetCombo, showStatusBanner]);
 
     useEffect(() => {
         const handleKeyDown = (event: KeyboardEvent) => {
@@ -1137,7 +1468,12 @@ export function MouseShooter() {
                 keysRef.current.jump = true;
                 event.preventDefault();
             }
-            if (key === "j" || key === "f" || key === "x") keysRef.current.shoot = true;
+            if (key === "j" || key === "f" || key === "x") {
+                if (!keysRef.current.shoot && !event.repeat) {
+                    shootQueuedRef.current = true;
+                }
+                keysRef.current.shoot = true;
+            }
             if (mode !== "playing" && (key === "enter" || key === " ")) {
                 event.preventDefault();
                 if (mode === "levelComplete") {
@@ -1172,8 +1508,12 @@ export function MouseShooter() {
         };
     }, []);
 
-    const setTouchControl = useCallback((key: "left" | "right" | "jump" | "shoot", pressed: boolean) => {
+    const setTouchControl = useCallback((key: "left" | "right" | "jump", pressed: boolean) => {
         keysRef.current[key] = pressed;
+    }, []);
+
+    const queueShot = useCallback(() => {
+        shootQueuedRef.current = true;
     }, []);
 
     const claimBonus = useCallback(async () => {
@@ -1257,11 +1597,11 @@ export function MouseShooter() {
                             Whisker Run
                         </div>
                         <h3 className="mt-4 font-serif text-4xl font-black text-gray-900 dark:text-white">
-                            Side-scrolling cat run-and-gun
+                            Cinematic cat sprint
                         </h3>
                         <p className="mt-3 max-w-3xl text-base leading-7 text-gray-600 dark:text-gray-300">
-                            Sprint left to right across three hand-drawn levels, bounce over cushions and rooftops,
-                            blast the mouse mob with laser-pointer shots, and carry the stolen Star Pointer back to the Moonlight Lounge.
+                            Sprint left to right across three lush districts, stay low on all four paws, fire one deliberate laser shot at a time,
+                            and keep surviving thanks to nearby respawns instead of full resets.
                         </p>
                     </div>
 
@@ -1300,28 +1640,45 @@ export function MouseShooter() {
                             </div>
                             <div className="inline-flex items-center gap-2 rounded-full bg-white/15 px-3 py-1 text-xs font-black uppercase tracking-[0.25em]">
                                 <Sparkles className="h-3.5 w-3.5" />
-                                J / F / X to shoot
+                                J / F / X for single-shot fire
                             </div>
                         </div>
                         <div className="flex items-center gap-1">{hearts}</div>
                     </div>
+
+                    {statusBanner && (
+                        <div
+                            className={`mb-3 rounded-2xl border px-4 py-3 text-sm shadow-lg ${
+                                statusBanner.tone === "danger"
+                                    ? "border-rose-300/70 bg-rose-100/90 text-rose-900 dark:border-rose-500/40 dark:bg-rose-950/45 dark:text-rose-100"
+                                    : statusBanner.tone === "bonus"
+                                        ? "border-amber-200/70 bg-amber-50/90 text-amber-900 dark:border-amber-500/30 dark:bg-amber-950/35 dark:text-amber-100"
+                                        : "border-sky-200/70 bg-sky-50/90 text-sky-900 dark:border-sky-500/30 dark:bg-sky-950/35 dark:text-sky-100"
+                            }`}
+                        >
+                            <p className="text-[11px] font-black uppercase tracking-[0.28em]">{statusBanner.title}</p>
+                            <p className="mt-1 text-sm font-medium">{statusBanner.copy}</p>
+                        </div>
+                    )}
 
                     <div className="relative overflow-hidden rounded-[1.5rem] border border-white/10 bg-[#170f28]">
                         <canvas
                             ref={canvasRef}
                             width={VIEWPORT_WIDTH}
                             height={VIEWPORT_HEIGHT}
-                            onPointerDown={() => {
-                                pointerShootRef.current = true;
-                            }}
-                            onPointerUp={() => {
-                                pointerShootRef.current = false;
-                            }}
-                            onPointerLeave={() => {
-                                pointerShootRef.current = false;
-                            }}
+                            onPointerDown={queueShot}
                             className="block aspect-[960/540] w-full touch-none"
                         />
+
+                        {mode === "playing" && isRespawning && (
+                            <div className="absolute inset-0 flex items-center justify-center bg-[#120b24]/42 p-6 backdrop-blur-[1.5px]">
+                                <div className="rounded-[1.5rem] border border-white/10 bg-black/35 px-6 py-5 text-center text-white shadow-2xl">
+                                    <p className="text-[11px] font-black uppercase tracking-[0.34em] text-rose-100">Whiskers down</p>
+                                    <p className="mt-2 text-2xl font-black">The mice got a hit.</p>
+                                    <p className="mt-2 text-sm text-white/75">Respawning from the nearest safe cushion...</p>
+                                </div>
+                            </div>
+                        )}
 
                         {mode !== "playing" && (
                             <div className="absolute inset-0 flex items-center justify-center bg-[#120b24]/48 p-6 backdrop-blur-[2px]">
@@ -1349,19 +1706,26 @@ export function MouseShooter() {
                             { key: "left", label: "Left" },
                             { key: "right", label: "Right" },
                             { key: "jump", label: "Jump" },
-                            { key: "shoot", label: "Shoot" },
                         ].map((control) => (
                             <button
                                 key={control.key}
                                 type="button"
-                                onPointerDown={() => setTouchControl(control.key as "left" | "right" | "jump" | "shoot", true)}
-                                onPointerUp={() => setTouchControl(control.key as "left" | "right" | "jump" | "shoot", false)}
-                                onPointerLeave={() => setTouchControl(control.key as "left" | "right" | "jump" | "shoot", false)}
+                                onPointerDown={() => setTouchControl(control.key as "left" | "right" | "jump", true)}
+                                onPointerUp={() => setTouchControl(control.key as "left" | "right" | "jump", false)}
+                                onPointerLeave={() => setTouchControl(control.key as "left" | "right" | "jump", false)}
                                 className="rounded-2xl border border-white/15 bg-white/12 px-3 py-3 text-sm font-black uppercase tracking-[0.2em] text-white transition hover:bg-white/20"
                             >
                                 {control.label}
                             </button>
                         ))}
+
+                        <button
+                            type="button"
+                            onPointerDown={queueShot}
+                            className="rounded-2xl border border-white/15 bg-rose-400/25 px-3 py-3 text-sm font-black uppercase tracking-[0.2em] text-white transition hover:bg-rose-400/35"
+                        >
+                            Shoot
+                        </button>
                     </div>
                 </div>
 
@@ -1386,12 +1750,12 @@ export function MouseShooter() {
                             <div className="rounded-2xl bg-rose-50 px-4 py-3 dark:bg-rose-950/30">
                                 <Fish className="h-4 w-4 text-rose-500 dark:text-rose-200" />
                                 <p className="mt-2 text-sm font-semibold text-gray-800 dark:text-gray-100">Tuna</p>
-                                <p className="mt-1 text-sm text-gray-500 dark:text-gray-400">Worth +120 points.</p>
+                                <p className="mt-1 text-sm text-gray-500 dark:text-gray-400">Worth +120 points and nudges your respawn closer.</p>
                             </div>
                             <div className="rounded-2xl bg-sky-50 px-4 py-3 dark:bg-sky-950/30">
                                 <Zap className="h-4 w-4 text-sky-500 dark:text-sky-200" />
                                 <p className="mt-2 text-sm font-semibold text-gray-800 dark:text-gray-100">Laser pointer</p>
-                                <p className="mt-1 text-sm text-gray-500 dark:text-gray-400">Faster, brighter shots.</p>
+                                <p className="mt-1 text-sm text-gray-500 dark:text-gray-400">Faster, brighter manual shots for 8.5 seconds.</p>
                             </div>
                             <div className="rounded-2xl bg-amber-50 px-4 py-3 dark:bg-amber-950/30">
                                 <Star className="h-4 w-4 text-amber-500 dark:text-amber-200" />
