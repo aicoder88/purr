@@ -6,6 +6,7 @@ import { WhacAMouse } from '@/components/fun/WhacAMouse';
 import { LaserChase } from '@/components/fun/LaserChase';
 import { CatTrivia } from '@/components/fun/CatTrivia';
 import { CatNameGenerator } from '@/components/fun/CatNameGenerator';
+import { LazyMouseShooter } from '@/components/fun/LazyMouseShooter';
 import { Volume2, Sparkles, Zap, Brain } from 'lucide-react';
 import { SITE_URL } from '@/lib/constants';
 
@@ -51,7 +52,7 @@ export default function FunPage() {
           <p className="text-xl md:text-2xl text-gray-600 dark:text-gray-300 max-w-2xl mx-auto mb-8 font-medium animate-fade-in-up">
             A magical corner of the internet dedicated to feline joy, silliness, and digital zoomies.
             <span className="block mt-2 text-lg text-purple-600 dark:text-purple-400">
-              🎵 Featuring realistic cat sounds that rotate so no two meows are the same!
+              🎵 Featuring rotating cat sounds, adaptive difficulty, and better replayable mini-games.
             </span>
           </p>
 
@@ -143,15 +144,49 @@ export default function FunPage() {
               Feline Arcade
             </h2>
             <p className="text-lg text-gray-600 dark:text-gray-400 max-w-2xl mx-auto">
-              Test your reflexes and hunting instincts. Real meow sounds play with every catch!
-              No cats were harmed in the making of these games.
+              Test your reflexes and hunting instincts with faster pacing, bonus targets, combo tracking,
+              and saved best scores. No cats were harmed in the making of these games.
             </p>
+
+            <div className="mt-6 grid gap-3 sm:grid-cols-3 max-w-4xl mx-auto text-left">
+              <div className="rounded-2xl border border-blue-200/70 dark:border-blue-800/70 bg-white/60 dark:bg-gray-900/40 px-4 py-3">
+                <p className="text-xs font-black tracking-[0.25em] text-blue-500 dark:text-blue-300 uppercase">Adaptive</p>
+                <p className="text-sm text-gray-600 dark:text-gray-300 mt-1">Rounds speed up as your score climbs instead of staying flat.</p>
+              </div>
+              <div className="rounded-2xl border border-purple-200/70 dark:border-purple-800/70 bg-white/60 dark:bg-gray-900/40 px-4 py-3">
+                <p className="text-xs font-black tracking-[0.25em] text-purple-500 dark:text-purple-300 uppercase">Replayable</p>
+                <p className="text-sm text-gray-600 dark:text-gray-300 mt-1">Trivia remixes its order every round and arcade games now save local bests.</p>
+              </div>
+              <div className="rounded-2xl border border-orange-200/70 dark:border-orange-800/70 bg-white/60 dark:bg-gray-900/40 px-4 py-3">
+                <p className="text-xs font-black tracking-[0.25em] text-orange-500 dark:text-orange-300 uppercase">Higher Stakes</p>
+                <p className="text-sm text-gray-600 dark:text-gray-300 mt-1">Golden targets and accuracy stats reward clean clicking over spam tapping.</p>
+              </div>
+            </div>
           </div>
 
           <div className="grid lg:grid-cols-2 gap-8">
             <WhacAMouse />
             <LaserChase />
           </div>
+        </section>
+
+        <section>
+          <div className="text-center mb-10">
+            <div className="inline-flex items-center gap-2 bg-rose-100 dark:bg-rose-900/30 text-rose-700 dark:text-rose-200 px-4 py-2 rounded-full text-sm font-bold mb-4">
+              <Zap className="w-4 h-4" />
+              FEATURED ARCADE
+            </div>
+            <h2 className="text-4xl font-bold bg-gradient-to-r from-rose-500 via-orange-500 to-sky-500 bg-clip-text text-transparent mb-4">
+              Kitty Comet
+            </h2>
+            <p className="text-lg text-gray-600 dark:text-gray-400 max-w-3xl mx-auto">
+              A cute side-scrolling shooter with pastel space vibes, mice to zap, tuna to collect,
+              laser-pointer boosts, a local hall of fame, and a lazy-load cabinet so it stays off the
+              page budget until someone actually opens it.
+            </p>
+          </div>
+
+          <LazyMouseShooter />
         </section>
 
         {/* Knowledge & Fun Zone */}
@@ -165,7 +200,7 @@ export default function FunPage() {
               Learn & Create
             </h2>
             <p className="text-lg text-gray-600 dark:text-gray-400 max-w-2xl mx-auto">
-              Expand your mind, test your knowledge, or find the perfect name for your new furry overlord.
+              Expand your mind, test your knowledge with remixed trivia rounds, or find the perfect name for your new furry overlord.
             </p>
           </div>
 
