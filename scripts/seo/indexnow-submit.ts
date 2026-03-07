@@ -1,7 +1,8 @@
 import { readdir, readFile } from 'node:fs/promises';
 import path from 'node:path';
+import { getSeoSiteUrl } from './lib/site-config';
 
-const DEFAULT_SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || 'https://www.purrify.ca';
+const DEFAULT_SITE_URL = getSeoSiteUrl();
 const DEFAULT_ENDPOINT = 'https://api.indexnow.org/indexnow';
 const MAX_URLS_PER_REQUEST = 10_000;
 
