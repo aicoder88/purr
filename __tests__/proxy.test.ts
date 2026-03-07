@@ -4,7 +4,11 @@ jest.mock('next-auth/jwt', () => ({
   getToken: jest.fn(),
 }));
 
-import { detectPreferredLocale, getLocaleFromGeo } from '../proxy';
+import {
+  detectPreferredLocale,
+  getAllowedQueryParams,
+  getLocaleFromGeo,
+} from '../proxy';
 
 describe('proxy locale redirects', () => {
   it('does not redirect when only the trailing slash differs', () => {
@@ -30,5 +34,13 @@ describe('proxy locale redirects', () => {
     expect(detectPreferredLocale({ cookieLocale: 'FR', cookieSource: 'manual' })).toBe('fr');
     expect(getLocaleFromGeo('CA', 'QC')).toBe('fr');
     expect(getLocaleFromGeo('CA', 'ON')).toBeNull();
+  });
+
+  it('allows the search query param on search routes only', () => {
+    expect(getAllowedQueryParams('/search').has('q')).toBe(true);
+    expect(getAllowedQueryParams('/search/').has('q')).toBe(true);
+    expect(getAllowedQueryParams('/fr/search').has('q')).toBe(true);
+    expect(getAllowedQueryParams('/fr/search/results').has('q')).toBe(true);
+    expect(getAllowedQueryParams('/about').has('q')).toBe(false);
   });
 });

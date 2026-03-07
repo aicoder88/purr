@@ -138,6 +138,10 @@ function getNavigationItems(
           href: "/blog/activated-carbon-vs-baking-soda-comparison/",
         },
         {
+          label: t("nav.comparisonLab") || "Comparison Lab",
+          href: `${localePrefix}/learn/comparison-lab/`,
+        },
+        {
           label: t("nav.catLitterAnswers") || "Cat Litter Q&A",
           href: "/learn/faq/",
         },
