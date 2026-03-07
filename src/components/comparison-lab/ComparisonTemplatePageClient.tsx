@@ -8,9 +8,10 @@ import { ArrowRight, CalendarClock, ClipboardList, FlaskConical } from 'lucide-r
 import { ClaimReviewBlock } from '@/components/seo/ClaimReviewBlock';
 import { Container } from '@/components/ui/container';
 import type { Locale } from '@/i18n/config';
-import { SITE_URL } from '@/lib/constants';
+import { SITE_NAME, SITE_URL } from '@/lib/constants';
 import type { ComparisonEntry } from '@/lib/comparison-lab/data';
 import { COMPARISON_LAB_BASE_PATH, COMPARISON_LAB_METHODOLOGY_PATH } from '@/lib/comparison-lab/data';
+import { getEditorialEntityBySlug } from '@/lib/editorial/entities';
 import { localizePath } from '@/lib/i18n/locale-path';
 
 type EvidenceCopy = {
@@ -63,6 +64,8 @@ export default function ComparisonTemplatePageClient({ entry }: { entry: Compari
   const relatedItems = asObjectArray<EvidenceCopy>(related.items);
   const pageHref = localizePath(`${COMPARISON_LAB_BASE_PATH}/${entry.slug}`, locale);
   const methodologyHref = localizePath(COMPARISON_LAB_METHODOLOGY_PATH, locale);
+  const authorEntity = getEditorialEntityBySlug(entry.authorEntitySlug);
+  const reviewerEntity = getEditorialEntityBySlug(entry.reviewerEntitySlug);
 
   return (
     <main className="min-h-screen bg-[linear-gradient(180deg,#fffdf8_0%,#f6f1e8_38%,#fffaf4_100%)] dark:bg-[linear-gradient(180deg,#020617_0%,#111827_42%,#020617_100%)]">
@@ -98,6 +101,60 @@ export default function ComparisonTemplatePageClient({ entry }: { entry: Compari
                   {shared.reviewCadenceValue as string}
                 </div>
               </div>
+            </div>
+
+            {!entry.indexable && (
+              <div className="mt-6 max-w-3xl rounded-3xl border border-amber-200 bg-amber-50/90 px-5 py-4 text-sm leading-7 text-amber-900 dark:border-amber-900/60 dark:bg-amber-950/30 dark:text-amber-100">
+                <span className="font-semibold">{shared.limitedIndexingLabel as string}</span>{' '}
+                {shared.limitedIndexingBody as string}
+              </div>
+            )}
+          </div>
+        </Container>
+      </section>
+
+      <section className="py-8">
+        <Container className="max-w-5xl">
+          <div className="rounded-[2rem] border border-black/5 bg-white p-6 shadow-[0_18px_50px_rgba(15,23,42,0.06)] dark:border-white/10 dark:bg-[#0f172a]">
+            <div className="grid gap-6 md:grid-cols-2">
+              <div>
+                <p className="text-xs font-semibold uppercase tracking-[0.2em] text-[#ff3131] dark:text-[#ff8b8b]">
+                  {shared.publicAuthorLabel as string}
+                </p>
+                <Link
+                  href={authorEntity?.canonicalPath ?? '/about/team'}
+                  className="mt-2 inline-flex text-lg font-semibold text-slate-950 hover:text-[#ff3131] dark:text-white dark:hover:text-[#ff8b8b]"
+                >
+                  {authorEntity?.name ?? SITE_NAME}
+                </Link>
+                <p className="mt-2 text-sm leading-7 text-slate-600 dark:text-slate-300">
+                  {authorEntity?.summary}
+                </p>
+              </div>
+
+              <div>
+                <p className="text-xs font-semibold uppercase tracking-[0.2em] text-[#ff3131] dark:text-[#ff8b8b]">
+                  {shared.publicReviewerLabel as string}
+                </p>
+                <Link
+                  href={reviewerEntity?.canonicalPath ?? '/about/team'}
+                  className="mt-2 inline-flex text-lg font-semibold text-slate-950 hover:text-[#ff3131] dark:text-white dark:hover:text-[#ff8b8b]"
+                >
+                  {reviewerEntity?.name ?? SITE_NAME}
+                </Link>
+                <p className="mt-2 text-sm leading-7 text-slate-600 dark:text-slate-300">
+                  {reviewerEntity?.summary}
+                </p>
+              </div>
+            </div>
+
+            <div className="mt-5 flex flex-wrap gap-4 text-sm font-semibold">
+              <Link href="/about/editorial-policy" className="text-[#ff3131] hover:text-[#df2525] dark:text-[#ff8b8b] dark:hover:text-[#ffb0b0]">
+                {shared.editorialPolicyLabel as string}
+              </Link>
+              <Link href="/about/testing-policy" className="text-[#ff3131] hover:text-[#df2525] dark:text-[#ff8b8b] dark:hover:text-[#ffb0b0]">
+                {shared.testingPolicyLabel as string}
+              </Link>
             </div>
           </div>
         </Container>

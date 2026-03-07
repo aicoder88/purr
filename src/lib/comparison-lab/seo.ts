@@ -9,6 +9,10 @@ import {
   type ComparisonEntry,
   getComparisonPath,
 } from '@/lib/comparison-lab/data';
+import {
+  getEditorialEntityBySlug,
+  getEditorialEntityUrl,
+} from '@/lib/editorial/entities';
 import { localizePath } from '@/lib/i18n/locale-path';
 import { stripContext } from '@/lib/seo-utils';
 import { getTranslation } from '@/translations';
@@ -105,10 +109,10 @@ export function getComparisonLabMetadata(locale: Locale): Metadata {
       images: [imageUrl],
     },
     robots: {
-      index: true,
+      index: false,
       follow: true,
       googleBot: {
-        index: true,
+        index: false,
         follow: true,
         'max-image-preview': 'large',
         'max-snippet': -1,
@@ -285,6 +289,27 @@ export function getComparisonPageMetadata(locale: Locale, entry: ComparisonEntry
       description: pageCopy.metaDescription,
       images: [imageUrl],
     },
+    robots: entry.indexable
+      ? {
+          index: true,
+          follow: true,
+          googleBot: {
+            index: true,
+            follow: true,
+            'max-image-preview': 'large',
+            'max-snippet': -1,
+          },
+        }
+      : {
+          index: false,
+          follow: true,
+          googleBot: {
+            index: false,
+            follow: true,
+            'max-image-preview': 'large',
+            'max-snippet': -1,
+          },
+        },
   };
 }
 
@@ -299,6 +324,8 @@ export function getComparisonPageGraph(
   const pageCopy = asRecord(pages[entry.translationKey]);
   const faqItems = Array.isArray(pageCopy.faq) ? (pageCopy.faq as FAQItem[]) : [];
   const url = toAbsoluteUrl(getComparisonPath(entry.slug), locale);
+  const authorEntity = getEditorialEntityBySlug(entry.authorEntitySlug);
+  const reviewerEntity = getEditorialEntityBySlug(entry.reviewerEntitySlug);
 
   const articleSchema = stripContext({
     '@context': 'https://schema.org',
@@ -309,11 +336,24 @@ export function getComparisonPageGraph(
     image: `${SITE_URL}${entry.heroImage}`,
     datePublished: entry.publishedAt,
     dateModified: entry.updatedAt,
-    author: {
-      '@type': 'Organization',
-      name: SITE_NAME,
-      url: SITE_URL,
-    },
+    author: authorEntity
+      ? {
+          '@type': 'Organization',
+          name: authorEntity.name,
+          url: getEditorialEntityUrl(authorEntity),
+        }
+      : {
+          '@type': 'Organization',
+          name: SITE_NAME,
+          url: SITE_URL,
+        },
+    reviewedBy: reviewerEntity
+      ? {
+          '@type': 'Organization',
+          name: reviewerEntity.name,
+          url: getEditorialEntityUrl(reviewerEntity),
+        }
+      : undefined,
     publisher: {
       '@type': 'Organization',
       name: SITE_NAME,
@@ -326,6 +366,7 @@ export function getComparisonPageGraph(
       '@type': 'WebPage',
       '@id': url,
     },
+    isAccessibleForFree: true,
   });
 
   const breadcrumbItems = [

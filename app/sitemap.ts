@@ -7,6 +7,7 @@ import {
   CANONICAL_CATEGORY_SLUGS,
   CANONICAL_TAG_SLUGS,
 } from '@/lib/blog/taxonomy';
+import { COMPARISON_ENTRIES } from '@/lib/comparison-lab/data';
 
 const SITE_URL = 'https://www.purrify.ca';
 
@@ -47,12 +48,6 @@ const SOLUTION_SLUGS = [
   'multiple-cats-odor-control',
   'natural-cat-litter-additive',
   'senior-cat-litter-solutions',
-];
-
-const COMPARISON_LAB_SLUGS = [
-  'activated-carbon-vs-baking-soda',
-  'best-cat-litter-odor-control',
-  'arm-and-hammer-alternative',
 ];
 
 const REDIRECTED_BLOG_SLUGS = new Set([
@@ -292,20 +287,19 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   addLocalizedEntries(entries, '/learn/alternatives/arm-and-hammer-cat-litter-deodorizer-alternative/', {
     priority: 0.6,
     changeFrequency: 'monthly',
-  });
-  addLocalizedEntries(entries, '/learn/comparison-lab/', {
-    priority: 0.75,
-    changeFrequency: 'monthly',
-  });
-  addLocalizedEntries(entries, '/learn/comparison-lab/methodology/', {
+    frPath: false,
+  }));
+  entries.push(entry('/learn/comparison-lab/methodology/', {
     priority: 0.7,
     changeFrequency: 'monthly',
-  });
-  for (const slug of COMPARISON_LAB_SLUGS) {
-    addLocalizedEntries(entries, `/learn/comparison-lab/${slug}/`, {
+    frPath: '/fr/learn/comparison-lab/methodology/',
+  }));
+  for (const comparisonEntry of COMPARISON_ENTRIES.filter((entry) => entry.indexable)) {
+    entries.push(entry(`/learn/comparison-lab/${comparisonEntry.slug}/`, {
       priority: 0.7,
       changeFrequency: 'monthly',
-    });
+      frPath: `/fr/learn/comparison-lab/${comparisonEntry.slug}/`,
+    }));
   }
 
   // === LEARN SOLUTIONS ===
