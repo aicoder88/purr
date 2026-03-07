@@ -30,9 +30,9 @@ interface HeaderMobileMenuProps {
 }
 
 const mobileDropdownLinkBase =
-  'mx-2 my-0.5 flex min-h-[44px] items-center rounded-md py-3 text-gray-700 transition-colors hover:bg-gray-50 hover:text-brand-pink dark:bg-gray-900/80 dark:text-gray-200 dark:hover:bg-gray-700/80 dark:hover:text-brand-pink-400';
+  'mx-2 my-0.5 flex min-h-[44px] items-center rounded-md py-3 text-gray-700 transition-colors hover:bg-gray-50 hover:text-brand-pink-700 dark:bg-gray-900/80 dark:text-gray-200 dark:hover:bg-gray-700/80 dark:hover:text-brand-pink-400';
 const desktopDropdownLinkBase =
-  'block rounded-md px-4 py-2 text-sm text-gray-700 transition-colors hover:bg-gray-50 hover:text-brand-pink focus:bg-gray-50 focus:text-brand-pink focus:outline-none focus:ring-2 focus:ring-brand-pink focus:ring-offset-1 dark:bg-gray-900/80 dark:text-gray-200 dark:hover:bg-gray-700/80 dark:hover:text-brand-pink-400 dark:focus:bg-gray-700/80 dark:focus:ring-brand-pink-400';
+  'block rounded-md px-4 py-2 text-sm text-gray-700 transition-colors hover:bg-gray-50 hover:text-brand-pink-700 focus:bg-gray-50 focus:text-brand-pink-700 focus:outline-none focus:ring-2 focus:ring-brand-pink focus:ring-offset-1 dark:bg-gray-900/80 dark:text-gray-200 dark:hover:bg-gray-700/80 dark:hover:text-brand-pink-400 dark:focus:bg-gray-700/80 dark:focus:ring-brand-pink-400 dark:focus:text-brand-pink-400';
 const desktopMenuCloseDelayMs = 500;
 
 function DesktopNavigationItem({ item }: { item: NavigationItem }) {
@@ -81,7 +81,7 @@ function DesktopNavigationItem({ item }: { item: NavigationItem }) {
       <Link
         href={item.href}
         prefetch={false}
-        className="font-medium text-gray-700 transition-colors hover:text-brand-pink dark:text-gray-200 dark:hover:text-brand-pink-400"
+        className="font-medium text-gray-700 transition-colors hover:text-brand-pink-700 dark:text-gray-200 dark:hover:text-brand-pink-400"
       >
         {item.label}
       </Link>
@@ -103,7 +103,7 @@ function DesktopNavigationItem({ item }: { item: NavigationItem }) {
       <Link
         href={item.href}
         prefetch={false}
-        className="flex items-center rounded-sm font-medium text-gray-700 transition-colors hover:text-brand-pink focus:text-brand-pink focus:outline-none focus:ring-2 focus:ring-brand-pink focus:ring-offset-2 focus:ring-offset-white dark:text-gray-200 dark:hover:text-brand-pink-400 dark:focus:text-brand-pink-400 dark:focus:ring-brand-pink-400 dark:focus:ring-offset-gray-800"
+        className="flex items-center rounded-sm font-medium text-gray-700 transition-colors hover:text-brand-pink-700 focus:text-brand-pink-700 focus:outline-none focus:ring-2 focus:ring-brand-pink focus:ring-offset-2 focus:ring-offset-white dark:text-gray-200 dark:hover:text-brand-pink-400 dark:focus:text-brand-pink-400 dark:focus:ring-brand-pink-400 dark:focus:ring-offset-gray-800"
         aria-haspopup="menu"
         aria-expanded={isOpen}
       >
@@ -215,7 +215,7 @@ export function HeaderMobileMenu({
                     <button
                       type="button"
                       onClick={() => toggleSection(item.id)}
-                      className="mx-1 flex min-h-[44px] w-full items-center justify-between rounded-md px-3 py-3 text-sm font-semibold text-gray-700 transition-colors hover:bg-gray-50 hover:text-brand-pink dark:text-gray-200 dark:hover:bg-gray-700/80 dark:hover:text-brand-pink-400"
+                      className="mx-1 flex min-h-[44px] w-full items-center justify-between rounded-md px-3 py-3 text-sm font-semibold text-gray-700 transition-colors hover:bg-gray-50 hover:text-brand-pink-700 dark:text-gray-200 dark:hover:bg-gray-700/80 dark:hover:text-brand-pink-400"
                       aria-expanded={expandedMobileSection === item.id}
                     >
                       <span className="uppercase tracking-wider">{item.label}</span>
@@ -252,7 +252,7 @@ export function HeaderMobileMenu({
                   <Link
                     href={item.href}
                     prefetch={false}
-                    className="mx-2 my-1 flex min-h-[44px] items-center rounded-md px-3 py-3 font-medium text-gray-700 transition-colors hover:bg-gray-50 hover:text-brand-pink dark:bg-gray-900/80 dark:text-gray-200 dark:hover:bg-gray-700/80 dark:hover:text-brand-pink-400"
+                    className="mx-2 my-1 flex min-h-[44px] items-center rounded-md px-3 py-3 font-medium text-gray-700 transition-colors hover:bg-gray-50 hover:text-brand-pink-700 dark:bg-gray-900/80 dark:text-gray-200 dark:hover:bg-gray-700/80 dark:hover:text-brand-pink-400"
                     onClick={closeMenu}
                   >
                     {item.label}
@@ -264,7 +264,7 @@ export function HeaderMobileMenu({
             <div className="mt-2 space-y-2 border-t border-gray-200 pt-2 dark:border-gray-700">
               <Button
                 asChild
-                className="flex w-full items-center justify-center gap-2 bg-gradient-to-r from-brand-pink to-brand-pink/80 font-semibold text-white shadow-md transition-all duration-200 hover:from-brand-pink/90 hover:to-brand-pink hover:shadow-lg dark:from-brand-pink-700 dark:to-brand-pink-600 dark:hover:from-brand-pink-800 dark:hover:to-brand-pink-700"
+                className="flex w-full items-center justify-center gap-2 bg-gradient-to-r from-brand-pink-700 to-brand-pink-600 font-semibold text-white shadow-md transition-all duration-200 hover:from-brand-pink-800 hover:to-brand-pink-700 hover:shadow-lg dark:from-brand-pink-700 dark:to-brand-pink-600 dark:hover:from-brand-pink-800 dark:hover:to-brand-pink-700"
               >
                 <Link href={findStoreHref} prefetch={false} onClick={closeMenu}>
                   <MapPin className="h-4 w-4" />

@@ -100,7 +100,7 @@ const footerUiCopy: Record<SupportedLocale, {
 
 // Shared class strings — defined once to avoid repeating long strings on every element.
 const footerLinkClass =
-  'text-gray-300 hover:text-brand-pink transition-colors duration-300';
+  'inline-flex min-h-[44px] w-full items-center rounded-md py-2 text-gray-300 hover:text-brand-pink focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-pink focus-visible:ring-offset-2 focus-visible:ring-offset-gray-900 transition-colors duration-300';
 
 const footerLegalLinkClass =
   'inline-flex min-h-[44px] items-center px-1 text-xs text-gray-300 hover:text-brand-pink transition-colors duration-300';

@@ -243,20 +243,12 @@ export async function Header() {
               className="flex flex-shrink-0 items-center space-x-2"
             >
               <Image
-                src="/optimized/logos/logo-light-pink-640w.webp"
+                src="/optimized/logos/logo-dark-640w.webp"
                 alt={copy.logoAlt}
                 width={120}
                 height={57}
-                priority
-                className="h-10 w-auto filter drop-shadow-sm transition-all duration-300 dark:hidden"
-              />
-              <Image
-                src="/optimized/logos/logo-dark-640w.webp"
-                alt={copy.logoAlt}
-                width={84}
-                height={40}
-                priority
-                className="hidden h-10 w-auto filter drop-shadow-sm transition-all duration-300 dark:block"
+                sizes="84px"
+                className="h-10 w-auto filter drop-shadow-sm transition-all duration-300"
               />
             </Link>
           </div>
@@ -266,7 +258,7 @@ export async function Header() {
           <div className="hidden items-center space-x-3 md:flex">
             <Button
               asChild
-              className="flex items-center gap-2 bg-gradient-to-r from-brand-pink to-brand-pink/80 font-semibold text-white shadow-md transition-all duration-200 hover:from-brand-pink/90 hover:to-brand-pink hover:shadow-lg dark:from-brand-pink-700 dark:to-brand-pink-600 dark:hover:from-brand-pink-800 dark:hover:to-brand-pink-700"
+              className="flex items-center gap-2 bg-gradient-to-r from-brand-pink-700 to-brand-pink-600 font-semibold text-white shadow-md transition-all duration-200 hover:from-brand-pink-800 hover:to-brand-pink-700 hover:shadow-lg dark:from-brand-pink-700 dark:to-brand-pink-600 dark:hover:from-brand-pink-800 dark:hover:to-brand-pink-700"
             >
               <Link href={findStoreHref} prefetch={false}>
                 <MapPin className="h-4 w-4" />

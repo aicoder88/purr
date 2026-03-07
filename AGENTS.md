@@ -12,6 +12,7 @@
 - **Package Manager**: `pnpm` ONLY. (Enforced by `preinstall`).
 - **No Fabrication**: NEVER assume existence of contact info, URLs, or assets. Verify first, then ask. [Details](docs/NO_FABRICATION_RULE.md)
 - **Hydration Safety**: NEVER conditionally return `null` in page components. Use `redirect()` or error components. [Details](docs/HYDRATION_SAFETY.md)
+- **Next Image Optimization**: Keep Next.js image optimization disabled. `images.unoptimized` in `next.config.js` must stay `true`. Do not re-enable it.
 - **Branding**:
     - "Purrify" is **granules**, NOT "powder".
     - Capitalized "Purrify".

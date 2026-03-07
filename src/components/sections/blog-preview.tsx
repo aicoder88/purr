@@ -154,7 +154,7 @@ export async function BlogPreview() {
         <div className="mt-16 text-center">
           <Button
             asChild
-            className="bg-brand-red-600 hover:bg-brand-red-700 text-white dark:text-gray-100 font-semibold py-4 px-8 rounded-full transition-all duration-300 border-0"
+            className="h-11 bg-brand-red-600 hover:bg-brand-red-700 px-8 text-white dark:text-gray-100 font-semibold rounded-full transition-all duration-300 border-0"
           >
             <Link href={locale === 'fr' ? '/fr/blog' : '/blog'}>
               {t('blogSection.viewAllArticles')}
