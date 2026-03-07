@@ -27,6 +27,14 @@ const FUNCTIONAL_QUERY_PARAMS_BY_PREFIX: Array<{
   keys: string[];
 }> = [
     {
+      prefix: '/search',
+      keys: ['q'],
+    },
+    {
+      prefix: '/fr/search',
+      keys: ['q'],
+    },
+    {
       prefix: '/blog',
       keys: ['page'],
     },
@@ -108,7 +116,7 @@ function setLocaleCookie(response: NextResponse, request: NextRequest, locale: L
   });
 }
 
-function getAllowedQueryParams(pathname: string): Set<string> {
+export function getAllowedQueryParams(pathname: string): Set<string> {
   const allowed = new Set(TRACKING_QUERY_PARAMS);
   for (const rule of FUNCTIONAL_QUERY_PARAMS_BY_PREFIX) {
     if (pathname === rule.prefix || pathname.startsWith(`${rule.prefix}/`)) {

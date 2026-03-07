@@ -1,4 +1,5 @@
 import { CONTACT_INFO } from '../lib/constants';
+import { comparisonLabEn } from './comparison-lab-en';
 
 export const en = {
   // Common
@@ -36,6 +37,7 @@ export const en = {
     catLitterGuide: "Cat Litter Guide",
     howToUse: "How to Use",
     technologyComparison: "Technology Comparison",
+    comparisonLab: "Comparison Lab",
     solutions: "Solutions",
     // Solution submenu items
     ammoniaSmellControl: "Ammonia Smell Control",
@@ -2304,6 +2306,102 @@ export const en = {
     }
   },
 
+  searchPage: {
+    eyebrow: "Answer Index",
+    title: "Search Purrify answers, guides, products, and support",
+    subtitle: "A crawlable search hub across blog posts, learn pages, FAQ answers, product pages, reviews, and support resources.",
+    searchLabel: "Search the answer index",
+    searchPlaceholder: "Try “ammonia smell”, “trial size”, or “shipping”",
+    searchButton: "Search",
+    quickQueriesTitle: "Popular searches",
+    browseTitle: "Browse the answer index",
+    browseDescription: "Start with a destination page or jump into one of the questions people ask most often.",
+    featuredAnswersTitle: "Featured answers",
+    recentGuidesTitle: "Recent guides",
+    resultsTitle: "Search results",
+    resultsFor: "Search results for",
+    bestAnswer: "Best answer",
+    moreAnswers: "More answers",
+    relatedSearches: "Related searches",
+    noResultsTitle: "No matching answers yet",
+    noResultsDescription: "Try a broader phrase, or open one of the destination pages below to browse by section.",
+    answerLabelSingular: "answer",
+    answerLabelPlural: "answers",
+    sectionLabelSingular: "section",
+    sectionLabelPlural: "sections",
+    acrossLabel: "across",
+    openPage: "Open page",
+    clearSearch: "Clear search",
+    documentTypes: {
+      blog: "Blog",
+      faq: "FAQ",
+      learn: "Learn",
+      product: "Products",
+      review: "Reviews",
+      support: "Support"
+    },
+    destinations: {
+      blogHub: {
+        title: "Blog guides and comparisons",
+        summary: "Browse long-form answers on litter odor, activated carbon, apartment living, multi-cat homes, and product comparisons."
+      },
+      learnHub: {
+        title: "Learn hub",
+        summary: "Start with the main learn page to understand the science, safety, and practical setup advice behind Purrify."
+      },
+      howItWorks: {
+        title: "How Purrify works",
+        summary: "See how activated carbon traps ammonia and sulfur compounds instead of masking them with fragrance."
+      },
+      science: {
+        title: "Science and citations",
+        summary: "Review the adsorption science, pore structure, and supporting references behind the product."
+      },
+      faqHub: {
+        title: "Frequently asked questions",
+        summary: "Find direct answers about safety, litter compatibility, application timing, sizing, shipping, and billing."
+      },
+      safety: {
+        title: "Safety information",
+        summary: "Read the safety, handling, and specification details for Purrify activated carbon."
+      },
+      catLitterGuide: {
+        title: "Cat litter guide",
+        summary: "Get a practical guide to litter types, box maintenance, and odor-control routines."
+      },
+      productsHub: {
+        title: "Product sizes and pricing",
+        summary: "Compare the current Purrify sizes, pricing, shipping details, and household fit."
+      },
+      trialSize: {
+        title: "Trial size",
+        summary: "Start with the low-risk trial size to test Purrify in your own litter routine."
+      },
+      reviewsHub: {
+        title: "Reviews and customer feedback",
+        summary: "Read what customers say, how they use Purrify, and what to expect from an activated carbon additive."
+      },
+      supportHub: {
+        title: "Support center",
+        summary: "Get help with orders, product questions, shipping, returns, and next steps."
+      },
+      shipping: {
+        title: "Shipping and returns",
+        summary: "Check delivery times, shipping costs, tracking details, and the 30-day money-back guarantee."
+      }
+    },
+    quickQueries: [
+      "how to stop litter box ammonia smell",
+      "is Purrify safe for kittens",
+      "best cat litter for odor control",
+      "how activated carbon works for cat litter",
+      "Purrify trial size",
+      "shipping and returns",
+      "multi-cat odor control",
+      "fragrance-free litter deodorizer"
+    ]
+  },
+
   // Blog
   blog: {
     multiCat: {
@@ -3860,6 +3958,8 @@ export const en = {
     save25vsStandard: "Save 25% compared to buying two standard sizes",
     save25FamilyPack: "Save 25% with our Family Pack"
   },
+
+  comparisonLab: comparisonLabEn,
 
   // Science Page
   sciencePage: {

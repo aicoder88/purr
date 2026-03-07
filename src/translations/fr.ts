@@ -1,4 +1,5 @@
 import { CONTACT_INFO } from '../lib/constants';
+import { comparisonLabFr } from './comparison-lab-fr';
 
 export const fr = {
   // Common
@@ -50,6 +51,7 @@ export const fr = {
     catLitterGuide: "Guide de la Litière pour Chats",
     howToUse: "Comment Utiliser",
     technologyComparison: "Comparaison des Technologies",
+    comparisonLab: "Comparison Lab",
     solutions: "Solutions",
     // Solutions dropdown items
     ammoniaSmellControl: "Contrôle des Odeurs d'Ammoniaque",
@@ -2378,6 +2380,102 @@ export const fr = {
     ]
   },
 
+  searchPage: {
+    eyebrow: "Index de reponses",
+    title: "Rechercher les reponses, guides, produits et pages support Purrify",
+    subtitle: "Un hub de recherche indexable qui relie les articles de blog, pages Learn, FAQ, produits, avis et ressources de support.",
+    searchLabel: "Rechercher dans l'index de reponses",
+    searchPlaceholder: "Essayez « odeur d'ammoniac », « format d'essai » ou « livraison »",
+    searchButton: "Rechercher",
+    quickQueriesTitle: "Recherches populaires",
+    browseTitle: "Parcourir l'index de reponses",
+    browseDescription: "Commencez par une page de destination ou ouvrez l'une des questions que les clients posent le plus souvent.",
+    featuredAnswersTitle: "Reponses mises en avant",
+    recentGuidesTitle: "Guides recents",
+    resultsTitle: "Resultats de recherche",
+    resultsFor: "Resultats de recherche pour",
+    bestAnswer: "Meilleure reponse",
+    moreAnswers: "Autres reponses",
+    relatedSearches: "Recherches associees",
+    noResultsTitle: "Aucune reponse correspondante pour le moment",
+    noResultsDescription: "Essayez une recherche plus large ou ouvrez l'une des pages de destination ci-dessous pour parcourir par section.",
+    answerLabelSingular: "reponse",
+    answerLabelPlural: "reponses",
+    sectionLabelSingular: "section",
+    sectionLabelPlural: "sections",
+    acrossLabel: "dans",
+    openPage: "Ouvrir la page",
+    clearSearch: "Effacer la recherche",
+    documentTypes: {
+      blog: "Blog",
+      faq: "FAQ",
+      learn: "Learn",
+      product: "Produits",
+      review: "Avis",
+      support: "Support"
+    },
+    destinations: {
+      blogHub: {
+        title: "Guides et comparatifs du blog",
+        summary: "Parcourez des reponses longues sur les odeurs de litiere, le charbon actif, les appartements, les foyers multi-chats et les comparatifs produits."
+      },
+      learnHub: {
+        title: "Hub Learn",
+        summary: "Commencez par la page Learn pour comprendre la science, la securite et les conseils pratiques autour de Purrify."
+      },
+      howItWorks: {
+        title: "Comment fonctionne Purrify",
+        summary: "Voyez comment le charbon actif piege l'ammoniac et les composes soufres au lieu de les masquer avec un parfum."
+      },
+      science: {
+        title: "Science et citations",
+        summary: "Consultez la science de l'adsorption, la structure des pores et les references qui soutiennent le produit."
+      },
+      faqHub: {
+        title: "Questions frequentes",
+        summary: "Trouvez des reponses directes sur la securite, la compatibilite avec les litieres, l'application, les formats, la livraison et la facturation."
+      },
+      safety: {
+        title: "Informations de securite",
+        summary: "Consultez les details de securite, de manipulation et les specifications du charbon actif Purrify."
+      },
+      catLitterGuide: {
+        title: "Guide de la litiere pour chats",
+        summary: "Obtenez un guide pratique sur les types de litiere, l'entretien du bac et les routines de controle des odeurs."
+      },
+      productsHub: {
+        title: "Formats et prix",
+        summary: "Comparez les formats Purrify, les prix actuels, les details de livraison et le bon choix selon votre foyer."
+      },
+      trialSize: {
+        title: "Format d'essai",
+        summary: "Commencez avec le format d'essai a faible risque pour tester Purrify dans votre routine."
+      },
+      reviewsHub: {
+        title: "Avis et retours clients",
+        summary: "Lisez ce que les clients disent, comment ils utilisent Purrify et ce qu'ils attendent d'un additif au charbon actif."
+      },
+      supportHub: {
+        title: "Centre de support",
+        summary: "Obtenez de l'aide pour les commandes, les questions produit, la livraison, les retours et les prochaines etapes."
+      },
+      shipping: {
+        title: "Livraison et retours",
+        summary: "Verifiez les delais, les frais de livraison, le suivi et la garantie de remboursement de 30 jours."
+      }
+    },
+    quickQueries: [
+      "comment eliminer l'odeur d'ammoniac de la litiere",
+      "Purrify est-il securitaire pour les chatons",
+      "meilleure litiere pour controler les odeurs",
+      "comment le charbon actif fonctionne pour la litiere",
+      "format d'essai Purrify",
+      "livraison et retours",
+      "controle des odeurs multi-chats",
+      "desodorisant de litiere sans parfum"
+    ]
+  },
+
 
   // Homepage specific translations
   homepage: {
@@ -3958,6 +4056,8 @@ export const fr = {
     save25vsStandard: "Économisez 25% par rapport à l'achat de deux formats standards",
     save25FamilyPack: "Économisez 25% avec notre Pack Familial"
   },
+
+  comparisonLab: comparisonLabFr,
 
   // Page Science
   sciencePage: {

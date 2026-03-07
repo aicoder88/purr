@@ -45,6 +45,7 @@ export interface TranslationType {
     catLitterGuide?: string;
     howToUse?: string;
     technologyComparison?: string;
+    comparisonLab?: string;
     solutions?: string;
     // Solutions dropdown items
     ammoniaSmellControl?: string;
@@ -1215,6 +1216,93 @@ export interface TranslationType {
       question: string;
       answer: string;
     }>;
+  };
+
+  searchPage?: {
+    eyebrow: string;
+    title: string;
+    subtitle: string;
+    searchLabel: string;
+    searchPlaceholder: string;
+    searchButton: string;
+    quickQueriesTitle: string;
+    browseTitle: string;
+    browseDescription: string;
+    featuredAnswersTitle: string;
+    recentGuidesTitle: string;
+    resultsTitle: string;
+    resultsFor: string;
+    bestAnswer: string;
+    moreAnswers: string;
+    relatedSearches: string;
+    noResultsTitle: string;
+    noResultsDescription: string;
+    answerLabelSingular: string;
+    answerLabelPlural: string;
+    sectionLabelSingular: string;
+    sectionLabelPlural: string;
+    acrossLabel: string;
+    openPage: string;
+    clearSearch: string;
+    documentTypes: {
+      blog: string;
+      faq: string;
+      learn: string;
+      product: string;
+      review: string;
+      support: string;
+    };
+    destinations: {
+      blogHub: {
+        title: string;
+        summary: string;
+      };
+      learnHub: {
+        title: string;
+        summary: string;
+      };
+      howItWorks: {
+        title: string;
+        summary: string;
+      };
+      science: {
+        title: string;
+        summary: string;
+      };
+      faqHub: {
+        title: string;
+        summary: string;
+      };
+      safety: {
+        title: string;
+        summary: string;
+      };
+      catLitterGuide: {
+        title: string;
+        summary: string;
+      };
+      productsHub: {
+        title: string;
+        summary: string;
+      };
+      trialSize: {
+        title: string;
+        summary: string;
+      };
+      reviewsHub: {
+        title: string;
+        summary: string;
+      };
+      supportHub: {
+        title: string;
+        summary: string;
+      };
+      shipping: {
+        title: string;
+        summary: string;
+      };
+    };
+    quickQueries: string[];
   };
 
   // Enhanced Product Comparison
@@ -3239,6 +3327,8 @@ export interface TranslationType {
     };
     backToLearn: string;
   };
+
+  comparisonLab?: Record<string, unknown>;
 
 }
 
