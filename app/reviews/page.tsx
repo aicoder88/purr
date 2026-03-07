@@ -53,7 +53,7 @@ const webPageSchema = {
   '@id': 'https://www.purrify.ca/reviews/',
   url: 'https://www.purrify.ca/reviews/',
   name: `Customer Reviews | ${SITE_NAME}`,
-  description: 'Read verified customer reviews and testimonials about Purrify activated carbon cat litter deodorizer.',
+  description: 'Read customer feedback about Purrify and learn how cat owners use an activated carbon additive for litter box odor control.',
   inLanguage: 'en-CA',
   primaryImageOfPage: {
     '@type': 'ImageObject',

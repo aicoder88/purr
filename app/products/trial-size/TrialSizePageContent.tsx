@@ -82,7 +82,7 @@ export default function TrialSizePageContent({ locale }: TrialSizePageContentPro
   // Use optimized SEO meta content
   const seoMeta = getSEOMeta(seoLocale, 'products', 'trial');
   const pageTitle = seoMeta?.title || "FREE Cat Litter Freshener Trial - Activated Charcoal Additive | Purrify";
-  const pageDescription = seoMeta?.description || "FREE Cat Litter Deodorizer Trial | Just Pay $4.76 Shipping | 87% of customers upgrade within 7 days. ★ 4.8 rating. Ships to USA & Canada. Risk-free guarantee.";
+  const pageDescription = seoMeta?.description || "Try Purrify's activated carbon litter additive with our low-risk trial. Current pricing, shipping details, and a 30-day guarantee included.";
 
   const trialPriceValue = getProductPrice('trial', currency);
   const trialPriceString = trialPriceValue.toFixed(2);
@@ -108,10 +108,12 @@ export default function TrialSizePageContent({ locale }: TrialSizePageContentPro
       sku: 'purrify-12g',
       mpn: 'PURRIFY-12G',
       shippingRate: '4.76',
-      rating: {
-        value: reviewData.ratingValue,
-        count: reviewData.reviewCount,
-      },
+      rating: reviewData.reviewCount > 0
+        ? {
+            value: reviewData.ratingValue,
+            count: reviewData.reviewCount,
+          }
+        : undefined,
     },
     image: 'https://www.purrify.ca/optimized/products/17g-transparent-v2.webp',
     keywords: ['cat litter freshener', 'charcoal litter additive', 'cat litter deodorizer', 'free trial'],
@@ -287,16 +289,23 @@ export default function TrialSizePageContent({ locale }: TrialSizePageContentPro
             {/* Validation Stats */}
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-16">
               <div className="bg-black text-white dark:bg-white dark:text-black p-8 rounded-xl text-center shadow-xl">
-                <div className="text-3xl font-black mb-2 flex items-center justify-center gap-1 font-serif">4.8 <Star className="w-6 h-6 fill-current" /></div>
-                <p className="text-sm font-medium opacity-80 uppercase tracking-wide">From 127 verified buyers across Canada</p>
+                <div className="text-3xl font-black mb-2 flex items-center justify-center gap-1 font-serif">
+                  {reviewData.reviewCount > 0 ? reviewData.ratingValue.toFixed(1) : '30'}
+                  {reviewData.reviewCount > 0 ? <Star className="w-6 h-6 fill-current" /> : null}
+                </div>
+                <p className="text-sm font-medium opacity-80 uppercase tracking-wide">
+                  {reviewData.reviewCount > 0
+                    ? `${reviewData.reviewCount} customer reviews`
+                    : '30-day satisfaction guarantee'}
+                </p>
               </div>
               <div className="bg-black text-white dark:bg-white dark:text-black p-8 rounded-xl text-center shadow-xl">
-                <div className="text-3xl font-black mb-2 font-serif">87%</div>
-                <p className="text-sm font-medium opacity-80 uppercase tracking-wide">Of trial customers upgrade within 7 days</p>
+                <div className="text-3xl font-black mb-2 font-serif">24H</div>
+                <p className="text-sm font-medium opacity-80 uppercase tracking-wide">Orders typically leave our warehouse within one business day</p>
               </div>
               <div className="bg-black text-white dark:bg-white dark:text-black p-8 rounded-xl text-center shadow-xl">
-                <div className="text-3xl font-black mb-2 font-serif">25</div>
-                <p className="text-sm font-medium opacity-80 uppercase tracking-wide">25 active retail partners (as of March 2026)</p>
+                <div className="text-3xl font-black mb-2 font-serif">Any</div>
+                <p className="text-sm font-medium opacity-80 uppercase tracking-wide">Works with clay, crystal, pine, tofu, and natural litters</p>
               </div>
             </div>
           </Container>
@@ -358,8 +367,7 @@ export default function TrialSizePageContent({ locale }: TrialSizePageContentPro
 
                 <div className="space-y-4 text-lg text-gray-700 dark:text-gray-300">
                   <p>For a limited time, you can try Purrify&apos;s 12g trial bag at no charge.</p>
-                  <p>The bag normally retails for <span className="line-through opacity-70">$14.99</span>.</p>
-                  <p className="font-bold text-xl text-black dark:text-white bg-white dark:bg-gray-900 p-4 border-l-4 border-black dark:border-white rounded-r-lg shadow-sm">Yours free. You cover the {trialPrice} shipping to anywhere in Canada.</p>
+                  <p className="font-bold text-xl text-black dark:text-white bg-white dark:bg-gray-900 p-4 border-l-4 border-black dark:border-white rounded-r-lg shadow-sm">You only cover the current {trialPrice} shipping charge for delivery within Canada.</p>
                   <p>That&apos;s it. One-time. No subscription trap. No hidden fees.</p>
                   <p>It ships within 24 hours, arrives in 2-3 business days, and comes with one of the most straightforward guarantees in the pet care category:</p>
                   <div className="bg-black text-white dark:bg-white dark:text-black p-6 rounded-xl shadow-lg mt-6">
@@ -400,7 +408,7 @@ export default function TrialSizePageContent({ locale }: TrialSizePageContentPro
                       <span className="text-xs md:text-sm font-normal opacity-80 mt-1 capitalize tracking-normal">Just {trialPrice} Shipping Anywhere In Canada</span>
                     </Button>
                   </a>
-                  <p className="mt-4 text-sm text-gray-500 dark:text-gray-400 font-medium">$14.99 value - FREE for a limited time. Limit one.</p>
+                  <p className="mt-4 text-sm text-gray-500 dark:text-gray-400 font-medium">Limit one trial per household while this offer is available.</p>
 
                   <ul className="mt-6 space-y-2 text-sm text-left font-medium text-gray-700 dark:text-gray-300">
                     <li className="flex items-center gap-2 justify-center"><Check className="w-5 h-5 opacity-50" /> Works With ANY Litter</li>
@@ -434,7 +442,7 @@ export default function TrialSizePageContent({ locale }: TrialSizePageContentPro
 
             <div className="prose prose-lg dark:prose-invert mx-auto text-gray-700 dark:text-gray-300 mb-12">
               <p>You can close this tab. Light a candle. Spray something. Hope for the best before your next guest arrives.</p>
-                  <p className="font-bold text-xl text-black dark:text-white my-8">Or you can spend {trialPrice} - less than a coffee - and find out why 87% of trial customers upgraded (based on internal trial-to-full-size conversion data, Jan-Dec 2025).</p>
+                  <p className="font-bold text-xl text-black dark:text-white my-8">Or you can spend {trialPrice} and see how Purrify fits your litter routine before committing to a larger bag.</p>
                   <p>The litter box odor problem is solvable.<br />Purrify solves it.<br />The trial is free.<br />What are you waiting for?</p>
                 </div>
 

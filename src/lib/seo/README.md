@@ -13,7 +13,7 @@ Crawls your site and identifies broken links.
 import { BrokenLinkDetector } from '@/lib/seo/broken-link-detector';
 
 const detector = new BrokenLinkDetector();
-const result = await detector.crawlSite('https://purrify.ca');
+const result = await detector.crawlSite('https://www.purrify.ca');
 
 console.log(`Found ${result.brokenLinks.length} broken links`);
 ```
@@ -27,7 +27,7 @@ Validates canonical tags and detects issues.
 import { CanonicalValidator } from '@/lib/seo/canonical-validator';
 
 const validator = new CanonicalValidator();
-const issues = await validator.validateCanonicals('https://purrify.ca');
+const issues = await validator.validateCanonicals('https://www.purrify.ca');
 
 console.log(`Found ${issues.length} canonical issues`);
 ```
@@ -41,7 +41,7 @@ Analyzes redirect chains and identifies optimization opportunities.
 import { RedirectAnalyzer } from '@/lib/seo/redirect-analyzer';
 
 const analyzer = new RedirectAnalyzer();
-const chain = await analyzer.followRedirectChain('https://purrify.ca/old-page');
+const chain = await analyzer.followRedirectChain('https://www.purrify.ca/old-page');
 
 console.log(`Redirect chain has ${chain.totalHops} hops`);
 ```

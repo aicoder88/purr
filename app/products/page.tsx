@@ -40,14 +40,14 @@ export async function generateMetadata({ params }: LocalizedProductsPageProps): 
 
   return {
     title: 'Purrify Products - Activated Carbon Litter Additive',
-    description: '★ 4.8 Rating | FREE Trial Available | Shop Purrify activated carbon litter additives. Eliminates odors instantly. Ships to USA & Canada. 30-day guarantee.',
+    description: 'Shop Purrify activated carbon litter additives. Compare the trial, regular, and multi-cat options with current pricing and shipping details.',
     keywords: ['Purrify products', 'cat litter additive', 'activated carbon', 'odor control', 'trial size', 'family pack'],
     openGraph: {
       type: 'website',
       url: localizedPath,
       siteName: 'Purrify',
       title: 'Purrify Products - Activated Carbon Litter Additive',
-      description: '★ 4.8 Rating | FREE Trial Available | Shop Purrify activated carbon litter additives. Eliminates odors instantly.',
+      description: 'Compare current Purrify sizes, pricing, and shipping details for every household.',
       locale: getOgLocale(locale),
       images: [
         {
@@ -63,7 +63,7 @@ export async function generateMetadata({ params }: LocalizedProductsPageProps): 
       site: '@purrifyhq',
       creator: '@purrifyhq',
       title: 'Purrify Products - Activated Carbon Litter Additive',
-      description: '★ 4.8 Rating | FREE Trial Available | Shop Purrify activated carbon litter additives. Eliminates odors instantly.',
+      description: 'Compare current Purrify sizes, pricing, and shipping details for every household.',
       images: ['https://www.purrify.ca/optimized/logos/purrify-logo.png'],
     },
     alternates: {

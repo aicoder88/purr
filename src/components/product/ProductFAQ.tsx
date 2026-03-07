@@ -41,7 +41,7 @@ const PRODUCT_FAQS: Record<ProductType, FAQ[]> = {
     },
     {
       question: "Can I upgrade to a larger size later?",
-      answer: "Of course! Once you experience the difference, you can upgrade to our 120g Regular or 240g Family Size. Many customers save 30% by subscribing to our Autoship program."
+      answer: "Of course! Once you experience the difference, you can upgrade to our 50g Regular, 120g Family, or 240g Jumbo size. Many customers save 30% by subscribing to our Autoship program."
     }
   ],
   standard: [
@@ -51,7 +51,7 @@ const PRODUCT_FAQS: Record<ProductType, FAQ[]> = {
     },
     {
       question: "Is this the right size for me?",
-      answer: "The 50g is ideal for single-cat households or those wanting to try a mid-range option. If you have multiple cats, consider our 120g Regular Size or 240g Family Size for better value."
+      answer: "The 50g is ideal for single-cat households or those wanting to try a mid-range option. If you have multiple cats, consider our 120g Family Size or 240g Jumbo Size for better value."
     },
     {
       question: "How do I use Purrify?",
@@ -68,8 +68,8 @@ const PRODUCT_FAQS: Record<ProductType, FAQ[]> = {
   ],
   family: [
     {
-      question: "How long does the Regular Size (120g) last?",
-      answer: "The 120g Regular Size provides approximately 2-3 months of odor control for single-cat homes, or 6-8 weeks for multi-cat households (2-3 cats). It's our most popular size for good reason!"
+      question: "How long does the Family Size (120g) last?",
+      answer: "The 120g Family Size provides approximately 2-3 months of odor control for single-cat homes, or 6-8 weeks for multi-cat households (2-3 cats). It's our most popular size for good reason!"
     },
     {
       question: "Is this good for multiple cats?",
@@ -91,11 +91,11 @@ const PRODUCT_FAQS: Record<ProductType, FAQ[]> = {
   jumbo: [
     {
       question: "How long does the Family Pack (240g) last?",
-      answer: "The 240g Family Pack provides 4-6 months of odor control for single-cat homes, or 3-4 months for households with 3+ cats. It's our best value for serious cat parents."
+      answer: "The 240g Jumbo Size provides 4-6 months of odor control for single-cat homes, or 3-4 months for households with 3+ cats. It's our best value for serious cat parents."
     },
     {
       question: "Is this the right choice for my home?",
-      answer: "If you have 3 or more cats, multiple litter boxes, or simply want the best value per gram, the Family Pack is your ideal choice. It's also perfect for those who prefer less frequent reordering."
+      answer: "If you have 3 or more cats, multiple litter boxes, or simply want the best value per gram, the Jumbo Size is your ideal choice. It's also perfect for those who prefer less frequent reordering."
     },
     {
       question: "How do I use Purrify?",

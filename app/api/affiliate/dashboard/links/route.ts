@@ -1,6 +1,6 @@
 import { auth } from '@/auth';
 
-const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || 'https://purrify.ca';
+const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || 'https://www.purrify.ca';
 
 // Predefined link templates for common destinations
 const LINK_TEMPLATES = [

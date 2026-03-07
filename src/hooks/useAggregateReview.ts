@@ -1,7 +1,7 @@
 /**
  * useAggregateReview Hook
  * Provides aggregate review/rating data for products with SEO schema support.
- * Fetches from the reviews API when available, falls back to placeholder data.
+ * Fetches from the reviews API when available and defaults to empty data when none exists.
  */
 
 import { useState, useEffect } from 'react';
@@ -30,15 +30,9 @@ export interface AggregateReviewResult {
   isLive: boolean;
 }
 
-/**
- * Fallback data used when the API is unavailable or returns zero reviews.
- * These will phase out naturally as real reviews accumulate.
- */
-const FALLBACK_REVIEWS: Record<string, Omit<AggregateReview, 'bestRating' | 'worstRating'>> = {
-  trial: { ratingValue: 4.9, reviewCount: 84 },
-  standard: { ratingValue: 4.8, reviewCount: 156 },
-  family: { ratingValue: 4.9, reviewCount: 62 },
-  familyAutoship: { ratingValue: 4.9, reviewCount: 31 },
+const EMPTY_REVIEW: Omit<AggregateReview, 'bestRating' | 'worstRating'> = {
+  ratingValue: 0,
+  reviewCount: 0,
 };
 
 function formatRating(value: number): string {
@@ -56,6 +50,7 @@ function formatReviewCount(count: number, locale: string = 'en'): string {
 
 function buildResult(ratingValue: number, reviewCount: number, locale: string, isLive: boolean): AggregateReviewResult {
   const data: AggregateReview = { ratingValue, reviewCount, bestRating: 5, worstRating: 1 };
+  const hasReviews = reviewCount > 0;
   return {
     data,
     schema: {
@@ -66,9 +61,9 @@ function buildResult(ratingValue: number, reviewCount: number, locale: string, i
       worstRating: data.worstRating,
     },
     displayText: {
-      rating: formatRating(data.ratingValue),
+      rating: hasReviews ? formatRating(data.ratingValue) : '',
       reviewCount: formatReviewCount(data.reviewCount, locale),
-      full: `${formatRating(data.ratingValue)}/5 from ${formatReviewCount(data.reviewCount, locale)}`,
+      full: hasReviews ? `${formatRating(data.ratingValue)}/5 from ${formatReviewCount(data.reviewCount, locale)}` : '',
     },
     isLive,
   };
@@ -76,15 +71,14 @@ function buildResult(ratingValue: number, reviewCount: number, locale: string, i
 
 /**
  * useAggregateReview Hook
- * Tries to fetch live review data from the API. Falls back to placeholder data.
+ * Tries to fetch live review data from the API. Defaults to empty review data when unavailable.
  */
 export function useAggregateReview(
   productKey: string,
   locale: string = 'en'
 ): AggregateReviewResult {
-  const fallback = FALLBACK_REVIEWS[productKey] || FALLBACK_REVIEWS.trial;
   const [result, setResult] = useState<AggregateReviewResult>(
-    buildResult(fallback.ratingValue, fallback.reviewCount, locale, false)
+    buildResult(EMPTY_REVIEW.ratingValue, EMPTY_REVIEW.reviewCount, locale, false)
   );
 
   useEffect(() => {
@@ -97,12 +91,11 @@ export function useAggregateReview(
         const data = await res.json();
         if (cancelled) return;
 
-        // Only use live data if there are actual reviews
-        if (data.totalReviews > 0) {
-          setResult(buildResult(data.averageRating, data.totalReviews, locale, true));
+        if (typeof data.totalReviews === 'number' && typeof data.averageRating === 'number') {
+          setResult(buildResult(data.averageRating, data.totalReviews, locale, data.totalReviews > 0));
         }
       } catch {
-        // Keep fallback data
+        // Keep empty default state
       }
     }
 
@@ -122,8 +115,8 @@ export function useMultipleReviews(
 ): Record<string, AggregateReviewResult> {
   const results: Record<string, AggregateReviewResult> = {};
   for (const key of productKeys) {
-    const fallback = FALLBACK_REVIEWS[key] || FALLBACK_REVIEWS.trial;
-    results[key] = buildResult(fallback.ratingValue, fallback.reviewCount, locale, false);
+    void key;
+    results[key] = buildResult(EMPTY_REVIEW.ratingValue, EMPTY_REVIEW.reviewCount, locale, false);
   }
   return results;
 }

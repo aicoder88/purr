@@ -124,7 +124,7 @@ export const seoMetaEn: SEOMetaContent = {
         brand: { '@type': 'Brand', name: 'Purrify' },
         offers: {
           '@type': 'Offer',
-          price: '19.99',
+          price: '14.99',
           priceCurrency: 'CAD',
           availability: 'https://schema.org/InStock'
         }
@@ -132,18 +132,18 @@ export const seoMetaEn: SEOMetaContent = {
       lastUpdated: '2026-02-13'
     },
     family: {
-      title: 'Multi Cat Litter Deodorizer - 240g Family | Purrify',
+      title: 'Multi Cat Litter Deodorizer - 120g Family | Purrify',
       description: 'The solution for multi-cat households. Activated carbon removes the toughest ammonia smells instantly. Best value for serious odor control.',
       targetKeyword: 'multi cat litter deodorizer',
       schema: {
         '@context': 'https://schema.org',
         '@type': 'Product',
-        name: 'Purrify Activated Carbon Cat Litter Additive - 240g Family',
-        description: '240g family size activated carbon cat litter additive for 3+ cats. Best value, removes ammonia smell instantly.',
+        name: 'Purrify Activated Carbon Cat Litter Additive - 120g Family',
+        description: '120g family size activated carbon cat litter additive for 2-3 cats. Best value, removes ammonia smell instantly.',
         brand: { '@type': 'Brand', name: 'Purrify' },
         offers: {
           '@type': 'Offer',
-          price: '39.99',
+          price: '29.99',
           priceCurrency: 'CAD',
           availability: 'https://schema.org/InStock'
         }
@@ -199,7 +199,7 @@ export const seoMetaEn: SEOMetaContent = {
         '@context': 'https://schema.org',
         '@type': 'Article',
         headline: 'Baking Soda vs Activated Carbon: Which Works Better?',
-        description: 'Baking soda masks odor, activated carbon eliminates it. See the science behind why 10,000+ cat owners switched.',
+        description: 'Baking soda masks odor, activated carbon eliminates it. See the science behind why cat owners switch.',
         author: {
           '@type': 'Person',
           name: 'Dr. Sarah Chen',
@@ -231,13 +231,13 @@ export const seoMetaEn: SEOMetaContent = {
     },
     faq: {
       title: 'Cat Litter Odor Control FAQ - Evidence-Based Answers',
-      description: 'Get clear answers about safety, usage, and effectiveness of activated carbon. 10,000+ cat parents trust this science-first approach. Read more.',
+      description: 'Get clear answers about safety, usage, and effectiveness of activated carbon with a science-first approach. Read more.',
       targetKeyword: 'cat litter odor control',
       schema: {
         '@context': 'https://schema.org',
         '@type': 'Article',
         headline: 'Cat Litter Odor Control FAQ - Your Questions Answered',
-        description: 'Get answers about activated carbon cat litter additive. Safety, usage, effectiveness & more. 10,000+ customers trust Purrify.',
+        description: 'Get answers about activated carbon cat litter additive. Safety, usage, effectiveness & more.',
         author: {
           '@type': 'Person',
           name: 'Dr. Sarah Chen',
@@ -315,7 +315,7 @@ export const seoMetaEn: SEOMetaContent = {
       },
       litterBoxSmellElimination: {
         title: 'Litter Box Smell Elimination: Complete Guide 2026',
-        description: 'End litter box odor permanently with proven methods. From daily maintenance to activated carbon technology. 10,000+ cat owners use this system.',
+        description: 'End litter box odor permanently with proven methods. From daily maintenance to activated carbon technology.',
         targetKeyword: 'litter box smell elimination',
         schema: {
           '@context': 'https://schema.org',
@@ -715,7 +715,7 @@ export const seoMetaFr: SEOMetaContent = {
         brand: { '@type': 'Brand', name: 'Purrify' },
         offers: {
           '@type': 'Offer',
-          price: '19.99',
+          price: '14.99',
           priceCurrency: 'CAD',
           availability: 'https://schema.org/InStock'
         }
@@ -1265,7 +1265,7 @@ export const seoMetaZh: SEOMetaContent = {
         brand: { '@type': 'Brand', name: 'Purrify' },
         offers: {
           '@type': 'Offer',
-          price: '19.99',
+          price: '14.99',
           priceCurrency: 'CAD',
           availability: 'https://schema.org/InStock'
         }
@@ -1284,7 +1284,7 @@ export const seoMetaZh: SEOMetaContent = {
         brand: { '@type': 'Brand', name: 'Purrify' },
         offers: {
           '@type': 'Offer',
-          price: '39.99',
+          price: '29.99',
           priceCurrency: 'CAD',
           availability: 'https://schema.org/InStock'
         }
@@ -1871,7 +1871,7 @@ export const seoMetaEs: SEOMetaContent = {
     },
     faq: {
       title: 'Control Olor Arena Gatos - Preguntas FAQ | Purrify',
-      description: 'Respuestas control olor arena gatos con carbón activado. Seguridad, uso, efectividad 99%. 10,000+ clientes confían. ¡Compra ahora!',
+      description: 'Respuestas sobre el control del olor de la arena con carbón activado. Seguridad, uso y efectividad. ¡Aprende más!',
       targetKeyword: 'control olor arena gatos',
       lastUpdated: '2026-02-13',
       schema: {

@@ -120,7 +120,7 @@ export default function FAQPageClient() {
   // FAQ page images - contextually relevant
   const heroImage = '/optimized/blog/cat-owner-questions-ghibli.webp';
   const sectionImage1 = '/optimized/blog/curious-cat-ghibli.webp';
-  const sectionImage2 = 'https://images.unsplash.com/photo-1606214174585-fe31582dc6ee?auto=format&fit=crop&w=1600&q=80';
+  const sectionImage2 = '/optimized/marketing/cat-clean-home.avif';
   const solutionImage = '/optimized/blog/happy-cat-ghibli.webp';
 
   // Map translation category names to categories with icons
@@ -217,7 +217,7 @@ export default function FAQPageClient() {
         '@type': 'ListItem',
         position: index + 2,
         name: item.name,
-        item: `https://www.purrify.ca/${item.path}`,
+        item: `https://www.purrify.ca${item.path}`,
       })),
     ],
   };
@@ -570,11 +570,11 @@ export default function FAQPageClient() {
                   <p className="text-gray-600 dark:text-gray-300 text-sm mb-4">
                     {faqPage?.realTimeChatHelp || 'Chat with us instantly'}
                   </p>
-                  <a href="https://wa.me/385993433344?text=Hi%20I%27m%20interested%20in%20Purrify" target="_blank" rel="noopener noreferrer nofollow">
+                  <Link href={`${localePrefix}/contact`}>
                     <Button size="sm" variant="outline" className="border-green-500 dark:border-green-400 text-green-500 dark:text-green-400 hover:bg-green-500 hover:text-white dark:hover:bg-green-600 dark:hover:text-gray-100">
                       {faqPage?.startChat || 'Chat Now'}
                     </Button>
-                  </a>
+                  </Link>
                 </div>
               </div>
             </div>

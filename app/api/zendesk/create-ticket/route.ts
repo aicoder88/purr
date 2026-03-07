@@ -93,9 +93,9 @@ function verifyOrigin(req: Request): boolean {
   }
 
   const allowedOrigins = [
-    process.env.NEXT_PUBLIC_SITE_URL || 'https://purrify.ca',
+    process.env.NEXT_PUBLIC_SITE_URL || 'https://www.purrify.ca',
     'https://purrify.ca',
-    'https://www.purrify.ca/',
+    'https://www.purrify.ca',
     'http://localhost:3000',
     'http://localhost:3001'
   ];

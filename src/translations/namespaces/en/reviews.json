@@ -41,7 +41,7 @@
     "trustSection": {
       "heading": "Why Customers Trust Purrify",
       "verifiedTitle": "Customer Feedback",
-      "verifiedDesc": "We will publish reviews and ratings once a third-party review system is in place.",
+      "verifiedDesc": "Product pages can show approved customer ratings and purchase badges when review data is available.",
       "ratingTitle": "Science-linked",
       "ratingDesc": "See citations and how-to guides to verify key claims.",
       "customersTitle": "Helpful Resources",
@@ -81,7 +81,7 @@
       "allSizes": "All Sizes",
       "trial": "12g Trial",
       "regular": "50g Regular",
-      "large": "120g Large"
+      "large": "120g Family"
     },
     "sort": {
       "newestFirst": "Newest First",

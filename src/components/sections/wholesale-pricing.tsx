@@ -256,7 +256,7 @@ export function WholesalePricing() {
         'One box of large (10 large bags)',
       ],
       features: pricing?.tiers?.starter?.features || [
-        'Proven 4.8/5 star product',
+        'Proven repeat-purchase product',
         'Lightweight shipping advantage',
         'Basic POS display included',
         'Email support & setup guide',

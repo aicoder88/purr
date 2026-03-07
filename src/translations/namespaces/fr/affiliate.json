@@ -12,8 +12,8 @@
     "calculator": {
       "title": "Calculez Vos Gains Potentiels",
       "subtitle": "Ajustez les curseurs pour voir combien vous pourriez gagner avec la commission de 30% de Purrify",
-      "standardProduct": "50g Standard (24,99$) - Références/Mois",
-      "familyPack": "120g Format Familial (44,99$) - Références/Mois",
+      "standardProduct": "50g Standard (14,99$) - Références/Mois",
+      "familyPack": "120g Format Familial (29,99$) - Références/Mois",
       "perSale": "par vente",
       "monthlyIncome": "Revenu Mensuel Estimé",
       "yearlyIncome": "Revenu Annuel Estimé",
@@ -44,7 +44,7 @@
       },
       "benefit2": {
         "title": "Produit à Haute Conversion",
-        "description": "Purrify résout un vrai problème auquel les propriétaires de chats sont confrontés quotidiennement. Avec 4,8/5 étoiles et un taux de satisfaction de 98%, nos produits se vendent tout seuls."
+        "description": "Purrify résout un vrai problème auquel les propriétaires de chats sont confrontés quotidiennement. Le produit est simple à expliquer, facile à démontrer et pensé pour le réachat."
       },
       "benefit3": {
         "title": "Suivi en Temps Réel",
@@ -76,7 +76,7 @@
     "faq": {
       "title": "Questions Fréquemment Posées",
       "question1": "Combien puis-je gagner?",
-      "answer1": "Vous gagnez une commission de 30% sur chaque vente. Si vous parrainez 10 clients achetant le format standard à 24,99$ mensuellement, c'est 74,97$/mois en revenu récurrent. Il n'y a pas de limite à combien vous pouvez gagner.",
+      "answer1": "Vous gagnez une commission de 30% sur chaque vente. Si vous parrainez 10 clients achetant le format standard à 14,99$ mensuellement, c'est 44,97$/mois en revenu récurrent. Il n'y a pas de limite à combien vous pouvez gagner.",
       "question2": "Quand suis-je payé?",
       "answer2": "Les commissions sont payées mensuellement via PayPal, dépôt direct ou chèque. Nous payons le 15 de chaque mois pour les gains du mois précédent. Paiement minimum de 50$.",
       "question3": "Combien de temps durent les cookies?",

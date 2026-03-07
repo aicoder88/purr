@@ -48,7 +48,7 @@
         },
         "customerLoyalty": {
           "title": "Fidélité Client",
-          "highlight": "Note de 4.8/5 étoiles",
+          "highlight": "Favori à rachat régulier",
           "description": "Les clients deviennent des ambassadeurs fidèles. Les rachats mensuels et les recommandations génèrent un revenu stable."
         },
         "completeSupport": {
@@ -78,7 +78,7 @@
       },
       "proven": {
         "title": "Produit éprouvé",
-        "description": "4,8/5 étoiles et fort taux de réachat"
+        "description": "Fort taux de réachat"
       },
       "highDemand": {
         "title": "Forte demande",
@@ -169,7 +169,7 @@
             "Une boîte format grand (10 grands sacs)"
           ],
           "features": [
-            "Produit éprouvé 4.8/5 étoiles",
+            "Produit éprouvé à rachat régulier",
             "Avantage d'expédition légère",
             "Présentoir PLV de base inclus",
             "Support email et guide d'installation",
@@ -389,7 +389,7 @@
     "keyPainPoints": "Points de Douleur Clés",
     "implementation": "Mise en Œuvre",
     "writeYourStory": "Prêt à écrire votre propre histoire de succès ?",
-    "joinSatisfied": "Rejoignez 1 000+ clients satisfaits qui transforment leurs foyers avec Purrify.",
+    "joinSatisfied": "Rejoignez les propriétaires de chats qui transforment leur maison avec Purrify.",
     "shopPurrify": "Acheter Purrify",
     "tryFreeSample": "Essayer un Échantillon Gratuit",
     "moreCustomerStories": "Plus d'Histoires de Clients",

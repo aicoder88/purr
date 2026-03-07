@@ -1,7 +1,7 @@
 const ALLOWED_ORIGINS = [
   process.env.NEXT_PUBLIC_SITE_URL,
-  'https://purrify.ca',
   'https://www.purrify.ca',
+  'https://purrify.ca',
   'http://localhost:3000',
   'http://localhost:3001',
 ].filter(Boolean) as string[];

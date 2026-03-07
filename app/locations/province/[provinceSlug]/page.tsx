@@ -367,11 +367,11 @@ export default async function ProvincePage({ params }: ProvincePageProps) {
             <div className="mt-12 flex flex-wrap justify-center gap-8 text-gray-600 dark:text-gray-400">
               <div className="flex items-center gap-2">
                 <Star className="w-5 h-5 text-yellow-500 dark:text-yellow-400 fill-yellow-500" />
-                <span className="font-semibold">4.8/5 Rating</span>
+                <span className="font-semibold">Real customer feedback</span>
               </div>
               <div className="flex items-center gap-2">
                 <ShieldCheck className="w-5 h-5 text-green-500 dark:text-green-400" />
-                <span className="font-semibold">Trusted by 10,000+</span>
+                <span className="font-semibold">Canada-wide support</span>
               </div>
               <div className="flex items-center gap-2">
                 <Truck className="w-5 h-5 text-blue-500 dark:text-blue-400" />

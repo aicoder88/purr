@@ -76,7 +76,7 @@ interface DashboardStats {
 
 function QuickLinkCard({ code }: { code: string }) {
     const [copied, setCopied] = useState(false);
-    const referralLink = `${process.env.NEXT_PUBLIC_SITE_URL || 'https://purrify.ca'}?ref=${code}`;
+    const referralLink = `${process.env.NEXT_PUBLIC_SITE_URL || 'https://www.purrify.ca'}?ref=${code}`;
 
     const copyLink = async () => {
         await navigator.clipboard.writeText(referralLink);

@@ -242,7 +242,7 @@ ${urlEntries}
       const filename = path.basename(file);
       return `
   <sitemap>
-    <loc>https://purrify.ca/${filename}</loc>
+    <loc>https://www.purrify.ca/${filename}</loc>
     <lastmod>${new Date().toISOString().split('T')[0]}</lastmod>
   </sitemap>`;
     }).join('');

@@ -523,7 +523,7 @@ export default function HowToNeutralizeAmmoniaPageClient() {
               Stop Living with Ammonia Smell
             </h2>
             <p className="text-xl mb-8 opacity-90 max-w-2xl mx-auto">
-              Join 1,000+ cat owners who&apos;ve eliminated litter box ammonia and persistent cat urine odor with Purrify&apos;s activated carbon granules.
+              See how cat owners neutralize litter box ammonia with Purrify&apos;s activated carbon granules.
             </p>
 
             <div className="flex flex-col sm:flex-row gap-4 justify-center">

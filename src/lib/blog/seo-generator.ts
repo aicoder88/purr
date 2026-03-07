@@ -4,7 +4,7 @@ export class SEOGenerator {
   private baseUrl: string;
 
   constructor() {
-    this.baseUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://purrify.ca';
+    this.baseUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://www.purrify.ca';
   }
 
   /**

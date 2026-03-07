@@ -27,8 +27,8 @@ export async function generateMetadata({ params }: LocalizedCaseStudiesPageProps
       ? `Histoires de Réussite - Résultats Clients | ${SITE_NAME}`
       : `Success Stories - Real Customer Results | ${SITE_NAME}`,
     description: isFrench
-      ? "Avant/Après : Voyez comment 1000+ propriétaires de chats ont éliminé les odeurs de litière. Vraies photos, vrais résultats. '95% de réduction des odeurs en 24h'."
-      : "Before & After: See how 1,000+ cat owners eliminated litter box odors. Real photos, real results. '95% odor reduction in 24 hours.'",
+      ? "Études de cas avant/après montrant comment des propriétaires de chats ont amélioré le contrôle des odeurs de litière avec Purrify dans de vraies maisons au Canada."
+      : 'Before-and-after case studies showing how cat owners improved litter box odor control with Purrify in real homes across Canada.',
     keywords: isFrench
       ? ['études de cas purrify', 'histoires succès odeur chat', 'résultats clients', 'avant après']
       : ['Purrify case studies', 'cat odor success stories', 'customer results', 'before and after'],

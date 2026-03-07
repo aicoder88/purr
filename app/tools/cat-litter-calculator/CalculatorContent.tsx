@@ -724,7 +724,7 @@ export default function CalculatorContent() {
                 {copy.ctaBody}
               </p>
               <div className="flex flex-col sm:flex-row gap-4 w-full sm:w-auto justify-center">
-                <Link href={localizePath('/free', locale)}>
+                <Link href={localizePath('/products/trial-size', locale)}>
                   <Button size="lg" className="w-full sm:w-auto bg-white dark:bg-gray-800 text-green-700 dark:text-green-300 hover:bg-gray-100 dark:hover:bg-gray-700 h-14 px-8 text-lg font-bold rounded-xl shadow-lg border-none hover:scale-105 transition-transform">
                     {copy.ctaPrimary}
                   </Button>

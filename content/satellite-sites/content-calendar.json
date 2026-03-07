@@ -137,17 +137,17 @@
   ],
   "purrifyLinkingStrategy": {
     "primaryCTAs": [
-      "https://purrify.ca/products/trial-size?utm_source={site}&utm_medium=article&utm_campaign=satellite",
-      "https://purrify.ca/products/family-pack?utm_source={site}&utm_medium=article&utm_campaign=satellite"
+      "https://www.purrify.ca/products/trial-size/?utm_source={site}&utm_medium=article&utm_campaign=satellite",
+      "https://www.purrify.ca/products/?utm_source={site}&utm_medium=article&utm_campaign=satellite"
     ],
     "contextualLinks": [
-      "https://purrify.ca/learn/how-it-works",
-      "https://purrify.ca/learn/science",
-      "https://purrify.ca/learn/safety",
-      "https://purrify.ca/reviews",
-      "https://purrify.ca/learn/how-to-use-deodorizer",
-      "https://purrify.ca/learn/compatible-litters",
-      "https://purrify.ca/learn/activated-carbon-benefits"
+      "https://www.purrify.ca/learn/how-it-works",
+      "https://www.purrify.ca/learn/science",
+      "https://www.purrify.ca/learn/safety",
+      "https://www.purrify.ca/reviews",
+      "https://www.purrify.ca/learn/how-to-use-deodorizer",
+      "https://www.purrify.ca/learn/compatible-litters",
+      "https://www.purrify.ca/learn/activated-carbon-benefits"
     ],
     "guidelines": [
       "Every article should include at least one contextual link to Purrify",

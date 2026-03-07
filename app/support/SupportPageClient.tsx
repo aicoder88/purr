@@ -63,9 +63,9 @@ const SUPPORT_COPY: Record<SupportedLocale, SupportCopy> = {
     responseLabel: '24h response',
     phoneLabel: 'Phone',
     phoneHours: 'Mon-Fri 9AM-5PM EST',
-    whatsappLabel: 'WhatsApp',
-    whatsappDescription: 'Chat with us',
-    whatsappResponse: 'Usually within 1 hour',
+    whatsappLabel: 'Message Us',
+    whatsappDescription: 'Send a support email directly',
+    whatsappResponse: 'Usually within 1 business day',
     popularTitlePrefix: 'Popular',
     popularTitleHighlight: 'Help Topics',
     ctaTitle: 'Still Have Questions?',
@@ -120,9 +120,9 @@ const SUPPORT_COPY: Record<SupportedLocale, SupportCopy> = {
     responseLabel: 'Reponse sous 24h',
     phoneLabel: 'Telephone',
     phoneHours: 'Lun-Ven 9h-17h EST',
-    whatsappLabel: 'WhatsApp',
-    whatsappDescription: 'Discutez avec nous',
-    whatsappResponse: 'En general sous 1 heure',
+    whatsappLabel: 'Envoyez-nous un message',
+    whatsappDescription: 'Envoyez un courriel directement au support',
+    whatsappResponse: 'Generalement sous 1 jour ouvrable',
     popularTitlePrefix: 'Sujets',
     popularTitleHighlight: 'populaires',
     ctaTitle: 'Encore des questions?',
@@ -289,7 +289,7 @@ export default function SupportPageClient() {
               </div>
             </a>
 
-            <a href="https://wa.me/385993433344?text=Hi%20I%27m%20interested%20in%20Purrify" target="_blank" rel="noopener noreferrer nofollow" className="group">
+            <a href="mailto:hello@purrify.ca?subject=Purrify%20support" className="group">
               <div className="bg-white dark:bg-gray-800 p-6 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 border-2 border-transparent hover:border-purple-300 dark:hover:border-purple-600 transform hover:-translate-y-1">
                 <MessageCircle className="w-12 h-12 text-green-600 dark:text-green-400 mb-4" />
                 <h3 className="font-heading text-xl font-bold mb-2 text-gray-900 dark:text-white">{copy.whatsappLabel}</h3>

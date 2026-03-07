@@ -150,7 +150,7 @@ export const fr = {
     shippingCalculated: "Frais de livraison calculés à la caisse",
     startAutoship: "Activer l'abonnement",
     buyNow: "Acheter maintenant",
-    linkComingSoon: "Lien de paiement bientôt disponible",
+    linkComingSoon: "Voir les options d'achat",
     recommended: "Recommandé",
     perMonth: "≈ {price}/mois",
     saveVsOneTime: "Économisez {percent}% vs achat unique",
@@ -310,7 +310,7 @@ export const fr = {
     },
     highlyRated: {
       title: "Hautement Apprécié",
-      description: "Noté 4.8/5 par plus de 1000 propriétaires de chats satisfaits."
+      description: "Apprécié par des propriétaires de chats partout au Canada."
     }
   },
   // Made in Canada / Ingredients Section
@@ -917,7 +917,7 @@ export const fr = {
     chooseThisSize: "Choisir Cette Taille",
     chosenByCustomers: "🔥 68% des clients choisissent cette offre",
     whyChoosePurrify: "Pourquoi Choisir Purrify ?",
-    joinThousands: "Rejoignez 1 000+ propriétaires de chats qui font confiance à Purrify",
+    joinThousands: "Rejoignez les propriétaires de chats qui font confiance à Purrify",
     happyCustomers: "Clients Satisfaits",
     averageRating: "Note Moyenne",
     satisfactionRate: "Taux de Satisfaction",
@@ -1014,7 +1014,7 @@ export const fr = {
     keyPainPoints: "Points de Douleur Clés",
     implementation: "Mise en Œuvre",
     writeYourStory: "Prêt à écrire votre propre histoire de succès ?",
-    joinSatisfied: "Rejoignez 1 000+ clients satisfaits qui transforment leurs foyers avec Purrify.",
+    joinSatisfied: "Rejoignez les propriétaires de chats qui transforment leur maison avec Purrify.",
     shopPurrify: "Acheter Purrify",
     tryFreeSample: "Essayer un Échantillon Gratuit",
     moreCustomerStories: "Plus d'Histoires de Clients",
@@ -1039,7 +1039,7 @@ export const fr = {
     freeShippingIncluded: "Livraison gratuite incluse",
     priorityCustomerSupport: "Support client prioritaire",
     startAutoship: "Activer l'abonnement",
-    linkComingSoon: "Lien de paiement bientôt disponible",
+    linkComingSoon: "Voir les options d'achat",
     quarterlyBilling: "Facturé tous les 3 mois",
     autoshipHero: "Abonnement & économies",
     autoshipHighlight: "S'abonner et économiser",
@@ -1820,7 +1820,7 @@ export const fr = {
         },
         customerLoyalty: {
           title: "Fidélité Client",
-          highlight: "Note de 4.8/5 étoiles",
+          highlight: "Favori à rachat régulier",
           description: "Les clients deviennent des ambassadeurs fidèles. Les rachats mensuels et les recommandations génèrent un revenu stable."
         },
         completeSupport: {
@@ -1850,7 +1850,7 @@ export const fr = {
       },
       proven: {
         title: "Produit éprouvé",
-        description: "4,8/5 étoiles et fort taux de réachat"
+        description: "Fort taux de réachat"
       },
       highDemand: {
         title: "Forte demande",
@@ -1941,7 +1941,7 @@ export const fr = {
             "Une boîte format grand (10 grands sacs)"
           ],
           features: [
-            "Produit éprouvé 4.8/5 étoiles",
+            "Produit éprouvé à rachat régulier",
             "Avantage d'expédition légère",
             "Présentoir PLV de base inclus",
             "Support email et guide d'installation",
@@ -2415,7 +2415,7 @@ export const fr = {
       chooseYourPerfectSize: "Choisissez Votre Taille Parfaite",
       allSizesDeliver: "Toutes les tailles offrent la même élimination puissante des odeurs. Choisissez en fonction de la taille de votre foyer et de la fréquence d'utilisation.",
       whyChoosePurrify: "Pourquoi Choisir Purrify ?",
-      joinThousands: "Rejoignez 1 000+ parents de chats satisfaits qui font confiance à Purrify",
+      joinThousands: "Rejoignez les parents de chats qui font confiance à Purrify",
       happyCustomers: "Clients Satisfaits",
       averageRating: "Note Moyenne",
       satisfactionRate: "Taux de Satisfaction",
@@ -2556,8 +2556,8 @@ export const fr = {
     calculator: {
       title: "Calculez Vos Gains Potentiels",
       subtitle: "Ajustez les curseurs pour voir combien vous pourriez gagner avec la commission de 30% de Purrify",
-      standardProduct: "50g Standard (24,99$) - Références/Mois",
-      familyPack: "120g Format Familial (44,99$) - Références/Mois",
+      standardProduct: "50g Standard (14,99$) - Références/Mois",
+      familyPack: "120g Format Familial (29,99$) - Références/Mois",
       perSale: "par vente",
       monthlyIncome: "Revenu Mensuel Estimé",
       yearlyIncome: "Revenu Annuel Estimé",
@@ -2588,7 +2588,7 @@ export const fr = {
       },
       benefit2: {
         title: "Produit à Haute Conversion",
-        description: "Purrify résout un vrai problème auquel les propriétaires de chats sont confrontés quotidiennement. Avec 4,8/5 étoiles et un taux de satisfaction de..."
+        description: "Purrify résout un vrai problème auquel les propriétaires de chats sont confrontés quotidiennement. Le produit est simple à expliquer, facile à démontrer et pensé pour le réachat."
       },
       benefit3: {
         title: "Suivi en Temps Réel",
@@ -2620,7 +2620,7 @@ export const fr = {
     faq: {
       title: "Questions Fréquemment Posées",
       question1: "Combien puis-je gagner?",
-      answer1: "Vous gagnez une commission de 30% sur chaque vente. Si vous parrainez 10 clients achetant le format standard à 24,99$ mensuellement, c'est 74,97$/mois en revenu récurrent. Il n'y a pas de limite à combien vous pouvez gagner.",
+      answer1: "Vous gagnez une commission de 30% sur chaque vente. Si vous parrainez 10 clients achetant le format standard à 14,99$ mensuellement, c'est 44,97$/mois en revenu récurrent. Il n'y a pas de limite à combien vous pouvez gagner.",
       question2: "Quand suis-je payé?",
       answer2: "Les commissions sont payées mensuellement via PayPal, dépôt direct ou chèque. Nous payons le 15 de chaque mois pour les gains du mois précédent. Paiement minimum de 50$.",
       question3: "Combien de temps durent les cookies?",
@@ -3376,7 +3376,7 @@ export const fr = {
     provinceWide: {
       heading: "Les propriétaires de chats partout au {province} adorent Purrify",
       description: "Rejoignez des milliers de parents de chats satisfaits au {province} qui ont éliminé les odeurs de litière pour de bon.",
-      averageRating: "⭐ Note moyenne de 4.8/5",
+      averageRating: "⭐ Retours clients réels",
       happyHomes: "🏠 {audience}+ foyers heureux",
       fastShipping: "🚚 Livraison rapide au {province}"
     },
@@ -3562,7 +3562,7 @@ export const fr = {
     trustSection: {
       heading: "Pourquoi les Clients Font Confiance à Purrify",
       verifiedTitle: "Avis clients",
-      verifiedDesc: "Nous publierons avis et notes dès qu'un système d'avis tiers sera en place.",
+      verifiedDesc: "Les pages produit peuvent afficher des notes approuvées et des badges d'achat lorsque des avis sont disponibles.",
       ratingTitle: "Science et ressources",
       ratingDesc: "Consultez les citations et les guides pour vérifier les affirmations clés.",
       customersTitle: "Guides pratiques",

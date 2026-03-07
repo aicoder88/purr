@@ -246,7 +246,7 @@ export default function AmmoniaSmellPageClient() {
               ammonia-trapping material available.
             </p>
             <p className="text-lg text-gray-600 dark:text-gray-300">
-              Join 1,000+ satisfied cat owners who&apos;ve eliminated litter box odors for good.
+              See how cat owners build a fresher litter routine without changing litter brands.
             </p>
           </div>
 
@@ -287,7 +287,7 @@ export default function AmmoniaSmellPageClient() {
               <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent flex items-end">
                 <div className="p-8 text-white dark:text-gray-100">
                   <h3 className="font-heading text-2xl font-bold mb-2">Your Cat Deserves Better</h3>
-                  <p className="text-lg opacity-90">Join 1,000+ happy cat owners</p>
+                  <p className="text-lg opacity-90">Fresh-home routines for cat owners</p>
                 </div>
               </div>
             </div>

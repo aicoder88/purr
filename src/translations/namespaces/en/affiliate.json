@@ -12,8 +12,8 @@
     "calculator": {
       "title": "Calculate Your Potential Earnings",
       "subtitle": "Adjust the sliders to see how much you could earn with Purrify's 30% commission",
-      "standardProduct": "50g Standard ($24.99) - Referrals/Month",
-      "familyPack": "240g Family Size ($54.99) - Referrals/Month",
+      "standardProduct": "50g Standard ($14.99) - Referrals/Month",
+      "familyPack": "120g Family Size ($29.99) - Referrals/Month",
       "perSale": "per sale",
       "monthlyIncome": "Estimated Monthly Income",
       "yearlyIncome": "Estimated Yearly Income",
@@ -44,7 +44,7 @@
       },
       "benefit2": {
         "title": "High-Converting Product",
-        "description": "Purrify solves a real problem cat owners face daily. With 4.8/5 stars and 98% satisfaction rate, our products sell themselves."
+        "description": "Purrify solves a real problem cat owners face daily. The product is easy to explain, easy to demo, and built for repeat purchase."
       },
       "benefit3": {
         "title": "Real-Time Tracking",
@@ -76,7 +76,7 @@
     "faq": {
       "title": "Frequently Asked Questions",
       "question1": "How much can I earn?",
-      "answer1": "You earn 30% commission on every sale. If you refer 10 customers buying the $24.99 standard size monthly, that's $74.97/month in recurring income. There's no limit to how much you can earn.",
+      "answer1": "You earn 30% commission on every sale. If you refer 10 customers buying the $14.99 standard size monthly, that's $44.97/month in recurring income. There's no limit to how much you can earn.",
       "question2": "When do I get paid?",
       "answer2": "Commissions are paid monthly via PayPal, direct deposit, or check. We pay on the 15th of each month for the previous month's earnings. Minimum payout is $50.",
       "question3": "How long do cookies last?",

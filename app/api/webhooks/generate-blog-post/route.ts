@@ -270,7 +270,7 @@ export async function POST(req: Request): Promise<Response> {
         id: fullPost.id,
         slug: fullPost.slug,
         title: fullPost.title,
-        url: `https://purrify.ca/blog/${fullPost.slug}`,
+        url: `https://www.purrify.ca/blog/${fullPost.slug}`,
         publishDate: fullPost.publishDate
       }
     });

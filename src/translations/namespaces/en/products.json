@@ -25,7 +25,7 @@
     "shippingCalculated": "Shipping calculated at checkout",
     "startAutoship": "Start Autoship",
     "buyNow": "Buy Now",
-    "linkComingSoon": "Payment link coming soon",
+    "linkComingSoon": "See purchase options",
     "recommended": "Most recommended",
     "perMonth": "≈ {price}/month",
     "saveVsOneTime": "Save {percent}% vs one-time",
@@ -63,7 +63,7 @@
       {
         "id": "regular",
         "name": "Regular Size",
-        "subtitle": "120g · Regular Size",
+        "subtitle": "50g · Regular Size",
         "duration": "7+ days per application",
         "cats": "1-2 cats",
         "features": [
@@ -77,7 +77,7 @@
       {
         "id": "large",
         "name": "Family Size",
-        "subtitle": "240g · Best Value Per Gram",
+        "subtitle": "120g · Best Value Per Gram",
         "duration": "7+ days per application",
         "cats": "3+ cats",
         "features": [
@@ -146,7 +146,7 @@
       "feature": "Feature",
       "trial": "12g Trial",
       "regular": "120g Regular Size",
-      "large": "240g Family Size"
+      "large": "120g Family Size"
     },
     "units": {
       "cat": "Cat",
@@ -166,7 +166,7 @@
       },
       {
         "title": "Customer Reviews",
-        "description": "See what 1,000+ satisfied customers are saying about their Purrify experience.",
+        "description": "See what cat owners are saying about their Purrify experience.",
         "link": "/reviews"
       },
       {
@@ -192,12 +192,12 @@
       },
       "regular": {
         "question": "One or two cats at home?",
-        "answer": "Regular Size (120g)",
+        "answer": "Regular Size (50g)",
         "detail": "Most popular size. Lasts 7+ days per application. Use more, stays fresh longer."
       },
       "large": {
         "question": "Running a multi-cat household?",
-        "answer": "Family Size (240g)",
+        "answer": "Family Size (120g)",
         "detail": "Best value per gram. Same powerful formula, double the supply."
       }
     },
@@ -228,7 +228,7 @@
       },
       "regular": {
         "name": "Regular Size",
-        "subtitle": "120g · Regular Size",
+        "subtitle": "50g · Regular Size",
         "features": [
           "7+ days freshness per application",
           "Use more for extended freshness",
@@ -238,7 +238,7 @@
       },
       "large": {
         "name": "Family Size",
-        "subtitle": "240g · Best Value Per Gram",
+        "subtitle": "120g · Best Value Per Gram",
         "features": [
           "7+ days freshness per application",
           "Best value per gram",
@@ -285,7 +285,7 @@
         "link": "/learn/how-it-works"
       },
       {
-        "title": "What 1,000+ Cat Parents Said",
+        "title": "What Cat Parents Said",
         "description": "See what satisfied customers are saying about their Purrify experience.",
         "link": "/reviews"
       },
@@ -314,16 +314,16 @@
     "freeShippingIncluded": "Free shipping included",
     "priorityCustomerSupport": "Priority customer support",
     "startAutoship": "Start Autoship",
-    "linkComingSoon": "Payment link coming soon",
+    "linkComingSoon": "See purchase options",
     "quarterlyBilling": "Billed every 3 months",
     "autoshipHero": "Autoship & Save",
     "autoshipHighlight": "Subscribe & Save",
     "standardPlanTitle": "Quarterly Autoship – 3 × 50g",
     "standardDescription": "Perfect for single-cat households that want fresh odor control every month.",
     "includesThreeStandard": "Includes 3 × 50g bags delivered together",
-    "familyPlanTitle": "Best Value Autoship – 3 × Regular size 120g",
+    "familyPlanTitle": "Best Value Autoship – 3 × Family Size 120g",
     "familyDescription": "Designed for multi-cat and allergy-prone homes. Our best price per scoop.",
-    "includesThreeFamily": "Includes 3 × Regular size 120g packs (delivered together)",
+    "includesThreeFamily": "Includes 3 × Family Size 120g packs (delivered together)",
     "bestValueBadge": "Best Value",
     "save": "Save",
     "joinThePurrifyFamily": "Join the Purrify Family"

@@ -150,7 +150,7 @@ export const en = {
     shippingCalculated: "Shipping calculated at checkout",
     startAutoship: "Start Autoship",
     buyNow: "Buy Now",
-    linkComingSoon: "Payment link coming soon",
+    linkComingSoon: "See purchase options",
     recommended: "Most recommended",
     perMonth: "≈ {price}/month",
     saveVsOneTime: "Save {percent}% vs one-time",
@@ -174,7 +174,7 @@ export const en = {
     },
     socialProof: {
       line1: 'No Perfumes. No Chemicals.',
-      line2: 'Loved by 1,000+ Cat Parents',
+      line2: 'Loved by Cat Parents Across Canada',
     },
     moneyBack: {
       line1: '30-Day Guarantee',
@@ -204,9 +204,9 @@ export const en = {
     instantly: "Water-filter grade activated carbon traps odor at the source.",
     description: "One sprinkle neutralizes litter box ammonia without perfumes or cover-ups.",
     socialProof: {
-      trustNumber: "1,000+",
+      trustNumber: "Canada-wide",
       trustText: "happy cat parents across Canada",
-      ratingText: "4.8/5 — 'I can finally have guests over without apologizing!'",
+      ratingText: "Fresh-home routines, no perfumes.",
       retailerQuote: "\"My clients tell me it gets rid of most, or all of the smell, and the cats don't even notice it!\" — Gabriel, owner of a Pitou Minou chain pet store"
     },
     pricing: {
@@ -253,7 +253,7 @@ export const en = {
       freeShippingOver: "Free shipping on orders over $50",
       thirtyDayGuarantee: "30-Day Guarantee",
       getFreeSample: "Send Me a Free Bag →",
-      soldThisWeek: "87 sold this week",
+      soldThisWeek: "Fast-moving favorite",
       limitedStock: "Limited winter stock",
       moneyBackGuarantee: "30-Day Money-Back Guarantee"
     }
@@ -496,7 +496,7 @@ export const en = {
       },
       emailPlaceholder: "Enter your email address",
       ctaButton: "Get 10% Off Your First Order",
-      joinText: "Join 1,000+ happy customers • No spam, unsubscribe anytime",
+      joinText: "Join the Purrify email list • No spam, unsubscribe anytime",
       welcomeMessage: "Welcome to Purrify!",
       features: {
         weeklyTips: "✓ Weekly tips",
@@ -506,7 +506,7 @@ export const en = {
     },
     popup: {
       title: "Get {discount}% Off Your First Order!",
-      description: "Join 1,000+ happy customers and get exclusive tips, discounts, and early access to new products.",
+      description: "Join the Purrify email list for product tips, discounts, and early access to new releases.",
       buttonText: "Get {discount}% Off Now"
     },
     footer: {
@@ -931,7 +931,7 @@ export const en = {
     chooseThisSize: "Choose This Size",
     chosenByCustomers: "68% of customers choose this bundle",
     whyChoosePurrify: "Why Choose Purrify?",
-    joinThousands: "Join 1,000+ cat owners who trust Purrify",
+    joinThousands: "Join cat owners who trust Purrify",
     happyCustomers: "Happy Customers",
     averageRating: "Average Rating",
     satisfactionRate: "Satisfaction Rate",
@@ -1028,7 +1028,7 @@ export const en = {
     keyPainPoints: "Key Pain Points",
     implementation: "Implementation",
     writeYourStory: "Ready to write your own success story?",
-    joinSatisfied: "Join 1,000+ satisfied customers transforming their homes with Purrify.",
+    joinSatisfied: "Join cat owners transforming their homes with Purrify.",
     shopPurrify: "Shop Purrify",
     tryFreeSample: "Try a Free Sample",
     moreCustomerStories: "More Customer Stories",
@@ -1048,16 +1048,16 @@ export const en = {
     freeShippingIncluded: "Free shipping included",
     priorityCustomerSupport: "Priority customer support",
     startAutoship: "Start Autoship",
-    linkComingSoon: "Payment link coming soon",
+    linkComingSoon: "See purchase options",
     quarterlyBilling: "Billed every 3 months",
     autoshipHero: "Autoship & Save",
     autoshipHighlight: "Subscribe & Save",
     standardPlanTitle: "Quarterly Autoship – 3 × 50g",
     standardDescription: "Perfect for single-cat households that want fresh odor control every month.",
     includesThreeStandard: "Includes 3 × 50g bags delivered together",
-    familyPlanTitle: "Best Value Autoship – 3 × Regular size 120g",
+    familyPlanTitle: "Best Value Autoship – 3 × Family Size 120g",
     familyDescription: "Designed for multi-cat and allergy-prone homes. Our best price per scoop.",
-    includesThreeFamily: "Includes 3 × Regular size 120g packs (delivered together)",
+    includesThreeFamily: "Includes 3 × Family Size 120g packs (delivered together)",
     bestValueBadge: "Best Value",
     save: "Save",
     joinThePurrifyFamily: "Join the Purrify Family"
@@ -1543,7 +1543,7 @@ export const en = {
       feature: "Feature",
       trial: "12g Trial",
       regular: "120g Regular Size",
-      large: "240g Family Size"
+      large: "120g Family Size"
     },
 
     // Calculation Units
@@ -1567,7 +1567,7 @@ export const en = {
       },
       {
         title: "Customer Reviews",
-        description: "See what 1,000+ satisfied customers are saying about their Purrify experience.",
+        description: "See what cat owners are saying about their Purrify experience.",
         link: "/reviews"
       },
       {
@@ -1598,12 +1598,12 @@ export const en = {
       },
       regular: {
         question: "One or two cats at home?",
-        answer: "Regular Size (120g)",
+        answer: "Regular Size (50g)",
         detail: "Most popular size. Lasts 7+ days per application. Use more, stays fresh longer."
       },
       large: {
         question: "Running a multi-cat household?",
-        answer: "Family Size (240g)",
+        answer: "Family Size (120g)",
         detail: "Best value per gram. Same powerful formula, double the supply."
       }
     },
@@ -1638,7 +1638,7 @@ export const en = {
       },
       regular: {
         name: "Regular Size",
-        subtitle: "120g · Regular Size",
+        subtitle: "50g · Regular Size",
         features: [
           "7+ days freshness per application",
           "Use more for extended freshness",
@@ -1648,7 +1648,7 @@ export const en = {
       },
       large: {
         name: "Family Size",
-        subtitle: "240g · Best Value Per Gram",
+        subtitle: "120g · Best Value Per Gram",
         features: [
           "7+ days freshness per application",
           "Best value per gram",
@@ -1704,7 +1704,7 @@ export const en = {
         link: "/learn/how-it-works"
       },
       {
-        title: "What 1,000+ Cat Parents Said",
+        title: "What Cat Parents Said",
         description: "See what satisfied customers are saying about their Purrify experience.",
         link: "/reviews"
       },
@@ -1883,7 +1883,7 @@ export const en = {
       id: 7,
       category: "product",
       question: "What sizes are available?",
-      answer: "We offer three sizes: 12g Trial Size (just pay $4.76 S&H Canada / $6.39 USA) for first-time users, 50g Regular Size ($14.99 + shipping) for single-cat households, and 120g Large Size ($29.99) for multi-cat homes. The large size delivers the best value per gram, and our autoship bundles include free shipping.",
+      answer: "We offer three sizes: 12g Trial Size (just pay $4.76 S&H Canada / $6.39 USA) for first-time users, 50g Regular Size ($14.99 + shipping) for single-cat households, and 120g Family Size ($29.99) for multi-cat homes. The family size delivers the best value per gram, and our autoship bundles include free shipping.",
       popular: false,
       tags: ["sizes", "pricing", "value"]
     },
@@ -1939,7 +1939,7 @@ export const en = {
       id: 14,
       category: "product",
       question: "Can Purrify help with multiple cats?",
-      answer: "Absolutely! Purrify is especially effective in multi-cat households where odor control is more challenging. We recommend our 120g Large Size for homes with 2-3 cats, as it provides the best value and longest-lasting results.",
+      answer: "Absolutely! Purrify is especially effective in multi-cat households where odor control is more challenging. We recommend our 120g Family Size for homes with 2-3 cats, as it provides the best value and longest-lasting results.",
       popular: false,
       tags: ["multiple cats", "multi-cat", "large size"]
     },
@@ -2271,7 +2271,7 @@ export const en = {
       chooseYourPerfectSize: "Choose Your Perfect Size",
       allSizesDeliver: "All sizes deliver the same powerful odor elimination. Choose based on your household size and usage frequency.",
       whyChoosePurrify: "Turn Cat Odor Problems Into a Thing of the Past",
-      joinThousands: "Join 1,000+ satisfied cat parents who trust Purrify",
+      joinThousands: "Join cat parents who trust Purrify",
       happyCustomers: "Happy Customers",
       averageRating: "Average Rating",
       satisfactionRate: "Satisfaction Rate",
@@ -2281,7 +2281,7 @@ export const en = {
     },
     altText: {
       scientificDiagram: "Scientific diagram showing activated carbon molecular structure with micropores that trap odor molecules",
-      productPackages: "Three Purrify product packages showing different sizes: 12g trial, 120g regular size, and 240g family size",
+      productPackages: "Three Purrify product packages showing different sizes: 12g trial, 50g regular size, and 120g family size",
       microscopicView: "Microscopic view of activated carbon showing porous structure that captures odor molecules",
       happyCat: "Happy cat resting peacefully in a fresh, odor-free home environment",
       happyCatAlt: "Happy cat",
@@ -2390,7 +2390,7 @@ export const en = {
         },
         customerLoyalty: {
           title: "Customer Loyalty",
-          highlight: "4.8/5 star rating",
+          highlight: "Repeat-purchase favorite",
           description: "Customers become loyal advocates. Monthly repurchases and referrals drive steady revenue."
         },
         completeSupport: {
@@ -2420,7 +2420,7 @@ export const en = {
       },
       proven: {
         title: "Proven Product",
-        description: "4.8/5 stars, high repeat purchase rate"
+        description: "Strong repeat-purchase rate"
       },
       highDemand: {
         title: "High Customer Demand",
@@ -2497,7 +2497,7 @@ export const en = {
             "One box of large (10 large bags)"
           ],
           features: [
-            "Proven 4.8/5 star product",
+            "Proven repeat-purchase product",
             "Lightweight shipping advantage",
             "Basic POS display included",
             "Email support & setup guide",
@@ -2786,8 +2786,8 @@ export const en = {
     calculator: {
       title: "Calculate Your Potential Earnings",
       subtitle: "Adjust the sliders to see how much you could earn with Purrify's 30% commission",
-      standardProduct: "50g Standard ($24.99) - Referrals/Month",
-      familyPack: "240g Family Size ($54.99) - Referrals/Month",
+      standardProduct: "50g Standard ($14.99) - Referrals/Month",
+      familyPack: "120g Family Size ($29.99) - Referrals/Month",
       perSale: "per sale",
       monthlyIncome: "Estimated Monthly Income",
       yearlyIncome: "Estimated Yearly Income",
@@ -2818,7 +2818,7 @@ export const en = {
       },
       benefit2: {
         title: "High-Converting Product",
-        description: "Purrify solves a real problem cat owners face daily. With 4.8/5 stars and 98% satisfaction rate, our products sell themselves."
+        description: "Purrify solves a real problem cat owners face daily. The product is easy to explain, easy to demo, and built for repeat purchase."
       },
       benefit3: {
         title: "Real-Time Tracking",
@@ -2850,7 +2850,7 @@ export const en = {
     faq: {
       title: "Frequently Asked Questions",
       question1: "How much can I earn?",
-      answer1: "You earn 30% commission on every sale. If you refer 10 customers buying the $24.99 standard size monthly, that's $74.97/month in recurring income. There's no limit to how much you can earn.",
+      answer1: "You earn 30% commission on every sale. If you refer 10 customers buying the $14.99 standard size monthly, that's $44.97/month in recurring income. There's no limit to how much you can earn.",
       question2: "When do I get paid?",
       answer2: "Commissions are paid monthly via PayPal, direct deposit, or check. We pay on the 15th of each month for the previous month's earnings. Minimum payout is $50.",
       question3: "How long do cookies last?",
@@ -3365,7 +3365,7 @@ export const en = {
     provinceWide: {
       heading: "Cat Owners Across {province} Love Purrify",
       description: "Join thousands of satisfied cat parents in {province} who've eliminated litter box odors for good.",
-      averageRating: "⭐ 4.8/5 Average Rating",
+      averageRating: "⭐ Real customer feedback",
       happyHomes: "🏠 {audience}+ Happy Homes",
       fastShipping: "🚚 Fast {province} Shipping"
     },
@@ -3551,7 +3551,7 @@ export const en = {
     trustSection: {
       heading: "Why Customers Trust Purrify",
       verifiedTitle: "Customer Feedback",
-      verifiedDesc: "We will publish reviews and ratings once a third-party review system is in place.",
+      verifiedDesc: "Product pages can show approved customer ratings and purchase badges when review data is available.",
       ratingTitle: "Science-linked",
       ratingDesc: "See citations and how-to guides to verify key claims.",
       customersTitle: "Helpful Resources",
@@ -3599,7 +3599,7 @@ export const en = {
       allSizes: "All Sizes",
       trial: "12g Trial",
       regular: "50g Regular",
-      large: "120g Large"
+      large: "120g Family"
     },
     sort: {
       newestFirst: "Newest First",

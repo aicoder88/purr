@@ -200,7 +200,7 @@ export default function NaturalCatLitterAdditivePageClient() {
       <section className="py-16 px-4 bg-white dark:bg-gray-800">
         <div className="max-w-4xl mx-auto text-center">
           <h2 className="text-3xl font-heading font-bold mb-8 text-gray-900 dark:text-gray-100">Ready to Try Non-Toxic Cat Litter Deodorizer?</h2>
-          <p className="text-xl mb-8 text-gray-700 dark:text-gray-200">Join 1,000+ satisfied cat owners</p>
+          <p className="text-xl mb-8 text-gray-700 dark:text-gray-200">See why cat owners choose fragrance-free odor control</p>
 
           {/* Solution Image */}
           <div className="mb-12 max-w-3xl mx-auto">

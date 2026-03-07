@@ -141,7 +141,7 @@ export function calculateMilestoneProgress(currentReferrals: number): {
  * Generate social share URLs for a referral code
  */
 export function generateShareUrls(code: string, referrerName: string) {
-  const shareUrl = `${process.env.NEXT_PUBLIC_SITE_URL || 'https://purrify.ca'}/refer/${code}`;
+  const shareUrl = `${process.env.NEXT_PUBLIC_SITE_URL || 'https://www.purrify.ca'}/refer/${code}`;
   const message = `Get $5 off Purrify cat litter deodorizer! Use my code ${code} or click here:`;
   const fullMessage = `${referrerName} wants to share Purrify with you! ${message}`;
 

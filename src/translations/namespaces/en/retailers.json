@@ -48,7 +48,7 @@
         },
         "customerLoyalty": {
           "title": "Customer Loyalty",
-          "highlight": "4.8/5 star rating",
+          "highlight": "Repeat-purchase favorite",
           "description": "Customers become loyal advocates. Monthly repurchases and referrals drive steady revenue."
         },
         "completeSupport": {
@@ -78,7 +78,7 @@
       },
       "proven": {
         "title": "Proven Product",
-        "description": "4.8/5 stars, high repeat purchase rate"
+        "description": "Strong repeat-purchase rate"
       },
       "highDemand": {
         "title": "High Customer Demand",
@@ -154,7 +154,7 @@
             "One box of large (10 large bags)"
           ],
           "features": [
-            "Proven 4.8/5 star product",
+            "Proven repeat-purchase product",
             "Lightweight shipping advantage",
             "Basic POS display included",
             "Email support & setup guide",
@@ -389,7 +389,7 @@
     "keyPainPoints": "Key Pain Points",
     "implementation": "Implementation",
     "writeYourStory": "Ready to write your own success story?",
-    "joinSatisfied": "Join 1,000+ satisfied customers transforming their homes with Purrify.",
+    "joinSatisfied": "Join cat owners transforming their homes with Purrify.",
     "shopPurrify": "Shop Purrify",
     "tryFreeSample": "Try a Free Sample",
     "moreCustomerStories": "More Customer Stories",

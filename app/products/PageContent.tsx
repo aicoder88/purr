@@ -64,7 +64,7 @@ export default function ProductsPage({ locale: localeProp }: PageContentProps = 
 
   const pageDescription = locale === 'fr'
     ? "Découvrez tous les formats Purrify. Du format d'essai gratuit au format familial, trouvez la taille parfaite pour votre foyer."
-    : "★ 4.8 Rating | FREE Trial Available | Shop Purrify activated carbon litter additives. Eliminates odors instantly. Ships to USA & Canada. 30-day guarantee.";
+    : "Compare Purrify sizes, current pricing, and shipping details to find the right activated carbon additive for your household.";
 
   const { breadcrumb } = useEnhancedSEO({
     path: '/products',
@@ -84,27 +84,24 @@ export default function ProductsPage({ locale: localeProp }: PageContentProps = 
       mpn: 'PURRIFY-12G',
       image: 'https://www.purrify.ca/optimized/products/17g-transparent-v2.webp',
       url: `https://www.purrify.ca/${locale === 'fr' ? 'fr/' : ''}products/trial-size`,
-      shippingRate: '4.76',
     },
     {
       id: 'regular',
-      name: 'Purrify 120g - Regular Size Cat Litter Freshener for 1-2 Cats',
-      description: '120g activated charcoal cat litter additive. Flexible dosing for single and dual-cat homes.',
-      sku: 'purrify-120g',
-      mpn: 'PURRIFY-120G',
+      name: 'Purrify 50g Regular Size - Cat Litter Freshener for 1-2 Cats',
+      description: '50g activated charcoal cat litter additive. Flexible dosing for single and dual-cat homes.',
+      sku: 'purrify-50g',
+      mpn: 'PURRIFY-50G',
       image: 'https://www.purrify.ca/optimized/products/60g-transparent.webp',
       url: `https://www.purrify.ca/${locale === 'fr' ? 'fr/' : ''}products/#standard`,
-      shippingRate: '6.99',
     },
     {
       id: 'large',
-      name: 'Purrify 240g Family Size - Cat Litter Freshener for Multi-Cat Homes',
-      description: 'Best value 240g activated charcoal cat litter additive. Built for multi-cat households.',
-      sku: 'purrify-240g',
-      mpn: 'PURRIFY-240G',
+      name: 'Purrify 120g Family Size - Cat Litter Freshener for Multi-Cat Homes',
+      description: 'Best value 120g activated charcoal cat litter additive. Built for multi-cat households.',
+      sku: 'purrify-120g',
+      mpn: 'PURRIFY-120G',
       image: 'https://www.purrify.ca/optimized/products/140g-transparent.webp',
       url: `https://www.purrify.ca/${locale === 'fr' ? 'fr/' : ''}products/#family-pack`,
-      shippingRate: '0',
     },
   ];
 
@@ -144,16 +141,6 @@ export default function ProductsPage({ locale: localeProp }: PageContentProps = 
                   "availability": availabilityUrl,
                   "itemCondition": "https://schema.org/NewCondition",
                   "seller": { "@type": "Organization", "name": "Purrify" },
-                  "shippingDetails": {
-                    "@type": "OfferShippingDetails",
-                    "shippingRate": { "@type": "MonetaryAmount", "value": product.shippingRate, "currency": currency },
-                    "shippingDestination": { "@type": "DefinedRegion", "addressCountry": currency === 'USD' ? 'US' : 'CA' },
-                    "deliveryTime": {
-                      "@type": "ShippingDeliveryTime",
-                      "handlingTime": { "@type": "QuantitativeValue", "minValue": 1, "maxValue": 2, "unitCode": "d" },
-                      "transitTime": { "@type": "QuantitativeValue", "minValue": 2, "maxValue": 5, "unitCode": "d" }
-                    }
-                  },
                   "hasMerchantReturnPolicy": {
                     "@type": "MerchantReturnPolicy",
                     "applicableCountry": ["CA", "US"],

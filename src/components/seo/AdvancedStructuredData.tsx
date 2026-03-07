@@ -123,6 +123,9 @@ interface ProductStructuredData {
 export const ProductStructuredData: React.FC<ProductStructuredDataProps> = ({ product }) => {
   const priceValidUntil = getPriceValidityDate();
   const availabilityUrl = buildAvailabilityUrl(product.availability ?? 'InStock');
+  const canonicalProductUrl = product.id === 'purrify-12g'
+    ? 'https://www.purrify.ca/products/trial-size/'
+    : 'https://www.purrify.ca/products/';
 
   const structuredData: Record<string, unknown> = {
     "@context": "https://schema.org",
@@ -143,7 +146,7 @@ export const ProductStructuredData: React.FC<ProductStructuredDataProps> = ({ pr
       "availability": availabilityUrl,
       "priceValidUntil": priceValidUntil,
       "itemCondition": `https://schema.org/${product.condition || 'NewCondition'}`,
-      "url": `https://www.purrify.ca/products/${product.id}`,
+      "url": canonicalProductUrl,
       "seller": {
         "@type": "Organization",
         "name": "Purrify"

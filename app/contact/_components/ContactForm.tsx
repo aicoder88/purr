@@ -147,7 +147,6 @@ export default function ContactForm({ translations, locale }: ContactFormProps) 
               maxLength={50}
               value={formData.name}
               onChange={handleInputChange}
-              placeholder={locale === 'fr' ? 'Votre nom complet' : 'Your full name'}
               className="h-12 bg-white dark:bg-gray-800 border-gray-200 dark:border-gray-700 focus:border-purple-500 dark:focus:border-purple-500 focus:ring-purple-500/20"
             />
             <p className="text-[10px] text-gray-400 dark:text-gray-500">
@@ -165,7 +164,6 @@ export default function ContactForm({ translations, locale }: ContactFormProps) 
               required
               value={formData.email}
               onChange={handleInputChange}
-              placeholder="your.email@example.com"
               className="h-12 bg-white dark:bg-gray-800 border-gray-200 dark:border-gray-700 focus:border-purple-500 dark:focus:border-purple-500 focus:ring-purple-500/20"
             />
           </div>

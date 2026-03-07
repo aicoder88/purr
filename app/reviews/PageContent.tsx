@@ -58,10 +58,10 @@ export default function Reviews() {
                       </div>
                       <div>
                         <h2 className="font-heading text-lg font-bold text-gray-900 dark:text-gray-50 mb-1">
-                          No On-Site Ratings Yet
+                          How Review Badges Work
                         </h2>
                         <p className="text-sm text-gray-700 dark:text-gray-300 leading-relaxed">
-                          We do not publish aggregate star ratings or "verified review" claims on this page until a third-party review system is in place.
+                          Product pages can show approved customer ratings and purchase badges when review data is available. This page focuses on feedback context and product education.
                         </p>
                       </div>
                     </div>

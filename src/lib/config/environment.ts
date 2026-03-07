@@ -66,7 +66,7 @@ class EnvironmentValidator {
     }
 
     if (!process.env.NEXTAUTH_URL) {
-      errors.push('NEXTAUTH_URL is required (e.g., https://purrify.ca)');
+      errors.push('NEXTAUTH_URL is required (e.g., https://www.purrify.ca)');
     }
 
     if (!process.env.DATABASE_URL) {

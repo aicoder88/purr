@@ -6,13 +6,13 @@
     "ferretCage": "Ferret Cage Smell Killer",
     "headline": "Love Your Cat. Lose The Smell.",
     "eliminateCatOdors": "Love Your Cat. Lose The Smell.",
-    "subheadline": "1,000+ cat parents discovered the 30-second secret to a home that smells like... nothing. For a full week.",
-    "instantly": "1,000+ cat parents discovered the 30-second secret to a home that smells like... nothing. For a full week.",
+    "subheadline": "Cat parents across Canada discovered the 30-second secret to a home that smells like... nothing. For a full week.",
+    "instantly": "Cat parents across Canada discovered the 30-second secret to a home that smells like... nothing. For a full week.",
     "description": "You adore your cat. The litter box smell? Not so much. Purrify uses the same activated carbon found in water filters to trap ammonia at the source — no perfumes, no cover-ups, just fresh air. Keep scrolling to discover why air fresheners actually make litter box smell worse...",
     "socialProof": {
-      "trustNumber": "1,000+",
+      "trustNumber": "Canada-wide",
       "trustText": "happy cat parents across Canada",
-      "ratingText": "4.8/5 — 'I can finally have guests over without apologizing!'"
+      "ratingText": "Fresh-home routines, no perfumes."
     },
     "pricing": {
       "trial": "FREE Trial (just pay $4.76 S&H)",
@@ -57,7 +57,7 @@
       "freeShippingOver": "Free shipping on orders over $50",
       "thirtyDayGuarantee": "30-Day Guarantee",
       "getFreeSample": "Send Me a Free Bag →",
-      "soldThisWeek": "87 sold this week",
+      "soldThisWeek": "Fast-moving favorite",
       "limitedStock": "Limited winter stock",
       "moneyBackGuarantee": "30-Day Money-Back Guarantee"
     }
@@ -196,7 +196,7 @@
   },
   "cta": {
     "title": "Your Home Could Smell This Good By Next Week",
-    "subtitle": "While you're reading this, 1,000+ cat parents across Canada are enjoying homes that smell like... nothing. No ammonia punch. No artificial cover-ups. Just fresh, clean air. One sprinkle. 7 days. A home you're actually excited to invite people into.",
+    "subtitle": "While you're reading this, cat parents across Canada are enjoying homes that smell like... nothing. No ammonia punch. No artificial cover-ups. Just fresh, clean air. One sprinkle. 7 days. A home you're actually excited to invite people into.",
     "buttonText": "Get My Free Trial →",
     "joinText": "30-Day Money-Back Guarantee • Made in Canada 🇨🇦",
     "guarantee": "30-Day Money-Back Guarantee • Made in Canada 🇨🇦",
@@ -237,7 +237,7 @@
       },
       "emailPlaceholder": "Enter your email address",
       "ctaButton": "Get 10% Off Your First Order",
-      "joinText": "Join 1,000+ happy customers • No spam, unsubscribe anytime",
+      "joinText": "Join the Purrify email list • No spam, unsubscribe anytime",
       "welcomeMessage": "Welcome to Purrify!",
       "features": {
         "weeklyTips": "✓ Weekly tips",
@@ -247,7 +247,7 @@
     },
     "popup": {
       "title": "Get {discount}% Off Your First Order!",
-      "description": "Join 1,000+ happy customers and get exclusive tips, discounts, and early access to new products.",
+      "description": "Join the Purrify email list for product tips, discounts, and early access to new releases.",
       "buttonText": "Get {discount}% Off Now"
     },
     "footer": {
@@ -298,7 +298,7 @@
       "chooseYourPerfectSize": "Choose Your Perfect Size",
       "allSizesDeliver": "All sizes deliver the same powerful odor elimination. Choose based on your household size and usage frequency.",
       "whyChoosePurrify": "Turn Cat Odor Problems Into a Thing of the Past",
-      "joinThousands": "Join 1,000+ satisfied cat parents who trust Purrify",
+      "joinThousands": "Join cat parents who trust Purrify",
       "happyCustomers": "Happy Customers",
       "averageRating": "Average Rating",
       "satisfactionRate": "Satisfaction Rate",
@@ -308,7 +308,7 @@
     },
     "altText": {
       "scientificDiagram": "Scientific diagram showing activated carbon molecular structure with micropores that trap odor molecules",
-      "productPackages": "Three Purrify product packages showing different sizes: 12g trial, 120g regular size, and 240g family size",
+      "productPackages": "Three Purrify product packages showing different sizes: 12g trial, 50g regular size, and 120g family size",
       "microscopicView": "Microscopic view of activated carbon showing porous structure that captures odor molecules",
       "happyCat": "Happy cat resting peacefully in a fresh, odor-free home environment",
       "happyCatAlt": "Happy cat",
@@ -445,7 +445,7 @@
     "chooseThisSize": "Choose This Size",
     "chosenByCustomers": "68% of customers choose this bundle",
     "whyChoosePurrify": "Why Choose Purrify?",
-    "joinThousands": "Join 1,000+ cat owners who trust Purrify",
+    "joinThousands": "Join cat owners who trust Purrify",
     "happyCustomers": "Happy Customers",
     "averageRating": "Average Rating",
     "satisfactionRate": "Satisfaction Rate",

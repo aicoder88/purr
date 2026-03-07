@@ -8,7 +8,7 @@ import { SITE_NAME } from '@/lib/constants';
 
 export const metadata: Metadata = {
   title: `Success Stories - Real Customer Results | ${SITE_NAME}`,
-  description: "Before & After: See how 1,000+ cat owners eliminated litter box odors. Real photos, real results. '95% odor reduction in 24 hours.' Ships to USA & Canada.",
+  description: 'Before-and-after case studies showing how cat owners improved litter box odor control with Purrify in real homes across Canada.',
   keywords: ['Purrify case studies', 'cat odor success stories', 'customer results', 'before and after', 'cat litter deodorizer effectiveness'],
   alternates: {
     canonical: 'https://www.purrify.ca/case-studies/',
@@ -21,7 +21,7 @@ export const metadata: Metadata = {
   },
   openGraph: {
     title: 'Success Stories - Real Customer Results',
-    description: 'Before & After: See how 1,000+ cat owners eliminated litter box odors. Real photos, real results in 24 hours.',
+    description: 'Before-and-after case studies showing how cat owners improved litter box odor control with Purrify in real homes across Canada.',
     type: 'website',
     url: 'https://www.purrify.ca/case-studies/',
     images: [
@@ -36,7 +36,7 @@ export const metadata: Metadata = {
   twitter: {
     card: 'summary_large_image',
     title: 'Success Stories - Real Customer Results',
-    description: 'Before & After: Real photos showing 95% odor reduction. See why 1,000+ cat owners switched to Purrify.',
+    description: 'Real photos and practical case studies showing how cat owners improved litter box odor control with Purrify.',
     images: ['https://www.purrify.ca/optimized/products/three-bags-no-bg.webp'],
   },
   other: {
@@ -105,7 +105,7 @@ const caseStudies = [
       ]
     },
     solution: {
-      description: "The Johnsons implemented Purrify across all 3 litter boxes using the 120g large size for maximum value and effectiveness.",
+      description: "The Johnsons implemented Purrify across all 3 litter boxes using the 120g family size for maximum value and flexibility.",
       implementation: [
         "Used 2 teaspoons per litter box weekly",
         "Staggered application across different boxes",
@@ -230,20 +230,20 @@ export default function CaseStudiesPage() {
               {/* Quick Stats */}
               <div className="grid grid-cols-2 md:grid-cols-4 gap-6 max-w-4xl mx-auto">
                 <div className="text-center">
-                  <div className="text-3xl font-bold text-[#FF3131] dark:text-[#FF5050] mb-2">95%</div>
-                  <div className="text-sm text-gray-600 dark:text-gray-300">Average Odor Reduction</div>
+                  <div className="text-3xl font-bold text-[#FF3131] dark:text-[#FF5050] mb-2">3</div>
+                  <div className="text-sm text-gray-600 dark:text-gray-300">Detailed Case Studies</div>
                 </div>
                 <div className="text-center">
                   <div className="text-3xl font-bold text-[#FF3131] dark:text-[#FF5050] mb-2">24hrs</div>
-                  <div className="text-sm text-gray-600 dark:text-gray-300">Time to See Results</div>
+                  <div className="text-sm text-gray-600 dark:text-gray-300">Fastest Reported Relief</div>
                 </div>
                 <div className="text-center">
-                  <div className="text-3xl font-bold text-[#FF3131] dark:text-[#FF5050] mb-2">100%</div>
-                  <div className="text-sm text-gray-600 dark:text-gray-300">Customer Satisfaction</div>
+                  <div className="text-3xl font-bold text-[#FF3131] dark:text-[#FF5050] mb-2">30-90</div>
+                  <div className="text-sm text-gray-600 dark:text-gray-300">Days Tracked</div>
                 </div>
                 <div className="text-center">
-                  <div className="text-3xl font-bold text-[#FF3131] dark:text-[#FF5050] mb-2">7+</div>
-                  <div className="text-sm text-gray-600 dark:text-gray-300">Cats per Study</div>
+                  <div className="text-3xl font-bold text-[#FF3131] dark:text-[#FF5050] mb-2">1-4</div>
+                  <div className="text-sm text-gray-600 dark:text-gray-300">Cats per Home</div>
                 </div>
               </div>
             </div>

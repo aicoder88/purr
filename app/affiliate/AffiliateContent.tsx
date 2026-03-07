@@ -24,8 +24,8 @@ export default function AffiliateContent() {
     const [selectedTier, setSelectedTier] = useState<TierKey>('STARTER');
 
     // Product prices
-    const standardPrice = 24.99;
-    const familyPackPrice = 44.99;
+    const standardPrice = 14.99;
+    const familyPackPrice = 29.99;
 
     // Use selected tier's commission rate
     const commissionRate = TIERS[selectedTier].rate;

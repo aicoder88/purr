@@ -59,9 +59,9 @@ const translations = {
       responseTime: 'Mon-Fri 9am-5pm EST',
     },
     {
-      title: 'WhatsApp',
-      description: 'Message us on WhatsApp',
-      responseTime: 'Usually responds in minutes',
+      title: 'Message Us',
+      description: 'Send a direct support message by email',
+      responseTime: 'Usually responds within one business day',
     },
   ],
   faqs: [
@@ -113,11 +113,11 @@ const contactMethods = [
   },
   {
     iconName: 'MessageCircle',
-    title: translations.contactMethods[2]?.title || 'WhatsApp',
-    value: 'Chat with us',
-    description: translations.contactMethods[2]?.description || 'Message us on WhatsApp',
-    responseTime: translations.contactMethods[2]?.responseTime || 'Usually responds in minutes',
-    action: 'https://wa.me/385993433344?text=Hi%20I%27m%20interested%20in%20Purrify',
+    title: translations.contactMethods[2]?.title || 'Message Us',
+    value: 'hello@purrify.ca',
+    description: translations.contactMethods[2]?.description || 'Send a direct support message by email',
+    responseTime: translations.contactMethods[2]?.responseTime || 'Usually responds within one business day',
+    action: 'mailto:hello@purrify.ca?subject=Purrify%20support',
   },
 ];
 

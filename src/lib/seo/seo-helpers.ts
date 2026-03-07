@@ -112,7 +112,7 @@ export function formatDateISO(date: Date | string): string {
 /**
  * Get full URL from path
  */
-export function getFullUrl(path: string, baseUrl: string = 'https://purrify.ca'): string {
+export function getFullUrl(path: string, baseUrl: string = 'https://www.purrify.ca'): string {
   if (path.startsWith('http')) {
     return path;
   }

@@ -195,7 +195,7 @@ export function SubscriptionOffer() {
                           className="w-full py-6 text-xl font-black bg-gray-300 dark:bg-gray-700 text-gray-700 dark:text-gray-400 opacity-60"
                           disabled
                         >
-                          {t('subscriptionOfferExtended.linkComingSoon') || 'Payment link coming soon'}
+                          {t('subscriptionOfferExtended.linkComingSoon') || 'See purchase options'}
                         </Button>
                       )}
                     </div>
