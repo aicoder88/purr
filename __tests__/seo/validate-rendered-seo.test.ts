@@ -3,6 +3,7 @@
 import http from 'node:http';
 import {
   extractLocValues,
+  isMissingPlaywrightBrowserError,
   validateRenderedHeadSnapshot,
   validateRenderedSeo,
 } from '../../scripts/seo/validate-rendered-seo';
@@ -47,6 +48,15 @@ describe('validate-rendered-seo', () => {
     expect(issues.some((issue) => issue.type === 'hreflang')).toBe(true);
     expect(issues.some((issue) => issue.type === 'head')).toBe(true);
     expect(issues.some((issue) => issue.type === 'json-ld')).toBe(true);
+  });
+
+  it('detects missing Playwright browser launch errors', () => {
+    const error = new Error(
+      "browserType.launch: Executable doesn't exist at /vercel/.cache/ms-playwright/chromium_headless_shell-1200/chrome-headless-shell-linux64/chrome-headless-shell"
+    );
+
+    expect(isMissingPlaywrightBrowserError(error)).toBe(true);
+    expect(isMissingPlaywrightBrowserError(new Error('browserType.launch: failed to start'))).toBe(false);
   });
 
   it('crawls sitemap-discovered pages with Playwright rendering', async () => {

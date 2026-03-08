@@ -79,6 +79,23 @@ interface LocalServerHandle {
   stop: () => Promise<void>;
 }
 
+export function isMissingPlaywrightBrowserError(error: unknown): boolean {
+  if (!(error instanceof Error)) {
+    return false;
+  }
+
+  const message = error.message.toLowerCase();
+
+  return (
+    message.includes('browsertype.launch') &&
+    message.includes("executable doesn't exist")
+  ) || (
+    message.includes('playwright') &&
+    message.includes('install') &&
+    message.includes('browser')
+  );
+}
+
 function trimTrailingSlash(value: string): string {
   return value.replace(/\/+$/, '');
 }

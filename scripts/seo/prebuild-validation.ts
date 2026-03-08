@@ -8,7 +8,7 @@ import { validateAllImages } from './lib/image-validator';
 import { validateAllCanonicals } from './lib/canonical-validator';
 import { validateGeneratedSitemapIndexability } from './lib/sitemap-indexability-validator';
 import { validateNoInlineHeadTags } from './validate-no-inline-head-tags';
-import { validateRenderedSeo } from './validate-rendered-seo';
+import { isMissingPlaywrightBrowserError, validateRenderedSeo } from './validate-rendered-seo';
 import { validateSupportedLocaleSurface } from './validate-supported-locales';
 
 interface ValidationSummary {
@@ -49,11 +49,12 @@ interface ValidationSummary {
       errors: number;
       warnings: number;
       pagesChecked: number;
+      skipped?: boolean;
     };
   };
 }
 
-async function runPrebuildValidation(): Promise<ValidationSummary> {
+export async function runPrebuildValidation(): Promise<ValidationSummary> {
   console.log('🚀 Pre-Build SEO Validation\n');
   console.log('═'.repeat(70) + '\n');
 
@@ -271,9 +272,26 @@ async function runPrebuildValidation(): Promise<ValidationSummary> {
       );
     }
   } catch (error) {
-    console.error(`   ✗ Rendered SEO validation failed: ${error}\n`);
-    summary.passed = false;
-    summary.errors++;
+    if (isMissingPlaywrightBrowserError(error)) {
+      summary.details.renderedSeo = {
+        passed: true,
+        errors: 0,
+        warnings: 1,
+        pagesChecked: 0,
+        skipped: true,
+      };
+      summary.warnings++;
+      console.warn(
+        '   ⚠️  Rendered SEO skipped: Playwright browser executable is not available in this build environment.\n'
+      );
+      console.warn(
+        '      Install Playwright browsers in CI/Vercel if you want this check to run there.\n'
+      );
+    } else {
+      console.error(`   ✗ Rendered SEO validation failed: ${error}\n`);
+      summary.passed = false;
+      summary.errors++;
+    }
   }
 
   return summary;
@@ -322,9 +340,9 @@ async function main() {
     }
 
     if (summary.details.renderedSeo) {
-      console.log(
-        `Rendered SEO: ${summary.details.renderedSeo.errors} errors, ${summary.details.renderedSeo.warnings} warnings (${summary.details.renderedSeo.pagesChecked} pages)`
-      );
+      console.log(summary.details.renderedSeo.skipped
+        ? 'Rendered SEO: skipped (Playwright browser unavailable in build environment)'
+        : `Rendered SEO: ${summary.details.renderedSeo.errors} errors, ${summary.details.renderedSeo.warnings} warnings (${summary.details.renderedSeo.pagesChecked} pages)`);
     }
 
     console.log('═'.repeat(70));
@@ -333,8 +351,8 @@ async function main() {
       console.log('✅ Pre-build validation PASSED - Build can proceed\n');
       process.exit(0);
     } else {
-      console.log('❌ Pre-build validation FAILED - Critical issues found\n');
-      console.log('Fix critical issues before building for production.');
+      console.log('❌ Pre-build validation FAILED - Blocking issues found\n');
+      console.log('Fix blocking issues before building for production.');
       console.log('To bypass this check (not recommended), set SKIP_SEO_VALIDATION=true\n');
       process.exit(1);
     }
@@ -344,10 +362,11 @@ async function main() {
   }
 }
 
-// Check if validation should be skipped
-if (process.env.SKIP_SEO_VALIDATION === 'true') {
-  console.log('⚠️  SEO validation skipped (SKIP_SEO_VALIDATION=true)\n');
-  process.exit(0);
-} else {
-  main();
+if (require.main === module) {
+  if (process.env.SKIP_SEO_VALIDATION === 'true') {
+    console.log('⚠️  SEO validation skipped (SKIP_SEO_VALIDATION=true)\n');
+    process.exit(0);
+  }
+
+  void main();
 }
