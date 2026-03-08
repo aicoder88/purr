@@ -3,8 +3,10 @@ import prisma from '@/lib/prisma';
 import { ContentStore } from '@/lib/blog/content-store';
 import { isValidLocale } from '@/i18n/config';
 import { getPublicEditorialName } from '@/lib/editorial/entities';
+import { unstable_cache } from 'next/cache';
 
 export const revalidate = 3600;
+const BLOG_POSTS_CACHE_CONTROL = 'public, s-maxage=3600, stale-while-revalidate=86400';
 
 interface WpPost {
   title: {
@@ -19,12 +21,10 @@ interface WpPost {
   };
   date: string;
   slug: string;
-  content: {
+  content?: {
     rendered: string;
   };
 }
-
-import { unstable_cache } from 'next/cache';
 
 const getCachedPosts = unstable_cache(
   async (locale: string) => {
@@ -35,12 +35,61 @@ const getCachedPosts = unstable_cache(
   { revalidate: 3600 }
 );
 
+type BlogPostResponse = {
+  title: string;
+  excerpt: string;
+  author: string;
+  date: string;
+  image: string;
+  link: string;
+  locale: 'en' | 'fr';
+  content?: string;
+};
+
+function shouldIncludeContent(value: string | null): boolean {
+  return value === '1' || value === 'true';
+}
+
+function jsonResponse(body: BlogPostResponse[]) {
+  return Response.json(body, {
+    headers: {
+      'Cache-Control': BLOG_POSTS_CACHE_CONTROL,
+    },
+  });
+}
+
+function buildBlogPostResponse(
+  post: {
+    title: string;
+    excerpt: string;
+    author: string;
+    date: string;
+    image: string;
+    link: string;
+    locale?: 'en' | 'fr';
+    content?: string;
+  },
+  includeContent: boolean
+): BlogPostResponse {
+  return {
+    title: post.title,
+    excerpt: post.excerpt,
+    author: post.author,
+    date: post.date,
+    image: post.image,
+    link: post.link,
+    locale: post.locale ?? 'en',
+    ...(includeContent && post.content ? { content: post.content } : {}),
+  };
+}
+
 export async function GET(req: Request): Promise<Response> {
   const { searchParams } = new URL(req.url);
   const limit = searchParams.get('limit');
   const limitNum = limit ? parseInt(limit, 10) : undefined;
   const localeParam = searchParams.get('locale') || 'en';
   const locale = isValidLocale(localeParam) ? localeParam : 'en';
+  const includeContent = shouldIncludeContent(searchParams.get('includeContent'));
 
   try {
     const take = limitNum || 6;
@@ -50,17 +99,22 @@ export async function GET(req: Request): Promise<Response> {
     try {
       const posts = await getCachedPosts(locale);
       if (posts.length > 0) {
-        return Response.json(
-          posts.slice(0, take).map((post) => ({
-            title: post.title,
-            excerpt: post.excerpt,
-            author: getPublicEditorialName(post.author?.name),
-            date: post.publishDate?.includes('T') ? post.publishDate.split('T')[0] : post.publishDate,
-            image: post.featuredImage.url,
-            link: `/${locale}/blog/${post.slug}`,
-            content: post.content,
-            locale: post.locale,
-          }))
+        return jsonResponse(
+          posts.slice(0, take).map((post) =>
+            buildBlogPostResponse(
+              {
+                title: post.title,
+                excerpt: post.excerpt,
+                author: getPublicEditorialName(post.author?.name),
+                date: post.publishDate?.includes('T') ? post.publishDate.split('T')[0] : post.publishDate,
+                image: post.featuredImage.url,
+                link: `/${locale}/blog/${post.slug}`,
+                locale: post.locale,
+                content: post.content,
+              },
+              includeContent
+            )
+          )
         );
       }
     } catch (error) {
@@ -70,7 +124,7 @@ export async function GET(req: Request): Promise<Response> {
     // Check if database is configured
     if (!prisma) {
       console.warn('Database not configured, returning empty blog posts');
-      return Response.json([]);
+      return jsonResponse([]);
     }
 
     const automatedPosts = await prisma.blogPost.findMany({
@@ -78,31 +132,35 @@ export async function GET(req: Request): Promise<Response> {
       orderBy: { publishedAt: 'desc' },
       take,
       select: {
-        id: true,
         slug: true,
         title: true,
         excerpt: true,
-        content: true,
         heroImageUrl: true,
         publishedAt: true,
         createdAt: true,
         author: true,
         locale: true,
+        ...(includeContent ? { content: true } : {}),
       },
     });
 
     if (automatedPosts.length > 0) {
-      return Response.json(
-        automatedPosts.map((post) => ({
-          title: post.title,
-          excerpt: post.excerpt,
-          author: getPublicEditorialName(post.author ?? 'Purrify Research Lab'),
-          date: (post.publishedAt ?? post.createdAt).toISOString().split('T')[0],
-          image: post.heroImageUrl,
-          link: `/${isValidLocale(String(post.locale || '').toLowerCase()) ? String(post.locale).toLowerCase() : 'en'}/blog/${post.slug}`,
-          content: post.content,
-          locale: (post.locale as 'en' | 'fr' | undefined) ?? 'en',
-        }))
+      return jsonResponse(
+        automatedPosts.map((post) =>
+          buildBlogPostResponse(
+            {
+              title: post.title,
+              excerpt: post.excerpt,
+              author: getPublicEditorialName(post.author ?? 'Purrify Research Lab'),
+              date: (post.publishedAt ?? post.createdAt).toISOString().split('T')[0],
+              image: post.heroImageUrl,
+              link: `/${isValidLocale(String(post.locale || '').toLowerCase()) ? String(post.locale).toLowerCase() : 'en'}/blog/${post.slug}`,
+              locale: (post.locale as 'en' | 'fr' | undefined) ?? 'en',
+              ...('content' in post && typeof post.content === 'string' ? { content: post.content } : {}),
+            },
+            includeContent
+          )
+        )
       );
     }
 
@@ -113,7 +171,9 @@ export async function GET(req: Request): Promise<Response> {
     if (!process.env.WORDPRESS_API_URL || process.env.WORDPRESS_API_URL === 'https://your-wordpress-site.com/wp-json/wp/v2') {
       // If WordPress is not configured yet, return sample data
       const posts = limitNum ? sampleBlogPosts.slice(0, limitNum) : sampleBlogPosts;
-      return Response.json(posts);
+      return jsonResponse(
+        posts.map((post) => buildBlogPostResponse(post, includeContent))
+      );
     }
 
     // Fetch posts from WordPress
@@ -134,15 +194,19 @@ export async function GET(req: Request): Promise<Response> {
       date: new Date(post.date).toISOString().split('T')[0],
       image: post._embedded?.['wp:featuredmedia']?.[0]?.source_url || "/optimized/logos/purrify-logo.avif",
       link: `/${locale}/blog/${post.slug}`,
-      content: post.content.rendered,
+      ...(includeContent && post.content?.rendered ? { content: post.content.rendered } : {}),
       locale: 'en'
     }));
 
-    return Response.json(posts);
+    return jsonResponse(
+      posts.map((post) => buildBlogPostResponse(post, includeContent))
+    );
   } catch (error) {
     console.error('Error fetching WordPress posts:', error);
     // If all else fails, return sample data
     const fallbackPosts = limitNum ? sampleBlogPosts.slice(0, limitNum) : sampleBlogPosts;
-    return Response.json(fallbackPosts);
+    return jsonResponse(
+      fallbackPosts.map((post) => buildBlogPostResponse(post, includeContent))
+    );
   }
 }
