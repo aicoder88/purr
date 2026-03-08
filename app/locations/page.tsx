@@ -29,7 +29,7 @@ export async function generateMetadata(): Promise<Metadata> {
     openGraph: {
       title: seoTitle,
       description: seoDescription,
-      url: `${SITE_URL}/locations`,
+      url: `${SITE_URL}/locations/`,
       type: 'website',
       siteName: SITE_NAME,
       locale: 'en_CA',
@@ -41,6 +41,14 @@ export async function generateMetadata(): Promise<Metadata> {
           alt: seoTitle,
         },
       ],
+    },
+    twitter: {
+      card: 'summary_large_image',
+      site: '@purrifyhq',
+      creator: '@purrifyhq',
+      title: seoTitle,
+      description: seoDescription,
+      images: [`${SITE_URL}/optimized/logos/purrify-logo.png`],
     },
     robots: {
       index: true,

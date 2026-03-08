@@ -48,6 +48,7 @@ export interface BusinessProfile {
   businessHours: BusinessHours[];
   socialMedia: {
     facebook?: string;
+    x?: string;
     instagram?: string;
     linkedin?: string;
     youtube?: string;
@@ -115,6 +116,7 @@ export const BUSINESS_PROFILE: BusinessProfile = {
 
   socialMedia: {
     facebook: 'https://www.facebook.com/Purrifyhq',
+    x: 'https://x.com/PurrifyHQ',
     instagram: 'https://www.instagram.com/purrifyhq/',
     linkedin: 'https://www.linkedin.com/company/purrifyhq/',
     youtube: 'https://www.youtube.com/@PurrifyHQ',
@@ -254,7 +256,15 @@ export const getLocalBusinessStructuredData = (location?: BusinessLocation) => {
         opens: hours.opens,
         closes: hours.closes
       })),
-    sameAs: Object.values(BUSINESS_PROFILE.socialMedia).filter(Boolean),
+    sameAs: [
+      BUSINESS_PROFILE.socialMedia.facebook,
+      BUSINESS_PROFILE.socialMedia.x,
+      BUSINESS_PROFILE.socialMedia.instagram,
+      BUSINESS_PROFILE.socialMedia.tiktok,
+      BUSINESS_PROFILE.socialMedia.pinterest,
+      BUSINESS_PROFILE.socialMedia.linkedin,
+      BUSINESS_PROFILE.socialMedia.youtube,
+    ].filter(Boolean),
     areaServed: BUSINESS_PROFILE.serviceAreas.map(area => ({
       '@type': 'State',
       name: area

@@ -320,8 +320,8 @@ describe('validateOrganizationSchema', () => {
     const withSocial = {
       ...validOrganization,
       sameAs: [
-        'https://twitter.com/purrifyhq',
-        'https://facebook.com/purrify',
+        'https://x.com/PurrifyHQ',
+        'https://www.facebook.com/Purrifyhq',
       ],
     };
     const result = validateOrganizationSchema(withSocial);

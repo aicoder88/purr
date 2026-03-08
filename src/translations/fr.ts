@@ -3361,7 +3361,7 @@ export const fr = {
       loginRequired: "Connectez-vous pour acceder a votre tableau de bord de parrainage et commencer a gagner des recompenses.",
       signIn: "Se Connecter",
       retry: "Reessayer",
-      generateDescription: "Generez votre code de parrainage unique et partagez-le avec vos amis. Ils obtiennent 5$ de rabais sur leur premiere commande, et vous recevez 5$ de credit quand ils achetent!",
+      generateDescription: "Generez votre code de parrainage unique et partagez-le avec vos amis. Ils obtiennent 5$ de rabais sur les commandes admissibles de plus de 50$, et vous recevez 5$ de credit apres le paiement de cette commande admissible.",
       generateButton: "Generer Mon Code de Parrainage",
       generating: "Generation en cours..."
     },
@@ -3389,7 +3389,7 @@ export const fr = {
     widget: {
       title: "Donnez 5$, Recevez 5$",
       giveGet: "Donnez 5$, Recevez 5$",
-      description: "Partagez votre code avec vos amis. Ils obtiennent 5$ de rabais, vous recevez 5$ de credit!",
+      description: "Partagez votre code avec vos amis. Ils obtiennent 5$ de rabais sur les commandes admissibles de plus de 50$, et vous recevez 5$ de credit.",
       shareDescription: "Partagez votre code avec vos amis",
       yourCode: "Votre Code de Parrainage",
       shareLink: "Lien de Partage",
@@ -3400,13 +3400,68 @@ export const fr = {
       shareVia: "Partager via",
       howItWorks: "Comment ca marche",
       step1: "Partagez votre code ou lien avec vos amis",
-      step2: "Ils obtiennent 5$ de rabais sur leur premiere commande",
-      step3: "Vous recevez 5$ de credit quand ils achetent"
+      step2: "Ils obtiennent 5$ de rabais sur les commandes admissibles de plus de 50$",
+      step3: "Vous recevez 5$ de credit apres le paiement de cette commande admissible"
     },
     share: {
       email: "Courriel",
       sms: "SMS",
       link: "Lien"
+    },
+    landing: {
+      seo: {
+        title: "Conditions du programme de parrainage | Donnez 5$, recevez 5$",
+        description: "Comprenez comment fonctionne le parrainage Purrify, quelles commandes sont admissibles et quand les credits sont emis. Les rabais et credits s'appliquent aux commandes admissibles de plus de 50$."
+      },
+      hero: {
+        eyebrow: "Programme de parrainage",
+        title: "Une offre de parrainage claire, equitable et digne d'etre indexee.",
+        subtitle: "Partagez Purrify avec quelqu'un qui a vraiment besoin d'une solution anti-odeurs. Cette personne obtient 5$ de rabais sur les commandes admissibles de plus de {minimumOrder}, et vous recevez 5$ de credit apres le paiement de cette commande admissible.",
+        primaryCta: "Ouvrir mon tableau de bord",
+        secondaryCta: "Voir les produits",
+        note: "Connectez-vous pour creer et gerer votre lien de parrainage personnel.",
+        stat1Title: "5$ de rabais",
+        stat1Body: "Appliques seulement aux commandes admissibles de plus de {minimumOrder}.",
+        stat2Title: "5$ de credit",
+        stat2Body: "Emis apres le paiement reussi de la commande parrainee.",
+        stat3Title: "Suivi automatique",
+        stat3Body: "Les commandes admissibles et les credits gagnes apparaissent dans votre tableau de bord."
+      },
+      howItWorks: {
+        title: "Comment le programme fonctionne",
+        step1Title: "Partagez votre code personnel",
+        step1Body: "Chaque client obtient un code de parrainage partageable pour presenter Purrify a ses proches.",
+        step2Title: "Votre ami passe une commande admissible",
+        step2Body: "Le rabais de parrainage s'applique seulement lorsque le sous-total du panier atteint au moins {minimumOrder} avant livraison et taxes.",
+        step3Title: "Le credit est emis apres le paiement",
+        step3Body: "Une fois la commande admissible payee, le parrain recoit un credit de 5$ et le parrainage est marque comme complete."
+      },
+      standards: {
+        title: "Regles du programme",
+        intro: "Ces regles gardent le programme utile pour de vrais clients plutot que pour les abus de coupons.",
+        qualifyingOrderTitle: "Montant minimum requis",
+        qualifyingOrderBody: "Les commandes doivent atteindre {minimumOrder} avant livraison et taxes pour donner droit au rabais de 5$ et au credit de 5$ pour le parrain.",
+        validationTitle: "Le code est valide a la caisse",
+        validationBody: "Les codes de parrainage sont verifies avant qu'un rabais soit conserve, et les auto-parrainages sont refuses.",
+        payoutTitle: "Les credits sont emis apres le paiement",
+        payoutBody: "Les recompenses sont creees seulement apres la confirmation Stripe que la commande est payee, pas lorsqu'un lien est simplement clique.",
+        visibilityTitle: "L'activite admissible est suivie",
+        visibilityBody: "Les parrainages, les montants de commande et les credits gagnes sont enregistres afin que le tableau de bord reflete seulement ce qui est admissible."
+      },
+      faq: {
+        title: "FAQ du parrainage",
+        q1: "Est-ce qu'un simple clic donne une recompense?",
+        a1: "Non. Une recompense est creee seulement apres le paiement reussi d'une commande admissible de plus de {minimumOrder}.",
+        q2: "Quand l'ami obtient-il le rabais de 5$?",
+        a2: "Le rabais de 5$ est applique seulement lorsque le sous-total de la commande atteint au moins {minimumOrder} avant livraison et taxes.",
+        q3: "Ou puis-je voir le suivi de mes parrainages?",
+        a3: "Votre tableau de bord affiche votre code, l'activite de parrainage et le credit disponible qui a reellement ete gagne."
+      },
+      cta: {
+        title: "Partagez-le quand cela aidera vraiment quelqu'un.",
+        body: "Les meilleurs parrainages viennent de clients qui veulent regler un vrai probleme d'odeur, pas de personnes qui cherchent une faille.",
+        button: "Aller a mon tableau de bord"
+      }
     },
     checkout: {
       haveCode: "Avez-vous un code de parrainage? Cliquez ici",
@@ -3421,7 +3476,7 @@ export const fr = {
       referredBy: "Parraine par {name}",
       off: "de rabais",
       remove: "Retirer",
-      discountNote: "Obtenez 5$ de rabais avec le code de parrainage d'un ami"
+      discountNote: "Obtenez 5$ de rabais sur les commandes admissibles de plus de 50$ avec le code d'un ami"
     }
   },
 

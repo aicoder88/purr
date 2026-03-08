@@ -1,18 +1,17 @@
 import { Metadata } from 'next';
 import { CONTACT_INFO } from '@/lib/constants';
+import { buildPageMetadata } from '@/lib/seo/page-metadata';
 
 export const dynamic = 'force-static';
 
-export const metadata: Metadata = {
+export const metadata: Metadata = buildPageMetadata({
   title: 'Privacy Policy - Purrify Cat Litter Additive Data Protection',
-  description: 'Learn how Purrify collects, uses, and protects your information. Read our privacy policy for details on data usage, security, and your rights.',
-  alternates: {
-    canonical: '/privacy-policy',
-  },
-  openGraph: {
-    url: '/privacy-policy',
-  },
-};
+  description:
+    'Learn how Purrify collects, uses, and protects your information. Read our privacy policy for details on data usage, security, and your rights.',
+  path: '/privacy-policy/',
+  imageAlt: 'Purrify privacy policy',
+  lastModified: '2026-03-08',
+});
 
 // English privacy policy content (static for server component)
 const privacyContent = {

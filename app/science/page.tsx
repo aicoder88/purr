@@ -1,7 +1,7 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
 import { Container } from '@/components/ui/container';
-import { SITE_NAME } from '@/lib/constants';
+import { buildPageMetadata } from '@/lib/seo/page-metadata';
 import {
   SCIENTIFIC_CITATIONS,
 } from '@/lib/scientific-citations';
@@ -13,10 +13,13 @@ import { CitationsSection } from './components/CitationsSection';
 import { KeyTakeaways } from './components/KeyTakeaways';
 import { ScienceCTA } from './components/ScienceCTA';
 
-export const metadata: Metadata = {
+export const metadata: Metadata = buildPageMetadata({
   title: 'Science Behind Purrify: Research & Citations',
   description:
     'Explore scientific research and authoritative resources supporting activated carbon for cat litter odor control, with citations to primary and trusted sources.',
+  path: '/science/',
+  image: 'https://www.purrify.ca/optimized/blog/benefits-hero-science.webp',
+  imageAlt: 'The Science Behind Purrify',
   keywords: [
     'activated carbon research',
     'ammonia adsorption',
@@ -24,32 +27,14 @@ export const metadata: Metadata = {
     'peer-reviewed citations',
     'pubmed research',
   ],
-  alternates: {
-    canonical: 'https://www.purrify.ca/science/'
-  },
-  openGraph: {
-    title: 'Science Behind Purrify: Research & Citations',
-    description:
-      'Explore the peer-reviewed scientific research supporting activated carbon for cat litter odor control.',
-    url: 'https://www.purrify.ca/science/',
-    type: 'article',
-    siteName: SITE_NAME,
-    locale: 'en_CA',
-    publishedTime: '2025-01-15',
-    modifiedTime: new Date().toISOString(),
-    images: [
-      {
-        url: 'https://www.purrify.ca/optimized/blog/benefits-hero-science.webp',
-        width: 1200,
-        height: 630,
-        alt: 'The Science Behind Purrify',
-      },
-    ],
-  },
-  other: {
-    'last-modified': '2026-01-27',
-  },
-};
+  openGraphType: 'article',
+  openGraphLocale: 'en_CA',
+  openGraphDescription:
+    'Explore the peer-reviewed scientific research supporting activated carbon for cat litter odor control.',
+  twitterDescription:
+    'Explore the peer-reviewed scientific research supporting activated carbon for cat litter odor control.',
+  lastModified: '2026-01-27',
+});
 
 export default function SciencePage() {
   const articleSchema = {

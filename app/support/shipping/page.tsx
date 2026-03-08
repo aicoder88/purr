@@ -5,35 +5,37 @@ import { Container } from '@/components/ui/container';
 import { Button } from '@/components/ui/button';
 import { CONTACT_INFO, SITE_NAME } from '@/lib/constants';
 import { stripContext } from '@/lib/seo-utils';
+import { buildPageMetadata } from '@/lib/seo/page-metadata';
 import {
   createBreadcrumbSchema,
   createIndexedWebPageSchema,
   serializeSchemaGraph,
 } from '@/lib/seo/indexed-content-schema';
+import { SUPPORT_LAST_MODIFIED, SUPPORT_SOCIAL_IMAGE } from '../support-seo';
 
-export const metadata: Metadata = {
+export const metadata: Metadata = buildPageMetadata({
   title: `Shipping & Returns - ${SITE_NAME} Help Center`,
-  description: 'Purrify shipping options, delivery times, and 30-day money-back guarantee. Free returns on all orders. We ship to USA and Canada with fast, reliable delivery.',
+  description:
+    'Purrify shipping options, delivery times, and 30-day money-back guarantee. We ship to Canada and the United States with current delivery estimates and tracking guidance.',
+  path: '/support/shipping/',
+  image: SUPPORT_SOCIAL_IMAGE,
+  imageAlt: `Shipping and returns - ${SITE_NAME}`,
   keywords: ['shipping', 'delivery', 'tracking', 'shipping costs', 'international shipping'],
   alternates: {
     canonical: 'https://www.purrify.ca/support/shipping/',
     languages: {
-      'en-CA': 'https://www.purrify.ca/support/shipping',
-      'en-US': 'https://www.purrify.ca/support/shipping',
-      'x-default': 'https://www.purrify.ca/support/shipping',
+      'en-CA': 'https://www.purrify.ca/support/shipping/',
+      'en-US': 'https://www.purrify.ca/support/shipping/',
+      'x-default': 'https://www.purrify.ca/support/shipping/',
     },
   },
-  openGraph: {
-    type: 'website',
-    url: 'https://www.purrify.ca/support/shipping/',
-    title: `Shipping Information - ${SITE_NAME} Help Center`,
-    description: 'Learn about Purrify shipping options, delivery times, costs, and tracking.',
-    locale: 'en_CA',
-  },
-  other: {
-    'last-modified': '2025-12-20',
-  },
-};
+  openGraphLocale: 'en_CA',
+  openGraphTitle: `Shipping Information - ${SITE_NAME} Help Center`,
+  openGraphDescription: 'Learn about Purrify shipping options, delivery times, costs, and tracking.',
+  twitterTitle: `Shipping Information - ${SITE_NAME} Help Center`,
+  twitterDescription: 'Learn about Purrify shipping options, delivery times, costs, and tracking.',
+  lastModified: SUPPORT_LAST_MODIFIED,
+});
 
 const shippingZones = [
   {
@@ -93,7 +95,9 @@ const webPageSchema = createIndexedWebPageSchema({
   locale: 'en',
   path: '/support/shipping/',
   title: `Shipping & Returns - ${SITE_NAME} Help Center`,
-  description: 'Purrify shipping options, delivery times, and 30-day money-back guarantee. Free returns on all orders. We ship to USA and Canada with fast, reliable delivery.',
+  description:
+    'Purrify shipping options, delivery times, and 30-day money-back guarantee. We ship to Canada and the United States with current delivery estimates and tracking guidance.',
+  image: SUPPORT_SOCIAL_IMAGE,
 });
 
 const breadcrumbSchema = createBreadcrumbSchema('en', [

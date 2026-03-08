@@ -32,11 +32,11 @@ export async function GET(
       discount: {
         type: 'fixed',
         value: REFERRAL_CONFIG.REFEREE_DISCOUNT,
-        description: `$${REFERRAL_CONFIG.REFEREE_DISCOUNT} off your first order`,
+        description: `$${REFERRAL_CONFIG.REFEREE_DISCOUNT} off qualifying orders over $${REFERRAL_CONFIG.MINIMUM_QUALIFYING_ORDER_SUBTOTAL}`,
       },
       expiresAt: result.expiresAt,
       usesRemaining: result.usesRemaining,
-      message: `${result.referrerName} has shared Purrify with you! Get $${REFERRAL_CONFIG.REFEREE_DISCOUNT} off your first order.`,
+      message: `${result.referrerName} has shared Purrify with you! Get $${REFERRAL_CONFIG.REFEREE_DISCOUNT} off qualifying orders over $${REFERRAL_CONFIG.MINIMUM_QUALIFYING_ORDER_SUBTOTAL}.`,
     });
   } catch (error) {
     const message = error instanceof Error ? error.message : 'Failed to validate referral code';

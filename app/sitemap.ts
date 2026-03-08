@@ -258,11 +258,6 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     priority: 0.6,
     changeFrequency: 'monthly',
   });
-  entries.push(entry('/learn/comparison-lab/', {
-    priority: 0.7,
-    changeFrequency: 'monthly',
-    frPath: '/fr/learn/comparison-lab/',
-  }));
   entries.push(entry('/learn/comparison-lab/methodology/', {
     priority: 0.7,
     changeFrequency: 'monthly',

@@ -1,31 +1,18 @@
 import type { Metadata } from 'next';
 import PageContent from './PageContent';
 import { SITE_NAME, CONTACT_INFO } from '@/lib/constants';
+import { buildPageMetadata } from '@/lib/seo/page-metadata';
 
-export const metadata: Metadata = {
+export const metadata: Metadata = buildPageMetadata({
   title: 'Find Purrify Near You - Store Locator',
-  description: 'Find pet stores selling Purrify near you. Discover our partner retailers across Quebec, Ontario, and British Columbia. 25+ locations across Canada.',
+  description:
+    'Find pet stores selling Purrify near you. Discover our partner retailers across Quebec, Ontario, and British Columbia. 25+ locations across Canada.',
+  path: '/stores/',
+  image: 'https://www.purrify.ca/optimized/logos/purrify-logo.png',
+  imageAlt: 'Purrify Store Locator',
   keywords: ['Purrify stores', 'pet store locator', 'find Purrify', 'cat litter additive retailers', 'where to buy Purrify'],
-  openGraph: {
-    title: 'Find Purrify Near You - Store Locator',
-    description: 'Find pet stores selling Purrify near you. Discover our partner retailers across Quebec, Ontario, and British Columbia.',
-    url: 'https://www.purrify.ca/stores/',
-    images: [
-      {
-        url: 'https://www.purrify.ca/optimized/logos/purrify-logo.png',
-        width: 1200,
-        height: 630,
-        alt: 'Purrify Store Locator',
-      },
-    ],
-  },
-  alternates: {
-    canonical: 'https://www.purrify.ca/stores/',
-  },
-  other: {
-    'last-modified': '2026-02-03',
-  },
-};
+  lastModified: '2026-02-03',
+});
 
 // Organization schema for Store Locator (using Organization instead of LocalBusiness since this is a digital store locator, not a physical location)
 const storeLocatorSchema = {

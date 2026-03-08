@@ -10,6 +10,7 @@ import { ClientLocationsMap } from '@/components/maps/ClientLocationsMap';
 import { Stores } from '@/components/sections/stores';
 
 import { SITE_NAME } from '@/lib/constants';
+import { buildPageMetadata } from '@/lib/seo/page-metadata';
 import { stripContext } from '@/lib/seo-utils';
 import { getTranslation } from '@/translations';
 
@@ -17,28 +18,21 @@ import { getTranslation } from '@/translations';
 const t = getTranslation('en');
 const canonicalUrl = 'https://www.purrify.ca/retailers/';
 
-export const metadata: Metadata = {
+export const metadata: Metadata = buildPageMetadata({
   title: `${SITE_NAME} - ${t.retailers.seo.pageTitle}`,
   description: t.retailers.seo.description,
+  path: '/retailers/',
+  image: 'https://www.purrify.ca/optimized/marketing/happy-owner.avif',
+  imageAlt: 'Purrify wholesale and retailer program',
   keywords: t.retailers.seo.keywords?.split(', ') || [
     'wholesale pet products',
     'cat litter wholesale Canada',
     'pet store supplier',
-    'wholesale pet supplies'
+    'wholesale pet supplies',
   ],
-  alternates: {
-    canonical: canonicalUrl,
-  },
-  openGraph: {
-    title: `${SITE_NAME} - ${t.retailers.seo.pageTitle}`,
-    description: t.retailers.seo.description,
-    url: canonicalUrl,
-    type: 'website',
-  },
-  other: {
-    'last-modified': '2025-12-19',
-  },
-};
+  canonicalUrl,
+  lastModified: '2025-12-19',
+});
 
 // Retailer-focused FAQs for schema
 const retailerFaqs = [

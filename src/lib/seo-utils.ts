@@ -1,4 +1,4 @@
-import { SITE_NAME, SITE_DESCRIPTION, SITE_URL, PRODUCTS, CONTACT_INFO, SOCIAL_LINKS } from './constants';
+import { SITE_NAME, SITE_DESCRIPTION, SITE_URL, PRODUCTS, CONTACT_INFO, SOCIAL_PROFILE_LINKS } from './constants';
 import { getProductPrice, getPriceRange } from './pricing';
 import type { Currency } from './geo/currency-detector';
 import { getLocalBusinessStructuredData, getPrimaryLocation } from './business-profile';
@@ -402,7 +402,7 @@ export const generateOrganizationSchema = (localeInput: string) => {
   const baseUrl = 'https://www.purrify.ca/';
 
   // Filter valid social links (must be URLs)
-  const validSocialLinks = Object.values(SOCIAL_LINKS).filter(
+  const validSocialLinks = Array.from(SOCIAL_PROFILE_LINKS).filter(
     (url): url is string => typeof url === 'string' && url.startsWith('http')
   );
 

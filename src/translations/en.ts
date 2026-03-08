@@ -3348,7 +3348,7 @@ export const en = {
       loginRequired: "Sign in to access your referral dashboard and start earning rewards.",
       signIn: "Sign In",
       retry: "Try Again",
-      generateDescription: "Generate your unique referral code and share it with friends. They get $5 off their first order, and you get $5 credit when they purchase!",
+      generateDescription: "Generate your unique referral code and share it with friends. They get $5 off qualifying orders over $50, and you get $5 credit when that qualifying order is paid.",
       generateButton: "Generate My Referral Code",
       generating: "Generating..."
     },
@@ -3376,7 +3376,7 @@ export const en = {
     widget: {
       title: "Give $5, Get $5",
       giveGet: "Give $5, Get $5",
-      description: "Share your code with friends. They get $5 off, you get $5 credit!",
+      description: "Share your code with friends. They get $5 off qualifying orders over $50, and you get $5 credit.",
       shareDescription: "Share your code with friends",
       yourCode: "Your Referral Code",
       shareLink: "Share Link",
@@ -3387,13 +3387,68 @@ export const en = {
       shareVia: "Share via",
       howItWorks: "How it works",
       step1: "Share your code or link with friends",
-      step2: "They get $5 off their first order",
-      step3: "You get $5 credit when they purchase"
+      step2: "They get $5 off qualifying orders over $50",
+      step3: "You get $5 credit when that qualifying order is paid"
     },
     share: {
       email: "Email",
       sms: "SMS",
       link: "Link"
+    },
+    landing: {
+      seo: {
+        title: "Referral Program Terms | Give $5, Get $5",
+        description: "Learn how Purrify referrals work, which orders qualify, and when credits are issued. Referral savings and rewards apply on qualifying orders over $50."
+      },
+      hero: {
+        eyebrow: "Referral Program",
+        title: "A referral offer that is clear, fair, and worth keeping in the sitemap.",
+        subtitle: "Share Purrify with someone who needs real odor control. They get $5 off qualifying orders over {minimumOrder}, and you earn $5 credit after that qualifying order is paid.",
+        primaryCta: "Open My Referral Dashboard",
+        secondaryCta: "Shop Products",
+        note: "Sign in to create and manage your personal referral link.",
+        stat1Title: "$5 Off",
+        stat1Body: "Applied only on qualifying orders over {minimumOrder}.",
+        stat2Title: "$5 Credit",
+        stat2Body: "Issued after the referred order is successfully paid.",
+        stat3Title: "Tracked Automatically",
+        stat3Body: "Qualified orders and earned credits appear in your dashboard."
+      },
+      howItWorks: {
+        title: "How the program works",
+        step1Title: "Share your personal code",
+        step1Body: "Each customer gets one shareable referral code that points friends to Purrify.",
+        step2Title: "Your friend places a qualifying order",
+        step2Body: "The referral discount applies only when the cart subtotal reaches at least {minimumOrder} before shipping and taxes.",
+        step3Title: "Credit is issued after payment",
+        step3Body: "Once the qualifying order is paid, the referrer earns a $5 credit and the redemption is marked complete."
+      },
+      standards: {
+        title: "Program standards",
+        intro: "These rules keep the program useful for real customers instead of coupon abuse.",
+        qualifyingOrderTitle: "Minimum order required",
+        qualifyingOrderBody: "Orders must reach {minimumOrder} before shipping and taxes to qualify for the $5 referral discount and the $5 referrer credit.",
+        validationTitle: "Code validation happens at checkout",
+        validationBody: "Referral codes are checked before discounts are persisted, and self-referrals are rejected.",
+        payoutTitle: "Credits are issued after payment clears",
+        payoutBody: "Rewards are created only after Stripe confirms the order as paid, not when a link is merely clicked.",
+        visibilityTitle: "Qualified activity is tracked",
+        visibilityBody: "Referral redemptions, order amounts, and earned credits are recorded so the dashboard reflects what actually qualified."
+      },
+      faq: {
+        title: "Referral FAQ",
+        q1: "Does every referral click earn a reward?",
+        a1: "No. A reward is created only after a qualifying order over {minimumOrder} is paid successfully.",
+        q2: "When does the friend get the $5 off?",
+        a2: "The $5 discount is applied only when the checkout subtotal is at least {minimumOrder} before shipping and taxes.",
+        q3: "Where can I see what happened to my referrals?",
+        a3: "Your referral dashboard shows your code, referral activity, and any available credit that has actually been earned."
+      },
+      cta: {
+        title: "Share it when it will genuinely help someone.",
+        body: "The strongest referrals come from customers who want to solve litter box odor for a friend, not from chasing loopholes.",
+        button: "Go To My Dashboard"
+      }
     },
     checkout: {
       haveCode: "Have a referral code? Click here",
@@ -3408,7 +3463,7 @@ export const en = {
       referredBy: "Referred by {name}",
       off: "off",
       remove: "Remove",
-      discountNote: "Get $5 off your order with a friend's referral code"
+      discountNote: "Get $5 off qualifying orders over $50 with a friend's referral code"
     }
   },
 

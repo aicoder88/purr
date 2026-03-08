@@ -3,10 +3,18 @@ import Image from 'next/image';
 import { Check, MapPin, Truck, Leaf, Star, ChevronRight, Home, Zap, Clock } from 'lucide-react';
 import { stripContext } from '@/lib/seo-utils';
 import type { Metadata } from 'next';
+import { SITE_URL } from '@/lib/constants';
+import { buildPageMetadata } from '@/lib/seo/page-metadata';
 
-export const metadata: Metadata = {
-  title: 'Cat Litter Odor Control USA | Free Shipping',
-  description: 'Eliminate cat litter odors at the source. Purrify is coming to USA in Q1 2026! Premium activated carbon cat litter deodorizer for odor control.',
+const US_PAGE_IMAGE = `${SITE_URL}/optimized/blog/realistic-modern-living.webp`;
+
+export const metadata: Metadata = buildPageMetadata({
+  title: 'Cat Litter Odor Control for U.S. Homes | Purrify',
+  description:
+    'Purrify helps U.S. cat households control litter box odor with activated carbon granules. Learn how it works, review shipping guidance, and shop from Canada.',
+  path: '/us/',
+  image: US_PAGE_IMAGE,
+  imageAlt: 'Purrify cat litter odor control for U.S. homes',
   keywords: [
     'cat litter odor control',
     'best cat litter odor control USA',
@@ -16,30 +24,6 @@ export const metadata: Metadata = {
     'natural cat litter deodorizer USA',
     'Purrify USA shipping',
   ],
-  openGraph: {
-    type: 'website',
-    url: 'https://www.purrify.ca/us/',
-    siteName: 'Purrify',
-    title: 'Cat Litter Odor Control USA | Free Shipping',
-    description: 'Eliminate cat litter odors at the source. Purrify is coming to the USA in Q1 2026!',
-    locale: 'en_US',
-    images: [
-      {
-        url: 'https://www.purrify.ca/optimized/blog/realistic-modern-living.webp',
-        width: 1200,
-        height: 800,
-        alt: 'Purrify USA - Coming Q1 2026',
-      },
-    ],
-  },
-  twitter: {
-    card: 'summary_large_image',
-    site: '@purrifyhq',
-    creator: '@purrifyhq',
-    title: 'Cat Litter Odor Control USA | Free Shipping',
-    description: 'Eliminate cat litter odors at the source. Purrify is coming to the USA in Q1 2026!',
-    images: ['https://www.purrify.ca/optimized/blog/realistic-modern-living.webp'],
-  },
   alternates: {
     canonical: 'https://www.purrify.ca/us/',
     languages: {
@@ -49,6 +33,8 @@ export const metadata: Metadata = {
       'x-default': 'https://www.purrify.ca/',
     },
   },
+  openGraphLocale: 'en_US',
+  lastModified: '2026-03-08',
   robots: {
     index: true,
     follow: true,
@@ -59,10 +45,7 @@ export const metadata: Metadata = {
       'max-snippet': -1,
     },
   },
-  other: {
-    'last-modified': '2026-01-15',
-  },
-};
+});
 
 // JSON-LD structured data - WebPage for USA landing page (not a product page)
 const webPageSchema = {
@@ -70,14 +53,13 @@ const webPageSchema = {
   '@type': 'WebPage',
   '@id': 'https://www.purrify.ca/us/',
   url: 'https://www.purrify.ca/us/',
-  name: 'Purrify Activated Carbon Cat Litter Deodorizer - USA Launch',
-  description: 'Premium activated carbon litter additive for extreme odor control, launching in USA Q1 2026.',
+  name: 'Purrify for U.S. Cat Households',
+  description:
+    'Activated carbon granules for cat litter odor control, with current ordering and shipping guidance for customers in the United States.',
   inLanguage: 'en-US',
   primaryImageOfPage: {
     '@type': 'ImageObject',
-    url: 'https://www.purrify.ca/optimized/blog/realistic-modern-living.webp',
-    width: 1200,
-    height: 800,
+    url: US_PAGE_IMAGE,
   },
   isPartOf: {
     '@type': 'WebSite',
@@ -85,27 +67,26 @@ const webPageSchema = {
   },
 };
 
-// LocalBusiness schema for USA
-const localBusinessSchema = {
+const organizationSchema = {
   '@context': 'https://schema.org',
-  '@type': 'LocalBusiness',
-  '@id': 'https://www.purrify.ca/us/#localbusiness',
-  name: 'Purrify USA',
-  description: 'Premium activated carbon cat litter deodorizer coming to USA in Q1 2026',
-  url: 'https://www.purrify.ca/us/',
+  '@type': 'Organization',
+  '@id': 'https://www.purrify.ca/#organization',
+  name: 'Purrify',
+  description:
+    'Activated carbon granules for cat litter odor control, serving customers in Canada and the United States.',
+  url: 'https://www.purrify.ca/',
   logo: 'https://www.purrify.ca/optimized/icons/icon-512.png',
-  image: 'https://www.purrify.ca/optimized/blog/realistic-modern-living.webp',
-  address: {
-    '@type': 'PostalAddress',
-    addressCountry: 'US',
-  },
-  areaServed: {
-    '@type': 'Country',
-    name: 'United States',
-  },
-  priceRange: '$$',
-  paymentAccepted: 'Credit Card, PayPal',
-  currenciesAccepted: 'USD',
+  image: US_PAGE_IMAGE,
+  areaServed: [
+    {
+      '@type': 'Country',
+      name: 'Canada',
+    },
+    {
+      '@type': 'Country',
+      name: 'United States',
+    },
+  ],
 };
 
 export default async function USALandingPage() {
@@ -113,8 +94,8 @@ export default async function USALandingPage() {
   const usBenefits = [
     {
       icon: Clock,
-      title: 'USA Shipping Q1 2026',
-      description: 'We are expanding! USA customers can start ordering our premium deodorizer starting January 2026.',
+      title: 'U.S. Shipping Available',
+      description: 'U.S. customers can order now, with current shipping timelines shown at checkout and on our support pages.',
     },
     {
       icon: Zap,
@@ -128,8 +109,8 @@ export default async function USALandingPage() {
     },
     {
       icon: Truck,
-      title: 'Fast Domestic Shipping',
-      description: 'Once launched, we will ship from US-based warehouses for rapid 2-day delivery.',
+      title: 'Cross-Border Delivery',
+      description: 'Current support guidance lists 5-10 business days standard or 2-5 business days express for U.S. orders.',
     },
   ];
 
@@ -142,7 +123,7 @@ export default async function USALandingPage() {
             '@context': 'https://schema.org',
             '@graph': [
               stripContext(webPageSchema),
-              stripContext(localBusinessSchema),
+              stripContext(organizationSchema),
             ],
           }),
         }}
@@ -165,7 +146,7 @@ export default async function USALandingPage() {
             <div className="order-2 lg:order-1">
               <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-blue-100 dark:bg-blue-900/30 text-blue-700 dark:text-blue-300 text-sm font-semibold mb-6 animate-pulse">
                 <MapPin className="w-4 h-4" />
-                <span>Launching USA Shipping Q1 2026</span>
+                <span>U.S. Shipping Available</span>
               </div>
 
               <h1 className="font-heading text-4xl md:text-6xl font-extrabold mb-6 text-gray-900 dark:text-gray-50 leading-tight">
@@ -174,7 +155,7 @@ export default async function USALandingPage() {
 
               <p className="text-xl text-gray-600 dark:text-gray-300 mb-8 leading-relaxed max-w-xl">
                 Tired of masking cat litter smells? Purrify uses high-grade activated carbon to eliminate
-                odors at the molecular level. Fresh air is coming to American homes in 2026.
+                odors at the molecular level. U.S. customers can order today with cross-border shipping from Canada.
               </p>
 
               <div className="flex flex-col sm:flex-row gap-4 mb-10">
@@ -182,11 +163,11 @@ export default async function USALandingPage() {
                   href="/products/"
                   className="inline-flex items-center justify-center gap-2 bg-[#FF3131] text-white px-10 py-5 rounded-full font-bold text-xl hover:bg-[#E02828] transition-all transform hover:scale-105 shadow-2xl hover:shadow-red-500/20 dark:hover:shadow-red-900/40"
                 >
-                  Join the Waitlist
+                  Shop Purrify
                 </Link>
                 <div className="flex flex-col justify-center text-sm">
-                  <span className="font-bold text-gray-900 dark:text-gray-100">Coming Soon</span>
-                  <span className="text-gray-500 dark:text-gray-400">Shipping starts Q1 2026</span>
+                  <span className="font-bold text-gray-900 dark:text-gray-100">Available Now</span>
+                  <span className="text-gray-500 dark:text-gray-400">Ships from Canada to U.S. addresses</span>
                 </div>
               </div>
 
@@ -276,10 +257,10 @@ export default async function USALandingPage() {
         <section className="bg-cream-50 dark:bg-gray-900 py-24">
           <div className="max-w-6xl mx-auto px-4">
             <h2 className="text-3xl md:text-5xl font-heading font-bold text-center text-gray-900 dark:text-gray-50 mb-4">
-              Coming to America: Q1 2026
+              Odor control for U.S. cat households
             </h2>
             <p className="text-center text-gray-600 dark:text-gray-300 max-w-2xl mx-auto mb-16 text-lg">
-              We&apos;re preparing our US logistics to bring you the highest quality cat litter odor control products starting early next year.
+              Order from Canada today while we continue improving fulfillment and support for customers across the United States.
             </p>
 
             <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-8">
@@ -404,7 +385,7 @@ export default async function USALandingPage() {
                 },
                 {
                   q: "When can I buy Purrify in the USA?",
-                  a: "We are officially launching USA shipping in Q1 2026. You can join our waitlist now to receive a 25% launch discount when we go live."
+                  a: "U.S. customers can order now. Visit our products page for current availability, and check the shipping support page for the latest delivery estimates."
                 }
               ].map((faq, i) => (
                 <div key={i} className="bg-white dark:bg-gray-800 p-8 rounded-3xl border border-gray-100 dark:border-gray-700">
@@ -424,10 +405,10 @@ export default async function USALandingPage() {
 
             <div className="relative z-10">
               <h2 className="text-4xl md:text-6xl font-heading font-extrabold mb-6 leading-tight">
-                Get Fresh Air in Q1 2026
+                Fresh air for U.S. homes
               </h2>
               <p className="text-xl md:text-2xl mb-12 opacity-90 max-w-3xl mx-auto leading-relaxed">
-                Be the first to know when we launch in the US and secure your exclusive <strong>Early Bird Discount</strong>.
+                Shop now or explore how Purrify&apos;s activated carbon granules help control litter box odor at the source.
               </p>
 
               <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
@@ -435,7 +416,7 @@ export default async function USALandingPage() {
                   href="/products/"
                   className="w-full sm:w-auto inline-flex items-center justify-center gap-2 bg-white dark:bg-white text-[#FF3131] px-10 py-5 rounded-full font-bold text-xl hover:bg-gray-100 dark:hover:bg-gray-100 transition-all shadow-xl hover:-translate-y-1"
                 >
-                  Join the Waitlist Now
+                  Shop Purrify Now
                 </Link>
                 <Link
                   href="/blog/"
@@ -448,11 +429,11 @@ export default async function USALandingPage() {
               <div className="mt-12 flex flex-wrap justify-center gap-8 text-sm font-medium opacity-80">
                 <div className="flex items-center gap-2">
                   <Star className="w-4 h-4 fill-white" />
-                  <span>Free Shipping over $35</span>
+                  <span>Tracked U.S. shipping</span>
                 </div>
                 <div className="flex items-center gap-2">
                   <Star className="w-4 h-4 fill-white" />
-                  <span>100% Odor Guarantee</span>
+                  <span>Activated carbon granules</span>
                 </div>
                 <div className="flex items-center gap-2">
                   <Star className="w-4 h-4 fill-white" />

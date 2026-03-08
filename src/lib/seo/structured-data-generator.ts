@@ -5,6 +5,8 @@
  * to enable rich snippets in search results.
  */
 
+import { SOCIAL_PROFILE_LINKS } from '@/lib/constants';
+
 // Schema types for structured data
 interface SchemaBase {
   '@context': string;
@@ -893,7 +895,7 @@ export class StructuredDataGenerator {
         name: this.organizationName,
         url: this.baseUrl,
       },
-      socialProfiles: ['https://www.instagram.com/purrifyhq'],
+      socialProfiles: Array.from(SOCIAL_PROFILE_LINKS),
     });
   }
 

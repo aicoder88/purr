@@ -181,6 +181,7 @@ export const SOCIAL_LINKS = {
   youtube: BUSINESS_PROFILE.socialMedia.youtube ?? 'https://www.youtube.com/@PurrifyHQ',
   tiktok: BUSINESS_PROFILE.socialMedia.tiktok ?? 'https://www.tiktok.com/@purrifyhq',
   facebook: BUSINESS_PROFILE.socialMedia.facebook ?? 'https://www.facebook.com/Purrifyhq',
+  x: BUSINESS_PROFILE.socialMedia.x ?? 'https://x.com/PurrifyHQ',
   trustpilot: BUSINESS_PROFILE.socialMedia.trustpilot ?? 'https://www.trustpilot.com/review/purrify.ca',
   googleBusiness: BUSINESS_PROFILE.socialMedia.googleBusiness ?? 'https://share.google/S4ckzwuljW3gDUOqr',
   googleReviews: BUSINESS_PROFILE.socialMedia.googleReviews ?? 'https://g.page/r/CUB8bZ_ibMbwEBI/review',
@@ -194,6 +195,16 @@ export const SOCIAL_LINKS = {
   pinterest: BUSINESS_PROFILE.socialMedia.pinterest ?? 'https://ca.pinterest.com/purrifyhq',
   linktree: BUSINESS_PROFILE.socialMedia.linktree ?? 'https://linktr.ee/purrifyhq',
 } as const;
+
+export const SOCIAL_PROFILE_LINKS = [
+  SOCIAL_LINKS.facebook,
+  SOCIAL_LINKS.x,
+  SOCIAL_LINKS.instagram,
+  SOCIAL_LINKS.tiktok,
+  SOCIAL_LINKS.pinterest,
+  SOCIAL_LINKS.linkedin,
+  SOCIAL_LINKS.youtube,
+] as const;
 
 export const CONTACT_INFO = {
   address: getFormattedAddress(),

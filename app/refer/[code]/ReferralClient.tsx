@@ -8,6 +8,7 @@ import { Badge } from '@/components/ui/badge';
 import Link from 'next/link';
 import { Container } from '@/components/ui/container';
 import { formatProductPrice } from '@/lib/pricing';
+import { REFERRAL_CONFIG } from '@/lib/referral';
 import { persistReferralCode } from '@/lib/referral-tracking';
 
 interface ReferralData {
@@ -30,6 +31,7 @@ interface ReferralClientProps {
 
 export function ReferralClient({ code, referralData }: ReferralClientProps) {
   const trialPrice = formatProductPrice('trial');
+  const minimumOrder = `$${REFERRAL_CONFIG.MINIMUM_QUALIFYING_ORDER_SUBTOTAL}`;
   const [timeLeft, setTimeLeft] = useState(24 * 60 * 60); // 24 hours in seconds
   const [isClaimingOffer, setIsClaimingOffer] = useState(false);
 
@@ -150,7 +152,7 @@ export function ReferralClient({ code, referralData }: ReferralClientProps) {
 
             <p className="text-xl text-gray-600 dark:text-gray-400 mb-8 leading-relaxed">
               {referralData.referrerName} has shared Purrify with you because they know how embarrassing
-              litter box smell can be. Get <strong>$5 off your first order</strong> and see why they love it.
+              litter box smell can be. Get <strong>$5 off qualifying orders over {minimumOrder}</strong> and see why they love it.
             </p>
 
             {/* Urgency Timer */}
@@ -182,7 +184,7 @@ export function ReferralClient({ code, referralData }: ReferralClientProps) {
               </h2>
 
               <p className="text-gray-600 dark:text-gray-400 mb-6">
-                {`Apply your referral savings at checkout. Trial size currently starts at ${trialPrice}.`}
+                {`Apply your referral savings to qualifying orders over ${minimumOrder} at checkout. Trial size currently starts at ${trialPrice}.`}
               </p>
 
               <Button

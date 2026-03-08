@@ -2,22 +2,17 @@ import type { Metadata } from 'next';
 import Link from 'next/link';
 import { editorialEntities } from '@/lib/editorial/entities';
 import { SITE_URL } from '@/lib/constants';
+import { buildPageMetadata } from '@/lib/seo/page-metadata';
 
-export const metadata: Metadata = {
+export const metadata: Metadata = buildPageMetadata({
   title: 'About the Purrify Editorial and Review Teams',
   description:
     'Meet the public organization-level entities behind Purrify articles, scientific claim review, and internal testing standards.',
-  alternates: {
-    canonical: `${SITE_URL}/about/team/`,
-  },
-  openGraph: {
-    type: 'website',
-    url: `${SITE_URL}/about/team/`,
-    title: 'About the Purrify Editorial and Review Teams',
-    description:
-      'Meet the public organization-level entities behind Purrify articles, scientific claim review, and internal testing standards.',
-  },
-};
+  path: '/about/team/',
+  image: `${SITE_URL}/optimized/marketing/mission.webp`,
+  imageAlt: 'Purrify editorial and review teams',
+  lastModified: '2026-03-08',
+});
 
 const pageSchema = {
   '@context': 'https://schema.org',

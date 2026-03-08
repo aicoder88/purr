@@ -1,22 +1,18 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
 import { SITE_URL } from '@/lib/constants';
+import { buildPageMetadata } from '@/lib/seo/page-metadata';
 
-export const metadata: Metadata = {
+export const metadata: Metadata = buildPageMetadata({
   title: 'Editorial Policy | Purrify',
   description:
     'How Purrify attributes articles, updates claims, applies internal review, and corrects published content.',
-  alternates: {
-    canonical: `${SITE_URL}/about/editorial-policy/`,
-  },
-  openGraph: {
-    type: 'article',
-    url: `${SITE_URL}/about/editorial-policy/`,
-    title: 'Editorial Policy | Purrify',
-    description:
-      'How Purrify attributes articles, updates claims, applies internal review, and corrects published content.',
-  },
-};
+  path: '/about/editorial-policy/',
+  image: `${SITE_URL}/optimized/marketing/mission.webp`,
+  imageAlt: 'Purrify editorial policy',
+  openGraphType: 'article',
+  lastModified: '2026-03-08',
+});
 
 const editorialPolicySchema = {
   '@context': 'https://schema.org',

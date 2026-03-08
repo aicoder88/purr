@@ -5,6 +5,7 @@ import prisma from '@/lib/prisma';
 import { attachEmailToFreshnessProfile, getFreshnessSnapshotBySessionId } from '@/lib/freshness-profile';
 import { FRESHNESS_SESSION_COOKIE } from '@/lib/freshness-session';
 import { REFERRAL_COOKIE_NAME } from '@/lib/referral-cookie';
+import { isReferralOrderQualified } from '@/lib/referral';
 import { validateReferralCodeForEmail } from '@/lib/referral-program';
 import { checkRateLimit, createRateLimitHeaders } from '@/lib/rate-limit';
 import { verifyCheckoutToken, isOrderExpired } from '@/lib/security/checkout-token';
@@ -159,6 +160,11 @@ export async function POST(request: NextRequest) {
       );
     }
 
+    const orderSubtotal = Math.round(
+      order.items.reduce((sum, item) => sum + (item.price * item.quantity), 0) * 100
+    ) / 100;
+    const referralEligibleForDiscount = isReferralOrderQualified(orderSubtotal);
+
     // Verify order status - only allow checkout for PENDING orders
     if (order.status !== 'PENDING') {
       return NextResponse.json(
@@ -208,12 +214,12 @@ export async function POST(request: NextRequest) {
       try {
         const referral = await validateReferralCodeForEmail(referralCodeCandidate, customer.email);
         persistedReferralCode = referral.code;
-        persistedReferralDiscount = referral.discount;
+        persistedReferralDiscount = referralEligibleForDiscount ? referral.discount : undefined;
         await prisma.order.update({
           where: { id: order.id },
           data: {
             referralCodeUsed: referral.code,
-            referralDiscount: referral.discount,
+            referralDiscount: referralEligibleForDiscount ? referral.discount : null,
           },
         });
       } catch {

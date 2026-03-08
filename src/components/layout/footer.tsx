@@ -29,6 +29,12 @@ const PinterestIcon = (props: SVGProps<SVGSVGElement>) => (
   </svg>
 );
 
+const XIcon = (props: SVGProps<SVGSVGElement>) => (
+  <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" {...props}>
+    <path d="M18.9 2H22l-6.77 7.73L23.2 22h-6.23l-4.88-7.44L5.58 22H2.47l7.24-8.27L2 2h6.39l4.41 6.73L18.9 2Zm-1.09 18h1.72L7.45 3.9H5.61l12.2 16.1Z" />
+  </svg>
+);
+
 
 type SupportedLocale = 'en' | 'fr';
 
@@ -37,6 +43,7 @@ const footerUiCopy: Record<SupportedLocale, {
   socialAria: {
     instagram: string;
     facebook: string;
+    x: string;
     linkedin: string;
     youtube: string;
     tiktok: string;
@@ -58,6 +65,7 @@ const footerUiCopy: Record<SupportedLocale, {
     socialAria: {
       instagram: 'Follow Purrify on Instagram',
       facebook: 'Follow Purrify on Facebook',
+      x: 'Follow Purrify on X',
       linkedin: 'Follow Purrify on LinkedIn',
       youtube: 'Subscribe to Purrify on YouTube',
       tiktok: 'Follow Purrify on TikTok',
@@ -79,6 +87,7 @@ const footerUiCopy: Record<SupportedLocale, {
     socialAria: {
       instagram: 'Suivre Purrify sur Instagram',
       facebook: 'Suivre Purrify sur Facebook',
+      x: 'Suivre Purrify sur X',
       linkedin: 'Suivre Purrify sur LinkedIn',
       youtube: 'S abonner a Purrify sur YouTube',
       tiktok: 'Suivre Purrify sur TikTok',
@@ -160,6 +169,15 @@ export async function Footer() {
                   aria-label={copy.socialAria.facebook}
                 >
                   <Facebook className="h-5 w-5" />
+                </a>
+                <a
+                  href={SOCIAL_LINKS.x}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex h-11 w-11 items-center justify-center rounded-full text-gray-400 hover:text-brand-pink focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-pink focus-visible:ring-offset-2 focus-visible:ring-offset-gray-900 transition-colors duration-300"
+                  aria-label={copy.socialAria.x}
+                >
+                  <XIcon className="h-5 w-5" />
                 </a>
                 <a
                   href={SOCIAL_LINKS.linkedin}

@@ -3,6 +3,7 @@ import prisma from '@/lib/prisma';
 import { attachEmailToFreshnessProfile, getFreshnessSnapshotBySessionId } from '@/lib/freshness-profile';
 import { FRESHNESS_SESSION_COOKIE } from '@/lib/freshness-session';
 import { REFERRAL_COOKIE_NAME } from '@/lib/referral-cookie';
+import { isReferralOrderQualified } from '@/lib/referral';
 import { validateReferralCodeForEmail } from '@/lib/referral-program';
 import { checkRateLimit, getClientIp } from '@/lib/rate-limit';
 import { signOrderId } from '@/lib/security/checkout-token';
@@ -137,6 +138,7 @@ export async function POST(request: NextRequest) {
       referralCodeFromBody ||
       request.cookies.get(REFERRAL_COOKIE_NAME)?.value ||
       undefined;
+    const referralEligibleForDiscount = isReferralOrderQualified(serverTotal);
     let referralCodeUsed: string | undefined;
     let referralDiscount = 0;
 
@@ -144,7 +146,7 @@ export async function POST(request: NextRequest) {
       try {
         const referral = await validateReferralCodeForEmail(referralCodeCandidate, customer.email);
         referralCodeUsed = referral.code;
-        referralDiscount = referral.discount;
+        referralDiscount = referralEligibleForDiscount ? referral.discount : 0;
       } catch {
         referralCodeUsed = undefined;
         referralDiscount = 0;

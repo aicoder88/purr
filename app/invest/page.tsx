@@ -1,6 +1,6 @@
 import { Metadata } from 'next';
 import InvestorContentWrapper from './investor-content-wrapper';
-import { SITE_NAME, SITE_URL } from '@/lib/constants';
+import { SITE_NAME, SITE_URL, SOCIAL_LINKS, SOCIAL_PROFILE_LINKS } from '@/lib/constants';
 
 export const dynamic = 'force-static';
 
@@ -39,7 +39,8 @@ const investorSchema = {
   url: `${SITE_URL}/invest/`,
   logo: `${SITE_URL}/optimized/logos/purrify-logo.png`,
   sameAs: [
-    'https://www.crunchbase.com/organization/purrify',
+    ...SOCIAL_PROFILE_LINKS,
+    SOCIAL_LINKS.crunchbase,
   ],
   contactPoint: {
     '@type': 'ContactPoint',

@@ -9,7 +9,7 @@
  */
 
 import { LocaleCode } from '../lib/seo/types';
-import { SITE_URL } from '@/lib/constants';
+import { SITE_URL, SOCIAL_PROFILE_LINKS } from '@/lib/constants';
 
 export interface PageMeta {
   title: string;
@@ -80,7 +80,7 @@ export const seoMetaEn: SEOMetaContent = {
           name: 'Purrify',
           url: SITE_URL,
           logo: `${SITE_URL}/optimized/logos/purrify-logo.png`,
-          sameAs: ['https://facebook.com/purrify', 'https://instagram.com/purrify']
+          sameAs: Array.from(SOCIAL_PROFILE_LINKS),
         },
         {
           '@type': 'WebSite',

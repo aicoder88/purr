@@ -1,17 +1,15 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
 import { Container } from '@/components/ui/container';
+import { buildPageMetadata } from '@/lib/seo/page-metadata';
 
-export const metadata: Metadata = {
+export const metadata: Metadata = buildPageMetadata({
   title: 'Purrify Tools | Smell Quiz and Litter Calculator',
   description: 'Interactive tools to diagnose litter odor problems and compare litter costs.',
-  openGraph: {
-    url: 'https://www.purrify.ca/tools/',
-  },
-  alternates: {
-    canonical: 'https://www.purrify.ca/tools/',
-  },
-};
+  path: '/tools/',
+  imageAlt: 'Purrify tools for litter odor diagnosis',
+  lastModified: '2026-03-08',
+});
 
 const TOOL_LINKS = [
   {

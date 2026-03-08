@@ -367,6 +367,7 @@ model ReferralRedemption {
   // Referee (person who used the code)
   refereeEmail    String // Email of person who used the code
   refereeOrderId  String? // Order where code was applied
+  qualifyingOrderAmount Float? // Most recent referred order subtotal evaluated for reward eligibility
   // Status tracking
   status          ReferralRedemptionStatus @default(PENDING)
   // Rewards

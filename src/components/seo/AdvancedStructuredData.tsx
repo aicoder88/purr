@@ -1,6 +1,6 @@
 import React from 'react';
 import { buildAvailabilityUrl, getPriceValidityDate, type OfferAvailability } from '@/lib/seo-utils';
-import { CONTACT_INFO, SOCIAL_LINKS } from '@/lib/constants';
+import { CONTACT_INFO, SOCIAL_PROFILE_LINKS } from '@/lib/constants';
 
 interface ProductStructuredDataProps {
   product: {
@@ -503,7 +503,7 @@ export const PurrifyStructuredData: React.FC = () => {
       contactType: "customer service",
       email: CONTACT_INFO.email
     },
-    socialMedia: Object.values(SOCIAL_LINKS).filter(
+    socialMedia: Array.from(SOCIAL_PROFILE_LINKS).filter(
       (url): url is string => typeof url === 'string' && url.startsWith('http')
     )
   };

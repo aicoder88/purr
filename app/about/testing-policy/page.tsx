@@ -1,22 +1,18 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
 import { SITE_URL } from '@/lib/constants';
+import { buildPageMetadata } from '@/lib/seo/page-metadata';
 
-export const metadata: Metadata = {
+export const metadata: Metadata = buildPageMetadata({
   title: 'Testing Policy | Purrify',
   description:
     'How Purrify describes internal testing, performance observations, limitations, and evidence boundaries in public content.',
-  alternates: {
-    canonical: `${SITE_URL}/about/testing-policy/`,
-  },
-  openGraph: {
-    type: 'article',
-    url: `${SITE_URL}/about/testing-policy/`,
-    title: 'Testing Policy | Purrify',
-    description:
-      'How Purrify describes internal testing, performance observations, limitations, and evidence boundaries in public content.',
-  },
-};
+  path: '/about/testing-policy/',
+  image: `${SITE_URL}/optimized/marketing/mission.webp`,
+  imageAlt: 'Purrify testing policy',
+  openGraphType: 'article',
+  lastModified: '2026-03-08',
+});
 
 const testingPolicySchema = {
   '@context': 'https://schema.org',

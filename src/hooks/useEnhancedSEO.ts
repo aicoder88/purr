@@ -8,7 +8,7 @@ import { useLocale } from 'next-intl';
 import { useCurrency } from '../lib/currency-context';
 import { optimizeMetaTitle, optimizeMetaDescription } from '../lib/seo/meta-optimizer';
 import { getLocalizedUrl, buildLanguageAlternates } from '../lib/seo-utils';
-import { SITE_NAME } from '../lib/constants';
+import { SITE_NAME, SOCIAL_PROFILE_LINKS } from '../lib/constants';
 import {
   getClaimReviewSchema,
   type ScientificCitation
@@ -590,7 +590,7 @@ function generateExpertAuthorSchema(): object {
       name: SITE_NAME,
       url: 'https://www.purrify.ca',
     },
-    sameAs: ['https://www.instagram.com/purrifyhq'],
+    sameAs: Array.from(SOCIAL_PROFILE_LINKS),
   };
 }
 

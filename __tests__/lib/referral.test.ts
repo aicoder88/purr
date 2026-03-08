@@ -1,4 +1,9 @@
-import { generateReferralCode, validateReferralCodeFormat } from '@/lib/referral';
+import {
+  generateReferralCode,
+  isReferralOrderQualified,
+  REFERRAL_CONFIG,
+  validateReferralCodeFormat,
+} from '@/lib/referral';
 
 describe('referral', () => {
   describe('generateReferralCode', () => {
@@ -44,6 +49,20 @@ describe('referral', () => {
       expect(validateReferralCodeFormat('SARAH15PURR')).toBe(false);
       expect(validateReferralCodeFormat('15-PURR')).toBe(false);
       expect(validateReferralCodeFormat('SARAH15-PAWR')).toBe(false);
+    });
+  });
+
+  describe('isReferralOrderQualified', () => {
+    it('requires the configured minimum order subtotal', () => {
+      expect(isReferralOrderQualified(REFERRAL_CONFIG.MINIMUM_QUALIFYING_ORDER_SUBTOTAL - 0.01)).toBe(false);
+      expect(isReferralOrderQualified(REFERRAL_CONFIG.MINIMUM_QUALIFYING_ORDER_SUBTOTAL)).toBe(true);
+      expect(isReferralOrderQualified(REFERRAL_CONFIG.MINIMUM_QUALIFYING_ORDER_SUBTOTAL + 10)).toBe(true);
+    });
+
+    it('rejects missing and invalid amounts', () => {
+      expect(isReferralOrderQualified()).toBe(false);
+      expect(isReferralOrderQualified(null)).toBe(false);
+      expect(isReferralOrderQualified(Number.NaN)).toBe(false);
     });
   });
 });

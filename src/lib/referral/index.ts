@@ -10,6 +10,7 @@ export const REFERRAL_CONFIG = {
   // Reward amounts
   REFERRER_CREDIT: 5.00, // $5 credit for referrer
   REFEREE_DISCOUNT: 5.00, // $5 off for referee
+  MINIMUM_QUALIFYING_ORDER_SUBTOTAL: 50.00, // Referral discount/reward requires $50+ subtotal
 
   // Milestones and bonuses
   MILESTONES: [
@@ -142,7 +143,8 @@ export function calculateMilestoneProgress(currentReferrals: number): {
  */
 export function generateShareUrls(code: string, referrerName: string) {
   const shareUrl = `${process.env.NEXT_PUBLIC_SITE_URL || 'https://www.purrify.ca'}/refer/${code}`;
-  const message = `Get $5 off Purrify cat litter deodorizer! Use my code ${code} or click here:`;
+  const minimumOrder = formatCurrency(REFERRAL_CONFIG.MINIMUM_QUALIFYING_ORDER_SUBTOTAL);
+  const message = `Get $5 off eligible Purrify orders over ${minimumOrder}! Use my code ${code} or click here:`;
   const fullMessage = `${referrerName} wants to share Purrify with you! ${message}`;
 
   return {
@@ -202,6 +204,12 @@ export function formatCurrency(amount: number): string {
     style: 'currency',
     currency: 'CAD',
   }).format(amount);
+}
+
+export function isReferralOrderQualified(amount?: number | null): boolean {
+  return typeof amount === 'number' &&
+    Number.isFinite(amount) &&
+    amount >= REFERRAL_CONFIG.MINIMUM_QUALIFYING_ORDER_SUBTOTAL;
 }
 
 /**

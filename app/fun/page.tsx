@@ -9,30 +9,21 @@ import { CatNameGenerator } from '@/components/fun/CatNameGenerator';
 import { LazyMouseShooter } from '@/components/fun/LazyMouseShooter';
 import { Volume2, Sparkles, Zap, Brain, Rocket, Footprints, Trophy } from 'lucide-react';
 import { SITE_URL } from '@/lib/constants';
+import { buildPageMetadata } from '@/lib/seo/page-metadata';
 
-export const metadata: Metadata = {
+export const metadata: Metadata = buildPageMetadata({
   title: 'Cat Arcade & Blessing Corner',
-  description: 'Play cat games with realistic meow sounds, get blessed by the Cat Goddess, find your perfect cat name, and test your feline knowledge!',
-  alternates: {
-    canonical: `${SITE_URL}/fun/`,
-  },
-  openGraph: {
-    url: `${SITE_URL}/fun/`,
-    images: [
-      {
-        url: '/optimized/logos/purrify-logo.png',
-        width: 1200,
-        height: 800,
-        alt: 'Purrify',
-        type: 'image/png',
-      },
-    ],
-  },
+  description:
+    'Play cat games with realistic meow sounds, get blessed by the Cat Goddess, find your perfect cat name, and test your feline knowledge!',
+  path: '/fun/',
+  image: `${SITE_URL}/optimized/logos/purrify-logo.png`,
+  imageAlt: 'Purrify cat arcade',
+  lastModified: '2026-03-08',
   robots: {
     index: true,
     follow: true,
   },
-};
+});
 
 export default function FunPage() {
   return (

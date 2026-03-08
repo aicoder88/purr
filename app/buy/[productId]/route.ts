@@ -3,7 +3,6 @@ import Stripe from 'stripe';
 import prisma from '@/lib/prisma';
 import { getFreshnessSnapshotBySessionId } from '@/lib/freshness-profile';
 import { FRESHNESS_SESSION_COOKIE } from '@/lib/freshness-session';
-import { REFERRAL_COOKIE_NAME } from '@/lib/referral-cookie';
 import {
   getCheckoutProductConfig,
   isCheckoutProductId,
@@ -58,17 +57,17 @@ export async function GET(
   const localeCookie = request.cookies.get('NEXT_LOCALE')?.value;
   const locale = localeParam === 'fr' || localeCookie === 'fr' ? 'fr' : 'en';
   const sessionId = request.cookies.get(FRESHNESS_SESSION_COOKIE)?.value;
-  const referralCode = request.cookies.get(REFERRAL_COOKIE_NAME)?.value;
   const freshness = sessionId
     ? await getFreshnessSnapshotBySessionId(sessionId)
     : null;
 
+  // Quick-buy sessions skip referral handling because Stripe collects the buyer email
+  // after session creation, which prevents safe referral validation and discounting.
   const order = await prisma.order.create({
     data: {
       totalAmount: product.price,
       currency: 'CAD',
       status: 'PENDING',
-      referralCodeUsed: referralCode || undefined,
       freshnessSessionId: freshness?.sessionId,
       freshnessSource: freshness?.source,
       freshnessScore: freshness?.score,
@@ -120,7 +119,6 @@ export async function GET(
         freshnessRiskLevel: freshness?.riskLevel ?? '',
         freshnessRecommendedProductId:
           freshness?.recommendedProductId ?? product.productId,
-        referralCodeUsed: referralCode ?? '',
       },
     });
 

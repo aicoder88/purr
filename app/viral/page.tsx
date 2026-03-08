@@ -1,24 +1,19 @@
 import type { Metadata } from 'next';
 import ViralContent from './ViralContent';
 import { SITE_NAME, SITE_URL } from '@/lib/constants';
+import { buildPageMetadata } from '@/lib/seo/page-metadata';
 
-export const metadata: Metadata = {
+export const metadata: Metadata = buildPageMetadata({
   title: 'The Viral Odour Vault: Purrify Profit Report',
-  description: 'Stop guessing why your videos die in obscurity. We have dissected the Viral Anchors of the pet care world to build your profit machine.',
-  alternates: {
-    canonical: `${SITE_URL}/viral/`,
-  },
-  openGraph: {
-    type: 'website',
-    url: `${SITE_URL}/viral/`,
-    siteName: SITE_NAME,
-    title: 'The Viral Odour Vault: Purrify Profit Report',
-    description: 'Dissecting the Viral Anchors of the pet care world.',
-  },
-  other: {
-    'last-modified': '2026-01-19',
-  },
-};
+  description:
+    'Stop guessing why your videos die in obscurity. We have dissected the Viral Anchors of the pet care world to build your profit machine.',
+  path: '/viral/',
+  image: `${SITE_URL}/optimized/logos/purrify-logo.png`,
+  imageAlt: 'Purrify Viral Odour Vault report',
+  openGraphDescription: 'Dissecting the Viral Anchors of the pet care world.',
+  twitterDescription: 'Dissecting the Viral Anchors of the pet care world.',
+  lastModified: '2026-01-19',
+});
 
 // Article schema for Viral Report
 const articleSchema = {

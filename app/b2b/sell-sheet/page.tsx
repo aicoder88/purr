@@ -12,7 +12,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: `${SITE_NAME} B2B Sell Sheet - Wholesale Partner Information`,
     description: 'Download our B2B sell sheet with wholesale pricing and partnership opportunities. Perfect for retailers, veterinarians, and pet professionals.',
-    url: `${SITE_URL}/b2b/sell-sheet`,
+    url: `${SITE_URL}/b2b/sell-sheet/`,
     type: 'website',
     siteName: SITE_NAME,
     locale: 'en_CA',
@@ -24,6 +24,15 @@ export const metadata: Metadata = {
         alt: `${SITE_NAME} B2B Sell Sheet`,
       },
     ],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    site: '@purrifyhq',
+    creator: '@purrifyhq',
+    title: `${SITE_NAME} B2B Sell Sheet - Wholesale Partner Information`,
+    description:
+      'Download our B2B sell sheet with wholesale pricing and partnership opportunities. Perfect for retailers, veterinarians, and pet professionals.',
+    images: [`${SITE_URL}/optimized/logos/purrify-logo.png`],
   },
   other: {
     'last-modified': '2026-01-23',

@@ -5,36 +5,34 @@ import { Container } from '@/components/ui/container';
 import { Button } from '@/components/ui/button';
 import { SITE_NAME } from '@/lib/constants';
 import { stripContext } from '@/lib/seo-utils';
+import { buildPageMetadata } from '@/lib/seo/page-metadata';
 import {
   createBreadcrumbSchema,
   createIndexedWebPageSchema,
   serializeSchemaGraph,
 } from '@/lib/seo/indexed-content-schema';
+import { SUPPORT_LAST_MODIFIED, SUPPORT_SOCIAL_IMAGE } from '../support-seo';
 
-export const metadata: Metadata = {
+export const metadata: Metadata = buildPageMetadata({
   title: `Subscription & Autoship - ${SITE_NAME} Help Center`,
-  description: 'Learn about Purrify autoship subscriptions. Save 30%, get free shipping, and never run out. Cancel, pause, or modify anytime.',
+  description:
+    'Learn about Purrify autoship subscriptions. Save 30%, get free shipping, and never run out. Cancel, pause, or modify your subscription anytime.',
+  path: '/support/subscription/',
+  image: SUPPORT_SOCIAL_IMAGE,
+  imageAlt: `Subscription and autoship - ${SITE_NAME}`,
   keywords: ['subscription', 'autoship', 'recurring orders', 'save money', 'automatic delivery'],
   alternates: {
     canonical: 'https://www.purrify.ca/support/subscription/',
     languages: {
-      'en-CA': 'https://www.purrify.ca/support/subscription',
-      'fr-CA': 'https://www.purrify.ca/fr/support/subscription',
-      'en-US': 'https://www.purrify.ca/support/subscription',
-      'x-default': 'https://www.purrify.ca/support/subscription',
+      'en-CA': 'https://www.purrify.ca/support/subscription/',
+      'fr-CA': 'https://www.purrify.ca/fr/support/subscription/',
+      'en-US': 'https://www.purrify.ca/support/subscription/',
+      'x-default': 'https://www.purrify.ca/support/subscription/',
     },
   },
-  openGraph: {
-    type: 'website',
-    url: 'https://www.purrify.ca/support/subscription/',
-    title: `Subscription & Autoship - ${SITE_NAME} Help Center`,
-    description: 'Learn about Purrify autoship subscriptions. Save 30%, get free shipping, and never run out.',
-    locale: 'en_CA',
-  },
-  other: {
-    'last-modified': '2025-11-23',
-  },
-};
+  openGraphLocale: 'en_CA',
+  lastModified: SUPPORT_LAST_MODIFIED,
+});
 
 const benefits = [
   {
@@ -123,6 +121,7 @@ const webPageSchema = createIndexedWebPageSchema({
   path: '/support/subscription/',
   title: `Subscription & Autoship - ${SITE_NAME} Help Center`,
   description: 'Learn about Purrify autoship subscriptions. Save 30%, get free shipping, and never run out. Cancel, pause, or modify anytime.',
+  image: SUPPORT_SOCIAL_IMAGE,
 });
 
 const breadcrumbSchema = createBreadcrumbSchema('en', [

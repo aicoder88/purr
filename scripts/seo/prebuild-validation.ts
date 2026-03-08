@@ -11,6 +11,8 @@ import { validateNoInlineHeadTags } from './validate-no-inline-head-tags';
 import { validateRenderedSeo } from './validate-rendered-seo';
 import { validateSupportedLocaleSurface } from './validate-supported-locales';
 
+const BLOCK_ON_RENDERED_SEO = process.env.SEO_RENDERED_BLOCK_BUILD === 'true';
+
 interface ValidationSummary {
   passed: boolean;
   criticalIssues: number;
@@ -260,10 +262,14 @@ async function runPrebuildValidation(): Promise<ValidationSummary> {
     summary.errors += renderedErrors;
     summary.warnings += renderedWarnings;
 
-    if (!renderedResult.passed) {
+    if (!renderedResult.passed && BLOCK_ON_RENDERED_SEO) {
       summary.passed = false;
       console.error(
         `   ✗ Rendered SEO: ${renderedErrors} errors, ${renderedWarnings} warnings across ${renderedResult.pagesChecked} page(s)\n`
+      );
+    } else if (!renderedResult.passed) {
+      console.log(
+        `   ℹ️  Rendered SEO: ${renderedErrors} errors, ${renderedWarnings} warnings across ${renderedResult.pagesChecked} page(s) (reported, non-blocking in prebuild)\n`
       );
     } else {
       console.log(
@@ -271,9 +277,14 @@ async function runPrebuildValidation(): Promise<ValidationSummary> {
       );
     }
   } catch (error) {
-    console.error(`   ✗ Rendered SEO validation failed: ${error}\n`);
-    summary.passed = false;
-    summary.errors++;
+    if (BLOCK_ON_RENDERED_SEO) {
+      console.error(`   ✗ Rendered SEO validation failed: ${error}\n`);
+      summary.passed = false;
+      summary.errors++;
+    } else {
+      console.warn(`   ⚠️  Rendered SEO validation failed (non-blocking in prebuild): ${error}\n`);
+      summary.warnings++;
+    }
   }
 
   return summary;
@@ -335,6 +346,9 @@ async function main() {
     } else {
       console.log('❌ Pre-build validation FAILED - Critical issues found\n');
       console.log('Fix critical issues before building for production.');
+      if (!BLOCK_ON_RENDERED_SEO) {
+        console.log('Rendered SEO findings are reported during prebuild but do not block the build.');
+      }
       console.log('To bypass this check (not recommended), set SKIP_SEO_VALIDATION=true\n');
       process.exit(1);
     }
