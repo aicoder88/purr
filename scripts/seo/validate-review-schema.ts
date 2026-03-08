@@ -34,6 +34,39 @@ function validateReviewData(product: string, locale: string): ValidationResult {
     const { data, schema, displayText } = results[product];
     result.data = { data, schema, displayText };
 
+    if (!results[product].isLive) {
+      if (data.ratingValue !== 0 || data.reviewCount !== 0) {
+        result.errors.push(`Fallback review data should be zeroed, received rating=${data.ratingValue} reviewCount=${data.reviewCount}`);
+        result.passed = false;
+      }
+
+      if (displayText.rating !== '') {
+        result.errors.push(`Fallback display rating should be empty, received: ${displayText.rating}`);
+        result.passed = false;
+      }
+
+      if (displayText.full !== '') {
+        result.errors.push(`Fallback display summary should be empty, received: ${displayText.full}`);
+        result.passed = false;
+      }
+
+      if (!displayText.reviewCount.includes('0')) {
+        result.errors.push(`Fallback reviewCount text should include 0, received: ${displayText.reviewCount}`);
+        result.passed = false;
+      }
+
+      if (schema['@type'] !== 'AggregateRating') {
+        result.errors.push(`Fallback schema @type is not AggregateRating: ${schema['@type']}`);
+        result.passed = false;
+      }
+
+      if (result.passed) {
+        result.warnings.push('No live aggregate review data is available; validated the zero-review fallback state instead.');
+      }
+
+      return result;
+    }
+
     // Validate data structure
     if (typeof data.ratingValue !== 'number') {
       result.errors.push(`ratingValue is not a number: ${typeof data.ratingValue}`);
@@ -139,7 +172,9 @@ function main() {
       totalTests++;
       const result = validateReviewData(product, locale);
       allResults.push(result);
-      if (result.passed) passedTests++;
+      if (result.passed) {
+        passedTests++;
+      }
     }
   }
 

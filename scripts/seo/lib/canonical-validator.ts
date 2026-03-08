@@ -7,6 +7,7 @@ import fg from 'fast-glob';
 import path from 'path';
 import fs from 'fs';
 import * as cheerio from 'cheerio';
+import { getSeoSiteUrl } from './site-config';
 
 export interface CanonicalIssue {
   page: string;
@@ -196,7 +197,7 @@ export function findDuplicateCanonicals(
  * Validate all pages for canonical and OG URL issues
  */
 export async function validateAllCanonicals(
-  siteUrl: string = 'https://purrify.ca'
+  siteUrl: string = getSeoSiteUrl()
 ): Promise<CanonicalValidationResult> {
   console.log('🔗 Validating canonical URLs and OG tags...\n');
 

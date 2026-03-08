@@ -6,6 +6,27 @@ on:
     branches: [main]
 
 jobs:
+  seo:
+    runs-on: ubuntu-latest
+    env:
+      NEXT_PUBLIC_SITE_URL: https://www.purrify.ca
+      SITE_URL: https://www.purrify.ca
+      DATABASE_URL: file:./test.db
+      NEXTAUTH_SECRET: test-secret-key-for-ci-minimum-32-characters-long
+      NEXTAUTH_URL: http://localhost:3010
+    steps:
+      - uses: actions/checkout@v4
+      - uses: pnpm/action-setup@v4
+        with:
+          version: 10.27.0
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: 'pnpm'
+      - run: pnpm install --frozen-lockfile
+      - run: pnpm exec playwright install --with-deps chromium
+      - run: pnpm prebuild:seo
+
   lint:
     runs-on: ubuntu-latest
     steps:
