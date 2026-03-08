@@ -38,7 +38,9 @@ jest.mock('@/lib/zendesk', () => ({
   isZendeskConfigured: mockIsZendeskConfigured,
 }));
 
-
+jest.mock('@/lib/security/origin-check', () => ({
+  verifyOrigin: jest.fn(() => true),
+}));
 
 const { POST } = require('../../app/api/contact/route') as typeof import('../../app/api/contact/route');
 

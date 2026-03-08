@@ -3,6 +3,11 @@ import { notFound } from 'next/navigation';
 import LearnPageClient from '@/app/learn/LearnPageClient';
 import { locales, isValidLocale } from '@/i18n/config';
 import { SITE_NAME, SITE_URL } from '@/lib/constants';
+import {
+  createBreadcrumbSchema,
+  createIndexedWebPageSchema,
+  serializeSchemaGraph,
+} from '@/lib/seo/indexed-content-schema';
 
 interface LocalizedLearnPageProps {
   params: Promise<{ locale: string }>;
@@ -79,5 +84,33 @@ export default async function LocalizedLearnPage({ params }: LocalizedLearnPageP
     notFound();
   }
 
-  return <LearnPageClient />;
+  const isFrench = locale === 'fr';
+  const webPageSchema = createIndexedWebPageSchema({
+    locale,
+    path: '/learn/',
+    title: isFrench
+      ? `Guides et Science des Odeurs de Litiere | ${SITE_NAME}`
+      : `Cat Litter Odor Guides & Science | ${SITE_NAME}`,
+    description: isFrench
+      ? 'Guides complets sur le contrôle des odeurs de litière. Découvrez le carbone actif, des solutions pour chaque situation, et la science Purrify.'
+      : 'Comprehensive guides on cat litter odor control. Learn how activated carbon works, explore solutions for every situation, and discover Purrify science.',
+    image: `${SITE_URL}/optimized/marketing/micropores_magnified_view.webp`,
+  });
+
+  const breadcrumbSchema = createBreadcrumbSchema(locale, [
+    { name: isFrench ? 'Accueil' : 'Home', path: '/' },
+    { name: 'Learn', path: '/learn/' },
+  ]);
+
+  return (
+    <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: serializeSchemaGraph(webPageSchema, breadcrumbSchema),
+        }}
+      />
+      <LearnPageClient />
+    </>
+  );
 }

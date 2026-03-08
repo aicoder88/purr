@@ -9,37 +9,23 @@ import { useMultipleReviews } from '../../src/hooks/useAggregateReview';
 // cover the synchronous useMultipleReviews helper which returns
 // fallback data without needing React.
 
-const FALLBACK_TRIAL = {
-  ratingValue: 4.9,
-  reviewCount: 84,
-  bestRating: 5,
-  worstRating: 1,
-};
-
-const FALLBACK_STANDARD = {
-  ratingValue: 4.8,
-  reviewCount: 156,
-  bestRating: 5,
-  worstRating: 1,
-};
-
-const FALLBACK_FAMILY = {
-  ratingValue: 4.9,
-  reviewCount: 62,
+const EMPTY_REVIEW = {
+  ratingValue: 0,
+  reviewCount: 0,
   bestRating: 5,
   worstRating: 1,
 };
 
 describe('useMultipleReviews', () => {
-  it('returns fallback review data for each requested product', () => {
+  it('returns empty review data for each requested product until live data exists', () => {
     const results = useMultipleReviews(['trial', 'standard', 'family']);
 
     expect(results).toHaveProperty('trial');
     expect(results).toHaveProperty('standard');
     expect(results).toHaveProperty('family');
-    expect(results.trial.data).toEqual(FALLBACK_TRIAL);
-    expect(results.standard.data).toEqual(FALLBACK_STANDARD);
-    expect(results.family.data).toEqual(FALLBACK_FAMILY);
+    expect(results.trial.data).toEqual(EMPTY_REVIEW);
+    expect(results.standard.data).toEqual(EMPTY_REVIEW);
+    expect(results.family.data).toEqual(EMPTY_REVIEW);
   });
 
   it('includes isLive: false for fallback data', () => {
@@ -51,38 +37,38 @@ describe('useMultipleReviews', () => {
     const results = useMultipleReviews(['trial']);
     expect(results.trial.schema).toEqual({
       '@type': 'AggregateRating',
-      ...FALLBACK_TRIAL,
+      ...EMPTY_REVIEW,
     });
   });
 
   it('applies locale formatting across all requested products', () => {
     const results = useMultipleReviews(['trial', 'standard'], 'fr');
 
-    expect(results.trial.displayText.reviewCount).toBe('84 avis');
-    expect(results.standard.displayText.reviewCount).toBe('156 avis');
+    expect(results.trial.displayText.reviewCount).toBe('0 avis');
+    expect(results.standard.displayText.reviewCount).toBe('0 avis');
   });
 
   it('formats display text for English locale', () => {
     const results = useMultipleReviews(['trial'], 'en');
 
-    expect(results.trial.displayText.rating).toBe('4.9');
-    expect(results.trial.displayText.reviewCount).toBe('84 reviews');
-    expect(results.trial.displayText.full).toBe('4.9/5 from 84 reviews');
+    expect(results.trial.displayText.rating).toBe('');
+    expect(results.trial.displayText.reviewCount).toBe('0 reviews');
+    expect(results.trial.displayText.full).toBe('');
   });
 
   it('returns empty object for empty product list', () => {
     expect(useMultipleReviews([])).toEqual({});
   });
 
-  it('uses trial fallback behavior for unknown products', () => {
+  it('uses empty review behavior for unknown products', () => {
     const results = useMultipleReviews(['trial', 'unknown']);
 
-    expect(results.trial.data).toEqual(FALLBACK_TRIAL);
-    expect(results.unknown.data).toEqual(FALLBACK_TRIAL); // Falls back to trial
+    expect(results.trial.data).toEqual(EMPTY_REVIEW);
+    expect(results.unknown.data).toEqual(EMPTY_REVIEW);
   });
 
   it('falls back to English labels for unknown locales', () => {
     const results = useMultipleReviews(['trial'], 'de');
-    expect(results.trial.displayText.reviewCount).toBe('84 reviews');
+    expect(results.trial.displayText.reviewCount).toBe('0 reviews');
   });
 });

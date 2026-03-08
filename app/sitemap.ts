@@ -162,6 +162,25 @@ function entry(
   return item;
 }
 
+function addLocalizedEntries(
+  entries: MetadataRoute.Sitemap,
+  pathname: string,
+  opts: {
+    priority?: number;
+    changeFrequency?: SitemapEntry['changeFrequency'];
+    lastModified?: string | Date;
+  } = {},
+) {
+  entries.push(entry(pathname, {
+    ...opts,
+    frPath: `/fr${pathname}`,
+  }));
+  entries.push(entry(`/fr${pathname}`, {
+    ...opts,
+    frPath: false,
+  }));
+}
+
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const entries: MetadataRoute.Sitemap = [];
   const store = new ContentStore();
@@ -255,21 +274,20 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   }
 
   // === LEARN PAGES ===
-  entries.push(entry('/learn/', { priority: 0.75, changeFrequency: 'weekly', frPath: false }));
-  entries.push(entry('/learn/how-it-works/', { priority: 0.8, changeFrequency: 'monthly', frPath: false }));
-  entries.push(entry('/learn/faq/', { priority: 0.8, changeFrequency: 'monthly', frPath: false }));
-  entries.push(entry('/learn/science/', { priority: 0.7, changeFrequency: 'monthly', frPath: false }));
-  entries.push(entry('/learn/safety/', { priority: 0.7, changeFrequency: 'monthly', frPath: false }));
-  entries.push(entry('/learn/cat-litter-guide/', { priority: 0.7, changeFrequency: 'monthly', frPath: false }));
-  entries.push(entry('/learn/glossary/', { priority: 0.6, changeFrequency: 'monthly', frPath: false }));
-  entries.push(entry('/learn/ammonia-science/', { priority: 0.7, changeFrequency: 'monthly', frPath: false }));
-  entries.push(entry('/learn/cat-litter-ammonia-health-risks/', { priority: 0.7, changeFrequency: 'monthly', frPath: false }));
-  entries.push(entry('/learn/how-activated-carbon-works/', { priority: 0.7, changeFrequency: 'monthly', frPath: false }));
-  entries.push(entry('/learn/alternatives/arm-and-hammer-cat-litter-deodorizer-alternative/', {
+  addLocalizedEntries(entries, '/learn/', { priority: 0.75, changeFrequency: 'weekly' });
+  addLocalizedEntries(entries, '/learn/how-it-works/', { priority: 0.8, changeFrequency: 'monthly' });
+  addLocalizedEntries(entries, '/learn/faq/', { priority: 0.8, changeFrequency: 'monthly' });
+  addLocalizedEntries(entries, '/learn/science/', { priority: 0.7, changeFrequency: 'monthly' });
+  addLocalizedEntries(entries, '/learn/safety/', { priority: 0.7, changeFrequency: 'monthly' });
+  addLocalizedEntries(entries, '/learn/cat-litter-guide/', { priority: 0.7, changeFrequency: 'monthly' });
+  addLocalizedEntries(entries, '/learn/glossary/', { priority: 0.6, changeFrequency: 'monthly' });
+  addLocalizedEntries(entries, '/learn/ammonia-science/', { priority: 0.7, changeFrequency: 'monthly' });
+  addLocalizedEntries(entries, '/learn/cat-litter-ammonia-health-risks/', { priority: 0.7, changeFrequency: 'monthly' });
+  addLocalizedEntries(entries, '/learn/how-activated-carbon-works/', { priority: 0.7, changeFrequency: 'monthly' });
+  addLocalizedEntries(entries, '/learn/alternatives/arm-and-hammer-cat-litter-deodorizer-alternative/', {
     priority: 0.6,
     changeFrequency: 'monthly',
-    frPath: false,
-  }));
+  });
   entries.push(entry('/learn/comparison-lab/methodology/', {
     priority: 0.7,
     changeFrequency: 'monthly',
@@ -284,13 +302,12 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   }
 
   // === LEARN SOLUTIONS ===
-  entries.push(entry('/learn/solutions/', { priority: 0.7, changeFrequency: 'monthly', frPath: false }));
+  addLocalizedEntries(entries, '/learn/solutions/', { priority: 0.7, changeFrequency: 'monthly' });
   for (const slug of SOLUTION_SLUGS) {
-    entries.push(entry(`/learn/solutions/${slug}/`, {
+    addLocalizedEntries(entries, `/learn/solutions/${slug}/`, {
       priority: 0.6,
       changeFrequency: 'monthly',
-      frPath: false, // Solutions only exist at root, not under [locale]
-    }));
+    });
   }
 
   // === LOCATION PAGES ===
@@ -313,7 +330,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   }
 
   // === SUPPORT ===
-  entries.push(entry('/support/', { priority: 0.6, changeFrequency: 'monthly', frPath: false }));
+  addLocalizedEntries(entries, '/support/', { priority: 0.6, changeFrequency: 'monthly' });
   entries.push(entry('/support/shipping/', { priority: 0.5, changeFrequency: 'monthly', frPath: false }));
 
   // === ABOUT / CONTACT ===

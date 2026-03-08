@@ -5,6 +5,11 @@ import { Container } from '@/components/ui/container';
 import { Button } from '@/components/ui/button';
 import { CONTACT_INFO, SITE_NAME } from '@/lib/constants';
 import { stripContext } from '@/lib/seo-utils';
+import {
+  createBreadcrumbSchema,
+  createIndexedWebPageSchema,
+  serializeSchemaGraph,
+} from '@/lib/seo/indexed-content-schema';
 
 export const metadata: Metadata = {
   title: `Shipping & Returns - ${SITE_NAME} Help Center`,
@@ -84,16 +89,30 @@ const faqSchema = {
   })),
 };
 
+const webPageSchema = createIndexedWebPageSchema({
+  locale: 'en',
+  path: '/support/shipping/',
+  title: `Shipping & Returns - ${SITE_NAME} Help Center`,
+  description: 'Purrify shipping options, delivery times, and 30-day money-back guarantee. Free returns on all orders. We ship to USA and Canada with fast, reliable delivery.',
+});
+
+const breadcrumbSchema = createBreadcrumbSchema('en', [
+  { name: 'Home', path: '/' },
+  { name: 'Support', path: '/support/' },
+  { name: 'Shipping', path: '/support/shipping/' },
+]);
+
 export default function ShippingPage() {
   return (
     <>
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{
-          __html: JSON.stringify({
-            '@context': 'https://schema.org',
-            '@graph': [stripContext(faqSchema)],
-          }),
+          __html: serializeSchemaGraph(
+            webPageSchema,
+            breadcrumbSchema,
+            stripContext(faqSchema) as Record<string, unknown>,
+          ),
         }}
       />
       <main className="min-h-screen bg-gradient-to-br from-blue-50 via-white to-cyan-50 dark:from-gray-950 dark:via-gray-900 dark:to-gray-950">

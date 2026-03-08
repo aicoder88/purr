@@ -386,7 +386,7 @@ export default function ViralContent() {
                                 </div>
                                 <div className="space-y-4">
                                     <h4 className="text-[#3A86FF] text-2xl font-black italic underline decoration-4">2. The &quot;Magic&quot; ASMR</h4>
-                                    <p className="text-gray-400 dark:text-gray-300 text-lg leading-relaxed">Pouring Purrify powder should sound like a waterfall. Use high-fidelity audio of beads hitting the litter. It triggers &quot;Sensory Satisfaction&quot; and builds product trust.</p>
+                                    <p className="text-gray-400 dark:text-gray-300 text-lg leading-relaxed">Pouring Purrify granules should sound like a waterfall. Use high-fidelity audio of beads hitting the litter. It triggers &quot;Sensory Satisfaction&quot; and builds product trust.</p>
                                 </div>
                             </div>
                             <div className="pt-8">

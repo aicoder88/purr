@@ -133,7 +133,7 @@ export const seoMetaEn: SEOMetaContent = {
     },
     family: {
       title: 'Multi Cat Litter Deodorizer - 120g Family | Purrify',
-      description: 'The solution for multi-cat households. Activated carbon removes the toughest ammonia smells instantly. Best value for serious odor control.',
+      description: 'The solution for multi-cat households. Activated carbon removes the toughest ammonia smells instantly. Best value for serious odor control. Try it today.',
       targetKeyword: 'multi cat litter deodorizer',
       schema: {
         '@context': 'https://schema.org',
@@ -227,7 +227,7 @@ export const seoMetaEn: SEOMetaContent = {
     },
     faq: {
       title: 'Cat Litter Odor Control FAQ - Evidence-Based Answers',
-      description: 'Get clear answers about safety, usage, and effectiveness of activated carbon with a science-first approach. Read more.',
+      description: 'Get clear answers about safety, usage, and effectiveness of activated carbon with a science-first approach for cat owners who want evidence-backed odor control.',
       targetKeyword: 'cat litter odor control',
       schema: {
         '@context': 'https://schema.org',
@@ -308,7 +308,7 @@ export const seoMetaEn: SEOMetaContent = {
       },
       litterBoxSmellElimination: {
         title: 'Litter Box Smell Elimination: Complete Guide 2026',
-        description: 'End litter box odor permanently with proven methods. From daily maintenance to activated carbon technology.',
+        description: 'End litter box odor permanently with proven methods, from daily maintenance to activated carbon technology that keeps your home smelling clean longer.',
         targetKeyword: 'litter box smell elimination',
         schema: {
           '@context': 'https://schema.org',

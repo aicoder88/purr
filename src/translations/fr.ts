@@ -71,6 +71,7 @@ export const fr = {
     catLitterAnswers: "Q&R sur la Litière",
     scienceHub: "Références Scientifiques",
     carbonVsBakingSoda: "Charbon vs Bicarbonate",
+    carbonVsBakingSodaDesc: "Découvrez la science derrière la supériorité du charbon actif sur le bicarbonate pour les odeurs de litière.",
     // B2B pivot keys
     findStore: "Trouvez Purrify Près de Vous",
     findNearYou: "Trouver Près de Vous",
@@ -257,6 +258,7 @@ export const fr = {
       moneyBackGuarantee: "Garantie Satisfait ou Rembours\u00e9 30 Jours",
       freeShippingOver: "Livraison gratuite sur les commandes de plus de 35$",
       headline: "Aimez votre chat. Éliminez les odeurs.",
+      subheadline: "Le charbon activé de qualité filtration élimine les odeurs à la source. Fonctionne avec la litière que votre chat utilise déjà."
     }
   },
 
@@ -439,6 +441,7 @@ export const fr = {
   },
 
   agitationSection: {
+    badge: "Le vrai problème",
     headline: "Vous Connaissez Ce Moment...",
     paragraphs: [
       "Vous rentrez chez vous après une longue journée. Et là, ça vous frappe. Cette odeur.",
@@ -854,6 +857,7 @@ export const fr = {
     about: "À Propos de Nous",
     blog: "Blog",
     locations: "Emplacements",
+    allLocations: "Tous les emplacements",
     stockists: "Magasins",
     testimonials: "Témoignages",
     retailers: "Pour Détaillants",
@@ -876,7 +880,9 @@ export const fr = {
     googleReviews: "Avis Google",
     // SEO
     sitemap: "Plan du site",
+    caseStudies: "Études de cas",
     fun: "Jeux & Fun",
+    viral: "Viral",
     shippingReturns: "Livraison & Retours",
   },
 
@@ -3872,6 +3878,42 @@ export const fr = {
 
   // Try Free Landing Page (for Ad Campaigns)
   tryFreePage: {
+    title: "Essayez Purrify GRATUITEMENT",
+    description: "Découvrez pourquoi les propriétaires de chats passent au charbon actif pour contrôler les odeurs. Payez seulement la",
+    shippingSuffix: "livraison",
+    cta: "Obtenir Mon Essai Gratuit",
+    claimCta: "Réclamer Mon Essai Gratuit",
+    urgencyBadge: "Offre à Durée Limitée",
+    valueLabel: "Valeur de 9,99 $",
+    freeLabel: "GRATUIT",
+    shippingOnlyLabel: "Livraison seulement",
+    guaranteeLabel: "Garantie satisfait ou remboursé de 30 jours",
+    productImageAlt: "Purrify format d'essai 12g - échantillon gratuit",
+    freeBadgeLabel: "GRATUIT !",
+    benefitsHeading: "Pourquoi les propriétaires de chats aiment Purrify",
+    benefits: [
+      "Élimine les odeurs instantanément",
+      "Charbon de noix de coco 100 % naturel",
+      "Livraison rapide partout au Canada",
+      "Garantie satisfait ou remboursé de 30 jours"
+    ],
+    socialProofLabels: [
+      "passent au format complet",
+      "note étoilée",
+      "semaines de fraîcheur"
+    ],
+    howItWorksHeading: "Comment ça marche",
+    steps: [
+      { step: "1", title: "Saupoudrer", desc: "Ajoutez-le à la litière que votre chat utilise déjà" },
+      { step: "2", title: "Piéger", desc: "Le charbon actif capture les molécules d'ammoniac" },
+      { step: "3", title: "Profiter", desc: "Maison plus fraîche pendant 2 à 3 semaines" },
+    ],
+    testimonialQuote: "J'étais sceptique au début, mais après avoir essayé l'échantillon gratuit, j'ai immédiatement commandé le grand format. Le coin litière n'a jamais senti aussi bon !",
+    testimonialAttribution: "- Sarah M., Toronto",
+    finalHeading: "Prêt à éliminer les odeurs de litière ?",
+    finalDescriptionPrefix: "Obtenez votre essai gratuit aujourd'hui et payez seulement la",
+    finalDescriptionSuffix: "livraison",
+    limitNotice: "Limite de 1 par client | Expédié sous 24 heures",
     meta: {
       title: "Essayez Purrify Gratuitement - Seulement 4,76...",
       description: "Obtenez votre essai GRATUIT de Purrify - payez seulement 4,76 $ de livraison. Essayez-le dans votre routine de litière et voyez la différence."

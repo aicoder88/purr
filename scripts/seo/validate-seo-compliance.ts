@@ -81,8 +81,9 @@ export async function validateAllPages(options: {
     mode: 'runtime',
     includeLegacyBacklog: true,
   });
+  const actionableImageIssues = imageValidationResults.actionableIssues ?? imageValidationResults.issues ?? [];
   // Convert image issues to validation errors
-  imageValidationResults.actionableIssues.forEach((issue) => {
+  actionableImageIssues.forEach((issue) => {
     const validationError: ValidationError = {
       page: issue.filePath,
       severity: issue.severity,
@@ -98,7 +99,7 @@ export async function validateAllPages(options: {
     }
   });
   console.log(
-    `  Image validation: ${imageValidationResults.actionableIssues.length} actionable issues found`
+    `  Image validation: ${actionableImageIssues.length} actionable issues found`
   );
   if (imageValidationResults.legacyBacklog) {
     console.log(`  Image backlog: ${imageValidationResults.legacyBacklog.length} non-blocking issues\n`);
@@ -137,7 +138,7 @@ export async function validateAllPages(options: {
     deadEndPages: linkAnalysisResults.deadEndCount,
     brokenLinks: 0, // TODO: implement broken link check
     totalImages: imageValidationResults.totalImages,
-    imagesWithIssues: imageValidationResults.actionableIssues.length,
+    imagesWithIssues: actionableImageIssues.length,
     imagesMissingAlt: imageValidationResults.stats.missingAlt,
     ogCanonicalMismatches: ogCanonicalResults.issues.length,
   };

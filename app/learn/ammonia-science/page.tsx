@@ -2,6 +2,10 @@ export const dynamic = 'force-static';
 
 import type { Metadata } from 'next';
 import { SITE_NAME } from '@/lib/constants';
+import {
+  createBreadcrumbSchema,
+  serializeSchemaGraph,
+} from '@/lib/seo/indexed-content-schema';
 
 export const metadata: Metadata = {
   title: `Why Cat Urine Smells Like Ammonia (And Fixes) | ${SITE_NAME}`,
@@ -119,6 +123,12 @@ const howToSchema = {
 // Client component for the interactive parts
 import AmmoniaSciencePageClient from './AmmoniaSciencePageClient';
 
+const breadcrumbSchema = createBreadcrumbSchema('en', [
+  { name: 'Home', path: '/' },
+  { name: 'Learn', path: '/learn/' },
+  { name: 'Ammonia Science', path: '/learn/ammonia-science/' },
+]);
+
 export default function AmmoniaSciencePage() {
   return (
     <>
@@ -129,6 +139,10 @@ export default function AmmoniaSciencePage() {
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(howToSchema) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: serializeSchemaGraph(breadcrumbSchema) }}
       />
       <AmmoniaSciencePageClient />
     </>

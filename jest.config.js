@@ -12,6 +12,7 @@ const customJestConfig = {
   moduleNameMapper: {
     '^@/(.*)$': '<rootDir>/src/$1',
     '^@translations/(.*)$': '<rootDir>/src/translations/$1',
+    '^cheerio$': require.resolve('cheerio'),
   },
   collectCoverageFrom: [
     'src/**/*.{js,jsx,ts,tsx}',

@@ -283,6 +283,10 @@ export const en = {
       title: "Use Litter More Efficiently",
       description: "Better odor control means fewer early full changes and less litter waste."
     },
+    freePurrify: {
+      title: "Free Purrify",
+      description: "Get a free Purrify sample with your first order."
+    },
     beforeAfter: {
       title: "Notice the Difference Fast",
       description: "Come back home after a few hours and compare the room before and after Purrify."

@@ -2,6 +2,10 @@ export const dynamic = 'force-static';
 
 import type { Metadata } from 'next';
 import { SITE_NAME } from '@/lib/constants';
+import {
+  createBreadcrumbSchema,
+  serializeSchemaGraph,
+} from '@/lib/seo/indexed-content-schema';
 
 export const metadata: Metadata = {
   title: `The Science of Activated Carbon - ${SITE_NAME}`,
@@ -90,12 +94,22 @@ const articleSchema = {
 // Client component for the interactive parts
 import SciencePageClient from './SciencePageClient';
 
+const breadcrumbSchema = createBreadcrumbSchema('en', [
+  { name: 'Home', path: '/' },
+  { name: 'Learn', path: '/learn/' },
+  { name: 'Science', path: '/learn/science/' },
+]);
+
 export default function SciencePage() {
   return (
     <>
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(articleSchema) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: serializeSchemaGraph(breadcrumbSchema) }}
       />
       <SciencePageClient />
     </>

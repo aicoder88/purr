@@ -2,6 +2,10 @@ export const dynamic = 'force-static';
 
 import type { Metadata } from 'next';
 import { SITE_NAME } from '@/lib/constants';
+import {
+  createBreadcrumbSchema,
+  serializeSchemaGraph,
+} from '@/lib/seo/indexed-content-schema';
 
 export const metadata: Metadata = {
   title: `Cat Litter & Activated Carbon Glossary - ${SITE_NAME}`,
@@ -110,6 +114,12 @@ const speakableSchema = {
 // Client component for the interactive parts
 import GlossaryPageClient from './GlossaryPageClient';
 
+const breadcrumbSchema = createBreadcrumbSchema('en', [
+  { name: 'Home', path: '/' },
+  { name: 'Learn', path: '/learn/' },
+  { name: 'Glossary', path: '/learn/glossary/' },
+]);
+
 export default function GlossaryPage() {
   return (
     <>
@@ -124,6 +134,10 @@ export default function GlossaryPage() {
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(speakableSchema) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: serializeSchemaGraph(breadcrumbSchema) }}
       />
       <GlossaryPageClient />
     </>

@@ -2,8 +2,13 @@ import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 import { locales, isValidLocale } from '@/i18n/config';
 import { SITE_NAME } from '@/lib/constants';
-import { getLocalizedUrl } from '@/lib/seo-utils';
+import { buildLocalizedMetadataAlternates } from '@/lib/seo-utils';
 import HowItWorksPageClient from '@/app/learn/how-it-works/HowItWorksPageClient';
+import {
+  createBreadcrumbSchema,
+  createIndexedArticleSchema,
+  serializeSchemaGraph,
+} from '@/lib/seo/indexed-content-schema';
 
 interface LocalizedHowItWorksPageProps {
   params: Promise<{ locale: string }>;
@@ -22,7 +27,8 @@ export async function generateMetadata({ params }: LocalizedHowItWorksPageProps)
 
   const isFrench = locale === 'fr';
   const baseUrl = 'https://www.purrify.ca';
-  const canonicalPath = getLocalizedUrl('/learn/how-it-works/', locale);
+  const alternates = buildLocalizedMetadataAlternates('/learn/how-it-works/', locale);
+  const canonicalPath = alternates.canonical;
 
   return {
     title: isFrench
@@ -34,13 +40,7 @@ export async function generateMetadata({ params }: LocalizedHowItWorksPageProps)
     keywords: isFrench
       ? ['comment fonctionne carbone actif', 'contrôle odeur litière', 'science carbone actif', 'adsorption moléculaire']
       : ['how activated carbon works', 'cat litter odor control', 'activated carbon science', 'molecular adsorption'],
-    alternates: {
-      canonical: canonicalPath,
-      languages: {
-        'en-CA': `${baseUrl}/learn/how-it-works/`,
-        'x-default': `${baseUrl}/learn/how-it-works/`,
-      },
-    },
+    alternates,
     openGraph: {
       type: 'article',
       url: canonicalPath,
@@ -93,5 +93,40 @@ export default async function LocalizedHowItWorksPage({ params }: LocalizedHowIt
     notFound();
   }
 
-  return <HowItWorksPageClient />;
+  const isFrench = locale === 'fr';
+  const articleSchema = createIndexedArticleSchema({
+    locale,
+    path: '/learn/how-it-works/',
+    title: isFrench
+      ? `Comment Fonctionne Purrify - Science du Carbone Actif | ${SITE_NAME}`
+      : `How Purrify Works - ${SITE_NAME} Activated Carbon Science`,
+    description: isFrench
+      ? "Découvrez la science derrière la technologie du carbone actif de Purrify. Apprenez comment les micropores piègent les molécules d'odeur pour un contrôle supérieur des odeurs de litière."
+      : "Discover the science behind Purrify's activated carbon technology. Learn how micropores trap odor molecules at the source for superior cat litter odor control.",
+    image: 'https://www.purrify.ca/optimized/marketing/micropores-magnified-view.webp',
+    datePublished: '2024-01-20T10:00:00Z',
+    dateModified: '2025-12-09T00:00:00Z',
+    section: 'Pet Care Science',
+    keywords: isFrench
+      ? ['comment fonctionne carbone actif', 'contrôle odeur litière', 'science carbone actif', 'adsorption moléculaire']
+      : ['how activated carbon works', 'cat litter odor control', 'activated carbon science', 'molecular adsorption'],
+  });
+
+  const breadcrumbSchema = createBreadcrumbSchema(locale, [
+    { name: isFrench ? 'Accueil' : 'Home', path: '/' },
+    { name: 'Learn', path: '/learn/' },
+    { name: isFrench ? 'Comment ca marche' : 'How It Works', path: '/learn/how-it-works/' },
+  ]);
+
+  return (
+    <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: serializeSchemaGraph(articleSchema, breadcrumbSchema),
+        }}
+      />
+      <HowItWorksPageClient />
+    </>
+  );
 }

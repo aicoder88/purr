@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 import { locales, isValidLocale } from '@/i18n/config';
 import { SITE_NAME } from '@/lib/constants';
+import { buildLocalizedMetadataAlternates } from '@/lib/seo-utils';
 import ArmAndHammerClient from '@/app/learn/alternatives/arm-and-hammer-cat-litter-deodorizer-alternative/ArmAndHammerClient';
 
 interface LocalizedArmAndHammerPageProps {
@@ -20,8 +21,9 @@ export async function generateMetadata({ params }: LocalizedArmAndHammerPageProp
   }
 
   const isFrench = locale === 'fr';
-  const baseUrl = 'https://www.purrify.ca/';
-  const canonicalPath = `${baseUrl}${isFrench ? '/fr' : ''}/learn/alternatives/arm-and-hammer-cat-litter-deodorizer-alternative/`;
+  const baseUrl = 'https://www.purrify.ca';
+  const alternates = buildLocalizedMetadataAlternates('/learn/alternatives/arm-and-hammer-cat-litter-deodorizer-alternative/', locale);
+  const canonicalPath = alternates.canonical;
 
   return {
     title: isFrench
@@ -33,13 +35,7 @@ export async function generateMetadata({ params }: LocalizedArmAndHammerPageProp
     keywords: isFrench
       ? ['alternative arm hammer', 'meilleur désodorisant litière', 'carbone actif vs bicarbonate', 'comparaison']
       : ['arm hammer alternative', 'better litter deodorizer', 'activated carbon vs baking soda', 'comparison'],
-    alternates: {
-      canonical: canonicalPath,
-      languages: {
-        'en-CA': `${baseUrl}/learn/alternatives/arm-and-hammer-cat-litter-deodorizer-alternative/`,
-        'x-default': `${baseUrl}/learn/alternatives/arm-and-hammer-cat-litter-deodorizer-alternative/`,
-      },
-    },
+    alternates,
     openGraph: {
       type: 'article',
       url: canonicalPath,

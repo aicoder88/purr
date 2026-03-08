@@ -126,9 +126,20 @@ describe('/api/checkout', () => {
     const stripePayload = mockStripeSessionsCreate.mock.calls[0][0];
     expect(stripePayload.customer_email).toBe('jane@example.com');
     expect(stripePayload.mode).toBe('payment');
-    expect(stripePayload.line_items).toHaveLength(1);
+    expect(stripePayload.line_items).toHaveLength(2);
     expect(stripePayload.line_items[0]).toMatchObject({
-      quantity: 2,
+      quantity: 1,
+      price_data: {
+        currency: 'usd',
+        unit_amount: 1499,
+        product_data: {
+          name: 'Purrify Trial Size',
+          description: 'Activated carbon cat litter additive',
+        },
+      },
+    });
+    expect(stripePayload.line_items[1]).toMatchObject({
+      quantity: 1,
       price_data: {
         currency: 'usd',
         unit_amount: 1499,
@@ -335,36 +346,41 @@ describe('/api/checkout', () => {
   });
 
   it('returns 500 and captures exception when Stripe session creation fails', async () => {
+    const consoleErrorSpy = jest.spyOn(console, 'error').mockImplementation(() => {});
     const orderId = '550e8400-e29b-41d4-a716-446655440000';
     const checkoutToken = signOrderId(orderId);
 
-    mockOrderFindUnique.mockResolvedValue({
-      id: orderId,
-      status: 'PENDING',
-      createdAt: new Date(),
-      items: [
-        {
-          price: 12.5,
-          quantity: 1,
-          product: {
-            name: 'Purrify Standard',
-            description: 'Activated carbon additive',
-            image: null,
+    try {
+      mockOrderFindUnique.mockResolvedValue({
+        id: orderId,
+        status: 'PENDING',
+        createdAt: new Date(),
+        items: [
+          {
+            price: 12.5,
+            quantity: 1,
+            product: {
+              name: 'Purrify Standard',
+              description: 'Activated carbon additive',
+              image: null,
+            },
           },
-        },
-      ],
-    });
-    mockStripeSessionsCreate.mockRejectedValue(new Error('Stripe unavailable'));
+        ],
+      });
+      mockStripeSessionsCreate.mockRejectedValue(new Error('Stripe unavailable'));
 
-    const response = await POST(createRequest({
-      orderId,
-      checkoutToken,
-      currency: 'CAD',
-      customer: { email: 'jane@example.com' },
-    }));
+      const response = await POST(createRequest({
+        orderId,
+        checkoutToken,
+        currency: 'CAD',
+        customer: { email: 'jane@example.com' },
+      }));
 
-    expect(response.status).toBe(500);
-    const data = await getResponseData(response);
-    expect(data.error).toBe('Failed to create checkout session');
+      expect(response.status).toBe(500);
+      const data = await getResponseData(response);
+      expect(data.error).toBe('Failed to create checkout session');
+    } finally {
+      consoleErrorSpy.mockRestore();
+    }
   });
 });

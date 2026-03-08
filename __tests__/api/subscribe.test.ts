@@ -1,25 +1,13 @@
 import type { NextRequest } from 'next/server';
 
-const mockEmailSubscriberFindUnique = jest.fn();
-const mockEmailSubscriberCreate = jest.fn();
-const mockEmailSubscriberUpdate = jest.fn();
-
+const mockUpsertEmailSubscriber = jest.fn();
 const mockWithRateLimit = jest.fn((_config: unknown, handler: unknown) => handler);
 
-jest.mock('@/lib/prisma', () => ({
-  __esModule: true,
-  default: {
-    emailSubscriber: {
-      findUnique: mockEmailSubscriberFindUnique,
-      create: mockEmailSubscriberCreate,
-      update: mockEmailSubscriberUpdate,
-    },
-  },
+jest.mock('@/lib/email-subscribers', () => ({
+  upsertEmailSubscriber: mockUpsertEmailSubscriber,
 }));
 
-
-
-jest.mock('@/lib/security/rate-limit-app', () => ({
+jest.mock('@/lib/rate-limit', () => ({
   RATE_LIMITS: {
     CREATE: {
       windowMs: 60 * 1000,
@@ -32,9 +20,17 @@ jest.mock('@/lib/security/rate-limit-app', () => ({
 
 const { POST } = require('../../app/api/subscribe/route') as typeof import('../../app/api/subscribe/route');
 
-function createRequest(body: unknown): NextRequest {
+function createRequest(
+  body: unknown,
+  sessionId?: string,
+): NextRequest {
   return {
     json: jest.fn().mockResolvedValue(body),
+    cookies: {
+      get: jest.fn((name: string) => (name === 'purrify_freshness_session' && sessionId
+        ? { value: sessionId }
+        : undefined)),
+    },
   } as unknown as NextRequest;
 }
 
@@ -45,15 +41,13 @@ async function getResponseData(response: Response) {
 describe('/api/subscribe', () => {
   beforeEach(() => {
     jest.clearAllMocks();
-  });
-
-  it('creates a new subscriber', async () => {
-    mockEmailSubscriberFindUnique.mockResolvedValue(null);
-    mockEmailSubscriberCreate.mockResolvedValue({
+    mockUpsertEmailSubscriber.mockResolvedValue({
       email: 'newuser@example.com',
       status: 'ACTIVE',
     });
+  });
 
+  it('creates a subscriber with provided source and locale', async () => {
     const response = await POST(createRequest({
       email: 'NewUser@Example.COM',
       source: 'homepage',
@@ -64,38 +58,44 @@ describe('/api/subscribe', () => {
     const data = await getResponseData(response);
     expect(data.success).toBe(true);
     expect(data.message).toContain('Successfully subscribed');
-
-    expect(mockEmailSubscriberFindUnique).toHaveBeenCalledWith({
-      where: { email: 'newuser@example.com' },
-    });
-    expect(mockEmailSubscriberCreate).toHaveBeenCalledWith({
-      data: {
-        email: 'newuser@example.com',
-        source: 'homepage',
-        locale: 'fr',
-        status: 'ACTIVE',
-        welcomeEmailSent: false,
-      },
+    expect(mockUpsertEmailSubscriber).toHaveBeenCalledWith({
+      email: 'NewUser@Example.COM',
+      source: 'homepage',
+      locale: 'fr',
+      sessionId: undefined,
     });
   });
 
-  it('returns already subscribed for duplicate active subscriber', async () => {
-    mockEmailSubscriberFindUnique.mockResolvedValue({
-      email: 'existing@example.com',
-      status: 'ACTIVE',
-    });
-
-    const response = await POST(createRequest({
-      email: 'existing@example.com',
-      source: 'footer',
+  it('falls back to default source and locale', async () => {
+    await POST(createRequest({
+      email: 'newuser@example.com',
     }));
 
-    expect(response.status).toBe(200);
-    const data = await getResponseData(response);
-    expect(data.success).toBe(true);
-    expect(data.message).toBe('You are already subscribed!');
-    expect(mockEmailSubscriberCreate).not.toHaveBeenCalled();
-    expect(mockEmailSubscriberUpdate).not.toHaveBeenCalled();
+    expect(mockUpsertEmailSubscriber).toHaveBeenCalledWith({
+      email: 'newuser@example.com',
+      source: 'unknown',
+      locale: 'en',
+      sessionId: undefined,
+    });
+  });
+
+  it('passes through session id from the freshness cookie', async () => {
+    await POST(
+      createRequest(
+        {
+          email: 'newuser@example.com',
+          source: 'quiz',
+        },
+        'session_12345',
+      ),
+    );
+
+    expect(mockUpsertEmailSubscriber).toHaveBeenCalledWith({
+      email: 'newuser@example.com',
+      source: 'quiz',
+      locale: 'en',
+      sessionId: 'session_12345',
+    });
   });
 
   it('rejects invalid email addresses', async () => {
@@ -108,6 +108,26 @@ describe('/api/subscribe', () => {
     const data = await getResponseData(response);
     expect(data.success).toBe(false);
     expect(data.error).toBe('Please enter a valid email address');
-    expect(mockEmailSubscriberFindUnique).not.toHaveBeenCalled();
+    expect(mockUpsertEmailSubscriber).not.toHaveBeenCalled();
+  });
+
+  it('returns 500 when subscriber upsert fails', async () => {
+    const consoleErrorSpy = jest.spyOn(console, 'error').mockImplementation(() => {});
+
+    try {
+      mockUpsertEmailSubscriber.mockRejectedValue(new Error('db unavailable'));
+
+      const response = await POST(createRequest({
+        email: 'newuser@example.com',
+        source: 'homepage',
+      }));
+
+      expect(response.status).toBe(500);
+      const data = await getResponseData(response);
+      expect(data.success).toBe(false);
+      expect(data.error).toBe('Something went wrong. Please try again.');
+    } finally {
+      consoleErrorSpy.mockRestore();
+    }
   });
 });

@@ -2,6 +2,10 @@ export const dynamic = 'force-static';
 
 import type { Metadata } from 'next';
 import { SITE_NAME } from '@/lib/constants';
+import {
+  createBreadcrumbSchema,
+  serializeSchemaGraph,
+} from '@/lib/seo/indexed-content-schema';
 
 export const metadata: Metadata = {
   title: `Is Cat Litter Ammonia Dangerous? Health Guide | ${SITE_NAME}`,
@@ -75,12 +79,22 @@ const articleSchema = {
 // Client component for the interactive parts
 import CatLitterAmmoniaHealthRisksClient from './CatLitterAmmoniaHealthRisksClient';
 
+const breadcrumbSchema = createBreadcrumbSchema('en', [
+  { name: 'Home', path: '/' },
+  { name: 'Learn', path: '/learn/' },
+  { name: 'Cat Litter Ammonia Health Risks', path: '/learn/cat-litter-ammonia-health-risks/' },
+]);
+
 export default function CatLitterAmmoniaHealthRisksPage() {
   return (
     <>
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(articleSchema) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: serializeSchemaGraph(breadcrumbSchema) }}
       />
       <CatLitterAmmoniaHealthRisksClient />
     </>

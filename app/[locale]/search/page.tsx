@@ -98,10 +98,10 @@ export async function generateMetadata({
       images: [`${SITE_URL}/optimized/logos/purrify-logo.png`],
     },
     robots: {
-      index: true,
+      index: false,
       follow: true,
       googleBot: {
-        index: true,
+        index: false,
         follow: true,
         'max-image-preview': 'large',
         'max-snippet': -1,

@@ -104,10 +104,10 @@
     "test:e2e": "playwright test",
     "test:e2e:security": "playwright test e2e/security-*.spec.ts",
     "e2e:web": "next dev --webpack -p 3010",
-    "test": "jest",
-    "test:watch": "jest --watch",
-    "test:coverage": "jest --coverage",
-    "test:translations": "jest __tests__/translation-completeness.test.js",
+    "test": "NODE_OPTIONS=\"${NODE_OPTIONS:+$NODE_OPTIONS }--localstorage-file=.jest-localstorage\" node ./node_modules/jest/bin/jest.js",
+    "test:watch": "NODE_OPTIONS=\"${NODE_OPTIONS:+$NODE_OPTIONS }--localstorage-file=.jest-localstorage\" node ./node_modules/jest/bin/jest.js --watch",
+    "test:coverage": "NODE_OPTIONS=\"${NODE_OPTIONS:+$NODE_OPTIONS }--localstorage-file=.jest-localstorage\" node ./node_modules/jest/bin/jest.js --coverage",
+    "test:translations": "NODE_OPTIONS=\"${NODE_OPTIONS:+$NODE_OPTIONS }--localstorage-file=.jest-localstorage\" node ./node_modules/jest/bin/jest.js __tests__/translation-completeness.test.js",
     "test:e2e:ui": "playwright test --ui"
   },
   "dependencies": {

@@ -18,44 +18,34 @@ export async function generateMetadata({ params }: LocalizedCaseStudiesPageProps
     return { title: 'Not Found' };
   }
 
-  const isFrench = locale === 'fr';
-  const baseUrl = 'https://www.purrify.ca/';
-  const canonicalPath = `${baseUrl}${isFrench ? '/fr' : ''}/case-studies/`;
+  const baseUrl = 'https://www.purrify.ca';
+  const canonicalPath = `${baseUrl}/case-studies/`;
 
   return {
-    title: isFrench
-      ? `Histoires de Réussite - Résultats Clients | ${SITE_NAME}`
-      : `Success Stories - Real Customer Results | ${SITE_NAME}`,
-    description: isFrench
-      ? "Études de cas avant/après montrant comment des propriétaires de chats ont amélioré le contrôle des odeurs de litière avec Purrify dans de vraies maisons au Canada."
-      : 'Before-and-after case studies showing how cat owners improved litter box odor control with Purrify in real homes across Canada.',
-    keywords: isFrench
-      ? ['études de cas purrify', 'histoires succès odeur chat', 'résultats clients', 'avant après']
-      : ['Purrify case studies', 'cat odor success stories', 'customer results', 'before and after'],
+    title: `Success Stories - Real Customer Results | ${SITE_NAME}`,
+    description: 'Before-and-after case studies showing how cat owners improved litter box odor control with Purrify in real homes across Canada.',
+    keywords: ['Purrify case studies', 'cat odor success stories', 'customer results', 'before and after'],
     alternates: {
       canonical: canonicalPath,
       languages: {
-        'en-CA': `${baseUrl}/case-studies/`,
-        'x-default': `${baseUrl}/case-studies/`,
+        'en-CA': canonicalPath,
+        'en-US': canonicalPath,
+        'x-default': canonicalPath,
       },
     },
     openGraph: {
       type: 'website',
       url: canonicalPath,
       siteName: SITE_NAME,
-      title: isFrench
-        ? `Histoires de Réussite | ${SITE_NAME}`
-        : `Success Stories | ${SITE_NAME}`,
-      description: isFrench
-        ? 'Vrais résultats de clients satisfaits.'
-        : 'Real results from satisfied customers.',
-      locale: isFrench ? 'fr_CA' : 'en_CA',
+      title: `Success Stories | ${SITE_NAME}`,
+      description: 'Real results from satisfied customers.',
+      locale: 'en_CA',
       images: [
         {
           url: `${baseUrl}/optimized/products/three-bags-no-bg.webp`,
           width: 1200,
           height: 630,
-          alt: isFrench ? 'Histoires de réussite' : 'Customer success stories',
+          alt: 'Customer success stories',
         },
       ],
     },
@@ -63,19 +53,15 @@ export async function generateMetadata({ params }: LocalizedCaseStudiesPageProps
       card: 'summary_large_image',
       site: '@purrifyhq',
       creator: '@purrifyhq',
-      title: isFrench
-        ? `Réussites Clients | ${SITE_NAME}`
-        : `Customer Success | ${SITE_NAME}`,
-      description: isFrench
-        ? 'Résultats réels de propriétaires de chats.'
-        : 'Real results from cat owners.',
+      title: `Customer Success | ${SITE_NAME}`,
+      description: 'Real results from cat owners.',
       images: [`${baseUrl}/optimized/products/three-bags-no-bg.webp`],
     },
     robots: {
-      index: true,
+      index: false,
       follow: true,
       googleBot: {
-        index: true,
+        index: false,
         follow: true,
         'max-image-preview': 'large',
         'max-snippet': -1,
@@ -84,5 +70,6 @@ export async function generateMetadata({ params }: LocalizedCaseStudiesPageProps
   };
 }
 
-// Re-export the English page component
+// Locale-prefixed case studies currently reuse the English body copy.
+// Keep them accessible, but canonicalize to English and exclude them from indexing.
 export { default } from '@/app/case-studies/page';
