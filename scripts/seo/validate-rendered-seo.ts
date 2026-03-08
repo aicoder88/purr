@@ -608,11 +608,6 @@ async function collectRenderedHeadSnapshot(
 ): Promise<RenderedHeadSnapshot> {
   return page.evaluate(() => {
     const head = document.head;
-    const textContent = (element: Element | null) => element?.textContent?.trim() ?? '';
-    const metaContents = (selector: string) =>
-      Array.from(head.querySelectorAll(selector))
-        .map((element) => element.getAttribute('content')?.trim() ?? '')
-        .filter(Boolean);
 
     return {
       titleCount: head.querySelectorAll('title').length,
@@ -620,9 +615,15 @@ async function collectRenderedHeadSnapshot(
       canonicalHrefs: Array.from(head.querySelectorAll('link[rel="canonical"]'))
         .map((element) => element.getAttribute('href')?.trim() ?? '')
         .filter(Boolean),
-      ogUrls: metaContents('meta[property="og:url"]'),
-      robotsMetaContents: metaContents('meta[name="robots"]'),
-      googlebotMetaContents: metaContents('meta[name="googlebot"]'),
+      ogUrls: Array.from(head.querySelectorAll('meta[property="og:url"]'))
+        .map((element) => element.getAttribute('content')?.trim() ?? '')
+        .filter(Boolean),
+      robotsMetaContents: Array.from(head.querySelectorAll('meta[name="robots"]'))
+        .map((element) => element.getAttribute('content')?.trim() ?? '')
+        .filter(Boolean),
+      googlebotMetaContents: Array.from(head.querySelectorAll('meta[name="googlebot"]'))
+        .map((element) => element.getAttribute('content')?.trim() ?? '')
+        .filter(Boolean),
       hreflangLinks: Array.from(head.querySelectorAll('link[rel="alternate"][hreflang]'))
         .map((element) => ({
           hreflang: element.getAttribute('hreflang')?.trim() ?? '',
@@ -630,7 +631,7 @@ async function collectRenderedHeadSnapshot(
         }))
         .filter((entry) => entry.hreflang.length > 0),
       jsonLdBlocks: Array.from(head.querySelectorAll('script[type="application/ld+json"]'))
-        .map((element) => textContent(element))
+        .map((element) => element.textContent?.trim() ?? '')
         .filter(Boolean),
     };
   });
