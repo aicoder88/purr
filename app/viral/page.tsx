@@ -1,15 +1,17 @@
 import type { Metadata } from 'next';
 import ViralContent from './ViralContent';
-import { SITE_NAME } from '@/lib/constants';
+import { SITE_NAME, SITE_URL } from '@/lib/constants';
 
 export const metadata: Metadata = {
   title: 'The Viral Odour Vault: Purrify Profit Report',
   description: 'Stop guessing why your videos die in obscurity. We have dissected the Viral Anchors of the pet care world to build your profit machine.',
   alternates: {
-    canonical: 'https://www.purrify.ca/viral/'
+    canonical: `${SITE_URL}/viral/`,
   },
   openGraph: {
-    url: '/viral',
+    type: 'website',
+    url: `${SITE_URL}/viral/`,
+    siteName: SITE_NAME,
     title: 'The Viral Odour Vault: Purrify Profit Report',
     description: 'Dissecting the Viral Anchors of the pet care world.',
   },
@@ -33,11 +35,11 @@ const articleSchema = {
     name: SITE_NAME,
     logo: {
       '@type': 'ImageObject',
-      url: 'https://www.purrify.ca/optimized/logos/purrify-logo.png',
+      url: `${SITE_URL}/optimized/logos/purrify-logo.png`,
     },
   },
   datePublished: '2026-01-19',
-  url: 'https://www.purrify.ca/viral/',
+  url: `${SITE_URL}/viral/`,
 };
 
 export default function ViralReportPage() {

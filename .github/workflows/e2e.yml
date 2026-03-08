@@ -44,6 +44,8 @@ jobs:
           DATABASE_URL: "file:./test.db"
           NEXTAUTH_SECRET: "test-secret-key-for-ci-minimum-32-characters-long"
           NEXTAUTH_URL: "http://localhost:3010"
+          NEXT_PUBLIC_SITE_URL: "https://www.purrify.ca"
+          SITE_URL: "https://www.purrify.ca"
         run: pnpm build
 
       - name: Install Playwright (Chromium)
@@ -57,6 +59,8 @@ jobs:
           DATABASE_URL: "file:./test.db"
           ADMIN_EMAIL: "admin@purrify.ca"
           ADMIN_PASSWORD: "admin123"
+          NEXT_PUBLIC_SITE_URL: "https://www.purrify.ca"
+          SITE_URL: "https://www.purrify.ca"
         run: pnpm test:e2e
 
       - name: Upload Playwright report on failure
@@ -66,4 +70,3 @@ jobs:
           name: playwright-report
           path: playwright-report
           if-no-files-found: ignore
-

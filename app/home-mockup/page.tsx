@@ -1,5 +1,4 @@
-export const dynamic = "force-static";
-
+import type { Metadata } from "next";
 import { ErrorBoundary } from "@/components/ui/error-boundary";
 import { ScopedIntlProvider } from "@/components/providers/ScopedIntlProvider";
 import { HowItWorks } from "@/components/sections/how-it-works";
@@ -16,6 +15,31 @@ import {
   HomepagePackagingMockupCTA,
   HomepagePackagingMockupHero,
 } from "@/components/mockups/HomepagePackagingMockup";
+
+export const dynamic = "force-static";
+
+const SITE_URL =
+  process.env.NEXT_PUBLIC_SITE_URL ||
+  process.env.SITE_URL ||
+  "https://www.purrify.ca";
+
+export const metadata: Metadata = {
+  title: "Homepage Mockup",
+  description: "Internal homepage mockup preview.",
+  robots: {
+    index: false,
+    follow: false,
+  },
+  alternates: {
+    canonical: `${SITE_URL}/home-mockup/`,
+  },
+  openGraph: {
+    type: "website",
+    url: `${SITE_URL}/home-mockup/`,
+    title: "Homepage Mockup",
+    description: "Internal homepage mockup preview.",
+  },
+};
 
 export default async function HomeMockupPage() {
   return (
