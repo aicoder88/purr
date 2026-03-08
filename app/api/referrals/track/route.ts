@@ -315,20 +315,24 @@ async function handlePurchase(
     rewardEligible: completion.rewardIssued,
     rewards: completion.rewardIssued
       ? completion.rewards
-      : {
-          referrer: {
-            type: 'credit',
-            value: REFERRAL_CONFIG.REFERRER_CREDIT,
-            description: `$${REFERRAL_CONFIG.REFERRER_CREDIT} credit on the next order`,
-          },
-          referee: {
-            type: 'discount',
-            value: validation.discount,
-            description: `$${validation.discount} off the first order`,
-          },
-        },
+      : completion.qualifyingPurchase
+        ? {
+            referrer: {
+              type: 'credit',
+              value: REFERRAL_CONFIG.REFERRER_CREDIT,
+              description: `$${REFERRAL_CONFIG.REFERRER_CREDIT} credit on the next order`,
+            },
+            referee: {
+              type: 'discount',
+              value: validation.discount,
+              description: `$${validation.discount} off qualifying orders over $${REFERRAL_CONFIG.MINIMUM_QUALIFYING_ORDER_SUBTOTAL}`,
+            },
+          }
+        : undefined,
     message: completion.rewardIssued
       ? 'Referral purchase completed - rewards issued!'
-      : 'Referral purchase completed - referral recorded',
+      : completion.qualifyingPurchase
+        ? 'Referral purchase completed - referral recorded'
+        : `Referral recorded, but rewards require a qualifying order over $${completion.minimumOrderAmount}.`,
   } satisfies TrackingResponse);
 }

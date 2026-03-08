@@ -23,7 +23,7 @@ export async function generateMetadata({ params }: LocalizedReferralPageProps): 
 
   return {
     title: `Referral Program - Give $5, Get $5 | ${SITE_NAME}`,
-    description: 'Share Purrify with friends and earn rewards. Give $5 off to your friends and get $5 credit when they make their first purchase.',
+    description: 'Share Purrify with friends and earn rewards. Give $5 off on qualifying orders over $50 and get $5 credit after that qualifying order is paid.',
     keywords: ['purrify referral', 'referral program', 'give 5 get 5', 'rewards'],
     alternates: {
       canonical: canonicalPath,
@@ -38,7 +38,7 @@ export async function generateMetadata({ params }: LocalizedReferralPageProps): 
       url: canonicalPath,
       siteName: SITE_NAME,
       title: `Referral - Give $5, Get $5 | ${SITE_NAME}`,
-      description: 'Share and earn rewards.',
+      description: 'Give $5 off on qualifying orders over $50 and earn $5 credit after payment.',
       locale: 'en_CA',
       images: [
         {
@@ -54,7 +54,7 @@ export async function generateMetadata({ params }: LocalizedReferralPageProps): 
       site: '@purrifyhq',
       creator: '@purrifyhq',
       title: `Referral | ${SITE_NAME}`,
-      description: 'Give $5, get $5.',
+      description: 'Give $5 off on qualifying orders over $50, get $5 credit after payment.',
       images: [`${baseUrl}/optimized/logos/purrify-logo.png`],
     },
     robots: {
@@ -70,6 +70,6 @@ export async function generateMetadata({ params }: LocalizedReferralPageProps): 
   };
 }
 
-// Locale-prefixed referral routes currently reuse the English body copy.
+// Locale-prefixed referral routes share the main referral page implementation.
 // Keep them accessible, but canonicalize to English and exclude them from indexing.
 export { default } from '@/app/referral/page';

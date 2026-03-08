@@ -8,6 +8,7 @@ import {
   generateShareUrls,
   maskEmail,
   REFERRAL_CONFIG,
+  isReferralOrderQualified,
 } from '@/lib/referral';
 import type { AuditAction, CustomerSegment } from '@/generated/client/client';
 
@@ -590,7 +591,7 @@ export async function getReferralDashboardData(
     }),
     createdAt: redemption.clickedAt?.toISOString() || redemption.createdAt.toISOString(),
     completedAt: redemption.purchasedAt?.toISOString() || redemption.signedUpAt?.toISOString(),
-    orderValue: redemption.referrerCredit || undefined,
+    orderValue: redemption.qualifyingOrderAmount || undefined,
     rewardIssued: redemption.status === 'COMPLETED',
   }));
 
@@ -626,12 +627,15 @@ export async function completeReferralPurchase({
   referralCode,
   refereeEmail,
   orderId,
-  orderValue: _orderValue,
+  orderValue,
 }: CompleteReferralPurchaseOptions): Promise<{
   success: boolean;
   alreadyProcessed: boolean;
   rewardIssued: boolean;
   milestoneRewardIssued: boolean;
+  qualifyingPurchase: boolean;
+  minimumOrderAmount: number;
+  actualOrderAmount?: number;
   referralId?: string;
   rewards?: {
     referrer: { type: 'credit'; value: number; description: string };
@@ -641,6 +645,11 @@ export async function completeReferralPurchase({
   const db = requirePrisma();
   const normalizedEmail = normalizeEmail(refereeEmail);
   const validation = await validateReferralCodeForEmail(referralCode, normalizedEmail);
+  const normalizedOrderValue =
+    typeof orderValue === 'number' && Number.isFinite(orderValue)
+      ? roundToTwo(orderValue)
+      : undefined;
+  const qualifyingPurchase = isReferralOrderQualified(normalizedOrderValue);
 
   const existingForOrder = await db.referralRedemption.findFirst({
     where: {
@@ -659,6 +668,9 @@ export async function completeReferralPurchase({
       alreadyProcessed: true,
       rewardIssued: existingForOrder.referralCodeId === validation.referralCodeId,
       milestoneRewardIssued: false,
+      qualifyingPurchase,
+      minimumOrderAmount: REFERRAL_CONFIG.MINIMUM_QUALIFYING_ORDER_SUBTOTAL,
+      actualOrderAmount: normalizedOrderValue,
       referralId: existingForOrder.id,
     };
   }
@@ -685,6 +697,40 @@ export async function completeReferralPurchase({
 
   const shouldIncrementSignup = !pendingRedemption?.signedUpAt;
 
+  if (!qualifyingPurchase) {
+    const redemption = pendingRedemption
+      ? await db.referralRedemption.update({
+          where: { id: pendingRedemption.id },
+          data: {
+            signedUpAt: pendingRedemption.signedUpAt ?? now,
+            qualifyingOrderAmount: normalizedOrderValue,
+          },
+        })
+      : await db.referralRedemption.create({
+          data: {
+            referralCodeId: validation.referralCodeId,
+            refereeEmail: normalizedEmail,
+            status: 'PENDING',
+            signedUpAt: now,
+            clickedAt: now,
+            qualifyingOrderAmount: normalizedOrderValue,
+            refereeDiscount: REFERRAL_CONFIG.REFEREE_DISCOUNT,
+            referrerCredit: REFERRAL_CONFIG.REFERRER_CREDIT,
+          },
+        });
+
+    return {
+      success: true,
+      alreadyProcessed: false,
+      rewardIssued: false,
+      milestoneRewardIssued: false,
+      qualifyingPurchase: false,
+      minimumOrderAmount: REFERRAL_CONFIG.MINIMUM_QUALIFYING_ORDER_SUBTOTAL,
+      actualOrderAmount: normalizedOrderValue,
+      referralId: redemption.id,
+    };
+  }
+
   const redemption = pendingRedemption
     ? await db.referralRedemption.update({
         where: { id: pendingRedemption.id },
@@ -693,6 +739,7 @@ export async function completeReferralPurchase({
           signedUpAt: pendingRedemption.signedUpAt ?? now,
           refereeOrderId: orderId,
           purchasedAt: now,
+          qualifyingOrderAmount: normalizedOrderValue,
           rewardIssuedAt: now,
         },
       })
@@ -704,6 +751,7 @@ export async function completeReferralPurchase({
           status: 'COMPLETED',
           signedUpAt: now,
           purchasedAt: now,
+          qualifyingOrderAmount: normalizedOrderValue,
           rewardIssuedAt: now,
           refereeDiscount: REFERRAL_CONFIG.REFEREE_DISCOUNT,
           referrerCredit: REFERRAL_CONFIG.REFERRER_CREDIT,
@@ -801,6 +849,9 @@ export async function completeReferralPurchase({
     alreadyProcessed: false,
     rewardIssued,
     milestoneRewardIssued,
+    qualifyingPurchase: true,
+    minimumOrderAmount: REFERRAL_CONFIG.MINIMUM_QUALIFYING_ORDER_SUBTOTAL,
+    actualOrderAmount: normalizedOrderValue,
     referralId: redemption.id,
     rewards: rewardIssued
       ? {

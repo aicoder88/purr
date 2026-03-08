@@ -9,6 +9,7 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { ReferralDashboard } from '@/components/referrals/ReferralDashboard';
 import { SocialShareTools } from '@/components/referrals/SocialShareTools';
 import { Share2, Trophy, Gift, Users, ArrowLeft, Plus, Sparkles } from 'lucide-react';
+import { REFERRAL_CONFIG } from '@/lib/referral';
 import { generateReferralCode, getUserReferralStats } from '@/lib/referral-tracking';
 import { formatProductPrice } from '@/lib/pricing';
 
@@ -56,6 +57,7 @@ function getCustomerIdentity(): CustomerIdentity | null {
 }
 
 export default function ReferralsPageClient() {
+  const minimumOrder = `$${REFERRAL_CONFIG.MINIMUM_QUALIFYING_ORDER_SUBTOTAL}`;
   const trialPrice = formatProductPrice('trial');
   const [customer, setCustomer] = useState<CustomerIdentity | null>(null);
   const [hasCheckedSession, setHasCheckedSession] = useState(false);
@@ -248,7 +250,7 @@ export default function ReferralsPageClient() {
                   </div>
                   <h3 className="font-heading font-bold text-gray-900 dark:text-gray-100 mb-2">They Get $5 Off</h3>
                   <p className="text-gray-600 dark:text-gray-400 text-sm">
-                    {`Their first order gets an instant $5 referral discount. Trial size currently starts at ${trialPrice}.`}
+                    {`Qualifying orders over ${minimumOrder} get an instant $5 referral discount. Trial size currently starts at ${trialPrice}.`}
                   </p>
                 </div>
 
@@ -258,7 +260,7 @@ export default function ReferralsPageClient() {
                   </div>
                   <h3 className="font-heading font-bold text-gray-900 dark:text-gray-100 mb-2">You Earn Rewards</h3>
                   <p className="text-gray-600 dark:text-gray-400 text-sm">
-                    Collect a $5 credit for every completed referral plus milestone bonuses as your impact grows
+                    {`Collect a $5 credit when a referred order over ${minimumOrder} is paid, plus milestone bonuses as your impact grows`}
                   </p>
                 </div>
               </div>

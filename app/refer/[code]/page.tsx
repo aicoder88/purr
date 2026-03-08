@@ -1,6 +1,7 @@
 import { Metadata } from 'next';
 import { SITE_NAME } from '@/lib/constants';
 import { formatProductPrice } from '@/lib/pricing';
+import { REFERRAL_CONFIG } from '@/lib/referral';
 import { ReferralClient } from './ReferralClient';
 
 interface ReferralPageProps {
@@ -50,13 +51,14 @@ export async function generateMetadata({ params }: ReferralPageProps): Promise<M
   const { referralData } = await getReferralData(code);
 
   const trialPrice = formatProductPrice('trial');
+  const minimumOrder = `$${REFERRAL_CONFIG.MINIMUM_QUALIFYING_ORDER_SUBTOTAL}`;
 
   const pageTitle = referralData.isValid
-    ? `${referralData.referrerName} recommends ${SITE_NAME} - Get $5 Off Your First Order!`
+    ? `${referralData.referrerName} recommends ${SITE_NAME} - Get $5 Off Qualifying Orders Over ${minimumOrder}!`
     : `Invalid Referral Code - ${SITE_NAME}`;
 
   const pageDescription = referralData.isValid
-    ? `${referralData.referrerName} has shared Purrify with you! Get $5 off your first order and see why they love this cat litter deodorizer. Trial size currently starts at ${trialPrice}.`
+    ? `${referralData.referrerName} has shared Purrify with you! Get $5 off qualifying orders over ${minimumOrder} and see why they love this cat litter deodorizer. Trial size currently starts at ${trialPrice}.`
     : 'This referral code is not valid or has expired.';
 
   const canonicalUrl = `https://www.purrify.ca/refer/${code}/`;

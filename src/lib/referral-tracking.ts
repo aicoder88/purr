@@ -1,5 +1,5 @@
 // Referral tracking utility functions
-import { getProductPrice } from './pricing';
+import { REFERRAL_CONFIG, isReferralOrderQualified } from './referral';
 import { REFERRAL_COOKIE_MAX_AGE_SECONDS, REFERRAL_COOKIE_NAME } from './referral-cookie';
 
 interface ReferralInfo {
@@ -180,33 +180,27 @@ export function getCheckoutReferralData(customerEmail?: string): CheckoutReferra
 export function applyReferralDiscountToCart(cartItems: Array<{ id: string; price: number; name?: string; isReferralReward?: boolean; referralCode?: string }>): Array<{ id: string; price: number; discountApplied?: boolean }> {
   const referralInfo = getReferralInfo();
   if (!referralInfo) return cartItems;
-
-  // Check if free trial is already in cart
-  const hasReferralTrial = cartItems.some(item =>
-    item.isReferralReward ||
-    item.referralCode ||
-    (item.price === 0 && item.name?.includes('FREE'))
-  );
-
-  if (hasReferralTrial) {
+  const subtotal = cartItems.reduce((sum, item) => sum + item.price, 0);
+  if (!isReferralOrderQualified(subtotal)) {
     return cartItems;
   }
 
-  // Add free 12g trial to cart
-  const freeTrialItem = {
-    id: 'purrify-12g-referral',
-    name: 'Purrify 12g Trial Size - FREE (Referral Reward)',
-    price: 0,
-    originalPrice: getProductPrice('trial'),
-    quantity: 1,
-    imageUrl: 'https://www.purrify.ca/optimized/products/17g-transparent-v2.webp',
-    isReferralReward: true,
-    referralCode: referralInfo.code,
-    description: `Free trial thanks to ${referralInfo.referrerName}`,
-    sku: 'PURRIFY-17G-REF'
-  };
+  let remainingDiscount: number = REFERRAL_CONFIG.REFEREE_DISCOUNT;
 
-  return [...cartItems, freeTrialItem];
+  return cartItems.map((item) => {
+    if (remainingDiscount <= 0) {
+      return item;
+    }
+
+    const appliedDiscount = Math.min(item.price, remainingDiscount);
+    remainingDiscount = Math.max(0, Math.round((remainingDiscount - appliedDiscount) * 100) / 100);
+
+    return {
+      ...item,
+      price: Math.max(0, Math.round((item.price - appliedDiscount) * 100) / 100),
+      discountApplied: appliedDiscount > 0,
+    };
+  });
 }
 
 /**
