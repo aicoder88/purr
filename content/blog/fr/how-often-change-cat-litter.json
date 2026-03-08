@@ -29,10 +29,12 @@
     "cat litter schedule"
   ],
   "locale": "fr",
-  "translations": {},
+  "translations": {
+    "fr": "how-often-change-cat-litter"
+  },
   "seo": {
     "title": "À Quelle Fréquence Changer la Litière du Chat? (Guide Complet)",
-    "description": "Apprenez exactement à quelle fréquence changer la litière pour litières agglomérantes, cristal et naturelles. Inclut les ajustements multi-chats et conseils pour prolonger…",
+    "description": "Apprenez exactement à quelle fréquence changer la litière pour chat contre des litières agglomérantes, cristallines et naturelles. Comprend des ajustements multi-chats et des conseils pour prolonger la fraîcheur entre les changements.",
     "keywords": [
       "À Quelle Fréquence Changer la Litière du Chat?",
       "how often change cat litter",
@@ -45,5 +47,35 @@
     "ogImage": "/optimized/blog/frequency-hero.webp",
     "canonical": "https://www.purrify.ca/fr/blog/how-often-change-cat-litter/"
   },
-  "readingTime": 9
+  "readingTime": 9,
+  "faq": [
+    {
+      "question": "À quelle fréquence faut-il changer complètement la litière pour chat ?",
+      "answerHtml": "Pour litière agglomérante : toutes les 1 à 2 semaines. Pour la litière cristalline : toutes les 2 à 4 semaines. Pour les argiles non agglomérantes : tous les 2-3 jours. Les ménages comptant plusieurs chats devraient augmenter la fréquence proportionnellement. Changez-le toujours immédiatement si vous remarquez une forte odeur ou si votre chat évite la boîte."
+    },
+    {
+      "question": "Puis-je simplement ajouter plus de litière au lieu de la changer ?",
+      "answerHtml": "La recharge prolonge le temps entre les modifications complètes mais ne les remplace pas. Au fil du temps, les particules fines, les amas brisés et les odeurs absorbées s’accumulent. La couche de base est contaminée même si vous la ramassez religieusement. Un remplacement complet est nécessaire pour une vraie fraîcheur."
+    },
+    {
+      "question": "Comment savoir quand la litière de cristaux est saturée ?",
+      "answerHtml": "La plupart des portées de cristaux changent de couleur lorsqu'elles sont saturées, généralement du blanc/clair au jaune. Vous remarquerez également une augmentation des odeurs à mesure que la capacité d’absorption diminue. Si l'agitation ne redistribue pas les cristaux secs à la surface, il est temps de les remplacer complètement."
+    },
+    {
+      "question": "Dois-je laver le bac à litière à chaque fois que je change de litière ?",
+      "answerHtml": "Pas à chaque fois : une fréquence mensuelle suffit dans la plupart des situations. Cependant, lavez-vous toujours si vous remarquez une odeur persistante après avoir changé la litière, des résidus visibles ou si votre chat ne se sent pas bien. Utilisez du savon à vaisselle non parfumé et de l'eau tiède ; évitez l’eau de Javel ou les produits chimiques agressifs."
+    },
+    {
+      "question": "L'ajout de charbon actif réduit-il la fréquence à laquelle je dois changer de litière ?",
+      "answerHtml": "Le charbon actif prolonge la fraîcheur entre les changements en piégeant les molécules odorantes que la litière ne peut pas capturer. <a href=\"/products\" class=\"text-[#FF3131] dark:text-[#FF6B6B] hover:underline\">Purrify</a> offre plus de 7 jours de fraîcheur supplémentaire par application. Cependant, vous devez toujours respecter votre calendrier de ramassage et de remplacement : le carbone s'attaque aux molécules de gaz et non à l'accumulation de déchets."
+    },
+    {
+      "question": "À quelle fréquence dois-je changer la litière d’un chaton ?",
+      "answerHtml": "Les chatons produisent moins de déchets mais nécessitent une surveillance plus fréquente. Suivez le même horaire que les chats adultes, mais cochez la case plus souvent (3 fois par jour) pour vous assurer que le chaton l'utilise correctement. Passez à une litière adaptée aux adultes après 12 mois."
+    },
+    {
+      "question": "Est-il acceptable de mélanger de la litière fraîche avec de la vieille litière ?",
+      "answerHtml": "Faire l’appoint avec de la litière fraîche tout en gardant une litière de base non contaminée est une bonne solution. Cependant, ne mélangez pas de litière vraiment vieille et saturée avec de la litière fraîche : la partie contaminée réduit l'efficacité globale. En cas de doute, effectuez un remplacement complet."
+    }
+  ]
 }

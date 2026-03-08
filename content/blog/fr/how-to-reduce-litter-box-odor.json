@@ -13,7 +13,7 @@
   "status": "published",
   "featuredImage": {
     "url": "/optimized/blog/fresh-home-hero-ghibli.webp",
-    "alt": "How to Reduce Litter Box Odor: Complete Guide",
+    "alt": "Comment réduire l'odeur du bac à litière : guide complet",
     "width": 1600,
     "height": 1067
   },
@@ -23,29 +23,30 @@
     "Cat Care"
   ],
   "tags": [
-    "how to reduce litter box odor",
-    "litter box smell",
-    "cat litter odor control",
-    "litter box maintenance",
-    "activated carbon cat litter"
+    "comment réduire l'odeur du bac à litière",
+    "odeur de litière",
+    "contrôle des odeurs de litière pour chat",
+    "entretien du bac à litière",
+    "litière pour chat au charbon actif"
   ],
   "locale": "fr",
-  "translations": {},
+  "translations": {
+    "fr": "how-to-reduce-litter-box-odor"
+  },
   "seo": {
-    "title": "Comment réduire les odeurs de litière : 7 conseils d'experts (Guide…",
-    "description": "Fatigué des odeurs de litière ? Oubliez les désodorisants. Ces 7 méthodes scientifiquement prouvées éliminent les odeurs de litière au niveau moléculaire. Fonctionne aussi…",
+    "title": "Comment réduire l'odeur du bac à litière : 7 conseils d'experts (Guide 2025)",
+    "description": "Fatigué de l'odeur du bac à litière ? Évitez les assainisseurs d’air. Ces 7 méthodes fondées sur la science éliminent les odeurs de litière pour chat au niveau moléculaire. Fonctionne également pour les maisons multi-chats.",
     "keywords": [
-      "Comment réduire les odeurs de litière",
-      "how to reduce litter box odor",
-      "litter box smell elimination",
-      "cat litter odor control tips",
-      "reduce cat litter smell",
-      "litter box odor solutions",
-      "multi-cat litter box odor",
-      "litter box smell",
-      "cat litter odor control",
-      "litter box maintenance",
-      "activated carbon cat litter"
+      "comment réduire l'odeur du bac à litière",
+      "élimination des odeurs de litière",
+      "Conseils pour contrôler les odeurs de litière pour chat",
+      "réduire l'odeur de litière pour chat",
+      "solutions contre les odeurs de litière",
+      "odeur de litière multi-chats",
+      "odeur de litière",
+      "contrôle des odeurs de litière pour chat",
+      "entretien du bac à litière",
+      "litière pour chat au charbon actif"
     ],
     "ogImage": "/optimized/blog/fresh-home-hero-ghibli.webp",
     "canonical": "https://www.purrify.ca/fr/blog/how-to-reduce-litter-box-odor/"

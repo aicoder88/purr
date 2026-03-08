@@ -23,13 +23,16 @@
     "Guide Produit"
   ],
   "tags": [
-    "meilleur désodorisant litière petit appartement",
-    "contrôle odeur chat appartement",
-    "solutions litière chat urbaine",
-    "odeur animal petit espace"
+    "l'appartement sent la litière pour chat",
+    "odeur de litière pour chat appartement",
+    "Contrôle des odeurs de chat d'appartement",
+    "solutions de litière pour chats urbains",
+    "odeur d'animal de petit espace"
   ],
   "locale": "fr",
-  "translations": {},
+  "translations": {
+    "fr": "best-litter-odor-remover-small-apartments"
+  },
   "seo": {
     "title": "Meilleur Désodorisant Litière Petit Appartement (Sans Ventilation)",
     "description": "Vivre dans un studio avec un chat? Mauvais flux d'air rend l'odeur 10x pire. Ces 5 méthodes fonctionnent en petits espaces—même sans fenêtres ou ventilateurs.",
@@ -47,5 +50,19 @@
     "ogImage": "/optimized/blog/apartment-cat-lifestyle-ghibli.png",
     "canonical": "https://www.purrify.ca/fr/blog/best-litter-odor-remover-small-apartments"
   },
-  "readingTime": 6
+  "readingTime": 6,
+  "faq": [
+    {
+      "question": "À quelle vitesse l’odeur du bac à litière devrait-elle s’améliorer avec une routine cohérente ?",
+      "answerHtml": "<p>La plupart des maisons constatent une amélioration significative dans les 24 à 72 heures lorsque le ramassage, le flux d'air et la superposition de charbon actif sont tous cohérents.</p>"
+    },
+    {
+      "question": "Puis-je utiliser un additif au charbon actif avec ma litière actuelle ?",
+      "answerHtml": "<p>Oui. L'additif de carbone est compatible avec les types de litière les plus courants et est plus efficace lorsqu'il est appliqué en petits ajouts réguliers.</p>"
+    },
+    {
+      "question": "Quelle est la meilleure façon d’éviter les rebonds d’odeurs après le nettoyage ?",
+      "answerHtml": "<p>Utilisez un programme d'entretien au lieu d'attendre le retour de l'odeur : récupérez le charbon deux fois par jour, actualisez le charbon chaque semaine et effectuez des réinitialisations complètes à une cadence fixe.</p>"
+    }
+  ]
 }

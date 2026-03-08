@@ -35,22 +35,24 @@
     "cat litter chemistry"
   ],
   "locale": "fr",
-  "translations": {},
+  "translations": {
+    "fr": "chemistry-of-cat-smell-industrial-fix"
+  },
   "seo": {
-    "title": "Pourquoi Votre Maison Sent Encore le Chat: La Chimie + Solution…",
-    "description": "Découvrez pourquoi les désodorisants échouent et comment le charbon actif de qualité filtration - la même technologie des filtres à eau et systèmes d'air hospitaliers -…",
+    "title": "Pourquoi votre maison sent toujours le chat : la solution chimique et industrielle",
+    "description": "Découvrez pourquoi les assainisseurs d’air échouent et comment le charbon actif de qualité filtration, utilisé dans les filtres à eau et les systèmes d’air hospitaliers, élimine réellement les odeurs de chat à la source.",
     "keywords": [
-      "pourquoi votre maison sent encore le chat",
-      "why does my house smell like cat",
-      "cat litter smell wont go away",
-      "how to eliminate cat odor",
-      "activated carbon cat litter",
-      "cat litter deodorizer science",
-      "ammonia cat litter smell",
-      "molecular trapping odor control",
-      "best cat litter odor eliminator",
-      "VOC cat litter",
-      "filtration grade activated carbon"
+      "pourquoi ta maison sent toujours le chat",
+      "pourquoi ma maison sent le chat",
+      "l'odeur de litière pour chat ne disparaît pas",
+      "comment éliminer l'odeur de chat",
+      "litière pour chat au charbon actif",
+      "Science du désodorisant pour litière pour chat",
+      "odeur de litière pour chat à l'ammoniac",
+      "contrôle des odeurs par piège moléculaire",
+      "meilleur éliminateur d'odeur de litière pour chat",
+      "Litière pour chat COV",
+      "charbon actif de qualité filtration"
     ],
     "ogImage": "/optimized/blog/lavender-cat-ghibli.webp",
     "canonical": "https://www.purrify.ca/blog/chemistry-of-cat-smell-industrial-fix"

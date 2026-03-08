@@ -37,7 +37,9 @@
     "cat litter smell closed house"
   ],
   "locale": "en",
-  "translations": {},
+  "translations": {
+    "fr": "cat-litter-smell-worse-winter"
+  },
   "seo": {
     "title": "Why Cat Litter Smells Worse in Winter (5 Solutions) | Purrify",
     "description": "Why does cat litter smell worse in winter? Sealed homes trap ammonia 300–500% higher than summer. Discover 5 science-backed solutions that need no open windows.",

@@ -85,6 +85,7 @@
     "validate-i18n:hardcoded": "node --import tsx scripts/validation/validate-hardcoded-ui-i18n.ts",
     "validate-i18n:hardcoded:strict": "node --import tsx scripts/validation/validate-hardcoded-ui-i18n.ts --strict",
     "validate-i18n:hardcoded:update": "node --import tsx scripts/validation/validate-hardcoded-ui-i18n.ts --update-baseline",
+    "validate-fr:completeness": "node scripts/validation/validate-fr-completeness.js",
     "validate:function-size": "node --import tsx scripts/validation/validate-serverless-function-size.ts",
     "validate-blog-images": "node scripts/validate-blog-images.js",
     "validate-images": "tsx scripts/images/validate-image-sizes.ts",

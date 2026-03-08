@@ -139,6 +139,7 @@
   },
   "howItWorks": {
     "simpleAs123": "Simple comme 1-2-3",
+    "stepLabel": "Étape",
     "steps": [
       {
         "number": "01",
@@ -168,7 +169,8 @@
     },
     "learnTheScience": "Découvrez la science",
     "compareSizes": "comparez nos tailles",
-    "coconutDescription": "Des coques de noix de coco pures et durables sont activées avec de la vapeur filtrée et pure à haute pression pour ouvrir des millions de trous, tunnels et passages permettant d'emprisonner les molécules d'odeur."
+    "coconutDescription": "Des coques de noix de coco pures et durables sont activées avec de la vapeur filtrée et pure à haute pression pour ouvrir des millions de trous, tunnels et passages permettant d'emprisonner les molécules d'odeur.",
+    "transitionTeaser": "Et voici pourquoi les parents de chats l'adorent encore plus..."
   },
   "productsSection": {
     "forEveryCatHousehold": "POUR CHAQUE FOYER DE CHAT",
@@ -326,8 +328,12 @@
       "moneyBackPromise": "Engagement service client",
       "fiveStarRated": "Approche sans parfum",
       "reviewsRating": "Avis clients",
-      "testimonialQuote": ""
+      "testimonialQuote": "“Je n’ai plus besoin d’excuses quand des invités passent à l’improviste.”"
     }
+  },
+  "sectionTeasers": {
+    "whyPurrify": "Mais comment cela fonctionne-t-il vraiment ?",
+    "science": "Prêt à l’essayer vous-même ?"
   },
   "featuresSection": {
     "badge": "La Différence Purrify",

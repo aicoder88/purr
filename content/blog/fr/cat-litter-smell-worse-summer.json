@@ -18,32 +18,31 @@
     "height": 800
   },
   "categories": [
-    "Seasonal Odor Control",
-    "Tips",
-    "Odor Control"
+    "Contrôle des odeurs saisonnières",
+    "Sciences et éducation"
   ],
   "tags": [
-    "cat litter smell summer",
-    "hot weather litter box odor",
-    "ammonia smell worse in heat",
-    "summer cat odor solutions",
-    "heat makes litter smell worse",
-    "cat smell in hot weather"
+    "odeur de litière pour chat l'été",
+    "odeur de litière par temps chaud",
+    "l'ammoniaque sent pire avec la chaleur",
+    "solutions contre les odeurs de chat en été",
+    "la chaleur aggrave l'odeur de la litière"
   ],
   "locale": "fr",
-  "translations": {},
+  "translations": {
+    "fr": "cat-litter-smell-worse-summer"
+  },
   "seo": {
-    "title": "Pourquoi la litière sent plus fort en été : la science + 4 solutions…",
-    "description": "La chaleur double l'activité bactérienne et l'évaporation de l'ammoniaque. C'est pourquoi votre litière est insupportable en juillet. Ces 4 solutions fonctionnent même…",
+    "title": "Pourquoi la litière pour chat sent pire en été (et 4 solutions) | Purifier",
+    "description": "La litière pour chat sent insupportable en été ? Découvrez pourquoi la chaleur rend les odeurs d'ammoniac 10 fois plus fortes et 4 solutions fondées sur la science qui fonctionnent par temps chaud.",
     "keywords": [
-      "Pourquoi la litière sent plus fort en été",
-      "cat litter smell summer",
-      "hot weather litter box odor",
-      "ammonia smell worse in heat",
-      "summer cat odor solutions",
-      "heat makes litter smell worse",
-      "cat smell in hot weather",
-      "cat litter smell worse summer"
+      "Pourquoi la litière pour chat sent pire en été (et 4 solutions)",
+      "odeur de litière pour chat l'été",
+      "odeur de litière par temps chaud",
+      "l'ammoniaque sent pire avec la chaleur",
+      "solutions contre les odeurs de chat en été",
+      "la chaleur aggrave l'odeur de la litière",
+      "la litière pour chat sent pire l'été"
     ],
     "ogImage": "/optimized/blog/summer-fresh-cat-ghibli.png",
     "canonical": "https://www.purrify.ca/fr/blog/cat-litter-smell-worse-summer"

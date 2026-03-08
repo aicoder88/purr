@@ -32,7 +32,9 @@
     "litter deodorizer multi-cat"
   ],
   "locale": "en",
-  "translations": {},
+  "translations": {
+    "fr": "best-cat-litter-multiple-cats-odor-control"
+  },
   "seo": {
     "title": "Best Cat Litter for Multiple Cats: Multi-Cat Odor Control Guide (2026)",
     "description": "Two cats = 4x the ammonia. Three cats = 9x. Learn why standard litter fails the exponential math test and how NASA-grade carbon solves the multi-cat odor curve.",

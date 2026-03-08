@@ -31,22 +31,42 @@
     "charbon actif multi-chats"
   ],
   "locale": "fr",
-  "translations": {},
+  "translations": {
+    "fr": "best-cat-litter-multiple-cats-odor-control"
+  },
   "seo": {
     "title": "Meilleure Litière pour Plusieurs Chats (Guide Complet 2026)",
     "description": "Les foyers multi-chats ont besoin d'une litière qui supporte une utilisation intensive et contrôle les odeurs intenses. Comparez les litières avec charbon actif.",
     "keywords": [
-      "meilleure litière plusieurs chats",
+      "meilleure litière pour chat plusieurs chats",
       "litière multi-chats",
       "litière pour 2 chats",
-      "bac à litière plusieurs chats",
-      "charbon actif multi-chats",
+      "litière pour plusieurs chats",
+      "charbon actif multi-chat",
+      "litière multi-chats",
       "litière pour 3 chats",
-      "foyers multi-chats",
-      "best cat litter multiple cats"
+      "foyers multi-chats"
     ],
     "ogImage": "/optimized/blog/multi-cat-happy-home-ghibli.webp",
     "canonical": "https://www.purrify.ca/fr/blog/best-cat-litter-multiple-cats"
   },
-  "readingTime": 6
+  "readingTime": 6,
+  "faq": [
+    {
+      "question": "De combien de bacs à litière ai-je besoin pour 2 chats ?",
+      "answerHtml": "Three boxes minimum. La règle est d'une boîte par chat, plus une supplémentaire. Cela évite les conflits territoriaux et garantit que les chats ont toujours une option propre."
+    },
+    {
+      "question": "L'agglutination ou le non-agglutination est-il préférable pour plusieurs chats ?",
+      "answerHtml": "La litière agglomérante est préférable pour les maisons comptant plusieurs chats. Il vous permet de retirer uniquement les zones souillées, prolongeant ainsi la durée de vie de la litière et gardant les bacs plus frais entre les changements complets."
+    },
+    {
+      "question": "À quelle fréquence dois-je changer de litière avec plusieurs chats ?",
+      "answerHtml": "Changements complets tous les 5 à 7 jours avec une litière agglomérante de qualité. Avec l'<a href=\"/products\" class=\"text-[#FF3131] dark:text-[#FF6B6B] hover:underline\">additif au charbon actif</a>, vous pouvez prolonger cette durée jusqu'à 7 jours et plus tout en conservant la fraîcheur."
+    },
+    {
+      "question": "Puis-je utiliser différents types de litière dans différentes boîtes ?",
+      "answerHtml": "Oui, mais la plupart des chats préfèrent la cohérence. Si vous souhaitez tester une nouvelle litière, introduisez-la progressivement dans un carton tout en gardant les autres inchangées."
+    }
+  ]
 }

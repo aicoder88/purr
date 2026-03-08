@@ -31,25 +31,40 @@
     "what actually works cat odor"
   ],
   "locale": "fr",
-  "translations": {},
+  "translations": {
+    "fr": "tried-everything-cat-litter-smell-solutions"
+  },
   "seo": {
     "title": "Vous avez tout essayé pour l'odeur de litière pour chat ? Pourquoi la plupart des solutions échouent (Et ce qui fonctionne vraiment)",
-    "description": "Le bicarbonate de soude se sature en heures. Les désodorisants se mélangent avec l'ammoniac (pire). La litière parfumée est juste de l'argile parfumée. Voici ce qui…",
+    "description": "Le bicarbonate de soude sature en quelques heures. Les désodorisants se mélangent à l'ammoniaque (pire). La litière parfumée n'est que de l'argile parfumée. Voici ce qui cible les molécules odorantes à la source.",
     "keywords": [
-      "Vous avez tout essayé pour l'odeur de litière pour chat ? Pourquoi la plupart des solutions échouent (Et ce qui fonctionne vraiment)",
-      "tout essayé odeur litière chat",
-      "rien ne fonctionne odeur chat",
-      "odeur litière chat ne part pas",
-      "pourquoi bicarbonate soude ne fonctionne pas litière chat",
-      "ce qui élimine vraiment odeur litière chat",
-      "frustré odeur chat",
-      "tried everything cat litter smell",
-      "nothing works for cat odor",
-      "frustrated with cat smell",
-      "why baking soda doesn't work"
+      "j'ai tout essayé, odeur de litière pour chat",
+      "rien ne marche odeur de chat",
+      "l'odeur de litière pour chat ne disparaît pas",
+      "pourquoi le bicarbonate de soude ne fonctionne pas, litière pour chat",
+      "qu'est-ce qui élimine réellement l'odeur de litière pour chat",
+      "odeur de chat frustré",
+      "rien ne marche contre l'odeur de chat",
+      "frustré par l'odeur de chat",
+      "pourquoi le bicarbonate de soude ne fonctionne pas",
+      "solutions anti-odeurs de litière pour chat qui échouent"
     ],
     "ogImage": "/optimized/blog/tried-hero-ghibli.png",
     "canonical": "https://www.purrify.ca/fr/blog/tried-everything-cat-litter-smell-solutions"
   },
-  "readingTime": 9
+  "readingTime": 9,
+  "faq": [
+    {
+      "question": "À quelle vitesse l’odeur du bac à litière devrait-elle s’améliorer avec une routine cohérente ?",
+      "answerHtml": "<p>La plupart des maisons constatent une amélioration significative dans les 24 à 72 heures lorsque le ramassage, le flux d'air et la superposition de charbon actif sont tous cohérents.</p>"
+    },
+    {
+      "question": "Puis-je utiliser un additif au charbon actif avec ma litière actuelle ?",
+      "answerHtml": "<p>Oui. L'additif de carbone est compatible avec les types de litière les plus courants et est plus efficace lorsqu'il est appliqué en petits ajouts réguliers.</p>"
+    },
+    {
+      "question": "Quelle est la meilleure façon d’éviter les rebonds d’odeurs après le nettoyage ?",
+      "answerHtml": "<p>Utilisez un programme d'entretien au lieu d'attendre le retour de l'odeur : récupérez le charbon deux fois par jour, actualisez le charbon chaque semaine et effectuez des réinitialisations complètes à une cadence fixe.</p>"
+    }
+  ]
 }

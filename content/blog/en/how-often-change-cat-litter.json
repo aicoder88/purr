@@ -29,7 +29,9 @@
     "cat litter schedule"
   ],
   "locale": "en",
-  "translations": {},
+  "translations": {
+    "fr": "how-often-change-cat-litter"
+  },
   "seo": {
     "title": "How Often Should You Change Cat Litter? (Complete Schedule)",
     "description": "Learn exactly how often to change cat litter for clumping, crystal, and natural litters. Includes multi-cat adjustments and tips to extend freshness between changes.",

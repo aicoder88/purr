@@ -32,26 +32,40 @@
   ],
   "locale": "fr",
   "translations": {
-    "fr": "pourquoi-maison-sent-litiere-chat",
-    "zh": "为什么家里有猫砂味"
+    "fr": "why-does-my-house-smell-like-cat-litter"
   },
   "seo": {
-    "title": "Pourquoi ma maison sent-elle la litière pour chat ? (Guide de solut…",
-    "description": "Cette odeur persistante de litière n'est pas inévitable. Découvrez pourquoi l'odeur de chat se propage dans votre maison et découvrez les solutions scientifiqu…",
+    "title": "Pourquoi ma maison sent-elle la litière pour chat ? (Le guide sur la cécité du nez)",
+    "description": "Le bicarbonate de soude sature en 48 heures. Les désodorisants masquent mais n’éliminent pas l’ammoniac. Découvrez comment la fatigue olfactive cache l'odeur de la litière aux propriétaires mais pas aux invités.",
     "keywords": [
-      "maison sent litière pour chat",
-      "odeur litière chat maison",
-      "odeur bac à litière",
-      "éliminer odeur chat",
-      "élimination odeur chat",
-      "maison sent chat",
-      "house smells like cat litter",
-      "litter box smell",
-      "cat odor in house",
-      "eliminate cat smell"
+      "Pourquoi ma maison sent-elle la litière pour chat ?",
+      "la maison sent le guide de la litière pour chat",
+      "odeur de litière pour chat dans la maison",
+      "odeur de litière",
+      "éliminer l'odeur de chat",
+      "suppression des odeurs de chat",
+      "litière pour chat contre la cécité du nez",
+      "la maison sent la litière pour chat",
+      "odeur de litière",
+      "odeur de chat dans la maison",
+      "contrôle des odeurs à la maison"
     ],
     "ogImage": "/optimized/blog/embarrassed-guest-ghibli.webp",
     "canonical": "https://www.purrify.ca/fr/blog/why-does-my-house-smell-like-cat-litter"
   },
-  "readingTime": 9
+  "readingTime": 9,
+  "faq": [
+    {
+      "question": "À quelle vitesse l’odeur du bac à litière devrait-elle s’améliorer avec une routine cohérente ?",
+      "answerHtml": "<p>La plupart des maisons constatent une amélioration significative dans les 24 à 72 heures lorsque le ramassage, le flux d'air et la superposition de charbon actif sont tous cohérents.</p>"
+    },
+    {
+      "question": "Puis-je utiliser un additif au charbon actif avec ma litière actuelle ?",
+      "answerHtml": "<p>Oui. L'additif de carbone est compatible avec les types de litière les plus courants et est plus efficace lorsqu'il est appliqué en petits ajouts réguliers.</p>"
+    },
+    {
+      "question": "Quelle est la meilleure façon d’éviter les rebonds d’odeurs après le nettoyage ?",
+      "answerHtml": "<p>Utilisez un programme d'entretien au lieu d'attendre le retour de l'odeur : récupérez le charbon deux fois par jour, actualisez le charbon chaque semaine et effectuez des réinitialisations complètes à une cadence fixe.</p>"
+    }
+  ]
 }

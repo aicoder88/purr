@@ -30,7 +30,9 @@
     "natural pet products"
   ],
   "locale": "en",
-  "translations": {},
+  "translations": {
+    "fr": "kitty-litter-deodorizer"
+  },
   "seo": {
     "title": "Kitty Litter Deodorizer: Why Most Fail (And the One That Actually Works) | Purrify",
     "description": "Most kitty litter deodorizers mask odour with fragrances. Learn why activated coconut carbon is the only solution that traps ammonia at the molecular level.",

@@ -28,17 +28,18 @@
     "désodorisant litière étape par étape"
   ],
   "locale": "fr",
-  "translations": {},
+  "translations": {
+    "fr": "how-to-use-cat-litter-deodorizer"
+  },
   "seo": {
-    "title": "Comment Utiliser un Additif Désodorisant pour Litière : Guide…",
+    "title": "Comment utiliser le désodorisant pour litière pour chat : guide complet étape par étape",
     "description": "Apprenez la bonne façon d'utiliser un additif désodorisant pour litière de chat pour un contrôle maximal des odeurs. Instructions étape par étape et conseils d'experts.",
     "keywords": [
-      "Comment Utiliser un Additif Désodorisant pour Litière",
-      "guide additif désodorisant litière chat",
-      "contrôle odeur bac litière",
-      "instructions désodorisant litière chat",
-      "désodorisant litière étape par étape",
-      "how to use cat litter deodorizer"
+      "comment utiliser le désodorisant pour litière pour chat",
+      "Guide désodorisant pour litière pour chat",
+      "contrôle des odeurs du bac à litière",
+      "instructions sur le désodorisant pour litière pour chat",
+      "désodorisant de litière étape par étape"
     ],
     "ogImage": "/optimized/marketing/before-after.webp",
     "canonical": "https://www.purrify.ca/fr/blog/how-to-use-cat-litter-deodorizer"
@@ -88,5 +89,19 @@
         "position": 5
       }
     ]
-  }
+  },
+  "faq": [
+    {
+      "question": "À quelle vitesse l’odeur du bac à litière devrait-elle s’améliorer avec une routine cohérente ?",
+      "answerHtml": "<p>La plupart des maisons constatent une amélioration significative dans les 24 à 72 heures lorsque le ramassage, le flux d'air et la superposition de charbon actif sont tous cohérents.</p>"
+    },
+    {
+      "question": "Puis-je utiliser un additif au charbon actif avec ma litière actuelle ?",
+      "answerHtml": "<p>Oui. L'additif de carbone est compatible avec les types de litière les plus courants et est plus efficace lorsqu'il est appliqué en petits ajouts réguliers.</p>"
+    },
+    {
+      "question": "Quelle est la meilleure façon d’éviter les rebonds d’odeurs après le nettoyage ?",
+      "answerHtml": "<p>Utilisez un programme d'entretien au lieu d'attendre le retour de l'odeur : récupérez le charbon deux fois par jour, actualisez le charbon chaque semaine et effectuez des réinitialisations complètes à une cadence fixe.</p>"
+    }
+  ]
 }

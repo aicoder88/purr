@@ -27,24 +27,38 @@
     "litter box deep clean schedule"
   ],
   "locale": "fr",
-  "translations": {},
+  "translations": {
+    "fr": "strong-cat-urine-smell-litter-box"
+  },
   "seo": {
-    "title": "Comment arrêter l'odeur d'ammoniac dans le bac à litière pour chat…",
-    "description": "La litière pour chat sent l'ammoniac ? Apprenez à neutraliser l'ammoniac dans la litière pour chat avec cette routine éprouvée en couches utilisant la circulation d'air, le…",
+    "title": "Comment arrêter l'odeur d'ammoniac dans le bac à litière pour chat (solution en couches)",
+    "description": "La litière pour chat sent l'ammoniaque ? Apprenez à neutraliser l'ammoniac dans la litière pour chat grâce à cette routine éprouvée utilisant le flux d'air, le nettoyage et le charbon actif.",
     "keywords": [
-      "comment arrêter odeur ammoniac litière chat",
-      "litière chat sent ammoniac",
-      "comment neutraliser ammoniac litière chat",
-      "odeur ammoniac litière chat",
-      "forte odeur urine chat bac litière",
-      "contrôle odeur ammoniac",
-      "strong cat urine smell litter box",
-      "cat litter smell elimination",
-      "ammonia odor control",
-      "litter box deep clean schedule"
+      "comment arrêter l'odeur d'ammoniaque de la litière pour chat",
+      "la litière pour chat sent l'ammoniaque",
+      "comment neutraliser l'ammoniaque de la litière pour chat",
+      "litière pour chat odeur d'ammoniaque",
+      "litière à forte odeur d'urine de chat",
+      "élimination des odeurs de litière pour chat",
+      "contrôle des odeurs d'ammoniac",
+      "programme de nettoyage en profondeur du bac à litière"
     ],
     "ogImage": "/optimized/marketing/strong-cat-urine-smell.webp",
     "canonical": "https://www.purrify.ca/blog/strong-cat-urine-smell-litter-box"
   },
-  "readingTime": 5
+  "readingTime": 5,
+  "faq": [
+    {
+      "question": "À quelle vitesse l’odeur du bac à litière devrait-elle s’améliorer avec une routine cohérente ?",
+      "answerHtml": "<p>La plupart des maisons constatent une amélioration significative dans les 24 à 72 heures lorsque le ramassage, le flux d'air et la superposition de charbon actif sont tous cohérents.</p>"
+    },
+    {
+      "question": "Puis-je utiliser un additif au charbon actif avec ma litière actuelle ?",
+      "answerHtml": "<p>Oui. L'additif de carbone est compatible avec les types de litière les plus courants et est plus efficace lorsqu'il est appliqué en petits ajouts réguliers.</p>"
+    },
+    {
+      "question": "Quelle est la meilleure façon d’éviter les rebonds d’odeurs après le nettoyage ?",
+      "answerHtml": "<p>Utilisez un programme d'entretien au lieu d'attendre le retour de l'odeur : récupérez le charbon deux fois par jour, actualisez le charbon chaque semaine et effectuez des réinitialisations complètes à une cadence fixe.</p>"
+    }
+  ]
 }

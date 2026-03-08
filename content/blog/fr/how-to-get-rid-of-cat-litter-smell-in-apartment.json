@@ -36,22 +36,52 @@
     "zh": "公寓猫砂除臭方法"
   },
   "seo": {
-    "title": "Comment éliminer l'odeur de litière pour chat en appartement (Guide…",
-    "description": "Vivre dans un petit espace avec un chat signifie que les odeurs de litière n'ont nulle part où se cacher. Découvrez des stratégies spécifiques aux appartements…",
+    "title": "Comment se débarrasser de l’odeur de litière pour chat dans un appartement (Guide 2026)",
+    "description": "Vivre dans un petit espace avec un chat signifie que l’odeur de la litière n’a nulle part où se cacher. Apprenez des stratégies spécifiques à votre appartement pour éliminer (et non masquer) l'odeur de litière pour chat.",
     "keywords": [
-      "comment eliminer l odeur de litiere pour chat en appartement",
-      "cat litter smell apartment",
-      "apartment cat odor",
-      "remove cat smell small space",
-      "litter box apartment",
-      "apartment cat tips",
-      "small space litter box",
-      "cat smell removal",
-      "litter box odor control",
-      "how to get rid of cat litter smell in apartment"
+      "Guide de l'appartement sur l'odeur de la litière pour chat",
+      "odeur de chat d'appartement",
+      "supprimer l'odeur de chat petit espace",
+      "appartement avec bac à litière",
+      "Conseils pour les chats d'appartement",
+      "bac à litière pour petit espace",
+      "odeur de litière pour chat appartement",
+      "suppression des odeurs de chat",
+      "contrôle des odeurs du bac à litière",
+      "comment se débarrasser de l'odeur de litière pour chat dans un appartement"
     ],
     "ogImage": "/optimized/marketing/tried-relief.jpg",
     "canonical": "https://www.purrify.ca/fr/blog/how-to-get-rid-of-cat-litter-smell-in-apartment"
   },
-  "readingTime": 9
+  "readingTime": 9,
+  "faq": [
+    {
+      "question": "Comment empêcher mon appartement de sentir la litière pour chat ?",
+      "answerHtml": "La clé est d’éliminer les odeurs à la source avant qu’elles ne se propagent dans votre petit espace. Ajoutez du charbon actif à votre litière (il emprisonne physiquement les molécules d'odeur), ramassez deux fois par jour, utilisez une litière agglomérante de qualité et maintenez une profondeur de litière de 3 à 4 pouces. Évitez les assainisseurs d’air qui ne font que masquer l’odeur."
+    },
+    {
+      "question": "Pourquoi mon petit appartement sent-il le chat même si je nettoie la litière ?",
+      "answerHtml": "L'ammoniac et les composés soufrés sont des gaz qui s'échappent immédiatement du bac à litière, avant que vous puissiez les ramasser. Dans les petits espaces, ces molécules se concentrent rapidement. Le nettoyage élimine les déchets solides mais ne peut pas capter les odeurs atmosphériques. Vous avez besoin d’une technologie de piégeage moléculaire comme le charbon actif pour éliminer l’odeur à sa source."
+    },
+    {
+      "question": "Quelle est la meilleure litière pour les petits appartements ?",
+      "answerHtml": "Une litière agglomérante non parfumée de qualité supérieure associée à un désodorisant au charbon actif comme <a href=\"/products\" class=\"text-blue-600 dark:text-blue-400 underline hover:text-blue-700 dark:hover:text-blue-300\">Purrify</a> fonctionne mieux. La litière forme des touffes serrées pour un retrait facile ; le carbone piège les molécules odorantes avant qu’elles ne puissent se propager. Évitez les litières très parfumées : le parfum s'estompe rapidement et vous laisse un parfum ET une odeur de chat."
+    },
+    {
+      "question": "Où dois-je placer le bac à litière dans un petit appartement ?",
+      "answerHtml": "Les salles de bain fonctionnent bien (le ventilateur d'extraction aide), mais faites fonctionner le ventilateur après que votre chat a utilisé la boîte. Évitez les bouches d’aération CVC qui propagent les odeurs. Si vous utilisez un placard, laissez la porte fissurée pour la ventilation. Où que vous le placiez, le charbon actif est essentiel dans les petits espaces pour retenir les odeurs à la source."
+    },
+    {
+      "question": "Les purificateurs d'air aident-ils à éliminer l'odeur de litière pour chat dans les appartements ?",
+      "answerHtml": "Les purificateurs d'air équipés de filtres à charbon actif peuvent aider à capturer les molécules qui s'échappent, mais ils traitent le symptôme plutôt que la cause. Il est plus efficace d'ajouter du charbon actif directement à la litière, piégeant ainsi les molécules odorantes avant qu'elles ne pénètrent dans l'air de votre appartement."
+    },
+    {
+      "question": "À quelle fréquence dois-je nettoyer le bac à litière dans un appartement ?",
+      "answerHtml": "En appartement, prendre deux fois par jour (matin et soir) plutôt qu'une. Le volume d’air limité signifie que les odeurs se concentrent plus rapidement. Changez également toute la litière toutes les 2 semaines (et non 3 à 4 comme dans les grandes maisons) et réappliquez du charbon actif à chaque changement complet."
+    },
+    {
+      "question": "L'odeur de la litière pour chat peut-elle affecter mes voisins dans un immeuble ?",
+      "answerHtml": "Malheureusement, oui. Les systèmes de ventilation des appartements peuvent transmettre des odeurs entre les unités, surtout si votre bac à litière se trouve à proximité de composants CVC partagés. L'utilisation de charbon actif à la source empêche les odeurs de pénétrer dans votre système de ventilation, protégeant ainsi votre espace et celui de vos voisins."
+    }
+  ]
 }

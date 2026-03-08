@@ -7,7 +7,6 @@
   "author": {
     "name": "Équipe Purrify"
   },
-  "publishedAt": "2025-12-18T10:00:00.000Z",
   "updatedAt": "2025-12-18T10:00:00.000Z",
   "category": "product-guides",
   "tags": [
@@ -24,7 +23,7 @@
   },
   "seo": {
     "title": "À Quelle Fréquence Ajouter un Désodorisant pour Litière ? Guide de Fréquence sur 100 Jours",
-    "description": "Le guide de fréquence définitif pour ajouter un désodorisant pour litière de chat basé sur 100 jours de suivi de l'ammoniaque. Apprenez le programme optimal pour les…",
+    "description": "Le guide de fréquence définitif pour l’ajout d’un désodorisant pour litière pour chat, basé sur 100 jours de suivi de l’ammoniac. Découvrez l'horaire optimal pour les maisons à un ou plusieurs chats.",
     "keywords": [
       "fréquence désodorisant litière chat",
       "à quelle fréquence ajouter désodorisant litière",
@@ -42,7 +41,9 @@
   "readingTime": 4,
   "status": "published",
   "locale": "fr",
-  "translations": {},
+  "translations": {
+    "fr": "litter-deodorizer-frequency-guide"
+  },
   "modifiedDate": "2026-02-13T09:35:37.597Z",
   "categories": [
     "contrôle-odeurs"

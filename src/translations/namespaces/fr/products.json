@@ -91,25 +91,19 @@
     ],
     "comparisonFeatures": [
       {
-        "feature": "Élimination d'Odeurs"
+        "feature": "Élimination des odeurs"
       },
       {
-        "feature": "Fonctionne avec Toute Litière"
+        "feature": "Sans parfum"
       },
       {
-        "feature": "Prolonge la Vie de la Litière"
+        "feature": "Fonctionne avec toutes les portées"
       },
       {
-        "feature": "Support dédié aux odeurs"
+        "feature": "Ingrédients naturels"
       },
       {
-        "feature": "Livraison Gratuite"
-      },
-      {
-        "feature": "Économies en Vrac"
-      },
-      {
-        "feature": "Convient Multi-Chats"
+        "feature": "Coaching olfactif personnalisé"
       }
     ],
     "usageCalculator": {

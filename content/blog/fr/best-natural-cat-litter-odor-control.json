@@ -33,25 +33,56 @@
     "activated carbon"
   ],
   "locale": "fr",
-  "translations": {},
+  "translations": {
+    "fr": "best-natural-cat-litter-odor-control"
+  },
   "seo": {
     "title": "Meilleures Litières Naturelles pour Chats pour le Contrôle des Odeurs (Guide Écologique 2026)",
-    "description": "Comparez les litières naturelles pour chats pour le contrôle des odeurs: pin, blé, maïs et tofu. Plus la mise à niveau 100% naturelle au carbone de noix de coco pour une…",
+    "description": "Comparez les litières naturelles pour chats pour contrôler les odeurs : pin, blé, maïs et tofu. De plus, la mise à niveau du carbone de noix de coco 100 % naturel pour une fraîcheur totale et respectueuse de l'environnement.",
     "keywords": [
-      "Meilleures Litières Naturelles pour Chats pour le Contrôle des Odeurs (Guide Écologique 2026)",
-      "best natural cat litter for odor control",
-      "natural cat litter odor",
-      "eco-friendly cat litter",
-      "pine litter odor control",
-      "wheat cat litter",
-      "coconut activated carbon",
-      "natural cat litter",
-      "pine cat litter",
-      "corn cat litter",
-      "tofu cat litter"
+      "litière naturelle pour chat",
+      "meilleure litière naturelle pour chat pour contrôler les odeurs",
+      "odeur naturelle de litière pour chat",
+      "litière écologique pour chat",
+      "contrôle des odeurs de litière de pin",
+      "litière pour chat au blé",
+      "charbon actif de noix de coco",
+      "litière pour chat en pin",
+      "litière pour chat au maïs",
+      "litière pour chat au tofu"
     ],
     "ogImage": "/optimized/blog/natural-cat-litter.avif",
     "canonical": "https://www.purrify.ca/fr/blog/best-natural-cat-litter-odor-control"
   },
-  "readingTime": 13
+  "readingTime": 13,
+  "faq": [
+    {
+      "question": "Quelle est la meilleure litière naturelle pour chat pour contrôler les odeurs ?",
+      "answerHtml": "La litière de blé, avec ses enzymes naturelles, offre le meilleur contrôle intégré des odeurs parmi les litières naturelles. Le pin est excellent pour l’ammoniac en particulier. Pour une élimination complète des odeurs, associez n’importe quelle litière naturelle au charbon actif de coquille de noix de coco."
+    },
+    {
+      "question": "Le charbon actif est-il naturel et écologique ?",
+      "answerHtml": "Oui. Le charbon actif de coque de noix de coco est fabriqué à partir d'un sous-produit agricole renouvelable en utilisant uniquement de la chaleur (sans produits chimiques). Il est biodégradable et utilisé dans le traitement de l'eau dans le monde entier. C'est aussi naturel que la litière végétale qu'il complète."
+    },
+    {
+      "question": "Pourquoi la litière naturelle sent-elle pire que l'argile ?",
+      "answerHtml": "Les litières naturelles absorbent souvent moins les odeurs que l’argile, et certaines (comme le maïs ou le tofu) peuvent développer des odeurs secondaires lorsqu’elles sont mouillées. La solution n'est pas de revenir à l'argile, mais d'ajouter du charbon actif pour compléter les performances de votre litière naturelle."
+    },
+    {
+      "question": "Puis-je composter la litière naturelle avec du charbon actif ?",
+      "answerHtml": "Vérifiez vos directives locales. Le carbone des coquilles de noix de coco est biodégradable, mais les excréments de chat eux-mêmes ne sont généralement pas recommandés pour le compost du jardin alimentaire en raison d'agents pathogènes potentiels. De nombreuses litières naturelles contenant du carbone peuvent être jetées dans les déchets verts ou dans le compostage spécialisé des déchets d’animaux."
+    },
+    {
+      "question": "La litière naturelle pour chat est-elle sans danger pour les chatons ?",
+      "answerHtml": "La plupart des litières naturelles acceptent les animaux de compagnie, mais évitez les types agglomérants pour les très jeunes chatons qui pourraient ingérer de la litière. Les pastilles de papier sont souvent recommandées pour les chatons de moins de 8 semaines. Le charbon actif est non toxique et utilisé dans les produits pour animaux de compagnie dans le monde entier."
+    },
+    {
+      "question": "À quelle fréquence dois-je ajouter du charbon actif à la litière naturelle ?",
+      "answerHtml": "Pour la plupart des litières naturelles, appliquez une légère pulvérisation tous les 3-4 jours ou lorsque vous ajoutez de la litière fraîche. Les litières de papier et de tofu pourraient bénéficier d’une application plus fréquente. <a href=\"/products\" class=\"text-[#FF3131] dark:text-[#FF6B6B] hover:underline\">Purrify</a> offre plus de 7 jours de fraîcheur par application."
+    },
+    {
+      "question": "Mon chat remarquera-t-il le charbon actif dans la litière ?",
+      "answerHtml": "Non. Le charbon actif est inodore et repose légèrement sur la litière. Contrairement aux produits parfumés (que les chats détestent souvent), le carbone est indétectable par les 200 millions de récepteurs olfactifs des chats. Votre chat utilisera la litière normalement."
+    }
+  ]
 }

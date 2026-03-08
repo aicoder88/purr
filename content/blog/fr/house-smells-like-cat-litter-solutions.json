@@ -22,29 +22,43 @@
     "Odor Control"
   ],
   "tags": [
-    "house smells like cat litter",
-    "control cat litter smell",
-    "cat litter urine smell",
-    "strong urine smell cat litter box",
-    "getting cat litter smell out of house",
-    "house smells like litter box"
+    "la maison sent la litière pour chat",
+    "contrôler l'odeur de la litière pour chat",
+    "odeur d'urine de litière pour chat",
+    "litière pour chat à forte odeur d'urine",
+    "éliminer l'odeur de litière pour chat de la maison"
   ],
   "locale": "fr",
-  "translations": {},
+  "translations": {
+    "fr": "house-smells-like-cat-litter-solutions"
+  },
   "seo": {
     "title": "Arrêtez d'Être Gêné - 7 Façons d'Éliminer l'Odeur de Litière",
-    "description": "Fini les excuses aux invités! Ces 7 méthodes éprouvées éliminent les odeurs embarrassantes de litière en 24 heures. Le charbon actif de qualité filtre à eau détruit…",
+    "description": "Arrêtez les odeurs embarrassantes de litière pour chat en 24 heures. 7 méthodes éprouvées pour éliminer les odeurs de litière et garder votre maison fraîche.",
     "keywords": [
-      "house smells like cat litter",
-      "control cat litter smell",
-      "cat litter urine smell",
-      "strong urine smell cat litter box",
-      "getting cat litter smell out of house",
-      "house smells like litter box",
-      "house smells like cat litter solutions"
+      "la maison sent la litière pour chat",
+      "contrôler l'odeur de la litière pour chat",
+      "odeur d'urine de litière pour chat",
+      "litière pour chat à forte odeur d'urine",
+      "éliminer l'odeur de litière pour chat de la maison",
+      "la maison sent les solutions de litière pour chat"
     ],
     "ogImage": "/optimized/blog/safe-cat-litter-ghibli.png",
     "canonical": "https://www.purrify.ca/blog/house-smells-like-cat-litter-solutions"
   },
-  "readingTime": 5
+  "readingTime": 5,
+  "faq": [
+    {
+      "question": "À quelle vitesse l’odeur du bac à litière devrait-elle s’améliorer avec une routine cohérente ?",
+      "answerHtml": "<p>La plupart des maisons constatent une amélioration significative dans les 24 à 72 heures lorsque le ramassage, le flux d'air et la superposition de charbon actif sont tous cohérents.</p>"
+    },
+    {
+      "question": "Puis-je utiliser un additif au charbon actif avec ma litière actuelle ?",
+      "answerHtml": "<p>Oui. L'additif de carbone est compatible avec les types de litière les plus courants et est plus efficace lorsqu'il est appliqué en petits ajouts réguliers.</p>"
+    },
+    {
+      "question": "Quelle est la meilleure façon d’éviter les rebonds d’odeurs après le nettoyage ?",
+      "answerHtml": "<p>Utilisez un programme d'entretien au lieu d'attendre le retour de l'odeur : récupérez le charbon deux fois par jour, actualisez le charbon chaque semaine et effectuez des réinitialisations complètes à une cadence fixe.</p>"
+    }
+  ]
 }

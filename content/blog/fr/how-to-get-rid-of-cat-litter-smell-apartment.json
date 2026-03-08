@@ -30,24 +30,40 @@
     "éliminer odeur litière appartement"
   ],
   "locale": "fr",
-  "translations": {},
+  "translations": {
+    "fr": "how-to-get-rid-of-cat-litter-smell-apartment"
+  },
   "seo": {
     "title": "Comment Éliminer l'Odeur de Litière dans un Appartement (2026)",
     "description": "Vivre en appartement signifie une ventilation limitée. Voici comment éliminer complètement l'odeur de litière dans les petits espaces sans masquer avec des parfums.",
     "keywords": [
-      "odeur litière appartement guide",
-      "éliminer odeur litière",
-      "odeur chat appartement",
-      "studio litière chat",
-      "odeur chat petit espace",
-      "odeur litière appartement",
-      "odeur litière chat appartement",
-      "studio chat",
-      "éliminer odeur litière appartement",
-      "how to get rid of cat litter smell apartment"
+      "odeur de litière pour chat appartement",
+      "éliminer l'odeur de litière pour chat",
+      "odeur de chat d'appartement",
+      "litière pour chat d'atelier",
+      "odeur de chat dans un petit espace",
+      "Contrôle des odeurs de chat d'appartement",
+      "litière pour chat petit espace",
+      "studio appartement chat",
+      "éliminer l'odeur de litière pour chat dans un appartement",
+      "comment se débarrasser de l'odeur de litière pour chat dans un appartement"
     ],
     "ogImage": "/optimized/blog/summer-ventilation.jpg",
     "canonical": "https://www.purrify.ca/fr/blog/how-to-get-rid-of-cat-litter-smell-apartment"
   },
-  "readingTime": 4
+  "readingTime": 4,
+  "faq": [
+    {
+      "question": "À quelle vitesse l’odeur du bac à litière devrait-elle s’améliorer avec une routine cohérente ?",
+      "answerHtml": "<p>La plupart des maisons constatent une amélioration significative dans les 24 à 72 heures lorsque le ramassage, le flux d'air et la superposition de charbon actif sont tous cohérents.</p>"
+    },
+    {
+      "question": "Puis-je utiliser un additif au charbon actif avec ma litière actuelle ?",
+      "answerHtml": "<p>Oui. L'additif de carbone est compatible avec les types de litière les plus courants et est plus efficace lorsqu'il est appliqué en petits ajouts réguliers.</p>"
+    },
+    {
+      "question": "Quelle est la meilleure façon d’éviter les rebonds d’odeurs après le nettoyage ?",
+      "answerHtml": "<p>Utilisez un programme d'entretien au lieu d'attendre le retour de l'odeur : récupérez le charbon deux fois par jour, actualisez le charbon chaque semaine et effectuez des réinitialisations complètes à une cadence fixe.</p>"
+    }
+  ]
 }

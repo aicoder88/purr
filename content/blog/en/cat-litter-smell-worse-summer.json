@@ -29,7 +29,9 @@
     "heat makes litter smell worse"
   ],
   "locale": "en",
-  "translations": {},
+  "translations": {
+    "fr": "cat-litter-smell-worse-summer"
+  },
   "seo": {
     "title": "Why Cat Litter Smells Worse in Summer (And 4 Solutions) | Purrify",
     "description": "Cat litter smell unbearable in summer? Discover why heat makes ammonia odors 10x stronger and 4 science-backed solutions that work in hot weather.",

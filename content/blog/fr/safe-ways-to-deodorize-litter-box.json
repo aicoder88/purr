@@ -32,22 +32,23 @@
     "fragrance free cat products"
   ],
   "locale": "fr",
-  "translations": {},
+  "translations": {
+    "fr": "safe-ways-to-deodorize-litter-box"
+  },
   "seo": {
-    "title": "Moyens sûrs de désodoriser une litière (méthodes approuvées par les…",
-    "description": "Les vétérinaires mettent en garde contre les huiles essentielles. Le Febreze déclenche l'évitement. Découvrez les 7 méthodes de désodorisation validées par la toxic…",
+    "title": "Moyens sûrs de désodoriser un bac à litière (méthodes approuvées par le vétérinaire)",
+    "description": "Votre désodorisant est-il toxique ? Beaucoup contiennent des phénols que les chats ne peuvent pas métaboliser. Consultez la liste des 7 produits approuvés par les vétérinaires et le carbone de qualité hospitalière qui est 100 % sûr.",
     "keywords": [
-      "Moyens sûrs de désodoriser une litière",
-      "moyens sûrs de désodoriser litière",
-      "désodorisant pour litière sûr pour chat",
-      "désodorisant pour litière non toxique",
-      "le bicarbonate de soude est-il sûr pour les chats",
-      "safe ways to deodorize litter box",
-      "cat safe litter deodorizer",
-      "non-toxic litter deodorizer",
-      "vet approved cat litter",
-      "activated carbon safe for cats",
-      "baking soda cat litter"
+      "Des moyens sûrs pour désodoriser un bac à litière",
+      "des moyens sûrs de désodoriser le bac à litière",
+      "désodorisant pour litière sans danger pour chat",
+      "désodorisant de litière non toxique",
+      "le bicarbonate de soude est-il sans danger pour les chats",
+      "désodorisant de litière non toxique",
+      "litière pour chat approuvée par le vétérinaire",
+      "charbon actif sans danger pour les chats",
+      "litière pour chat au bicarbonate de soude",
+      "produits pour chats sans parfum"
     ],
     "ogImage": "/optimized/blog/vet-cat-safe-litter.webp",
     "canonical": "https://www.purrify.ca/fr/blog/safe-ways-to-deodorize-litter-box"

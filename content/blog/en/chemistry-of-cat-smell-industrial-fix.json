@@ -35,7 +35,9 @@
     "cat litter chemistry"
   ],
   "locale": "en",
-  "translations": {},
+  "translations": {
+    "fr": "chemistry-of-cat-smell-industrial-fix"
+  },
   "seo": {
     "title": "Why Your Home Still Smells Like Cat: The Chemistry + Industrial Fix",
     "description": "Discover why air fresheners fail and how filtration-grade activated carbon - the same tech in water filters and hospital air systems - actually eliminates cat odor at the…",

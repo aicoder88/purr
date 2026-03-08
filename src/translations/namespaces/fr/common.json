@@ -34,6 +34,7 @@
     "b2bInquiry": "Demande B2B",
     "customerReviews": "Avis Clients",
     "shipsToUSA": "Expédition aux États-Unis",
+    "litterCalculator": "Calculateur de litière",
     "safetyInfo": "Informations de Sécurité",
     "activatedCarbonBenefits": "Avantages du Charbon Actif",
     "catLitterGuide": "Guide de la Litière pour Chats",
@@ -99,6 +100,8 @@
     "about": "À Propos de Nous",
     "blog": "Blog",
     "locations": "Emplacements",
+    "allLocations": "Tous les emplacements",
+    "canada": "Partout au Canada",
     "stockists": "Magasins",
     "testimonials": "Témoignages",
     "retailers": "Pour Détaillants",
@@ -116,7 +119,10 @@
     "trustpilot": "Trustpilot",
     "googleReviews": "Avis Google",
     "sitemap": "Plan du site",
+    "caseStudies": "Études de cas",
     "fun": "Jeux & Fun"
+    ,
+    "viral": "Viral"
   },
   "notFoundPage": {
     "title": "404 - Page Non Trouvée",

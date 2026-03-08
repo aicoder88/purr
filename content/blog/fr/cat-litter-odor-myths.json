@@ -28,20 +28,17 @@
     "litter box smell solutions"
   ],
   "locale": "fr",
-  "translations": {},
+  "translations": {
+    "fr": "cat-litter-odor-myths"
+  },
   "seo": {
     "title": "10 Mythes sur les Odeurs de Litière pour Chat Qui Gaspillent Votre Argent",
-    "description": "Arrêtez de gaspiller de l'argent en litières parfumées et sprays coûteux. Nous déboulonnons 10 mythes courants sur les odeurs de litière avec la science et révélons la…",
+    "description": "Arrêtez de gaspiller de l'argent en litières parfumées et en sprays fantaisie. Nous démystifions 10 mythes courants sur les odeurs de litière pour chat grâce à la science et révélons la seule solution qui fonctionne réellement.",
     "keywords": [
-      "10 Mythes sur les Odeurs de Litière pour Chat Qui Gaspillent Votre Argent",
-      "mythes odeur litière chat",
-      "mythes désodorisant litière",
-      "mythe bicarbonate litière chat",
-      "solutions odeur litière",
-      "cat litter odor myths",
-      "cat litter deodorizer myths",
-      "baking soda cat litter myth",
-      "litter box smell solutions"
+      "Mythes sur les odeurs de litière pour chat",
+      "Mythes sur les désodorisants pour litière pour chat",
+      "Mythe sur la litière pour chat au bicarbonate de soude",
+      "solutions contre les odeurs de litière"
     ],
     "ogImage": "/optimized/blog/90day-science.webp",
     "canonical": "https://www.purrify.ca/fr/blog/cat-litter-odor-myths"

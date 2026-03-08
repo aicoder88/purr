@@ -42,7 +42,9 @@
   "readingTime": 5,
   "status": "published",
   "locale": "en",
-  "translations": {},
+  "translations": {
+    "fr": "litter-deodorizer-frequency-guide"
+  },
   "modifiedDate": "2025-12-18",
   "categories": [
     "odor-control"

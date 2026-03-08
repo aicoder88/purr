@@ -30,38 +30,22 @@
     "coconut shell carbon"
   ],
   "locale": "fr",
-  "translations": {},
+  "translations": {
+    "fr": "activated-carbon-litter-additive-benefits"
+  },
   "seo": {
     "title": "Charbon Actif vs Bicarbonate de Soude pour Litière | Purrify",
     "description": "Le bicarbonate ne fonctionne pas ? Le charbon actif détruit l'ammoniac 10 fois mieux. Voyez la science derrière l'élimination instantanée des odeurs de litière !",
     "keywords": [
-      "avantages additif litière charbon actif",
-      "désodorisant litière chat",
-      "science contrôle odeurs",
+      "Avantages de l'additif pour litière au charbon actif",
+      "désodorisant pour litière pour chat",
+      "science du contrôle des odeurs",
       "adsorption moléculaire",
-      "additif naturel litière chat",
-      "activated carbon litter additive benefits",
-      "cat litter deodorizer",
-      "odor control science",
-      "molecular adsorption",
-      "natural cat litter additive"
+      "additif naturel pour litière pour chat",
+      "carbone de coquille de noix de coco"
     ],
     "ogImage": "/optimized/blog/activated-carbon-benefits.webp",
     "canonical": "https://www.purrify.ca/fr/blog/activated-carbon-litter-additive-benefits"
   },
-  "readingTime": 4,
-  "faq": [
-    {
-      "question": "En combien de temps peut-on constater une amélioration des odeurs?",
-      "answerHtml": "<p>Dans la majorité des cas, une amélioration nette apparaît en 24 à 72 heures avec une routine cohérente.</p>"
-    },
-    {
-      "question": "Le charbon actif est-il compatible avec ma litière actuelle?",
-      "answerHtml": "<p>Oui. Il fonctionne avec la plupart des litières et donne de meilleurs résultats avec des ajouts réguliers en petite quantité.</p>"
-    },
-    {
-      "question": "Comment éviter un retour des odeurs après nettoyage?",
-      "answerHtml": "<p>Utilisez un calendrier fixe: deux ramassages quotidiens, recharge hebdomadaire en carbone et remplacement complet selon un rythme constant.</p>"
-    }
-  ]
+  "readingTime": 4
 }

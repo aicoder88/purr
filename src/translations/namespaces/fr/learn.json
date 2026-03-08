@@ -45,6 +45,11 @@
         "answer": "Purrify utilise la technologie du charbon actif pour piéger et neutraliser les molécules d'odeur par adsorption, éliminant efficacement les odeurs de litière au niveau moléculaire."
       },
       {
+        "question": "Puis-je utiliser Purrify pour des rongeurs comme les hamsters, souris ou rats ?",
+        "answer": "Oui ! Purrify utilise le même type de charbon actif que celui employé en filtration d'eau hospitalière et dans certaines applications vétérinaires. Lorsqu'il est utilisé correctement dans des sachets ou contenants fermés avec une ventilation adéquate, il peut convenir au contrôle des odeurs dans l'environnement des rongeurs. Réduisez toujours l'exposition à la poussière et rincez avant usage si nécessaire. Pour des conseils d'utilisation détaillés et les précautions pour les petits animaux, consultez notre page d'informations de sécurité.",
+        "link": "/learn/safety"
+      },
+      {
         "question": "Combien de temps dure Purrify ?",
         "answer": "Une seule application de Purrify peut garder votre litière sans odeur jusqu'à 7 jours, selon l'utilisation et le nombre de chats."
       },
@@ -63,6 +68,11 @@
       {
         "question": "En quoi Purrify est-il différent des litières parfumées ou des désodorisants ?",
         "answer": "Contrairement aux produits parfumés qui masquent les odeurs, Purrify utilise la technologie du charbon actif pour piéger et neutraliser les molécules d'odeur à la source. Il n'ajoute aucun parfum à votre maison - il élimine simplement les mauvaises odeurs."
+      },
+      {
+        "question": "Purrify est-il certifié ? Où puis-je trouver les informations de sécurité ?",
+        "answer": "Oui ! Purrify répond aux normes NSF/ANSI 61, AWWA B604 et Food Chemicals Codex (FCC). Il est également certifié halal et casher. Pour les spécifications techniques complètes, les certifications et les informations de sécurité détaillées, y compris les consignes pour les rongeurs, consultez notre page d'informations de sécurité.",
+        "link": "/learn/safety"
       }
     ],
     "learnMore": "En savoir plus"
@@ -282,11 +292,16 @@
       {
         "question": "Puis-je voyager avec Purrify ?",
         "answer": "Oui ! Purrify est sûr pour les voyages. La bouteille à bouchon à pression est étanche aux déversements et le charbon actif n'est ni liquide ni aérosol, il convient donc pour les bagages à main ou enregistrés. Si vous voyagez avec votre chat et emportez une litière portable, emportez simplement une petite quantité dans la bouteille d'Essai de 30 g. C'est particulièrement utile pour les chambres d'hôtel, les locations de vacances ou lors de visites familiales - saupoudrez Purrify dans la litière temporaire de votre chat pour garder l'espace de location sans odeur."
+      },
+      {
+        "question": "Puis-je retourner Purrify si je ne suis pas satisfait ?",
+        "answer": "Absolument ! Nous offrons une garantie de satisfaction de 30 jours sur tous les achats. Si Purrify ne répond pas à vos attentes pour quelque raison que ce soit, contactez notre équipe de support client pour un remboursement complet, sans questions. Nous soutenons notre produit et voulons que vous soyez entièrement satisfait de votre achat."
       }
     ]
   },
   "howItWorks": {
     "simpleAs123": "Simple comme 1-2-3",
+    "stepLabel": "Étape",
     "steps": [
       {
         "number": "01",
@@ -313,7 +328,8 @@
     },
     "learnTheScience": "Découvrez la science",
     "compareSizes": "comparez nos tailles",
-    "coconutDescription": "Des coques de noix de coco pures et durables sont activées avec de la vapeur filtrée et pure à haute pression pour ouvrir des millions de trous, tunnels et passages permettant d'emprisonner les molécules d'odeur."
+    "coconutDescription": "Des coques de noix de coco pures et durables sont activées avec de la vapeur filtrée et pure à haute pression pour ouvrir des millions de trous, tunnels et passages permettant d'emprisonner les molécules d'odeur.",
+    "transitionTeaser": "Et voici pourquoi les parents de chats l'adorent encore plus..."
   },
   "sciencePage": {
     "seo": {

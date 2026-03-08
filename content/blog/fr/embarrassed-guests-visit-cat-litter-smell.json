@@ -18,20 +18,20 @@
     "height": 800
   },
   "categories": [
-    "Odor Control Solutions",
-    "Tips",
-    "Odor Control"
+    "Vrai discours",
+    "Contrôle des odeurs"
   ],
   "tags": [
-    "embarrassed about cat smell",
-    "guests visiting cat litter smell",
-    "eliminate cat odor before guests",
-    "quick cat smell solutions",
-    "stop cat litter smell fast",
-    "house smells like cat"
+    "odeur de chat gêné",
+    "la maison sent le chat",
+    "je m'excuse pour l'odeur de chat",
+    "honte au propriétaire du chat",
+    "éliminer l'odeur de chat des invités"
   ],
   "locale": "fr",
-  "translations": {},
+  "translations": {
+    "fr": "embarrassed-guests-visit-cat-litter-smell"
+  },
   "seo": {
     "title": "Des Invités Arrivent? Comment Éliminer l'Odeur de Litière en 24 Heures",
     "description": "De la visite demain et votre maison sent le chat? Ces 5 méthodes fonctionnent rapidement—du charbon actif (2 heures) aux protocoles de nettoyage en profondeur d'urgence.",
@@ -47,5 +47,19 @@
     "ogImage": "/optimized/blog/embarrassed-hero-ghibli.png",
     "canonical": "https://www.purrify.ca/blog/embarrassed-guests-visit-cat-litter-smell"
   },
-  "readingTime": 8
+  "readingTime": 8,
+  "faq": [
+    {
+      "question": "À quelle vitesse l’odeur du bac à litière devrait-elle s’améliorer avec une routine cohérente ?",
+      "answerHtml": "<p>La plupart des maisons constatent une amélioration significative dans les 24 à 72 heures lorsque le ramassage, le flux d'air et la superposition de charbon actif sont tous cohérents.</p>"
+    },
+    {
+      "question": "Puis-je utiliser un additif au charbon actif avec ma litière actuelle ?",
+      "answerHtml": "<p>Oui. L'additif de carbone est compatible avec les types de litière les plus courants et est plus efficace lorsqu'il est appliqué en petits ajouts réguliers.</p>"
+    },
+    {
+      "question": "Quelle est la meilleure façon d’éviter les rebonds d’odeurs après le nettoyage ?",
+      "answerHtml": "<p>Utilisez un programme d'entretien au lieu d'attendre le retour de l'odeur : récupérez le charbon deux fois par jour, actualisez le charbon chaque semaine et effectuez des réinitialisations complètes à une cadence fixe.</p>"
+    }
+  ]
 }

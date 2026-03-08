@@ -13,7 +13,7 @@
   "status": "published",
   "featuredImage": {
     "url": "/optimized/blog/multi-cat-happy-home-ghibli.webp",
-    "alt": "Best Cat Litter for Multiple Cats - Multi-Cat Odor Control Guide",
+    "alt": "Meilleure litière pour plusieurs chats – une maison fraîche avec de nombreux chats",
     "width": 1600,
     "height": 1067
   },
@@ -23,34 +23,49 @@
     "Buying Guide"
   ],
   "tags": [
-    "best cat litter for multiple cats",
-    "multi-cat litter",
-    "cat litter odor control",
-    "ammonia control",
-    "multiple cats odor",
-    "activated carbon cat litter",
-    "litter deodorizer multi-cat"
+    "meilleure litière pour chat pour plusieurs chats",
+    "litière multi-chats",
+    "contrôle des odeurs de litière pour chat",
+    "contrôle de l'ammoniac",
+    "odeur de plusieurs chats",
+    "litière pour chat au charbon actif",
+    "désodorisant litière multi-chat"
   ],
   "locale": "fr",
-  "translations": {},
+  "translations": {
+    "fr": "best-cat-litter-multiple-cats-odor-control"
+  },
   "seo": {
     "title": "Meilleure Litière pour Plusieurs Chats : Guide de Contrôle des Odeurs Multi-Chats (2026)",
-    "description": "Les foyers multi-chats font face à des défis d'odeur exponentiels. Comparez les types de litière qui gèrent le volume, plus l'amélioration au charbon actif qui évolue…",
+    "description": "Deux chats = 4x l'ammoniaque. Trois chats = 9x. Découvrez pourquoi la litière standard échoue au test mathématique exponentiel et comment le carbone de qualité NASA résout la courbe d'odeur de plusieurs chats.",
     "keywords": [
-      "Meilleure Litière pour Plusieurs Chats",
-      "best cat litter for multiple cats",
-      "multi-cat litter",
-      "best litter for 2 cats",
-      "multi-cat odor control",
-      "ammonia control cat litter",
-      "activated carbon multi-cat",
-      "cat litter odor control",
-      "ammonia control",
-      "multiple cats odor",
-      "activated carbon cat litter"
+      "meilleure litière pour chat pour plusieurs chats",
+      "litière multi-chats",
+      "meilleure litière pour 2 chats",
+      "contrôle des odeurs multi-chats",
+      "litière pour chat avec contrôle de l'ammoniaque",
+      "charbon actif multi-chat",
+      "contrôle des odeurs de litière pour chat",
+      "contrôle de l'ammoniac",
+      "odeur de plusieurs chats",
+      "litière pour chat au charbon actif"
     ],
     "ogImage": "/optimized/blog/multi-cat-happy-home-ghibli.webp",
     "canonical": "https://www.purrify.ca/fr/blog/best-cat-litter-multiple-cats-odor-control"
   },
-  "readingTime": 12
+  "readingTime": 12,
+  "faq": [
+    {
+      "question": "À quelle vitesse l’odeur du bac à litière devrait-elle s’améliorer avec une routine cohérente ?",
+      "answerHtml": "<p>La plupart des maisons constatent une amélioration significative dans les 24 à 72 heures lorsque le ramassage, le flux d'air et la superposition de charbon actif sont tous cohérents.</p>"
+    },
+    {
+      "question": "Puis-je utiliser un additif au charbon actif avec ma litière actuelle ?",
+      "answerHtml": "<p>Oui. L'additif de carbone est compatible avec les types de litière les plus courants et est plus efficace lorsqu'il est appliqué en petits ajouts réguliers.</p>"
+    },
+    {
+      "question": "Quelle est la meilleure façon d’éviter les rebonds d’odeurs après le nettoyage ?",
+      "answerHtml": "<p>Utilisez un programme d'entretien au lieu d'attendre le retour de l'odeur : récupérez le charbon deux fois par jour, actualisez le charbon chaque semaine et effectuez des réinitialisations complètes à une cadence fixe.</p>"
+    }
+  ]
 }

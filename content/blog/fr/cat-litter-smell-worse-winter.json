@@ -18,35 +18,77 @@
     "height": 800
   },
   "categories": [
-    "Seasonal Odor Control",
-    "Tips",
-    "Odor Control"
+    "Contrôle des odeurs saisonnières",
+    "Sciences et éducation"
   ],
   "tags": [
-    "cat litter smell winter",
-    "closed windows litter box odor",
-    "winter cat smell solutions",
-    "ammonia smell worse in winter",
-    "cat odor cold weather",
-    "trapped litter box smell"
+    "odeur de litière pour chat hiver",
+    "odeur de litière fenêtres fermées",
+    "solutions contre les odeurs de chat en hiver",
+    "l'ammoniac sent pire en hiver",
+    "odeur de chat temps froid",
+    "accumulation d'ammoniac en hiver",
+    "odeur de chat à la maison scellée",
+    "litière pour chat au charbon actif hiver",
+    "chats de la qualité de l'air intérieur",
+    "odeur de litière temps froid",
+    "litière pour chat ACH ventilation",
+    "désodorisant pour litière d'hiver",
+    "odeur de litière pour chat maison fermée"
   ],
   "locale": "fr",
-  "translations": {},
+  "translations": {
+    "fr": "cat-litter-smell-worse-winter"
+  },
   "seo": {
     "title": "Pourquoi la litière sent plus mauvais en hiver (et 5 solutions sans ouvrir les fenêtres)",
     "description": "Fenêtres fermées emprisonnant une odeur de litière insupportable ? Découvrez 5 solutions éprouvées qui éliminent les odeurs hivernales sans geler votre maison.",
     "keywords": [
-      "Pourquoi la litière sent plus mauvais en hiver (et 5 solutions sans ouvrir les fenêtres)",
-      "cat litter smell winter",
-      "closed windows litter box odor",
-      "winter cat smell solutions",
-      "ammonia smell worse in winter",
-      "cat odor cold weather",
-      "trapped litter box smell",
-      "cat litter smell worse winter"
+      "odeur de litière pour chat hiver",
+      "odeur de litière fenêtres fermées",
+      "solutions contre les odeurs de chat en hiver",
+      "l'ammoniac sent pire en hiver",
+      "odeur de chat temps froid",
+      "Odeur de bac à litière scellé à la maison",
+      "odeur de litière mois d'hiver",
+      "litière au charbon actif hiver",
+      "Accumulation d'ammoniac à l'intérieur en hiver",
+      "comment réduire l'odeur de litière pour chat en hiver",
+      "changements d'air par heure litière pour chat",
+      "désodorisant pour bac à litière d'hiver"
     ],
     "ogImage": "/optimized/blog/winter-fresh-cat-ghibli.png",
     "canonical": "https://www.purrify.ca/fr/blog/cat-litter-smell-worse-winter"
   },
-  "readingTime": 10
+  "readingTime": 10,
+  "faq": [
+    {
+      "question": "Pourquoi la litière de mon chat sent-elle tellement pire en hiver qu'en été ?",
+      "answerHtml": "<p>En hiver, les maisons scellées ont un taux de renouvellement d'air par heure (ACH) aussi bas que 0,35, contre 5 à 10+ en été lorsque les fenêtres sont ouvertes. Cela signifie que l’ammoniac provenant de l’urine de chat s’accumule de 300 à 500 % en plus grande quantité à l’intérieur plutôt que d’être continuellement dilué et expulsé. L'odeur est vraiment pire, pas seulement votre perception.</p>"
+    },
+    {
+      "question": "L'ammoniac de la litière pour chat est-il dangereux à respirer en hiver ?",
+      "answerHtml": "<p> Aux concentrations typiques des maisons fermées, une exposition prolongée à l'ammoniac peut provoquer une irritation des yeux, une gêne respiratoire et des maux de tête, en particulier chez les enfants, les personnes âgées, les personnes asthmatiques et les chats eux-mêmes. Il s'agit d'un véritable problème de qualité de l'air intérieur, et pas seulement d'un problème de confort.</p>"
+    },
+    {
+      "question": "Le charbon actif est-il vraiment efficace contre les odeurs de litière pour chat en hiver ?",
+      "answerHtml": "<p>Oui, et cela a en fait <em>plus</em> d'impact en hiver qu'en été, précisément parce que la ventilation est si faible. Le charbon actif adsorbe les molécules d'ammoniac à la source, les empêchant ainsi de pénétrer dans votre air scellé. Contrairement aux produits parfumés, il ne se contente pas de masquer l'odeur : il la capte.</p>"
+    },
+    {
+      "question": "À quelle fréquence dois-je vider le bac à litière en hiver ?",
+      "answerHtml": "<p>Augmentez la fréquence d'au moins 25 à 50 % par rapport à votre routine estivale. Pour un seul chat : prendre deux fois par jour. Pour deux chats : trois fois par jour. Pour trois chats ou plus : quatre fois par jour ou pensez à un système autonettoyant. Moins on perd de temps dans une maison scellée, moins l'ammoniac s'accumule.</p>"
+    },
+    {
+      "question": "Puis-je utiliser une litière parfumée pour camoufler les odeurs hivernales ?",
+      "answerHtml": "<p>Cela aggrave généralement le problème. Les litières parfumées libèrent des composés organiques volatils supplémentaires qui se mélangent à l’ammoniac dans votre air hivernal confiné, créant un profil d’odeur complexe et souvent plus nauséabond. Les litières non parfumées associées à un additif absorbant les odeurs comme le charbon actif sont systématiquement plus efficaces.</p>"
+    },
+    {
+      "question": "J'ai plusieurs chats : le problème hivernal s'aggrave-t-il ?",
+      "answerHtml": "<p>C'est très important. Plusieurs chats produisent proportionnellement plus d’ammoniac tandis que la ventilation reste au même niveau bas. Ce qui est gérable pour un chat dans une maison fermée peut être écrasant pour trois. Augmentez à la fois la fréquence de ramassage et la dose de carbone proportionnellement au nombre de chats.</p>"
+    },
+    {
+      "question": "À quelle vitesse vais-je remarquer une différence après avoir commencé le charbon actif ?",
+      "answerHtml": "<p>La plupart des propriétaires de chats signalent un changement notable autour du bac à litière au cours des premières 24 heures. L'amélioration des odeurs dans toute la pièce suit généralement dans les 3 à 7 jours, à mesure que l'ammoniac accumulé existant se disperse et que la nouvelle production est capturée à la source.</p>"
+    }
+  ]
 }

@@ -23,34 +23,49 @@
     "Vie en appartement"
   ],
   "tags": [
-    "best cat litter for apartments",
-    "apartment cat litter",
-    "small space cat odor",
-    "cat litter odor control",
-    "apartment cat smell",
-    "activated carbon",
-    "no ventilation odor"
+    "meilleure litière pour chat pour les appartements",
+    "litière pour chat d'appartement",
+    "odeur de chat dans un petit espace",
+    "contrôle des odeurs de litière pour chat",
+    "odeur de chat d'appartement",
+    "charbon actif",
+    "pas d'odeur de ventilation"
   ],
   "locale": "fr",
-  "translations": {},
+  "translations": {
+    "fr": "best-cat-litter-for-apartments"
+  },
   "seo": {
-    "title": "Meilleure litière pour chat en appartement : contrôle des odeurs dans les petits espaces (2026)",
-    "description": "Vous vivez en appartement avec des chats ? La ventilation limitée aggrave les odeurs. Comparez les meilleures litières pour chat en appartement et la solution pour…",
+    "title": "Meilleure litière pour chat pour les appartements : contrôle des odeurs dans les petits espaces (2026)",
+    "description": "700 pieds carrés, pas de fenêtres à ouvrir et une ventilation partagée avec les voisins ? Les odeurs de litière sont plus difficiles à gérer en appartement. Découvrez la technologie de piégeage moléculaire qui fonctionne même dans les petits espaces.",
     "keywords": [
-      "Meilleure litière pour chat en appartement",
-      "meilleure litière chat appartement",
-      "odeur litière chat appartement",
-      "odeur chat petit espace",
-      "litière chat sans ventilation",
-      "contrôle odeur chat appartement",
-      "best cat litter for apartments",
-      "apartment cat litter",
-      "small space cat odor",
-      "cat litter odor control",
-      "apartment cat smell"
+      "meilleure litière pour chat pour les appartements",
+      "odeur de litière pour chat d'appartement",
+      "odeur de chat dans un petit espace",
+      "litière pour chat pas de ventilation",
+      "Contrôle des odeurs de chat d'appartement",
+      "litière pour chat d'appartement",
+      "odeur de chat dans un petit espace",
+      "contrôle des odeurs de litière pour chat",
+      "odeur de chat d'appartement",
+      "charbon actif"
     ],
     "ogImage": "/optimized/blog/apartment-fresh-cat-ghibli.webp",
     "canonical": "https://www.purrify.ca/fr/blog/best-cat-litter-for-apartments"
   },
-  "readingTime": 12
+  "readingTime": 12,
+  "faq": [
+    {
+      "question": "À quelle vitesse l’odeur du bac à litière devrait-elle s’améliorer avec une routine cohérente ?",
+      "answerHtml": "<p>La plupart des maisons constatent une amélioration significative dans les 24 à 72 heures lorsque le ramassage, le flux d'air et la superposition de charbon actif sont tous cohérents.</p>"
+    },
+    {
+      "question": "Puis-je utiliser un additif au charbon actif avec ma litière actuelle ?",
+      "answerHtml": "<p>Oui. L'additif de carbone est compatible avec les types de litière les plus courants et est plus efficace lorsqu'il est appliqué en petits ajouts réguliers.</p>"
+    },
+    {
+      "question": "Quelle est la meilleure façon d’éviter les rebonds d’odeurs après le nettoyage ?",
+      "answerHtml": "<p>Utilisez un programme d'entretien au lieu d'attendre le retour de l'odeur : récupérez le charbon deux fois par jour, actualisez le charbon chaque semaine et effectuez des réinitialisations complètes à une cadence fixe.</p>"
+    }
+  ]
 }

@@ -23,34 +23,48 @@
     "Product Guide"
   ],
   "tags": [
-    "cat litter deodorizer",
-    "best cat litter deodorizer",
-    "cat litter odor eliminator",
-    "activated carbon deodorizer",
-    "natural litter deodorizer",
-    "ammonia remover",
-    "litter box odor control"
+    "désodorisant pour litière pour chat",
+    "meilleur désodorisant pour litière pour chat",
+    "éliminateur d'odeur de litière pour chat",
+    "désodorisant au charbon actif",
+    "désodorisant naturel pour litière",
+    "dissolvant d'ammoniac",
+    "contrôle des odeurs du bac à litière"
   ],
   "locale": "fr",
-  "translations": {},
+  "translations": {
+    "fr": "tried-every-litter-deodorizer-90-days-results"
+  },
   "seo": {
-    "title": "J'ai essayé toutes les méthodes de désodorisant pour litière pendant…",
-    "description": "Tests et avis de produits J'ai essayé toutes les méthodes de désodorisant pour litière... Découvrez des étapes concrètes pour garder votre maison fraîche avec une routine…",
+    "title": "J’ai testé toutes les méthodes de désodorisation de litière pendant 90 jours : ce qui a vraiment marché",
+    "description": "Tests et avis produits. J'ai essayé toutes les méthodes de désodorisation de litière pendant 90 jours. Voici ce qui a complètement éliminé l'odeur d'ammoniac.",
     "keywords": [
-      "J'ai essayé toutes les méthodes de désodorisant pour litière pendant…",
-      "désodorisant litière chat",
-      "meilleur désodorisant litière chat",
-      "éliminateur odeur litière chat",
-      "désodorisant charbon actif",
-      "désodorisant litière naturel",
-      "éliminateur ammoniac",
-      "contrôle odeur bac litière",
-      "cat litter deodorizer",
-      "best cat litter deodorizer",
-      "cat litter odor eliminator"
+      "J'ai essayé toutes les méthodes de désodorisation de litière pendant 90 jours : voici ce qui est réel…",
+      "j'ai essayé tous les désodorisants pour litière, résultats en 90 jours",
+      "désodorisant pour litière pour chat",
+      "meilleur désodorisant pour litière pour chat",
+      "éliminateur d'odeur de litière pour chat",
+      "désodorisant au charbon actif",
+      "désodorisant naturel pour litière",
+      "dissolvant d'ammoniac",
+      "contrôle des odeurs du bac à litière"
     ],
     "ogImage": "/optimized/blog/90day-hero-ghibli.png",
     "canonical": "https://www.purrify.ca/blog/tried-every-litter-deodorizer-90-days-results"
   },
-  "readingTime": 6
+  "readingTime": 6,
+  "faq": [
+    {
+      "question": "À quelle vitesse l’odeur du bac à litière devrait-elle s’améliorer avec une routine cohérente ?",
+      "answerHtml": "<p>La plupart des maisons constatent une amélioration significative dans les 24 à 72 heures lorsque le ramassage, le flux d'air et la superposition de charbon actif sont tous cohérents.</p>"
+    },
+    {
+      "question": "Puis-je utiliser un additif au charbon actif avec ma litière actuelle ?",
+      "answerHtml": "<p>Oui. L'additif de carbone est compatible avec les types de litière les plus courants et est plus efficace lorsqu'il est appliqué en petits ajouts réguliers.</p>"
+    },
+    {
+      "question": "Quelle est la meilleure façon d’éviter les rebonds d’odeurs après le nettoyage ?",
+      "answerHtml": "<p>Utilisez un programme d'entretien au lieu d'attendre le retour de l'odeur : récupérez le charbon deux fois par jour, actualisez le charbon chaque semaine et effectuez des réinitialisations complètes à une cadence fixe.</p>"
+    }
+  ]
 }

@@ -30,7 +30,9 @@
     "produits naturels pour animaux"
   ],
   "locale": "fr",
-  "translations": {},
+  "translations": {
+    "fr": "kitty-litter-deodorizer"
+  },
   "seo": {
     "title": "Désodorisant litière pour chat : Pourquoi ils échouent (et la solution qui marche) | Purrify",
     "description": "La plupart des désodorisants pour litière masquent les odeurs avec des parfums. Découvrez pourquoi le charbon de coco activé est la seule solution efficace.",

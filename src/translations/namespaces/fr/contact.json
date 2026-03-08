@@ -42,31 +42,27 @@
     "contactReasons": [
       {
         "value": "general",
-        "label": "Question Générale"
-      },
-      {
-        "value": "product",
-        "label": "Information Produit"
+        "label": "Question générale"
       },
       {
         "value": "order",
-        "label": "Support Commande"
+        "label": "Statut de la commande"
+      },
+      {
+        "value": "product",
+        "label": "Question produit"
       },
       {
         "value": "shipping",
-        "label": "Question Livraison"
+        "label": "Problème d'expédition"
       },
       {
         "value": "return",
-        "label": "Retour/Remboursement"
+        "label": "Retour/Échange"
       },
       {
-        "value": "wholesale",
-        "label": "Demande Grossiste"
-      },
-      {
-        "value": "feedback",
-        "label": "Commentaire/Avis"
+        "value": "other",
+        "label": "Autre"
       }
     ],
     "contactMethods": [
@@ -106,20 +102,16 @@
     },
     "faqs": [
       {
-        "question": "À quelle vitesse verrai-je des résultats avec Purrify?",
-        "answer": "La plupart des clients remarquent une réduction significative des odeurs dans les premières heures d'application. Le charbon activé commence à piéger les molécules d'odeur immédiatement au contact."
+        "question": "Combien de temps prend l'expédition ?",
+        "answer": "L'expédition standard prend 3 à 5 jours ouvrables au Canada. Nous proposons également des options d'expédition accélérées."
       },
       {
-        "question": "Que faire si je n'obtiens pas les résultats espérés?",
-        "answer": "Écrivez-nous ! Notre équipe d'accompagnement analysera votre installation, partagera des conseils personnalisés et s'assurera que Purrify fonctionne au mieux chez vous."
+        "question": "Puis-je utiliser Purrify autour de mon chat ?",
+        "answer": "Purrify utilise le même type de charbon actif que l'on trouve dans de nombreux filtres à eau domestiques et ne contient aucun parfum ni colorant ajouté."
       },
       {
-        "question": "Offrez-vous des prix de gros pour plusieurs chats?",
-        "answer": "Oui! Notre format économique de 500g offre la meilleure valeur pour les foyers multi-chats. Nous avons aussi des prix de gros disponibles pour les animaleries et vétérinaires."
-      },
-      {
-        "question": "Purrify est-il sûr si mon chat l'ingère accidentellement?",
-        "answer": "Absolument. Le charbon activé est complètement sûr pour les chats et est même utilisé en médecine vétérinaire. Cependant, Purrify est conçu pour rester mélangé avec la litière."
+        "question": "Comment utiliser Purrify ?",
+        "answer": "Saupoudrez simplement 1 à 2 cuillères à soupe de Purrify sur votre litière existante après le nettoyage. Cela fonctionne avec tous les types de litières."
       }
     ],
     "businessHours": {

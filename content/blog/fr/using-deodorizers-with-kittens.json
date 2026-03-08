@@ -18,7 +18,8 @@
     "height": 800
   },
   "categories": [
-    "Odor Control"
+    "Contrôle des odeurs",
+    "Soins des chatons"
   ],
   "tags": [
     "cat litter deodorizer kittens",
@@ -28,21 +29,19 @@
     "kitten health"
   ],
   "locale": "fr",
-  "translations": {},
+  "translations": {
+    "fr": "using-deodorizers-with-kittens"
+  },
   "seo": {
     "title": "Utiliser un désodorisant pour litière avec des chatons ? Guide complet",
-    "description": "Guide complet sur l'utilisation de désodorisants pour litière avec des chatons. Apprenez quand, comment et quels produits fonctionnent le mieux pour les petites pat…",
+    "description": "Parents de chatons : ce guide montre exactement quand éliminer les odeurs de litière chez les chatons. Naturel, sans produits chimiques : le même type que celui utilisé dans les filtres à eau du monde entier !",
     "keywords": [
-      "désodorisant litière chat chatons",
-      "soins litière chatons",
-      "additif naturel litière chat",
-      "désodorisant chat sans parfum",
-      "santé chatons",
-      "cat litter deodorizer kittens",
-      "kitten litter care",
-      "natural cat litter additive",
-      "fragrance-free cat deodorizer",
-      "kitten health"
+      "chatons désodorisants de litière pour chat",
+      "entretien de la litière pour chaton",
+      "additif naturel pour litière pour chat",
+      "désodorisant pour chat sans parfum",
+      "santé du chaton",
+      "utiliser des désodorisants avec des chatons"
     ],
     "ogImage": "/optimized/blog/deodorizers-with-kittens.webp",
     "canonical": "https://www.purrify.ca/blog/using-deodorizers-with-kittens"

@@ -29,10 +29,12 @@
     "additif litière chat plusieurs chats"
   ],
   "locale": "fr",
-  "translations": {},
+  "translations": {
+    "fr": "multi-cat-litter-deodorizer-guide"
+  },
   "seo": {
-    "title": "Guide Désodorisant Litière Multi-Chats : Solutions pour Foyers de…",
-    "description": "Guide complet du désodorisant de litière multi-chats. Apprenez les dosages appropriés, stratégies de placement et techniques d'entretien pour foyers de 2+ chats.",
+    "title": "Guide du désodorisant de litière pour foyers multi-chats : dosages, emplacement et entretien",
+    "description": "Guide complet du désodorisant pour litière multi-chats. Apprenez les dosages appropriés, les stratégies de placement et les techniques d'entretien pour les ménages comptant plus de 2 chats.",
     "keywords": [
       "désodorisant litière multi chats",
       "désodorisant litière plusieurs chats",
@@ -44,5 +46,19 @@
     "ogImage": "/optimized/blog/multi-cat-deodorizer.webp",
     "canonical": "https://www.purrify.ca/fr/blog/multi-cat-litter-deodorizer-guide"
   },
-  "readingTime": 9
+  "readingTime": 9,
+  "faq": [
+    {
+      "question": "À quelle vitesse l’odeur du bac à litière devrait-elle s’améliorer avec une routine cohérente ?",
+      "answerHtml": "<p>La plupart des maisons constatent une amélioration significative dans les 24 à 72 heures lorsque le ramassage, le flux d'air et la superposition de charbon actif sont tous cohérents.</p>"
+    },
+    {
+      "question": "Puis-je utiliser un additif au charbon actif avec ma litière actuelle ?",
+      "answerHtml": "<p>Oui. L'additif de carbone est compatible avec les types de litière les plus courants et est plus efficace lorsqu'il est appliqué en petits ajouts réguliers.</p>"
+    },
+    {
+      "question": "Quelle est la meilleure façon d’éviter les rebonds d’odeurs après le nettoyage ?",
+      "answerHtml": "<p>Utilisez un programme d'entretien au lieu d'attendre le retour de l'odeur : récupérez le charbon deux fois par jour, actualisez le charbon chaque semaine et effectuez des réinitialisations complètes à une cadence fixe.</p>"
+    }
+  ]
 }

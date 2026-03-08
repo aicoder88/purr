@@ -30,7 +30,9 @@
     "litière asthme chat"
   ],
   "locale": "fr",
-  "translations": {},
+  "translations": {
+    "fr": "best-unscented-cat-litter-sensitive-cats"
+  },
   "seo": {
     "title": "Meilleure Litière Sans Parfum pour Chats Sensibles (2026)",
     "description": "Les parfums déclenchent des problèmes respiratoires chez les chats sensibles. Trouvez des litières vraiment sans parfum avec un contrôle naturel des odeurs.",
@@ -51,16 +53,20 @@
   "readingTime": 4,
   "faq": [
     {
-      "question": "En combien de temps peut-on constater une amélioration des odeurs?",
-      "answerHtml": "<p>Dans la majorité des cas, une amélioration nette apparaît en 24 à 72 heures avec une routine cohérente.</p>"
+      "question": "Comment les litières non parfumées contrôlent-elles les odeurs ?",
+      "answerHtml": "Par absorption (argile, cristaux) ou piégeage moléculaire (<a href=\"/products\" class=\"text-[#FF3131] dark:text-[#FF6B6B] hover:underline\">charbon actif</a>). Contrairement aux parfums qui masquent les odeurs, ces matériaux captent physiquement les molécules à l’origine des odeurs."
     },
     {
-      "question": "Le charbon actif est-il compatible avec ma litière actuelle?",
-      "answerHtml": "<p>Oui. Il fonctionne avec la plupart des litières et donne de meilleurs résultats avec des ajouts réguliers en petite quantité.</p>"
+      "question": "Le « sans poussière » est-il vraiment important pour les chats sensibles ?",
+      "answerHtml": "Oui, absolument. Même la poussière d'argile non parfumée contient de la silice, qui peut irriter les poumons. Recherchez des formules sans poussière à 99,9 % ou optez pour des litières à granulés sans poussière."
     },
     {
-      "question": "Comment éviter un retour des odeurs après nettoyage?",
-      "answerHtml": "<p>Utilisez un calendrier fixe: deux ramassages quotidiens, recharge hebdomadaire en carbone et remplacement complet selon un rythme constant.</p>"
+      "question": "Ma maison sentira-t-elle sans litière parfumée ?",
+      "answerHtml": "Non, si vous utilisez une élimination appropriée des odeurs. Le charbon actif élimine les molécules odorantes de l’air. Les parfums masquent simplement l’odeur temporairement, créant souvent une pire combinaison « parfum + caca »."
+    },
+    {
+      "question": "Est-ce que « légèrement parfumé » convient aux chats sensibles ?",
+      "answerHtml": "En général, non. Les parfums « légers » contiennent encore des produits chimiques volatils. Si votre chat a montré des signes d'asthme ou d'allergies, 100 % sans parfum est la voie la plus sûre."
     }
   ]
 }

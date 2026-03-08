@@ -30,25 +30,56 @@
     "where to put litter box"
   ],
   "locale": "fr",
-  "translations": {},
+  "translations": {
+    "fr": "best-litter-box-location-odour-control"
+  },
   "seo": {
-    "title": "Meilleur Emplacement pour Bac à Litière pour le Contrôle des…",
-    "description": "L'endroit où vous placez le bac à litière de votre chat affecte considérablement les odeurs. Découvrez les meilleurs emplacements pour le contrôle des odeurs et les…",
+    "title": "Meilleur emplacement du bac à litière pour le contrôle des odeurs (Guide 2026)",
+    "description": "L'endroit où vous placez le bac à litière de votre chat affecte considérablement l'odeur. Découvrez les meilleurs emplacements de bac à litière pour contrôler les odeurs et les endroits à éviter.",
     "keywords": [
-      "Meilleur Emplacement pour Bac à Litière pour le Contrôle des…",
-      "best litter box location",
-      "litter box placement odour",
-      "where to put litter box",
-      "litter box location for smell",
-      "cat litter box placement",
-      "litter box location",
-      "litter box placement",
-      "cat litter odour control",
-      "litter box odour",
-      "best litter box location odour control"
+      "meilleur emplacement de bac à litière",
+      "odeur de placement du bac à litière",
+      "où mettre le bac à litière",
+      "emplacement du bac à litière pour l'odeur",
+      "placement de la litière du chat",
+      "emplacement du bac à litière",
+      "placement du bac à litière",
+      "contrôle des odeurs de litière pour chat",
+      "odeur de litière",
+      "meilleur emplacement de bac à litière contrôle des odeurs"
     ],
     "ogImage": "/optimized/marketing/placement-2026.png",
     "canonical": "https://www.purrify.ca/fr/blog/best-litter-box-location-odour-control"
   },
-  "readingTime": 12
+  "readingTime": 12,
+  "faq": [
+    {
+      "question": "Quelle est la meilleure pièce pour installer un bac à litière ?",
+      "answerHtml": "Une salle de bain supplémentaire est idéale : elle dispose d'un ventilateur, d'un sol facile à nettoyer et d'une association naturelle avec les activités de « salle de bain ». Les buanderies et les espaces utilitaires sont d’excellentes alternatives offrant des avantages similaires."
+    },
+    {
+      "question": "Dois-je mettre le bac à litière dans la salle de bain que j'utilise quotidiennement ?",
+      "answerHtml": "Votre salle de bain principale peut fonctionner si c'est votre seule option. Utilisez un bac couvert ou un meuble à litière, ajoutez du charbon actif pour contrôler les odeurs et faites fonctionner le ventilateur d'extraction après que votre chat l'a utilisé. Assurez-vous que votre chat y a accès même lorsque vous prenez une douche."
+    },
+    {
+      "question": "Puis-je mettre le bac à litière au sous-sol ?",
+      "answerHtml": "Oui, les sous-sols peuvent être excellents : ils sont naturellement frais (ce qui ralentit la croissance bactérienne) et séparés des espaces de vie. Assurez-vous que votre chat a un accès 24h/24 et 7j/7, placez la boîte près d'une fenêtre ou d'une bouche d'aération pour permettre la circulation de l'air et utilisez une veilleuse pour que votre chat puisse la trouver facilement."
+    },
+    {
+      "question": "Pourquoi mon chat évite-t-il le bac à litière à son emplacement actuel ?",
+      "answerHtml": "Les chats peuvent éviter les boîtes qui ne semblent pas sûres (trop exposées ou trop fermées), qui se trouvent dans des zones bruyantes ou qui sentent trop fort l'ammoniac. Si une odeur concentrée est le problème, l'endroit est probablement mal ventilé : déplacez la boîte ou ajoutez du charbon actif pour piéger les molécules odorantes."
+    },
+    {
+      "question": "À quelle distance le bac à litière doit-il se trouver de la nourriture et de l’eau ?",
+      "answerHtml": "Gardez le bac à litière dans un endroit complètement différent de la nourriture et de l'eau, idéalement dans une pièce différente. Les chats évitent instinctivement de faire leurs besoins à proximité de leur source de nourriture. La proximité peut entraîner à la fois un évitement du bac à litière et une réduction de l’alimentation."
+    },
+    {
+      "question": "Est-il acceptable de placer le bac à litière près de la porte ?",
+      "answerHtml": "Près d’une porte arrière ou latérale peut bien fonctionner : vous obtenez une ventilation naturelle lorsque la porte s’ouvre. Évitez l'entrée principale où les invités sentent immédiatement des odeurs et assurez-vous que la boîte est à l'abri des courants d'air froids en hiver."
+    },
+    {
+      "question": "Comment contrôler les odeurs de litière dans un petit appartement ?",
+      "answerHtml": "Dans les petits espaces, concentrez-vous sur le piégeage des odeurs à la source avec du charbon actif, en ramassant fréquemment (3 fois par jour) et en maximisant toute ventilation disponible. Les meubles de bac à litière aident à contenir les odeurs tout en ayant l’air présentable. <a href=\"/blog/cat-litter-odor-control-tips\" class=\"text-[#FF3131] dark:text-[#FF6B6B] hover:underline\">Consultez notre guide complet de contrôle des odeurs</a>."
+    }
+  ]
 }
