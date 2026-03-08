@@ -4,9 +4,13 @@ import { SITE_NAME, SITE_URL } from '@/lib/constants';
 
 export const dynamic = 'force-static';
 
+const INVEST_TITLE = `Invest in ${SITE_NAME} | Activated Carbon Pet Care`;
+const INVEST_DESCRIPTION =
+  `Review ${SITE_NAME}'s current investment round, traction, unit economics, and retail expansion plan for activated carbon pet care in Canada.`;
+
 export const metadata: Metadata = {
-  title: `Invest in ${SITE_NAME} - Revolutionary Pet Care Innovation`,
-  description: `Investment opportunity in ${SITE_NAME}: The first activated carbon cat litter additive in Canada. $1M pre-money valuation, 47% gross margins, proven traction with 16 retail partners.`,
+  title: INVEST_TITLE,
+  description: INVEST_DESCRIPTION,
   keywords: ['invest in Purrify', 'pet care investment', 'startup investment', 'angel investment Canada', 'pet industry startup'],
   alternates: {
     canonical: `${SITE_URL}/invest/`,
@@ -16,6 +20,8 @@ export const metadata: Metadata = {
     follow: false,
   },
   openGraph: {
+    title: INVEST_TITLE,
+    description: INVEST_DESCRIPTION,
     url: `${SITE_URL}/invest/`,
     images: [
       {
@@ -35,7 +41,7 @@ const investorSchema = {
   '@type': 'Organization',
   '@id': 'https://www.purrify.ca/invest/#organization',
   name: SITE_NAME,
-  description: 'Investment opportunity in Purrify: The first activated carbon cat litter additive in Canada. $1M pre-money valuation, 47% gross margins, proven traction with 16 retail partners.',
+  description: INVEST_DESCRIPTION,
   url: `${SITE_URL}/invest/`,
   logo: `${SITE_URL}/optimized/logos/purrify-logo.png`,
   sameAs: [

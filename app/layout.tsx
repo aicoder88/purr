@@ -1,9 +1,8 @@
 import type { Metadata, Viewport } from 'next';
 import { Inter } from 'next/font/google';
-import { headers } from 'next/headers';
-import { setRequestLocale } from 'next-intl/server';
+import { getLocale, setRequestLocale } from 'next-intl/server';
 import '../src/index.css';
-import { defaultLocale, getLocaleFromPathname, Locale } from '@/i18n/config';
+import { defaultLocale, isValidLocale, Locale } from '@/i18n/config';
 import { AppLayout } from '@/components/layout/AppLayout';
 import { Providers } from './providers';
 import { SITE_NAME, SITE_DESCRIPTION, SITE_URL } from '@/lib/constants';
@@ -21,6 +20,11 @@ const inter = Inter({
 const OG_LOCALE_MAP: Record<string, string> = {
   fr: 'fr_CA',
   en: 'en_CA',
+};
+
+const HTML_LANG_MAP: Record<string, string> = {
+  fr: 'fr-CA',
+  en: 'en-CA',
 };
 
 const DEFAULT_GTM_ID = 'GTM-T8WZ5D7R';
@@ -58,13 +62,8 @@ export async function generateMetadata(): Promise<Metadata> {
   // Build language alternates for hreflang
   // Maps language-region codes to their corresponding URLs
   const languages: Record<string, string> = {
-    // Canadian English (default)
     'en-CA': `${baseUrl}/`,
-    // Canadian French
     'fr-CA': `${baseUrl}/fr/`,
-    // US English (dedicated landing page)
-    'en-US': `${baseUrl}/us/`,
-    // x-default for users whose language doesn't match any above
     'x-default': `${baseUrl}/`,
   };
 
@@ -171,18 +170,18 @@ export default async function RootLayout({
 }: {
   children: React.ReactNode;
 }) {
-  const headersList = await headers();
-  const pathname = headersList.get('x-pathname') || '';
-  const locale: Locale = getLocaleFromPathname(pathname);
+  const requestLocale = await getLocale();
+  const locale: Locale = isValidLocale(requestLocale) ? requestLocale : defaultLocale;
   setRequestLocale(locale);
   const messages = await getScopedMessages(locale, ['root']);
   const accessibilityMessages = (messages as Record<string, unknown>).accessibility as
     | { gtmNoscriptTitle?: string }
     | undefined;
   const gtmNoscriptTitle = accessibilityMessages?.gtmNoscriptTitle;
+  const htmlLang = HTML_LANG_MAP[locale] ?? 'en-CA';
 
   return (
-    <html lang={locale} className={`${inter.variable} dark`} suppressHydrationWarning>
+    <html lang={htmlLang} className={`${inter.variable} dark`} suppressHydrationWarning>
       <head>
         <style
           dangerouslySetInnerHTML={{

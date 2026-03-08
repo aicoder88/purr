@@ -19,7 +19,6 @@ export const metadata: Metadata = {
         languages: {
             'en-CA': 'https://www.purrify.ca/learn/solutions/senior-cat-litter-solutions',
             'fr-CA': 'https://www.purrify.ca/fr/learn/solutions/senior-cat-litter-solutions',
-            'en-US': 'https://www.purrify.ca/learn/solutions/senior-cat-litter-solutions',
             'x-default': 'https://www.purrify.ca/learn/solutions/senior-cat-litter-solutions',
         },
     },

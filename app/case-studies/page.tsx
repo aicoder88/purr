@@ -6,22 +6,26 @@ import { TrendingUp, Users, Clock, CheckCircle, ArrowRight, Home, Cat } from 'lu
 import { Container } from '@/components/ui/container';
 import { SITE_NAME } from '@/lib/constants';
 
+const CASE_STUDIES_TITLE = `Case Studies & Results | ${SITE_NAME}`;
+const CASE_STUDIES_DESCRIPTION =
+  'See how cat owners across Canada used Purrify to cut litter box odor with practical routines, measured outcomes, and before-after results.';
+const CASE_STUDIES_OG_TITLE = 'Purrify Case Studies & Results';
+
 export const metadata: Metadata = {
-  title: `Success Stories - Real Customer Results | ${SITE_NAME}`,
-  description: 'Before-and-after case studies showing how cat owners improved litter box odor control with Purrify in real homes across Canada.',
+  title: CASE_STUDIES_TITLE,
+  description: CASE_STUDIES_DESCRIPTION,
   keywords: ['Purrify case studies', 'cat odor success stories', 'customer results', 'before and after', 'cat litter deodorizer effectiveness'],
   alternates: {
     canonical: 'https://www.purrify.ca/case-studies/',
     languages: {
       'en-CA': 'https://www.purrify.ca/case-studies/',
       'fr-CA': 'https://www.purrify.ca/fr/case-studies/',
-      'en-US': 'https://www.purrify.ca/case-studies/',
       'x-default': 'https://www.purrify.ca/case-studies/',
     },
   },
   openGraph: {
-    title: 'Success Stories - Real Customer Results',
-    description: 'Before-and-after case studies showing how cat owners improved litter box odor control with Purrify in real homes across Canada.',
+    title: CASE_STUDIES_OG_TITLE,
+    description: CASE_STUDIES_DESCRIPTION,
     type: 'website',
     url: 'https://www.purrify.ca/case-studies/',
     images: [
@@ -35,8 +39,8 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Success Stories - Real Customer Results',
-    description: 'Real photos and practical case studies showing how cat owners improved litter box odor control with Purrify.',
+    title: CASE_STUDIES_OG_TITLE,
+    description: CASE_STUDIES_DESCRIPTION,
     images: ['https://www.purrify.ca/optimized/products/three-bags-no-bg.webp'],
   },
   other: {
@@ -47,15 +51,15 @@ export const metadata: Metadata = {
 const caseStudies = [
   {
     id: 1,
-    title: "Small Apartment, Big Results: Sarah's Odor-Free Studio",
-    subtitle: "How one Montreal cat owner eliminated litter box odors in a...",
+    headline: "Small Apartment, Big Results: Sarah's Odor-Free Studio",
+    teaser: "How one Montreal cat owner eliminated litter box odors in a...",
     customer: "Sarah M., Montreal, QC",
     situation: "Studio Apartment Challenge",
     timeframe: "30 Days",
     cats: 2,
     image: "/optimized/products/60g.webp",
     challenge: {
-      description: "Sarah lived in a 400 square foot studio apartment with two cats. The litter box was located near her living area due to space constraints, making odor control critical for her quality of life and ability to have guests over.",
+      summary: "Sarah shared a 400-square-foot studio with two cats and needed reliable litter box odor control near her main living space and guests.",
       painPoints: [
         "Limited ventilation in studio apartment",
         "Litter box visible from main living area",
@@ -65,7 +69,7 @@ const caseStudies = [
       ]
     },
     solution: {
-      description: "Sarah started with Purrify's 12g trial size to test effectiveness, then upgraded to the 50g regular size after seeing immediate results.",
+      summary: "Sarah tested Purrify with a 12g trial, saw fast results, and moved to the 50g bag without changing litter type or box placement.",
       implementation: [
         "Applied 1 teaspoon of Purrify per cat per week",
         "Mixed thoroughly with existing clay litter",
@@ -74,7 +78,7 @@ const caseStudies = [
       ]
     },
     results: {
-      description: "Within 24 hours, Sarah noticed a dramatic reduction in odors. By day 7, the smell was completely eliminated.",
+      summary: "Sarah noticed a major odor drop within a day, and by the end of the first week her studio smelled fresh enough for guests again.",
       metrics: [
         { label: "Odor Reduction", value: "95%", timeframe: "24 hours" },
         { label: "Guest Confidence", value: "100%", timeframe: "1 week" },
@@ -87,15 +91,15 @@ const caseStudies = [
   },
   {
     id: 2,
-    title: "Multi-Cat Household Success: The Johnson Family's Journey",
-    subtitle: "Managing odors for 4 cats in a busy family home with childr...",
+    headline: "Multi-Cat Household Success: The Johnson Family's Journey",
+    teaser: "Managing odors for 4 cats in a busy family home with childr...",
     customer: "Michael & Lisa Johnson, Toronto, ON",
     situation: "Multi-Cat Family Home",
     timeframe: "90 Days",
     cats: 4,
     image: "/optimized/products/140g.webp",
     challenge: {
-      description: "The Johnson family struggled with odor control for their 4 cats while maintaining a child-friendly environment. Previous solutions contained harsh chemicals or strong fragrances that concerned them.",
+      summary: "The Johnson family needed stronger odor control for four cats without fragranced products or routines that felt risky around children.",
       painPoints: [
         "4 cats producing significant waste volume",
         "Concern about chemical exposure to children",
@@ -105,7 +109,7 @@ const caseStudies = [
       ]
     },
     solution: {
-      description: "The Johnsons implemented Purrify across all 3 litter boxes using the 120g family size for maximum value and flexibility.",
+      summary: "The Johnsons used Purrify across three litter boxes with the 120g size to improve value, consistency, and weekly upkeep.",
       implementation: [
         "Used 2 teaspoons per litter box weekly",
         "Staggered application across different boxes",
@@ -114,7 +118,7 @@ const caseStudies = [
       ]
     },
     results: {
-      description: "The family achieved consistent odor control across all litter areas while maintaining a comfortable environment for their children.",
+      summary: "The family reported steadier odor control across the house, lower deodorizer costs, and a more comfortable routine for everyone.",
       metrics: [
         { label: "Household Odor Control", value: "90%", timeframe: "2 weeks" },
         { label: "Cost Reduction", value: "35%", timeframe: "vs previous routine" },
@@ -127,15 +131,15 @@ const caseStudies = [
   },
   {
     id: 3,
-    title: "Senior Cat Care: Gentle Solutions for Sensitive Pets",
-    subtitle: "How Purrify helped a 15-year-old cat with respiratory sensi...",
+    headline: "Senior Cat Care: Gentle Solutions for Sensitive Pets",
+    teaser: "How Purrify helped a 15-year-old cat with respiratory sensi...",
     customer: "Dr. Patricia Wong, Vancouver, BC",
     situation: "Senior Cat with Health Concerns",
     timeframe: "60 Days",
     cats: 1,
     image: "/optimized/products/17g-transparent.webp",
     challenge: {
-      description: "Dr. Wong's 15-year-old cat developed respiratory sensitivities, making traditional scented deodorizers unsuitable. The cat needed effective odor control without any irritating chemicals or fragrances.",
+      summary: "Dr. Wong needed odor control for a 15-year-old cat with respiratory sensitivities and wanted a fragrance-free routine she could trust.",
       painPoints: [
         "Senior cat with respiratory sensitivities",
         "Veterinary background requiring evidence-based solutions",
@@ -145,7 +149,7 @@ const caseStudies = [
       ]
     },
     solution: {
-      description: "Dr. Wong chose Purrify specifically for its natural, fragrance-free formula and activated carbon technology that she trusted from her veterinary knowledge.",
+      summary: "Dr. Wong chose Purrify for its fragrance-free activated carbon formula and increased the dose gradually while monitoring her cat.",
       implementation: [
         "Started with minimal application (1/2 teaspoon weekly)",
         "Monitored cat for any respiratory reactions",
@@ -154,7 +158,7 @@ const caseStudies = [
       ]
     },
     results: {
-      description: "The senior cat showed no adverse reactions while achieving excellent odor control, giving Dr. Wong confidence in the product's approach and effectiveness.",
+      summary: "Her senior cat had no adverse reactions, and the litter area stayed noticeably fresher throughout the two-month test period.",
       metrics: [
         { label: "Respiratory Health", value: "No reactions", timeframe: "60 days" },
         { label: "Odor Control", value: "85%", timeframe: "1 week" },
@@ -178,8 +182,8 @@ function generateSchema() {
     "url": `${baseUrl}/case-studies/`,
     "mainEntity": caseStudies.map(study => ({
       "@type": "Article",
-      "headline": study.title,
-      "description": study.subtitle,
+      "headline": study.headline,
+      "description": study.teaser,
       "author": {
         "@type": "Organization",
         "name": "Purrify"
@@ -257,9 +261,9 @@ export default function CaseStudiesPage() {
                     <div className="flex flex-col md:flex-row md:items-center md:justify-between mb-6">
                       <div className="flex-1">
                         <h2 className="font-heading text-2xl md:text-3xl font-bold text-gray-900 dark:text-gray-50 mb-2">
-                          {study.title}
+                          {study.headline}
                         </h2>
-                        <p className="text-lg text-gray-600 dark:text-gray-300 mb-4">{study.subtitle}</p>
+                        <p className="text-lg text-gray-600 dark:text-gray-300 mb-4">{study.teaser}</p>
                         <div className="flex flex-wrap items-center gap-4 text-sm text-gray-600 dark:text-gray-300">
                           <div className="flex items-center">
                             <Users className="h-4 w-4 mr-1" />
@@ -302,7 +306,7 @@ export default function CaseStudiesPage() {
                           </div>
                           The Challenge
                         </h3>
-                        <p className="text-gray-700 dark:text-gray-200 mb-4">{study.challenge.description}</p>
+                        <p className="text-gray-700 dark:text-gray-200 mb-4">{study.challenge.summary}</p>
                         <div className="space-y-2">
                           <h4 className="font-semibold text-gray-900 dark:text-gray-50">Key Pain Points:</h4>
                           <ul className="space-y-1">
@@ -324,7 +328,7 @@ export default function CaseStudiesPage() {
                           </div>
                           The Solution
                         </h3>
-                        <p className="text-gray-700 dark:text-gray-200 mb-4">{study.solution.description}</p>
+                        <p className="text-gray-700 dark:text-gray-200 mb-4">{study.solution.summary}</p>
                         <div className="space-y-2">
                           <h4 className="font-semibold text-gray-900 dark:text-gray-50">Implementation:</h4>
                           <ul className="space-y-1">
@@ -347,7 +351,7 @@ export default function CaseStudiesPage() {
                         </div>
                         The Results
                       </h3>
-                      <p className="text-green-800 dark:text-green-200 mb-6">{study.results.description}</p>
+                      <p className="text-green-800 dark:text-green-200 mb-6">{study.results.summary}</p>
 
                       <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
                         {study.results.metrics.map((metric, i) => (

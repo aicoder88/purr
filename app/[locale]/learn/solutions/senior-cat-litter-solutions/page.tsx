@@ -36,7 +36,6 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
             languages: {
                 'en-CA': `${SITE_URL}/learn/solutions/senior-cat-litter-solutions/`,
                 'fr-CA': `${SITE_URL}/fr/learn/solutions/senior-cat-litter-solutions/`,
-                'en-US': `${SITE_URL}/us/learn/solutions/senior-cat-litter-solutions/`,
                 'x-default': `${SITE_URL}/learn/solutions/senior-cat-litter-solutions/`,
             },
         },

@@ -66,7 +66,6 @@ export async function generateMetadata({ params }: TrialSizePageProps): Promise<
       languages: {
         'en-CA': 'https://www.purrify.ca/products/trial-size/',
         'fr-CA': 'https://www.purrify.ca/fr/products/trial-size/',
-        'en-US': 'https://www.purrify.ca/products/trial-size/',
         'x-default': 'https://www.purrify.ca/products/trial-size/',
       },
     },

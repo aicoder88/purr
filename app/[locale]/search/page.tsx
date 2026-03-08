@@ -70,7 +70,6 @@ export async function generateMetadata({
       languages: {
         'en-CA': `${SITE_URL}/search/${querySuffix}`,
         'fr-CA': `${SITE_URL}/fr/search/${querySuffix}`,
-        'en-US': `${SITE_URL}/search/${querySuffix}`,
         'x-default': `${SITE_URL}/search/${querySuffix}`,
       },
     },

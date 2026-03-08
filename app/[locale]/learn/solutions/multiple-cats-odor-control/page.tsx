@@ -36,7 +36,6 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
             languages: {
                 'en-CA': `${SITE_URL}/learn/solutions/multiple-cats-odor-control/`,
                 'fr-CA': `${SITE_URL}/fr/learn/solutions/multiple-cats-odor-control/`,
-                'en-US': `${SITE_URL}/us/learn/solutions/multiple-cats-odor-control/`,
                 'x-default': `${SITE_URL}/learn/solutions/multiple-cats-odor-control/`,
             },
         },

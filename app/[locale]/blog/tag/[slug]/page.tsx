@@ -80,7 +80,6 @@ export async function generateMetadata({ params }: TagHubPageProps): Promise<Met
       canonical: canonicalPath,
       languages: {
         'en-CA': `${SITE_URL}${getTagPath('en', slug, true)}`,
-        'en-US': `${SITE_URL}${getTagPath('en', slug, true)}`,
         'fr-CA': `${SITE_URL}${getTagPath('fr', slug, true)}`,
         'x-default': `${SITE_URL}${getTagPath('en', slug, true)}`,
       },

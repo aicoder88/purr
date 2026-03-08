@@ -22,8 +22,8 @@ export default async function LocaleLayout({
     }
 
     // The root layout's <Providers> already supplies NextIntlClientProvider,
-    // CurrencyProvider, and TranslationProvider with the correct locale and
-    // filtered messages (detected via the x-pathname middleware header).
+    // CurrencyProvider, and TranslationProvider with the resolved request
+    // locale and filtered root messages.
     // A second provider here would re-serialize the full messages object into
     // __NEXT_DATA__ for every locale route — including blog pages where no
     // client component ever reads page-specific translations.

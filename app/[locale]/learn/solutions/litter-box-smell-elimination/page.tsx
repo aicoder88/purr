@@ -36,7 +36,6 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
             languages: {
                 'en-CA': `${SITE_URL}/learn/solutions/litter-box-smell-elimination/`,
                 'fr-CA': `${SITE_URL}/fr/learn/solutions/litter-box-smell-elimination/`,
-                'en-US': `${SITE_URL}/us/learn/solutions/litter-box-smell-elimination/`,
                 'x-default': `${SITE_URL}/learn/solutions/litter-box-smell-elimination/`,
             },
         },

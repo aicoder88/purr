@@ -124,29 +124,15 @@ export type LanguageAlternate = {
 export const buildLanguageAlternates = (canonicalPath: string): LanguageAlternate[] => {
   const normalizedPath = normalizeCanonicalPath(canonicalPath);
 
-  // Build alternates for all supported locales with proper self-referencing
+  // Build alternates for supported locales only.
   const alternates = SUPPORTED_LOCALES.map(locale => ({
     locale,
     hrefLang: LOCALE_HREFLANG_MAP[locale],
     href: getLocalizedUrl(normalizedPath, locale),
   }));
 
-  // For English (CA), we want to be consistent with the canonical URL
   const enCaHref = getLocalizedUrl(normalizedPath, 'en');
-
-  // Add en-US variant - points to /us for homepage, or locale equivalent for other pages
-  const isRootPath = normalizedPath === '/' || normalizedPath === '';
-  const usHref = isRootPath
-    ? 'https://www.purrify.ca/us/'
-    : enCaHref;
-
   const result: LanguageAlternate[] = [...alternates];
-
-  result.push({
-    locale: DEFAULT_LOCALE,
-    hrefLang: 'en-US',
-    href: usHref,
-  });
 
   // Add x-default pointing to the default locale version
   result.push({

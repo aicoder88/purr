@@ -50,7 +50,6 @@ export async function generateMetadata(): Promise<Metadata> {
   const alternates: Record<string, string> = {
     'en-CA': `${baseUrl}/`,
     'fr-CA': `${baseUrl}/fr/`,
-    'en-US': `${baseUrl}/us/`,
     'x-default': `${baseUrl}/`,
   };
 

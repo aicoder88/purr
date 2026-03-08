@@ -171,7 +171,8 @@ export async function generateMetadata({ params }: BlogPostPageProps): Promise<M
     : getValidTranslatedSlug('en', post.translations?.en) ?? fallbackEnSlug ?? slug;
 
   const translatedFrSlug = getValidTranslatedSlug('fr', post.translations?.fr);
-  const frSlug = translatedFrSlug ?? (locale === 'fr' && getBlogSlugs('fr').has(slug) ? slug : null);
+  const fallbackFrSlug = getBlogSlugs('fr').has(slug) ? slug : null;
+  const frSlug = translatedFrSlug ?? fallbackFrSlug;
 
   // Build language alternates for hreflang using only valid slugs
   const languages: Record<string, string> = {

@@ -71,7 +71,6 @@ export async function generateMetadata({ params }: LocalizedProductsPageProps): 
       languages: {
         'en-CA': 'https://www.purrify.ca/products/',
         'fr-CA': 'https://www.purrify.ca/fr/products/',
-        'en-US': 'https://www.purrify.ca/products/',
         'x-default': 'https://www.purrify.ca/products/',
       },
     },

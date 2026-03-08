@@ -66,7 +66,6 @@ export async function generateMetadata({ params }: BlogIndexPageProps): Promise<
       languages: {
         'en-CA': `${SITE_URL}/blog/`,
         'fr-CA': `${SITE_URL}/fr/blog/`,
-        'en-US': `${SITE_URL}/blog/`,
         'x-default': `${SITE_URL}/blog/`,
         // Self-reference for the current locale
         [hrefLang]: canonicalPath,

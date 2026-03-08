@@ -80,7 +80,6 @@ export async function generateMetadata({ params }: CategoryHubPageProps): Promis
       canonical: canonicalPath,
       languages: {
         'en-CA': `${SITE_URL}${getCategoryPath('en', slug, true)}`,
-        'en-US': `${SITE_URL}${getCategoryPath('en', slug, true)}`,
         'fr-CA': `${SITE_URL}${getCategoryPath('fr', slug, true)}`,
         'x-default': `${SITE_URL}${getCategoryPath('en', slug, true)}`,
       },

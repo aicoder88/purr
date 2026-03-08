@@ -12,7 +12,6 @@ export const metadata: Metadata = {
     languages: {
       'en-CA': 'https://www.purrify.ca/learn/cat-litter-ammonia-health-risks',
       'fr-CA': 'https://www.purrify.ca/fr/learn/cat-litter-ammonia-health-risks',
-      'en-US': 'https://www.purrify.ca/learn/cat-litter-ammonia-health-risks',
       'x-default': 'https://www.purrify.ca/learn/cat-litter-ammonia-health-risks',
     },
   },

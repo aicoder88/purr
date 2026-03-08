@@ -837,12 +837,6 @@ const REDIRECTS = [
     permanent: true
   },
 
-  {
-    source: "/documents",
-    destination: "/invest/",
-    permanent: true
-  },
-
   // --- STORE LOCATOR REDIRECTS ---
   {
     source: "/find-a-store",

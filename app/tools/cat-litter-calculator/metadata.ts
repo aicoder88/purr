@@ -1,21 +1,24 @@
 import type { Metadata } from 'next';
-import { SITE_NAME, SITE_URL } from '@/lib/constants';
+import { SITE_URL } from '@/lib/constants';
+
+const CALCULATOR_METADATA_TITLE = 'Cat Litter Cost Calculator | Annual Cost Comparison';
+const CALCULATOR_METADATA_DESCRIPTION =
+  'Use this free calculator to compare annual cat litter costs across clay, crystal, tofu, wood, and natural litters and estimate savings.';
 
 export const metadata: Metadata = {
-  title: `Cat Litter Cost Calculator - Compare Litter Types & Annual Costs | ${SITE_NAME}`,
-  description: 'Free cat litter cost calculator. Compare annual costs of clay, crystal, wood, tofu, and natural litters. Find out how much you spend on cat litter per year and discover ways to save.',
+  title: CALCULATOR_METADATA_TITLE,
+  description: CALCULATOR_METADATA_DESCRIPTION,
   alternates: {
     canonical: 'https://www.purrify.ca/tools/cat-litter-calculator/',
     languages: {
       'en-CA': `${SITE_URL}/tools/cat-litter-calculator/`,
       'fr-CA': `${SITE_URL}/fr/tools/cat-litter-calculator/`,
-      'en-US': `${SITE_URL}/tools/cat-litter-calculator/`,
       'x-default': `${SITE_URL}/tools/cat-litter-calculator/`,
     },
   },
   openGraph: {
-    title: 'Cat Litter Cost Calculator - Compare Litter Types & Annual...',
-    description: 'Free cat litter cost calculator. Compare annual costs of clay, crystal, wood, tofu, and natural litters. Find out how much you spend on cat litter per year.',
+    title: CALCULATOR_METADATA_TITLE,
+    description: CALCULATOR_METADATA_DESCRIPTION,
     url: `${SITE_URL}/tools/cat-litter-calculator/`,
     type: 'website',
     images: [
@@ -29,8 +32,8 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Cat Litter Cost Calculator',
-    description: 'Calculate your annual cat litter costs and compare different litter types.',
+    title: CALCULATOR_METADATA_TITLE,
+    description: CALCULATOR_METADATA_DESCRIPTION,
     images: [`${SITE_URL}/optimized/blog/frequency-hero.webp`],
   },
   keywords: [

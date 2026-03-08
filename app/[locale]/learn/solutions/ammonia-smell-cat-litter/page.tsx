@@ -36,7 +36,6 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
             languages: {
                 'en-CA': `${SITE_URL}/learn/solutions/ammonia-smell-cat-litter/`,
                 'fr-CA': `${SITE_URL}/fr/learn/solutions/ammonia-smell-cat-litter/`,
-                'en-US': `${SITE_URL}/us/learn/solutions/ammonia-smell-cat-litter/`,
                 'x-default': `${SITE_URL}/learn/solutions/ammonia-smell-cat-litter/`,
             },
         },

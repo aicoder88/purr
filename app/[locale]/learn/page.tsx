@@ -34,7 +34,6 @@ export async function generateMetadata({ params }: LocalizedLearnPageProps): Pro
       languages: {
         'en-CA': 'https://www.purrify.ca/learn/',
         'fr-CA': 'https://www.purrify.ca/fr/learn/',
-        'en-US': 'https://www.purrify.ca/learn/',
         'x-default': 'https://www.purrify.ca/learn/',
       },
     },

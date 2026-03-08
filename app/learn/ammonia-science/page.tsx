@@ -12,7 +12,6 @@ export const metadata: Metadata = {
     languages: {
       'en-CA': 'https://www.purrify.ca/learn/ammonia-science',
       'fr-CA': 'https://www.purrify.ca/fr/learn/ammonia-science',
-      'en-US': 'https://www.purrify.ca/learn/ammonia-science',
       'x-default': 'https://www.purrify.ca/learn/ammonia-science',
     },
   },

@@ -1,16 +1,20 @@
 import type { Metadata } from 'next';
 
+const INVEST_METADATA_TITLE = 'Invest in Purrify | Activated Carbon Pet Care';
+const INVEST_METADATA_DESCRIPTION =
+  "Review Purrify's current investment round, traction, unit economics, and retail expansion plan for activated carbon pet care in Canada.";
+
 export const metadata: Metadata = {
-  title: 'Investor Relations - Purrify Cat Litter Investment Opportun...',
-  description: 'Investment opportunity in Purrify, an innovative activated carbon cat litter additive company. Raising $50K @ $1M pre-money valuation.',
+  title: INVEST_METADATA_TITLE,
+  description: INVEST_METADATA_DESCRIPTION,
   keywords: ['pet industry investment', 'startup investment', 'cat products startup'],
   robots: {
     index: false,
     follow: false,
   },
   openGraph: {
-    title: 'Investor Relations - Purrify Cat Litter Investment Opportun...',
-    description: 'Investment opportunity in Purrify, an innovative activated carbon cat litter additive company.',
+    title: INVEST_METADATA_TITLE,
+    description: INVEST_METADATA_DESCRIPTION,
     images: ['https://www.purrify.ca/optimized/logos/purrify-logo.png'],
   },
 };

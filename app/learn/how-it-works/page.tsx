@@ -12,7 +12,6 @@ export const metadata: Metadata = {
     languages: {
       'en-CA': 'https://www.purrify.ca/learn/how-it-works/',
       'fr-CA': 'https://www.purrify.ca/fr/learn/how-it-works/',
-      'en-US': 'https://www.purrify.ca/learn/how-it-works/',
       'x-default': 'https://www.purrify.ca/learn/how-it-works/',
     },
   },

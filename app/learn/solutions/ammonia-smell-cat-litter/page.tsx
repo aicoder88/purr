@@ -19,7 +19,6 @@ export const metadata: Metadata = {
     languages: {
       'en-CA': 'https://www.purrify.ca/learn/solutions/ammonia-smell-cat-litter/',
       'fr-CA': 'https://www.purrify.ca/fr/learn/solutions/ammonia-smell-cat-litter/',
-      'en-US': 'https://www.purrify.ca/us/learn/solutions/ammonia-smell-cat-litter/',
       'x-default': 'https://www.purrify.ca/learn/solutions/ammonia-smell-cat-litter/',
     },
   },

@@ -338,11 +338,9 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   entries.push(entry('/tools/smell-quiz/', { priority: 0.6, changeFrequency: 'monthly', frPath: false }));
 
   // === REFERRAL / AFFILIATE ===
-  entries.push(entry('/referral/', { priority: 0.6, changeFrequency: 'monthly', frPath: false }));
   entries.push(entry('/affiliate/', { priority: 0.7, changeFrequency: 'weekly', frPath: false }));
 
   // === GEO PAGES ===
-  entries.push(entry('/us/', { priority: 0.6, changeFrequency: 'monthly', frPath: false }));
   entries.push(entry('/fr/ammonia-control/', { priority: 0.7, changeFrequency: 'monthly', frPath: false }));
   entries.push(entry('/fr/canada/', { priority: 0.6, changeFrequency: 'monthly', frPath: false }));
 
@@ -351,7 +349,5 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
 
   // === LEGAL ===
   entries.push(entry('/privacy-policy/', { priority: 0.3, changeFrequency: 'yearly', frPath: false }));
-  entries.push(entry('/terms/', { priority: 0.3, changeFrequency: 'yearly', frPath: false }));
-
   return entries;
 }

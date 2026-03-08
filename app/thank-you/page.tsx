@@ -124,7 +124,6 @@ export async function generateMetadata({ searchParams }: Props): Promise<Metadat
       languages: {
         'en-CA': 'https://www.purrify.ca/thank-you/',
         'fr-CA': 'https://www.purrify.ca/fr/thank-you/',
-        'en-US': 'https://www.purrify.ca/thank-you/',
         'x-default': 'https://www.purrify.ca/thank-you/',
       },
     },

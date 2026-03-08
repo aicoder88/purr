@@ -24,7 +24,6 @@ export async function generateMetadata(): Promise<Metadata> {
       languages: {
         'en-CA': 'https://www.purrify.ca/thank-you/upsell/',
         'fr-CA': 'https://www.purrify.ca/fr/thank-you/upsell/',
-        'en-US': 'https://www.purrify.ca/thank-you/upsell/',
         'x-default': 'https://www.purrify.ca/thank-you/upsell/',
       },
     },

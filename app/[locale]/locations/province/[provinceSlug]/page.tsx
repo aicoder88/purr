@@ -66,7 +66,6 @@ export async function generateMetadata({ params }: LocalizedProvincePageProps): 
       languages: {
         'en-CA': `${SITE_URL}/locations/province/${province.slug}/`,
         'fr-CA': `${SITE_URL}/fr/locations/province/${province.slug}/`,
-        'en-US': `${SITE_URL}/locations/province/${province.slug}/`,
         'x-default': `${SITE_URL}/locations/province/${province.slug}/`,
       },
     },

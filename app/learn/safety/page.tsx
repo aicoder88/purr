@@ -12,7 +12,6 @@ export const metadata: Metadata = {
     languages: {
       'en-CA': 'https://www.purrify.ca/learn/safety/',
       'fr-CA': 'https://www.purrify.ca/fr/learn/safety/',
-      'en-US': 'https://www.purrify.ca/learn/safety/',
       'x-default': 'https://www.purrify.ca/learn/safety/',
     },
   },

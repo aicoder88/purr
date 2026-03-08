@@ -10,7 +10,6 @@ export const metadata: Metadata = {
     languages: {
       'en-CA': 'https://www.purrify.ca/support',
       'fr-CA': 'https://www.purrify.ca/fr/support',
-      'en-US': 'https://www.purrify.ca/support',
       'x-default': 'https://www.purrify.ca/support',
     },
   },

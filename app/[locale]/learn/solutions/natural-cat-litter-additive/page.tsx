@@ -36,7 +36,6 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
             languages: {
                 'en-CA': `${SITE_URL}/learn/solutions/natural-cat-litter-additive/`,
                 'fr-CA': `${SITE_URL}/fr/learn/solutions/natural-cat-litter-additive/`,
-                'en-US': `${SITE_URL}/us/learn/solutions/natural-cat-litter-additive/`,
                 'x-default': `${SITE_URL}/learn/solutions/natural-cat-litter-additive/`,
             },
         },

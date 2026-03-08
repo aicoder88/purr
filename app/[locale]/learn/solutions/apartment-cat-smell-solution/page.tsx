@@ -36,7 +36,6 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
             languages: {
                 'en-CA': `${SITE_URL}/learn/solutions/apartment-cat-smell-solution/`,
                 'fr-CA': `${SITE_URL}/fr/learn/solutions/apartment-cat-smell-solution/`,
-                'en-US': `${SITE_URL}/us/learn/solutions/apartment-cat-smell-solution/`,
                 'x-default': `${SITE_URL}/learn/solutions/apartment-cat-smell-solution/`,
             },
         },

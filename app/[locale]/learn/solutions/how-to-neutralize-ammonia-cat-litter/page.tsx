@@ -45,7 +45,6 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
             languages: {
                 'en-CA': `${SITE_URL}/learn/solutions/how-to-neutralize-ammonia-cat-litter/`,
                 'fr-CA': `${SITE_URL}/fr/learn/solutions/how-to-neutralize-ammonia-cat-litter/`,
-                'en-US': `${SITE_URL}/us/learn/solutions/how-to-neutralize-ammonia-cat-litter/`,
                 'x-default': `${SITE_URL}/learn/solutions/how-to-neutralize-ammonia-cat-litter/`,
             },
         },
