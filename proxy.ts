@@ -250,6 +250,8 @@ export async function proxy(request: NextRequest) {
 
 export const config = {
   matcher: [
-    '/((?!_next/static|_next/image|favicon.ico|api/|.*\\.(?:svg|png|jpg|jpeg|gif|webp|ico|json|js|css)$).*)',
+    // Only run proxy logic for app routes. Static assets and file requests
+    // bypass proxy execution so they do not pay middleware overhead.
+    '/((?!api|_next|_vercel|.*\\..*).*)',
   ],
 };
