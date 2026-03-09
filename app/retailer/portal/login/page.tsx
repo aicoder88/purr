@@ -84,7 +84,7 @@ export default function RetailerLoginPage() {
     setError('');
 
     try {
-      const response = await fetch('/api/retailer/login', {
+      const response = await fetch('/api/retailer/login/', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(loginForm),
@@ -132,7 +132,7 @@ export default function RetailerLoginPage() {
           : registerForm.billingAddress,
       };
 
-      const response = await fetch('/api/retailer/register', {
+      const response = await fetch('/api/retailer/register/', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(requestBody),

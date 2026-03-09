@@ -2214,7 +2214,7 @@ export const en = {
   },
 
   chat: {
-    fabLabel: "Ask AI",
+    fabLabel: "Ask PurrifAI.",
     fabAriaLabel: "Open chat assistant",
     panelTitle: "Purrify Freshness Advisor",
     closeAriaLabel: "Close chat",
@@ -2673,9 +2673,9 @@ export const en = {
       calculator: {
         badge: "Profit calculator",
         title: "Retail Profit Calculator",
-        description: "Default costs come from your current store price sheet: trial box $25, medium box $36, and large box $45. Shipping defaults to $20 and automatically drops to $0 when the order includes 5 boxes of every size.",
+        description: "Default costs come from your current store price sheet: trial box $25, medium box $36, and large box $45. A typical starter package across all three sizes totals $106 before freight, or $126 with the standard $20 shipping charge. Shipping automatically drops to $0 when the order includes 5 boxes of every size.",
         shippingLabel: "Shipping cost per order",
-        shippingHelp: "Retailers can override this number for their actual freight cost. The calculator removes shipping automatically once all three box quantities reach 5 or more.",
+        shippingHelp: "Retailers can override this number for their actual freight cost. With one box of each size, the landed order total is $126. The calculator removes shipping automatically once all three box quantities reach 5 or more.",
         freeShippingUnlocked: "Free shipping is active for this scenario because all three sizes are at 5 boxes or more.",
         freeShippingLocked: "Add {trial} more trial boxes, {medium} more medium boxes, and {large} more large boxes to unlock free shipping.",
         inputsTitle: "Scenario inputs",
@@ -2716,6 +2716,10 @@ export const en = {
           boxes: "Boxes",
           total: "Total"
         }
+      },
+      actions: {
+        placeFirstOrder: "Place your first order",
+        reorderNow: "Reorder now"
       },
       products: {
         trial: {

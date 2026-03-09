@@ -1,0 +1,13 @@
+DO $$
+BEGIN
+  CREATE TYPE "AppRole" AS ENUM ('CUSTOMER', 'ADMIN', 'EDITOR');
+EXCEPTION
+  WHEN duplicate_object THEN NULL;
+END $$;
+
+ALTER TABLE "User"
+  ADD COLUMN IF NOT EXISTS "role" "AppRole" NOT NULL DEFAULT 'CUSTOMER',
+  ADD COLUMN IF NOT EXISTS "passwordHash" TEXT,
+  ADD COLUMN IF NOT EXISTS "passwordUpdatedAt" TIMESTAMP(3);
+
+CREATE INDEX IF NOT EXISTS "User_role_idx" ON "User"("role");

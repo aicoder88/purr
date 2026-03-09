@@ -13,9 +13,10 @@ export const HeroVideo = ({ playLabel }: HeroVideoProps) => {
   const desktopWebmSrc = "/videos/purrify-activated-carbon-litter-additive-demo.webm";
   const desktopSrc = "/videos/purrify-activated-carbon-litter-additive-demo.mp4";
   const posterSrc = "/optimized/marketing/purrify-demo-poster.webp";
+  const logoSrc = "/optimized/logos/purrify-logo.webp";
   const videoRef = useRef<HTMLVideoElement>(null);
   const [isMuted, setIsMuted] = useState(true);
-  const [isVideoActive, setIsVideoActive] = useState(false);
+  const [isVideoReady, setIsVideoReady] = useState(false);
 
   const handleToggleMute = useCallback(() => {
     const video = videoRef.current;
@@ -37,15 +38,7 @@ export const HeroVideo = ({ playLabel }: HeroVideoProps) => {
     }
   }, []);
 
-  const handleActivateVideo = useCallback(() => {
-    setIsVideoActive(true);
-  }, []);
-
   useEffect(() => {
-    if (!isVideoActive) {
-      return;
-    }
-
     const video = videoRef.current;
     if (!video) return;
 
@@ -53,68 +46,85 @@ export const HeroVideo = ({ playLabel }: HeroVideoProps) => {
       setIsMuted(video.muted || video.volume === 0);
     };
 
+    const markReady = () => {
+      if (video.readyState >= HTMLMediaElement.HAVE_FUTURE_DATA) {
+        setIsVideoReady(true);
+      }
+    };
+
+    const attemptAutoplay = () => {
+      if (!video.paused) return;
+      void video.play().catch(() => {
+        // Ignore autoplay failures; the browser may still block playback.
+      });
+    };
+
     syncMuteState();
+    markReady();
+    attemptAutoplay();
+    video.addEventListener("loadeddata", markReady);
+    video.addEventListener("canplay", attemptAutoplay);
+    video.addEventListener("canplay", markReady);
     video.addEventListener("volumechange", syncMuteState);
 
     return () => {
+      video.removeEventListener("loadeddata", markReady);
+      video.removeEventListener("canplay", attemptAutoplay);
+      video.removeEventListener("canplay", markReady);
       video.removeEventListener("volumechange", syncMuteState);
     };
-  }, [isVideoActive]);
+  }, []);
 
   return (
     <div className="relative w-full">
       <div className="relative overflow-hidden rounded-3xl border border-gray-200 dark:border-gray-700 bg-gray-100 dark:bg-gray-800 aspect-[4/3] lg:aspect-[6/5]">
-        {isVideoActive ? (
-          <>
-            <video
-              ref={videoRef}
-              className="hero-video-audio-controls w-full h-full object-cover object-top"
-              controls
-              autoPlay
-              muted
-              loop
-              playsInline
-              preload="metadata"
-              poster={posterSrc}
-              aria-label={playLabel}
-            >
-              <source src={desktopWebmSrc} type="video/webm" />
-              <source src={desktopSrc} type="video/mp4" />
-            </video>
-            <button
-              type="button"
-              onClick={handleToggleMute}
-              aria-label={playLabel}
-              aria-pressed={!isMuted}
-              className="absolute right-4 top-4 z-10 inline-flex h-14 w-14 items-center justify-center rounded-full border border-white/40 bg-black/70 text-white shadow-lg backdrop-blur-sm transition-colors hover:bg-black/85 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/80 dark:border-gray-200/40 dark:bg-gray-900/70 dark:text-gray-50 dark:hover:bg-gray-900/85 dark:focus-visible:ring-gray-200/80"
-            >
-              {isMuted ? <VolumeX className="h-7 w-7" aria-hidden="true" /> : <Volume2 className="h-7 w-7" aria-hidden="true" />}
-              <span className="sr-only">{playLabel}</span>
-            </button>
-          </>
-        ) : (
-          <>
+        {/* Keep the homepage hero video mounted and autoplaying; do not swap it for click-to-play posters during perf/SEO passes. */}
+        <video
+          ref={videoRef}
+          className="hero-video-audio-controls w-full h-full object-cover object-top"
+          controls
+          autoPlay
+          muted={isMuted}
+          loop
+          playsInline
+          preload="metadata"
+          poster={posterSrc}
+          aria-label={playLabel}
+        >
+          <source src={desktopWebmSrc} type="video/webm" />
+          <source src={desktopSrc} type="video/mp4" />
+        </video>
+        <div
+          aria-hidden="true"
+          className={[
+            "pointer-events-none absolute inset-0 flex items-center justify-center bg-[radial-gradient(circle_at_top,#fffaf0_0%,#fef3f2_45%,#f5f5f4_100%)] transition-opacity duration-300 dark:bg-[radial-gradient(circle_at_top,#1f2937_0%,#111827_45%,#030712_100%)]",
+            isVideoReady ? "opacity-0" : "opacity-100",
+          ].join(" ")}
+        >
+          <div className="flex flex-col items-center gap-4 rounded-[2rem] border border-white/60 bg-white/70 px-8 py-6 shadow-lg backdrop-blur-sm dark:border-gray-200/10 dark:bg-gray-900/60">
             <Image
-              src={posterSrc}
-              alt={playLabel}
-              fill
+              src={logoSrc}
+              alt=""
+              width={164}
+              height={52}
               priority
-              sizes="(max-width: 1024px) 100vw, 50vw"
-              className="object-cover object-top"
+              className="h-auto w-[132px] sm:w-[164px]"
             />
-            <div className="absolute inset-0 bg-gradient-to-t from-black/35 via-black/10 to-transparent" />
-            <button
-              type="button"
-              onClick={handleActivateVideo}
-              className="absolute inset-x-6 bottom-6 z-10 inline-flex items-center justify-center gap-3 rounded-full border border-white/40 bg-black/70 px-5 py-3 text-sm font-semibold text-white shadow-lg backdrop-blur-sm transition-colors hover:bg-black/85 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/80 dark:border-gray-200/40 dark:bg-gray-900/70 dark:text-gray-50 dark:hover:bg-gray-900/85 dark:focus-visible:ring-gray-200/80"
-            >
-              <svg className="h-5 w-5" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-                <path d="M8 6.82v10.36c0 .79.87 1.27 1.54.84l8.08-5.18a1 1 0 0 0 0-1.68L9.54 5.98A1 1 0 0 0 8 6.82Z" />
-              </svg>
-              <span>{playLabel}</span>
-            </button>
-          </>
-        )}
+            <div className="h-1.5 w-28 overflow-hidden rounded-full bg-brand-pink/15 dark:bg-white/10">
+              <div className="h-full w-1/2 animate-pulse rounded-full bg-brand-red-500/70 dark:bg-brand-yellow/70" />
+            </div>
+          </div>
+        </div>
+        <button
+          type="button"
+          onClick={handleToggleMute}
+          aria-label={playLabel}
+          aria-pressed={!isMuted}
+          className="absolute right-4 top-4 z-10 inline-flex h-14 w-14 items-center justify-center rounded-full border border-white/40 bg-black/70 text-white shadow-lg backdrop-blur-sm transition-colors hover:bg-black/85 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/80 dark:border-gray-200/40 dark:bg-gray-900/70 dark:text-gray-50 dark:hover:bg-gray-900/85 dark:focus-visible:ring-gray-200/80"
+        >
+          {isMuted ? <VolumeX className="h-7 w-7" aria-hidden="true" /> : <Volume2 className="h-7 w-7" aria-hidden="true" />}
+          <span className="sr-only">{playLabel}</span>
+        </button>
       </div>
     </div>
   );

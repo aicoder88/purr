@@ -16,7 +16,7 @@
 - **Branding**:
     - "Purrify" is **granules**, NOT "powder".
     - Capitalized "Purrify".
-    - **Art Style**: Hyper-realistic with Miyazaki-style enhancements to make the image fascinating and beautiful. NEVER make images of our product packaging.
+    - **Art Style**: Visuals should blend realism with vibrant, saturated colors to make images fascinating and beautiful. NEVER make images of our product packaging.
 
     - **Odor**: Must be shown going **IN** to carbon.
 

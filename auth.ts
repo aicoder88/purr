@@ -1,12 +1,19 @@
 import NextAuth from "next-auth"
 import CredentialsProvider from "next-auth/providers/credentials";
-import bcrypt from "bcryptjs";
-import prisma from "@/lib/prisma";
+import Google from "next-auth/providers/google";
 import type { NextAuthConfig, User } from "next-auth";
+import {
+  authenticateAdminCredentials,
+  authenticateAffiliateCredentials,
+  authenticateCustomerCredentials,
+  authenticateRetailerCredentials,
+  resolveOAuthPrincipal,
+} from "@/lib/auth/principals";
 
 // Extend NextAuth types to include role and affiliate data
 interface ExtendedUser extends User {
   role?: string;
+  retailerId?: string;
   affiliateId?: string;
   affiliateCode?: string;
 }
@@ -47,8 +54,13 @@ function checkLoginRateLimit(email: string): boolean {
 
 export const authConfig = {
   providers: [
+    Google({
+      clientId: process.env.GOOGLE_CLIENT_ID || '',
+      clientSecret: process.env.GOOGLE_CLIENT_SECRET || '',
+    }),
     CredentialsProvider({
-      name: "Credentials",
+      id: "customer-credentials",
+      name: "Customer",
       credentials: {
         email: { label: "Email", type: "email" },
         password: { label: "Password", type: "password" }
@@ -66,70 +78,63 @@ export const authConfig = {
             return null;
           }
 
-          const adminEmail = process.env.ADMIN_EMAIL;
-          const editorEmail = process.env.EDITOR_EMAIL;
-
-          // ADMIN_PASSWORD_HASH and EDITOR_PASSWORD_HASH should be bcrypt hashes.
-          // Generate with: node -e "require('bcryptjs').hash('yourpass', 12).then(console.log)"
-          const adminPasswordHash = process.env.ADMIN_PASSWORD_HASH;
-          const editorPasswordHash = process.env.EDITOR_PASSWORD_HASH;
-
-          // Fallback: support legacy plaintext ADMIN_PASSWORD during migration
-          const adminPasswordLegacy = process.env.ADMIN_PASSWORD;
-          const editorPasswordLegacy = process.env.EDITOR_PASSWORD;
-
-          if (!adminEmail || (!adminPasswordHash && !adminPasswordLegacy)) {
-            throw new Error('ADMIN_EMAIL and ADMIN_PASSWORD_HASH must be configured');
-          }
-
-          // Check admin credentials
-          if (email === adminEmail) {
-            let isValid = false;
-            if (adminPasswordHash) {
-              isValid = await bcrypt.compare(password, adminPasswordHash);
-            } else if (adminPasswordLegacy) {
-              // Legacy plaintext fallback — log warning to encourage migration
-              isValid = password === adminPasswordLegacy;
-              if (isValid) {
-                console.warn('[AUTH] Admin login using plaintext ADMIN_PASSWORD. Migrate to ADMIN_PASSWORD_HASH (bcrypt) for security.');
-              }
-            }
-
-            if (isValid) {
-              return {
-                id: "1",
-                email: adminEmail,
-                name: "Admin",
-                role: "admin"
-              };
-            }
-          }
-
-          // Check editor credentials
-          if (editorEmail && email === editorEmail) {
-            let isValid = false;
-            if (editorPasswordHash) {
-              isValid = await bcrypt.compare(password, editorPasswordHash);
-            } else if (editorPasswordLegacy) {
-              isValid = password === editorPasswordLegacy;
-              if (isValid) {
-                console.warn('[AUTH] Editor login using plaintext EDITOR_PASSWORD. Migrate to EDITOR_PASSWORD_HASH (bcrypt) for security.');
-              }
-            }
-
-            if (isValid) {
-              return {
-                id: "2",
-                email: editorEmail,
-                name: "Editor",
-                role: "editor"
-              };
-            }
-          }
-
-          return null;
+          return authenticateCustomerCredentials(email, password);
         } catch (error) {
           console.error("Authorization error:", error);
+          return null;
+        }
+      }
+    }),
+    CredentialsProvider({
+      id: "admin-credentials",
+      name: "Admin",
+      credentials: {
+        email: { label: "Email", type: "email" },
+        password: { label: "Password", type: "password" }
+      },
+      async authorize(credentials) {
+        try {
+          const email = credentials?.email as string | undefined;
+          const password = credentials?.password as string | undefined;
+
+          if (!email || !password) {
+            return null;
+          }
+
+          if (!checkLoginRateLimit(email)) {
+            return null;
+          }
+
+          return authenticateAdminCredentials(email, password);
+        } catch (error) {
+          console.error("Admin authorization error:", error);
+          return null;
+        }
+      }
+    }),
+    CredentialsProvider({
+      id: "retailer-credentials",
+      name: "Retailer",
+      credentials: {
+        email: { label: "Email", type: "email" },
+        password: { label: "Password", type: "password" }
+      },
+      async authorize(credentials) {
+        try {
+          const email = credentials?.email as string | undefined;
+          const password = credentials?.password as string | undefined;
+
+          if (!email || !password) {
+            return null;
+          }
+
+          if (!checkLoginRateLimit(email)) {
+            return null;
+          }
+
+          return authenticateRetailerCredentials(email, password);
+        } catch (error) {
+          console.error("Retailer authorization error:", error);
           return null;
         }
       }
@@ -154,48 +159,7 @@ export const authConfig = {
             return null;
           }
 
-          if (!prisma) {
-            console.error("Database connection not established");
-            return null;
-          }
-
-          const affiliate = await prisma.affiliate.findUnique({
-            where: { email: email.toLowerCase() },
-            select: {
-              id: true,
-              email: true,
-              name: true,
-              code: true,
-              passwordHash: true,
-              status: true,
-            },
-          });
-
-          if (!affiliate) {
-            return null;
-          }
-
-          if (affiliate.status !== "ACTIVE") {
-            return null;
-          }
-
-          const isValidPassword = await bcrypt.compare(
-            password,
-            affiliate.passwordHash
-          );
-
-          if (!isValidPassword) {
-            return null;
-          }
-
-          return {
-            id: affiliate.id,
-            email: affiliate.email,
-            name: affiliate.name,
-            role: "affiliate",
-            affiliateId: affiliate.id,
-            affiliateCode: affiliate.code,
-          };
+          return authenticateAffiliateCredentials(email, password);
         } catch (error) {
           console.error("Affiliate authorization error:", error);
           return null;
@@ -204,30 +168,56 @@ export const authConfig = {
     })
   ],
   callbacks: {
-    async jwt({ token, user }) {
+    async signIn({ account, profile, user }) {
+      if (account?.provider === 'google') {
+        if (!profile?.email || profile.email_verified === false) {
+          return false;
+        }
+      }
+
+      return !!user?.email;
+    },
+    async jwt({ token, user, account }) {
       if (user) {
         const extUser = user as ExtendedUser;
         token.userId = extUser.id;
         token.role = extUser.role;
+        token.retailerId = extUser.retailerId;
         token.affiliateId = extUser.affiliateId;
         token.affiliateCode = extUser.affiliateCode;
       }
+
+      if (account?.provider === 'google' && token.email) {
+        const principal = await resolveOAuthPrincipal({
+          email: token.email,
+          name: token.name,
+          image: token.picture,
+        });
+
+        if (principal) {
+          token.userId = principal.id;
+          token.role = principal.role;
+          token.retailerId = principal.retailerId;
+          token.affiliateId = principal.affiliateId;
+          token.affiliateCode = principal.affiliateCode;
+          token.name = principal.name ?? token.name;
+          token.picture = principal.image ?? token.picture;
+        }
+      }
+
       return token;
     },
     async session({ session, token }) {
       if (session.user) {
         const extUser = session.user as ExtendedUser;
-        (extUser as ExtendedUser & { userId?: string }).userId = token.userId as string | undefined;
+        extUser.id = token.userId as string | undefined;
         extUser.role = token.role as string | undefined;
+        extUser.retailerId = token.retailerId as string | undefined;
         extUser.affiliateId = token.affiliateId as string | undefined;
         extUser.affiliateCode = token.affiliateCode as string | undefined;
       }
       return session;
     }
-  },
-  pages: {
-    signIn: "/admin/login",
-    error: "/admin/login"
   },
   session: {
     strategy: "jwt",

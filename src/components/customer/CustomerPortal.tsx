@@ -1,266 +1,232 @@
-import { useState, useEffect, useCallback } from 'react';
-import { User, Package, Calendar, Settings, LogOut, Bell, MessageCircle } from 'lucide-react';
-import { cn } from '@/lib/utils';
-import { formatCurrencyValue } from '@/lib/pricing';
-import { CustomerSupport } from './CustomerSupport';
-import { DashboardTab } from './DashboardTab';
-import { OrdersTab } from './OrdersTab';
-import { SubscriptionsTab } from './SubscriptionsTab';
-import { ProfileTab } from './ProfileTab';
-import type { Order, Subscription, Customer, CustomerPortalProps } from './customer-portal-types';
+'use client';
 
-export function CustomerPortal({ customerId, onLogout }: CustomerPortalProps) {
-  const [activeTab, setActiveTab] = useState('dashboard');
-  const [customer, setCustomer] = useState<Customer | null>(null);
-  const [orders, setOrders] = useState<Order[]>([]);
-  const [subscriptions, setSubscriptions] = useState<Subscription[]>([]);
+import { useCallback, useEffect, useMemo, useState } from 'react';
+import { useTranslations } from 'next-intl';
+import { LogOut, Package, Repeat, Wallet } from 'lucide-react';
+import type { CustomerPortalProps, Customer, Order, Subscription } from './customer-portal-types';
+
+interface CustomerPortalResponse {
+  customer: Customer;
+  orders: Order[];
+  subscriptions: Subscription[];
+}
+
+function formatDate(date: string, locale: string) {
+  return new Intl.DateTimeFormat(locale, {
+    year: 'numeric',
+    month: 'short',
+    day: 'numeric',
+  }).format(new Date(date));
+}
+
+function formatCurrency(value: number, locale: string) {
+  return new Intl.NumberFormat(locale, {
+    style: 'currency',
+    currency: 'CAD',
+    maximumFractionDigits: 2,
+  }).format(value);
+}
+
+function SummaryCard({
+  label,
+  value,
+  icon,
+}: {
+  label: string;
+  value: string;
+  icon: React.ReactNode;
+}) {
+  return (
+    <div className="rounded-2xl border border-gray-200 bg-white p-5 shadow-sm dark:border-gray-800 dark:bg-gray-900">
+      <div className="mb-3 flex items-center justify-between">
+        <span className="text-sm font-medium text-gray-500 dark:text-gray-400">{label}</span>
+        <div className="rounded-xl bg-blue-50 p-2 text-blue-600 dark:bg-blue-950/40 dark:text-blue-300">
+          {icon}
+        </div>
+      </div>
+      <div className="text-2xl font-semibold text-gray-900 dark:text-gray-100">{value}</div>
+    </div>
+  );
+}
+
+export function CustomerPortal({ onLogout }: CustomerPortalProps) {
+  const t = useTranslations('auth.customer.portal');
+  const locale = useTranslations().locale === 'fr' ? 'fr-CA' : 'en-CA';
+  const [data, setData] = useState<CustomerPortalResponse | null>(null);
   const [loading, setLoading] = useState(true);
+  const [error, setError] = useState<string | null>(null);
 
-  const fetchCustomerData = useCallback(async () => {
+  const fetchPortal = useCallback(async () => {
+    setLoading(true);
+    setError(null);
+
     try {
-      setLoading(true);
+      const response = await fetch('/api/customer/portal');
+      if (!response.ok) {
+        throw new Error(t('loadFailed'));
+      }
 
-      // Mock data - replace with actual API calls
-      const mockCustomer: Customer = {
-        id: customerId,
-        email: 'customer@example.com',
-        firstName: 'Sarah',
-        lastName: 'Johnson',
-        phone: '+1 (555) 123-4567',
-        address: {
-          street: '123 Main Street',
-          city: 'Toronto',
-          province: 'ON',
-          postalCode: 'M5V 3A8',
-          country: 'Canada'
-        },
-        subscriptions: [
-          {
-            id: 'sub_1',
-            productName: 'Purrify 50g Monthly',
-            frequency: 'Every 30 days',
-            nextDelivery: '2024-02-15',
-            status: 'active',
-            price: 19.99
-          }
-        ],
-        totalOrders: 8,
-        totalSpent: 159.92,
-        memberSince: '2023-06-15'
-      };
-
-      const mockOrders: Order[] = [
-        {
-          id: '1',
-          orderNumber: 'PUR-2024-001',
-          date: '2024-01-15',
-          status: 'delivered',
-          total: 19.99,
-          items: [
-            {
-              id: '1',
-              name: 'Purrify 50g',
-              quantity: 1,
-              price: 19.99,
-              image: '/optimized/products/60g-transparent.webp'
-            }
-          ],
-          trackingNumber: 'CA1234567890',
-          estimatedDelivery: '2024-01-18'
-        },
-        {
-          id: '2',
-          orderNumber: 'PUR-2024-002',
-          date: '2024-01-20',
-          status: 'shipped',
-          total: 29.99,
-          items: [
-            {
-              id: '2',
-              name: 'Purrify 120g',
-              quantity: 1,
-              price: 29.99,
-              image: '/optimized/products/60g-transparent.webp'
-            }
-          ],
-          trackingNumber: 'CA0987654321',
-          estimatedDelivery: '2024-01-25'
-        }
-      ];
-
-      const mockSubscriptions: Subscription[] = [
-        {
-          id: 'sub_001',
-          productName: 'Purrify 120g Monthly',
-          status: 'active',
-          frequency: 'monthly',
-          nextDelivery: '2024-02-15',
-          price: 29.99,
-          lastDelivery: '2024-01-15',
-          quantity: 1,
-          created: '2023-12-15'
-        },
-        {
-          id: 'sub_002',
-          productName: 'Purrify 50g Bi-weekly',
-          status: 'paused',
-          frequency: 'bi-weekly',
-          nextDelivery: '2024-02-20',
-          price: 19.99,
-          lastDelivery: '2024-01-22',
-          quantity: 2,
-          created: '2024-01-08'
-        }
-      ];
-
-      setCustomer(mockCustomer);
-      setOrders(mockOrders);
-      setSubscriptions(mockSubscriptions);
-    } catch {
-      // Silently fail
+      const json = await response.json() as CustomerPortalResponse;
+      setData(json);
+    } catch (fetchError) {
+      setError(fetchError instanceof Error ? fetchError.message : t('loadFailed'));
     } finally {
       setLoading(false);
     }
-  }, [customerId]);
+  }, [t]);
 
   useEffect(() => {
-    fetchCustomerData();
-  }, [customerId, fetchCustomerData]);
+    void fetchPortal();
+  }, [fetchPortal]);
 
-  const getStatusColor = useCallback((status: string) => {
-    const colors = {
-      processing: 'bg-yellow-100 dark:bg-yellow-900/20 text-yellow-800 dark:text-yellow-300',
-      shipped: 'bg-blue-100 dark:bg-blue-900/20 text-blue-800 dark:text-blue-300',
-      delivered: 'bg-green-100 dark:bg-green-900/20 text-green-800 dark:text-green-300',
-      cancelled: 'bg-red-100 dark:bg-red-900/20 text-red-800 dark:text-red-300',
-      active: 'bg-green-100 dark:bg-green-900/20 text-green-800 dark:text-green-300',
-      paused: 'bg-yellow-100 dark:bg-yellow-900/20 text-yellow-800 dark:text-yellow-300'
-    };
-    return colors[status as keyof typeof colors] || 'bg-gray-100 dark:bg-gray-700 text-gray-800 dark:text-gray-300';
-  }, []);
-
-  const formatDate = useCallback((dateString: string) => {
-    return new Date(dateString).toLocaleDateString('en-CA', {
-      year: 'numeric',
-      month: 'long',
-      day: 'numeric'
-    });
-  }, []);
-
-  const formatCurrency = useCallback((amount: number) => formatCurrencyValue(amount), []);
-
-  const handleTabChange = useCallback((tabId: string) => {
-    setActiveTab(tabId);
-  }, []);
-
-  const tabs = [
-    { id: 'dashboard', label: 'Dashboard', icon: User },
-    { id: 'orders', label: 'Orders', icon: Package },
-    { id: 'subscriptions', label: 'Subscriptions', icon: Calendar },
-    { id: 'support', label: 'Support', icon: MessageCircle },
-    { id: 'profile', label: 'Profile', icon: Settings }
-  ];
-
-  const handleTabClick = useCallback((tab: typeof tabs[0]) => {
-    return () => handleTabChange(tab.id);
-  }, [handleTabChange]);
+  const activeSubscriptions = useMemo(
+    () => data?.subscriptions.filter((subscription) => subscription.status === 'active').length ?? 0,
+    [data]
+  );
 
   if (loading) {
     return (
       <div className="min-h-screen bg-gray-50 dark:bg-gray-900 flex items-center justify-center">
-        <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-600 dark:border-blue-400"></div>
+        <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-600 dark:border-blue-400" />
       </div>
     );
   }
 
-  if (!customer) {
+  if (!data?.customer) {
     return (
-      <div className="min-h-screen bg-gray-50 dark:bg-gray-900 flex items-center justify-center">
-        <div className="text-center">
-          <h2 className="font-heading text-2xl font-bold text-gray-900 dark:text-gray-50 mb-2">Unable to load customer data</h2>
-          <p className="text-gray-600 dark:text-gray-300">Please try refreshing the page or contact support.</p>
+      <div className="min-h-screen bg-gray-50 dark:bg-gray-900 flex items-center justify-center px-4">
+        <div className="max-w-md rounded-2xl border border-red-200 bg-white p-6 text-center shadow-sm dark:border-red-900/40 dark:bg-gray-900">
+          <h2 className="text-xl font-semibold text-gray-900 dark:text-gray-100">{t('unableToLoadTitle')}</h2>
+          <p className="mt-2 text-sm text-gray-600 dark:text-gray-400">{error ?? t('loadFailed')}</p>
         </div>
       </div>
     );
   }
+
+  const { customer, orders, subscriptions } = data;
 
   return (
     <div className="min-h-screen bg-gray-50 dark:bg-gray-900">
-      {/* Header */}
-      <header className="bg-white dark:bg-gray-800 shadow-sm border-b border-gray-200 dark:border-gray-700">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex justify-between items-center py-4">
-            <div className="flex items-center">
-              <h1 className="font-heading text-2xl font-bold text-gray-900 dark:text-gray-50">Customer Portal</h1>
-            </div>
-
-            <div className="flex items-center space-x-4">
-              <div className="flex items-center space-x-2">
-                <Bell className="w-5 h-5 text-gray-500 dark:text-gray-400" />
-                <span className="text-sm text-gray-700 dark:text-gray-200">
-                  Welcome, {customer.firstName}!
-                </span>
-              </div>
-
-              <button
-                onClick={onLogout}
-                className="flex items-center space-x-2 px-4 py-2 text-sm text-gray-700 dark:text-gray-200 bg-white dark:bg-gray-800 hover:bg-gray-100 dark:hover:bg-gray-700 rounded-md transition-colors"
-              >
-                <LogOut className="w-4 h-4" />
-                <span>Logout</span>
-              </button>
-            </div>
+      <header className="border-b border-gray-200 bg-white dark:border-gray-800 dark:bg-gray-950">
+        <div className="mx-auto flex max-w-6xl items-center justify-between px-4 py-5 sm:px-6 lg:px-8">
+          <div>
+            <h1 className="font-heading text-2xl font-bold text-gray-900 dark:text-gray-100">{t('title')}</h1>
+            <p className="mt-1 text-sm text-gray-600 dark:text-gray-400">
+              {t('welcome').replace('{name}', customer.firstName || customer.email)}
+            </p>
           </div>
+
+          <button
+            type="button"
+            onClick={onLogout}
+            className="inline-flex items-center rounded-full bg-gray-900 px-4 py-2 text-sm font-medium text-white transition hover:bg-gray-700 dark:bg-gray-100 dark:text-gray-900 dark:hover:bg-gray-200"
+          >
+            <LogOut className="mr-2 h-4 w-4" />
+            {t('logout')}
+          </button>
         </div>
       </header>
 
-      {/* Navigation Tabs */}
-      <nav className="bg-white dark:bg-gray-800 border-b border-gray-200 dark:border-gray-700">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex space-x-8">
-            {tabs.map((tab) => {
-              const Icon = tab.icon;
-              return (
-                <button
-                  key={tab.id}
-                  onClick={handleTabClick(tab)}
-                  className={cn(
-                    'flex items-center space-x-2 py-4 px-1 border-b-2 font-medium text-sm transition-colors',
-                    activeTab === tab.id
-                      ? 'border-blue-500 text-blue-600 dark:text-blue-400'
-                      : 'border-transparent text-gray-500 dark:text-gray-400 hover:text-gray-700 dark:hover:text-gray-200 hover:border-gray-300 dark:hover:border-gray-600'
-                  )}
-                >
-                  <Icon className="w-4 h-4" />
-                  <span>{tab.label}</span>
-                </button>
-              );
-            })}
+      <main className="mx-auto max-w-6xl space-y-8 px-4 py-8 sm:px-6 lg:px-8">
+        {error && (
+          <div className="rounded-2xl border border-amber-200 bg-amber-50 px-4 py-3 text-sm text-amber-800 dark:border-amber-900/60 dark:bg-amber-950/30 dark:text-amber-200">
+            {error}
           </div>
-        </div>
-      </nav>
-
-      {/* Main Content */}
-      <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-        {activeTab === 'dashboard' && (
-          <DashboardTab customer={customer} orders={orders} subscriptions={subscriptions} />
         )}
 
-        {activeTab === 'orders' && (
-          <OrdersTab orders={orders} formatDate={formatDate} formatCurrency={formatCurrency} getStatusColor={getStatusColor} />
-        )}
+        <section className="grid gap-4 md:grid-cols-3">
+          <SummaryCard label={t('summary.totalOrders')} value={String(customer.totalOrders)} icon={<Package className="h-5 w-5" />} />
+          <SummaryCard label={t('summary.totalSpent')} value={formatCurrency(customer.totalSpent, locale)} icon={<Wallet className="h-5 w-5" />} />
+          <SummaryCard label={t('summary.activeSubscriptions')} value={String(activeSubscriptions)} icon={<Repeat className="h-5 w-5" />} />
+        </section>
 
-        {activeTab === 'subscriptions' && (
-          <SubscriptionsTab subscriptions={subscriptions} formatDate={formatDate} formatCurrency={formatCurrency} getStatusColor={getStatusColor} />
-        )}
+        <section className="grid gap-8 lg:grid-cols-[1.5fr_1fr]">
+          <div className="space-y-8">
+            <section className="rounded-2xl border border-gray-200 bg-white p-6 shadow-sm dark:border-gray-800 dark:bg-gray-900">
+              <h2 className="text-xl font-semibold text-gray-900 dark:text-gray-100">{t('ordersTitle')}</h2>
 
-        {activeTab === 'support' && (
-          <CustomerSupport customerId={customerId} />
-        )}
+              {orders.length === 0 ? (
+                <p className="mt-4 text-sm text-gray-600 dark:text-gray-400">{t('emptyOrders')}</p>
+              ) : (
+                <div className="mt-4 overflow-x-auto">
+                  <table className="min-w-full divide-y divide-gray-200 dark:divide-gray-800">
+                    <thead>
+                      <tr>
+                        {[t('table.order'), t('table.date'), t('table.status'), t('table.total')].map((heading) => (
+                          <th key={heading} className="px-3 py-2 text-left text-xs font-semibold uppercase tracking-wide text-gray-500 dark:text-gray-400">
+                            {heading}
+                          </th>
+                        ))}
+                      </tr>
+                    </thead>
+                    <tbody className="divide-y divide-gray-200 dark:divide-gray-800">
+                      {orders.map((order) => (
+                        <tr key={order.id}>
+                          <td className="px-3 py-3 text-sm font-medium text-gray-900 dark:text-gray-100">{order.orderNumber}</td>
+                          <td className="px-3 py-3 text-sm text-gray-600 dark:text-gray-300">{formatDate(order.date, locale)}</td>
+                          <td className="px-3 py-3 text-sm text-gray-600 dark:text-gray-300">{t(`statuses.${order.status}`)}</td>
+                          <td className="px-3 py-3 text-sm text-gray-600 dark:text-gray-300">{formatCurrency(order.total, locale)}</td>
+                        </tr>
+                      ))}
+                    </tbody>
+                  </table>
+                </div>
+              )}
+            </section>
 
-        {activeTab === 'profile' && (
-          <ProfileTab customer={customer} />
-        )}
+            <section className="rounded-2xl border border-gray-200 bg-white p-6 shadow-sm dark:border-gray-800 dark:bg-gray-900">
+              <h2 className="text-xl font-semibold text-gray-900 dark:text-gray-100">{t('subscriptionsTitle')}</h2>
+
+              {subscriptions.length === 0 ? (
+                <p className="mt-4 text-sm text-gray-600 dark:text-gray-400">{t('emptySubscriptions')}</p>
+              ) : (
+                <div className="mt-4 space-y-4">
+                  {subscriptions.map((subscription) => (
+                    <div key={subscription.id} className="rounded-xl border border-gray-200 p-4 dark:border-gray-800">
+                      <div className="flex flex-col gap-2 sm:flex-row sm:items-center sm:justify-between">
+                        <div>
+                          <div className="font-medium text-gray-900 dark:text-gray-100">{subscription.productName}</div>
+                          <div className="text-sm text-gray-600 dark:text-gray-300">
+                            {t('table.frequency')}: {t(`frequencies.${subscription.frequency}`)}
+                          </div>
+                        </div>
+                        <div className="text-sm text-gray-600 dark:text-gray-300">
+                          {t('table.nextDelivery')}: {formatDate(subscription.nextDelivery, locale)}
+                        </div>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              )}
+            </section>
+          </div>
+
+          <section className="rounded-2xl border border-gray-200 bg-white p-6 shadow-sm dark:border-gray-800 dark:bg-gray-900">
+            <h2 className="text-xl font-semibold text-gray-900 dark:text-gray-100">{t('profileTitle')}</h2>
+            <dl className="mt-4 space-y-4 text-sm">
+              <div>
+                <dt className="text-gray-500 dark:text-gray-400">{t('profile.email')}</dt>
+                <dd className="text-gray-900 dark:text-gray-100">{customer.email}</dd>
+              </div>
+              <div>
+                <dt className="text-gray-500 dark:text-gray-400">{t('profile.phone')}</dt>
+                <dd className="text-gray-900 dark:text-gray-100">{customer.phone || t('profile.none')}</dd>
+              </div>
+              <div>
+                <dt className="text-gray-500 dark:text-gray-400">{t('profile.address')}</dt>
+                <dd className="text-gray-900 dark:text-gray-100">
+                  {[customer.address.street, customer.address.city, customer.address.province, customer.address.postalCode]
+                    .filter(Boolean)
+                    .join(', ') || t('profile.none')}
+                </dd>
+              </div>
+              <div>
+                <dt className="text-gray-500 dark:text-gray-400">{t('profile.memberSince')}</dt>
+                <dd className="text-gray-900 dark:text-gray-100">{formatDate(customer.memberSince, locale)}</dd>
+              </div>
+            </dl>
+          </section>
+        </section>
       </main>
     </div>
   );
