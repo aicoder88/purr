@@ -25,6 +25,8 @@ export async function requireAuth(
   return { authorized: true, session };
 }
 
-export function isAdminSession(session: Awaited<ReturnType<typeof auth>> | null | undefined) {
+export function isAdminSession(
+  session: { user?: { role?: string | null } } | null | undefined
+) {
   return isAdminSessionRole(session?.user?.role);
 }

@@ -53,6 +53,11 @@ export async function GET(): Promise<Response> {
     return Response.json({ message: 'Unauthorized' }, { status: 401 });
   }
 
+  const sessionUser = session?.user;
+  if (!sessionUser) {
+    return Response.json({ message: 'Unauthorized' }, { status: 401 });
+  }
+
   const [customerRecord, orders, subscriptions] = await Promise.all([
     prisma.customer.findFirst({
       where: { email },
@@ -88,10 +93,10 @@ export async function GET(): Promise<Response> {
   ]);
 
   const customer = {
-    id: session.user.id ?? customerRecord?.id ?? email,
+    id: sessionUser.id ?? customerRecord?.id ?? email,
     email,
-    firstName: customerRecord?.firstName ?? session.user.name?.split(' ')[0] ?? 'Customer',
-    lastName: customerRecord?.lastName ?? session.user.name?.split(' ').slice(1).join(' ') ?? '',
+    firstName: customerRecord?.firstName ?? sessionUser.name?.split(' ')[0] ?? 'Customer',
+    lastName: customerRecord?.lastName ?? sessionUser.name?.split(' ').slice(1).join(' ') ?? '',
     phone: customerRecord?.phone ?? '',
     address: {
       street: customerRecord?.address ?? '',

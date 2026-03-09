@@ -27,10 +27,10 @@ export default function AdminLayout({ children, title }: AdminLayoutProps) {
     { name: 'Posts', href: '/admin/blog', icon: FileText },
     { name: 'Schedule', href: '/admin/blog/schedule', icon: Calendar },
     { name: 'Media', href: '/admin/blog/media', icon: ImageIcon },
-    { name: 'Analytics', href: '/admin/blog/analytics', icon: BarChart3 },
+    { name: 'Analytics', href: '/admin/analytics', icon: BarChart3 },
     { name: 'Categories', href: '/admin/blog/categories', icon: FolderTree, adminOnly: true },
     { name: 'Tags', href: '/admin/blog/tags', icon: Tag, adminOnly: true },
-    { name: 'Settings', href: '/admin/blog/settings', icon: Settings, adminOnly: true }
+    { name: 'Settings', href: '/admin/seo', icon: Settings, adminOnly: true }
   ];
 
   const userRole = session?.user?.role;

@@ -274,7 +274,7 @@ export default function DashboardContent() {
   const locale = useLocale();
   const messages = useMessages() as TranslationType;
   const router = useRouter();
-  const copy = (messages.retailers?.portal ?? englishMessages.retailers.portal) as PortalCopy;
+  const copy = (messages.retailers?.portal ?? englishMessages.retailers.portal) as unknown as PortalCopy;
   const localeCode = locale === 'fr' ? 'fr-CA' : 'en-CA';
 
   const currencyFormatter = useMemo(() => new Intl.NumberFormat(localeCode, {

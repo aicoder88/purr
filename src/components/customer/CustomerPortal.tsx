@@ -1,7 +1,7 @@
 'use client';
 
 import { useCallback, useEffect, useMemo, useState } from 'react';
-import { useTranslations } from 'next-intl';
+import { useLocale, useTranslations } from 'next-intl';
 import { LogOut, Package, Repeat, Wallet } from 'lucide-react';
 import type { CustomerPortalProps, Customer, Order, Subscription } from './customer-portal-types';
 
@@ -51,7 +51,7 @@ function SummaryCard({
 
 export function CustomerPortal({ onLogout }: CustomerPortalProps) {
   const t = useTranslations('auth.customer.portal');
-  const locale = useTranslations().locale === 'fr' ? 'fr-CA' : 'en-CA';
+  const locale = useLocale() === 'fr' ? 'fr-CA' : 'en-CA';
   const [data, setData] = useState<CustomerPortalResponse | null>(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
