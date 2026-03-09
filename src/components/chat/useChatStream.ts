@@ -14,6 +14,8 @@ export type ChatMessage = {
   toolUse?: ChatToolUse[];
 };
 
+const CHAT_MAX_HISTORY_MESSAGES = 8;
+
 type StreamEvent =
   | { type: 'text_delta'; text: string }
   | { type: 'tool_use'; tool: { name: string; input: Record<string, unknown> } }
@@ -155,7 +157,7 @@ export function useChatStream(locale: ChatLocale) {
 
       const historyForApi = [...messagesRef.current, userMessage]
         .map((message) => ({ role: message.role, content: message.content }))
-        .slice(-10);
+        .slice(-CHAT_MAX_HISTORY_MESSAGES);
 
       setIsStreaming(true);
 

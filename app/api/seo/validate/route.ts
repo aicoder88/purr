@@ -8,6 +8,7 @@
 
 import { validateMetaContent } from '@/lib/seo/meta-optimizer';
 import { validateSchema } from '@/lib/seo/schema-validator';
+import { requireAuth } from '@/lib/auth/session';
 
 interface ValidateRequestBody {
   title?: string;
@@ -48,6 +49,11 @@ interface ValidationResponse {
 }
 
 export async function POST(req: Request): Promise<Response> {
+  const { authorized } = await requireAuth();
+  if (!authorized) {
+    return Response.json({ success: false, error: 'Unauthorized' }, { status: 401 });
+  }
+
   try {
     const body: ValidateRequestBody = await req.json();
 

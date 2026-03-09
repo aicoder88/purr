@@ -1,7 +1,7 @@
 import { sampleBlogPosts, BlogPost } from '@/data/blog-posts';
 import prisma from '@/lib/prisma';
 import { ContentStore } from '@/lib/blog/content-store';
-import { isValidLocale } from '@/i18n/config';
+import { isValidLocale, type Locale } from '@/i18n/config';
 import { getPublicEditorialName } from '@/lib/editorial/entities';
 
 export const revalidate = 3600;
@@ -35,12 +35,17 @@ const getCachedPosts = unstable_cache(
   { revalidate: 3600 }
 );
 
+function normalizeLocale(locale: string | null | undefined): Locale {
+  const normalizedLocale = String(locale ?? '').toLowerCase();
+  return isValidLocale(normalizedLocale) ? normalizedLocale : 'en';
+}
+
 export async function GET(req: Request): Promise<Response> {
   const { searchParams } = new URL(req.url);
   const limit = searchParams.get('limit');
   const limitNum = limit ? parseInt(limit, 10) : undefined;
   const localeParam = searchParams.get('locale') || 'en';
-  const locale = isValidLocale(localeParam) ? localeParam : 'en';
+  const locale = normalizeLocale(localeParam);
 
   try {
     const take = limitNum || 6;
@@ -59,7 +64,7 @@ export async function GET(req: Request): Promise<Response> {
             image: post.featuredImage.url,
             link: `/${locale}/blog/${post.slug}`,
             content: post.content,
-            locale: post.locale,
+            locale: normalizeLocale(post.locale),
           }))
         );
       }
@@ -99,9 +104,9 @@ export async function GET(req: Request): Promise<Response> {
           author: getPublicEditorialName(post.author ?? 'Purrify Research Lab'),
           date: (post.publishedAt ?? post.createdAt).toISOString().split('T')[0],
           image: post.heroImageUrl,
-          link: `/${isValidLocale(String(post.locale || '').toLowerCase()) ? String(post.locale).toLowerCase() : 'en'}/blog/${post.slug}`,
+          link: `/${normalizeLocale(post.locale)}/blog/${post.slug}`,
           content: post.content,
-          locale: (post.locale as 'en' | 'fr' | undefined) ?? 'en',
+          locale: normalizeLocale(post.locale),
         }))
       );
     }

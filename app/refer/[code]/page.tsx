@@ -1,7 +1,9 @@
+import { cache } from 'react';
 import { Metadata } from 'next';
 import { SITE_NAME } from '@/lib/constants';
 import { formatProductPrice } from '@/lib/pricing';
 import { REFERRAL_CONFIG } from '@/lib/referral';
+import { validateReferralCodeForEmail } from '@/lib/referral-program';
 import { ReferralClient } from './ReferralClient';
 
 interface ReferralPageProps {
@@ -21,30 +23,36 @@ interface ReferralData {
   error?: string;
 }
 
-async function getReferralData(code: string): Promise<{ code: string; referralData: ReferralData }> {
+const getReferralData = cache(async (code: string): Promise<{ code: string; referralData: ReferralData }> => {
   try {
-    // Validate referral code
-    const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'http://localhost:3000';
-    const response = await fetch(`${siteUrl}/api/referrals/validate/${code}`, {
-      cache: 'no-store',
-    });
-    const referralData: ReferralData = await response.json();
+    const result = await validateReferralCodeForEmail(code);
 
     return {
       code,
-      referralData
+      referralData: {
+        isValid: true,
+        referrerName: result.referrerName,
+        discount: {
+          type: 'fixed',
+          value: REFERRAL_CONFIG.REFEREE_DISCOUNT,
+          description: `$${REFERRAL_CONFIG.REFEREE_DISCOUNT} off qualifying orders over $${REFERRAL_CONFIG.MINIMUM_QUALIFYING_ORDER_SUBTOTAL}`,
+        },
+        message: `${result.referrerName} has shared Purrify with you! Get $${REFERRAL_CONFIG.REFEREE_DISCOUNT} off qualifying orders over $${REFERRAL_CONFIG.MINIMUM_QUALIFYING_ORDER_SUBTOTAL}.`,
+      },
     };
   } catch (error) {
     console.error('Error fetching referral data:', error);
+    const message = error instanceof Error ? error.message : 'Unable to validate referral code';
+
     return {
       code,
       referralData: {
         isValid: false,
-        error: 'Unable to validate referral code'
-      }
+        error: message,
+      },
     };
   }
-}
+});
 
 export async function generateMetadata({ params }: ReferralPageProps): Promise<Metadata> {
   const { code } = await params;

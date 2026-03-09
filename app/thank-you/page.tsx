@@ -75,15 +75,15 @@ async function getOrderDetails(sessionId: string | undefined): Promise<{ orderDe
       currentRemedy: freshnessProfile?.currentRemedy ?? undefined,
     };
 
-    try {
-      const lineItems = await stripe.checkout.sessions.listLineItems(sessionId, { limit: 1 });
-      if (lineItems.data.length > 0) {
-        const item = lineItems.data[0];
-        orderDetails.productName = item.description || 'Purrify';
-        orderDetails.quantity = item.quantity || 1;
+    const firstLineItem = (
+      session as Stripe.Checkout.Session & {
+        line_items?: { data?: Array<{ description?: string | null; quantity?: number | null }> };
       }
-    } catch {
-      // Silently ignore line items fetch errors
+    ).line_items?.data?.[0];
+
+    if (firstLineItem) {
+      orderDetails.productName = firstLineItem.description || 'Purrify';
+      orderDetails.quantity = firstLineItem.quantity || 1;
     }
 
     return { orderDetails };
@@ -99,15 +99,8 @@ type Props = {
   searchParams: Promise<{ [key: string]: string | string[] | undefined }>;
 };
 
-export async function generateMetadata({ searchParams }: Props): Promise<Metadata> {
-  const params = await searchParams;
-  const sessionId = typeof params.session_id === 'string' ? params.session_id : undefined;
-  const { orderDetails } = await getOrderDetails(sessionId);
-
-  const firstName = orderDetails?.customerName?.split(' ')[0];
-  const title = firstName
-    ? `Thank You for Your Order, ${firstName}! - Purrify`
-    : 'Thank You for Your Order! - Purrify';
+export function generateMetadata(): Metadata {
+  const title = 'Thank You for Your Order! - Purrify';
 
   const description = 'Your Purrify order has been confirmed. Get ready to experience an odor-free home!';
 

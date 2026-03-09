@@ -6,6 +6,7 @@ import {
   normalizeReferralCode,
   validateReferralCodeForEmail,
 } from '@/lib/referral-program';
+import { checkRateLimit, createRateLimitHeaders, getClientIp } from '@/lib/rate-limit';
 import { verifyOrigin } from '@/lib/security/origin-check';
 
 interface TrackingData {
@@ -59,6 +60,19 @@ export async function POST(req: Request): Promise<Response> {
     return Response.json({ success: false, error: 'Forbidden' } satisfies TrackingResponse, { status: 403, headers: SECURITY_HEADERS });
   }
 
+  const rateLimitResult = await checkRateLimit(getClientIp(req), 'standard');
+  const headers = {
+    ...SECURITY_HEADERS,
+    ...createRateLimitHeaders(rateLimitResult),
+  };
+
+  if (!rateLimitResult.success) {
+    return Response.json(
+      { success: false, error: 'Too many tracking requests. Please try again later.' } satisfies TrackingResponse,
+      { status: 429, headers }
+    );
+  }
+
   try {
     const body = (await req.json()) as TrackReferralRequestBody;
     const {
@@ -74,21 +88,21 @@ export async function POST(req: Request): Promise<Response> {
       return Response.json({
         success: false,
         error: 'Missing required fields: action, referralCode'
-      } satisfies TrackingResponse, { status: 400 });
+      } satisfies TrackingResponse, { status: 400, headers });
     }
 
     if ((action === 'signup' || action === 'purchase') && !refereeEmail) {
       return Response.json({
         success: false,
         error: 'refereeEmail is required for signup and purchase tracking'
-      } satisfies TrackingResponse, { status: 400 });
+      } satisfies TrackingResponse, { status: 400, headers });
     }
 
     if (!prisma) {
       return Response.json({
         success: false,
         error: 'Database connection not available'
-      } satisfies TrackingResponse, { status: 500 });
+      } satisfies TrackingResponse, { status: 500, headers });
     }
 
     const normalizedCode = normalizeReferralCode(referralCode);
@@ -104,7 +118,7 @@ export async function POST(req: Request): Promise<Response> {
       return Response.json({
         success: false,
         error: 'Invalid or inactive referral code'
-      } satisfies TrackingResponse, { status: 404 });
+      } satisfies TrackingResponse, { status: 404, headers });
     }
 
     // Check expiration
@@ -112,7 +126,7 @@ export async function POST(req: Request): Promise<Response> {
       return Response.json({
         success: false,
         error: 'Referral code has expired'
-      } satisfies TrackingResponse, { status: 410 });
+      } satisfies TrackingResponse, { status: 410, headers });
     }
 
     // Prevent self-referral
@@ -124,7 +138,7 @@ export async function POST(req: Request): Promise<Response> {
       return Response.json({
         success: false,
         error: 'Cannot use your own referral code'
-      } satisfies TrackingResponse, { status: 400 });
+      } satisfies TrackingResponse, { status: 400, headers });
     }
 
     switch (action) {
@@ -147,13 +161,13 @@ export async function POST(req: Request): Promise<Response> {
         return Response.json({
           success: false,
           error: 'Invalid action. Must be: click, signup, or purchase'
-        } satisfies TrackingResponse, { status: 400 });
+        } satisfies TrackingResponse, { status: 400, headers });
     }
   } catch {
     return Response.json({
       success: false,
       error: 'Failed to track referral activity'
-    } satisfies TrackingResponse, { status: 500 });
+    } satisfies TrackingResponse, { status: 500, headers });
   }
 }
 

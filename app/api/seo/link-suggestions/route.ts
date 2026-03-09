@@ -8,6 +8,7 @@
 
 export const revalidate = 3600;
 
+import { requireAuth } from '@/lib/auth/session';
 import {
   generateLinkSuggestions,
   getSuggestionsForPage,
@@ -31,6 +32,11 @@ interface LinkSuggestionsResponse {
 }
 
 export async function GET(req: Request): Promise<Response> {
+  const { authorized } = await requireAuth();
+  if (!authorized) {
+    return Response.json({ success: false, error: 'Unauthorized' }, { status: 401 });
+  }
+
   try {
     const { searchParams } = new URL(req.url);
     const page = searchParams.get('page');

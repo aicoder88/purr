@@ -1902,6 +1902,105 @@ export interface TranslationType {
         secondaryButton?: string;
       };
     };
+    portal?: {
+      title: string;
+      subtitle: string;
+      loading: string;
+      refresh: string;
+      logout: string;
+      errors: {
+        loadFailed: string;
+        sessionExpired: string;
+      };
+      summary: {
+        totalOrders: string;
+        lifetimeSpend: string;
+        lastOrder: string;
+        noOrders: string;
+      };
+      calculator: {
+        badge: string;
+        title: string;
+        description: string;
+        shippingLabel: string;
+        shippingHelp: string;
+        freeShippingUnlocked: string;
+        freeShippingLocked: string;
+        inputsTitle: string;
+        currentScenario: string;
+        tableTitle: string;
+        tableHeaders: {
+          product: string;
+          boxes: string;
+          units: string;
+          revenue: string;
+          cost: string;
+          profit: string;
+          margin: string;
+        };
+        metrics: {
+          revenue: string;
+          landedCost: string;
+          netProfit: string;
+          margin: string;
+        };
+      };
+      graph: {
+        title: string;
+        description: string;
+        legend: {
+          revenue: string;
+          cost: string;
+          profit: string;
+        };
+      };
+      recentOrders: {
+        title: string;
+        empty: string;
+        columns: {
+          order: string;
+          status: string;
+          date: string;
+          boxes: string;
+          total: string;
+        };
+      };
+      products: {
+        trial: {
+          label: string;
+          unitsPerBox: string;
+          boxesLabel: string;
+          sellPriceLabel: string;
+          unitCostLabel: string;
+          boxCostLabel: string;
+        };
+        medium: {
+          label: string;
+          unitsPerBox: string;
+          boxesLabel: string;
+          sellPriceLabel: string;
+          unitCostLabel: string;
+          boxCostLabel: string;
+        };
+        large: {
+          label: string;
+          unitsPerBox: string;
+          boxesLabel: string;
+          sellPriceLabel: string;
+          unitCostLabel: string;
+          boxCostLabel: string;
+        };
+      };
+      statuses: {
+        PENDING: string;
+        PAID: string;
+        PROCESSING: string;
+        SHIPPED: string;
+        DELIVERED: string;
+        CANCELLED: string;
+        REFUNDED: string;
+      };
+    };
     contact: {
       title: string;
       description: string;

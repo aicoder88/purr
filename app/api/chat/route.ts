@@ -6,18 +6,23 @@ import { CHAT_TOOLS, CHAT_ARTICLE_SLUGS, CHAT_PRODUCT_IDS } from '@/lib/chat/too
 import type { RecommendProductToolInput } from '@/lib/chat/tools';
 import { upsertFreshnessProfile } from '@/lib/freshness-profile';
 import { checkRateLimit, createRateLimitHeaders, getClientIp } from '@/lib/rate-limit';
+import { verifyOrigin } from '@/lib/security/origin-check';
 
 export const runtime = 'nodejs';
 export const dynamic = 'force-dynamic';
+const AUTOMATED_TRAFFIC_PATTERN =
+  /bot|crawler|spider|preview|facebookexternalhit|Slackbot|WhatsApp|Discordbot|LinkedInBot|Twitterbot|SkypeUriPreview/i;
+const CHAT_MAX_HISTORY_MESSAGES = 8;
+const CHAT_MAX_TOKENS = 240;
 
 const chatMessageSchema = z.object({
   role: z.enum(['user', 'assistant']),
-  content: z.string().trim().min(1).max(500),
+  content: z.string().trim().min(1).max(400),
 });
 
 const chatRequestSchema = z.object({
   locale: z.enum(['en', 'fr']).default('en'),
-  messages: z.array(chatMessageSchema).min(1).max(10),
+  messages: z.array(chatMessageSchema).min(1).max(CHAT_MAX_HISTORY_MESSAGES),
   sessionId: z
     .string()
     .trim()
@@ -47,10 +52,8 @@ type PendingTool = {
 function getChatModelCandidates(): string[] {
   const candidates = [
     process.env.CHAT_ANTHROPIC_MODEL,
-    process.env.BLOG_ANTHROPIC_MODEL,
     'claude-haiku-4-5',
-    'claude-3-5-haiku-latest',
-    'claude-3-5-sonnet-20241022',
+    process.env.CHAT_ANTHROPIC_FALLBACK_MODEL,
   ];
 
   return [...new Set(candidates.filter((candidate): candidate is string => typeof candidate === 'string' && candidate.trim().length > 0))];
@@ -87,7 +90,23 @@ function mergeToolInput(pendingTool: PendingTool): Record<string, unknown> | nul
 
 export async function POST(request: NextRequest) {
   const clientIp = getClientIp(request);
-  const rateLimitResult = await checkRateLimit(clientIp, 'generous');
+  const userAgent = request.headers.get('user-agent') || '';
+
+  if (!verifyOrigin(request)) {
+    return NextResponse.json(
+      { error: 'Forbidden.' },
+      { status: 403 }
+    );
+  }
+
+  if (AUTOMATED_TRAFFIC_PATTERN.test(userAgent)) {
+    return NextResponse.json(
+      { error: 'Automated traffic is not allowed.' },
+      { status: 403 }
+    );
+  }
+
+  const rateLimitResult = await checkRateLimit(clientIp, 'sensitive');
   const rateLimitHeaders = createRateLimitHeaders(rateLimitResult);
 
   if (!rateLimitResult.success) {
@@ -123,6 +142,16 @@ export async function POST(request: NextRequest) {
     );
   }
 
+  if (validatedBody.sessionId) {
+    const sessionRateLimitResult = await checkRateLimit(`chat:${validatedBody.sessionId}`, 'standard');
+    if (!sessionRateLimitResult.success) {
+      return NextResponse.json(
+        { error: 'This chat session is sending messages too quickly. Please slow down.' },
+        { status: 429, headers: createRateLimitHeaders(sessionRateLimitResult) }
+      );
+    }
+  }
+
   const anthropic = new Anthropic({ apiKey: anthropicApiKey });
   const modelCandidates = getChatModelCandidates();
 
@@ -145,7 +174,7 @@ export async function POST(request: NextRequest) {
           try {
             const anthropicStream = anthropic.messages.stream({
               model,
-              max_tokens: 300,
+              max_tokens: CHAT_MAX_TOKENS,
               system: buildChatSystemPrompt(validatedBody.locale),
               tools: CHAT_TOOLS,
               messages: validatedBody.messages,

@@ -1,6 +1,8 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { promises as fs } from 'node:fs';
 import path from 'node:path';
+import { checkRateLimit, createRateLimitHeaders, getClientIp } from '@/lib/rate-limit';
+import { verifyOrigin } from '@/lib/security/origin-check';
 
 interface CityLeadPayload {
   name?: string;
@@ -97,9 +99,28 @@ async function appendLead(record: CityLeadRecord) {
 }
 
 export async function POST(request: NextRequest) {
+  const rateLimitResult = await checkRateLimit(getClientIp(request), 'sensitive');
+  const rateLimitHeaders = createRateLimitHeaders(rateLimitResult);
   const headers = new Headers();
   headers.set('Cache-Control', 'no-store');
   headers.set('X-Content-Type-Options', 'nosniff');
+  Object.entries(rateLimitHeaders).forEach(([key, value]) => {
+    headers.set(key, value);
+  });
+
+  if (!verifyOrigin(request)) {
+    return NextResponse.json(
+      { success: false, error: 'Forbidden' },
+      { status: 403, headers }
+    );
+  }
+
+  if (!rateLimitResult.success) {
+    return NextResponse.json(
+      { success: false, error: 'Too many requests. Please try again later.' },
+      { status: 429, headers }
+    );
+  }
 
   try {
     const payload = await request.json() as Partial<CityLeadPayload> | undefined;

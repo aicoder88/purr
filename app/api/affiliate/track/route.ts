@@ -12,6 +12,7 @@ import { createHash, randomUUID } from 'crypto';
 import prisma from '@/lib/prisma';
 import { cookies } from 'next/headers';
 import { redirect } from 'next/navigation';
+import { checkRateLimit, getClientIp } from '@/lib/rate-limit';
 
 // Cookie configuration
 const AFFILIATE_COOKIE_NAME = 'purrify_ref';
@@ -19,6 +20,8 @@ const COOKIE_MAX_AGE = 90 * 24 * 60 * 60; // 90 days in seconds
 
 // Regex for valid affiliate codes (alphanumeric, 6-12 characters)
 const AFFILIATE_CODE_REGEX = /^[A-Za-z0-9]{6,12}$/;
+const AUTOMATED_TRAFFIC_PATTERN =
+  /bot|crawler|spider|preview|facebookexternalhit|Slackbot|WhatsApp|Discordbot|LinkedInBot|Twitterbot|SkypeUriPreview/i;
 
 /**
  * Hash the IP address for privacy
@@ -58,6 +61,7 @@ export async function GET(req: Request): Promise<Response> {
   const { searchParams } = new URL(req.url);
   const ref = searchParams.get('ref');
   const redirectParam = searchParams.get('redirect');
+  const redirectUrl = redirectParam || '/';
 
   // Validate ref parameter
   if (!ref) {
@@ -69,8 +73,16 @@ export async function GET(req: Request): Promise<Response> {
   const affiliateCode = ref.toUpperCase();
   if (!AFFILIATE_CODE_REGEX.test(affiliateCode)) {
     console.warn(`Invalid affiliate code format: ${ref}`);
-    // Redirect without setting cookie
-    const redirectUrl = redirectParam || '/';
+    redirect(redirectUrl);
+  }
+
+  const userAgent = req.headers.get('user-agent') || '';
+  if (AUTOMATED_TRAFFIC_PATTERN.test(userAgent)) {
+    redirect(redirectUrl);
+  }
+
+  const rateLimitResult = await checkRateLimit(getClientIp(req), 'standard');
+  if (!rateLimitResult.success) {
     redirect(redirectUrl);
   }
 
@@ -78,7 +90,6 @@ export async function GET(req: Request): Promise<Response> {
     // Check database connection
     if (!prisma) {
       console.error('Database connection not established');
-      const redirectUrl = redirectParam || '/';
       redirect(redirectUrl);
     }
 
@@ -89,7 +100,6 @@ export async function GET(req: Request): Promise<Response> {
 
     // If same affiliate code, just redirect (don't record duplicate click)
     if (existingCookie && existingCookie.code === affiliateCode) {
-      const redirectUrl = redirectParam || '/';
       redirect(redirectUrl);
     }
 
@@ -107,8 +117,6 @@ export async function GET(req: Request): Promise<Response> {
 
     if (!affiliate) {
       console.warn(`Affiliate not found or inactive: ${affiliateCode}`);
-      // Redirect without setting cookie
-      const redirectUrl = redirectParam || '/';
       redirect(redirectUrl);
     }
 
@@ -118,16 +126,16 @@ export async function GET(req: Request): Promise<Response> {
     // Prepare click data
     const clientIP = getClientIP(req);
     const ipHash = hashIP(clientIP);
-    const userAgent = req.headers.get('user-agent') || null;
+    const requestUserAgent = userAgent || null;
     const referrer = req.headers.get('referer') || null;
-    const landingPage = redirectParam || '/';
+    const landingPage = redirectUrl;
 
     // Record the click in database
     await prisma.affiliateClick.create({
       data: {
         affiliateId: affiliate.id,
         ipHash,
-        userAgent,
+        userAgent: requestUserAgent,
         referrer,
         landingPage,
         sessionId,
@@ -149,7 +157,6 @@ export async function GET(req: Request): Promise<Response> {
   } catch (error) {
     console.error('Affiliate tracking error:', error);
     // On error, redirect anyway (don't block user experience)
-    const redirectUrl = redirectParam || '/';
     redirect(redirectUrl);
   }
 }

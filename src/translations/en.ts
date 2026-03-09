@@ -2654,6 +2654,105 @@ export const en = {
         secondaryButton: "Call Us"
       }
     },
+    portal: {
+      title: "Retailer Profit Dashboard",
+      subtitle: "Adjust your box counts, selling prices, and shipping to show retailers exactly how much profit they make on each restock.",
+      loading: "Loading your retailer dashboard...",
+      refresh: "Refresh",
+      logout: "Log Out",
+      errors: {
+        loadFailed: "We couldn't load your retailer account details right now.",
+        sessionExpired: "Your retailer session expired. Please log in again."
+      },
+      summary: {
+        totalOrders: "Total wholesale orders",
+        lifetimeSpend: "Lifetime wholesale spend",
+        lastOrder: "Last wholesale order",
+        noOrders: "No orders yet"
+      },
+      calculator: {
+        badge: "Profit calculator",
+        title: "Retail Profit Calculator",
+        description: "Default costs come from your current store price sheet: trial box $25, medium box $36, and large box $45. Shipping defaults to $20 and automatically drops to $0 when the order includes 5 boxes of every size.",
+        shippingLabel: "Shipping cost per order",
+        shippingHelp: "Retailers can override this number for their actual freight cost. The calculator removes shipping automatically once all three box quantities reach 5 or more.",
+        freeShippingUnlocked: "Free shipping is active for this scenario because all three sizes are at 5 boxes or more.",
+        freeShippingLocked: "Add {trial} more trial boxes, {medium} more medium boxes, and {large} more large boxes to unlock free shipping.",
+        inputsTitle: "Scenario inputs",
+        currentScenario: "Current profit snapshot",
+        tableTitle: "Profit by size",
+        tableHeaders: {
+          product: "Product",
+          boxes: "Boxes",
+          units: "Units",
+          revenue: "Revenue",
+          cost: "Landed cost",
+          profit: "Net profit",
+          margin: "Margin"
+        },
+        metrics: {
+          revenue: "Projected revenue",
+          landedCost: "Projected landed cost",
+          netProfit: "Projected net profit",
+          margin: "Net margin"
+        }
+      },
+      graph: {
+        title: "Revenue vs. Cost vs. Profit",
+        description: "The chart updates live from the calculator above. Shipping is allocated across sizes so the profit bars reflect the real landed result.",
+        legend: {
+          revenue: "Revenue",
+          cost: "Landed cost",
+          profit: "Net profit"
+        }
+      },
+      recentOrders: {
+        title: "Recent wholesale orders",
+        empty: "Your recent wholesale orders will appear here once you start ordering through the portal.",
+        columns: {
+          order: "Order",
+          status: "Status",
+          date: "Date",
+          boxes: "Boxes",
+          total: "Total"
+        }
+      },
+      products: {
+        trial: {
+          label: "Trial Bags",
+          unitsPerBox: "{count} bags per box",
+          boxesLabel: "Trial boxes",
+          sellPriceLabel: "Retail price per bag",
+          unitCostLabel: "Wholesale cost per bag: {value}",
+          boxCostLabel: "Wholesale cost per box: {value}"
+        },
+        medium: {
+          label: "Medium Bags",
+          unitsPerBox: "{count} bags per box",
+          boxesLabel: "Medium boxes",
+          sellPriceLabel: "Retail price per bag",
+          unitCostLabel: "Wholesale cost per bag: {value}",
+          boxCostLabel: "Wholesale cost per box: {value}"
+        },
+        large: {
+          label: "Large Bags",
+          unitsPerBox: "{count} bags per box",
+          boxesLabel: "Large boxes",
+          sellPriceLabel: "Retail price per bag",
+          unitCostLabel: "Wholesale cost per bag: {value}",
+          boxCostLabel: "Wholesale cost per box: {value}"
+        }
+      },
+      statuses: {
+        PENDING: "Pending",
+        PAID: "Paid",
+        PROCESSING: "Processing",
+        SHIPPED: "Shipped",
+        DELIVERED: "Delivered",
+        CANCELLED: "Cancelled",
+        REFUNDED: "Refunded"
+      }
+    },
     marketing: {
       title: "Complete Marketing Support",
       description: "We provide everything you need to successfully sell Purrify. From in-store displays to staff training, we've got you covered.",

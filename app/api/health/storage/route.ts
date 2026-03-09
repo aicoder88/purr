@@ -1,6 +1,7 @@
 import * as fs from 'fs/promises';
 import * as path from 'node:path';
 import * as os from 'node:os';
+import { requireAuth } from '@/lib/auth/session';
 
 interface StorageHealthCheck {
   status: 'healthy' | 'degraded' | 'unhealthy';
@@ -18,6 +19,11 @@ interface StorageHealthCheck {
 }
 
 export async function GET(): Promise<Response> {
+  const { authorized } = await requireAuth();
+  if (!authorized) {
+    return Response.json({ status: 'unhealthy', error: 'Unauthorized' }, { status: 401 });
+  }
+
   try {
     const tmpDir = os.tmpdir();
     const testFile = path.join(tmpDir, `.health-check-${Date.now()}`);

@@ -5,6 +5,7 @@ import {
   upsertFreshnessProfile,
 } from '@/lib/freshness-profile';
 import { FRESHNESS_SESSION_COOKIE } from '@/lib/freshness-session';
+import { checkRateLimit, createRateLimitHeaders, getClientIp } from '@/lib/rate-limit';
 
 const FRESHNESS_PROFILE_GET_CACHE_CONTROL = 'private, max-age=300, stale-while-revalidate=600';
 
@@ -70,6 +71,16 @@ export async function GET(request: NextRequest) {
 }
 
 export async function POST(request: NextRequest) {
+  const rateLimitResult = await checkRateLimit(getClientIp(request), 'standard');
+  const rateLimitHeaders = createRateLimitHeaders(rateLimitResult);
+
+  if (!rateLimitResult.success) {
+    return NextResponse.json(
+      { error: 'Too many requests. Please try again later.' },
+      { status: 429, headers: rateLimitHeaders }
+    );
+  }
+
   try {
     const body = await request.json();
     const parsed = freshnessProfileSchema.safeParse(body);
@@ -77,16 +88,16 @@ export async function POST(request: NextRequest) {
     if (!parsed.success) {
       return NextResponse.json(
         { error: 'Invalid freshness profile payload.', details: parsed.error.issues },
-        { status: 400 }
+        { status: 400, headers: rateLimitHeaders }
       );
     }
 
     const profile = await upsertFreshnessProfile(parsed.data);
-    return NextResponse.json({ profile }, { status: 200 });
+    return NextResponse.json({ profile }, { status: 200, headers: rateLimitHeaders });
   } catch {
     return NextResponse.json(
       { error: 'Unable to save freshness profile.' },
-      { status: 500 }
+      { status: 500, headers: rateLimitHeaders }
     );
   }
 }

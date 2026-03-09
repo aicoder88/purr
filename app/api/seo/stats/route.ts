@@ -9,6 +9,7 @@
 export const revalidate = 3600;
 
 import { NextResponse } from 'next/server';
+import { requireAuth } from '@/lib/auth/session';
 import { generateLinkSuggestions } from '@/lib/seo/link-suggestions';
 import { TOPIC_CLUSTERS } from '@/lib/seo/topic-clusters';
 
@@ -88,6 +89,11 @@ const PAGES_WITH_ENHANCED_SEO = [
 const TOTAL_ESTIMATED_PAGES = 50; // Approximate based on sitemap
 
 export async function GET(): Promise<NextResponse> {
+  const { authorized } = await requireAuth();
+  if (!authorized) {
+    return NextResponse.json({ success: false, error: 'Unauthorized' }, { status: 401 });
+  }
+
   try {
     // Get link suggestions stats
     const suggestions = generateLinkSuggestions();
