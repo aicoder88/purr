@@ -144,9 +144,9 @@ The following shows what images the **EN version uses** for each post:
 
 | Post | EN Featured Image | EN OG Image | Content Images |
 |------|-------------------|-------------|----------------|
-| activated-carbon-for-cat-litter-complete-guide | carbon-828w.webp | carbon-828w.webp | activated-carbon-macro-obsidian.webp, iss-air-scrubber-science.webp, microscopic-pores-ghibli.webp, cat-litter-deodorizer-lab-ghibli.webp, coconut-carbon-ghibli.webp |
-| best-cat-litter-deodorizers-2026 | 90day-solution.webp | 90day-solution.webp | cat-litter-deodorizer-lab-ghibli.webp, benefits-hero-science.webp, baking-soda-vs-carbon-macro.webp, science-diagram.webp, iss-air-scrubber-science.webp, fresh-home-cat-panorama.webp |
-| best-cat-litter-for-apartments | apartment-fresh-cat-ghibli.webp | apartment-fresh-cat-ghibli.webp | apartment-airflow-cross-section.webp, activated-carbon-macro-obsidian.webp, fresh-home-cat-panorama.webp |
+| activated-carbon-for-cat-litter-complete-guide | carbon-828w.webp | carbon-828w.webp | activated-carbon-macro-obsidian.webp, iss-air-scrubber-science.webp, microscopic-pores-cinematic.webp, cat-litter-deodorizer-lab-cinematic.webp, coconut-carbon-cinematic.webp |
+| best-cat-litter-deodorizers-2026 | 90day-solution.webp | 90day-solution.webp | cat-litter-deodorizer-lab-cinematic.webp, benefits-hero-science.webp, baking-soda-vs-carbon-macro.webp, science-diagram.webp, iss-air-scrubber-science.webp, fresh-home-cat-panorama.webp |
+| best-cat-litter-for-apartments | apartment-fresh-cat-cinematic.webp | apartment-fresh-cat-cinematic.webp | apartment-airflow-cross-section.webp, activated-carbon-macro-obsidian.webp, fresh-home-cat-panorama.webp |
 | cat-litter-smell-worse-summer | summer-fresh-cat.webp | summer-fresh-cat.webp | summer-heat.jpg, summer-ventilation.jpg |
 
 **Full mapping available in:** `blog_image_audit_report.json` → `goldenStandard`

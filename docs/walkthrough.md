@@ -1,7 +1,7 @@
 # Visual Improvements Walkthrough
 
 ## Batch 1: `how-to-get-rid-of-cat-pee-smell-apartment.json`
-**Status**: ✅ Completed (Hyper-realistic / Miyazaki Style)
+**Status**: ✅ Completed (Hyper-realistic / Cinematic)
 
 ### Blacklight Inspection
 ![Blacklight Inspection](/Users/macmini/.gemini/antigravity/brain/cc36f754-052f-497b-9603-9aebb99fc983/cat-pee-blacklight-inspection.png)
@@ -13,7 +13,7 @@
 ![Prevention Setup](/Users/macmini/.gemini/antigravity/brain/cc36f754-052f-497b-9603-9aebb99fc983/cat-litter-box-prevention-apartment.png)
 
 ## Batch 2: `how-to-get-rid-of-cat-litter-smell-in-apartment.json`
-**Status**: ✅ Completed (Ghibli Style)
+**Status**: ✅ Completed (Cinematic Style)
 
 ### Small Space Airflow
 ![Apartment Airflow](/Users/macmini/.gemini/antigravity/brain/cc36f754-052f-497b-9603-9aebb99fc983/apartment-airflow-cross-section.png)

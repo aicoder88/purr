@@ -20,7 +20,7 @@ Purrify is an e-commerce site for an activated carbon cat litter additive. Serve
 - When requirements are ambiguous, state assumptions explicitly in the final handoff.
 - If a new recurring preference appears, persist it in both `docs/AGENTS.md` and `docs/CLAUDE.md`.
 - For AI image generation, default to creating one image at a time unless the user explicitly requests multiple.
-- Image direction should follow photorealistic cinematic photography with integrated illustrated visual effects — a real photographic scene with soft glowing particles, scientific diagrams, molecule symbols, or energy trails layered into the environment, like scientific visualization using saturated, bright colours blended with real photography.
+- Image direction should follow photorealistic cinematic photography with integrated illustrated visual effects. **Style is universal** (cinematic, saturated, involving glowing particles/FX), but **Scenario rules vary**: if visualizing odor capture, use the funneling/vortex effect with directional arrows pointing INTO carbon. If visualizing cats/homes, focus on pristine, glowing atmospheric beauty. 50mm lens, shallow depth of field, natural film grain, and high color saturation.
 
 ## Commands
 

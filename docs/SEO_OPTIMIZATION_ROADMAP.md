@@ -150,10 +150,10 @@ Pages with **only 1 incoming link** - minimal link equity and poor discoverabili
 Images exceeding 500KB recommendation:
 
 **Categories:**
-1. **Ghibli-style illustrations** (900KB-1MB)
-   - `cat-litter-usage-ghibli.png`
-   - `happy-cat-ghibli.png`
-   - `multi-cat-family-ghibli.png`
+1. **Cinematic illustrated visuals** (900KB-1MB)
+   - `cat-litter-usage-cinematic.png`
+   - `happy-cat-cinematic.png`
+   - `multi-cat-family-cinematic.png`
    - etc.
 
 2. **Team member headshots** (600KB-800KB)

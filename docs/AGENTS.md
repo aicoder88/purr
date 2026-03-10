@@ -25,8 +25,7 @@
 - If a new recurring preference appears, persist it in both `docs/AGENTS.md` and `docs/CLAUDE.md`.
 - For AI image generation, default to creating one image at a time unless the user explicitly requests multiple.
 - Image direction should follow photorealistic cinematic photography with integrated illustrated visual effects — a real photographic scene with soft glowing particles, scientific diagrams, molecule symbols, or energy trails layered into the environment, like scientific visualization using saturated, bright colours blended with real photography.
-- Technical execution: 50mm cinema lens, shallow depth of field, natural film grain, realistic materials, volumetric light, elegant cinematic composition. 
-
+- Technical execution: 50mm cinema lens, shallow depth of field, natural film grain, realistic materials, volumetric light, elegant cinematic composition. Always use high color saturation for a vibrant, punchy look.
 ### No Fabrication Rule
 - Never fabricate or assume the existence of:
   - contact info, social handles, hashtags
@@ -446,10 +445,10 @@ Determine if the request is [LIFESTYLE] (cats, home, nature) or [TECH] (molecule
 **STEP 2: APPLY STYLE PRESETS**
 
 **IF [LIFESTYLE]:**
-- **Style**: Hyper-realistic scenes with subtle Miyazaki-inspired illustrative enhancements.
+- **Style**: Photorealistic cinematic photography with high color saturation and integrated illustrated visual effects.
 - **Vibe**: Magical, pristine, healthy, and thriving.
 - **Lighting**: Gentle dappled lighting with warm golden highlights.
-- **Render**: Hand-painted animation whimsy + 8K photorealistic textures.
+- **Render**: 8K photorealistic textures with vibrant, saturated vivid colors.
 
 **IF [TECH]:**
 - **Style**: Cinematic Macrophotography & 3D Scientific Visualization.
@@ -461,8 +460,10 @@ Determine if the request is [LIFESTYLE] (cats, home, nature) or [TECH] (molecule
 **STEP 3: GENERATE PROMPT TEMPLATE**
 - **Subject**: [Describe the core subject/action in detail]
 - **Setting**: [Describe the environment]
-- **Art Direction**: Photorealistic cinematic photography with integrated illustrated visual effects — a real photographic scene with soft glowing particles, scientific diagrams, molecule symbols, or energy trails layered into the environment.
-- **Color Palette**: Vivid and punchy. Lifestyle: rich emeralds, deep ambers, vibrant pastels. Tech: neon cyans, electric blues, matte charcoal.
+- **Art Direction (Universal)**: Photorealistic cinematic photography with integrated illustrated visual effects. Use fascinated, saturated visualizations (light trails, glows, particles) in ALL scenes.
+- **Scenario - Odor Capture**: MUST appear as a funneling capture effect—wide and scattered in the air, narrowing into a concentrated vortex sucked INTO the carbon. Use directional light trails (vortex arrows) pointing into the granules.
+- **Scenario - General Lifestyle**: Use the same cinematic style for cats, homes, or nature without carbon. Focus on pristine, glowing environments with subtle luminescent accents.
+- **Color Palette**: Vivid and punchy. High color saturation. Lifestyle: rich emeralds, deep ambers, vibrant pastels. Tech: neon cyans, electric blues, matte charcoal.
 - **Camera**: 50mm cinema lens, shallow depth of field, natural film grain, realistic materials, volumetric light.
 
 **STRICT PROHIBITIONS:**

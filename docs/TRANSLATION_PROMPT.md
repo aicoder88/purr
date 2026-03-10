@@ -135,7 +135,7 @@ Return 5 separate JSON objects, clearly labeled with the slug for each.
   "modifiedDate": "2025-12-18T03:00:00.000Z",
   "status": "published",
   "featuredImage": {
-    "url": "/optimized/fresh-home-hero-ghibli.webp",
+    "url": "/optimized/fresh-home-hero-cinematic.webp",
     "alt": "快乐的猫咪在清新干净的家居环境中",
     "width": 1200,
     "height": 630
@@ -147,7 +147,7 @@ Return 5 separate JSON objects, clearly labeled with the slug for each.
     "title": "如何中和猫砂中的氨味（完整指南）",
     "description": "什么能中和猫砂中的氨？探索经过验证的方法...",
     "keywords": ["如何中和猫砂中的氨味", "什么能中和氨"],
-    "ogImage": "/optimized/fresh-home-hero-ghibli.webp"
+    "ogImage": "/optimized/fresh-home-hero-cinematic.webp"
   }
 }
 ```

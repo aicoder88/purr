@@ -270,12 +270,12 @@ A comprehensive catalog of all images in the Purrify website, organized by categ
 | frequency-chart.png | `/public/optimized/frequency-chart.png` | Replacement frequency chart |
 | frequency-action.png | `/public/optimized/frequency-action.png` | Action steps |
 
-### Ghibli-Style Illustrations
+### Cinematic Illustrated Visuals
 
 | File | Path | Description |
 |------|------|-------------|
-| coconut-carbon-ghibli.png | `/public/optimized/coconut-carbon-ghibli.png` | Coconut carbon (Ghibli style) |
-| microscopic-pores-ghibli.png | `/public/optimized/microscopic-pores-ghibli.png` | Microscopic pores (Ghibli style) |
+| coconut-carbon-ghibli.png | `/public/optimized/coconut-carbon-ghibli.png` | Coconut carbon (Cinematic style) |
+| microscopic-pores-ghibli.png | `/public/optimized/microscopic-pores-ghibli.png` | Microscopic pores (Cinematic style) |
 | carbon-trapping-diagram-ghibli.png | `/public/optimized/carbon-trapping-diagram-ghibli.png` | Carbon trapping diagram |
 | lavender-cat-ghibli.png | `/public/optimized/lavender-cat-ghibli.png` | Cat avoiding lavender scents |
 | masking-products-ghibli.png | `/public/optimized/masking-products-ghibli.png` | Masking vs eliminating odors |
@@ -289,8 +289,8 @@ A comprehensive catalog of all images in the Purrify website, organized by categ
 | science-molecule-lab.jpg | `/public/optimized/science-molecule-lab.jpg` | Lab molecule research |
 | cat-fresh-home-ammonia.jpg | `/public/optimized/cat-fresh-home-ammonia.jpg` | Fresh home, no ammonia |
 | molecular-structure-pore-800.png | `/public/optimized/molecular-structure-pore-800.png` | Molecular pore (800px) |
-| winter-cat-window.png | `/public/optimized/winter-cat-window.png` | Cat looking out snowy window (Ghibli style) - Winter Blog Hero |
-| frosted-winter-window.png | `/public/optimized/frosted-winter-window.png` | Frosted window visual (Ghibli style) - Winter Blog Science |
+| winter-cat-window.png | `/public/optimized/winter-cat-window.png` | Cat looking out snowy window (Cinematic style) - Winter Blog Hero |
+| frosted-winter-window.png | `/public/optimized/frosted-winter-window.png` | Frosted window visual (Cinematic style) - Winter Blog Science |
 
 
 ---

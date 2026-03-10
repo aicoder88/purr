@@ -260,7 +260,9 @@ Never generate product images (bags/boxes/logos) with AI -- use existing assets 
 
 - **Purrify** is always capitalized. It is "granules" or "additive", never "powder".
 - Never fabricate contact info, social handles, URLs, or file paths.
-- No black dust/clouds in visuals -- odor is shown being trapped/adsorbed, never released.
+- **Odor Mechanics**: **When visualizing odor capture**, it MUST be shown as a funneling capture effect—wide and scattered in the ambient air, narrowing into a concentrated vortex that is physically sucked deep into the black carbon granules. Use directional light trails as arrows pointing into the pores. 
+- **Scenario Diversity**: Not every image must feature carbon or odor. Use the same Cinematic Art Style for all scenarios (e.g., a cat in a pristine home, geographic locations, product lifestyle), always integrating subtle fascinated saturated visual effects (sparkles, energy trails, or luminescent accents) even if there is no odor/carbon present.
+- **No released odor**: Never show "clouds" or "smoke" that looks like it is being released from the litter.
 - No labels on AI-generated product imagery.
 - Copy tone: professional yet warm, science-backed but accessible.
 
@@ -290,8 +292,10 @@ Never generate product images (bags/boxes/logos) with AI -- use existing assets 
 
 ### [SYSTEM_INSTRUCTION: IMAGE_GENERATOR]
 **Context**: Generating image prompts for Purrify.ca.
-**Art Direction**: Photorealistic cinematic photography with integrated illustrated visual effects — a real photographic scene with soft glowing particles, scientific diagrams, molecule symbols, or energy trails layered into the environment, like scientific visualization using saturated, bright colours blended with real photography. 
-**Technical Specs**: 50mm cinema lens, shallow depth of field, natural film grain, realistic materials, volumetric light, elegant cinematic composition. Subtle luminescent accents interacting with natural lighting.
+**Art Direction (Universal Style)**: Photorealistic cinematic photography with integrated illustrated visual effects — a real photographic scene with soft glowing particles, scientific diagrams, molecule symbols, or energy trails layered into the environment, like scientific visualization using saturated, bright colours blended with real photography. 
+**Scenario - Odor Visualization**: If the scenario involves odor capture, it MUST appear as a funneling effect—wide and scattered in the ambient air, narrowing into a concentrated vortex that is physically sucked deep into the black carbon granules. Use directional light trails as arrows pointing into the pores.
+**Scenario - Lifestyle/Cats**: If the scenario is a cat or a home, focus on a pristine, healthy environment with subtle magical luminescent accents (floating particles, soft glows) to make the scene fascinating and beautiful.
+**Technical Specs**: 50mm cinema lens, shallow depth of field, natural film grain, realistic materials, volumetric light, elegant cinematic composition. Always use high color saturation.
 
 **STEP 1: CLASSIFY MODE**
 [LIFESTYLE] (cats, home, nature) or [TECH] (molecules, filtration, airflow, science).
@@ -299,10 +303,10 @@ Never generate product images (bags/boxes/logos) with AI -- use existing assets 
 **STEP 2: APPLY STYLE PRESETS**
 
 **IF [LIFESTYLE]:**
-- **Style**: Hyper-realistic scenes with subtle Miyazaki-inspired illustrative enhancements.
+- **Style**: Photorealistic cinematic photography with high color saturation and integrated illustrated visual effects.
 - **Vibe**: Magical, pristine, healthy, thriving.
 - **Lighting**: Gentle dappled lighting with warm golden highlights.
-- **Render**: Hand-painted animation whimsy + 8K photorealistic textures.
+- **Render**: 8K photorealistic textures with vibrant, saturated vivid colors.
 
 **IF [TECH]:**
 - **Style**: Cinematic Macrophotography & 3D Scientific Visualization.
