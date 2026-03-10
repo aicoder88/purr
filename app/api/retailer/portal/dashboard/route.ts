@@ -1,6 +1,14 @@
 import { NextRequest } from 'next/server';
 import prisma from '@/lib/prisma';
+import { RetailerOrderStatus } from '@/generated/client/enums';
 import { getRetailerBearerToken, verifyRetailerToken } from '@/lib/retailer-auth';
+
+const COMPLETED_RETAILER_ORDER_STATUSES: RetailerOrderStatus[] = [
+  RetailerOrderStatus.PAID,
+  RetailerOrderStatus.PROCESSING,
+  RetailerOrderStatus.SHIPPED,
+  RetailerOrderStatus.DELIVERED,
+];
 
 async function handler(req: NextRequest): Promise<Response> {
   try {
@@ -43,12 +51,10 @@ async function handler(req: NextRequest): Promise<Response> {
       prisma.retailerOrder.aggregate({
         where: {
           retailerId: retailer.id,
-          status: {
-            notIn: ['CANCELLED', 'REFUNDED'],
-          },
+          status: { in: COMPLETED_RETAILER_ORDER_STATUSES },
         },
         _count: {
-          id: true,
+          _all: true,
         },
         _sum: {
           totalAmount: true,
@@ -85,9 +91,9 @@ async function handler(req: NextRequest): Promise<Response> {
     return Response.json({
       retailer,
       summary: {
-        totalOrders: orderSummary._count.id,
-        lifetimeSpend: orderSummary._sum.totalAmount ?? 0,
-        lastOrderAt: orderSummary._max.createdAt,
+        totalOrders: orderSummary._count?._all ?? 0,
+        lifetimeSpend: orderSummary._sum?.totalAmount ?? 0,
+        lastOrderAt: orderSummary._max?.createdAt ?? null,
       },
       recentOrders: recentOrders.map((order) => ({
         id: order.id,

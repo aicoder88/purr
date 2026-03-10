@@ -21,7 +21,14 @@ export interface RetailerSkuResult {
   revenue: number;
   cost: number;
   shippingShare: number;
+  allInCost: number;
+  costPerBox: number;
+  costPerBag: number;
+  allInCostPerBox: number;
+  allInCostPerBag: number;
   profit: number;
+  profitPerBox: number;
+  profitPerBag: number;
   marginPercent: number;
 }
 
@@ -33,9 +40,19 @@ export interface RetailerCalculatorResult {
   totalCost: number;
   totalProfit: number;
   marginPercent: number;
-  remainingBoxesForFreeShipping: Record<RetailerSkuId, number>;
+  totalBoxes: number;
+  totalBags: number;
+  productCostPerBox: number;
+  productCostPerBag: number;
+  allInCostPerBox: number;
+  allInCostPerBag: number;
+  profitPerBox: number;
+  profitPerBag: number;
+  remainingSpendForFreeShipping: number;
   perSku: Record<RetailerSkuId, RetailerSkuResult>;
 }
+
+type BaseRetailerSkuResult = Pick<RetailerSkuResult, 'id' | 'boxes' | 'units' | 'revenue' | 'cost'>;
 
 export const RETAILER_SKU_CONFIG: Record<RetailerSkuId, RetailerSkuConfig> = {
   trial: {
@@ -63,7 +80,7 @@ export const RETAILER_SKU_CONFIG: Record<RetailerSkuId, RetailerSkuConfig> = {
 
 export const RETAILER_SKU_ORDER: RetailerSkuId[] = ['trial', 'medium', 'large'];
 
-export const FREE_SHIPPING_BOX_THRESHOLD = 5;
+export const FREE_SHIPPING_SUBTOTAL_THRESHOLD = 600;
 export const DEFAULT_RETAILER_SHIPPING_COST = 20;
 
 function roundCurrency(value: number): number {
@@ -79,15 +96,16 @@ function toSafeNumber(value: number): number {
 }
 
 export function qualifiesForRetailerFreeShipping(quantities: Record<RetailerSkuId, number>): boolean {
-  return RETAILER_SKU_ORDER.every((skuId) => toSafeNumber(quantities[skuId]) >= FREE_SHIPPING_BOX_THRESHOLD);
+  const subtotalCost = RETAILER_SKU_ORDER.reduce((sum, skuId) => {
+    const normalizedBoxes = Math.floor(toSafeNumber(quantities[skuId]));
+    return sum + (normalizedBoxes * RETAILER_SKU_CONFIG[skuId].defaultBoxCost);
+  }, 0);
+
+  return roundCurrency(subtotalCost) >= FREE_SHIPPING_SUBTOTAL_THRESHOLD;
 }
 
-export function getRemainingBoxesForFreeShipping(quantities: Record<RetailerSkuId, number>): Record<RetailerSkuId, number> {
-  return {
-    trial: Math.max(0, FREE_SHIPPING_BOX_THRESHOLD - toSafeNumber(quantities.trial)),
-    medium: Math.max(0, FREE_SHIPPING_BOX_THRESHOLD - toSafeNumber(quantities.medium)),
-    large: Math.max(0, FREE_SHIPPING_BOX_THRESHOLD - toSafeNumber(quantities.large)),
-  };
+export function getRemainingSpendForFreeShipping(subtotalCost: number): number {
+  return roundCurrency(Math.max(0, FREE_SHIPPING_SUBTOTAL_THRESHOLD - roundCurrency(subtotalCost)));
 }
 
 export function calculateRetailerProfit(input: RetailerCalculatorInput): RetailerCalculatorResult {
@@ -103,10 +121,7 @@ export function calculateRetailerProfit(input: RetailerCalculatorInput): Retaile
     large: toSafeNumber(input.sellPrices.large),
   };
 
-  const qualifiesForFreeShipping = qualifiesForRetailerFreeShipping(normalizedQuantities);
-  const shippingApplied = qualifiesForFreeShipping ? 0 : roundCurrency(toSafeNumber(input.shippingCost));
-
-  const basePerSku = RETAILER_SKU_ORDER.reduce<Record<RetailerSkuId, Omit<RetailerSkuResult, 'shippingShare' | 'profit' | 'marginPercent'>>>(
+  const basePerSku = RETAILER_SKU_ORDER.reduce<Record<RetailerSkuId, BaseRetailerSkuResult>>(
     (accumulator, skuId) => {
       const config = RETAILER_SKU_CONFIG[skuId];
       const boxes = normalizedQuantities[skuId];
@@ -134,9 +149,25 @@ export function calculateRetailerProfit(input: RetailerCalculatorInput): Retaile
   const subtotalCost = roundCurrency(
     RETAILER_SKU_ORDER.reduce((sum, skuId) => sum + basePerSku[skuId].cost, 0)
   );
+  const qualifiesForFreeShipping = subtotalCost >= FREE_SHIPPING_SUBTOTAL_THRESHOLD;
+  const shippingApplied = qualifiesForFreeShipping ? 0 : roundCurrency(toSafeNumber(input.shippingCost));
   const totalRevenue = roundCurrency(
     RETAILER_SKU_ORDER.reduce((sum, skuId) => sum + basePerSku[skuId].revenue, 0)
   );
+
+  const createInitialSkuResult = (baseRow: BaseRetailerSkuResult): RetailerSkuResult => ({
+    ...baseRow,
+    shippingShare: 0,
+    allInCost: 0,
+    costPerBox: 0,
+    costPerBag: 0,
+    allInCostPerBox: 0,
+    allInCostPerBag: 0,
+    profit: 0,
+    profitPerBox: 0,
+    profitPerBag: 0,
+    marginPercent: 0,
+  });
 
   const perSku = RETAILER_SKU_ORDER.reduce<Record<RetailerSkuId, RetailerSkuResult>>(
     (accumulator, skuId) => {
@@ -144,7 +175,14 @@ export function calculateRetailerProfit(input: RetailerCalculatorInput): Retaile
       const shippingShare = subtotalCost > 0
         ? roundCurrency((baseRow.cost / subtotalCost) * shippingApplied)
         : 0;
-      const profit = roundCurrency(baseRow.revenue - baseRow.cost - shippingShare);
+      const allInCost = roundCurrency(baseRow.cost + shippingShare);
+      const costPerBox = baseRow.boxes > 0 ? roundCurrency(baseRow.cost / baseRow.boxes) : 0;
+      const costPerBag = baseRow.units > 0 ? roundCurrency(baseRow.cost / baseRow.units) : 0;
+      const allInCostPerBox = baseRow.boxes > 0 ? roundCurrency(allInCost / baseRow.boxes) : 0;
+      const allInCostPerBag = baseRow.units > 0 ? roundCurrency(allInCost / baseRow.units) : 0;
+      const profit = roundCurrency(baseRow.revenue - allInCost);
+      const profitPerBox = baseRow.boxes > 0 ? roundCurrency(profit / baseRow.boxes) : 0;
+      const profitPerBag = baseRow.units > 0 ? roundCurrency(profit / baseRow.units) : 0;
       const marginPercent = baseRow.revenue > 0
         ? roundCurrency((profit / baseRow.revenue) * 100)
         : 0;
@@ -152,16 +190,23 @@ export function calculateRetailerProfit(input: RetailerCalculatorInput): Retaile
       accumulator[skuId] = {
         ...baseRow,
         shippingShare,
+        allInCost,
+        costPerBox,
+        costPerBag,
+        allInCostPerBox,
+        allInCostPerBag,
         profit,
+        profitPerBox,
+        profitPerBag,
         marginPercent,
       };
 
       return accumulator;
     },
     {
-      trial: { ...basePerSku.trial, shippingShare: 0, profit: 0, marginPercent: 0 },
-      medium: { ...basePerSku.medium, shippingShare: 0, profit: 0, marginPercent: 0 },
-      large: { ...basePerSku.large, shippingShare: 0, profit: 0, marginPercent: 0 },
+      trial: createInitialSkuResult(basePerSku.trial),
+      medium: createInitialSkuResult(basePerSku.medium),
+      large: createInitialSkuResult(basePerSku.large),
     }
   );
 
@@ -172,17 +217,30 @@ export function calculateRetailerProfit(input: RetailerCalculatorInput): Retaile
   const shippingDelta = roundCurrency(shippingApplied - allocatedShipping);
   if (shippingDelta !== 0) {
     perSku.large.shippingShare = roundCurrency(perSku.large.shippingShare + shippingDelta);
-    perSku.large.profit = roundCurrency(perSku.large.revenue - perSku.large.cost - perSku.large.shippingShare);
+    perSku.large.allInCost = roundCurrency(perSku.large.cost + perSku.large.shippingShare);
+    perSku.large.allInCostPerBox = perSku.large.boxes > 0 ? roundCurrency(perSku.large.allInCost / perSku.large.boxes) : 0;
+    perSku.large.allInCostPerBag = perSku.large.units > 0 ? roundCurrency(perSku.large.allInCost / perSku.large.units) : 0;
+    perSku.large.profit = roundCurrency(perSku.large.revenue - perSku.large.allInCost);
+    perSku.large.profitPerBox = perSku.large.boxes > 0 ? roundCurrency(perSku.large.profit / perSku.large.boxes) : 0;
+    perSku.large.profitPerBag = perSku.large.units > 0 ? roundCurrency(perSku.large.profit / perSku.large.units) : 0;
     perSku.large.marginPercent = perSku.large.revenue > 0
       ? roundCurrency((perSku.large.profit / perSku.large.revenue) * 100)
       : 0;
   }
 
+  const totalBoxes = RETAILER_SKU_ORDER.reduce((sum, skuId) => sum + perSku[skuId].boxes, 0);
+  const totalBags = RETAILER_SKU_ORDER.reduce((sum, skuId) => sum + perSku[skuId].units, 0);
   const totalCost = roundCurrency(subtotalCost + shippingApplied);
   const totalProfit = roundCurrency(totalRevenue - totalCost);
   const marginPercent = totalRevenue > 0
     ? roundCurrency((totalProfit / totalRevenue) * 100)
     : 0;
+  const productCostPerBox = totalBoxes > 0 ? roundCurrency(subtotalCost / totalBoxes) : 0;
+  const productCostPerBag = totalBags > 0 ? roundCurrency(subtotalCost / totalBags) : 0;
+  const allInCostPerBox = totalBoxes > 0 ? roundCurrency(totalCost / totalBoxes) : 0;
+  const allInCostPerBag = totalBags > 0 ? roundCurrency(totalCost / totalBags) : 0;
+  const profitPerBox = totalBoxes > 0 ? roundCurrency(totalProfit / totalBoxes) : 0;
+  const profitPerBag = totalBags > 0 ? roundCurrency(totalProfit / totalBags) : 0;
 
   return {
     qualifiesForFreeShipping,
@@ -192,7 +250,15 @@ export function calculateRetailerProfit(input: RetailerCalculatorInput): Retaile
     totalCost,
     totalProfit,
     marginPercent,
-    remainingBoxesForFreeShipping: getRemainingBoxesForFreeShipping(normalizedQuantities),
+    totalBoxes,
+    totalBags,
+    productCostPerBox,
+    productCostPerBag,
+    allInCostPerBox,
+    allInCostPerBag,
+    profitPerBox,
+    profitPerBag,
+    remainingSpendForFreeShipping: getRemainingSpendForFreeShipping(subtotalCost),
     perSku,
   };
 }

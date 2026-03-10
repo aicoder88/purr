@@ -2673,37 +2673,44 @@ export const en = {
       calculator: {
         badge: "Profit calculator",
         title: "Retail Profit Calculator",
-        description: "Default costs come from your current store price sheet: trial box $25, medium box $36, and large box $45. A typical starter package across all three sizes totals $106 before freight, or $126 with the standard $20 shipping charge. Shipping automatically drops to $0 when the order includes 5 boxes of every size.",
-        shippingHighlight: "Shipping automatically drops to $0 when the order includes 5 boxes of every size.",
+        description: "Default costs come from your current store price sheet: trial box $25, medium box $36, and large box $45. A typical starter package across all three sizes totals $106 before freight, or $126 with the standard $20 shipping charge. Shipping automatically drops to $0 once the wholesale subtotal reaches $600.",
+        allInCostNote: "All-in cost includes product cost plus the shipping share allocated to each size.",
+        shippingHighlight: "Shipping automatically drops to $0 once the wholesale subtotal reaches $600.",
         shippingLabel: "Shipping cost per order",
-        shippingHelp: "Retailers can override this number for their actual freight cost. With one box of each size, the landed order total is $126. The calculator removes shipping automatically once all three box quantities reach 5 or more.",
-        freeShippingUnlocked: "Free shipping is active for this scenario because all three sizes are at 5 boxes or more.",
-        freeShippingLocked: "Add {trial} more trial boxes, {medium} more medium boxes, and {large} more large boxes to unlock free shipping.",
+        shippingHelp: "Retailers can override this number for their actual freight cost. With one box of each size, the all-in shipment total is $126. The calculator removes shipping automatically once the wholesale subtotal reaches $600.",
+        freeShippingUnlocked: "Free shipping is active for this scenario because the wholesale subtotal is at least $600.",
+        freeShippingLocked: "Add {amount} more in wholesale product value to unlock free shipping.",
         inputsTitle: "Scenario inputs",
         currentScenario: "Current profit snapshot",
         tableTitle: "Profit by size",
         tableHeaders: {
           product: "Product",
+          shipmentTotal: "Total shipment",
           boxes: "Boxes",
-          units: "Units",
+          bags: "Bags",
           revenue: "Revenue",
-          cost: "Landed cost",
+          costPerBox: "Product cost / box",
+          costPerBag: "Product cost / bag",
+          allInCost: "All-in cost",
+          profitPerBox: "Profit / box",
+          profitPerBag: "Profit / bag",
           profit: "Net profit",
-          margin: "Margin"
+          margin: "Profit margin"
         },
         metrics: {
+          wholesaleSubtotal: "Wholesale subtotal",
           revenue: "Projected revenue",
-          landedCost: "Projected landed cost",
+          allInCost: "Projected all-in cost",
           netProfit: "Projected net profit",
-          margin: "Net margin"
+          margin: "Profit margin"
         }
       },
       graph: {
         title: "Revenue vs. Cost vs. Profit",
-        description: "The chart updates live from the calculator above. Shipping is allocated across sizes so the profit bars reflect the real landed result.",
+        description: "The chart updates live from the calculator above. All-in cost includes product cost plus allocated shipping so the profit bars match the real shipment math.",
         legend: {
           revenue: "Revenue",
-          cost: "Landed cost",
+          cost: "All-in cost",
           profit: "Net profit"
         }
       },
@@ -2728,24 +2735,30 @@ export const en = {
           unitsPerBox: "{count} bags per box",
           boxesLabel: "Trial boxes",
           sellPriceLabel: "Retail price per bag",
-          unitCostLabel: "Wholesale cost per bag: {value}",
-          boxCostLabel: "Wholesale cost per box: {value}"
+          costPerBagLabel: "Product cost per bag: {value}",
+          costPerBoxLabel: "Product cost per box: {value}",
+          profitPerBagLabel: "Profit per bag: {value}",
+          profitPerBoxLabel: "Profit per box: {value}"
         },
         medium: {
           label: "Medium Bags",
           unitsPerBox: "{count} bags per box",
           boxesLabel: "Medium boxes",
           sellPriceLabel: "Retail price per bag",
-          unitCostLabel: "Wholesale cost per bag: {value}",
-          boxCostLabel: "Wholesale cost per box: {value}"
+          costPerBagLabel: "Product cost per bag: {value}",
+          costPerBoxLabel: "Product cost per box: {value}",
+          profitPerBagLabel: "Profit per bag: {value}",
+          profitPerBoxLabel: "Profit per box: {value}"
         },
         large: {
           label: "Large Bags",
           unitsPerBox: "{count} bags per box",
           boxesLabel: "Large boxes",
           sellPriceLabel: "Retail price per bag",
-          unitCostLabel: "Wholesale cost per bag: {value}",
-          boxCostLabel: "Wholesale cost per box: {value}"
+          costPerBagLabel: "Product cost per bag: {value}",
+          costPerBoxLabel: "Product cost per box: {value}",
+          profitPerBagLabel: "Profit per bag: {value}",
+          profitPerBoxLabel: "Profit per box: {value}"
         }
       },
       statuses: {

@@ -25,6 +25,7 @@ import {
 } from 'lucide-react';
 import {
   DEFAULT_RETAILER_SHIPPING_COST,
+  FREE_SHIPPING_SUBTOTAL_THRESHOLD,
   RETAILER_SKU_CONFIG,
   RETAILER_SKU_ORDER,
   RetailerSkuId,
@@ -84,6 +85,7 @@ interface PortalCopy {
     badge: string;
     title: string;
     description: string;
+    allInCostNote: string;
     shippingHighlight: string;
     shippingLabel: string;
     shippingHelp: string;
@@ -94,16 +96,22 @@ interface PortalCopy {
     tableTitle: string;
     tableHeaders: {
       product: string;
+      shipmentTotal: string;
       boxes: string;
-      units: string;
+      bags: string;
       revenue: string;
-      cost: string;
+      costPerBox: string;
+      costPerBag: string;
+      allInCost: string;
+      profitPerBox: string;
+      profitPerBag: string;
       profit: string;
       margin: string;
     };
     metrics: {
       revenue: string;
-      landedCost: string;
+      wholesaleSubtotal: string;
+      allInCost: string;
       netProfit: string;
       margin: string;
     };
@@ -137,8 +145,10 @@ interface PortalCopy {
     unitsPerBox: string;
     boxesLabel: string;
     sellPriceLabel: string;
-    unitCostLabel: string;
-    boxCostLabel: string;
+    costPerBagLabel: string;
+    costPerBoxLabel: string;
+    profitPerBagLabel: string;
+    profitPerBoxLabel: string;
   }>;
   statuses: Record<string, string>;
 }
@@ -374,17 +384,17 @@ export default function DashboardContent() {
   const chartData = useMemo(() => RETAILER_SKU_ORDER.map((skuId) => ({
     name: copy.products[skuId].label,
     revenue: calculatorResult.perSku[skuId].revenue,
-    cost: calculatorResult.perSku[skuId].cost + calculatorResult.perSku[skuId].shippingShare,
+    cost: calculatorResult.perSku[skuId].allInCost,
     profit: calculatorResult.perSku[skuId].profit,
   })), [calculatorResult.perSku, copy.products]);
 
   const freeShippingProgress = useMemo(() => {
-    const completed = RETAILER_SKU_ORDER.reduce((total, skuId) => (
-      total + Math.min(5, Math.max(0, quantities[skuId]))
-    ), 0);
+    if (calculatorResult.qualifiesForFreeShipping) {
+      return 100;
+    }
 
-    return (completed / (RETAILER_SKU_ORDER.length * 5)) * 100;
-  }, [quantities]);
+    return (calculatorResult.subtotalCost / FREE_SHIPPING_SUBTOTAL_THRESHOLD) * 100;
+  }, [calculatorResult.qualifiesForFreeShipping, calculatorResult.subtotalCost]);
 
   const retailer = dashboard?.retailer ?? fallbackRetailer;
   const summary = dashboard?.summary ?? {
@@ -417,9 +427,7 @@ export default function DashboardContent() {
   const freeShippingMessage = calculatorResult.qualifiesForFreeShipping
     ? copy.calculator.freeShippingUnlocked
     : copy.calculator.freeShippingLocked
-      .replace('{trial}', String(calculatorResult.remainingBoxesForFreeShipping.trial))
-      .replace('{medium}', String(calculatorResult.remainingBoxesForFreeShipping.medium))
-      .replace('{large}', String(calculatorResult.remainingBoxesForFreeShipping.large));
+      .replace('{amount}', currencyFormatter.format(calculatorResult.remainingSpendForFreeShipping));
 
   if (isLoading && !retailer) {
     return (
@@ -561,7 +569,7 @@ export default function DashboardContent() {
                 const config = RETAILER_SKU_CONFIG[skuId];
                 const skuCopy = copy.products[skuId];
                 const productResult = calculatorResult.perSku[skuId];
-                const progress = Math.min(100, (quantities[skuId] / 5) * 100);
+                const progress = Math.min(100, (productResult.cost / FREE_SHIPPING_SUBTOTAL_THRESHOLD) * 100);
                 const accent = SKU_ACCENTS[skuId];
 
                 return (
@@ -587,8 +595,10 @@ export default function DashboardContent() {
                           </div>
 
                           <div className="mt-4 grid gap-2 text-sm text-[#556156] sm:grid-cols-2">
-                            <div>{skuCopy.boxCostLabel.replace('{value}', currencyFormatter.format(config.defaultBoxCost))}</div>
-                            <div>{skuCopy.unitCostLabel.replace('{value}', currencyFormatter.format(config.defaultUnitCost))}</div>
+                            <div>{skuCopy.costPerBoxLabel.replace('{value}', currencyFormatter.format(productResult.costPerBox))}</div>
+                            <div>{skuCopy.costPerBagLabel.replace('{value}', currencyFormatter.format(productResult.costPerBag))}</div>
+                            <div>{skuCopy.profitPerBoxLabel.replace('{value}', currencyFormatter.format(productResult.profitPerBox))}</div>
+                            <div>{skuCopy.profitPerBagLabel.replace('{value}', currencyFormatter.format(productResult.profitPerBag))}</div>
                           </div>
                         </div>
 
@@ -631,13 +641,13 @@ export default function DashboardContent() {
 
                       <div className="mt-5">
                         <div className="mb-2 flex items-center justify-between text-xs font-semibold uppercase tracking-[0.18em] text-[#697062]">
-                          <span>{copy.calculator.tableHeaders.boxes}</span>
-                          <span>{Math.min(5, Math.max(0, quantities[skuId]))}/5</span>
+                          <span>{copy.calculator.metrics.wholesaleSubtotal}</span>
+                          <span>{currencyFormatter.format(productResult.cost)}</span>
                         </div>
                         <div className="h-2.5 rounded-full bg-white/80">
                           <div
                             className={`h-full rounded-full transition-[width] duration-500 ${accent.meter}`}
-                            style={{ width: `${progress}%` }}
+                            style={{ width: `${Math.min(100, Math.max(0, progress))}%` }}
                           />
                         </div>
                       </div>
@@ -667,7 +677,7 @@ export default function DashboardContent() {
                   <div className="mt-4 h-2.5 rounded-full bg-white/12">
                     <div
                       className="h-full rounded-full bg-[linear-gradient(90deg,#FF3131_0%,#FF2D87_52%,#5B2EFF_100%)] transition-[width] duration-500"
-                      style={{ width: `${Math.min(100, Math.max(10, freeShippingProgress))}%` }}
+                      style={{ width: `${Math.min(100, Math.max(0, freeShippingProgress))}%` }}
                     />
                   </div>
                   <p className="mt-4 text-sm leading-6 text-[#dceae2]">
@@ -677,12 +687,17 @@ export default function DashboardContent() {
 
                 <div className="mt-5 grid gap-4 sm:grid-cols-2">
                   <ScenarioMetric
+                    label={copy.calculator.metrics.wholesaleSubtotal}
+                    value={currencyFormatter.format(calculatorResult.subtotalCost)}
+                    accentClassName="bg-[#1b8a5a]"
+                  />
+                  <ScenarioMetric
                     label={copy.calculator.metrics.revenue}
                     value={currencyFormatter.format(calculatorResult.totalRevenue)}
                     accentClassName="bg-[#FF3131]"
                   />
                   <ScenarioMetric
-                    label={copy.calculator.metrics.landedCost}
+                    label={copy.calculator.metrics.allInCost}
                     value={currencyFormatter.format(calculatorResult.totalCost)}
                     accentClassName="bg-[#5B2EFF]"
                   />
@@ -765,6 +780,9 @@ export default function DashboardContent() {
               <h2 className="mt-2 font-heading text-3xl font-black tracking-[-0.04em] text-[#10231c]">
                 {copy.calculator.tableTitle}
               </h2>
+              <p className="mt-2 text-sm leading-6 text-[#667062]">
+                {copy.calculator.allInCostNote}
+              </p>
             </div>
           </div>
 
@@ -775,10 +793,14 @@ export default function DashboardContent() {
                   <tr>
                     {[
                       copy.calculator.tableHeaders.product,
-                      copy.calculator.tableHeaders.boxes,
-                      copy.calculator.tableHeaders.units,
                       copy.calculator.tableHeaders.revenue,
-                      copy.calculator.tableHeaders.cost,
+                      copy.calculator.tableHeaders.boxes,
+                      copy.calculator.tableHeaders.bags,
+                      copy.calculator.tableHeaders.costPerBox,
+                      copy.calculator.tableHeaders.costPerBag,
+                      copy.calculator.tableHeaders.allInCost,
+                      copy.calculator.tableHeaders.profitPerBox,
+                      copy.calculator.tableHeaders.profitPerBag,
                       copy.calculator.tableHeaders.profit,
                       copy.calculator.tableHeaders.margin,
                     ].map((heading) => (
@@ -802,11 +824,19 @@ export default function DashboardContent() {
                             {copy.products[skuId].unitsPerBox.replace('{count}', String(RETAILER_SKU_CONFIG[skuId].unitsPerBox))}
                           </div>
                         </td>
+                        <td className="px-4 py-4 text-[#435347]">{currencyFormatter.format(row.revenue)}</td>
                         <td className="px-4 py-4 text-[#435347]">{row.boxes}</td>
                         <td className="px-4 py-4 text-[#435347]">{row.units}</td>
-                        <td className="px-4 py-4 text-[#435347]">{currencyFormatter.format(row.revenue)}</td>
+                        <td className="px-4 py-4 text-[#435347]">{currencyFormatter.format(row.costPerBox)}</td>
+                        <td className="px-4 py-4 text-[#435347]">{currencyFormatter.format(row.costPerBag)}</td>
                         <td className="px-4 py-4 text-[#435347]">
-                          {currencyFormatter.format(row.cost + row.shippingShare)}
+                          {currencyFormatter.format(row.allInCost)}
+                        </td>
+                        <td className="px-4 py-4 text-[#435347]">
+                          {currencyFormatter.format(row.profitPerBox)}
+                        </td>
+                        <td className="px-4 py-4 text-[#435347]">
+                          {currencyFormatter.format(row.profitPerBag)}
                         </td>
                         <td className="px-4 py-4 font-semibold text-[#FF2D87]">
                           {currencyFormatter.format(row.profit)}
@@ -816,6 +846,21 @@ export default function DashboardContent() {
                     );
                   })}
                 </tbody>
+                <tfoot className="border-t border-[#e1dac9] bg-[#fff9ef]">
+                  <tr>
+                    <td className="px-4 py-4 font-semibold text-[#10231c]">{copy.calculator.tableHeaders.shipmentTotal}</td>
+                    <td className="px-4 py-4 font-semibold text-[#10231c]">{currencyFormatter.format(calculatorResult.totalRevenue)}</td>
+                    <td className="px-4 py-4 font-semibold text-[#10231c]">{calculatorResult.totalBoxes}</td>
+                    <td className="px-4 py-4 font-semibold text-[#10231c]">{calculatorResult.totalBags}</td>
+                    <td className="px-4 py-4 font-semibold text-[#10231c]">{currencyFormatter.format(calculatorResult.productCostPerBox)}</td>
+                    <td className="px-4 py-4 font-semibold text-[#10231c]">{currencyFormatter.format(calculatorResult.productCostPerBag)}</td>
+                    <td className="px-4 py-4 font-semibold text-[#10231c]">{currencyFormatter.format(calculatorResult.totalCost)}</td>
+                    <td className="px-4 py-4 font-semibold text-[#10231c]">{currencyFormatter.format(calculatorResult.profitPerBox)}</td>
+                    <td className="px-4 py-4 font-semibold text-[#10231c]">{currencyFormatter.format(calculatorResult.profitPerBag)}</td>
+                    <td className="px-4 py-4 font-semibold text-[#FF2D87]">{currencyFormatter.format(calculatorResult.totalProfit)}</td>
+                    <td className="px-4 py-4 font-semibold text-[#10231c]">{calculatorResult.marginPercent.toFixed(2)}%</td>
+                  </tr>
+                </tfoot>
               </table>
             </div>
           </div>

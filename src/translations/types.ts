@@ -1922,6 +1922,7 @@ export interface TranslationType {
         badge: string;
         title: string;
         description: string;
+        allInCostNote: string;
         shippingLabel: string;
         shippingHelp: string;
         freeShippingUnlocked: string;
@@ -1931,16 +1932,22 @@ export interface TranslationType {
         tableTitle: string;
         tableHeaders: {
           product: string;
+          shipmentTotal: string;
           boxes: string;
-          units: string;
+          bags: string;
           revenue: string;
-          cost: string;
+          costPerBox: string;
+          costPerBag: string;
+          allInCost: string;
+          profitPerBox: string;
+          profitPerBag: string;
           profit: string;
           margin: string;
         };
         metrics: {
+          wholesaleSubtotal: string;
           revenue: string;
-          landedCost: string;
+          allInCost: string;
           netProfit: string;
           margin: string;
         };
@@ -1971,24 +1978,30 @@ export interface TranslationType {
           unitsPerBox: string;
           boxesLabel: string;
           sellPriceLabel: string;
-          unitCostLabel: string;
-          boxCostLabel: string;
+          costPerBagLabel: string;
+          costPerBoxLabel: string;
+          profitPerBagLabel: string;
+          profitPerBoxLabel: string;
         };
         medium: {
           label: string;
           unitsPerBox: string;
           boxesLabel: string;
           sellPriceLabel: string;
-          unitCostLabel: string;
-          boxCostLabel: string;
+          costPerBagLabel: string;
+          costPerBoxLabel: string;
+          profitPerBagLabel: string;
+          profitPerBoxLabel: string;
         };
         large: {
           label: string;
           unitsPerBox: string;
           boxesLabel: string;
           sellPriceLabel: string;
-          unitCostLabel: string;
-          boxCostLabel: string;
+          costPerBagLabel: string;
+          costPerBoxLabel: string;
+          profitPerBagLabel: string;
+          profitPerBoxLabel: string;
         };
       };
       statuses: {

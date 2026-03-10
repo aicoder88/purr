@@ -2023,37 +2023,44 @@ export const fr = {
       calculator: {
         badge: "Calculateur de profit",
         title: "Calculateur de profit détaillant",
-        description: "Les coûts par défaut proviennent de votre grille actuelle: boîte d'essai 25 $, boîte moyenne 36 $ et grande boîte 45 $. Un ensemble de départ typique couvrant les trois formats totalise 106 $ avant transport, soit 126 $ avec les frais de livraison standards de 20 $. La livraison tombe automatiquement à 0 $ lorsque la commande comprend 5 boîtes de chaque format.",
-        shippingHighlight: "La livraison tombe automatiquement à 0 $ lorsque la commande comprend 5 boîtes de chaque format.",
+        description: "Les coûts par défaut proviennent de votre grille actuelle: boîte d'essai 25 $, boîte moyenne 36 $ et grande boîte 45 $. Un ensemble de départ typique couvrant les trois formats totalise 106 $ avant transport, soit 126 $ avec les frais de livraison standards de 20 $. La livraison tombe automatiquement à 0 $ dès que le sous-total grossiste atteint 600 $.",
+        allInCostNote: "Le coût tout compris inclut le coût produit plus la part de livraison attribuée à chaque format.",
+        shippingHighlight: "La livraison tombe automatiquement à 0 $ dès que le sous-total grossiste atteint 600 $.",
         shippingLabel: "Coût de livraison par commande",
-        shippingHelp: "Les détaillants peuvent remplacer ce montant par leur coût réel. Avec une boîte de chaque format, le total rendu est de 126 $. Le calculateur retire automatiquement la livraison dès que les trois formats atteignent 5 boîtes ou plus.",
-        freeShippingUnlocked: "La livraison gratuite est active pour ce scénario parce que les trois formats sont à 5 boîtes ou plus.",
-        freeShippingLocked: "Ajoutez encore {trial} boîtes d'essai, {medium} boîtes moyennes et {large} grandes boîtes pour débloquer la livraison gratuite.",
+        shippingHelp: "Les détaillants peuvent remplacer ce montant par leur coût réel. Avec une boîte de chaque format, le total tout compris est de 126 $. Le calculateur retire automatiquement la livraison dès que le sous-total grossiste atteint 600 $.",
+        freeShippingUnlocked: "La livraison gratuite est active pour ce scénario parce que le sous-total grossiste atteint au moins 600 $.",
+        freeShippingLocked: "Ajoutez encore {amount} en valeur grossiste pour débloquer la livraison gratuite.",
         inputsTitle: "Paramètres du scénario",
         currentScenario: "Aperçu actuel du profit",
         tableTitle: "Profit par format",
         tableHeaders: {
           product: "Produit",
+          shipmentTotal: "Expédition totale",
           boxes: "Boîtes",
-          units: "Unités",
+          bags: "Sacs",
           revenue: "Revenus",
-          cost: "Coût rendu",
+          costPerBox: "Coût produit / boîte",
+          costPerBag: "Coût produit / sac",
+          allInCost: "Coût tout compris",
+          profitPerBox: "Profit / boîte",
+          profitPerBag: "Profit / sac",
           profit: "Profit net",
-          margin: "Marge"
+          margin: "Marge bénéficiaire"
         },
         metrics: {
+          wholesaleSubtotal: "Sous-total grossiste",
           revenue: "Revenus projetés",
-          landedCost: "Coût rendu projeté",
+          allInCost: "Coût tout compris projeté",
           netProfit: "Profit net projeté",
-          margin: "Marge nette"
+          margin: "Marge bénéficiaire"
         }
       },
       graph: {
         title: "Revenus vs coût vs profit",
-        description: "Le graphique se met à jour en direct à partir du calculateur ci-dessus. La livraison est répartie entre les formats afin que les barres de profit reflètent le résultat réel.",
+        description: "Le graphique se met à jour en direct à partir du calculateur ci-dessus. Le coût tout compris inclut le coût produit plus la livraison répartie afin que les barres de profit reflètent le vrai calcul d'expédition.",
         legend: {
           revenue: "Revenus",
-          cost: "Coût rendu",
+          cost: "Coût tout compris",
           profit: "Profit net"
         }
       },
@@ -2078,24 +2085,30 @@ export const fr = {
           unitsPerBox: "{count} sacs par boîte",
           boxesLabel: "Boîtes d'essai",
           sellPriceLabel: "Prix de détail par sac",
-          unitCostLabel: "Coût grossiste par sac : {value}",
-          boxCostLabel: "Coût grossiste par boîte : {value}"
+          costPerBagLabel: "Coût produit par sac : {value}",
+          costPerBoxLabel: "Coût produit par boîte : {value}",
+          profitPerBagLabel: "Profit par sac : {value}",
+          profitPerBoxLabel: "Profit par boîte : {value}"
         },
         medium: {
           label: "Sacs moyens",
           unitsPerBox: "{count} sacs par boîte",
           boxesLabel: "Boîtes moyennes",
           sellPriceLabel: "Prix de détail par sac",
-          unitCostLabel: "Coût grossiste par sac : {value}",
-          boxCostLabel: "Coût grossiste par boîte : {value}"
+          costPerBagLabel: "Coût produit par sac : {value}",
+          costPerBoxLabel: "Coût produit par boîte : {value}",
+          profitPerBagLabel: "Profit par sac : {value}",
+          profitPerBoxLabel: "Profit par boîte : {value}"
         },
         large: {
           label: "Grands sacs",
           unitsPerBox: "{count} sacs par boîte",
           boxesLabel: "Grandes boîtes",
           sellPriceLabel: "Prix de détail par sac",
-          unitCostLabel: "Coût grossiste par sac : {value}",
-          boxCostLabel: "Coût grossiste par boîte : {value}"
+          costPerBagLabel: "Coût produit par sac : {value}",
+          costPerBoxLabel: "Coût produit par boîte : {value}",
+          profitPerBagLabel: "Profit par sac : {value}",
+          profitPerBoxLabel: "Profit par boîte : {value}"
         }
       },
       statuses: {
