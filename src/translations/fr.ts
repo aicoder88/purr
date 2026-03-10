@@ -2024,6 +2024,7 @@ export const fr = {
         badge: "Calculateur de profit",
         title: "Calculateur de profit détaillant",
         description: "Les coûts par défaut proviennent de votre grille actuelle: boîte d'essai 25 $, boîte moyenne 36 $ et grande boîte 45 $. Un ensemble de départ typique couvrant les trois formats totalise 106 $ avant transport, soit 126 $ avec les frais de livraison standards de 20 $. La livraison tombe automatiquement à 0 $ lorsque la commande comprend 5 boîtes de chaque format.",
+        shippingHighlight: "La livraison tombe automatiquement à 0 $ lorsque la commande comprend 5 boîtes de chaque format.",
         shippingLabel: "Coût de livraison par commande",
         shippingHelp: "Les détaillants peuvent remplacer ce montant par leur coût réel. Avec une boîte de chaque format, le total rendu est de 126 $. Le calculateur retire automatiquement la livraison dès que les trois formats atteignent 5 boîtes ou plus.",
         freeShippingUnlocked: "La livraison gratuite est active pour ce scénario parce que les trois formats sont à 5 boîtes ou plus.",

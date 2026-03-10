@@ -84,6 +84,7 @@ interface PortalCopy {
     badge: string;
     title: string;
     description: string;
+    shippingHighlight: string;
     shippingLabel: string;
     shippingHelp: string;
     freeShippingUnlocked: string;
@@ -296,9 +297,9 @@ export default function DashboardContent() {
   const [isLoading, setIsLoading] = useState(true);
 
   const [quantities, setQuantities] = useState<Record<RetailerSkuId, number>>({
-    trial: 1,
-    medium: 1,
-    large: 1,
+    trial: 5,
+    medium: 5,
+    large: 5,
   });
   const [sellPrices, setSellPrices] = useState<Record<RetailerSkuId, number>>({
     trial: RETAILER_SKU_CONFIG.trial.defaultSellPrice,
@@ -394,9 +395,24 @@ export default function DashboardContent() {
   const recentOrders = dashboard?.recentOrders ?? [];
   const hasOrders = summary.totalOrders > 0;
   const orderCtaLabel = hasOrders ? copy.actions.reorderNow : copy.actions.placeFirstOrder;
+  const orderEmailBody = [
+    'Hello Purrify team,',
+    '',
+    "I'd like to place an order of:",
+    '',
+    `- ${quantities.trial} trial boxes`,
+    `- ${quantities.medium} medium boxes`,
+    `- ${quantities.large} large boxes`,
+    '',
+    'My store address is:',
+    '',
+    'My phone number is:',
+    '',
+    'and the email to send the invoice is:',
+  ].join('\n');
   const orderCtaHref = `mailto:${WHOLESALE_EMAIL}?subject=${encodeURIComponent(
     hasOrders ? 'Purrify wholesale reorder' : 'Purrify first wholesale order'
-  )}`;
+  )}&body=${encodeURIComponent(orderEmailBody)}`;
 
   const freeShippingMessage = calculatorResult.qualifiesForFreeShipping
     ? copy.calculator.freeShippingUnlocked
@@ -518,6 +534,9 @@ export default function DashboardContent() {
               <p className="mt-3 max-w-3xl text-base leading-7 text-[#556156]">
                 {copy.calculator.description}
               </p>
+              <div className="mt-4 inline-flex max-w-3xl items-center rounded-[20px] border border-[#ffb9d8] bg-[#fff1f8] px-4 py-3 text-sm font-semibold text-[#c22770] shadow-[0_16px_36px_rgba(255,45,135,0.08)]">
+                {copy.calculator.shippingHighlight}
+              </div>
             </div>
 
             <div className="mt-8 rounded-[28px] border border-[#eadfd2] bg-white/85 p-5 shadow-[0_20px_40px_rgba(51,51,51,0.05)]">
