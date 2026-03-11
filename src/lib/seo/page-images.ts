@@ -6,6 +6,7 @@
 
 import { sampleBlogPosts } from '../../data/blog-posts';
 import { BLOG_FEATURED_IMAGE_MAP } from '@/generated/blog-featured-image-map';
+import { LEARN_PAGE_PREVIEW_IMAGES } from '@/lib/learn/page-preview-images';
 
 export interface PageImage {
   image: string;
@@ -84,34 +85,7 @@ export const PAGE_IMAGES: Record<string, PageImage> = {
   },
 
   // Learn pages
-  '/learn/solutions/ammonia-smell-cat-litter': {
-    image: '/optimized/marketing/catonbed-640w.avif',
-    alt: 'Cat relaxing on a freshly made bed in a clean home',
-  },
-  '/learn/solutions/apartment-cat-smell-solution': {
-    image: '/optimized/blog/small-apartment-odor-control.webp',
-    alt: 'Modern apartment living space',
-  },
-  '/learn/solutions/natural-cat-litter-additive': {
-    image: '/optimized/blog/natural-cat-litter.webp',
-    alt: 'Natural ingredients for cat care',
-  },
-  '/learn/solutions/multiple-cats-odor-control': {
-    image: '/optimized/blog/multiple-cats-together.webp',
-    alt: 'Multiple cats in a home environment',
-  },
-  '/learn/solutions/litter-box-smell-elimination': {
-    image: '/optimized/marketing/before-after.webp',
-    alt: 'Litter box odor elimination guide',
-  },
-  '/learn/solutions/how-to-neutralize-ammonia-cat-litter': {
-    image: '/optimized/blog/ammonia-neutralize-hero-cinematic-v2.webp',
-    alt: 'Cat owner using activated carbon granules to neutralize ammonia in a litter box',
-  },
-  '/learn/solutions/senior-cat-litter-solutions': {
-    image: '/optimized/marketing/gigi.webp',
-    alt: 'Senior cat care solutions',
-  },
+  ...LEARN_PAGE_PREVIEW_IMAGES,
   '/learn/how-it-works': {
     image: '/optimized/blog/cat-litter-deodorizer-guide.webp',
     alt: 'Scientific explanation of odor control',

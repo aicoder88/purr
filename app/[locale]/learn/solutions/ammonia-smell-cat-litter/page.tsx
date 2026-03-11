@@ -4,6 +4,7 @@ import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 import { SITE_NAME, SITE_URL } from '@/lib/constants';
 import { stripContext } from '@/lib/seo-utils';
+import { LEARN_PAGE_PREVIEW_IMAGES } from '@/lib/learn/page-preview-images';
 import AmmoniaSmellPageClient from '@/app/learn/solutions/ammonia-smell-cat-litter/AmmoniaSmellPageClient';
 import { locales, isValidLocale } from '@/i18n/config';
 
@@ -17,7 +18,7 @@ interface PageProps {
 
 const pageTitle = `Cat Litter Smells Like Ammonia? Baking Soda Can't Fix It (Here's Why) | ${SITE_NAME}`;
 const pageDescription = "That eye-watering ammonia isn't your cat's fault—it's chemistry. Baking soda and ammonia are BOTH alkaline, so they don't neutralize each other. Here's what actually works.";
-const heroImage = 'https://www.purrify.ca/optimized/blog/ammonia-hero.webp';
+const heroImage = `${SITE_URL}${LEARN_PAGE_PREVIEW_IMAGES['/learn/solutions/ammonia-smell-cat-litter'].image}`;
 
 export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
     const { locale } = await params;

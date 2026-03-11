@@ -3,6 +3,10 @@
  * Tests for GET /api/seo/stats
  */
 
+jest.mock('@/lib/auth/session', () => ({
+  requireAuth: jest.fn(async () => ({ authorized: true })),
+}));
+
 import { GET } from '../../../app/api/seo/stats/route';
 import { NextResponse } from 'next/server';
 

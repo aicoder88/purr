@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 import { locales, isValidLocale } from '@/i18n/config';
 import { SITE_NAME } from '@/lib/constants';
+import { LEARN_PAGE_PREVIEW_IMAGES } from '@/lib/learn/page-preview-images';
 import { buildLocalizedMetadataAlternates } from '@/lib/seo-utils';
 import HowActivatedCarbonWorksClient from '@/app/learn/how-activated-carbon-works/HowActivatedCarbonWorksClient';
 import {
@@ -28,6 +29,7 @@ export async function generateMetadata({ params }: LocalizedHowActivatedCarbonWo
 
   const isFrench = locale === 'fr';
   const baseUrl = 'https://www.purrify.ca';
+  const heroImage = `${baseUrl}${LEARN_PAGE_PREVIEW_IMAGES['/learn/how-activated-carbon-works'].image}`;
   const alternates = buildLocalizedMetadataAlternates('/learn/how-activated-carbon-works/', locale);
   const canonicalPath = alternates.canonical;
 
@@ -55,9 +57,9 @@ export async function generateMetadata({ params }: LocalizedHowActivatedCarbonWo
       locale: isFrench ? 'fr_CA' : 'en_CA',
       images: [
         {
-          url: `${baseUrl}/optimized/logos/purrify-logo.png`,
+          url: heroImage,
           width: 1200,
-          height: 800,
+          height: 675,
           alt: isFrench ? 'Carbone actif' : 'Activated carbon',
         },
       ],
@@ -72,7 +74,7 @@ export async function generateMetadata({ params }: LocalizedHowActivatedCarbonWo
       description: isFrench
         ? 'Science et mécanisme du carbone actif.'
         : 'Science and mechanism of activated carbon.',
-      images: [`${baseUrl}/optimized/logos/purrify-logo.png`],
+      images: [heroImage],
     },
     robots: {
       index: true,

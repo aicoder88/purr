@@ -1,9 +1,5 @@
 import { shouldRedirectToLocalizedPath } from '@/lib/i18n/locale-redirect';
 
-jest.mock('next-auth/jwt', () => ({
-  getToken: jest.fn(),
-}));
-
 import {
   detectPreferredLocale,
   getAllowedQueryParams,

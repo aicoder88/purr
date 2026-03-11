@@ -4,6 +4,7 @@ import { Container } from '@/components/ui/container';
 import { useTranslations, useLocale } from 'next-intl';
 import type { Locale } from '@/i18n/config';
 import { localizePath } from '@/lib/i18n/locale-path';
+import { getLearnPagePreviewImage } from '@/lib/learn/page-preview-images';
 
 type Article = {
   title: string;
@@ -106,8 +107,8 @@ const ALL_ARTICLES: Article[] = [
   {
     title: 'Ammonia Smell from Cat Litter Solution',
     href: '/learn/solutions/ammonia-smell-cat-litter',
-    image: '/optimized/marketing/catonbed-640w.avif',
-    alt: 'Cat relaxing on a freshly made bed in a clean home'
+    image: '/optimized/blog/ammonia-hero-ghibli.webp',
+    alt: 'Curious cat sitting beside a litter box with ammonia wisps rising like little spirits'
   },
   {
     title: 'Apartment Cat Smell Solution',
@@ -148,8 +149,8 @@ const ALL_ARTICLES: Article[] = [
   {
     title: 'How to Neutralize Ammonia in Cat Litter',
     href: '/learn/solutions/how-to-neutralize-ammonia-cat-litter',
-    image: '/optimized/blog/ammonia-science.webp',
-    alt: 'Scientific approach to neutralizing ammonia odors'
+    image: '/optimized/blog/ammonia-neutralize-hero-cinematic-v2.webp',
+    alt: 'How to neutralize ammonia smell in cat litter box'
   },
   {
     title: 'Litter Box Smell Elimination Guide',
@@ -184,23 +185,29 @@ export function RelatedArticles({ currentPath, limit = 3 }: { currentPath?: stri
           {t('relatedArticles.title')}
         </h2>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-          {items.map((item) => (
-            <article key={item.href} className="group rounded-xl overflow-hidden border border-[#E0EFC7] dark:border-gray-700 bg-white dark:bg-gray-800/80 shadow-sm hover:shadow-md transition-all">
-              <Link href={localizePath(item.href, locale as Locale)} prefetch={false} className="block focus:outline-none focus:ring-2 focus:ring-[#03E46A]">
-                <div className="relative aspect-video overflow-hidden">
-                  <Image src={item.image} alt={item.alt} fill sizes="(max-width: 768px) 100vw, 33vw" className="object-cover transition-transform duration-500 group-hover:scale-105" />
-                </div>
-                <div className="p-4">
-                  <h3 className="font-heading text-lg font-semibold text-[#5B2EFF] dark:text-[#3694FF] group-hover:text-[#5B2EFF]/80 dark:group-hover:text-[#3694FF]/80">
-                    {item.title}
-                  </h3>
-                  <p className="text-sm text-electric-indigo-600 dark:text-indigo-400 mt-2">
-                    {t('relatedArticles.readMore')} →
-                  </p>
-                </div>
-              </Link>
-            </article>
-          ))}
+          {items.map((item) => {
+            const preview = getLearnPagePreviewImage(item.href);
+            const image = preview?.image || item.image;
+            const alt = preview?.alt || item.alt;
+
+            return (
+              <article key={item.href} className="group rounded-xl overflow-hidden border border-[#E0EFC7] dark:border-gray-700 bg-white dark:bg-gray-800/80 shadow-sm hover:shadow-md transition-all">
+                <Link href={localizePath(item.href, locale as Locale)} prefetch={false} className="block focus:outline-none focus:ring-2 focus:ring-[#03E46A]">
+                  <div className="relative aspect-video overflow-hidden">
+                    <Image src={image} alt={alt} fill sizes="(max-width: 768px) 100vw, 33vw" className="object-cover transition-transform duration-500 group-hover:scale-105" />
+                  </div>
+                  <div className="p-4">
+                    <h3 className="font-heading text-lg font-semibold text-[#5B2EFF] dark:text-[#3694FF] group-hover:text-[#5B2EFF]/80 dark:group-hover:text-[#3694FF]/80">
+                      {item.title}
+                    </h3>
+                    <p className="text-sm text-electric-indigo-600 dark:text-indigo-400 mt-2">
+                      {t('relatedArticles.readMore')} →
+                    </p>
+                  </div>
+                </Link>
+              </article>
+            );
+          })}
         </div>
       </Container>
     </section>

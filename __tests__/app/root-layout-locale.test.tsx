@@ -1,6 +1,6 @@
 import type { ReactElement, ReactNode } from 'react';
 
-const headersMock = jest.fn();
+const getLocaleMock = jest.fn();
 const setRequestLocaleMock = jest.fn();
 const getScopedMessagesMock = jest.fn();
 
@@ -8,11 +8,8 @@ jest.mock('next/font/google', () => ({
   Inter: () => ({ variable: '--font-inter' }),
 }));
 
-jest.mock('next/headers', () => ({
-  headers: () => headersMock(),
-}));
-
 jest.mock('next-intl/server', () => ({
+  getLocale: () => getLocaleMock(),
   setRequestLocale: (locale: string) => setRequestLocaleMock(locale),
 }));
 
@@ -41,7 +38,7 @@ jest.mock('@/components/performance/DeferredThirdPartyMounts', () => ({
 describe('RootLayout locale handling', () => {
   beforeEach(() => {
     jest.clearAllMocks();
-    headersMock.mockResolvedValue(new Headers([['x-pathname', '/fr/']]));
+    getLocaleMock.mockResolvedValue('fr');
     getScopedMessagesMock.mockResolvedValue({
       accessibility: {
         gtmNoscriptTitle: 'Google Tag Manager',
@@ -55,6 +52,6 @@ describe('RootLayout locale handling', () => {
 
     expect(setRequestLocaleMock).toHaveBeenCalledWith('fr');
     expect(getScopedMessagesMock).toHaveBeenCalledWith('fr', ['root']);
-    expect(ui.props.lang).toBe('fr');
+    expect(ui.props.lang).toBe('fr-CA');
   });
 });

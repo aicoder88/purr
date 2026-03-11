@@ -3,6 +3,10 @@
  * Tests for POST /api/seo/validate
  */
 
+jest.mock('@/lib/auth/session', () => ({
+  requireAuth: jest.fn(async () => ({ authorized: true })),
+}));
+
 import { POST } from '../../../app/api/seo/validate/route';
 
 describe('/api/seo/validate', () => {

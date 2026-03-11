@@ -11,6 +11,7 @@ import Image from "next/image";
 import Link from "next/link";
 import type { ComponentType } from "react";
 import { getLocale, getTranslations } from "next-intl/server";
+import { getLearnPagePreviewImage } from "@/lib/learn/page-preview-images";
 
 type CardConfig = {
   icon: ComponentType<{ className?: string }>;
@@ -84,7 +85,7 @@ export async function WhyPurrify() {
 
   const cards = CARD_CONFIG.map((card) => ({
     icon: card.icon,
-    image: card.image,
+    image: getLearnPagePreviewImage(card.href)?.image || card.image,
     href: `${localePrefix}${card.href}`,
     title: read(card.titleKeys),
     description: read(card.descriptionKeys),

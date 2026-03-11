@@ -7,6 +7,7 @@ import { Container } from '@/components/ui/container';
 import { RelatedArticles } from '@/components/blog/RelatedArticles';
 import { ChevronRight, Home, Sparkles, Wind, Cat, Building2, Users, Leaf, Heart } from 'lucide-react';
 import { localizePath } from '@/lib/i18n/locale-path';
+import { getLearnPagePreviewImage } from '@/lib/learn/page-preview-images';
 
 interface SolutionCard {
   title: string;
@@ -118,6 +119,10 @@ export default function SolutionsPageClient() {
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
             {SOLUTIONS.map((solution) => {
               const Icon = solution.icon;
+              const preview = getLearnPagePreviewImage(solution.href);
+              const image = preview?.image || solution.image;
+              const alt = preview?.alt || solution.alt;
+
               return (
                 <Link
                   key={solution.href}
@@ -126,8 +131,8 @@ export default function SolutionsPageClient() {
                 >
                   <div className="relative aspect-video overflow-hidden">
                     <Image
-                      src={solution.image}
-                      alt={solution.alt}
+                      src={image}
+                      alt={alt}
                       fill
                       sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                       className="object-cover transition-transform duration-500 group-hover:scale-105"

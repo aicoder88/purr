@@ -3,6 +3,10 @@
  * Tests for GET /api/seo/link-suggestions
  */
 
+jest.mock('@/lib/auth/session', () => ({
+  requireAuth: jest.fn(async () => ({ authorized: true })),
+}));
+
 import { GET } from '../../../app/api/seo/link-suggestions/route';
 
 describe('/api/seo/link-suggestions', () => {

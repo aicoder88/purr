@@ -6,8 +6,7 @@
 import Link from 'next/link';
 import Image from 'next/image';
 import { Container } from '@/components/ui/container';
-import { BLOG_FEATURED_IMAGE_MAP } from '@/generated/blog-featured-image-map';
-
+import { getPageImage } from '@/lib/seo/page-images';
 
 interface RelatedContentClientProps {
   relatedPages: Array<{ url: string; title: string; type: 'hub' | 'spoke' }>;
@@ -15,35 +14,6 @@ interface RelatedContentClientProps {
   title: string;
   readMoreText: string;
   className?: string;
-}
-
-function normalizePath(url: string): string {
-  const withoutQuery = url.split('?')[0].split('#')[0];
-  return withoutQuery.replace(/\/+$/, '') || '/';
-}
-
-function getPageImage(url: string): { image: string; alt: string } {
-  const normalizedUrl = normalizePath(url);
-  const localeAgnosticUrl = normalizedUrl.replace(/^\/(en|fr|es|zh)(?=\/)/, '') || '/';
-  const blogImage = BLOG_FEATURED_IMAGE_MAP[normalizedUrl] || BLOG_FEATURED_IMAGE_MAP[localeAgnosticUrl];
-  if (blogImage) {
-    return blogImage;
-  }
-
-  const pageImages: Record<string, { image: string; alt: string }> = {
-    '/learn': { image: '/optimized/blog/cat-litter-deodorizer-guide.webp', alt: 'Cat litter box maintenance guide' },
-    '/learn/faq': { image: '/optimized/blog/multi-cat-household.webp', alt: 'Multi-cat household tips' },
-    '/learn/cat-litter-guide': { image: '/optimized/blog/cat-litter-deodorizer-guide.webp', alt: 'Cat litter substrate guide' },
-    '/learn/how-it-works': { image: '/optimized/blog/Carbon-sktech.webp', alt: 'How activated carbon works' },
-    '/learn/science': { image: '/optimized/blog/science-molecule-lab.webp', alt: 'Science of activated carbon' },
-    '/learn/safety': { image: '/optimized/blog/deodorizers-with-kittens.webp', alt: 'Safety information' },
-    '/learn/glossary': { image: '/optimized/blog/cat-litter-deodorizer-guide.webp', alt: 'Glossary of terms' },
-    '/learn/alternatives': { image: '/optimized/blog/powder-vs-spray-hero-828w.avif', alt: 'Product alternatives' },
-    '/b2b': { image: '/optimized/blog/multi-cat-household.webp', alt: 'B2B wholesale partnership' },
-    '/contact': { image: '/optimized/blog/happy-owner-cat-ghibli.webp', alt: 'Contact us' },
-  };
-
-  return pageImages[normalizedUrl] || { image: '/optimized/blog/cat-litter-deodorizer-guide.webp', alt: 'Related article' };
 }
 
 export function RelatedContentClient({

@@ -61,7 +61,7 @@ jobs:
           node-version: 22
           cache: 'pnpm'
       - run: pnpm install
-      - run: pnpm test -- --ci --coverage
+      - run: pnpm exec jest --ci --coverage
 
   bundle-analyzer:
     runs-on: ubuntu-latest
@@ -74,6 +74,4 @@ jobs:
           node-version: 22
           cache: 'pnpm'
       - run: pnpm install
-      - run: pnpm build
-      - uses: github-actions/jest-coverage-comment@v2
-        # Or @next/bundle-analyzer output
+      - run: pnpm analyze
