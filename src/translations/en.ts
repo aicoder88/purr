@@ -1145,19 +1145,26 @@ export const en = {
     ],
     retailer: [
       {
+        id: "chico-arthur-sauve-laval",
+        businessName: "Chico - Boutique d'animaux | Bd Arthur-Sauvé, Laval",
+        businessType: "Owner",
+        location: "Laval, QC",
+        quote: "I've honestly received a lot from all my employees who use it. It's very good. It's... it's magic."
+      },
+      {
+        id: "pitou-minou-kirkland",
+        businessName: "Pitou Minou & Compagnons (Kirkland)",
+        businessType: "Gabriel, Manager",
+        location: "Kirkland, QC",
+        quote: "My clients tell me it gets rid of most, or all of the smell, and the cats don't even notice it!"
+      },
+      {
         id: "pattes-et-griffes-sainte-therese",
         businessName: "Pattes et Griffes – Sainte‑Thérèse",
         businessType: "Store Owner / Manager",
         location: "Sainte‑Thérèse, QC",
         quote: "Our customers ask for Purrify by name now. It's an easy recommendation at the counter and reorders have been consistent month after month.",
         metric: "30 day reorder cycle"
-      },
-      {
-        id: "chico-arthur-sauve-laval",
-        businessName: "Chico - Boutique d'animaux | Bd Arthur-Sauvé, Laval",
-        businessType: "Owner",
-        location: "Laval, QC",
-        quote: "I've honestly received a lot from all my employees who use it. It's very good. It's... it's magic."
       },
       {
         id: "kong-animalerie-montreal",

@@ -9,6 +9,7 @@ import { WhyPurrify } from '@/components/sections/why-purrify';
 import { ScienceSection } from '@/components/sections/science-section';
 import { HomepageTestimonials } from '@/components/sections/homepage-testimonials';
 import { BlogPreview } from '@/components/sections/blog-preview';
+import { HomepageRetailerTestimonials } from '@/components/sections/homepage-retailer-testimonials';
 import { ScrollingAnnouncementBar } from '@/components/sections/scrolling-announcement-bar';
 import { Stores } from '@/components/sections/stores';
 import { ErrorBoundary } from '@/components/ui/error-boundary';
@@ -178,6 +179,12 @@ export default async function HomePage() {
           <div className="cv-auto cis-720">
             <ErrorBoundary>
               <AgitationSection />
+            </ErrorBoundary>
+          </div>
+
+          <div className="cv-auto cis-720">
+            <ErrorBoundary>
+              <HomepageRetailerTestimonials />
             </ErrorBoundary>
           </div>
 

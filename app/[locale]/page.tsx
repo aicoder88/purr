@@ -6,6 +6,7 @@ import { WhyPurrify } from '@/components/sections/why-purrify';
 import { ScienceSection } from '@/components/sections/science-section';
 import { HomepageTestimonials } from '@/components/sections/homepage-testimonials';
 import { BlogPreview } from '@/components/sections/blog-preview';
+import { HomepageRetailerTestimonials } from '@/components/sections/homepage-retailer-testimonials';
 import { ScrollingAnnouncementBar } from '@/components/sections/scrolling-announcement-bar';
 import { Stores } from '@/components/sections/stores';
 import { WaitlistSection } from '@/components/sections/newsletter';
@@ -140,6 +141,10 @@ export default async function LocalizedHomePage({ params }: LocalizedHomepagePro
 
                     <ErrorBoundary>
                         <AgitationSection />
+                    </ErrorBoundary>
+
+                    <ErrorBoundary>
+                        <HomepageRetailerTestimonials />
                     </ErrorBoundary>
 
                     <ErrorBoundary>
