@@ -8,8 +8,10 @@
 
 export interface EnvironmentConfig {
   // Required
-  nextAuthSecret: string;
-  nextAuthUrl: string;
+  authSecret: string;
+  appUrl: string;
+  supabaseUrl: string;
+  supabaseAnonKey: string;
   databaseUrl: string;
 
   // Optional - AI
@@ -61,12 +63,20 @@ class EnvironmentValidator {
     const warnings: string[] = [];
 
     // Check required variables
-    if (!process.env.NEXTAUTH_SECRET) {
-      errors.push('NEXTAUTH_SECRET is required for authentication');
+    if (!process.env.AUTH_SECRET && !process.env.NEXTAUTH_SECRET) {
+      errors.push('AUTH_SECRET is required for application security');
     }
 
-    if (!process.env.NEXTAUTH_URL) {
-      errors.push('NEXTAUTH_URL is required (e.g., https://www.purrify.ca)');
+    if (!process.env.APP_URL && !process.env.NEXTAUTH_URL) {
+      errors.push('APP_URL is required (e.g., https://www.purrify.ca)');
+    }
+
+    if (!process.env.NEXT_PUBLIC_SUPABASE_URL) {
+      errors.push('NEXT_PUBLIC_SUPABASE_URL is required for Supabase Auth');
+    }
+
+    if (!process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY) {
+      errors.push('NEXT_PUBLIC_SUPABASE_ANON_KEY is required for Supabase Auth');
     }
 
     if (!process.env.DATABASE_URL) {
@@ -128,8 +138,10 @@ class EnvironmentValidator {
 
     return {
       // Required
-      nextAuthSecret: process.env.NEXTAUTH_SECRET!,
-      nextAuthUrl: process.env.NEXTAUTH_URL!,
+      authSecret: process.env.AUTH_SECRET ?? process.env.NEXTAUTH_SECRET!,
+      appUrl: process.env.APP_URL ?? process.env.NEXTAUTH_URL!,
+      supabaseUrl: process.env.NEXT_PUBLIC_SUPABASE_URL!,
+      supabaseAnonKey: process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!,
       databaseUrl: process.env.DATABASE_URL!,
 
       // Optional - AI

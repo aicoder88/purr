@@ -1,14 +1,17 @@
 import type { Metadata } from 'next';
 import PageContent from './PageContent';
 import { SITE_NAME, CONTACT_INFO } from '@/lib/constants';
+import { RETAILER_LOCATIONS } from '@/lib/store-locations';
+
+const retailerCount = RETAILER_LOCATIONS.length;
 
 export const metadata: Metadata = {
   title: 'Find Purrify Near You - Store Locator',
-  description: 'Find pet stores selling Purrify near you. Discover our partner retailers across Quebec, Ontario, and British Columbia. 25+ locations across Canada.',
+  description: `Find pet stores selling Purrify near you. Discover our ${retailerCount} partner retailers across Quebec, Ontario, British Columbia, and Alberta.`,
   keywords: ['Purrify stores', 'pet store locator', 'find Purrify', 'cat litter additive retailers', 'where to buy Purrify'],
   openGraph: {
     title: 'Find Purrify Near You - Store Locator',
-    description: 'Find pet stores selling Purrify near you. Discover our partner retailers across Quebec, Ontario, and British Columbia.',
+    description: `Find pet stores selling Purrify near you. Discover our ${retailerCount} partner retailers across Quebec, Ontario, British Columbia, and Alberta.`,
     url: 'https://www.purrify.ca/stores/',
     images: [
       {
@@ -33,7 +36,7 @@ const storeLocatorSchema = {
   '@type': 'WebPage',
   '@id': 'https://www.purrify.ca/stores/#webpage',
   name: `${SITE_NAME} Store Locator`,
-  description: 'Find pet stores selling Purrify across Canada. 25+ retail locations in Quebec, Ontario, and British Columbia.',
+  description: `Find pet stores selling Purrify across Canada. ${retailerCount} retail locations in Quebec, Ontario, British Columbia, and Alberta.`,
   url: 'https://www.purrify.ca/stores/',
   mainEntity: {
     '@type': 'ItemList',
@@ -42,6 +45,7 @@ const storeLocatorSchema = {
       { '@type': 'ListItem', position: 1, item: { '@type': 'LocalBusiness', name: 'Quebec', address: { '@type': 'PostalAddress', addressRegion: 'QC', addressCountry: 'CA' } } },
       { '@type': 'ListItem', position: 2, item: { '@type': 'LocalBusiness', name: 'Ontario', address: { '@type': 'PostalAddress', addressRegion: 'ON', addressCountry: 'CA' } } },
       { '@type': 'ListItem', position: 3, item: { '@type': 'LocalBusiness', name: 'British Columbia', address: { '@type': 'PostalAddress', addressRegion: 'BC', addressCountry: 'CA' } } },
+      { '@type': 'ListItem', position: 4, item: { '@type': 'LocalBusiness', name: 'Alberta', address: { '@type': 'PostalAddress', addressRegion: 'AB', addressCountry: 'CA' } } },
     ]
   },
   publisher: {

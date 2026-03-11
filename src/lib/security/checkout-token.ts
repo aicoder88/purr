@@ -13,10 +13,10 @@ import { createHmac, timingSafeEqual } from 'crypto';
  * - Works seamlessly with guest checkout (no user authentication required)
  */
 
-const SECRET = process.env.NEXTAUTH_SECRET;
+const SECRET = process.env.AUTH_SECRET ?? process.env.NEXTAUTH_SECRET;
 
 if (!SECRET) {
-  console.error('[SECURITY] NEXTAUTH_SECRET is not set. Checkout tokens will fail.');
+  console.error('[SECURITY] AUTH_SECRET is not set. Checkout tokens will fail.');
 }
 
 /**
@@ -26,7 +26,7 @@ if (!SECRET) {
  */
 export function signOrderId(orderId: string): string {
   if (!SECRET) {
-    throw new Error('NEXTAUTH_SECRET is not configured');
+    throw new Error('AUTH_SECRET is not configured');
   }
   
   return createHmac('sha256', SECRET).update(orderId).digest('hex');
@@ -42,7 +42,7 @@ export function signOrderId(orderId: string): string {
  */
 export function verifyCheckoutToken(orderId: string, token: string): boolean {
   if (!SECRET) {
-    console.error('[SECURITY] Cannot verify checkout token: NEXTAUTH_SECRET not set');
+    console.error('[SECURITY] Cannot verify checkout token: AUTH_SECRET not set');
     return false;
   }
   

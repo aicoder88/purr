@@ -1,7 +1,6 @@
-import { NextRequest } from 'next/server';
 import prisma from '@/lib/prisma';
 import { RetailerOrderStatus } from '@/generated/client/enums';
-import { getRetailerBearerToken, verifyRetailerToken } from '@/lib/retailer-auth';
+import { getRetailerPortalAccessForRouteHandler } from '@/lib/auth/retailer-portal';
 
 const COMPLETED_RETAILER_ORDER_STATUSES: RetailerOrderStatus[] = [
   RetailerOrderStatus.PAID,
@@ -10,47 +9,35 @@ const COMPLETED_RETAILER_ORDER_STATUSES: RetailerOrderStatus[] = [
   RetailerOrderStatus.DELIVERED,
 ];
 
-async function handler(req: NextRequest): Promise<Response> {
+async function handler(): Promise<Response> {
   try {
-    const token = getRetailerBearerToken(req);
-    if (!token) {
-      return Response.json({ message: 'Unauthorized' }, { status: 401 });
-    }
-
-    const payload = verifyRetailerToken(token);
-    if (!payload?.retailerId) {
-      return Response.json({ message: 'Unauthorized' }, { status: 401 });
-    }
-
     if (!prisma) {
       return Response.json({ message: 'Database unavailable. Please try again later.' }, { status: 500 });
     }
 
-    const retailer = await prisma.retailer.findUnique({
-      where: { id: payload.retailerId },
-      select: {
-        id: true,
-        businessName: true,
-        contactName: true,
-        email: true,
-        status: true,
-        createdAt: true,
-        lastLoginAt: true,
-      },
-    });
-
-    if (!retailer) {
-      return Response.json({ message: 'Retailer not found' }, { status: 404 });
+    const access = await getRetailerPortalAccessForRouteHandler();
+    if (access.state === 'unauthenticated') {
+      return Response.json(
+        { code: 'retailer_session_expired', message: 'Unauthorized' },
+        { status: 401 }
+      );
     }
 
-    if (retailer.status !== 'ACTIVE') {
-      return Response.json({ message: 'Retailer account is not active' }, { status: 403 });
+    if (access.state !== 'active') {
+      return Response.json(
+        {
+          code: access.code,
+          message: access.message,
+          status: access.state === 'blocked' ? access.status : undefined,
+        },
+        { status: 403 }
+      );
     }
 
     const [orderSummary, recentOrders] = await Promise.all([
       prisma.retailerOrder.aggregate({
         where: {
-          retailerId: retailer.id,
+          retailerId: access.retailer.id,
           status: { in: COMPLETED_RETAILER_ORDER_STATUSES },
         },
         _count: {
@@ -65,7 +52,7 @@ async function handler(req: NextRequest): Promise<Response> {
       }),
       prisma.retailerOrder.findMany({
         where: {
-          retailerId: retailer.id,
+          retailerId: access.retailer.id,
         },
         orderBy: {
           createdAt: 'desc',
@@ -89,7 +76,7 @@ async function handler(req: NextRequest): Promise<Response> {
     ]);
 
     return Response.json({
-      retailer,
+      retailer: access.retailer,
       summary: {
         totalOrders: orderSummary._count?._all ?? 0,
         lifetimeSpend: orderSummary._sum?.totalAmount ?? 0,

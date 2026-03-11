@@ -1,7 +1,7 @@
 'use client';
 
 import { useState } from 'react';
-import { getSession, signIn } from 'next-auth/react';
+import { getSession, signIn } from '@/lib/auth/client';
 import Link from 'next/link';
 import { useTranslations } from 'next-intl';
 import { Eye, EyeOff } from 'lucide-react';

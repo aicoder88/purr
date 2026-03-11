@@ -1,9 +1,14 @@
 "use client";
 
 import { useState, useEffect } from 'react';
-import { useRouter } from 'next/navigation';
+import Link from 'next/link';
+import { useMessages } from 'next-intl';
+import { useRouter, useSearchParams } from 'next/navigation';
 import { Eye, EyeOff, Mail, Lock, MapPin, Building2 } from 'lucide-react';
+import { getSession, signIn } from '@/lib/auth/client';
 import { cn } from '@/lib/utils';
+import { en as englishMessages } from '@/translations/en';
+import type { TranslationType } from '@/translations/types';
 
 interface LoginForm {
   email: string;
@@ -33,8 +38,121 @@ interface RegisterForm {
   sameAsBilling: boolean;
 }
 
+interface RetailerPortalLoginCopy {
+  title: string;
+  subtitle: string;
+  emailLabel: string;
+  emailPlaceholder: string;
+  passwordLabel: string;
+  passwordPlaceholder: string;
+  showPassword: string;
+  hidePassword: string;
+  signIn: string;
+  signingIn: string;
+  forgotPassword: string;
+  toggleApply: string;
+  toggleSignIn: string;
+  register: {
+    title: string;
+    subtitle: string;
+    businessSectionTitle: string;
+    shippingSectionTitle: string;
+    securitySectionTitle: string;
+    businessNameLabel: string;
+    businessNamePlaceholder: string;
+    contactNameLabel: string;
+    contactNamePlaceholder: string;
+    phoneLabel: string;
+    phonePlaceholder: string;
+    emailLabel: string;
+    emailPlaceholder: string;
+    taxIdLabel: string;
+    taxIdPlaceholder: string;
+    streetLabel: string;
+    streetPlaceholder: string;
+    cityLabel: string;
+    cityPlaceholder: string;
+    provinceLabel: string;
+    provincePlaceholder: string;
+    postalCodeLabel: string;
+    postalCodePlaceholder: string;
+    sameAsBilling: string;
+    passwordLabel: string;
+    passwordPlaceholder: string;
+    confirmPasswordLabel: string;
+    confirmPasswordPlaceholder: string;
+    submit: string;
+    submitting: string;
+    success: string;
+    provinces: Record<string, string>;
+    validation: {
+      passwordMismatch: string;
+    };
+  };
+  errors: {
+    invalidCredentials: string;
+    loginFailed: string;
+    registrationFailed: string;
+    pending: string;
+    rejected: string;
+    sessionExpired: string;
+    suspended: string;
+    unauthorized: string;
+  };
+}
+
+const INITIAL_REGISTER_FORM: RegisterForm = {
+  businessName: '',
+  contactName: '',
+  email: '',
+  phone: '',
+  password: '',
+  confirmPassword: '',
+  taxId: '',
+  shippingAddress: {
+    street: '',
+    city: '',
+    province: '',
+    postalCode: '',
+  },
+  billingAddress: {
+    street: '',
+    city: '',
+    province: '',
+    postalCode: '',
+  },
+  sameAsBilling: true,
+};
+
+function resolveLoginErrorMessage(
+  errorCode: string | null | undefined,
+  copy: RetailerPortalLoginCopy
+) {
+  switch (errorCode) {
+    case 'retailer_pending':
+      return copy.errors.pending;
+    case 'retailer_rejected':
+      return copy.errors.rejected;
+    case 'retailer_session_expired':
+      return copy.errors.sessionExpired;
+    case 'retailer_suspended':
+      return copy.errors.suspended;
+    case 'retailer_unauthorized':
+      return copy.errors.unauthorized;
+    default:
+      return '';
+  }
+}
+
 export default function RetailerLoginPage() {
+  const messages = useMessages() as TranslationType;
   const router = useRouter();
+  const searchParams = useSearchParams();
+  const copy = (
+    messages.retailers?.portal?.loginPage
+    ?? englishMessages.retailers.portal.loginPage
+  ) as RetailerPortalLoginCopy;
+  const registerCopy = copy.register;
   const [isLogin, setIsLogin] = useState(true);
   const [showPassword, setShowPassword] = useState(false);
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
@@ -47,36 +165,28 @@ export default function RetailerLoginPage() {
     password: '',
   });
 
-  const [registerForm, setRegisterForm] = useState<RegisterForm>({
-    businessName: '',
-    contactName: '',
-    email: '',
-    phone: '',
-    password: '',
-    confirmPassword: '',
-    taxId: '',
-    shippingAddress: {
-      street: '',
-      city: '',
-      province: '',
-      postalCode: '',
-    },
-    billingAddress: {
-      street: '',
-      city: '',
-      province: '',
-      postalCode: '',
-    },
-    sameAsBilling: true,
-  });
+  const [registerForm, setRegisterForm] = useState<RegisterForm>(INITIAL_REGISTER_FORM);
 
   // Check if already logged in
   useEffect(() => {
-    const token = localStorage.getItem('retailerToken');
-    if (token) {
-      router.push('/retailer/portal/dashboard');
-    }
+    const checkSession = async () => {
+      const session = await getSession();
+      if (session?.user?.role === 'retailer') {
+        router.push('/retailer/portal/dashboard');
+      }
+    };
+
+    void checkSession();
   }, [router]);
+
+  useEffect(() => {
+    const queryError = searchParams.get('error');
+    const queryErrorMessage = resolveLoginErrorMessage(queryError, copy);
+
+    if (queryErrorMessage) {
+      setError(queryErrorMessage);
+    }
+  }, [copy, searchParams]);
 
   const handleLogin = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -84,26 +194,29 @@ export default function RetailerLoginPage() {
     setError('');
 
     try {
-      const response = await fetch('/api/retailer/login/', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(loginForm),
+      const result = await signIn('retailer-credentials', {
+        email: loginForm.email.trim().toLowerCase(),
+        password: loginForm.password,
+        redirect: false,
+        callbackUrl: '/retailer/portal/dashboard',
       });
 
-      const data = await response.json();
+      if (result?.error) {
+        const mappedError = resolveLoginErrorMessage(result.code, copy);
+        if (mappedError) {
+          setError(mappedError);
+        } else if (result.status === 401) {
+          setError(copy.errors.invalidCredentials);
+        } else {
+          setError(copy.errors.loginFailed);
+        }
 
-      if (!response.ok) {
-        throw new Error(data.message || 'Login failed');
+        return;
       }
 
-      // Store token and retailer info
-      localStorage.setItem('retailerToken', data.token);
-      localStorage.setItem('retailerInfo', JSON.stringify(data.retailer));
-
-      // Redirect to dashboard
       router.push('/retailer/portal/dashboard');
-    } catch (err) {
-      setError(err instanceof Error ? err.message : 'Login failed. Please try again.');
+    } catch {
+      setError(copy.errors.loginFailed);
     } finally {
       setLoading(false);
     }
@@ -118,11 +231,7 @@ export default function RetailerLoginPage() {
     try {
       // Validation
       if (registerForm.password !== registerForm.confirmPassword) {
-        throw new Error('Passwords do not match');
-      }
-
-      if (registerForm.password.length < 8) {
-        throw new Error('Password must be at least 8 characters long');
+        throw new Error(registerCopy.validation.passwordMismatch);
       }
 
       const requestBody = {
@@ -132,19 +241,29 @@ export default function RetailerLoginPage() {
           : registerForm.billingAddress,
       };
 
-      const response = await fetch('/api/retailer/register/', {
+      const response = await fetch('/api/auth/retailer/register', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(requestBody),
       });
 
-      const data = await response.json();
+      const data = await response.json() as {
+        message?: string;
+        errors?: string[];
+      };
 
       if (!response.ok) {
-        throw new Error(data.message || 'Registration failed');
+        throw new Error(
+          Array.isArray(data.errors) && data.errors.length > 0
+            ? data.errors.join(' ')
+            : data.message || copy.errors.registrationFailed
+        );
       }
 
-      setSuccess('Registration successful! Your account is pending approval. We will notify you via email once approved.');
+      setSuccess(registerCopy.success);
+      setRegisterForm(INITIAL_REGISTER_FORM);
+      setShowPassword(false);
+      setShowConfirmPassword(false);
 
       // Clear form
       setTimeout(() => {
@@ -152,26 +271,26 @@ export default function RetailerLoginPage() {
         setSuccess('');
       }, 3000);
     } catch (err) {
-      setError(err instanceof Error ? err.message : 'Registration failed. Please try again.');
+      setError(err instanceof Error ? err.message : copy.errors.registrationFailed);
     } finally {
       setLoading(false);
     }
   };
 
   const canadianProvinces = [
-    { code: 'AB', name: 'Alberta' },
-    { code: 'BC', name: 'British Columbia' },
-    { code: 'MB', name: 'Manitoba' },
-    { code: 'NB', name: 'New Brunswick' },
-    { code: 'NL', name: 'Newfoundland and Labrador' },
-    { code: 'NS', name: 'Nova Scotia' },
-    { code: 'ON', name: 'Ontario' },
-    { code: 'PE', name: 'Prince Edward Island' },
-    { code: 'QC', name: 'Quebec' },
-    { code: 'SK', name: 'Saskatchewan' },
-    { code: 'NT', name: 'Northwest Territories' },
-    { code: 'NU', name: 'Nunavut' },
-    { code: 'YT', name: 'Yukon' },
+    { code: 'AB', name: registerCopy.provinces.AB },
+    { code: 'BC', name: registerCopy.provinces.BC },
+    { code: 'MB', name: registerCopy.provinces.MB },
+    { code: 'NB', name: registerCopy.provinces.NB },
+    { code: 'NL', name: registerCopy.provinces.NL },
+    { code: 'NS', name: registerCopy.provinces.NS },
+    { code: 'ON', name: registerCopy.provinces.ON },
+    { code: 'PE', name: registerCopy.provinces.PE },
+    { code: 'QC', name: registerCopy.provinces.QC },
+    { code: 'SK', name: registerCopy.provinces.SK },
+    { code: 'NT', name: registerCopy.provinces.NT },
+    { code: 'NU', name: registerCopy.provinces.NU },
+    { code: 'YT', name: registerCopy.provinces.YT },
   ];
 
   return (
@@ -182,10 +301,10 @@ export default function RetailerLoginPage() {
           <div className="text-center">
             <Building2 className="mx-auto h-12 w-12 text-blue-600 dark:text-blue-400" />
             <h2 className="font-heading mt-6 text-3xl font-bold text-gray-900 dark:text-gray-50">
-              {isLogin ? 'Retailer Portal Login' : 'Apply for Wholesale Account'}
+              {isLogin ? copy.title : registerCopy.title}
             </h2>
             <p className="mt-2 text-sm text-gray-600 dark:text-gray-300">
-              {isLogin ? 'Access your wholesale account' : 'Join our network of retail partners'}
+              {isLogin ? copy.subtitle : registerCopy.subtitle}
             </p>
           </div>
 
@@ -209,7 +328,7 @@ export default function RetailerLoginPage() {
               <div className="space-y-4">
                 <div>
                   <label htmlFor="email" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
-                    Email address
+                    {copy.emailLabel}
                   </label>
                   <div className="relative">
                     <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
@@ -222,7 +341,7 @@ export default function RetailerLoginPage() {
                       autoComplete="email"
                       required
                       className="appearance-none relative block w-full pl-10 pr-3 py-2 border border-gray-300 dark:border-gray-600 placeholder-gray-500 dark:placeholder-gray-400 text-gray-900 dark:text-gray-50 rounded-md focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm bg-white dark:bg-gray-700"
-                      placeholder="your.email@business.com"
+                      placeholder={copy.emailPlaceholder}
                       value={loginForm.email}
                       onChange={(e) => setLoginForm({ ...loginForm, email: e.target.value })}
                     />
@@ -231,7 +350,7 @@ export default function RetailerLoginPage() {
 
                 <div>
                   <label htmlFor="password" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
-                    Password
+                    {copy.passwordLabel}
                   </label>
                   <div className="relative">
                     <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
@@ -244,12 +363,13 @@ export default function RetailerLoginPage() {
                       autoComplete="current-password"
                       required
                       className="appearance-none relative block w-full pl-10 pr-10 py-2 border border-gray-300 dark:border-gray-600 placeholder-gray-500 dark:placeholder-gray-400 text-gray-900 dark:text-gray-50 rounded-md focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm bg-white dark:bg-gray-700"
-                      placeholder="Enter your password"
+                      placeholder={copy.passwordPlaceholder}
                       value={loginForm.password}
                       onChange={(e) => setLoginForm({ ...loginForm, password: e.target.value })}
                     />
                     <button
                       type="button"
+                      aria-label={showPassword ? copy.hidePassword : copy.showPassword}
                       className="absolute inset-y-0 right-0 pr-3 flex items-center"
                       onClick={() => setShowPassword(!showPassword)}
                     >
@@ -261,6 +381,15 @@ export default function RetailerLoginPage() {
                     </button>
                   </div>
                 </div>
+              </div>
+
+              <div className="flex justify-end">
+                <Link
+                  href="/forgot-password?portal=retailer"
+                  className="text-sm text-blue-600 dark:text-blue-400 hover:text-blue-500 dark:hover:text-blue-300"
+                >
+                  {copy.forgotPassword}
+                </Link>
               </div>
 
               <button
@@ -276,10 +405,10 @@ export default function RetailerLoginPage() {
                 {loading ? (
                   <div className="flex items-center">
                     <div className="animate-spin rounded-full h-4 w-4 border-b-2 border-white dark:border-gray-100 mr-2"></div>
-                    Signing in...
+                    {copy.signingIn}
                   </div>
                 ) : (
-                  'Sign in'
+                  copy.signIn
                 )}
               </button>
             </form>
@@ -289,18 +418,18 @@ export default function RetailerLoginPage() {
               <div className="space-y-6">
                 {/* Business Information */}
                 <div className="bg-white dark:bg-gray-800 p-6 rounded-lg border border-gray-200 dark:border-gray-700">
-                  <h3 className="font-heading text-lg font-medium text-gray-900 dark:text-gray-50 mb-4">Business Information</h3>
+                  <h3 className="font-heading text-lg font-medium text-gray-900 dark:text-gray-50 mb-4">{registerCopy.businessSectionTitle}</h3>
                   <div className="space-y-4">
                     <div>
                       <label htmlFor="businessName" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
-                        Business Name *
+                        {registerCopy.businessNameLabel} *
                       </label>
                       <input
                         id="businessName"
                         type="text"
                         required
                         className="appearance-none block w-full px-3 py-2 border border-gray-300 dark:border-gray-600 placeholder-gray-500 dark:placeholder-gray-400 text-gray-900 dark:text-gray-50 rounded-md focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm bg-white dark:bg-gray-700"
-                        placeholder="Your Pet Store Inc."
+                        placeholder={registerCopy.businessNamePlaceholder}
                         value={registerForm.businessName}
                         onChange={(e) => setRegisterForm({ ...registerForm, businessName: e.target.value })}
                       />
@@ -309,14 +438,14 @@ export default function RetailerLoginPage() {
                     <div className="grid grid-cols-2 gap-4">
                       <div>
                         <label htmlFor="contactName" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
-                          Contact Name *
+                          {registerCopy.contactNameLabel} *
                         </label>
                         <input
                           id="contactName"
                           type="text"
                           required
                           className="appearance-none block w-full px-3 py-2 border border-gray-300 dark:border-gray-600 placeholder-gray-500 dark:placeholder-gray-400 text-gray-900 dark:text-gray-50 rounded-md focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm bg-white dark:bg-gray-700"
-                          placeholder="John Doe"
+                          placeholder={registerCopy.contactNamePlaceholder}
                           value={registerForm.contactName}
                           onChange={(e) => setRegisterForm({ ...registerForm, contactName: e.target.value })}
                         />
@@ -324,14 +453,14 @@ export default function RetailerLoginPage() {
 
                       <div>
                         <label htmlFor="phone" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
-                          Phone Number *
+                          {registerCopy.phoneLabel} *
                         </label>
                         <input
                           id="phone"
                           type="tel"
                           required
                           className="appearance-none block w-full px-3 py-2 border border-gray-300 dark:border-gray-600 placeholder-gray-500 dark:placeholder-gray-400 text-gray-900 dark:text-gray-50 rounded-md focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm bg-white dark:bg-gray-700"
-                          placeholder="(555) 123-4567"
+                          placeholder={registerCopy.phonePlaceholder}
                           value={registerForm.phone}
                           onChange={(e) => setRegisterForm({ ...registerForm, phone: e.target.value })}
                         />
@@ -341,14 +470,14 @@ export default function RetailerLoginPage() {
                     <div className="grid grid-cols-2 gap-4">
                       <div>
                         <label htmlFor="email" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
-                          Email Address *
+                          {registerCopy.emailLabel} *
                         </label>
                         <input
                           id="email"
                           type="email"
                           required
                           className="appearance-none block w-full px-3 py-2 border border-gray-300 dark:border-gray-600 placeholder-gray-500 dark:placeholder-gray-400 text-gray-900 dark:text-gray-50 rounded-md focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm bg-white dark:bg-gray-700"
-                          placeholder="contact@business.com"
+                          placeholder={registerCopy.emailPlaceholder}
                           value={registerForm.email}
                           onChange={(e) => setRegisterForm({ ...registerForm, email: e.target.value })}
                         />
@@ -356,13 +485,13 @@ export default function RetailerLoginPage() {
 
                       <div>
                         <label htmlFor="taxId" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
-                          Business Tax ID (Optional)
+                          {registerCopy.taxIdLabel}
                         </label>
                         <input
                           id="taxId"
                           type="text"
                           className="appearance-none block w-full px-3 py-2 border border-gray-300 dark:border-gray-600 placeholder-gray-500 dark:placeholder-gray-400 text-gray-900 dark:text-gray-50 rounded-md focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm bg-white dark:bg-gray-700"
-                          placeholder="GST/HST Number"
+                          placeholder={registerCopy.taxIdPlaceholder}
                           value={registerForm.taxId}
                           onChange={(e) => setRegisterForm({ ...registerForm, taxId: e.target.value })}
                         />
@@ -375,19 +504,19 @@ export default function RetailerLoginPage() {
                 <div className="bg-white dark:bg-gray-800 p-6 rounded-lg border border-gray-200 dark:border-gray-700">
                   <h3 className="font-heading text-lg font-medium text-gray-900 dark:text-gray-50 mb-4 flex items-center">
                     <MapPin className="h-5 w-5 mr-2" />
-                    Shipping Address
+                    {registerCopy.shippingSectionTitle}
                   </h3>
                   <div className="space-y-4">
                     <div>
                       <label htmlFor="street" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
-                        Street Address *
+                        {registerCopy.streetLabel} *
                       </label>
                       <input
                         id="street"
                         type="text"
                         required
                         className="appearance-none block w-full px-3 py-2 border border-gray-300 dark:border-gray-600 placeholder-gray-500 dark:placeholder-gray-400 text-gray-900 dark:text-gray-50 rounded-md focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm bg-white dark:bg-gray-700"
-                        placeholder="123 Main Street"
+                        placeholder={registerCopy.streetPlaceholder}
                         value={registerForm.shippingAddress.street}
                         onChange={(e) => setRegisterForm({
                           ...registerForm,
@@ -399,14 +528,14 @@ export default function RetailerLoginPage() {
                     <div className="grid grid-cols-3 gap-4">
                       <div>
                         <label htmlFor="city" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
-                          City *
+                          {registerCopy.cityLabel} *
                         </label>
                         <input
                           id="city"
                           type="text"
                           required
                           className="appearance-none block w-full px-3 py-2 border border-gray-300 dark:border-gray-600 placeholder-gray-500 dark:placeholder-gray-400 text-gray-900 dark:text-gray-50 rounded-md focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm bg-white dark:bg-gray-700"
-                          placeholder="Toronto"
+                          placeholder={registerCopy.cityPlaceholder}
                           value={registerForm.shippingAddress.city}
                           onChange={(e) => setRegisterForm({
                             ...registerForm,
@@ -417,7 +546,7 @@ export default function RetailerLoginPage() {
 
                       <div>
                         <label htmlFor="province" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
-                          Province *
+                          {registerCopy.provinceLabel} *
                         </label>
                         <select
                           id="province"
@@ -429,7 +558,7 @@ export default function RetailerLoginPage() {
                             shippingAddress: { ...registerForm.shippingAddress, province: e.target.value },
                           })}
                         >
-                          <option value="">Select</option>
+                          <option value="">{registerCopy.provincePlaceholder}</option>
                           {canadianProvinces.map((prov) => (
                             <option key={prov.code} value={prov.code}>
                               {prov.name}
@@ -440,14 +569,14 @@ export default function RetailerLoginPage() {
 
                       <div>
                         <label htmlFor="postalCode" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
-                          Postal Code *
+                          {registerCopy.postalCodeLabel} *
                         </label>
                         <input
                           id="postalCode"
                           type="text"
                           required
                           className="appearance-none block w-full px-3 py-2 border border-gray-300 dark:border-gray-600 placeholder-gray-500 dark:placeholder-gray-400 text-gray-900 dark:text-gray-50 rounded-md focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm bg-white dark:bg-gray-700"
-                          placeholder="M5V 3A8"
+                          placeholder={registerCopy.postalCodePlaceholder}
                           value={registerForm.shippingAddress.postalCode}
                           onChange={(e) => setRegisterForm({
                             ...registerForm,
@@ -466,7 +595,7 @@ export default function RetailerLoginPage() {
                         onChange={(e) => setRegisterForm({ ...registerForm, sameAsBilling: e.target.checked })}
                       />
                       <label htmlFor="sameAsBilling" className="ml-2 block text-sm text-gray-900 dark:text-gray-300">
-                        Billing address same as shipping address
+                        {registerCopy.sameAsBilling}
                       </label>
                     </div>
                   </div>
@@ -474,11 +603,11 @@ export default function RetailerLoginPage() {
 
                 {/* Password */}
                 <div className="bg-white dark:bg-gray-800 p-6 rounded-lg border border-gray-200 dark:border-gray-700">
-                  <h3 className="font-heading text-lg font-medium text-gray-900 dark:text-gray-50 mb-4">Account Security</h3>
+                  <h3 className="font-heading text-lg font-medium text-gray-900 dark:text-gray-50 mb-4">{registerCopy.securitySectionTitle}</h3>
                   <div className="grid grid-cols-2 gap-4">
                     <div>
                       <label htmlFor="password" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
-                        Password *
+                        {registerCopy.passwordLabel} *
                       </label>
                       <div className="relative">
                         <input
@@ -486,12 +615,13 @@ export default function RetailerLoginPage() {
                           type={showPassword ? 'text' : 'password'}
                           required
                           className="appearance-none block w-full pr-10 px-3 py-2 border border-gray-300 dark:border-gray-600 placeholder-gray-500 dark:placeholder-gray-400 text-gray-900 dark:text-gray-50 rounded-md focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm bg-white dark:bg-gray-700"
-                          placeholder="Min. 8 characters"
+                          placeholder={registerCopy.passwordPlaceholder}
                           value={registerForm.password}
                           onChange={(e) => setRegisterForm({ ...registerForm, password: e.target.value })}
                         />
                         <button
                           type="button"
+                          aria-label={showPassword ? copy.hidePassword : copy.showPassword}
                           className="absolute inset-y-0 right-0 pr-3 flex items-center"
                           onClick={() => setShowPassword(!showPassword)}
                         >
@@ -506,7 +636,7 @@ export default function RetailerLoginPage() {
 
                     <div>
                       <label htmlFor="confirmPassword" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
-                        Confirm Password *
+                        {registerCopy.confirmPasswordLabel} *
                       </label>
                       <div className="relative">
                         <input
@@ -514,12 +644,13 @@ export default function RetailerLoginPage() {
                           type={showConfirmPassword ? 'text' : 'password'}
                           required
                           className="appearance-none block w-full pr-10 px-3 py-2 border border-gray-300 dark:border-gray-600 placeholder-gray-500 dark:placeholder-gray-400 text-gray-900 dark:text-gray-50 rounded-md focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm bg-white dark:bg-gray-700"
-                          placeholder="Repeat password"
+                          placeholder={registerCopy.confirmPasswordPlaceholder}
                           value={registerForm.confirmPassword}
                           onChange={(e) => setRegisterForm({ ...registerForm, confirmPassword: e.target.value })}
                         />
                         <button
                           type="button"
+                          aria-label={showConfirmPassword ? copy.hidePassword : copy.showPassword}
                           className="absolute inset-y-0 right-0 pr-3 flex items-center"
                           onClick={() => setShowConfirmPassword(!showConfirmPassword)}
                         >
@@ -548,10 +679,10 @@ export default function RetailerLoginPage() {
                 {loading ? (
                   <div className="flex items-center">
                     <div className="animate-spin rounded-full h-4 w-4 border-b-2 border-white dark:border-gray-100 mr-2"></div>
-                    Submitting application...
+                    {registerCopy.submitting}
                   </div>
                 ) : (
-                  'Submit Application'
+                  registerCopy.submit
                 )}
               </button>
             </form>
@@ -569,8 +700,8 @@ export default function RetailerLoginPage() {
               className="text-sm text-blue-600 dark:text-blue-400 hover:text-blue-500 dark:hover:text-blue-300"
             >
               {isLogin
-                ? "Don't have an account? Apply for wholesale access"
-                : 'Already have an account? Sign in'}
+                ? copy.toggleApply
+                : copy.toggleSignIn}
             </button>
           </div>
         </div>

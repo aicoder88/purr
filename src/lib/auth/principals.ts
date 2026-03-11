@@ -1,4 +1,5 @@
 import bcrypt from 'bcryptjs';
+import type { RetailerStatus } from '@/generated/client/enums';
 import prisma from '@/lib/prisma';
 import {
   APP_ROLES,
@@ -280,8 +281,23 @@ export async function authenticateAdminCredentials(email: string, password: stri
 }
 
 export async function authenticateRetailerCredentials(email: string, password: string) {
+  const result = await verifyRetailerCredentials(email, password);
+  return result.kind === 'success' ? result.principal : null;
+}
+
+export async function verifyRetailerCredentials(email: string): Promise<
+  | { kind: 'invalid' }
+  | { kind: 'blocked'; status: RetailerStatus }
+  | { kind: 'success'; principal: AuthenticatedPrincipal }
+>;
+export async function verifyRetailerCredentials(email: string, password: string): Promise<
+  | { kind: 'invalid' }
+  | { kind: 'blocked'; status: RetailerStatus }
+  | { kind: 'success'; principal: AuthenticatedPrincipal }
+>;
+export async function verifyRetailerCredentials(email: string, password?: string) {
   if (!prisma) {
-    return null;
+    return { kind: 'invalid' } as const;
   }
 
   const normalizedEmail = normalizeEmail(email);
@@ -289,24 +305,34 @@ export async function authenticateRetailerCredentials(email: string, password: s
     where: { email: normalizedEmail },
   });
 
-  if (!retailer || retailer.status !== 'ACTIVE') {
-    return null;
+  if (!retailer) {
+    return { kind: 'invalid' } as const;
   }
 
-  const isValidPassword = await bcrypt.compare(password, retailer.password);
+  const isValidPassword = password
+    ? await bcrypt.compare(password, retailer.password)
+    : false;
+
   if (!isValidPassword) {
-    return null;
+    return { kind: 'invalid' } as const;
+  }
+
+  if (retailer.status !== 'ACTIVE') {
+    return { kind: 'blocked', status: retailer.status } as const;
   }
 
   await updateRetailerLastLogin(retailer.id);
 
-  return toPrincipal({
-    id: retailer.id,
-    email: retailer.email,
-    name: retailer.contactName,
-    role: APP_ROLES.retailer,
-    retailerId: retailer.id,
-  });
+  return {
+    kind: 'success',
+    principal: toPrincipal({
+      id: retailer.id,
+      email: retailer.email,
+      name: retailer.contactName,
+      role: APP_ROLES.retailer,
+      retailerId: retailer.id,
+    }),
+  } as const;
 }
 
 export async function authenticateAffiliateCredentials(email: string, password: string) {
@@ -380,7 +406,11 @@ export async function resolveOAuthPrincipal(input: {
     },
   });
 
-  if (retailer?.status === 'ACTIVE') {
+  if (retailer) {
+    if (retailer.status !== 'ACTIVE') {
+      return null;
+    }
+
     await updateRetailerLastLogin(retailer.id);
     return toPrincipal({
       id: retailer.id,
@@ -402,7 +432,11 @@ export async function resolveOAuthPrincipal(input: {
     },
   });
 
-  if (affiliate?.status === 'ACTIVE') {
+  if (affiliate) {
+    if (affiliate.status !== 'ACTIVE') {
+      return null;
+    }
+
     await updateAffiliateLastLogin(affiliate.id);
     return toPrincipal({
       id: affiliate.id,
@@ -434,6 +468,94 @@ export async function resolveOAuthPrincipal(input: {
       name: updatedUser.name,
       image: updatedUser.image,
       role: roleFromUserRecord(updatedUser.role),
+    });
+  }
+
+  return ensureCustomerUser(input);
+}
+
+export async function resolvePrincipalByEmail(input: {
+  email: string;
+  name?: string | null;
+  image?: string | null;
+}) {
+  if (!prisma) {
+    return null;
+  }
+
+  const normalizedEmail = normalizeEmail(input.email);
+  const privilegedUser = await ensurePrivilegedUserAccount(normalizedEmail);
+  if (privilegedUser) {
+    return toPrincipal({
+      id: privilegedUser.id,
+      email: normalizedEmail,
+      name: privilegedUser.name,
+      image: privilegedUser.image,
+      role: roleFromUserRecord(privilegedUser.role),
+    });
+  }
+
+  const retailer = await prisma.retailer.findUnique({
+    where: { email: normalizedEmail },
+    select: {
+      id: true,
+      email: true,
+      contactName: true,
+      status: true,
+    },
+  });
+
+  if (retailer) {
+    if (retailer.status !== 'ACTIVE') {
+      return null;
+    }
+
+    return toPrincipal({
+      id: retailer.id,
+      email: retailer.email,
+      name: retailer.contactName,
+      role: APP_ROLES.retailer,
+      retailerId: retailer.id,
+    });
+  }
+
+  const affiliate = await prisma.affiliate.findUnique({
+    where: { email: normalizedEmail },
+    select: {
+      id: true,
+      email: true,
+      name: true,
+      code: true,
+      status: true,
+    },
+  });
+
+  if (affiliate) {
+    if (affiliate.status !== 'ACTIVE') {
+      return null;
+    }
+
+    return toPrincipal({
+      id: affiliate.id,
+      email: affiliate.email,
+      name: affiliate.name,
+      role: APP_ROLES.affiliate,
+      affiliateId: affiliate.id,
+      affiliateCode: affiliate.code,
+    });
+  }
+
+  const existingUser = await prisma.user.findUnique({
+    where: { email: normalizedEmail },
+  });
+
+  if (existingUser) {
+    return toPrincipal({
+      id: existingUser.id,
+      email: normalizedEmail,
+      name: existingUser.name,
+      image: existingUser.image,
+      role: roleFromUserRecord(existingUser.role),
     });
   }
 

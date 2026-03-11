@@ -18,6 +18,7 @@ interface SignInOptions {
 }
 
 interface SignInResult {
+  code?: string | null;
   error: string | null;
   ok: boolean;
   status: number;
@@ -53,9 +54,33 @@ function expectedRoleForProvider(provider: string) {
       return ['affiliate'];
     case 'customer-credentials':
       return ['customer'];
+    case 'retailer-credentials':
+      return ['retailer'];
     default:
       return null;
   }
+}
+
+async function fetchRetailerPortalAccessError() {
+  const response = await fetch('/api/retailer/portal/access', {
+    cache: 'no-store',
+    credentials: 'same-origin',
+  });
+
+  if (response.ok) {
+    return null;
+  }
+
+  const data = await response.json().catch(() => null) as {
+    code?: string;
+    message?: string;
+  } | null;
+
+  return {
+    code: data?.code ?? null,
+    message: data?.message ?? 'Unauthorized account for this portal.',
+    status: response.status,
+  };
 }
 
 async function migrateLegacyCredentials(provider: string, email: string, password: string) {
@@ -66,8 +91,16 @@ async function migrateLegacyCredentials(provider: string, email: string, passwor
   });
 
   if (!response.ok) {
-    const data = await response.json().catch(() => null) as { message?: string } | null;
-    return data?.message ?? 'Invalid email or password.';
+    const data = await response.json().catch(() => null) as {
+      code?: string;
+      message?: string;
+    } | null;
+
+    return {
+      code: data?.code ?? null,
+      message: data?.message ?? 'Invalid email or password.',
+      status: response.status,
+    };
   }
 
   return null;
@@ -78,7 +111,7 @@ async function signInWithCredentials(provider: string, options: SignInOptions): 
   const password = options.password ?? '';
 
   if (!email || !password) {
-    return { error: 'Email and password are required.', ok: false, status: 400, url: null };
+    return { code: null, error: 'Email and password are required.', ok: false, status: 400, url: null };
   }
 
   const supabase = getBrowserSupabaseClient();
@@ -87,22 +120,38 @@ async function signInWithCredentials(provider: string, options: SignInOptions): 
   if (error) {
     const migrationError = await migrateLegacyCredentials(provider, email, password);
     if (migrationError) {
-      return { error: migrationError, ok: false, status: 401, url: null };
+      return {
+        code: migrationError.code,
+        error: migrationError.message,
+        ok: false,
+        status: migrationError.status,
+        url: null,
+      };
     }
 
     ({ error } = await supabase.auth.signInWithPassword({ email, password }));
   }
 
   if (error) {
-    return { error: error.message, ok: false, status: 401, url: null };
+    return { code: null, error: error.message, ok: false, status: 401, url: null };
   }
 
   const session = await fetchAppSession();
   const expectedRoles = expectedRoleForProvider(provider);
 
   if (!session?.user || (expectedRoles && !expectedRoles.includes(session.user.role ?? ''))) {
+    const retailerPortalError = provider === 'retailer-credentials'
+      ? await fetchRetailerPortalAccessError()
+      : null;
+
     await supabase.auth.signOut();
-    return { error: 'Unauthorized account for this portal.', ok: false, status: 403, url: null };
+    return {
+      code: retailerPortalError?.code ?? null,
+      error: retailerPortalError?.message ?? 'Unauthorized account for this portal.',
+      ok: false,
+      status: retailerPortalError?.status ?? 403,
+      url: null,
+    };
   }
 
   if (options.redirect !== false && options.callbackUrl) {
@@ -110,6 +159,7 @@ async function signInWithCredentials(provider: string, options: SignInOptions): 
   }
 
   return {
+    code: null,
     error: null,
     ok: true,
     status: 200,
@@ -129,7 +179,7 @@ async function signInWithGoogle(options: SignInOptions): Promise<SignInResult> {
   });
 
   if (error) {
-    return { error: error.message, ok: false, status: 400, url: null };
+    return { code: null, error: error.message, ok: false, status: 400, url: null };
   }
 
   if (data.url) {
@@ -137,6 +187,7 @@ async function signInWithGoogle(options: SignInOptions): Promise<SignInResult> {
   }
 
   return {
+    code: null,
     error: null,
     ok: true,
     status: 200,
@@ -157,11 +208,12 @@ export async function signIn(provider: string, options: SignInOptions = {}): Pro
     provider === 'customer-credentials'
     || provider === 'admin-credentials'
     || provider === 'affiliate-credentials'
+    || provider === 'retailer-credentials'
   ) {
     return signInWithCredentials(provider, options);
   }
 
-  return { error: 'Unsupported authentication provider.', ok: false, status: 400, url: null };
+  return { code: null, error: 'Unsupported authentication provider.', ok: false, status: 400, url: null };
 }
 
 export async function signOut(options: SignOutOptions = {}) {

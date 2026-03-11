@@ -1,5 +1,5 @@
 import { ReactNode, useState } from 'react';
-import { useSession, signOut } from 'next-auth/react';
+import { useSession, signOut } from '@/lib/auth/client';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { useTranslations, useLocale } from 'next-intl';

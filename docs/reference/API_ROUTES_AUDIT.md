@@ -49,7 +49,6 @@ These routes have no obvious frontend calls but may be used:
 - ✅ `/api/analytics/referrals.ts` - Referral analytics (1 reference)
 - ✅ `/api/edge/prefetch-checkout.ts` - Checkout prefetch (1 reference)
 - ✅ `/api/leads/city.ts` - City leads (1 reference)
-- ✅ `/api/retailer/login.ts` - Retailer login (1 reference)
 - ✅ `/api/retailer/register.ts` - Retailer registration (1 reference)
 - ✅ `/api/referrals/generate.ts` - Generate referral codes (1 reference)
 - ✅ `/api/referrals/track.ts` - Track referrals (3 references)

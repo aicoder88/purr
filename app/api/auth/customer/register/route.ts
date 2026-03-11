@@ -4,6 +4,7 @@ import prisma from '@/lib/prisma';
 import { withRateLimit, RATE_LIMITS } from '@/lib/rate-limit';
 import { passwordSchema } from '@/lib/auth/password-policy';
 import { normalizeEmail } from '@/lib/auth/roles';
+import { syncCustomerSupabaseUser } from '@/lib/auth/supabase-users';
 
 interface CustomerRegisterRequest {
   firstName: string;
@@ -23,7 +24,6 @@ async function handler(req: NextRequest): Promise<Response> {
     const firstName = body.firstName?.trim();
     const lastName = body.lastName?.trim();
     const email = body.email ? normalizeEmail(body.email) : '';
-    const phone = body.phone?.trim();
     const password = body.password ?? '';
 
     if (!firstName || !lastName || !email || !password) {
@@ -68,6 +68,8 @@ async function handler(req: NextRequest): Promise<Response> {
           role: 'CUSTOMER',
         },
       });
+
+    await syncCustomerSupabaseUser(email, password);
 
     return Response.json({
       message: 'Account created successfully.',

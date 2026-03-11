@@ -1,5 +1,6 @@
 import { auth } from '@/auth';
 import prisma from '@/lib/prisma';
+import { syncRetailerSupabaseUser } from '@/lib/auth/supabase-users';
 import { Resend } from 'resend';
 import { RESEND_CONFIG, isResendConfigured } from '@/lib/resend-config';
 import { checkRateLimit, createRateLimitHeaders } from '@/lib/rate-limit';
@@ -61,10 +62,16 @@ export async function POST(req: Request, { params }: RouteParams) {
       },
     });
 
+    try {
+      await syncRetailerSupabaseUser(updatedRetailer.email);
+    } catch (syncError) {
+      console.error('Failed to sync approved retailer to Supabase:', syncError);
+    }
+
     // Send approval notification email
     if (isResendConfigured()) {
       const resend = new Resend(process.env.RESEND_API_KEY);
-      const loginUrl = `${process.env.NEXT_PUBLIC_SITE_URL}/retailer/login`;
+      const loginUrl = `${process.env.NEXT_PUBLIC_SITE_URL}/retailer/portal/login`;
 
       const approvalEmailContent = `
         <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto;">

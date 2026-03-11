@@ -5,6 +5,11 @@ import { withRateLimit, RATE_LIMITS } from '@/lib/rate-limit';
 import { passwordSchema } from '@/lib/auth/password-policy';
 import { consumePasswordResetToken } from '@/lib/auth/password-reset';
 import { ensurePrivilegedUserAccount } from '@/lib/auth/principals';
+import {
+  syncAdminSupabaseUser,
+  syncCustomerSupabaseUser,
+  syncRetailerSupabaseUser,
+} from '@/lib/auth/supabase-users';
 
 interface ResetPasswordRequest {
   token: string;
@@ -41,13 +46,17 @@ async function handler(req: NextRequest): Promise<Response> {
     const passwordHash = await bcrypt.hash(password, 12);
 
     if (target.portal === 'retailer') {
-      await prisma.retailer.update({
+      const retailer = await prisma.retailer.update({
         where: { email: target.email },
         data: {
           password: passwordHash,
           lastLoginAt: null,
         },
       });
+
+      if (retailer.status === 'ACTIVE') {
+        await syncRetailerSupabaseUser(target.email, password);
+      }
     } else {
       if (target.portal === 'admin') {
         await ensurePrivilegedUserAccount(target.email);
@@ -60,6 +69,12 @@ async function handler(req: NextRequest): Promise<Response> {
           passwordUpdatedAt: new Date(),
         },
       });
+
+      if (target.portal === 'admin') {
+        await syncAdminSupabaseUser(target.email, password);
+      } else {
+        await syncCustomerSupabaseUser(target.email, password);
+      }
     }
 
     return Response.json({ message: 'Password updated successfully.' });

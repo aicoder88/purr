@@ -1,4 +1,3 @@
-import type { User } from '@supabase/auth-js';
 import prisma from '@/lib/prisma';
 import { createSupabaseAdminClient } from '@/lib/supabase/admin';
 import { normalizeEmail, roleFromUserRecord } from '@/lib/auth/roles';
@@ -72,8 +71,7 @@ export async function upsertSupabaseUser(input: SupabaseUserSyncInput) {
   const attributes = {
     email: normalizeEmail(input.email),
     email_confirm: true,
-    ...(input.password ? { password: input.password } : {}),
-    ...(input.passwordHash ? { password_hash: input.passwordHash } : {}),
+    ...(input.passwordHash ? { password_hash: input.passwordHash } : input.password ? { password: input.password } : {}),
     user_metadata: toUserMetadata(input),
     app_metadata: toAppMetadata(input),
   };
@@ -157,6 +155,41 @@ export async function syncAffiliateSupabaseUser(email: string, password?: string
     role: 'affiliate',
     affiliateId: affiliate.id,
     affiliateCode: affiliate.code,
+  });
+}
+
+export async function syncRetailerSupabaseUser(email: string, password?: string) {
+  if (!prisma) {
+    throw new Error('Database unavailable');
+  }
+
+  const normalizedEmail = normalizeEmail(email);
+  const retailer = await prisma.retailer.findUnique({
+    where: { email: normalizedEmail },
+    select: {
+      id: true,
+      email: true,
+      contactName: true,
+      password: true,
+      status: true,
+    },
+  });
+
+  if (!retailer) {
+    throw new Error('Retailer account not found');
+  }
+
+  if (retailer.status !== 'ACTIVE') {
+    return;
+  }
+
+  await upsertSupabaseUser({
+    email: retailer.email,
+    name: retailer.contactName,
+    password,
+    passwordHash: retailer.password,
+    role: 'retailer',
+    retailerId: retailer.id,
   });
 }
 

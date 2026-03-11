@@ -227,8 +227,8 @@ export async function POST(request: NextRequest) {
       payment_method_types: ['card'],
       line_items: buildCheckoutLineItems(order, currency, persistedReferralDiscount || 0),
       mode: 'payment',
-      success_url: `${process.env.NEXTAUTH_URL}/thank-you?session_id={CHECKOUT_SESSION_ID}`,
-      cancel_url: `${process.env.NEXTAUTH_URL}/products`,
+      success_url: `${process.env.APP_URL ?? process.env.NEXTAUTH_URL}/thank-you?session_id={CHECKOUT_SESSION_ID}`,
+      cancel_url: `${process.env.APP_URL ?? process.env.NEXTAUTH_URL}/products`,
       customer_email: customer.email,
       metadata: {
         orderId: order.id,

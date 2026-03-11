@@ -1,6 +1,6 @@
 import { NextResponse } from 'next/server';
 import type { NextRequest } from 'next/server';
-import { getToken } from 'next-auth/jwt';
+import { createServerClient } from '@supabase/ssr';
 import {
   getLocaleFromPath,
   localizePath,
@@ -224,13 +224,31 @@ export async function proxy(request: NextRequest) {
     return nextWithPathnameHeader();
   }
 
-  const token = await getToken({
-    req: request,
-    secret: process.env.NEXTAUTH_SECRET,
-    secureCookie: forwardedProto === 'https' || request.nextUrl.protocol === 'https:',
-  });
+  const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL;
+  const supabaseAnonKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY;
 
-  if (!token) {
+  if (!supabaseUrl || !supabaseAnonKey) {
+    return nextWithPathnameHeader();
+  }
+
+  const response = nextWithPathnameHeader();
+  const supabase = createServerClient(supabaseUrl, supabaseAnonKey, {
+    cookies: {
+      getAll() {
+        return request.cookies.getAll();
+      },
+      setAll(cookiesToSet) {
+        cookiesToSet.forEach(({ name, value, options }) => {
+          request.cookies.set(name, value);
+          response.cookies.set(name, value, options);
+        });
+      },
+    },
+  });
+  const { data } = await supabase.auth.getUser();
+  const user = data.user;
+
+  if (!user) {
     const loginUrl = request.nextUrl.clone();
     loginUrl.pathname = ADMIN_LOGIN_PATH;
     loginUrl.search = '';
@@ -238,7 +256,7 @@ export async function proxy(request: NextRequest) {
     return NextResponse.redirect(loginUrl);
   }
 
-  const userRole = token.role as string | undefined;
+  const userRole = typeof user.app_metadata?.role === 'string' ? user.app_metadata.role : undefined;
   if (ADMIN_ONLY_ROUTES.some((route) => pathname.startsWith(route)) && userRole !== 'admin') {
     const redirectUrl = request.nextUrl.clone();
     redirectUrl.pathname = ADMIN_HOME_PATH;
@@ -246,7 +264,7 @@ export async function proxy(request: NextRequest) {
     return NextResponse.redirect(redirectUrl);
   }
 
-  return nextWithPathnameHeader();
+  return response;
 }
 
 export const config = {

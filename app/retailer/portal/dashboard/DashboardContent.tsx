@@ -31,6 +31,7 @@ import {
   RetailerSkuId,
   calculateRetailerProfit,
 } from '@/lib/retailer-profit';
+import { signOut } from '@/lib/auth/client';
 import type { TranslationType } from '@/translations/types';
 import { en as englishMessages } from '@/translations/en';
 
@@ -300,8 +301,6 @@ export default function DashboardContent() {
     year: 'numeric',
   }), [localeCode]);
 
-  const [authToken, setAuthToken] = useState<string | null>(null);
-  const [fallbackRetailer, setFallbackRetailer] = useState<RetailerDashboardResponse['retailer'] | null>(null);
   const [dashboard, setDashboard] = useState<RetailerDashboardResponse | null>(null);
   const [error, setError] = useState<string | null>(null);
   const [isLoading, setIsLoading] = useState(true);
@@ -318,25 +317,23 @@ export default function DashboardContent() {
   });
   const [shippingCost, setShippingCost] = useState(DEFAULT_RETAILER_SHIPPING_COST);
 
-  const clearRetailerSession = useCallback(() => {
-    localStorage.removeItem('retailerToken');
-    localStorage.removeItem('retailerInfo');
-  }, []);
+  const redirectToLogin = useCallback((code?: string) => {
+    const params = code ? `?error=${encodeURIComponent(code)}` : '';
+    router.replace(`/retailer/portal/login${params}`);
+  }, [router]);
 
-  const fetchDashboard = useCallback(async (token: string) => {
+  const fetchDashboard = useCallback(async () => {
     setIsLoading(true);
     setError(null);
 
     try {
       const response = await fetch('/api/retailer/portal/dashboard/', {
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
+        cache: 'no-store',
       });
 
       if (response.status === 401 || response.status === 403) {
-        clearRetailerSession();
-        router.replace('/retailer/portal/login');
+        const data = await response.json().catch(() => null) as { code?: string } | null;
+        redirectToLogin(data?.code);
         return;
       }
 
@@ -351,29 +348,11 @@ export default function DashboardContent() {
     } finally {
       setIsLoading(false);
     }
-  }, [clearRetailerSession, copy.errors.loadFailed, router]);
+  }, [copy.errors.loadFailed, redirectToLogin]);
 
   useEffect(() => {
-    const token = localStorage.getItem('retailerToken');
-    const retailerInfo = localStorage.getItem('retailerInfo');
-
-    if (retailerInfo) {
-      try {
-        const parsedRetailer = JSON.parse(retailerInfo) as RetailerDashboardResponse['retailer'];
-        setFallbackRetailer(parsedRetailer);
-      } catch {
-        localStorage.removeItem('retailerInfo');
-      }
-    }
-
-    if (!token) {
-      router.replace('/retailer/portal/login');
-      return;
-    }
-
-    setAuthToken(token);
-    fetchDashboard(token);
-  }, [fetchDashboard, router]);
+    void fetchDashboard();
+  }, [fetchDashboard]);
 
   const calculatorResult = useMemo(() => calculateRetailerProfit({
     quantities,
@@ -396,7 +375,7 @@ export default function DashboardContent() {
     return (calculatorResult.subtotalCost / FREE_SHIPPING_SUBTOTAL_THRESHOLD) * 100;
   }, [calculatorResult.qualifiesForFreeShipping, calculatorResult.subtotalCost]);
 
-  const retailer = dashboard?.retailer ?? fallbackRetailer;
+  const retailer = dashboard?.retailer ?? null;
   const summary = dashboard?.summary ?? {
     totalOrders: 0,
     lifetimeSpend: 0,
@@ -467,11 +446,9 @@ export default function DashboardContent() {
                 <button
                   type="button"
                   onClick={() => {
-                    if (authToken) {
-                      fetchDashboard(authToken);
-                    }
+                    void fetchDashboard();
                   }}
-                  disabled={!authToken || isLoading}
+                  disabled={isLoading}
                   className="inline-flex items-center rounded-full border border-white/16 bg-white/10 px-4 py-2 text-sm font-semibold text-white transition hover:bg-white/16 disabled:cursor-not-allowed disabled:opacity-50"
                 >
                   <RefreshCcw className="mr-2 h-4 w-4" />
@@ -479,9 +456,12 @@ export default function DashboardContent() {
                 </button>
                 <button
                   type="button"
-                  onClick={() => {
-                    clearRetailerSession();
-                    router.replace('/retailer/portal/login');
+                  onClick={async () => {
+                    try {
+                      await signOut({ redirect: false });
+                    } finally {
+                      redirectToLogin();
+                    }
                   }}
                   className="inline-flex items-center rounded-full bg-[#fff6f9] px-4 py-2 text-sm font-semibold text-[#33091B] transition hover:bg-white"
                 >
@@ -1006,9 +986,12 @@ export default function DashboardContent() {
               </div>
               <button
                 type="button"
-                onClick={() => {
-                  clearRetailerSession();
-                  router.replace('/retailer/portal/login');
+                onClick={async () => {
+                  try {
+                    await signOut({ redirect: false });
+                  } finally {
+                    redirectToLogin();
+                  }
                 }}
                 className="inline-flex items-center justify-center rounded-full border border-[#eadfd2] bg-white px-4 py-2 text-sm font-semibold text-[#5B2EFF] transition hover:border-[#5B2EFF] hover:text-[#4a26cc]"
               >

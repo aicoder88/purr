@@ -1,7 +1,7 @@
 'use client';
 
 import { useCallback, useEffect, useState } from 'react';
-import { getSession, signOut } from 'next-auth/react';
+import { getSession, signOut } from '@/lib/auth/client';
 import { useTranslations } from 'next-intl';
 import { CustomerAuth } from '@/components/customer/CustomerAuth';
 import { CustomerPortal } from '@/components/customer/CustomerPortal';

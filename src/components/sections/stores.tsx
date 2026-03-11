@@ -1,6 +1,12 @@
 import { Container } from "@/components/ui/container";
 import Image from "next/image";
 import { getLocale, getTranslations } from "next-intl/server";
+import {
+  getStoreLogo,
+  hasWhiteBackground,
+  RETAILER_LOCATIONS,
+  type StoreLogoConfig,
+} from "@/lib/store-locations";
 import { StoresRequestForm } from "./StoresRequestForm";
 
 // ============================================================================
@@ -16,47 +22,9 @@ interface Store {
   description: string;
 }
 
-interface LogoConfig {
-  src: string;
-  alt: string;
-  className: string;
-  width: number;
-  height: number;
-}
-
 // ============================================================================
 // Constants
 // ============================================================================
-
-
-const DEFAULT_LOGO_CONFIG = {
-  className: 'w-16 h-16 object-contain',
-  width: 64,
-  height: 64,
-} as const;
-
-// Logo lookup map - more efficient than if/else chain
-const STORE_LOGOS: Record<string, Omit<LogoConfig, 'className' | 'width' | 'height'>> = {
-  'Chico': { src: '/optimized/logos/chico-logo.svg', alt: 'Chico - Boutique d\'animaux Logo' },
-  'Pattes et Griffes': { src: '/optimized/stores/pattes.webp', alt: 'Pattes et Griffes Logo' },
-  'GIGI': { src: '/optimized/marketing/gigi.webp', alt: 'Animal Shop GIGI - Pet Store Logo' },
-  'Pitou Minou': { src: '/optimized/stores/pitou-minou.webp', alt: 'Pitou Minou & Compagnons - Pet Store Logo' },
-  'Doghaus': { src: '/optimized/stores/doghaus.webp', alt: 'Doghaus Montreal - Premium Pet Store Logo' },
-  'Kong': { src: '/optimized/stores/kong-animalerie.webp', alt: 'KONG ANIMALERIE - Montreal Pet Store Logo' },
-  'Coquette': { src: '/optimized/stores/coquette-finegueule.webp', alt: 'Coquette et Finegueule - Pet Store with Grooming Logo' },
-  'Animalerie Mamiwouff': { src: '/optimized/stores/animalerie-mamiwouff.webp', alt: 'Animalerie Mamiwouff - Family-Owned Pet Store Logo' },
-  'Animalerie Lamifidel': { src: '/optimized/stores/lamifidel.avif', alt: 'Animalerie Lamifidel - Complete Pet Care and Supplies Logo' },
-  'Animalerie Petmobile Nathamo': { src: '/optimized/stores/nathamo.avif', alt: 'Animalerie Petmobile Nathamo - Complete Pet Care and Supplies Logo' },
-  'Animalerie Club Wouf Miaou': { src: '/optimized/stores/woofmiao-logo.webp', alt: 'Animalerie Club Wouf Miaou - Pet Store Logo' },
-  'K&K Pet Foods': { src: '/optimized/stores/kk.avif', alt: 'K&K Pet Foods Dunbar - Premium Pet Products & Supplies Logo' },
-  'Viva Pets': { src: '/optimized/stores/viva-pets.avif', alt: 'Viva Pets - Premium Pet Products & Supplies Logo' },
-  'Little Bit Western': { src: '/optimized/stores/little-bit-western.avif', alt: 'Little Bit Western Feed and Supplies Inc. - Pet and Feed Store Logo' },
-  'Best Cat': { src: '/optimized/stores/bestcat.png', alt: 'Best Cat - Premium Pet Products and Supplies Logo' },
-  'Camlachie Feed': { src: '/optimized/stores/camlachie-feed.jpg', alt: 'Camlachie Feed - Pet and Farm Supplies Logo' },
-};
-
-// List of stores that should have white background for their logo
-const WHITE_BG_STORES = Object.keys(STORE_LOGOS);
 
 type SupportedLocale = 'en' | 'fr';
 
@@ -93,235 +61,22 @@ const storesUiCopy: Record<SupportedLocale, {
 };
 
 // ============================================================================
-// Helper Functions
-// ============================================================================
-
-const getStoreLogo = (storeName: string): LogoConfig | null => {
-  const matchingKey = Object.keys(STORE_LOGOS).find(key => storeName.includes(key));
-  if (!matchingKey) return null;
-
-  const logoData = STORE_LOGOS[matchingKey];
-  return {
-    ...logoData,
-    ...DEFAULT_LOGO_CONFIG,
-  };
-};
-
-const hasWhiteBackground = (storeName: string): boolean => {
-  return WHITE_BG_STORES.some(key => storeName.includes(key));
-};
-
-// ============================================================================
 // Store Data
 // ============================================================================
 
 const getStoresWithTranslations = (t: Awaited<ReturnType<typeof getTranslations>>): Store[] => {
-  const description = (key: string, fallback: string) => (
-    t.has(key as never) ? t(key as never) : fallback
+  const description = (descriptionKey: string, fallback: string) => (
+    t.has(descriptionKey as never) ? t(descriptionKey as never) : fallback
   );
 
-  return [
-  {
-    name: "Pattes et Griffes (Sainte‑Thérèse)",
-    location: "Sainte‑Thérèse, QC J7E 2X5",
-    address: "190 Boulevard du Curé-Labelle, Sainte-Thérèse, QC J7E 2X5",
-    phone: "1-450-818-1310",
-    url: "https://www.pattesgriffes.com/pages/trouvez-une-boutique",
-    description: description('storesSection.storeDescriptions.completePetCareAndSupplies', 'Complete pet care and supplies')
-  },
-  {
-    name: "Chico (Sainte‑Thérèse)",
-    location: "Sainte‑Thérèse, QC J7E 2Z7",
-    address: "95 Boulevard du Curé-Labelle, Sainte-Thérèse, QC J7E 2Z7",
-    phone: "1-450-965-3906",
-    url: "https://www.chico.ca/boutique/chico-sainte-therese/",
-    description: description('storesSection.storeDescriptions.premiumPetBoutique', 'Premium pet boutique')
-  },
-  {
-    name: "Chico (Sainte‑Marthe‑sur‑le‑Lac)",
-    location: "Sainte‑Marthe‑sur‑le‑Lac, QC J0N 1P0",
-    address: "2860 B Boulevard des Promenades, Sainte-Marthe-sur-le-Lac, QC J0N 1P0",
-    phone: "1-450-598-2860",
-    url: "https://www.chico.ca/boutique/chico-ste-marthe/",
-    description: description('storesSection.storeDescriptions.premiumPetBoutique', 'Premium pet boutique')
-  },
-  {
-    name: "Animal Shop GIGI",
-    location: "Saint‑Eustache, QC J7R 2J3",
-    address: "356 Boulevard Arthur-Sauvé, Saint-Eustache, QC J7R 2J3",
-    phone: "1-450-598-3444",
-    url: "https://www.animaleriegigi.com/",
-    description: description('storesSection.storeDescriptions.familyOwnedPetStore', 'Family-owned pet store')
-  },
-  {
-    name: "Chico (Laval-Est)",
-    location: "Laval, QC H7E 0A4",
-    address: "5405 Boulevard Robert-Bourassa, Laval, QC H7E 0A4",
-    phone: "1-450-239-0354",
-    url: "https://www.chico.ca/en/boutique/chico-laval-east/",
-    description: description('storesSection.storeDescriptions.premiumPetBoutique', 'Premium pet boutique')
-  },
-  {
-    name: "Chico (Laval Ouest)",
-    location: "Laval, QC H7R 5P8",
-    address: "4511 Bd Arthur-Sauvé, Laval, QC H7R 5P8",
-    phone: "1-450-314-2442",
-    url: "https://www.chico.ca/boutique/chico-laval-ouest/",
-    description: description('storesSection.storeDescriptions.premiumPetBoutique', 'Premium pet boutique')
-  },
-  {
-    name: "Pattes et Griffes (Laval)",
-    location: "Laval, QC H7S 1M9",
-    address: "1682 Boulevard Saint-Martin Ouest, Laval, QC H7S 1M9",
-    phone: "1-579-640-1857",
-    url: "https://www.pattesgriffes.com/pages/trouvez-une-boutique",
-    description: description('storesSection.storeDescriptions.completePetCareAndSupplies', 'Complete pet care and supplies')
-  },
-  {
-    name: "Pitou Minou & Compagnons (Kirkland)",
-    location: "Kirkland, QC H9H 0C5",
-    address: "16936 Autoroute Transcanadienne, Kirkland, QC H9H 0C5",
-    phone: "1-514-695-5005",
-    url: "https://pitou-minou.ca/global-pet-foods-succursales-quebec/",
-    description: description('storesSection.storeDescriptions.globalPetFoodsLocation', 'Global Pet Foods location')
-  },
-  {
-    name: "Chico (Saint‑Laurent)",
-    location: "Montreal, QC H2S 3E3",
-    address: "7001 Boulevard Saint-Laurent, Montréal, QC H2S 3E3",
-    phone: "1-514-657-5813",
-    url: "https://www.chico.ca/boutique/chico-boul-st-laurent-montreal/",
-    description: description('storesSection.storeDescriptions.premiumPetBoutique', 'Premium pet boutique')
-  },
-  {
-    name: "Doghaus",
-    location: "Montreal, QC H4A 1W6",
-    address: "5671 Rue Sherbrooke Ouest, Montréal, QC H4A 1W6",
-    phone: "514-483-3555",
-    url: "https://www.doghausmtl.com/",
-    description: description('storesSection.storeDescriptions.premiumPetProductsAndSupplies', 'Premium pet products and supplies')
-  },
-  {
-    name: "Kong Animalerie",
-    location: "Montreal, QC H3W 3H8",
-    address: "5555 Bd Décarie, Montréal, QC H3W 3H8",
-    phone: "514-662-8373",
-    url: "https://www.facebook.com/konganimalerie/",
-    description: description('storesSection.storeDescriptions.fullServicePetStore', 'Full-service pet store')
-  },
-  {
-    name: "Coquette et Finegueule",
-    location: "Verdun, QC H4H 1E6",
-    address: "5203 Rue Bannantyne, Verdun, QC H4H 1E6",
-    phone: "514-761-4221",
-    url: "https://coquetteetfinegueule.com/",
-    description: description('storesSection.storeDescriptions.petStoreWithGroomingServices', 'Pet store with grooming services')
-  },
-  {
-    name: "Pitou Minou & Compagnons (Verdun)",
-    location: "Verdun, QC H4G 1V7",
-    address: "4100 Rue Wellington, Verdun, QC H4G 1V7",
-    phone: "514-732-0555",
-    url: "https://pitou-minou.ca/global-pet-foods-succursales-quebec/",
-    description: description('storesSection.storeDescriptions.globalPetFoodsLocation', 'Global Pet Foods location')
-  },
-  {
-    name: "Chico (Plateau Mont‑Royal)",
-    location: "Montreal, QC H2H 1J6",
-    address: "2016 Avenue du Mont-Royal E., Montréal, QC H2H 1J6",
-    phone: "514-521-0201",
-    url: "https://www.chico.ca/boutique/chico-plateau-mont-royal-montreal/",
-    description: description('storesSection.storeDescriptions.premiumPetBoutique', 'Premium pet boutique')
-  },
-  {
-    name: "Chico (Hochelaga‑Maisonneuve)",
-    location: "Montreal, QC H1L 2M4",
-    address: "8646 Rue Hochelaga, Montréal, QC H1L 2M4",
-    phone: "514-419-9850",
-    url: "https://www.chico.ca/boutique/chico-rue-ontario-montreal/",
-    description: description('storesSection.storeDescriptions.premiumPetBoutique', 'Premium pet boutique')
-  },
-  {
-    name: "Chico (Plateau Mont-Royal — alternate)",
-    location: "Montreal, QC H1W 1S7",
-    address: "3911 Rue Ontario E., Montréal, QC H1W 1S7",
-    phone: "514-527-1371",
-    url: "https://www.chico.ca/boutique/chico-rue-ontario-montreal/",
-    description: description('storesSection.storeDescriptions.premiumPetBoutique', 'Premium pet boutique')
-  },
-  {
-    name: "Animalerie Mamiwouff Inc",
-    location: "Saint-Césaire, QC J0L 1T0",
-    address: "2048 Route 112, Saint-Césaire, QC J0L 1T0",
-    phone: "450-469-4560",
-    url: "https://www.animaleriemamiwouff.com/",
-    description: description('storesSection.storeDescriptions.familyOwnedPetStore', 'Family-owned pet store')
-  },
-  {
-    name: "Animalerie Lamifidel",
-    location: "Alma, QC G8B 2V6",
-    address: "1295 Avenue du Pont S, Alma, QC G8B 2V6",
-    phone: "418-668-0117",
-    url: "https://www.lamifidel.net/",
-    description: description('storesSection.storeDescriptions.completePetCareAndSupplies', 'Complete pet care and supplies')
-  },
-  {
-    name: "Animalerie Petmobile Nathamo",
-    location: "Shawinigan, QC G0X 1L0",
-    address: "161 Rue de l'Hydravion, Shawinigan, QC G0X 1L0",
-    phone: "819-695-2329",
-    url: "https://animalerienathamo.square.site/",
-    description: description('storesSection.storeDescriptions.completePetCareAndSupplies', 'Complete pet care and supplies')
-  },
-  {
-    name: "Animalerie Club Wouf Miaou",
-    location: "Trois-Rivières, QC G9A 6M1",
-    address: "3175 boulevard des Récollets, Trois-Rivières, QC G9A 6M1",
-    phone: "+1 819-376-0973",
-    url: "https://woufmiaou.ca/",
-    description: description('storesSection.storeDescriptions.completePetCareAndSupplies', 'Complete pet care and supplies')
-  },
-  {
-    name: "Little Bit Western Feed and Supplies Inc.",
-    location: "Timmins, ON P4N 2S2",
-    address: "372 Algonquin Blvd.West, TIMMINS, ON P4N 2S2",
-    phone: "",
-    url: "https://www.littlebitwestern.ca/",
-    description: description('storesSection.storeDescriptions.completePetCareAndSupplies', 'Complete pet care and supplies')
-  },
-  {
-    name: "K&K Pet Foods Dunbar",
-    location: "Vancouver, BC V6S 2G2",
-    address: "4595 Dunbar St, Vancouver, BC V6S 2G2",
-    phone: "+1 604-224-2513",
-    url: "https://www.kandkpetfoods.ca/",
-    description: description('storesSection.storeDescriptions.premiumPetProductsAndSupplies', 'Premium pet products and supplies')
-  },
-  {
-    name: "Viva Pets",
-    location: "Edmonton, AB T5P 4S1",
-    address: "15004 107 Avenue Northwest, Edmonton, AB T5P 4S1",
-    phone: "780-489-7387",
-    url: "https://web.facebook.com/people/Viva-Pets-YEG/61582377628485",
-    description: description('storesSection.storeDescriptions.premiumPetProductsAndSupplies', 'Premium pet products and supplies')
-  },
-  {
-    name: "Best Cat",
-    location: "Burlington, ON L7N 2R4",
-    address: "3455 Fairview St., Unit 15A, Burlington, ON L7N 2R4",
-    phone: "1-905-333-4060",
-    url: "https://bestcat.ca/",
-    description: description('storesSection.storeDescriptions.premiumPetProductsAndSupplies', 'Premium pet products and supplies')
-  },
-  {
-    name: "Camlachie Feed",
-    location: "Camlachie, ON N0N 1E0",
-    address: "3912 Egremont Rd, Camlachie, Ontario, N0N 1E0",
-    phone: "519-899-2285",
-    url: "https://www.camlachiefeed.ca/",
-    description: description('storesSection.storeDescriptions.completePetCareAndSupplies', 'Complete pet care and supplies')
-  },
-  ];
+  return RETAILER_LOCATIONS.map((store) => ({
+    name: store.name,
+    location: store.location,
+    address: store.address,
+    phone: store.phone,
+    url: store.url,
+    description: description(store.descriptionKey, store.descriptionFallback),
+  }));
 };
 
 // ============================================================================
@@ -343,7 +98,7 @@ function WebsiteIcon({ className }: { className?: string }) {
 }
 
 // Component to handle logo display with fallback
-function StoreLogoImage({ logoConfig, storeName }: { logoConfig: LogoConfig | null; storeName: string }) {
+function StoreLogoImage({ logoConfig, storeName }: { logoConfig: StoreLogoConfig | null; storeName: string }) {
   if (!logoConfig) {
     return <span className="text-3xl">🏪</span>;
   }
@@ -402,7 +157,11 @@ export async function Stores() {
         {/* Stores Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
           {stores.map((store, index) => {
-            const logoConfig = getStoreLogo(store.name);
+            const logoConfig = getStoreLogo(store.name, {
+              className: 'w-16 h-16 object-contain',
+              width: 64,
+              height: 64,
+            });
             const shouldUseWhiteBg = hasWhiteBackground(store.name);
 
             return (

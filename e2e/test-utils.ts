@@ -54,13 +54,13 @@ export function skipIfNoAuth(_page: Page, testInstance: typeof test) {
 export async function login(page: Page): Promise<void> {
   const success = await tryLogin(page);
   if (!success) {
-    throw new Error('Login failed - NextAuth may not be configured in test environment');
+    throw new Error('Login failed - Supabase Auth may not be configured in test environment');
   }
 }
 
 /**
- * Checks if NextAuth is configured and working.
+ * Checks if auth is configured and working.
  */
 export async function isAuthConfigured(): Promise<boolean> {
-  return !!process.env.NEXTAUTH_SECRET;
+  return !!process.env.NEXT_PUBLIC_SUPABASE_URL && !!process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY;
 }

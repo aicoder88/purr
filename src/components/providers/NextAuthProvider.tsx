@@ -1,15 +1,11 @@
 'use client';
 
-import { SessionProvider } from 'next-auth/react';
+import { NextAuthProvider as SupabaseAuthProvider } from '@/lib/auth/client';
 
 interface Props {
   children: React.ReactNode;
 }
 
 export function NextAuthProvider({ children }: Props) {
-  return (
-    <SessionProvider refetchOnWindowFocus={false} refetchInterval={0}>
-      {children}
-    </SessionProvider>
-  );
+  return <SupabaseAuthProvider>{children}</SupabaseAuthProvider>;
 }

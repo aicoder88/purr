@@ -183,7 +183,6 @@ export async function POST(req: Request) { return Response.json(...) }
 - `pages/api/email/send-thank-you-email.ts` -> `app/api/email/send-thank-you-email/route.ts`
 - `pages/api/edge/prefetch-checkout.ts` -> `app/api/edge/prefetch-checkout/route.ts`
 - `pages/api/health/storage.ts` -> `app/api/health/storage/route.ts`
-- `pages/api/retailer/login.ts` -> `app/api/retailer/login/route.ts`
 - `pages/api/retailer/register.ts` -> `app/api/retailer/register/route.ts`
 - `pages/api/seo/link-suggestions.ts` -> `app/api/seo/link-suggestions/route.ts`
 - `pages/api/seo/stats.ts` -> `app/api/seo/stats/route.ts`
