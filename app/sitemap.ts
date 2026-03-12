@@ -144,8 +144,8 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const entries: MetadataRoute.Sitemap = [];
   const store = new ContentStore();
   const taxonomyPostsByLocale = {
-    en: await store.getAllPosts('en', false),
-    fr: await store.getAllPosts('fr', false),
+    en: await store.getAllPosts('en', false, { includeContent: false }),
+    fr: await store.getAllPosts('fr', false, { includeContent: false }),
   };
   const blogIndexLastModified = {
     en: getLatestContentDate(taxonomyPostsByLocale.en) ?? getStaticRouteLastModified('/blog/'),

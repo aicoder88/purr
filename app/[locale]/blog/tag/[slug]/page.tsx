@@ -39,7 +39,7 @@ export async function generateStaticParams() {
   const params: Array<{ locale: string; slug: CanonicalTagSlug }> = [];
 
   for (const locale of locales.filter((value) => value !== defaultLocale)) {
-    const posts = await store.getAllPosts(locale, false);
+    const posts = await store.getAllPosts(locale, false, { includeContent: false });
 
     for (const slug of CANONICAL_TAG_SLUGS) {
       if (buildTaxonomyHubData(posts, 'tag', slug)) {
@@ -59,7 +59,7 @@ export async function generateMetadata({ params }: TagHubPageProps): Promise<Met
   }
 
   const store = new ContentStore();
-  const posts = await store.getAllPosts(locale, false);
+  const posts = await store.getAllPosts(locale, false, { includeContent: false });
   const hub = buildTaxonomyHubData(posts, 'tag', slug as CanonicalTagSlug);
 
   if (!hub) {
@@ -117,7 +117,7 @@ export default async function LocalizedTagHubPage({ params }: TagHubPageProps) {
   }
 
   const store = new ContentStore();
-  const posts = await store.getAllPosts(locale, false);
+  const posts = await store.getAllPosts(locale, false, { includeContent: false });
   const hub = buildTaxonomyHubData(posts, 'tag', slug as CanonicalTagSlug);
 
   if (!hub) {

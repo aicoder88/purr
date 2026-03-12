@@ -8,12 +8,13 @@ import { HowToSection } from '@/components/seo/HowToSection';
 import { AIQuotableBlock } from '@/components/seo/AIQuotableBlock';
 import { RelatedQuestions } from '@/components/seo/RelatedQuestions';
 import { localizePath } from '@/lib/i18n/locale-path';
+import { LEARN_PAGE_PREVIEW_IMAGES } from '@/lib/learn/page-preview-images';
 
 export default function HowToNeutralizeAmmoniaPageClient() {
   const locale = useLocale() as 'en' | 'fr';
   const canonicalUrl = 'https://www.purrify.ca/learn/solutions/how-to-neutralize-ammonia-cat-litter/';
 
-  const heroImage = '/optimized/blog/ammonia-neutralize-hero-cinematic-v2.webp';
+  const heroImage = LEARN_PAGE_PREVIEW_IMAGES['/learn/solutions/how-to-neutralize-ammonia-cat-litter'].image;
   const scienceImage = '/optimized/blog/ammonia-neutralize-science-cinematic-v2.webp';
   const freshHomeImage = '/optimized/blog/ammonia-neutralize-fresh-home-cinematic-v2.webp';
 

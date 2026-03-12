@@ -9,7 +9,7 @@
     "avatar": "/optimized/team/team-avatar.png"
   },
   "publishDate": "2026-01-02",
-  "modifiedDate": "2026-03-05",
+  "modifiedDate": "2026-03-12",
   "status": "published",
   "featuredImage": {
     "url": "/optimized/blog/standard-happy-cat.avif",
@@ -37,10 +37,12 @@
     "zh": "最佳除臭猫砂"
   },
   "seo": {
-    "title": "Best Cat Litter for Smell: Honest Reviews & What Actually Works (20…",
-    "description": "Tired of litter that claims to control odour but doesn't deliver? We tested popular cat litters and reveal what actually eliminates smell—plus why activated ca…",
+    "title": "Best Cat Litter for Smell and Kitty Litter Odor Control (2026)",
+    "description": "Tired of litter that claims to control odour but doesn't deliver? We tested popular litters and found what actually works for kitty litter odor control without relying on perfume masking.",
     "keywords": [
       "best cat litter for smell",
+      "kitty litter odor control",
+      "best cat litter for odor control",
       "cat litter odour control",
       "activated carbon cat litter",
       "litter box smell",
@@ -59,6 +61,10 @@
     {
       "question": "What cat litter actually eliminates smell instead of masking it?",
       "answerHtml": "Litters with activated carbon technology eliminate odour through molecular trapping—the same method used in municipal water treatment and hospital air filtration. Unlike fragrances that mask smells temporarily, activated carbon physically captures ammonia and sulfur compounds so they can't reach your nose."
+    },
+    {
+      "question": "What litter works best for kitty litter odor control?",
+      "answerHtml": "For strong kitty litter odor control, the most reliable setup is an unscented clumping litter paired with activated carbon. That combination manages moisture, traps ammonia, and avoids the perfume masking that often makes litter smell worse after a day or two."
     },
     {
       "question": "Why does my litter box smell even with odour control litter?",

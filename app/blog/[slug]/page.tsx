@@ -15,7 +15,7 @@ export const dynamic = 'force-static';
 
 export async function generateStaticParams() {
   const store = new ContentStore();
-  const posts = await store.getAllPosts(defaultLocale, false);
+  const posts = await store.getAllPosts(defaultLocale, false, { includeContent: false });
   return posts.map((post) => ({ slug: post.slug }));
 }
 

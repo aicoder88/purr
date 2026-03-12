@@ -39,7 +39,7 @@ export async function generateStaticParams() {
   const params: Array<{ locale: string; slug: CanonicalCategorySlug }> = [];
 
   for (const locale of locales.filter((value) => value !== defaultLocale)) {
-    const posts = await store.getAllPosts(locale, false);
+    const posts = await store.getAllPosts(locale, false, { includeContent: false });
 
     for (const slug of CANONICAL_CATEGORY_SLUGS) {
       if (buildTaxonomyHubData(posts, 'category', slug)) {
@@ -59,7 +59,7 @@ export async function generateMetadata({ params }: CategoryHubPageProps): Promis
   }
 
   const store = new ContentStore();
-  const posts = await store.getAllPosts(locale, false);
+  const posts = await store.getAllPosts(locale, false, { includeContent: false });
   const hub = buildTaxonomyHubData(posts, 'category', slug as CanonicalCategorySlug);
 
   if (!hub) {
@@ -117,7 +117,7 @@ export default async function LocalizedCategoryHubPage({ params }: CategoryHubPa
   }
 
   const store = new ContentStore();
-  const posts = await store.getAllPosts(locale, false);
+  const posts = await store.getAllPosts(locale, false, { includeContent: false });
   const hub = buildTaxonomyHubData(posts, 'category', slug as CanonicalCategorySlug);
 
   if (!hub) {

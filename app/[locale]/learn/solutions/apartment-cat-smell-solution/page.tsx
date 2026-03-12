@@ -3,6 +3,7 @@ export const dynamic = 'force-static';
 import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 import { SITE_NAME, SITE_URL } from '@/lib/constants';
+import { LEARN_PAGE_PREVIEW_IMAGES } from '@/lib/learn/page-preview-images';
 import ApartmentCatSmellPageClient from '@/app/learn/solutions/apartment-cat-smell-solution/ApartmentCatSmellPageClient';
 import { stripContext } from '@/lib/seo-utils';
 import { locales, isValidLocale } from '@/i18n/config';
@@ -17,7 +18,7 @@ interface PageProps {
 
 const pageTitle = `Cat in a 400 Sq Ft Apartment? How to Eliminate Litter Smell Completely | ${SITE_NAME}`;
 const pageDescription = 'No windows near your litter box. No ventilation. Roommates complaining. Here are 5 solutions that work in small apartments—guests will never know you have a cat.';
-const heroImage = 'https://www.purrify.ca/optimized/blog/apartment-hero.webp';
+const heroImage = `${SITE_URL}${LEARN_PAGE_PREVIEW_IMAGES['/learn/solutions/apartment-cat-smell-solution'].image}`;
 
 export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
     const { locale } = await params;

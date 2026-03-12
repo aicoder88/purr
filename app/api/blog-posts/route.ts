@@ -29,7 +29,7 @@ interface WpPost {
 const getCachedPosts = unstable_cache(
   async (locale: string) => {
     const store = new ContentStore();
-    return store.getAllPosts(locale, false);
+    return store.getAllPosts(locale, false, { includeContent: false });
   },
   ['blog-posts-filesystem'],
   { revalidate: 3600 }
@@ -102,7 +102,9 @@ export async function GET(req: Request): Promise<Response> {
     // Prefer filesystem-backed content (content/blog/{locale}) so blog cards always
     // use each post's featured image (canonical for hero/cards/social sharing).
     try {
-      const posts = await getCachedPosts(locale);
+      const posts = includeContent
+        ? await new ContentStore().getAllPosts(locale, false, { includeContent: true })
+        : await getCachedPosts(locale);
       if (posts.length > 0) {
         return jsonResponse(
           posts.slice(0, take).map((post) =>

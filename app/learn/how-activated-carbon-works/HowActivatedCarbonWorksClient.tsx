@@ -7,10 +7,11 @@ import { AIQuotableBlock } from '@/components/seo/AIQuotableBlock';
 import { RelatedQuestions } from '@/components/seo/RelatedQuestions';
 import { HowToSection } from '@/components/seo/HowToSection';
 import { localizePath } from '@/lib/i18n/locale-path';
+import { LEARN_PAGE_PREVIEW_IMAGES } from '@/lib/learn/page-preview-images';
 
 export default function HowActivatedCarbonWorksClient() {
   const locale = useLocale() as 'en' | 'fr';
-  const heroImage = '/optimized/blog/ammonia-science.webp';
+  const heroImage = LEARN_PAGE_PREVIEW_IMAGES['/learn/how-activated-carbon-works'].image;
   const canonicalUrl = 'https://www.purrify.ca/learn/how-activated-carbon-works/';
 
   // HowTo steps for using activated carbon

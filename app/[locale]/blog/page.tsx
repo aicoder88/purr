@@ -9,6 +9,7 @@ import { SITE_NAME, SITE_DESCRIPTION, SITE_URL } from '@/lib/constants';
 import { locales, isValidLocale, defaultLocale } from '@/i18n/config';
 import { ArrowRight, Calendar, User } from 'lucide-react';
 import { getPublicEditorialName } from '@/lib/editorial/entities';
+import { getOptimizedStaticImageData } from '@/lib/static-image-optimization';
 
 interface BlogIndexPageProps {
   params: Promise<{
@@ -121,7 +122,7 @@ interface BlogPost {
 async function getBlogPosts(locale: string): Promise<BlogPost[]> {
   try {
     const store = new ContentStore();
-    const posts = await store.getAllPosts(locale, false);
+    const posts = await store.getAllPosts(locale, false, { includeContent: false });
 
     // Fallback to sampleBlogPosts if ContentStore returns empty
     if (posts.length === 0) {
@@ -258,67 +259,76 @@ export default async function LocalizedBlogIndexPage({
         <section className="py-16">
           <Container>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12">
-              {currentPosts.map((post, index) => (
-                <article
-                  key={post.link}
-                  className="group bg-white dark:bg-gray-800 rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 border border-gray-100 dark:border-gray-700 flex flex-col h-full"
-                >
-                  <Link href={post.link} className="block relative h-48 overflow-hidden">
-                    <Image
-                      src={post.image}
-                      alt={post.title}
-                      fill
-                      sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-                      priority={index < 3}
-                      {...(index === 0 ? { fetchPriority: "high" } : {})}
-                      className="object-cover group-hover:scale-105 transition-transform duration-500"
-                    />
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-                  </Link>
+              {currentPosts.map((post, index) => {
+                const optimizedImage = getOptimizedStaticImageData(post.image, { preferredWidth: 640 });
 
-                  <div className="p-6 flex flex-col flex-grow">
-                    <div className="flex items-center gap-4 text-sm text-gray-500 dark:text-gray-400 mb-3">
-                      <span className="flex items-center gap-1">
-                        <Calendar className="w-4 h-4" />
-                        {(() => {
-                          try {
-                            const d = new Date(post.date);
-                            if (isNaN(d.getTime())) return post.date || 'Unknown date';
-                            return d.toLocaleDateString(locale === 'fr' ? 'fr-FR' : 'en-US', {
-                              year: 'numeric',
-                              month: 'short',
-                              day: 'numeric',
-                            });
-                          } catch {
-                            return post.date || 'Unknown date';
-                          }
-                        })()}
-                      </span>
-                      <span className="flex items-center gap-1">
-                        <User className="w-4 h-4" />
-                        {post.author}
-                      </span>
-                    </div>
-
-                    <h2 className="text-xl font-bold text-gray-900 dark:text-white mb-3 group-hover:text-electric-indigo transition-colors line-clamp-2">
-                      <Link href={post.link}>{post.title}</Link>
-                    </h2>
-
-                    <p className="text-gray-600 dark:text-gray-300 text-sm mb-4 line-clamp-3 flex-grow">
-                      {post.excerpt}
-                    </p>
-
-                    <Link
-                      href={post.link}
-                      className="inline-flex items-center gap-2 text-electric-indigo-600 font-semibold hover:gap-3 transition-all"
-                      aria-label={`${t.readMore}: ${post.title}`}
-                    >
-                      {t.readMore}
-                      <ArrowRight className="w-4 h-4" />
+                return (
+                  <article
+                    key={post.link}
+                    className="group bg-white dark:bg-gray-800 rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 border border-gray-100 dark:border-gray-700 flex flex-col h-full"
+                  >
+                    <Link href={post.link} prefetch={false} className="block relative h-48 overflow-hidden">
+                      <Image
+                        src={optimizedImage.src}
+                        alt={post.title}
+                        fill
+                        sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                        priority={index < 3}
+                        {...(index === 0 ? { fetchPriority: "high" } : {})}
+                        className="object-cover group-hover:scale-105 transition-transform duration-500"
+                        {...(optimizedImage.blurDataURL ? {
+                          placeholder: 'blur' as const,
+                          blurDataURL: optimizedImage.blurDataURL,
+                        } : {})}
+                      />
+                      <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
                     </Link>
-                  </div>
-                </article>
-              ))}
+
+                    <div className="p-6 flex flex-col flex-grow">
+                      <div className="flex items-center gap-4 text-sm text-gray-500 dark:text-gray-400 mb-3">
+                        <span className="flex items-center gap-1">
+                          <Calendar className="w-4 h-4" />
+                          {(() => {
+                            try {
+                              const d = new Date(post.date);
+                              if (isNaN(d.getTime())) return post.date || 'Unknown date';
+                              return d.toLocaleDateString(locale === 'fr' ? 'fr-FR' : 'en-US', {
+                                year: 'numeric',
+                                month: 'short',
+                                day: 'numeric',
+                              });
+                            } catch {
+                              return post.date || 'Unknown date';
+                            }
+                          })()}
+                        </span>
+                        <span className="flex items-center gap-1">
+                          <User className="w-4 h-4" />
+                          {post.author}
+                        </span>
+                      </div>
+
+                      <h2 className="text-xl font-bold text-gray-900 dark:text-white mb-3 group-hover:text-electric-indigo transition-colors line-clamp-2">
+                        <Link href={post.link} prefetch={false}>{post.title}</Link>
+                      </h2>
+
+                      <p className="text-gray-600 dark:text-gray-300 text-sm mb-4 line-clamp-3 flex-grow">
+                        {post.excerpt}
+                      </p>
+
+                      <Link
+                        href={post.link}
+                        prefetch={false}
+                        className="inline-flex items-center gap-2 text-electric-indigo-600 font-semibold hover:gap-3 transition-all"
+                        aria-label={`${t.readMore}: ${post.title}`}
+                      >
+                        {t.readMore}
+                        <ArrowRight className="w-4 h-4" />
+                      </Link>
+                    </div>
+                  </article>
+                );
+              })}
             </div>
 
             {/* Pagination Controls */}
@@ -327,6 +337,7 @@ export default async function LocalizedBlogIndexPage({
                 {currentPage > 1 ? (
                   <Link
                     href={`${getBlogBasePath(locale)}?page=${currentPage - 1}`}
+                    prefetch={false}
                     className="px-6 py-3 bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-lg shadow-sm hover:shadow-md transition-all text-gray-700 dark:text-gray-200 font-medium flex items-center gap-2"
                   >
                     {t.previous}
@@ -344,6 +355,7 @@ export default async function LocalizedBlogIndexPage({
                 {currentPage < totalPages ? (
                   <Link
                     href={`${getBlogBasePath(locale)}?page=${currentPage + 1}`}
+                    prefetch={false}
                     className="px-6 py-3 bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-lg shadow-sm hover:shadow-md transition-all text-gray-700 dark:text-gray-200 font-medium flex items-center gap-2"
                   >
                     {t.next}

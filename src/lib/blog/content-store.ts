@@ -16,6 +16,9 @@ export interface SaveOptions {
   allowWarnings?: boolean;
 }
 
+export interface GetAllPostsOptions {
+  includeContent?: boolean;
+}
 
 export interface SaveResult {
   success: boolean;
@@ -23,9 +26,69 @@ export interface SaveResult {
   post?: BlogPost;
 }
 
+interface CacheEntry<T> {
+  value: T;
+  expiresAt?: number;
+}
+
 // Valid slug pattern: lowercase letters, numbers, hyphens only (no underscores for stricter security)
 const VALID_SLUG_PATTERN = /^[a-z0-9-]+$/;
 const MAX_SLUG_LENGTH = 100;
+const postCache = new Map<string, CacheEntry<BlogPost | null>>();
+const allPostsCache = new Map<string, CacheEntry<BlogPost[]>>();
+
+function buildPostCacheKey(locale: string, slug: string): string {
+  return `${locale}:${slug}`;
+}
+
+function buildAllPostsCacheKey(locale: string, includeUnpublished: boolean, includeContent: boolean): string {
+  return `${locale}:${includeUnpublished ? 'all' : 'published'}:${includeContent ? 'full' : 'summary'}`;
+}
+
+function invalidateLocaleCache(locale: string, slug?: string): void {
+  if (slug) {
+    postCache.delete(buildPostCacheKey(locale, slug));
+  }
+
+  for (const key of allPostsCache.keys()) {
+    if (key.startsWith(`${locale}:`)) {
+      allPostsCache.delete(key);
+    }
+  }
+}
+
+function getCachedValue<T>(cache: Map<string, CacheEntry<T>>, key: string): T | undefined {
+  const entry = cache.get(key);
+  if (!entry) {
+    return undefined;
+  }
+
+  if (entry.expiresAt !== undefined && entry.expiresAt <= Date.now()) {
+    cache.delete(key);
+    return undefined;
+  }
+
+  return entry.value;
+}
+
+function setCachedValue<T>(
+  cache: Map<string, CacheEntry<T>>,
+  key: string,
+  value: T,
+  expiresAt?: number,
+): void {
+  cache.set(key, { value, expiresAt });
+}
+
+function toSummaryPost(post: BlogPost): BlogPost {
+  return {
+    ...post,
+    content: '',
+    howTo: null,
+    faq: [],
+    citations: [],
+  };
+}
 
 /**
  * Sanitize and validate a slug to prevent path traversal attacks
@@ -101,6 +164,12 @@ export class ContentStore {
       // Sanitize inputs to prevent path traversal
       const safeSlug = sanitizeSlug(slug);
       const safeLocale = sanitizeLocale(locale);
+      const cacheKey = buildPostCacheKey(safeLocale, safeSlug);
+      const cachedPost = getCachedValue(postCache, cacheKey);
+
+      if (cachedPost !== undefined) {
+        return cachedPost;
+      }
 
       const filePath = path.join(this.contentDir, safeLocale, `${safeSlug}.json`);
 
@@ -113,6 +182,7 @@ export class ContentStore {
       }
 
       if (!fs.existsSync(filePath)) {
+        setCachedValue(postCache, cacheKey, null);
         return null;
       }
 
@@ -128,19 +198,28 @@ export class ContentStore {
       // Basic validation
       if (!post || typeof post !== 'object') {
         // Invalid post structure
+        setCachedValue(postCache, cacheKey, null);
         return null;
       }
 
       // Only return published posts (or scheduled posts whose date has passed)
       if (post.status === 'published') {
+        setCachedValue(postCache, cacheKey, post);
         return post;
       }
       if (post.status === 'scheduled' && post.scheduledDate) {
         const scheduledDate = new Date(post.scheduledDate);
         if (scheduledDate <= new Date()) {
+          setCachedValue(postCache, cacheKey, post);
           return post;
         }
+
+        if (!Number.isNaN(scheduledDate.getTime())) {
+          setCachedValue(postCache, cacheKey, null, scheduledDate.getTime());
+          return null;
+        }
       }
+      setCachedValue(postCache, cacheKey, null);
       return null;
     } catch (_error) {
       if (_error instanceof Error && _error.message.includes('path traversal')) {
@@ -152,10 +231,21 @@ export class ContentStore {
     }
   }
 
-  async getAllPosts(locale: string, includeUnpublished = false): Promise<BlogPost[]> {
+  async getAllPosts(
+    locale: string,
+    includeUnpublished = false,
+    options: GetAllPostsOptions = {},
+  ): Promise<BlogPost[]> {
     try {
       // Sanitize locale
       const safeLocale = sanitizeLocale(locale);
+      const includeContent = options.includeContent ?? true;
+      const cacheKey = buildAllPostsCacheKey(safeLocale, includeUnpublished, includeContent);
+      const cachedPosts = getCachedValue(allPostsCache, cacheKey);
+
+      if (cachedPosts !== undefined) {
+        return cachedPosts;
+      }
 
       const localeDir = path.join(this.contentDir, safeLocale);
 
@@ -174,6 +264,7 @@ export class ContentStore {
       const files = fs.readdirSync(localeDir).filter(f => f.endsWith('.json'));
       const posts: BlogPost[] = [];
       const now = new Date();
+      let nextVisibilityChange: number | undefined;
 
       for (const file of files) {
         try {
@@ -187,15 +278,21 @@ export class ContentStore {
             continue;
           }
 
+          const normalizedPost = includeContent ? post : toSummaryPost(post);
+
           if (includeUnpublished) {
             // console.log(`[getAllPosts] Adding ${file} (includeUnpublished)`);
-            posts.push(post);
+            posts.push(normalizedPost);
           } else if (post.status === 'published') {
-            posts.push(post);
+            posts.push(normalizedPost);
           } else if (post.status === 'scheduled' && post.scheduledDate) {
             const scheduledDate = new Date(post.scheduledDate);
             if (scheduledDate <= now) {
-              posts.push(post);
+              posts.push(normalizedPost);
+            } else if (!Number.isNaN(scheduledDate.getTime())) {
+              nextVisibilityChange = nextVisibilityChange === undefined
+                ? scheduledDate.getTime()
+                : Math.min(nextVisibilityChange, scheduledDate.getTime());
             }
           }
         } catch (_error) {
@@ -211,6 +308,8 @@ export class ContentStore {
         new Date(b.publishDate).getTime() - new Date(a.publishDate).getTime()
       );
 
+      const expiresAt = includeUnpublished ? undefined : nextVisibilityChange;
+      setCachedValue(allPostsCache, cacheKey, posts, expiresAt);
       return posts;
     } catch (_error) {
       if (_error instanceof Error && _error.message.includes('path traversal')) {
@@ -265,7 +364,7 @@ export class ContentStore {
 
       fs.writeFileSync(filePath, JSON.stringify(syncedPost, null, 2));
 
-
+      invalidateLocaleCache(safeLocale, safeSlug);
 
       return {
         success: true,
@@ -308,6 +407,7 @@ export class ContentStore {
 
       if (fs.existsSync(filePath)) {
         fs.unlinkSync(filePath);
+        invalidateLocaleCache(safeLocale, safeSlug);
       }
     } catch (_error) {
       if (_error instanceof Error && _error.message.includes('Path traversal')) {

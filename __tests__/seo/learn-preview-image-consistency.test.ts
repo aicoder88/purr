@@ -6,6 +6,7 @@ import fs from 'node:fs';
 import path from 'node:path';
 
 import { LEARN_PAGE_PREVIEW_IMAGES } from '@/lib/learn/page-preview-images';
+import { getOptimizedStaticImageData } from '@/lib/static-image-optimization';
 import { getPageImage } from '@/lib/seo/page-images';
 
 type RouteFixture = {
@@ -15,6 +16,14 @@ type RouteFixture = {
 };
 
 const ROUTE_FIXTURES: RouteFixture[] = [
+  {
+    route: '/learn/ammonia-science',
+    clientFile: 'app/learn/ammonia-science/AmmoniaSciencePageClient.tsx',
+    metadataFiles: [
+      'app/learn/ammonia-science/page.tsx',
+      'app/[locale]/learn/ammonia-science/page.tsx',
+    ],
+  },
   {
     route: '/learn/how-activated-carbon-works',
     clientFile: 'app/learn/how-activated-carbon-works/HowActivatedCarbonWorksClient.tsx',
@@ -104,7 +113,10 @@ function expectFileToReferencePreviewImage(relativePath: string, route: string, 
 describe('learn page preview image consistency', () => {
   it('keeps shared preview image routes aligned with the SEO page-image resolver', () => {
     for (const [route, previewImage] of Object.entries(LEARN_PAGE_PREVIEW_IMAGES)) {
-      expect(getPageImage(route)).toEqual(previewImage);
+      expect(getPageImage(route)).toEqual({
+        image: getOptimizedStaticImageData(previewImage.image, { preferredWidth: 640 }).src,
+        alt: previewImage.alt,
+      });
     }
   });
 

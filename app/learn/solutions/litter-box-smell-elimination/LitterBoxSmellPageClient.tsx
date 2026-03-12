@@ -9,13 +9,14 @@ import { HowToSection } from '@/components/seo/HowToSection';
 import { AIQuotableBlock } from '@/components/seo/AIQuotableBlock';
 import { RelatedQuestions } from '@/components/seo/RelatedQuestions';
 import { localizePath } from '@/lib/i18n/locale-path';
+import { LEARN_PAGE_PREVIEW_IMAGES } from '@/lib/learn/page-preview-images';
 
 export default function LitterBoxSmellPageClient() {
   const locale = useLocale() as 'en' | 'fr';
   const canonicalUrl = 'https://www.purrify.ca/learn/solutions/litter-box-smell-elimination/';
 
   // SEO optimized images for odor elimination
-  const heroImage = '/optimized/blog/litter-box-hero.webp';
+  const heroImage = LEARN_PAGE_PREVIEW_IMAGES['/learn/solutions/litter-box-smell-elimination'].image;
   const solutionImage = '/optimized/blog/ammonia-happy-cat.webp';
   const scienceImage = '/optimized/blog/ammonia-science.webp';
 
@@ -52,6 +53,10 @@ export default function LitterBoxSmellPageClient() {
       answer: "Bacteria convert urea in cat urine to ammonia gas within 2-4 hours. Even with daily scooping, ammonia has already formed. The smell you notice isn't from visible waste—it's ammonia that's been released into the air. Activated carbon traps these molecules continuously between cleanings.",
     },
     {
+      question: 'How do I get rid of smelly cat litter fast?',
+      answer: 'Scoop out fresh clumps, let the box dry fully if you just washed it, refill to the proper depth, and add activated carbon to the top layer. That gives you faster litter box odor control than fragrance sprays or baking soda because it traps odor molecules instead of covering them up.',
+    },
+    {
       question: 'How often should I completely change the litter?',
       answer: 'With regular scooping and activated carbon additive, you can extend full litter changes to every 2-3 weeks instead of weekly. The carbon continues neutralizing odors, keeping litter fresher longer and reducing waste.',
     },
@@ -83,11 +88,11 @@ export default function LitterBoxSmellPageClient() {
               className="w-full h-auto rounded-lg shadow-lg mb-8"
             />
             <h1 className="text-4xl md:text-6xl font-heading font-bold mb-6 text-gray-900 dark:text-gray-100">
-              Litter Box Stinks After Cleaning?
+              Litter Box Odor Control for Boxes That Still Stink After Cleaning
             </h1>
             <p className="text-xl text-gray-700 dark:text-gray-200 mb-8 max-w-3xl mx-auto">
-              You just cleaned the litter box—why does it still smell? Bacteria create ammonia gas within hours of urination.
-              Learn why traditional cleaning fails and how activated carbon eliminates odors at the molecular level.
+              You just cleaned the litter box, so why does it still smell? For stronger kitty litter odor control,
+              you need to stop ammonia between scoops. Learn why traditional cleaning fails and how activated carbon eliminates odors at the molecular level.
             </p>
           </div>
 

@@ -7,12 +7,13 @@ import { RelatedContent } from '@/components/seo/RelatedContent';
 import { HowToSection } from '@/components/seo/HowToSection';
 import { AIQuotableBlock } from '@/components/seo/AIQuotableBlock';
 import { RelatedQuestions } from '@/components/seo/RelatedQuestions';
+import { LEARN_PAGE_PREVIEW_IMAGES } from '@/lib/learn/page-preview-images';
 
 export default function AmmoniaSmellPageClient() {
   const canonicalUrl = 'https://www.purrify.ca/learn/solutions/ammonia-smell-cat-litter/';
 
   // Ammonia smell solution images
-  const heroImage = '/optimized/blog/ammonia-hero-ghibli.webp';
+  const heroImage = LEARN_PAGE_PREVIEW_IMAGES['/learn/solutions/ammonia-smell-cat-litter'].image;
   const sectionImage1 = '/optimized/blog/ammonia-science.webp'; // Keep the original — it's great
   const sectionImage2 = '/optimized/blog/ammonia-fresh-home-ghibli.webp';
   const solutionImage = '/optimized/blog/ammonia-happy-cat-ghibli.webp';
@@ -49,6 +50,10 @@ export default function AmmoniaSmellPageClient() {
       answer: 'Cat urine contains urea, which bacteria break down into ammonia gas. This is a natural biological process that starts within 2-4 hours of urination. The distinctive sharp, eye-watering smell is ammonia being released into the air.',
     },
     {
+      question: 'Why do ammonia and cat pee smell so strong in the litter box?',
+      answer: 'Because cat pee starts as urea, then quickly turns into ammonia gas once bacteria get to work. In a warm room or a box that has not been scooped recently, that cat pee smell becomes much sharper, more chemical, and much more noticeable.',
+    },
+    {
       question: 'Is the ammonia smell from cat litter dangerous?',
       answer: 'Yes, at high concentrations. Ammonia can irritate eyes and respiratory systems for both humans and cats. Cats are particularly vulnerable since they spend time close to the litter box. Prolonged exposure can cause respiratory infections in cats.',
     },
@@ -73,11 +78,11 @@ export default function AmmoniaSmellPageClient() {
       <section className="py-16 px-4">
         <div className="max-w-4xl mx-auto text-center">
           <h1 className="text-4xl md:text-6xl font-heading font-bold mb-6 text-gray-900 dark:text-gray-100">
-            That Eye-Watering Ammonia Smell? Here&apos;s Exactly Why It Happens
+            Ammonia and Cat Pee Smell? Here&apos;s Exactly Why It Happens
           </h1>
           <p className="text-xl text-gray-700 dark:text-gray-200 mb-4 max-w-2xl mx-auto">
-            Your cat isn&apos;t doing anything wrong — it&apos;s pure chemistry. And once you understand it,
-            the fix becomes obvious.
+            If cat pee smell in the litter box turns sharp, chemical, and eye-watering, you&apos;re smelling ammonia.
+            Your cat isn&apos;t doing anything wrong — it&apos;s pure chemistry, and once you understand it, the fix becomes obvious.
           </p>
         </div>
       </section>

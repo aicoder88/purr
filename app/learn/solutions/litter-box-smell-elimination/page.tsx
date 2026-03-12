@@ -2,13 +2,14 @@ export const dynamic = 'force-static';
 
 import type { Metadata } from 'next';
 import { SITE_NAME } from '@/lib/constants';
+import { LEARN_PAGE_PREVIEW_IMAGES } from '@/lib/learn/page-preview-images';
 import { stripContext } from '@/lib/seo-utils';
 import LitterBoxSmellPageClient from './LitterBoxSmellPageClient';
 
 const pageTitle = `Litter Box Stinks After Cleaning? Here's Why (And How to Fix It) | ${SITE_NAME}`;
 const pageDescription = 'Why does your litter box smell bad even after cleaning? Bacteria create ammonia within hours. Activated carbon traps odor molecules at the source—works 10x longer than baking soda.';
 const canonicalUrl = 'https://www.purrify.ca/learn/solutions/litter-box-smell-elimination/';
-const heroImage = 'https://www.purrify.ca/optimized/blog/litter-box-hero.webp';
+const heroImage = `https://www.purrify.ca${LEARN_PAGE_PREVIEW_IMAGES['/learn/solutions/litter-box-smell-elimination'].image}`;
 
 export const metadata: Metadata = {
   title: pageTitle,

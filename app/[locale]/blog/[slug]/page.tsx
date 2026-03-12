@@ -16,12 +16,16 @@ import { ArrowLeft } from 'lucide-react';
 import { sanitizeHTML } from '@/lib/security/sanitize';
 import { localizeInternalHrefAttributes } from '@/lib/i18n/locale-path';
 import { BlogProductCTA } from '@/components/blog/BlogProductCTA';
-import { RelatedSolutions } from '@/components/learn/RelatedSolutions';
+import { RelatedSolutionsServer } from '@/components/blog/RelatedSolutionsServer';
 import {
   getEditorialEntityByName,
   getPublicEditorialEntity,
   getPublicEditorialName,
 } from '@/lib/editorial/entities';
+import {
+  getOptimizedStaticImageData,
+  optimizeStaticImagesInHtml,
+} from '@/lib/static-image-optimization';
 
 // Force static generation - no dynamic data fetching
 export const dynamic = 'force-static';
@@ -126,7 +130,7 @@ export async function generateStaticParams() {
   const nonDefaultLocales = locales.filter(l => l !== defaultLocale);
   for (const locale of nonDefaultLocales) {
     try {
-      const posts = await store.getAllPosts(locale, false);
+      const posts = await store.getAllPosts(locale, false, { includeContent: false });
       posts.forEach((post) => {
         params.push({ locale, slug: post.slug });
       });
@@ -399,8 +403,12 @@ export default async function LocalizedBlogPostPage({ params }: BlogPostPageProp
   const hasEmbeddedH1 = /<h1\b[^>]*>/i.test(post.content ?? '');
   const needsFallbackH1 = hasEmbeddedHero && !hasEmbeddedH1;
   const contentLocale = locale as Locale;
+  const heroImage = getOptimizedStaticImageData(post.image, { preferredWidth: 1200 });
   const localizedContentHtml = post.content
-    ? localizeInternalHrefAttributes(sanitizeHTML(post.content), contentLocale)
+    ? optimizeStaticImagesInHtml(
+      localizeInternalHrefAttributes(sanitizeHTML(post.content), contentLocale),
+      { preferredWidth: 828 },
+    )
     : '';
   const authorEntity = getPublicEditorialEntity(post.author);
   const reviewerEntity = post.reviewer ? getEditorialEntityByName(post.reviewer) : null;
@@ -518,6 +526,25 @@ export default async function LocalizedBlogPostPage({ params }: BlogPostPageProp
     }
   };
 
+  const showUpdatedDate = visibleUpdatedDate !== post.date;
+
+  const compactMasthead = (
+    <div
+      data-testid="article-masthead"
+      className="mb-4 flex flex-wrap items-center gap-x-3 gap-y-1 text-xs font-medium uppercase tracking-[0.18em] text-gray-500 dark:text-gray-400"
+    >
+      <Link
+        href={authorEntity.canonicalPath}
+        prefetch={false}
+        className="transition-colors hover:text-gray-800 dark:hover:text-gray-200"
+      >
+        {authorEntity.name}
+      </Link>
+      <span aria-hidden="true" className="text-gray-300 dark:text-gray-600">/</span>
+      <time dateTime={post.date}>{formatDate(post.date)}</time>
+    </div>
+  );
+
   return (
     <>
       <script
@@ -536,6 +563,7 @@ export default async function LocalizedBlogPostPage({ params }: BlogPostPageProp
           <Container>
             <Link
               href={getBlogBasePath(locale)}
+              prefetch={false}
               className="inline-flex items-center gap-2 text-gray-600 dark:text-gray-400 hover:text-electric-indigo transition-colors"
             >
               <ArrowLeft className="w-4 h-4" />
@@ -551,25 +579,31 @@ export default async function LocalizedBlogPostPage({ params }: BlogPostPageProp
         )}
 
         {!hasEmbeddedHero && (
-          <section className="py-12 md:py-16">
+          <section className="py-8 md:py-10">
             <Container>
               <div className="max-w-4xl mx-auto">
+                {compactMasthead}
+
                 {/* Title */}
                 <h1 className="font-heading text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 dark:text-white mb-6 leading-tight">
                   {post.title}
                 </h1>
 
                 {/* Excerpt */}
-                <p className="text-xl text-gray-600 dark:text-gray-300 mb-8">{post.excerpt}</p>
+                <p className="mb-6 max-w-3xl text-lg text-gray-600 dark:text-gray-300">{post.excerpt}</p>
 
                 {/* Featured Image */}
-                <div className="relative aspect-video rounded-2xl overflow-hidden shadow-xl">
+                <div className="relative aspect-video rounded-2xl overflow-hidden shadow-lg">
                   <Image
-                    src={post.image}
+                    src={heroImage.src}
                     alt={post.heroImageAlt || post.title}
                     fill
                     className="object-cover"
                     priority
+                    {...(heroImage.blurDataURL ? {
+                      placeholder: 'blur' as const,
+                      blurDataURL: heroImage.blurDataURL,
+                    } : {})}
                   />
                 </div>
                 {(post.heroImageCaption || post.heroImageCredit) && (
@@ -591,57 +625,7 @@ export default async function LocalizedBlogPostPage({ params }: BlogPostPageProp
         <section className="py-8 md:py-12">
           <Container>
             <div className="max-w-4xl mx-auto">
-              <section className="mb-10 rounded-3xl border border-gray-200 bg-white p-6 shadow-sm dark:border-gray-800 dark:bg-gray-900">
-                <div className="flex flex-wrap gap-x-6 gap-y-2 text-sm text-gray-600 dark:text-gray-300">
-                  <span>{t.published} {formatDate(post.date)}</span>
-                  <span>{t.updated} {formatDate(visibleUpdatedDate)}</span>
-                  {visibleReviewedDate && <span>{t.reviewed} {formatDate(visibleReviewedDate)}</span>}
-                  {readingTime > 0 && <span>{readingTime} {t.minRead}</span>}
-                </div>
-
-                <div className="mt-6 grid gap-6 md:grid-cols-2">
-                  <div>
-                    <p className="text-xs font-semibold uppercase tracking-[0.2em] text-brand-red-600">{t.by}</p>
-                    <Link
-                      href={authorEntity.canonicalPath}
-                      className="mt-2 inline-flex text-lg font-semibold text-gray-900 hover:text-brand-red-600 dark:text-gray-50 dark:hover:text-brand-red-500"
-                    >
-                      {authorEntity.name}
-                    </Link>
-                    <p className="mt-2 text-sm leading-6 text-gray-700 dark:text-gray-300">{authorEntity.summary}</p>
-                  </div>
-
-                  <div>
-                    <p className="text-xs font-semibold uppercase tracking-[0.2em] text-brand-red-600">
-                      {reviewerEntity && visibleReviewedDate ? t.reviewer : t.reviewProcess}
-                    </p>
-                    {reviewerEntity && visibleReviewedDate ? (
-                      <>
-                        <Link
-                          href={reviewerEntity.canonicalPath}
-                          className="mt-2 inline-flex text-lg font-semibold text-gray-900 hover:text-brand-red-600 dark:text-gray-50 dark:hover:text-brand-red-500"
-                        >
-                          {reviewerEntity.name}
-                        </Link>
-                        <p className="mt-2 text-sm leading-6 text-gray-700 dark:text-gray-300">
-                          {reviewerEntity.summary}
-                        </p>
-                      </>
-                    ) : (
-                      <p className="mt-2 text-sm leading-6 text-gray-700 dark:text-gray-300">{t.noReviewer}</p>
-                    )}
-                  </div>
-                </div>
-
-                <div className="mt-6 flex flex-wrap gap-4 text-sm font-semibold">
-                  <Link href="/about/editorial-policy" className="text-brand-red-600 hover:text-brand-red-700">
-                    {t.editorialPolicy}
-                  </Link>
-                  <Link href="/about/testing-policy" className="text-brand-red-600 hover:text-brand-red-700">
-                    {t.testingPolicy}
-                  </Link>
-                </div>
-              </section>
+              {hasEmbeddedHero && compactMasthead}
 
               <article className="prose prose-lg dark:prose-invert prose-headings:font-heading prose-a:text-electric-indigo max-w-none">
                 {post.content ? (
@@ -690,7 +674,10 @@ export default async function LocalizedBlogPostPage({ params }: BlogPostPageProp
                         <div
                           className="text-gray-600 dark:text-gray-300 prose dark:prose-invert max-w-none"
                           dangerouslySetInnerHTML={{
-                            __html: localizeInternalHrefAttributes(sanitizeHTML(item.answerHtml), contentLocale),
+                            __html: optimizeStaticImagesInHtml(
+                              localizeInternalHrefAttributes(sanitizeHTML(item.answerHtml), contentLocale),
+                              { preferredWidth: 640 },
+                            ),
                           }}
                         />
                       </div>
@@ -699,13 +686,76 @@ export default async function LocalizedBlogPostPage({ params }: BlogPostPageProp
                 </div>
               )}
 
+              <footer
+                data-testid="article-details-footer"
+                className="mt-14 border-t border-gray-200 pt-8 text-sm text-gray-600 dark:border-gray-700 dark:text-gray-300"
+              >
+                <div className="flex flex-wrap gap-x-6 gap-y-2 text-xs font-medium uppercase tracking-[0.18em] text-gray-500 dark:text-gray-400">
+                  <span>{t.published} {formatDate(post.date)}</span>
+                  {showUpdatedDate && <span>{t.updated} {formatDate(visibleUpdatedDate)}</span>}
+                  {visibleReviewedDate && <span>{t.reviewed} {formatDate(visibleReviewedDate)}</span>}
+                  {readingTime > 0 && <span>{readingTime} {t.minRead}</span>}
+                </div>
+
+                <div className="mt-6 grid gap-8 md:grid-cols-2">
+                  <div>
+                    <p className="text-xs font-semibold uppercase tracking-[0.18em] text-gray-500 dark:text-gray-400">{t.by}</p>
+                    <Link
+                      href={authorEntity.canonicalPath}
+                      prefetch={false}
+                      className="mt-2 inline-flex text-base font-semibold text-gray-900 transition-colors hover:text-brand-red-600 dark:text-gray-50 dark:hover:text-brand-red-500"
+                    >
+                      {authorEntity.name}
+                    </Link>
+                    <p className="mt-2 leading-6">{authorEntity.summary}</p>
+                  </div>
+
+                  <div>
+                    <p className="text-xs font-semibold uppercase tracking-[0.18em] text-gray-500 dark:text-gray-400">
+                      {reviewerEntity && visibleReviewedDate ? t.reviewer : t.reviewProcess}
+                    </p>
+                    {reviewerEntity && visibleReviewedDate ? (
+                      <>
+                        <Link
+                          href={reviewerEntity.canonicalPath}
+                          prefetch={false}
+                          className="mt-2 inline-flex text-base font-semibold text-gray-900 transition-colors hover:text-brand-red-600 dark:text-gray-50 dark:hover:text-brand-red-500"
+                        >
+                          {reviewerEntity.name}
+                        </Link>
+                        <p className="mt-2 leading-6">{reviewerEntity.summary}</p>
+                      </>
+                    ) : (
+                      <p className="mt-2 leading-6">{t.noReviewer}</p>
+                    )}
+                  </div>
+                </div>
+
+                <div className="mt-6 flex flex-wrap gap-4 text-xs font-medium uppercase tracking-[0.18em] text-gray-500 dark:text-gray-400">
+                  <Link
+                    href="/about/editorial-policy"
+                    prefetch={false}
+                    className="transition-colors hover:text-gray-800 dark:hover:text-gray-200"
+                  >
+                    {t.editorialPolicy}
+                  </Link>
+                  <Link
+                    href="/about/testing-policy"
+                    prefetch={false}
+                    className="transition-colors hover:text-gray-800 dark:hover:text-gray-200"
+                  >
+                    {t.testingPolicy}
+                  </Link>
+                </div>
+              </footer>
+
               {/* Related Content */}
               <RelatedContent currentUrl={getBlogPostPath(locale, slug)} className="mt-12 pt-8 border-t border-gray-200 dark:border-gray-700" />
             </div>
           </Container>
         </section>
 
-        <RelatedSolutions currentPath={getBlogPostPath(locale, slug)} limit={4} />
+        <RelatedSolutionsServer locale={contentLocale} currentPath={getBlogPostPath(locale, slug)} limit={4} />
 
         {/* Navigation Footer */}
         <section className="py-8 border-t border-gray-100 dark:border-gray-800">
@@ -713,6 +763,7 @@ export default async function LocalizedBlogPostPage({ params }: BlogPostPageProp
             <div className="max-w-4xl mx-auto flex justify-between items-center">
               <Link
                 href={getBlogBasePath(locale)}
+                prefetch={false}
                 className="inline-flex items-center gap-2 text-gray-600 dark:text-gray-400 hover:text-electric-indigo transition-colors"
               >
                 <ArrowLeft className="w-4 h-4" />
@@ -720,6 +771,7 @@ export default async function LocalizedBlogPostPage({ params }: BlogPostPageProp
               </Link>
               <Link
                 href="/"
+                prefetch={false}
                 className="inline-flex items-center gap-2 text-gray-600 dark:text-gray-400 hover:text-electric-indigo transition-colors"
               >
                 {t.visitStore}

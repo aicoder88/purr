@@ -97,6 +97,7 @@ export default async function LocalizedHowActivatedCarbonWorksPage({ params }: L
   }
 
   const isFrench = locale === 'fr';
+  const heroImage = `https://www.purrify.ca${LEARN_PAGE_PREVIEW_IMAGES['/learn/how-activated-carbon-works'].image}`;
   const articleSchema = createIndexedArticleSchema({
     locale,
     path: '/learn/how-activated-carbon-works/',
@@ -106,7 +107,7 @@ export default async function LocalizedHowActivatedCarbonWorksPage({ params }: L
     description: isFrench
       ? "Guide scientifique complet sur le fonctionnement du carbone actif. Découvrez l'adsorption, la surface spécifique et les micropores."
       : 'Comprehensive science guide on how activated carbon works. Learn about adsorption, surface area, and micropores.',
-    image: 'https://www.purrify.ca/optimized/blog/ammonia-science.webp',
+    image: heroImage,
     datePublished: '2024-01-20T12:00:00Z',
     dateModified: '2025-12-09T00:00:00Z',
     section: 'Science & Technology',

@@ -15,6 +15,7 @@ import {
   getTaxonomyTerm,
   getTaxonomyUi,
 } from '@/translations/blog-taxonomy';
+import { getOptimizedStaticImageData } from '@/lib/static-image-optimization';
 
 interface TaxonomyHubPageProps {
   locale: Locale;
@@ -63,17 +64,22 @@ function ArticleCard({
   readTimeLabel: string;
 }) {
   const fallbackImage = '/optimized/blog/cat-litter-hero.webp';
+  const optimizedImage = getOptimizedStaticImageData(imageUrl || fallbackImage, { preferredWidth: 640 });
 
   return (
     <article className="group overflow-hidden rounded-3xl border border-gray-200 bg-white shadow-sm transition-transform duration-200 hover:-translate-y-1 dark:border-gray-800 dark:bg-gray-900">
-      <Link href={href} className="block">
+      <Link href={href} prefetch={false} className="block">
         <div className="relative aspect-[16/10] overflow-hidden bg-gray-100 dark:bg-gray-800">
           <Image
-            src={imageUrl || fallbackImage}
+            src={optimizedImage.src}
             alt={imageAlt}
             fill
             className="object-cover transition-transform duration-300 group-hover:scale-105"
             sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+            {...(optimizedImage.blurDataURL ? {
+              placeholder: 'blur' as const,
+              blurDataURL: optimizedImage.blurDataURL,
+            } : {})}
           />
         </div>
       </Link>
@@ -92,7 +98,7 @@ function ArticleCard({
 
         <div className="space-y-3">
           <h2 className="font-heading text-2xl font-semibold text-gray-900 dark:text-white">
-            <Link href={href} className="hover:text-[#FF3131]">
+            <Link href={href} prefetch={false} className="hover:text-[#FF3131]">
               {title}
             </Link>
           </h2>
@@ -103,6 +109,7 @@ function ArticleCard({
 
         <Link
           href={href}
+          prefetch={false}
           className="inline-flex items-center gap-2 text-sm font-semibold text-[#FF3131] transition-colors hover:text-[#d62929]"
         >
           {ctaLabel}
@@ -144,6 +151,7 @@ function TaxonomyLinkList({
             <Link
               key={`${kind}-${item.slug}`}
               href={href}
+              prefetch={false}
               className="rounded-full border border-gray-200 px-4 py-2 text-sm font-medium text-gray-700 transition-colors hover:border-[#FF3131] hover:text-[#FF3131] dark:border-gray-700 dark:text-gray-200"
             >
               {term.label} ({item.count})
@@ -171,6 +179,7 @@ export function TaxonomyHubPage({ locale, hub }: TaxonomyHubPageProps) {
           <div className="mx-auto max-w-5xl">
             <Link
               href={basePath}
+              prefetch={false}
               className="mb-6 inline-flex items-center gap-2 text-sm font-medium text-gray-600 transition-colors hover:text-[#FF3131] dark:text-gray-300"
             >
               <ArrowLeft className="h-4 w-4" />
@@ -275,7 +284,7 @@ export function TaxonomyHubPage({ locale, hub }: TaxonomyHubPageProps) {
 
                         <div className="mt-4 space-y-3">
                           <h3 className="font-heading text-2xl font-semibold text-gray-900 dark:text-white">
-                            <Link href={`${basePath}/${post.slug}`} className="hover:text-[#FF3131]">
+                            <Link href={`${basePath}/${post.slug}`} prefetch={false} className="hover:text-[#FF3131]">
                               {post.title}
                             </Link>
                           </h3>
@@ -284,6 +293,7 @@ export function TaxonomyHubPage({ locale, hub }: TaxonomyHubPageProps) {
                           </p>
                           <Link
                             href={`${basePath}/${post.slug}`}
+                            prefetch={false}
                             className="inline-flex items-center gap-2 text-sm font-semibold text-[#FF3131] transition-colors hover:text-[#d62929]"
                           >
                             {ui.readArticle}
@@ -306,6 +316,7 @@ export function TaxonomyHubPage({ locale, hub }: TaxonomyHubPageProps) {
                       <li key={`guide-${post.slug}`}>
                         <Link
                           href={`${basePath}/${post.slug}`}
+                          prefetch={false}
                           className="group block rounded-2xl bg-gray-50 px-4 py-4 transition-colors hover:bg-[#FFF2F2] dark:bg-gray-800 dark:hover:bg-gray-800/80"
                         >
                           <div className="text-base font-semibold text-gray-900 group-hover:text-[#FF3131] dark:text-white">

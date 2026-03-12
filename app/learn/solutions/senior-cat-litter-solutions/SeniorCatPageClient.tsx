@@ -8,13 +8,14 @@ import { HowToSection } from '@/components/seo/HowToSection';
 import { AIQuotableBlock } from '@/components/seo/AIQuotableBlock';
 import { RelatedQuestions } from '@/components/seo/RelatedQuestions';
 import { localizePath } from '@/lib/i18n/locale-path';
+import { LEARN_PAGE_PREVIEW_IMAGES } from '@/lib/learn/page-preview-images';
 
 export default function SeniorCatPageClient() {
     const locale = useLocale() as 'en' | 'fr';
     const canonicalUrl = 'https://www.purrify.ca/learn/solutions/senior-cat-litter-solutions/';
 
     // Senior cat litter solution images
-    const heroImage = '/optimized/blog/senior-cat-hero.png';
+    const heroImage = LEARN_PAGE_PREVIEW_IMAGES['/learn/solutions/senior-cat-litter-solutions'].image;
     const sectionImage1 = '/optimized/blog/senior-cat-mobility.png';
     const sectionImage2 = '/optimized/blog/ammonia-fresh-home.webp'; // Using existing image as placeholder
 

@@ -12,11 +12,13 @@ import {
 } from '@/components/ui/accordion';
 import { useTranslations, useLocale } from 'next-intl';
 import { localizePath } from '@/lib/i18n/locale-path';
+import { LEARN_PAGE_PREVIEW_IMAGES } from '@/lib/learn/page-preview-images';
 
 export default function AmmoniaSciencePageClient() {
   const t = useTranslations();
   const a = useTranslations('ammonia');
   const locale = useLocale() as 'en' | 'fr';
+  const heroImage = LEARN_PAGE_PREVIEW_IMAGES['/learn/ammonia-science'].image;
 
   const faqItems = [
     { question: a('faq.q1'), answer: a('faq.a1') },
@@ -89,7 +91,7 @@ export default function AmmoniaSciencePageClient() {
 
             <div className="relative rounded-2xl overflow-hidden shadow-xl mb-10">
               <Image
-                src="/optimized/blog/ammonia-science.webp"
+                src={heroImage}
                 alt={a('meta.title')}
                 width={1200}
                 height={675}

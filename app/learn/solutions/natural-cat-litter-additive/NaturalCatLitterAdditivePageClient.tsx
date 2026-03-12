@@ -8,13 +8,14 @@ import { HowToSection } from '@/components/seo/HowToSection';
 import { AIQuotableBlock } from '@/components/seo/AIQuotableBlock';
 import { RelatedQuestions } from '@/components/seo/RelatedQuestions';
 import { localizePath } from '@/lib/i18n/locale-path';
+import { LEARN_PAGE_PREVIEW_IMAGES } from '@/lib/learn/page-preview-images';
 
 export default function NaturalCatLitterAdditivePageClient() {
   const locale = useLocale() as 'en' | 'fr';
   const canonicalUrl = 'https://www.purrify.ca/learn/solutions/natural-cat-litter-additive/';
 
   // Natural cat litter additive images
-  const heroImage = '/optimized/blog/litter-box-hero.webp';
+  const heroImage = LEARN_PAGE_PREVIEW_IMAGES['/learn/solutions/natural-cat-litter-additive'].image;
   const sectionImage1 = '/optimized/blog/ammonia-science.webp';
   const sectionImage2 = '/optimized/blog/ammonia-happy-cat.webp';
   const solutionImage = '/optimized/blog/ammonia-fresh-home.webp';

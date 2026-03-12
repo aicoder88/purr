@@ -20,7 +20,7 @@ export const dynamicParams = false;
 
 export async function generateStaticParams() {
   const store = new ContentStore();
-  const posts = await store.getAllPosts(defaultLocale, false);
+  const posts = await store.getAllPosts(defaultLocale, false, { includeContent: false });
 
   return CANONICAL_TAG_SLUGS
     .filter((slug) => buildTaxonomyHubData(posts, 'tag', slug))

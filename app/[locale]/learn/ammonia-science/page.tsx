@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 import { locales, isValidLocale } from '@/i18n/config';
 import { SITE_NAME } from '@/lib/constants';
+import { LEARN_PAGE_PREVIEW_IMAGES } from '@/lib/learn/page-preview-images';
 import { buildLocalizedMetadataAlternates } from '@/lib/seo-utils';
 import AmmoniaSciencePageClient from '@/app/learn/ammonia-science/AmmoniaSciencePageClient';
 import {
@@ -9,6 +10,8 @@ import {
   createIndexedArticleSchema,
   serializeSchemaGraph,
 } from '@/lib/seo/indexed-content-schema';
+
+const heroImage = `https://www.purrify.ca${LEARN_PAGE_PREVIEW_IMAGES['/learn/ammonia-science'].image}`;
 
 interface LocalizedAmmoniaSciencePageProps {
   params: Promise<{ locale: string }>;
@@ -26,7 +29,6 @@ export async function generateMetadata({ params }: LocalizedAmmoniaSciencePagePr
   }
 
   const isFrench = locale === 'fr';
-  const baseUrl = 'https://www.purrify.ca';
   const alternates = buildLocalizedMetadataAlternates('/learn/ammonia-science/', locale);
   const canonicalPath = alternates.canonical;
 
@@ -54,7 +56,7 @@ export async function generateMetadata({ params }: LocalizedAmmoniaSciencePagePr
       locale: isFrench ? 'fr_CA' : 'en_CA',
       images: [
         {
-          url: `${baseUrl}/optimized/logos/purrify-logo.png`,
+          url: heroImage,
           width: 1200,
           height: 800,
           alt: isFrench ? 'Science ammoniaque' : 'Ammonia science',
@@ -71,7 +73,7 @@ export async function generateMetadata({ params }: LocalizedAmmoniaSciencePagePr
       description: isFrench
         ? 'Causes et solutions pour les odeurs ammoniaquées.'
         : 'Causes and solutions for ammonia smells.',
-      images: [`${baseUrl}/optimized/logos/purrify-logo.png`],
+      images: [heroImage],
     },
     robots: {
       index: true,
@@ -103,7 +105,7 @@ export default async function LocalizedAmmoniaSciencePage({ params }: LocalizedA
     description: isFrench
       ? "Découvrez pourquoi l'urine de chat sent l'ammoniac, les risques pour la santé et comment le carbone actif élimine les odeurs d'ammoniac."
       : 'Learn why cat urine smells like ammonia, health risks, and how activated carbon eliminates ammonia odors from litter boxes.',
-    image: 'https://www.purrify.ca/optimized/blog/ammonia-science.webp',
+    image: heroImage,
     datePublished: '2024-01-20T12:00:00Z',
     dateModified: '2025-12-09T00:00:00Z',
     section: 'Pet Science',

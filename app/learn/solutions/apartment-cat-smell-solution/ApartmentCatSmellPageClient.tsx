@@ -9,13 +9,14 @@ import { HowToSection } from '@/components/seo/HowToSection';
 import { AIQuotableBlock } from '@/components/seo/AIQuotableBlock';
 import { RelatedQuestions } from '@/components/seo/RelatedQuestions';
 import { localizePath } from '@/lib/i18n/locale-path';
+import { LEARN_PAGE_PREVIEW_IMAGES } from '@/lib/learn/page-preview-images';
 
 export default function ApartmentCatSmellPageClient() {
   const locale = useLocale() as 'en' | 'fr';
   const canonicalUrl = 'https://www.purrify.ca/learn/solutions/apartment-cat-smell-solution/';
 
   // SEO optimized images
-  const heroImage = '/optimized/blog/apartment-hero.webp';
+  const heroImage = LEARN_PAGE_PREVIEW_IMAGES['/learn/solutions/apartment-cat-smell-solution'].image;
   const solutionImage = '/optimized/marketing/apartment-living-room.webp';
 
   // HowTo steps for apartment odor control

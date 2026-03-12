@@ -2,11 +2,14 @@ export const dynamic = 'force-static';
 
 import type { Metadata } from 'next';
 import { SITE_NAME } from '@/lib/constants';
+import { LEARN_PAGE_PREVIEW_IMAGES } from '@/lib/learn/page-preview-images';
 import { stripContext } from '@/lib/seo-utils';
 import {
   createBreadcrumbSchema,
   serializeSchemaGraph,
 } from '@/lib/seo/indexed-content-schema';
+
+const heroImage = `https://www.purrify.ca${LEARN_PAGE_PREVIEW_IMAGES['/learn/how-activated-carbon-works'].image}`;
 
 export const metadata: Metadata = {
   title: `How Does Activated Carbon Work? Science Guide | ${SITE_NAME}`,
@@ -28,7 +31,7 @@ export const metadata: Metadata = {
     locale: 'en_CA',
     images: [
       {
-        url: 'https://www.purrify.ca/optimized/blog/ammonia-science.webp',
+        url: heroImage,
         width: 1200,
         height: 675,
         alt: 'How activated carbon works - molecular diagram',
@@ -51,7 +54,7 @@ const articleSchema = {
   inLanguage: 'en-CA',
   headline: 'How Does Activated Carbon Work? Complete Science Guide',
   description: "Activated carbon traps odor molecules through adsorption—a physical process where molecules stick to its massive surface area. One gram = 3,000 m² surface. Here's exactly how it works.",
-  image: 'https://www.purrify.ca/optimized/blog/ammonia-science.webp',
+  image: heroImage,
   datePublished: '2024-01-20T12:00:00Z',
   dateModified: new Date().toISOString(),
   author: {
@@ -83,7 +86,7 @@ const howToSchema = {
   '@type': 'HowTo',
   name: 'How to Use Activated Carbon for Odor Control',
   description: 'Follow these steps to maximize the effectiveness of activated carbon in any odor control application.',
-  image: 'https://www.purrify.ca/optimized/blog/ammonia-science.webp',
+  image: heroImage,
   totalTime: 'PT10M',
   step: [
     {

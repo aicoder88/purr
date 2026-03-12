@@ -4,6 +4,10 @@ export type PagePreviewImage = {
 };
 
 export const LEARN_PAGE_PREVIEW_IMAGES: Record<string, PagePreviewImage> = {
+  '/learn/ammonia-science': {
+    image: '/optimized/blog/ammonia-science.webp',
+    alt: 'The science of ammonia production in cat litter',
+  },
   '/learn/how-activated-carbon-works': {
     image: '/optimized/blog/ammonia-science.webp',
     alt: 'Activated carbon molecular structure showing porous surface',

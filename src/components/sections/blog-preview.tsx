@@ -4,6 +4,7 @@ import Link from "next/link";
 import Image from 'next/image';
 import { sampleBlogPosts } from "@/data/blog-posts";
 import { getLocale, getTranslations } from "next-intl/server";
+import { getOptimizedStaticImageData } from '@/lib/static-image-optimization';
 
 interface BlogPost {
   title: string;
@@ -90,11 +91,13 @@ export async function BlogPreview() {
             const imageSrc = post.image && post.image.trim().length > 0
               ? getBlogCardImageSrc(post.image)
               : FALLBACK_BLOG_IMAGE;
+            const optimizedImage = getOptimizedStaticImageData(imageSrc, { preferredWidth: 640 });
 
             return (
               <Link
                 key={`${post.link || post.title || 'blog-post'}-${index}`}
                 href={href}
+                prefetch={false}
                 className="block bg-white dark:bg-gray-900/90 backdrop-blur-sm rounded-2xl overflow-hidden border border-gray-200 dark:border-gray-800 transition-all duration-300 hover:-translate-y-1 hover:border-amber-200 dark:hover:border-gray-700 group cursor-pointer"
                 style={{ transitionDelay: `${index * 100}ms` }}
               >
@@ -102,12 +105,16 @@ export async function BlogPreview() {
                   <div className="absolute inset-0 bg-gradient-to-br from-amber-100/10 to-blue-100/10 dark:from-amber-500/10 dark:to-blue-500/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
                   <div className="relative w-full h-[200px] sm:h-[250px]">
                     <Image
-                      src={imageSrc}
+                      src={optimizedImage.src}
                       alt={`Featured image for blog post: ${post.title} - Purrify cat litter knowledge`}
                       fill
                       sizes="(max-width: 768px) 100vw, 33vw"
                       className={`w-full h-full ${imageSrc.includes('carbon_magnified') ? 'object-contain' : 'object-cover'} transition-transform duration-700 group-hover:scale-110`}
                       quality={75}
+                      {...(optimizedImage.blurDataURL ? {
+                        placeholder: 'blur' as const,
+                        blurDataURL: optimizedImage.blurDataURL,
+                      } : {})}
                     />
                   </div>
                   <div className="absolute top-3 right-3 sm:top-4 sm:right-4 bg-gradient-to-r from-brand-yellow via-brand-pink to-brand-pink px-2 py-1 sm:px-3 sm:py-1 rounded-full shadow-md text-xs text-gray-950 font-medium">
@@ -156,7 +163,7 @@ export async function BlogPreview() {
             asChild
             className="h-11 bg-brand-red-600 hover:bg-brand-red-700 px-8 text-white dark:text-gray-100 font-semibold rounded-full transition-all duration-300 border-0"
           >
-            <Link href={locale === 'fr' ? '/fr/blog' : '/blog'}>
+            <Link href={locale === 'fr' ? '/fr/blog' : '/blog'} prefetch={false}>
               {t('blogSection.viewAllArticles')}
             </Link>
           </Button>

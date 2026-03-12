@@ -7,6 +7,7 @@
 import { sampleBlogPosts } from '../../data/blog-posts';
 import { BLOG_FEATURED_IMAGE_MAP } from '@/generated/blog-featured-image-map';
 import { LEARN_PAGE_PREVIEW_IMAGES } from '@/lib/learn/page-preview-images';
+import { getOptimizedStaticImageData } from '@/lib/static-image-optimization';
 
 export interface PageImage {
   image: string;
@@ -226,26 +227,33 @@ export function getPageImage(url: string): PageImage {
   const blogFeatured = BLOG_FEATURED_IMAGE_MAP[normalizedUrl]
     || BLOG_FEATURED_IMAGE_MAP[`/en${normalizedUrl}`];
   if (blogFeatured) {
-    return blogFeatured;
+    return {
+      image: getOptimizedStaticImageData(blogFeatured.image, { preferredWidth: 640 }).src,
+      alt: blogFeatured.alt,
+    };
   }
 
   // 2. Check manual mapping
   if (PAGE_IMAGES[normalizedUrl]) {
-    return PAGE_IMAGES[normalizedUrl];
+    const pageImage = PAGE_IMAGES[normalizedUrl];
+    return {
+      image: getOptimizedStaticImageData(pageImage.image, { preferredWidth: 640 }).src,
+      alt: pageImage.alt,
+    };
   }
 
   // 3. Fallback to sample blog posts (legacy/static)
   const blogPost = sampleBlogPosts.find((post) => normalizeUrlKey(post.link) === normalizedUrl);
   if (blogPost) {
     return {
-      image: blogPost.image,
+      image: getOptimizedStaticImageData(blogPost.image, { preferredWidth: 640 }).src,
       alt: blogPost.heroImageAlt || blogPost.title,
     };
   }
 
   // 4. Generic fallback
   return {
-    image: '/optimized/blog/cat-litter-deodorizer-guide.webp',
+    image: getOptimizedStaticImageData('/optimized/blog/cat-litter-deodorizer-guide.webp', { preferredWidth: 640 }).src,
     alt: 'Purrify cat litter deodorizer',
   };
 }

@@ -3,6 +3,7 @@ export const dynamic = 'force-static';
 import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 import { SITE_NAME, SITE_URL } from '@/lib/constants';
+import { LEARN_PAGE_PREVIEW_IMAGES } from '@/lib/learn/page-preview-images';
 import SeniorCatPageClient from '@/app/learn/solutions/senior-cat-litter-solutions/SeniorCatPageClient';
 import { stripContext } from '@/lib/seo-utils';
 import { locales, isValidLocale } from '@/i18n/config';
@@ -17,7 +18,7 @@ interface PageProps {
 
 const pageTitle = `Best Litter for Senior Cats with Arthritis & Mobility Issues | ${SITE_NAME}`;
 const pageDescription = "Senior cats need special care. Low dust, easy access, and superior odor control help aging cats stay comfortable and healthy. Discover litter solutions designed for senior cats.";
-const heroImage = 'https://www.purrify.ca/optimized/blog/senior-cat-hero.png';
+const heroImage = `${SITE_URL}${LEARN_PAGE_PREVIEW_IMAGES['/learn/solutions/senior-cat-litter-solutions'].image}`;
 
 export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
     const { locale } = await params;

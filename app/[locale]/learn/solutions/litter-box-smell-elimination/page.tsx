@@ -3,6 +3,7 @@ export const dynamic = 'force-static';
 import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 import { SITE_NAME, SITE_URL } from '@/lib/constants';
+import { LEARN_PAGE_PREVIEW_IMAGES } from '@/lib/learn/page-preview-images';
 import { stripContext } from '@/lib/seo-utils';
 import LitterBoxSmellPageClient from '@/app/learn/solutions/litter-box-smell-elimination/LitterBoxSmellPageClient';
 import { locales, isValidLocale } from '@/i18n/config';
@@ -15,9 +16,9 @@ interface PageProps {
     params: Promise<{ locale: string }>;
 }
 
-const pageTitle = `Litter Box Stinks After Cleaning? Here's Why (And How to Fix It) | ${SITE_NAME}`;
-const pageDescription = 'Why does your litter box smell bad even after cleaning? Bacteria create ammonia within hours. Activated carbon traps odor molecules at the source—works 10x longer than baking soda.';
-const heroImage = 'https://www.purrify.ca/optimized/blog/litter-box-hero.webp';
+const pageTitle = `Litter Box Odor Control: Why It Still Stinks After Cleaning | ${SITE_NAME}`;
+const pageDescription = 'Need better litter box odor control? If your litter box still smells after cleaning, ammonia is forming between scoops. Activated carbon traps odor at the source and helps fix smelly cat litter fast.';
+const heroImage = `${SITE_URL}${LEARN_PAGE_PREVIEW_IMAGES['/learn/solutions/litter-box-smell-elimination'].image}`;
 
 export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
     const { locale } = await params;
@@ -30,7 +31,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
     return {
         title: pageTitle,
         description: pageDescription,
-        keywords: ['litter box stinks after cleaning', 'why does my litter box smell', 'litter box smell won\'t go away', 'cat litter smells bad after cleaning', 'how to stop litter box smell', 'activated carbon cat litter'],
+        keywords: ['litter box stinks after cleaning', 'why does my litter box smell', 'litter box smell won\'t go away', 'cat litter smells bad after cleaning', 'how to stop litter box smell', 'activated carbon cat litter', 'litter box odor control', 'kitty litter odor control', 'how to get rid of smelly cat litter'],
         alternates: {
             canonical: canonicalPath,
             languages: {
@@ -94,7 +95,7 @@ const articleSchema = {
         '@id': 'https://www.purrify.ca/learn/solutions/litter-box-smell-elimination/',
     },
     articleSection: 'Pet Odor Solutions',
-    keywords: ['litter box odor', 'smell elimination', 'activated carbon', 'natural solutions'],
+    keywords: ['litter box odor', 'smell elimination', 'activated carbon', 'natural solutions', 'litter box odor control', 'kitty litter odor control', 'smelly cat litter'],
     wordCount: 900,
 };
 
@@ -158,6 +159,14 @@ const faqSchema = {
             acceptedAnswer: {
                 '@type': 'Answer',
                 text: 'With regular scooping and activated carbon additive, you can extend full litter changes to every 2-3 weeks instead of weekly. The carbon continues neutralizing odors, keeping litter fresher longer and reducing waste.',
+            },
+        },
+        {
+            '@type': 'Question',
+            name: 'How do I get rid of smelly cat litter fast?',
+            acceptedAnswer: {
+                '@type': 'Answer',
+                text: 'Remove the existing clumps, dry the box fully, refill to the correct depth, and add activated carbon to the top layer. That improves litter box odor control immediately by trapping ammonia and sulfur compounds before they spread through the room.',
             },
         },
         {

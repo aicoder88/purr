@@ -2,10 +2,13 @@ export const dynamic = 'force-static';
 
 import type { Metadata } from 'next';
 import { SITE_NAME } from '@/lib/constants';
+import { LEARN_PAGE_PREVIEW_IMAGES } from '@/lib/learn/page-preview-images';
 import {
   createBreadcrumbSchema,
   serializeSchemaGraph,
 } from '@/lib/seo/indexed-content-schema';
+
+const heroImage = `https://www.purrify.ca${LEARN_PAGE_PREVIEW_IMAGES['/learn/ammonia-science'].image}`;
 
 export const metadata: Metadata = {
   title: `Why Cat Urine Smells Like Ammonia (And Fixes) | ${SITE_NAME}`,
@@ -27,7 +30,7 @@ export const metadata: Metadata = {
     locale: 'en_CA',
     images: [
       {
-        url: 'https://www.purrify.ca/optimized/blog/ammonia-science.webp',
+        url: heroImage,
         width: 1200,
         height: 675,
         alt: 'The science of ammonia production in cat litter',
@@ -50,7 +53,7 @@ const articleSchema = {
   inLanguage: 'en-CA',
   headline: `Why Cat Urine Smells Like Ammonia (The Chemistry + How to Stop It) | ${SITE_NAME}`,
   description: "Bacteria convert urea to ammonia gas within 2-4 hours. By hour 24, it's unbearable. Here's the chemistry behind the stink—and how to break the cycle.",
-  image: 'https://www.purrify.ca/optimized/blog/ammonia-science.webp',
+  image: heroImage,
   datePublished: '2024-01-20T12:00:00Z',
   dateModified: new Date().toISOString(),
   author: {

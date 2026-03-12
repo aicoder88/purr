@@ -58,6 +58,9 @@ export const TOPIC_CLUSTERS: TopicCluster[] = [
     hubPage: '/learn/cat-litter-guide',
     description: 'Complete guide to eliminating cat litter smell and odor control',
     spokes: [
+      '/blog/best-cat-litter-for-smell',
+      '/blog/best-cat-litter-odor-control-2026',
+      '/blog/best-self-cleaning-litter-box-odor-control',
       '/blog/most-powerful-odor-absorber',
       '/blog/best-litter-odor-remover-small-apartments',
       '/blog/cat-litter-smell-worse-summer',

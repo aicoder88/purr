@@ -3,6 +3,7 @@ export const dynamic = 'force-static';
 import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 import { SITE_NAME, SITE_URL } from '@/lib/constants';
+import { LEARN_PAGE_PREVIEW_IMAGES } from '@/lib/learn/page-preview-images';
 import NaturalCatLitterAdditivePageClient from '@/app/learn/solutions/natural-cat-litter-additive/NaturalCatLitterAdditivePageClient';
 import { stripContext } from '@/lib/seo-utils';
 import { locales, isValidLocale } from '@/i18n/config';
@@ -17,7 +18,7 @@ interface PageProps {
 
 const pageTitle = `Non-Toxic Cat Litter Deodorizer: Safe for Cats, Effective for Odor | ${SITE_NAME}`;
 const pageDescription = 'Looking for a non-toxic cat litter deodorizer? Activated carbon is food-grade, fragrance-free, and safe if ingested. Works 10x longer than baking soda without chemicals.';
-const heroImage = 'https://www.purrify.ca/optimized/blog/litter-box-hero.webp';
+const heroImage = `${SITE_URL}${LEARN_PAGE_PREVIEW_IMAGES['/learn/solutions/natural-cat-litter-additive'].image}`;
 
 export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
     const { locale } = await params;

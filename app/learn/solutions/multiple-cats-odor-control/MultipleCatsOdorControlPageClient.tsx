@@ -9,13 +9,14 @@ import { HowToSection } from '@/components/seo/HowToSection';
 import { AIQuotableBlock } from '@/components/seo/AIQuotableBlock';
 import { RelatedQuestions } from '@/components/seo/RelatedQuestions';
 import { localizePath } from '@/lib/i18n/locale-path';
+import { LEARN_PAGE_PREVIEW_IMAGES } from '@/lib/learn/page-preview-images';
 
 export default function MultipleCatsOdorControlPageClient() {
   const locale = useLocale() as 'en' | 'fr';
   const canonicalUrl = 'https://www.purrify.ca/learn/solutions/multiple-cats-odor-control/';
 
   // SEO optimized images for multi-cat households
-  const heroImage = '/optimized/blog/multiple-cats-together.webp';
+  const heroImage = LEARN_PAGE_PREVIEW_IMAGES['/learn/solutions/multiple-cats-odor-control'].image;
   const solutionImage = '/optimized/blog/ammonia-fresh-home.webp';
 
   // HowTo steps for multi-cat odor control

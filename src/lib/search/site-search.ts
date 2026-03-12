@@ -341,7 +341,7 @@ const getSearchDocuments = cache(async (locale: Locale) => {
   const translation = getTranslation(locale);
   const copy = getSearchCopy(locale);
   const contentStore = new ContentStore();
-  const posts = await contentStore.getAllPosts(locale, false);
+  const posts = await contentStore.getAllPosts(locale, false, { includeContent: false });
 
   const curatedDocuments = buildCuratedDocuments(locale, copy);
   const faqDocuments = buildFaqDocuments(locale, translation);

@@ -3,6 +3,7 @@ export const dynamic = 'force-static';
 import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 import { SITE_NAME, SITE_URL } from '@/lib/constants';
+import { LEARN_PAGE_PREVIEW_IMAGES } from '@/lib/learn/page-preview-images';
 import HowToNeutralizeAmmoniaPageClient from '@/app/learn/solutions/how-to-neutralize-ammonia-cat-litter/HowToNeutralizeAmmoniaPageClient';
 import { stripContext } from '@/lib/seo-utils';
 import { locales, isValidLocale } from '@/i18n/config';
@@ -17,7 +18,7 @@ interface PageProps {
 
 const pageTitle = `How to Neutralize Ammonia in Cat Litter (5 Methods That Actually Work) | ${SITE_NAME}`;
 const pageDescription = 'Learn how to neutralize ammonia in cat litter with proven methods that reduce cat urine odor fast. Compare activated carbon, baking soda, zeolite, and daily scooping for long-term litter box ammonia control.';
-const heroImage = 'https://www.purrify.ca/optimized/blog/ammonia-neutralize-hero-cinematic-v2.webp';
+const heroImage = `${SITE_URL}${LEARN_PAGE_PREVIEW_IMAGES['/learn/solutions/how-to-neutralize-ammonia-cat-litter'].image}`;
 
 export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
     const { locale } = await params;

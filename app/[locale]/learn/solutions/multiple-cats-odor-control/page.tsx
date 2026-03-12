@@ -3,6 +3,7 @@ export const dynamic = 'force-static';
 import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 import { SITE_NAME, SITE_URL } from '@/lib/constants';
+import { LEARN_PAGE_PREVIEW_IMAGES } from '@/lib/learn/page-preview-images';
 import MultipleCatsOdorControlPageClient from '@/app/learn/solutions/multiple-cats-odor-control/MultipleCatsOdorControlPageClient';
 import { stripContext } from '@/lib/seo-utils';
 import { locales, isValidLocale } from '@/i18n/config';
@@ -17,7 +18,7 @@ interface PageProps {
 
 const pageTitle = `Multi-Cat Household Odor Solution: Complete Guide for 2+ Cats | ${SITE_NAME}`;
 const pageDescription = 'Struggling with cat smell from multiple cats? Odors multiply exponentially with each cat. Activated carbon handles 3, 4, 5+ cats where other solutions fail. See dosage guide.';
-const heroImage = 'https://www.purrify.ca/optimized/blog/multiple-cats-together.webp';
+const heroImage = `${SITE_URL}${LEARN_PAGE_PREVIEW_IMAGES['/learn/solutions/multiple-cats-odor-control'].image}`;
 
 export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
     const { locale } = await params;
