@@ -32,8 +32,24 @@ Allow: /
 User-agent: Google-Extended
 Allow: /
 
+# Applebot-Extended
+User-agent: Applebot-Extended
+Allow: /
+
+# anthropic-ai
+User-agent: anthropic-ai
+Allow: /
+
 # Bytespider
 User-agent: Bytespider
+Allow: /
+
+# FacebookBot
+User-agent: FacebookBot
+Allow: /
+
+# Amazonbot
+User-agent: Amazonbot
 Allow: /
 
 # Host
