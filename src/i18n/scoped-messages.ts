@@ -13,7 +13,8 @@ export type MessageScope =
   | 'checkout'
   | 'results'
   | 'locations'
-  | 'contact';
+  | 'contact'
+  | 'reviews';
 
 const SCOPE_MESSAGE_KEYS: Record<MessageScope, string[]> = {
   root: [
@@ -136,6 +137,11 @@ const SCOPE_MESSAGE_KEYS: Record<MessageScope, string[]> = {
     'contact',
     'contactPage',
     'contactSection',
+  ],
+  reviews: [
+    'relatedArticles',
+    'reviews',
+    'reviewsPage',
   ],
 };
 

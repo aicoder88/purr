@@ -3,20 +3,31 @@
 import { Container } from '@/components/ui/container';
 import Link from 'next/link';
 import { Home, ChevronRight, Info, FlaskConical, Mail } from 'lucide-react';
+import { useLocale, useTranslations } from 'next-intl';
 import { getPaymentLink } from '@/lib/payment-links';
+import { localizePath } from '@/lib/i18n/locale-path';
 
 // Metadata is defined in page.tsx (Server Component)
 
 export default function Reviews() {
+  const t = useTranslations('reviewsPage');
+  const locale = useLocale() === 'fr' ? 'fr' : 'en';
+  const homeHref = localizePath('/', locale);
+  const scienceHref = localizePath('/learn/science/', locale);
+  const contactHref = '/contact/';
+  const productsHref = localizePath('/products/', locale);
+  const caseStudiesHref = '/case-studies/';
+  const sampleHref = getPaymentLink('trialSingle') || localizePath('/products/trial-size/', locale);
+
   return (
     <>
       <main className="min-h-screen bg-gradient-to-br from-[#FFFFFF] via-[#FFFFF5] to-[#FFFFFF] dark:from-gray-900 dark:via-gray-900 dark:to-gray-800">
         {/* Breadcrumb Navigation */}
         <section className="py-4 border-b border-gray-200 dark:border-gray-800">
           <Container>
-            <nav aria-label="Breadcrumb" className="flex items-center space-x-2 text-sm">
+            <nav aria-label={t('breadcrumbAria')} className="flex items-center space-x-2 text-sm">
               <Link
-                href="/"
+                href={homeHref}
                 className="flex items-center text-gray-500 dark:text-gray-400 hover:text-[#FF3131] dark:hover:text-[#FF5050] transition-colors"
               >
                 <Home className="w-4 h-4" />
@@ -24,7 +35,7 @@ export default function Reviews() {
               <span className="flex items-center">
                 <ChevronRight className="w-4 h-4 mx-1 text-gray-400 dark:text-gray-500" />
                 <span className="font-medium text-gray-900 dark:text-gray-100">
-                  Reviews
+                  {t('breadcrumb.reviews')}
                 </span>
               </span>
             </nav>
@@ -38,13 +49,13 @@ export default function Reviews() {
               {/* Header */}
               <div className="text-center mb-16">
                 <div className="inline-block px-4 py-1 bg-[#E0EFC7] dark:bg-green-900/40 rounded-full text-[#FF3131] dark:text-[#FF4D4D] font-medium text-sm mb-4">
-                  Customer Feedback
+                  {t('badge')}
                 </div>
                 <h1 className="font-heading text-4xl md:text-5xl font-bold tracking-tight mb-6 text-gray-900 dark:text-gray-50">
-                  What Our Customers Are Saying
+                  {t('heading')}
                 </h1>
                 <p className="text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto mb-8">
-                  What to expect from an activated carbon additive, and how to use it in your own routine.
+                  {t('description')}
                 </p>
               </div>
 
@@ -58,10 +69,10 @@ export default function Reviews() {
                       </div>
                       <div>
                         <h2 className="font-heading text-lg font-bold text-gray-900 dark:text-gray-50 mb-1">
-                          How Review Badges Work
+                          {t('trustSection.verifiedTitle')}
                         </h2>
                         <p className="text-sm text-gray-700 dark:text-gray-300 leading-relaxed">
-                          Product pages can show approved customer ratings and purchase badges when review data is available. This page focuses on feedback context and product education.
+                          {t('trustSection.verifiedDesc')}
                         </p>
                       </div>
                     </div>
@@ -71,16 +82,16 @@ export default function Reviews() {
                       </div>
                       <div>
                         <h3 className="font-heading text-lg font-bold text-gray-900 dark:text-gray-50 mb-1">
-                          Verify The Science
+                          {t('trustSection.ratingTitle')}
                         </h3>
                         <p className="text-sm text-gray-700 dark:text-gray-300 leading-relaxed">
-                          See primary sources and authoritative guidance on activated carbon adsorption in our science hub.
+                          {t('trustSection.ratingDesc')}
                         </p>
                         <Link
-                          href="/learn/science/"
+                          href={scienceHref}
                           className="inline-flex items-center text-sm font-semibold text-[#FF3131] dark:text-[#FF5050] hover:text-[#FF3131]/80 dark:hover:text-[#FF5050]/80 transition-colors mt-2"
                         >
-                          View research citations
+                          {t('trustSection.ratingCta')}
                         </Link>
                       </div>
                     </div>
@@ -90,16 +101,16 @@ export default function Reviews() {
                       </div>
                       <div>
                         <h3 className="font-heading text-lg font-bold text-gray-900 dark:text-gray-50 mb-1">
-                          Share Feedback
+                          {t('trustSection.customersTitle')}
                         </h3>
                         <p className="text-sm text-gray-700 dark:text-gray-300 leading-relaxed">
-                          Want to share your experience or a photo? Contact our team and we will route it to support.
+                          {t('trustSection.customersDesc')}
                         </p>
                         <Link
-                          href="/contact/"
+                          href={contactHref}
                           className="inline-flex items-center text-sm font-semibold text-[#FF3131] dark:text-[#FF5050] hover:text-[#FF3131]/80 dark:hover:text-[#FF5050]/80 transition-colors mt-2"
                         >
-                          Contact us
+                          {t('trustSection.customersCta')}
                         </Link>
                       </div>
                     </div>
@@ -111,23 +122,23 @@ export default function Reviews() {
               <div className="text-center cv-auto cis-480">
                 <div className="bg-gradient-to-r from-[#FF3131]/10 to-[#E0EFC7] dark:from-[#311010] dark:to-green-900/20 border border-[#FF3131]/20 dark:border-[#FF3131]/10 rounded-xl p-8">
                   <h2 className="font-heading text-2xl font-bold text-gray-900 dark:text-gray-50 mb-4">
-                    Ready to Experience the Difference?
+                    {t('ctaSection.heading')}
                   </h2>
                   <p className="text-gray-700 dark:text-gray-200 mb-6 max-w-2xl mx-auto">
-                    Start with a low-risk trial and see how it fits into your litter routine.
+                    {t('ctaSection.description')}
                   </p>
                   <div className="space-x-4">
                     <Link
-                      href="/products/"
+                      href={productsHref}
                       className="inline-block bg-[#FF3131] text-white dark:text-white dark:text-gray-100 px-8 py-3 rounded-lg font-semibold hover:bg-[#FF3131]/90 transition-colors"
                     >
-                      Shop Now
+                      {t('ctaSection.shopNow')}
                     </Link>
                     <a
-                      href={getPaymentLink('trialSingle') || '#'}
+                      href={sampleHref}
                       className="inline-block border border-[#FF3131] text-[#FF3131] dark:text-[#FF5050] dark:border-[#FF5050]/50 px-8 py-3 rounded-lg font-semibold hover:bg-[#FF3131]/5 dark:hover:bg-[#FF5050]/10 transition-colors"
                     >
-                      Try Free Sample
+                      {t('ctaSection.tryFreeSample')}
                     </a>
                   </div>
                 </div>
@@ -135,23 +146,23 @@ export default function Reviews() {
 
               {/* Related Links */}
               <div className="mt-16 pt-8 border-t border-gray-200 dark:border-gray-600 cv-auto cis-480">
-                <h3 className="font-heading text-xl font-bold text-gray-900 dark:text-gray-50 mb-6 text-center">Learn More</h3>
+                <h3 className="font-heading text-xl font-bold text-gray-900 dark:text-gray-50 mb-6 text-center">{t('relatedLinks.heading')}</h3>
                 <div className="grid md:grid-cols-4 gap-4">
                   <Link href="/blog/activated-carbon-vs-baking-soda-comparison" className="block p-4 border border-gray-200 dark:border-gray-600 rounded-lg hover:shadow-lg transition-shadow text-center">
-                    <h4 className="font-bold text-gray-900 dark:text-gray-50 mb-2">Comparison Guide</h4>
-                    <p className="text-gray-600 dark:text-gray-300 text-sm">See how Purrify compares to alternatives</p>
+                    <h4 className="font-bold text-gray-900 dark:text-gray-50 mb-2">{t('relatedLinks.comparison')}</h4>
+                    <p className="text-gray-600 dark:text-gray-300 text-sm">{t('relatedLinks.comparisonDesc')}</p>
                   </Link>
-                  <Link href="/case-studies/" className="block p-4 border border-gray-200 dark:border-gray-600 rounded-lg hover:shadow-lg transition-shadow text-center">
-                    <h4 className="font-bold text-gray-900 dark:text-gray-50 mb-2">Case Studies</h4>
-                    <p className="text-gray-600 dark:text-gray-300 text-sm">Real results from real customers</p>
+                  <Link href={caseStudiesHref} className="block p-4 border border-gray-200 dark:border-gray-600 rounded-lg hover:shadow-lg transition-shadow text-center">
+                    <h4 className="font-bold text-gray-900 dark:text-gray-50 mb-2">{t('relatedLinks.caseStudies')}</h4>
+                    <p className="text-gray-600 dark:text-gray-300 text-sm">{t('relatedLinks.caseStudiesDesc')}</p>
                   </Link>
                   <Link href="/blog/using-deodorizers-with-kittens" className="block p-4 border border-gray-200 dark:border-gray-600 rounded-lg hover:shadow-lg transition-shadow text-center">
-                    <h4 className="font-bold text-gray-900 dark:text-gray-50 mb-2">Usage Tips</h4>
-                    <p className="text-gray-600 dark:text-gray-300 text-sm">How to use with kittens and cats</p>
+                    <h4 className="font-bold text-gray-900 dark:text-gray-50 mb-2">{t('relatedLinks.usageInfo')}</h4>
+                    <p className="text-gray-600 dark:text-gray-300 text-sm">{t('relatedLinks.usageInfoDesc')}</p>
                   </Link>
                   <Link href="/locations/montreal" className="block p-4 border border-gray-200 dark:border-gray-600 rounded-lg hover:shadow-lg transition-shadow text-center">
-                    <h4 className="font-bold text-gray-900 dark:text-gray-50 mb-2">Store Locations</h4>
-                    <p className="text-gray-600 dark:text-gray-300 text-sm">Find a retailer near you</p>
+                    <h4 className="font-bold text-gray-900 dark:text-gray-50 mb-2">{t('relatedLinks.storeLocations')}</h4>
+                    <p className="text-gray-600 dark:text-gray-300 text-sm">{t('relatedLinks.storeLocationsDesc')}</p>
                   </Link>
                 </div>
               </div>

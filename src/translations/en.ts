@@ -3886,6 +3886,7 @@ export const en = {
   reviewsPage: {
     pageTitle: "Customer Reviews",
     metaDescription: "Customer feedback about Purrify and how cat owners use an activated carbon additive to reduce litter box odor. Ships to USA & Canada.",
+    breadcrumbAria: "Breadcrumb navigation",
     badge: "Customer Reviews",
     heading: "Real Stories from Happy Cat Owners",
     description: "Customer feedback about Purrify and how cat owners use an activated carbon additive to reduce litter box odor.",
@@ -3911,8 +3912,10 @@ export const en = {
       verifiedDesc: "Product pages can show approved customer ratings and purchase badges when review data is available.",
       ratingTitle: "Science-linked",
       ratingDesc: "See citations and how-to guides to verify key claims.",
+      ratingCta: "View research citations",
       customersTitle: "Helpful Resources",
-      customersDesc: "Guides for litter box odor control, ammonia, and safe use."
+      customersDesc: "Guides for litter box odor control, ammonia, and safe use.",
+      customersCta: "Contact support"
     },
     ctaSection: {
       heading: "Ready to Try It at Home?",

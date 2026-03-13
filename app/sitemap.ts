@@ -153,11 +153,11 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   };
 
   // === HOMEPAGE ===
-  entries.push(entry('/', { priority: 1.0, changeFrequency: 'daily' }));
+  addLocalizedEntries(entries, '/', { priority: 1.0, changeFrequency: 'daily' });
 
   // === PRODUCT PAGES ===
-  entries.push(entry('/products/', { priority: 0.9, changeFrequency: 'weekly' }));
-  entries.push(entry('/products/trial-size/', { priority: 0.9, changeFrequency: 'weekly' }));
+  addLocalizedEntries(entries, '/products/', { priority: 0.9, changeFrequency: 'weekly' });
+  addLocalizedEntries(entries, '/products/trial-size/', { priority: 0.9, changeFrequency: 'weekly' });
 
   // === BLOG INDEX ===
   entries.push(entry('/blog/', {
@@ -245,37 +245,38 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
 
   // === LEARN PAGES ===
   addLocalizedEntries(entries, '/learn/', { priority: 0.75, changeFrequency: 'weekly' });
-  entries.push(entry('/learn/how-it-works/', { priority: 0.8, changeFrequency: 'monthly', frPath: false }));
-  entries.push(entry('/learn/faq/', { priority: 0.8, changeFrequency: 'monthly', frPath: false }));
-  entries.push(entry('/learn/science/', { priority: 0.7, changeFrequency: 'monthly', frPath: false }));
-  entries.push(entry('/learn/safety/', { priority: 0.7, changeFrequency: 'monthly', frPath: false }));
-  entries.push(entry('/learn/cat-litter-guide/', { priority: 0.7, changeFrequency: 'monthly', frPath: false }));
-  entries.push(entry('/learn/glossary/', { priority: 0.6, changeFrequency: 'monthly', frPath: false }));
-  entries.push(entry('/learn/ammonia-science/', { priority: 0.7, changeFrequency: 'monthly', frPath: false }));
-  entries.push(entry('/learn/cat-litter-ammonia-health-risks/', { priority: 0.7, changeFrequency: 'monthly', frPath: false }));
-  entries.push(entry('/learn/how-activated-carbon-works/', { priority: 0.7, changeFrequency: 'monthly', frPath: false }));
+  addLocalizedEntries(entries, '/learn/how-it-works/', { priority: 0.8, changeFrequency: 'monthly' });
+  addLocalizedEntries(entries, '/learn/faq/', { priority: 0.8, changeFrequency: 'monthly' });
+  addLocalizedEntries(entries, '/learn/science/', { priority: 0.7, changeFrequency: 'monthly' });
+  addLocalizedEntries(entries, '/learn/safety/', { priority: 0.7, changeFrequency: 'monthly' });
+  addLocalizedEntries(entries, '/learn/cat-litter-guide/', { priority: 0.7, changeFrequency: 'monthly' });
+  addLocalizedEntries(entries, '/learn/glossary/', { priority: 0.6, changeFrequency: 'monthly' });
+  addLocalizedEntries(entries, '/learn/ammonia-science/', { priority: 0.7, changeFrequency: 'monthly' });
+  addLocalizedEntries(entries, '/learn/cat-litter-ammonia-health-risks/', { priority: 0.7, changeFrequency: 'monthly' });
+  addLocalizedEntries(entries, '/learn/how-activated-carbon-works/', { priority: 0.7, changeFrequency: 'monthly' });
   entries.push(entry('/learn/alternatives/arm-and-hammer-cat-litter-deodorizer-alternative/', {
+    priority: 0.6,
+    changeFrequency: 'monthly',
+  }));
+  entries.push(entry('/fr/learn/alternatives/arm-and-hammer-cat-litter-deodorizer-alternative/', {
     priority: 0.6,
     changeFrequency: 'monthly',
     frPath: false,
   }));
-  entries.push(entry('/learn/comparison-lab/', {
+  addLocalizedEntries(entries, '/learn/comparison-lab/', {
     priority: 0.7,
     changeFrequency: 'monthly',
-    frPath: '/fr/learn/comparison-lab/',
-  }));
-  entries.push(entry('/learn/comparison-lab/methodology/', {
+  });
+  addLocalizedEntries(entries, '/learn/comparison-lab/methodology/', {
     priority: 0.7,
     changeFrequency: 'monthly',
-    frPath: '/fr/learn/comparison-lab/methodology/',
-  }));
+  });
   for (const comparisonEntry of COMPARISON_ENTRIES.filter((entry) => entry.indexable)) {
-    entries.push(entry(`/learn/comparison-lab/${comparisonEntry.slug}/`, {
+    addLocalizedEntries(entries, `/learn/comparison-lab/${comparisonEntry.slug}/`, {
       priority: 0.7,
       changeFrequency: 'monthly',
       lastModified: comparisonEntry.updatedAt || comparisonEntry.publishedAt,
-      frPath: `/fr/learn/comparison-lab/${comparisonEntry.slug}/`,
-    }));
+    });
   }
 
   // === LEARN SOLUTIONS ===
@@ -307,7 +308,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   }
 
   // === SUPPORT ===
-  entries.push(entry('/support/', { priority: 0.6, changeFrequency: 'monthly', frPath: false }));
+  addLocalizedEntries(entries, '/support/', { priority: 0.6, changeFrequency: 'monthly' });
   entries.push(entry('/support/shipping/', { priority: 0.5, changeFrequency: 'monthly', frPath: false }));
   entries.push(entry('/support/subscription/', {
     priority: 0.6,
@@ -331,7 +332,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   entries.push(entry('/about/team/', { priority: 0.5, changeFrequency: 'monthly', frPath: false }));
 
   // === REVIEWS / CASE STUDIES ===
-  entries.push(entry('/reviews/', { priority: 0.7, changeFrequency: 'weekly', frPath: `/fr/reviews/` })); // FR reviews exist
+  addLocalizedEntries(entries, '/reviews/', { priority: 0.7, changeFrequency: 'weekly' });
   entries.push(entry('/case-studies/', { priority: 0.6, changeFrequency: 'monthly', frPath: false }));
   entries.push(entry('/results/', { priority: 0.6, changeFrequency: 'monthly', frPath: false }));
 

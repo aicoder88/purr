@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 import PageContent from '@/app/reviews/PageContent';
+import { ScopedIntlProvider } from '@/components/providers/ScopedIntlProvider';
 import { locales, isValidLocale } from '@/i18n/config';
 import { SITE_NAME } from '@/lib/constants';
 import {
@@ -86,7 +87,9 @@ export default async function LocalizedReviewsPage({ params }: LocalizedReviewsP
           __html: serializeSchemaGraph(webPageSchema, breadcrumbSchema),
         }}
       />
-      <PageContent />
+      <ScopedIntlProvider locale={locale} scopes={['root', 'reviews']}>
+        <PageContent />
+      </ScopedIntlProvider>
     </>
   );
 }

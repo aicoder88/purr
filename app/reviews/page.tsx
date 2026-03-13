@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 import PageContent from './PageContent';
 import { SITE_NAME } from '@/lib/constants';
+import { ScopedIntlProvider } from '@/components/providers/ScopedIntlProvider';
 import {
   createBreadcrumbSchema,
   createIndexedWebPageSchema,
@@ -72,7 +73,9 @@ export default function ReviewsPage() {
           __html: serializeSchemaGraph(webPageSchema, breadcrumbSchema),
         }}
       />
-      <PageContent />
+      <ScopedIntlProvider scopes={['root', 'reviews']}>
+        <PageContent />
+      </ScopedIntlProvider>
     </>
   );
 }

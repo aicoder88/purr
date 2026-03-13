@@ -3899,6 +3899,7 @@ export const fr = {
   reviewsPage: {
     pageTitle: "Avis Clients",
     metaDescription: "Avis clients sur Purrify et comment utiliser un additif au charbon actif pour réduire les odeurs de litière. Livraison aux États-Unis et au Canada.",
+    breadcrumbAria: "Fil d'Ariane",
     badge: "Avis Clients",
     heading: "Vraies Histoires de Propriétaires de Chats Heureux",
     description: "Avis clients sur Purrify et conseils pratiques pour réduire les odeurs de litière avec un additif au charbon actif.",
@@ -3924,8 +3925,10 @@ export const fr = {
       verifiedDesc: "Les pages produit peuvent afficher des notes approuvées et des badges d'achat lorsque des avis sont disponibles.",
       ratingTitle: "Science et ressources",
       ratingDesc: "Consultez les citations et les guides pour vérifier les affirmations clés.",
+      ratingCta: "Voir les citations scientifiques",
       customersTitle: "Guides pratiques",
-      customersDesc: "Solutions pour odeur de litière, ammoniac et utilisation en toute sécurité."
+      customersDesc: "Solutions pour odeur de litière, ammoniac et utilisation en toute sécurité.",
+      customersCta: "Contacter le support"
     },
     ctaSection: {
       heading: "Prêt à essayer chez vous ?",

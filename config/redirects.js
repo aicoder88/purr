@@ -1915,16 +1915,6 @@ const REDIRECTS = [
     permanent: true
   },
   {
-    source: "/fr/support",
-    destination: "/support/",
-    permanent: true
-  },
-  {
-    source: "/fr/support/:path*",
-    destination: "/support/:path*/",
-    permanent: true
-  },
-  {
     source: "/fr/stores",
     destination: "/stores/",
     permanent: true
@@ -1972,61 +1962,6 @@ const REDIRECTS = [
   {
     source: "/fr/referral",
     destination: "/referral/",
-    permanent: true
-  },
-  {
-    source: "/fr/learn/ammonia-science",
-    destination: "/learn/ammonia-science/",
-    permanent: true
-  },
-  {
-    source: "/fr/learn/faq",
-    destination: "/learn/faq/",
-    permanent: true
-  },
-  {
-    source: "/fr/learn/alternatives/arm-and-hammer-cat-litter-deodorizer-alternative",
-    destination: "/learn/alternatives/arm-and-hammer-cat-litter-deodorizer-alternative/",
-    permanent: true
-  },
-  {
-    source: "/fr/learn/cat-litter-ammonia-health-risks",
-    destination: "/learn/cat-litter-ammonia-health-risks/",
-    permanent: true
-  },
-  {
-    source: "/fr/learn/cat-litter-guide",
-    destination: "/learn/cat-litter-guide/",
-    permanent: true
-  },
-  {
-    source: "/fr/learn/how-activated-carbon-works",
-    destination: "/learn/how-activated-carbon-works/",
-    permanent: true
-  },
-  {
-    source: "/fr/learn/glossary",
-    destination: "/learn/glossary/",
-    permanent: true
-  },
-  {
-    source: "/fr/learn/how-it-works",
-    destination: "/learn/how-it-works/",
-    permanent: true
-  },
-  {
-    source: "/fr/learn/how-it-works/",
-    destination: "/learn/how-it-works/",
-    permanent: true
-  },
-  {
-    source: "/fr/learn/safety",
-    destination: "/learn/safety/",
-    permanent: true
-  },
-  {
-    source: "/fr/learn/science",
-    destination: "/learn/science/",
     permanent: true
   },
   {

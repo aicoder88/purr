@@ -1,3 +1,4 @@
+import { setRequestLocale } from 'next-intl/server';
 import { notFound } from 'next/navigation';
 import { isValidLocale, locales } from '@/i18n/config';
 
@@ -20,6 +21,8 @@ export default async function LocaleLayout({
     if (!isValidLocale(locale)) {
         notFound();
     }
+
+    setRequestLocale(locale);
 
     // The root layout's <Providers> already supplies NextIntlClientProvider,
     // CurrencyProvider, and TranslationProvider with the resolved request
