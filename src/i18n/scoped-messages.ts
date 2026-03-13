@@ -75,6 +75,7 @@ const SCOPE_MESSAGE_KEYS: Record<MessageScope, string[]> = {
     'subscriptionOfferExtended',
     'testimonialLibrary',
     'testimonialsSection',
+    'trustBadges',
     'upsell',
   ],
   learn: [

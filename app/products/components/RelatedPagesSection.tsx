@@ -8,6 +8,32 @@ export function RelatedPagesSection() {
   const t = useTranslations();
   const locale = useLocale();
   const localePrefix = locale === 'en' ? '' : `/${locale}`;
+  const relatedIntro = t.rich('productsPage.relatedIntro', {
+    guide: (chunks) => (
+      <Link
+        href={`${localePrefix}/learn/cat-litter-guide`}
+        className="font-medium text-brand-purple hover:underline"
+      >
+        {chunks}
+      </Link>
+    ),
+    calculator: (chunks) => (
+      <Link
+        href="/tools/cat-litter-calculator"
+        className="font-medium text-brand-purple hover:underline"
+      >
+        {chunks}
+      </Link>
+    ),
+    solutions: (chunks) => (
+      <Link
+        href={`${localePrefix}/learn/solutions/ammonia-smell-cat-litter`}
+        className="font-medium text-brand-purple hover:underline"
+      >
+        {chunks}
+      </Link>
+    ),
+  });
 
   const relatedPages = (t.raw('productsPage.relatedPages') || t.raw('productComparison.relatedPages')) as Array<{ link: string; title: string; description: string }> || [];
 
@@ -16,7 +42,7 @@ export function RelatedPagesSection() {
       <Container>
         <div className="text-center mb-12">
           <p className="text-gray-600 dark:text-gray-400 mb-4 max-w-2xl mx-auto">
-            {t('productsPage.relatedIntro')}
+            {relatedIntro}
           </p>
           <h2 className="font-heading text-2xl md:text-3xl font-bold mb-4 text-gray-900 dark:text-gray-100">
             {locale === 'fr' ? "En savoir plus" : "Learn More"}
@@ -36,7 +62,7 @@ export function RelatedPagesSection() {
               </div>
             </Link>
           ))}
-          <Link href="/blog/activated-carbon-vs-baking-soda-comparison" className="group">
+          <Link href={`${localePrefix}/blog/activated-carbon-vs-baking-soda-comparison`} className="group">
             <div className="bg-white dark:bg-gray-800 rounded-xl p-6 shadow-lg border border-brand-light dark:border-gray-700 hover:shadow-xl transition-shadow">
               <h3 className="font-heading text-xl font-bold mb-3 text-gray-900 dark:text-gray-100 group-hover:text-brand-purple transition-colors">
                 {t('nav.carbonVsBakingSoda')}

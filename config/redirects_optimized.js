@@ -286,6 +286,11 @@ const REDIRECTS = [
     permanent: true
   },
   {
+    source: "/try-free",
+    destination: "/products/trial-size/",
+    permanent: true
+  },
+  {
     source: "/:locale(fr)/trial",
     destination: "/:locale/products/trial-size/",
     permanent: true

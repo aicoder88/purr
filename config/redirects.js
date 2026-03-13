@@ -1988,6 +1988,11 @@ const REDIRECTS = [
     destination: "/products/trial-size/",
     permanent: true
   },
+  {
+    source: "/try-free",
+    destination: "/products/trial-size/",
+    permanent: true
+  },
 
   // --- MONTREAL REDIRECT ---
   {

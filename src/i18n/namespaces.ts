@@ -230,6 +230,7 @@ export const ROUTE_NAMESPACE_MAP: Record<string, TranslationNamespace[]> = {
   // Checkout/Thank you
   '/thank-you': ['common', 'checkout'],
   '/free-trial': ['common', 'checkout'],
+  '/try-free': ['common', 'checkout'],
   
   // Admin
   '/admin': ['common', 'admin'],
