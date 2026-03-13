@@ -2,38 +2,73 @@
 
 > Purrify makes activated carbon cat litter odor-control granules that reduce ammonia and litter box odors at the source.
 
-This file provides a curated set of pages for LLM inference-time understanding of Purrify products, science, and customer support information.
+This file provides a curated set of verified pages for LLM inference-time understanding of Purrify products, science, and customer support information.
 
 ## Core
 
-- [Homepage](https://www.purrify.ca/): Primary overview of the brand and product positioning.
-- [Products](https://www.purrify.ca/products/): Product lineup, sizes, and purchase options.
-- [Trial Size](https://www.purrify.ca/products/trial-size/): Entry product and trial offer details.
+- [Homepage](https://www.purrify.ca/)
+- [Products](https://www.purrify.ca/products/)
+- [Trial Size](https://www.purrify.ca/products/trial-size/)
 
 ## Learn
 
-- [Learn Hub](https://www.purrify.ca/learn/): Educational landing page for odor-control content.
-- [How It Works](https://www.purrify.ca/learn/how-it-works/): Practical explanation of how Purrify granules are used.
-- [Science](https://www.purrify.ca/science/): Scientific context behind odor and ammonia control.
-- [Ammonia Science](https://www.purrify.ca/learn/ammonia-science/): Focused ammonia-related guidance.
-- [FAQ](https://www.purrify.ca/learn/faq): Frequently asked questions.
-- [Blog](https://www.purrify.ca/blog/): Ongoing cat care and odor-control articles.
+- [Learn Hub](https://www.purrify.ca/learn/)
+- [How It Works](https://www.purrify.ca/learn/how-it-works/)
+- [How Activated Carbon Works](https://www.purrify.ca/learn/how-activated-carbon-works/)
+- [Science](https://www.purrify.ca/science/)
+- [Ammonia Science](https://www.purrify.ca/learn/ammonia-science/)
+- [Ammonia Health Risks](https://www.purrify.ca/learn/cat-litter-ammonia-health-risks/)
+- [Cat Litter Guide](https://www.purrify.ca/learn/cat-litter-guide/)
+- [Safety](https://www.purrify.ca/learn/safety/)
+- [Glossary](https://www.purrify.ca/learn/glossary/)
+- [FAQ](https://www.purrify.ca/learn/faq/)
+- [Solutions](https://www.purrify.ca/learn/solutions/)
+- [Blog](https://www.purrify.ca/blog/)
+
+## Solutions
+
+- [Ammonia Smell](https://www.purrify.ca/learn/solutions/ammonia-smell-cat-litter/)
+- [Apartment Cat Smell](https://www.purrify.ca/learn/solutions/apartment-cat-smell-solution/)
+- [Neutralize Ammonia](https://www.purrify.ca/learn/solutions/how-to-neutralize-ammonia-cat-litter/)
+- [Litter Box Smell Elimination](https://www.purrify.ca/learn/solutions/litter-box-smell-elimination/)
+- [Multiple Cats Odor Control](https://www.purrify.ca/learn/solutions/multiple-cats-odor-control/)
+- [Natural Cat Litter Additive](https://www.purrify.ca/learn/solutions/natural-cat-litter-additive/)
+- [Senior Cat Litter Solutions](https://www.purrify.ca/learn/solutions/senior-cat-litter-solutions/)
 
 ## Support
 
-- [Support Center](https://www.purrify.ca/support): Customer help and support paths.
-- [Contact](https://www.purrify.ca/contact/): Contact form and support access.
-- [Shipping](https://www.purrify.ca/support/shipping): Shipping details and expectations.
-- [Subscription Support](https://www.purrify.ca/support/subscription): Subscription-related help.
-- [Privacy Policy](https://www.purrify.ca/privacy-policy/): Privacy terms and data handling details.
-- [Terms](https://www.purrify.ca/terms/): Terms of service.
+- [Contact](https://www.purrify.ca/contact/)
+- [Support Center](https://www.purrify.ca/support/)
+- [Shipping](https://www.purrify.ca/support/shipping/)
+- [Subscription Support](https://www.purrify.ca/support/subscription/)
+- [Referral Program](https://www.purrify.ca/referral/)
+- [Affiliate Program](https://www.purrify.ca/affiliate/)
 
-## Optional
+## Company
 
-- [About](https://www.purrify.ca/about/our-story/): Company story and background.
-- [Retail Locations](https://www.purrify.ca/locations/): Location and availability information.
-- [Store Locator](https://www.purrify.ca/stores/): Store lookup experience.
-- [Case Studies](https://www.purrify.ca/case-studies/): Real-world outcomes and customer stories.
-- [Reviews](https://www.purrify.ca/reviews/): Customer review summaries.
-- [B2B](https://www.purrify.ca/b2b/): Wholesale and business partnership information.
-- [Cat Litter Calculator](https://www.purrify.ca/tools/cat-litter-calculator/): Utility tool for litter planning.
+- [About](https://www.purrify.ca/about/)
+- [Our Story](https://www.purrify.ca/about/our-story/)
+- [Case Studies](https://www.purrify.ca/case-studies/)
+- [Reviews](https://www.purrify.ca/reviews/)
+- [B2B](https://www.purrify.ca/b2b/)
+- [Locations](https://www.purrify.ca/locations/)
+- [Stores](https://www.purrify.ca/stores/)
+- [Cat Litter Calculator](https://www.purrify.ca/tools/cat-litter-calculator/)
+
+## International
+
+- [Canada](https://www.purrify.ca/canada/)
+- [United States](https://www.purrify.ca/us/)
+- [Français](https://www.purrify.ca/fr/)
+
+## Technical
+
+- [Sitemap](https://www.purrify.ca/sitemap.xml)
+- [Robots](https://www.purrify.ca/robots.txt)
+- [Privacy Policy](https://www.purrify.ca/privacy-policy/)
+- [Terms](https://www.purrify.ca/terms/)
+
+---
+
+*Last updated: 2026-03-13*
+*Format: llms.txt v1.0 (https://llmstxt.org)*
