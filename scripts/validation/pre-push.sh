@@ -8,10 +8,56 @@
 
 ROOT="$(git rev-parse --show-toplevel)"
 
+find_node() {
+  if command -v node >/dev/null 2>&1; then
+    command -v node
+    return 0
+  fi
+
+  if [ -s "$HOME/.nvm/nvm.sh" ]; then
+    # Load nvm for non-interactive Git hook shells.
+    . "$HOME/.nvm/nvm.sh" >/dev/null 2>&1
+    if command -v node >/dev/null 2>&1; then
+      command -v node
+      return 0
+    fi
+  fi
+
+  for candidate in \
+    "$HOME/.nvm/versions/node"/*/bin/node \
+    "$HOME/.volta/bin/node" \
+    "/opt/homebrew/opt/node@22/bin/node" \
+    "/opt/homebrew/bin/node" \
+    "/usr/local/bin/node"
+  do
+    if [ -x "$candidate" ]; then
+      echo "$candidate"
+      return 0
+    fi
+  done
+
+  return 1
+}
+
 echo ""
 echo "🌐  i18n check: scanning for hardcoded UI strings..."
 
-node --import tsx "$ROOT/scripts/validation/validate-hardcoded-ui-i18n.ts" --strict
+NODE_BIN="$(find_node)"
+
+if [ -z "$NODE_BIN" ]; then
+  echo ""
+  echo "❌  Node.js 22 was not found in the Git hook environment. Push blocked."
+  echo ""
+  echo "   How to fix:"
+  echo "   1. Install/enable Node 22 for this shell (for example: 'nvm use 22')."
+  echo "   2. Reinstall hooks with 'pnpm setup-hooks' if your environment changed."
+  echo "   3. Retry the push."
+  echo ""
+  exit 1
+fi
+
+cd "$ROOT" || exit 1
+"$NODE_BIN" --import tsx "$ROOT/scripts/validation/validate-hardcoded-ui-i18n.ts" --strict
 
 STATUS=$?
 

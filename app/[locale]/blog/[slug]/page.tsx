@@ -121,6 +121,22 @@ const buildDistinctMetaTitle = (post: { title: string; seoTitle?: string }) => {
   return optimizedTitle;
 };
 
+const stripLeadingEmbeddedHeader = (html: string) => {
+  const match = html.match(/^<header\b[\s\S]*?<\/header>\s*/i);
+
+  if (!match) {
+    return {
+      content: html,
+      removed: false,
+    };
+  }
+
+  return {
+    content: html.slice(match[0].length).trimStart(),
+    removed: true,
+  };
+};
+
 // Generate static params for all blog posts across locales
 export async function generateStaticParams() {
   const store = new ContentStore();
@@ -397,11 +413,9 @@ export default async function LocalizedBlogPostPage({ params }: BlogPostPageProp
   }
 
   // Some editorial HTML posts include a full in-content hero/header block.
-  // Avoid rendering the page-level hero in that case to prevent double heroes.
+  // Normalize those posts so every article gets the same quiet page header.
   const leadingContent = post.content?.slice(0, 2500) ?? '';
-  const hasEmbeddedHero = /<header\b[^>]*>/i.test(leadingContent);
-  const hasEmbeddedH1 = /<h1\b[^>]*>/i.test(post.content ?? '');
-  const needsFallbackH1 = hasEmbeddedHero && !hasEmbeddedH1;
+  const hasEmbeddedHeader = /<header\b[^>]*>/i.test(leadingContent);
   const contentLocale = locale as Locale;
   const heroImage = getOptimizedStaticImageData(post.image, { preferredWidth: 1200 });
   const localizedContentHtml = post.content
@@ -410,6 +424,9 @@ export default async function LocalizedBlogPostPage({ params }: BlogPostPageProp
       { preferredWidth: 828 },
     )
     : '';
+  const { content: normalizedContentHtml, removed: removedEmbeddedHeader } = stripLeadingEmbeddedHeader(localizedContentHtml);
+  const hasLeadingEmbeddedMedia = /^\s*<(?:div|figure)\b[^>]*>\s*<(?:img|picture)\b/i.test(normalizedContentHtml);
+  const showPageHeroImage = !hasEmbeddedHeader || !removedEmbeddedHeader || !hasLeadingEmbeddedMedia;
   const authorEntity = getPublicEditorialEntity(post.author);
   const reviewerEntity = post.reviewer ? getEditorialEntityByName(post.reviewer) : null;
   const visibleUpdatedDate = post.modifiedDate || post.date;
@@ -531,17 +548,23 @@ export default async function LocalizedBlogPostPage({ params }: BlogPostPageProp
   const compactMasthead = (
     <div
       data-testid="article-masthead"
-      className="mb-4 flex flex-wrap items-center gap-x-3 gap-y-1 text-xs font-medium uppercase tracking-[0.18em] text-gray-500 dark:text-gray-400"
+      className="mb-4 flex flex-wrap items-center gap-x-3 gap-y-1 text-[11px] leading-5 text-gray-500 dark:text-gray-400"
     >
-      <Link
-        href={authorEntity.canonicalPath}
-        prefetch={false}
-        className="transition-colors hover:text-gray-800 dark:hover:text-gray-200"
-      >
-        {authorEntity.name}
-      </Link>
-      <span aria-hidden="true" className="text-gray-300 dark:text-gray-600">/</span>
-      <time dateTime={post.date}>{formatDate(post.date)}</time>
+      <span>{t.published} <time dateTime={post.date}>{formatDate(post.date)}</time></span>
+      {showUpdatedDate && (
+        <span>{t.updated} <time dateTime={visibleUpdatedDate}>{formatDate(visibleUpdatedDate)}</time></span>
+      )}
+      <span>
+        {t.by}{' '}
+        <Link
+          href={authorEntity.canonicalPath}
+          prefetch={false}
+          className="transition-colors hover:text-gray-800 dark:hover:text-gray-200"
+        >
+          {authorEntity.name}
+        </Link>
+      </span>
+      {readingTime > 0 && <span>{readingTime} {t.minRead}</span>}
     </div>
   );
 
@@ -572,64 +595,57 @@ export default async function LocalizedBlogPostPage({ params }: BlogPostPageProp
           </Container>
         </section>
 
-        {needsFallbackH1 && (
-          <section className="sr-only">
-            <h1>{post.title}</h1>
-          </section>
-        )}
+        <section className="py-8 md:py-10">
+          <Container>
+            <div className="max-w-4xl mx-auto">
+              {compactMasthead}
 
-        {!hasEmbeddedHero && (
-          <section className="py-8 md:py-10">
-            <Container>
-              <div className="max-w-4xl mx-auto">
-                {compactMasthead}
+              {/* Title */}
+              <h1 className="font-heading text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 dark:text-white mb-5 leading-tight">
+                {post.title}
+              </h1>
 
-                {/* Title */}
-                <h1 className="font-heading text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 dark:text-white mb-6 leading-tight">
-                  {post.title}
-                </h1>
+              {/* Excerpt */}
+              <p className="mb-6 max-w-3xl text-lg text-gray-600 dark:text-gray-300">{post.excerpt}</p>
 
-                {/* Excerpt */}
-                <p className="mb-6 max-w-3xl text-lg text-gray-600 dark:text-gray-300">{post.excerpt}</p>
-
-                {/* Featured Image */}
-                <div className="relative aspect-video rounded-2xl overflow-hidden shadow-lg">
-                  <Image
-                    src={heroImage.src}
-                    alt={post.heroImageAlt || post.title}
-                    fill
-                    className="object-cover"
-                    priority
-                    {...(heroImage.blurDataURL ? {
-                      placeholder: 'blur' as const,
-                      blurDataURL: heroImage.blurDataURL,
-                    } : {})}
-                  />
-                </div>
-                {(post.heroImageCaption || post.heroImageCredit) && (
-                  <div className="mt-3 text-sm text-gray-500 dark:text-gray-400 text-center">
-                    {post.heroImageCaption && <span>{post.heroImageCaption}</span>}
-                    {post.heroImageCredit && (
-                      <span className="ml-2">
-                        {locale === 'fr' ? 'Credit :' : 'Credit:'} {post.heroImageCredit}
-                      </span>
-                    )}
+              {showPageHeroImage && (
+                <>
+                  <div className="relative aspect-video rounded-2xl overflow-hidden shadow-lg">
+                    <Image
+                      src={heroImage.src}
+                      alt={post.heroImageAlt || post.title}
+                      fill
+                      className="object-cover"
+                      priority
+                      {...(heroImage.blurDataURL ? {
+                        placeholder: 'blur' as const,
+                        blurDataURL: heroImage.blurDataURL,
+                      } : {})}
+                    />
                   </div>
-                )}
-              </div>
-            </Container>
-          </section>
-        )}
+                  {(post.heroImageCaption || post.heroImageCredit) && (
+                    <div className="mt-3 text-sm text-gray-500 dark:text-gray-400 text-center">
+                      {post.heroImageCaption && <span>{post.heroImageCaption}</span>}
+                      {post.heroImageCredit && (
+                        <span className="ml-2">
+                          {locale === 'fr' ? 'Credit :' : 'Credit:'} {post.heroImageCredit}
+                        </span>
+                      )}
+                    </div>
+                  )}
+                </>
+              )}
+            </div>
+          </Container>
+        </section>
 
         {/* Content Section */}
         <section className="py-8 md:py-12">
           <Container>
             <div className="max-w-4xl mx-auto">
-              {hasEmbeddedHero && compactMasthead}
-
               <article className="prose prose-lg dark:prose-invert prose-headings:font-heading prose-a:text-electric-indigo max-w-none">
-                {post.content ? (
-                  <div dangerouslySetInnerHTML={{ __html: localizedContentHtml }} />
+                {normalizedContentHtml ? (
+                  <div dangerouslySetInnerHTML={{ __html: normalizedContentHtml }} />
                 ) : (
                   <p className="text-gray-600 dark:text-gray-300">{post.excerpt}</p>
                 )}
@@ -685,10 +701,20 @@ export default async function LocalizedBlogPostPage({ params }: BlogPostPageProp
                   </div>
                 </div>
               )}
+              {/* Related Content */}
+              <RelatedContent currentUrl={getBlogPostPath(locale, slug)} className="mt-12 pt-8 border-t border-gray-200 dark:border-gray-700" />
+            </div>
+          </Container>
+        </section>
 
+        <RelatedSolutionsServer locale={contentLocale} currentPath={getBlogPostPath(locale, slug)} limit={4} />
+
+        <section className="pb-8">
+          <Container>
+            <div className="max-w-4xl mx-auto">
               <footer
                 data-testid="article-details-footer"
-                className="mt-14 border-t border-gray-200 pt-8 text-sm text-gray-600 dark:border-gray-700 dark:text-gray-300"
+                className="border-t border-gray-200 pt-8 text-sm text-gray-600 dark:border-gray-700 dark:text-gray-300"
               >
                 <div className="flex flex-wrap gap-x-6 gap-y-2 text-xs font-medium uppercase tracking-[0.18em] text-gray-500 dark:text-gray-400">
                   <span>{t.published} {formatDate(post.date)}</span>
@@ -748,14 +774,9 @@ export default async function LocalizedBlogPostPage({ params }: BlogPostPageProp
                   </Link>
                 </div>
               </footer>
-
-              {/* Related Content */}
-              <RelatedContent currentUrl={getBlogPostPath(locale, slug)} className="mt-12 pt-8 border-t border-gray-200 dark:border-gray-700" />
             </div>
           </Container>
         </section>
-
-        <RelatedSolutionsServer locale={contentLocale} currentPath={getBlogPostPath(locale, slug)} limit={4} />
 
         {/* Navigation Footer */}
         <section className="py-8 border-t border-gray-100 dark:border-gray-800">

@@ -177,8 +177,9 @@ describe('Localized blog post page', () => {
     const footer = screen.getByTestId('article-details-footer');
 
     expect(within(masthead).getByRole('link', { name: authorEntity.name })).toHaveAttribute('href', authorEntity.canonicalPath);
-    expect(within(masthead).getByText('March 1, 2026')).toBeInTheDocument();
-    expect(within(masthead).queryByText(/Updated/i)).not.toBeInTheDocument();
+    expect(masthead).toHaveTextContent('Published March 1, 2026');
+    expect(masthead).toHaveTextContent('Updated March 7, 2026');
+    expect(masthead).toHaveTextContent('3 min read');
     expect(within(masthead).queryByRole('link', { name: 'Editorial policy' })).not.toBeInTheDocument();
     expect(masthead.compareDocumentPosition(article) & Node.DOCUMENT_POSITION_FOLLOWING).toBeTruthy();
 
@@ -203,8 +204,11 @@ describe('Localized blog post page', () => {
     const article = screen.getByRole('article');
     const footer = screen.getByTestId('article-details-footer');
 
-    expect(within(masthead).getByText('March 1, 2026')).toBeInTheDocument();
+    expect(masthead).toHaveTextContent('Published March 1, 2026');
     expect(within(masthead).queryByRole('link', { name: 'Editorial policy' })).not.toBeInTheDocument();
+    expect(screen.getByRole('heading', { level: 1, name: basePost.title })).toBeInTheDocument();
+    expect(within(article).queryByText('Embedded article title')).not.toBeInTheDocument();
+    expect(within(article).getByText('Body copy.')).toBeInTheDocument();
     expect(masthead.compareDocumentPosition(article) & Node.DOCUMENT_POSITION_FOLLOWING).toBeTruthy();
     expect(article.compareDocumentPosition(footer) & Node.DOCUMENT_POSITION_FOLLOWING).toBeTruthy();
   });
