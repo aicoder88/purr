@@ -61,7 +61,7 @@ jobs:
           node-version: 22
           cache: 'pnpm'
       - run: pnpm install
-      - run: pnpm exec jest --ci --coverage
+      - run: pnpm test -- --ci --coverage
 
   bundle-analyzer:
     runs-on: ubuntu-latest

@@ -23,7 +23,7 @@ test.describe('Rendered SEO Metadata', () => {
   test('renders canonical, og:url, robots, and JSON-LD for public indexable pages', async ({
     page,
   }) => {
-    const pages = ['/', '/learn/faq', '/results'];
+    const pages = ['/', '/learn/faq', '/results', '/viral'];
 
     for (const pathname of pages) {
       await page.goto(pathname);

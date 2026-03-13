@@ -122,9 +122,9 @@ describe('generated sitemap', () => {
 
     expect(urls.has('https://www.purrify.ca/search/')).toBe(false);
     expect(urls.has('https://www.purrify.ca/fr/search/')).toBe(false);
-    expect(urls.has('https://www.purrify.ca/fr/learn/how-it-works/')).toBe(false);
-    expect(urls.has('https://www.purrify.ca/fr/learn/faq/')).toBe(false);
-    expect(urls.has('https://www.purrify.ca/fr/support/')).toBe(false);
+    expect(urls.has('https://www.purrify.ca/fr/learn/how-it-works/')).toBe(true);
+    expect(urls.has('https://www.purrify.ca/fr/learn/faq/')).toBe(true);
+    expect(urls.has('https://www.purrify.ca/fr/support/')).toBe(true);
     expect(urls.has('https://www.purrify.ca/referral/')).toBe(false);
     expect(urls.has('https://www.purrify.ca/terms/')).toBe(false);
 
