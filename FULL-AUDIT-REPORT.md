@@ -1,76 +1,127 @@
-# Full SEO Audit Report
+# SEO Full Audit Report
 
-Date: 2026-03-12
-Scope: full-site
-Site: https://www.purrify.ca
-Score band: Strong
-Estimated score: 93/100
-Score confidence: Medium
+Target: https://www.purrify.ca/
+
+Scope: Full-site audit with homepage analysis, sitemap sampling, internal-link crawl, and representative page samples (`/`, `/products/trial-size/`, `/about/our-story/`, `/blog/best-cat-litter-deodorizers-2026/`)
+
+Business type detected: E-commerce / DTC retail with strong educational content and retail-location coverage
+
+Overall rating: Good
+
+Overall SEO health score: 76/100
+
+Score confidence: Medium-Low
+
+## Environment Limitations
+
+- `pagespeed.py` was rate-limited by the Google PageSpeed API, so Core Web Vitals could not be confirmed in this run.
+- Playwright browser launch failed, so visual/mobile verification was not completed.
+- The audit is evidence-backed, but performance and rendered-layout conclusions should be treated as incomplete until CWV and screenshots are rerun.
 
 ## Audit Summary
 
-Purrify's technical SEO baseline is strong. The repo-level validators passed for metadata, canonicals, sitemap indexability, rendered head output, locale surface area, image SEO, and review schema fallback handling. Live-site checks also confirmed healthy `llms.txt`, security headers, social metadata, and a clean homepage redirect path.
-
-The main confirmed gap was AI crawler management in production `robots.txt`, where several crawlers were inheriting `User-agent: *` rules instead of being explicitly managed. That has been fixed in the repo and only requires deployment to clear the live warning. Core Web Vitals remain unconfirmed because Google PageSpeed Insights rate-limited the audit run.
-
 Top 3 issues:
-- Production `robots.txt` did not explicitly manage `Applebot-Extended`, `anthropic-ai`, `FacebookBot`, and `Amazonbot`.
-- Core Web Vitals data could not be collected during this run because PageSpeed Insights returned rate limits.
-- Review schema validation passed only against the zero-review fallback state, not live populated review data.
+- Warning: Sampled commercial templates use `FAQPage` schema, which is generally not eligible for commercial rich results.
+- Warning: Internal-link distribution is uneven; a 21-page crawl surfaced 25 URLs with one or fewer incoming internal links.
+- Warning: Homepage image accessibility and metadata QA still have template-level gaps.
 
 Top 3 opportunities:
-- Deploy the `robots.txt` crawler-management update.
-- Capture mobile and desktop CWV with a PageSpeed API key or Search Console/CrUX data.
-- Re-validate product rich results after live review aggregates exist.
+- Strong crawl/indexation baseline: correct canonicals, working sitemap, valid homepage hreflang, and excellent security headers.
+- Strong AI-search readiness: `llms.txt`, `llms-full.txt`, and explicit AI crawler directives are already live.
+- Strong topical coverage: 255 sitemap URLs with meaningful clusters in blog, learn, products, locations, and French content.
 
-## Evidence Snapshot
+## Category Scores
 
-- `pnpm seo:validate:strict`: passed with 78 indexable pages, 0 errors, 0 warnings.
-- `pnpm seo:validate:sitemap-indexability`: passed with 237 sitemap URLs checked, 0 redirects, 0 noindex URLs, 0 canonical mismatches.
-- `pnpm seo:validate:rendered`: passed with 237 pages checked, 0 errors, 0 warnings.
-- `pnpm seo:validate:inline-head`: passed with 149 App Router page files checked and 0 violations.
-- `pnpm seo:validate:supported-locales`: passed for supported locales `en` and `fr`.
-- `pnpm seo:validate:reviews`: passed for all tested product/locale combinations, with warnings that only zero-review fallback states were available.
-- Live `robots.txt`: HTTP 200, 1 sitemap, explicit allows for major AI crawlers, 4 unmanaged AI crawlers detected before the repo fix.
-- Live `llms.txt`: HTTP 200, quality score 100/100, `llms-full.txt` present.
-- Live security headers: score 100/100.
-- Live social meta: score 100/100.
-- Live redirect check: homepage resolved directly with 0 hops.
+| Category | Score | Notes |
+| --- | --- | --- |
+| Technical SEO | 86/100 | Strong robots, sitemap, canonical, hreflang, HTTPS, and headers; minor redirect-chain cleanup remains. |
+| Content Quality | 78/100 | Good topical depth and E-E-A-T support pages; readability and template QA can improve. |
+| On-Page SEO | 72/100 | Titles/H1s are generally solid, but internal-link equity and snippet consistency need work. |
+| Schema / Structured Data | 64/100 | Rich Product and Article markup exists, but FAQ schema is misapplied on sampled commercial templates. |
+| Performance (CWV) | Insufficient data | PageSpeed was rate-limited; no reliable LCP/INP/CLS measurements were collected. |
+| Image Optimization | 78/100 | Formats are modern and dimensions exist on some assets, but several homepage images still have empty alt text. |
+| AI Search Readiness | 95/100 | Excellent `llms.txt` and AI crawler management for a retail brand. |
 
 ## Findings Table
 
 | Area | Severity | Confidence | Finding | Evidence | Fix |
 | --- | --- | --- | --- | --- | --- |
-| Crawlability | Warning | Confirmed | Production `robots.txt` does not explicitly manage four AI/search crawlers. | Live `robots_checker.py` reported unmanaged crawlers: `Applebot-Extended`, `anthropic-ai`, `FacebookBot`, `Amazonbot`. | Deploy the updated [`public/robots.txt`](public/robots.txt) so these crawlers are explicitly allowed. |
-| Indexability | Pass | Confirmed | Sitemap URLs are indexable and canonically aligned. | `pnpm seo:validate:sitemap-indexability` checked 237 URLs with 0 redirects, 0 missing routes, 0 noindex URLs, 0 canonical mismatches. | No change needed. Keep this gate in CI. |
-| Rendered SEO | Pass | Confirmed | Rendered metadata, canonical tags, hreflang, and JSON-LD output are clean across sitemap URLs. | `pnpm seo:validate:rendered` checked 237 pages with 0 errors and 0 warnings. | No change needed. Keep the rendered validator green before release. |
-| On-page metadata | Pass | Confirmed | App Router metadata usage is consistent and avoids inline head tag drift. | `pnpm seo:validate:inline-head` scanned 149 page files with 0 violations. | No change needed. |
-| Image SEO | Pass | Confirmed | Referenced images meet current runtime SEO validation rules. | `pnpm seo:validate:strict` reported 281 actionable images, 0 issues, 0 missing alt text. | No change needed. |
-| AI search readiness | Pass | Confirmed | `llms.txt` and `llms-full.txt` are present and high quality. | Live `llms_txt_checker.py` returned HTTP 200 and score 100/100. | No change needed. |
-| Security | Pass | Confirmed | Security headers support crawl safety and browser trust signals well. | Live `security_headers.py` returned 100/100 with HSTS, CSP, XFO, XCTO, Referrer-Policy, and Permissions-Policy present. | No change needed. |
-| Rich results | Info | Confirmed | Review schema fallback is valid, but live review-populated schema has not yet been exercised. | `pnpm seo:validate:reviews` passed all 12 cases, each warning that no live aggregate review data was available. | Re-run rich results validation after live review counts populate. |
-| Performance / CWV | Info | Hypothesis | Core Web Vitals could not be confirmed during this run. | `pagespeed.py` was rate-limited by the Google PSI API after retries. | Re-run with an API key or collect from Search Console/CrUX. |
+| Structured Data | Warning | Confirmed | Commercial templates are using `FAQPage` schema on sampled homepage, product, and article URLs. | `FAQPage` blocks were present in parsed schema for `/`, `/products/trial-size/`, and `/blog/best-cat-litter-deodorizers-2026/`. | Remove `FAQPage` JSON-LD from commercial templates and keep the visible FAQ content in HTML while preserving Product and Article schema. |
+| Internal Linking | Warning | Confirmed | Multiple pages have weak internal-link support. | `internal_links.py` crawled 21 pages, found 87 unique URLs, and flagged 25 pages with one or fewer incoming internal links. | Add contextual links from hubs, related articles, product pages, and support pages to underlinked URLs. |
+| Images | Warning | Confirmed | The homepage ships informative images with empty alt attributes. | A BeautifulSoup check found 7 of 46 homepage images with `alt=""`, including `ammonia-science.webp` and several marketing images. | Add descriptive alt text to informative images; reserve empty alt text for clearly decorative media only. |
+| Metadata QA | Warning | Confirmed | Meta descriptions are inconsistent across templates. | The sampled article meta description is 170 characters; the About page meta description is 106 characters. | Add metadata linting across sitemap URLs and normalize template-level title/description ranges. |
+| Redirect Hygiene | Info | Confirmed | Some links use multi-hop redirect chains. | `broken_links.py` found 3 chains over one hop, including `/buy/purrify-12g` routing to Stripe. | Reduce avoidable internal redirects and use cleaner first-party pre-checkout paths where possible. |
+| Technical SEO | Pass | Confirmed | Crawl, indexation, and internationalization signals are strong. | `robots.txt` returned 200 with sitemap discovery; homepage canonical and hreflang aligned; `security_headers.py` scored 100/100. | Preserve the current technical baseline. |
+| AI Search Readiness | Pass | Confirmed | AI-crawler and LLM-readability setup is strong. | `llms.txt` and `llms-full.txt` both returned 200; AI bots are explicitly managed in `robots.txt`. | Maintain and extend this setup as content expands. |
+| Performance | Info | Hypothesis | Core Web Vitals were not measurable in this run. | PageSpeed was rate-limited and Playwright failed to launch. | Rerun PageSpeed with an API key and validate mobile rendering/CWV separately. |
 
-## Prioritized Action Plan
+## Detailed Findings
 
-1. Immediate blocker
+### 1. Structured Data
 
-- Deploy the updated `robots.txt` so crawler management on production matches the intended policy.
+**Finding:** Commercial templates are using `FAQPage` schema on sampled core URLs.
 
-2. Quick wins
+**Evidence:** Parsed schema from the homepage, trial-size product page, and a comparison article all included `FAQPage` JSON-LD alongside valid Product or Article data.
 
-- Re-run PageSpeed Insights with an API key for both mobile and desktop to confirm LCP, INP, CLS, FCP, and TTFB.
-- Add a lightweight post-deploy check that fetches live `robots.txt` and confirms the new crawler blocks are present.
+**Impact:** For a commercial retail site, FAQ rich results are generally not available, so this markup creates maintenance overhead without likely SERP upside.
 
-3. Strategic improvements
+**Fix:** Remove `FAQPage` JSON-LD from commercial templates. Keep the visible FAQ blocks in HTML and retain only eligible schema such as Product, Offer, MerchantReturnPolicy, Article, Organization, and BreadcrumbList where relevant.
 
-- Validate live rich results once actual review aggregates exist and submit affected URLs through Google Rich Results Test.
-- Continue using rendered sitemap validation in CI so metadata regressions are caught before deployment.
-- Consider exporting periodic SEO evidence artifacts into `docs/seo/` for release-by-release comparison.
+### 2. Internal Linking and Crawl Equity
 
-## Unknowns And Follow-ups
+**Finding:** A meaningful slice of the site is underlinked in the sampled crawl.
 
-- Core Web Vitals are unknown for this audit run because PageSpeed Insights rate-limited the request.
-- Search Console performance, coverage, and enhancement data were not part of this run.
-- The review schema path with non-zero live aggregate ratings still needs verification after production data exists.
+**Evidence:** `internal_links.py` crawled 21 pages and found 25 URLs with one or fewer incoming links, including blog posts, `/case-studies`, `/b2b/sell-sheet`, `/pos`, and affiliate/signup content.
 
+**Impact:** Weak internal linking lowers discovery priority, weakens relevance signals, and makes important non-homepage URLs less likely to accumulate authority.
+
+**Fix:** Build internal-link modules from blog posts to solution pages, from solution pages to product pages, and from retailer/B2B hubs to supporting assets. Prioritize pages that are commercial or high-intent but currently have only one internal mention.
+
+### 3. Image Accessibility and Image SEO
+
+**Finding:** Homepage image alt coverage is incomplete.
+
+**Evidence:** 7 of 46 homepage images were missing alt text in source, including science and marketing assets that appear descriptive rather than decorative.
+
+**Impact:** This weakens accessibility, image-search understanding, and contextual relevance around key visual sections.
+
+**Fix:** Run a homepage image audit and add descriptive alt text to informative visuals. Leave `alt=""` only on assets that are purely decorative and redundant with nearby copy.
+
+### 4. Metadata Consistency
+
+**Finding:** Metadata quality varies by page template.
+
+**Evidence:** The homepage and product page are well tuned at 147-148 characters for the description, but the article sample is 170 characters and the About page is only 106 characters.
+
+**Impact:** Snippet truncation and underspecified descriptions reduce CTR control and suggest inconsistent editorial QA.
+
+**Fix:** Add a metadata QA pass across the sitemap and tune each template family separately: articles, about pages, product pages, solution pages, and location pages.
+
+### 5. Strengths Worth Preserving
+
+**Finding:** The site already has several above-average SEO foundations.
+
+**Evidence:** `robots.txt` and `sitemap.xml` are healthy; homepage hreflang passed; security headers scored 100/100; `llms.txt` and `llms-full.txt` are present; the sampled article includes author, publish date, editorial-policy links, and supporting topical clusters.
+
+**Impact:** These are real competitive advantages, especially for multilingual discovery and AI-search readiness.
+
+**Fix:** Preserve the current technical and AI-search posture while fixing template-level weaknesses instead of redesigning the whole stack.
+
+## Unknowns and Follow-ups
+
+- CWV remains unverified. Rerun PageSpeed or Lighthouse to confirm mobile LCP, INP, and CLS.
+- Visual/mobile rendering remains unverified because Playwright could not launch a browser session in this environment.
+- The site has 23 location pages, which is below the 30-page warning threshold, but those templates should still be spot-checked for uniqueness before expanding further.
+- French pages were discovered in sitemap and hreflang, but French template parity was not deeply sampled in this audit.
+
+## Evidence Collected
+
+- `robots_checker.py`: homepage robots returned 200 and exposed one sitemap.
+- Sitemap sample: 255 URLs discovered, heavily concentrated in `fr`, `blog`, `locations`, and `learn`.
+- `security_headers.py`: 100/100 with HSTS, CSP, X-Frame-Options, X-Content-Type-Options, Referrer-Policy, and Permissions-Policy present.
+- `redirect_checker.py`: homepage had no redirect hops.
+- `broken_links.py`: 113 checked links, 0 broken, 34 redirected, 3 redirect chains over one hop.
+- `hreflang_checker.py`: homepage hreflang passed with `en-CA`, `fr-CA`, and `x-default`.
+- `llms_txt_checker.py`: `llms.txt` and `llms-full.txt` were found with a quality score of 100/100.
+- `parse_html.py` samples: homepage, trial-size product page, About page, and a comparison article.
+- `readability.py`: homepage readability was difficult (`Flesch 43.9`, FKGL `12.5`), acceptable for an educated audience but worth simplifying in dense blocks.

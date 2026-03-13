@@ -9,6 +9,15 @@ import { HeroVideo } from "@/components/sections/hero/HeroVideo";
 import { getPaymentLink } from "@/lib/payment-links";
 import { useTranslation } from "@/lib/translation-context";
 
+const packagingHeroUiCopy = {
+  en: {
+    logoAlt: "Purrify logo",
+  },
+  fr: {
+    logoAlt: "Logo Purrify",
+  },
+} as const;
+
 export function HomepagePackagingMockupHero() {
   const { t, locale } = useTranslation();
   const localePrefix = locale === "fr" ? "/fr" : "";
@@ -133,7 +142,7 @@ export function HomepagePackagingMockupHero() {
             <div className="relative rounded-[2rem] border border-[#ebe8f2] bg-[linear-gradient(180deg,rgba(255,255,255,0.86),rgba(247,249,253,0.96))] p-4 shadow-[0_28px_90px_rgba(23,28,40,0.08)] backdrop-blur-md dark:border-[#333b4a] dark:bg-[linear-gradient(180deg,rgba(21,28,40,0.82),rgba(14,20,31,0.96))] dark:shadow-[0_28px_90px_rgba(0,0,0,0.3)]">
               <HeroVideo
                 playLabel={t.hero.ariaLabels.playVideo}
-                posterAlt={t.hero.ariaLabels.playVideo}
+                logoAlt={locale === "fr" ? packagingHeroUiCopy.fr.logoAlt : packagingHeroUiCopy.en.logoAlt}
               />
               <div className="mt-4 grid gap-3 sm:grid-cols-2">
                 <div className="rounded-2xl border border-[#f2d9ea] bg-[#fff8fd] px-4 py-3 dark:border-[#2f3745] dark:bg-[#111827]/72">

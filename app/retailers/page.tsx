@@ -40,30 +40,6 @@ export const metadata: Metadata = {
   },
 };
 
-// Retailer-focused FAQs for schema
-const retailerFaqs = [
-  {
-    question: "What are the wholesale margins for Purrify?",
-    answer: "Retailers enjoy 50%+ margins on Purrify products. We offer volume-based discounts starting at 24 units, with additional savings at 48+ and 96+ unit orders."
-  },
-  {
-    question: "What marketing support do you provide?",
-    answer: "We provide free POS materials, product displays, training resources, and co-op advertising opportunities. Our team also offers social media assets and promotional support for launches."
-  },
-  {
-    question: "What is the minimum order quantity?",
-    answer: "Our minimum order is 24 units for the first order. Subsequent orders have flexible minimums. We also offer a starter kit for retailers wanting to test the market first."
-  },
-  {
-    question: "How quickly do wholesale orders ship?",
-    answer: "Wholesale orders ship within 2-3 business days from our Montreal warehouse. We offer free shipping on orders over $600 within Canada."
-  },
-  {
-    question: "Do you provide product training?",
-    answer: "Yes! We offer free product training for your staff via video call or in-person (GTA and Montreal areas). We also provide printed materials explaining key selling points."
-  }
-];
-
 // Organization schema for B2B Wholesale (no Product schema - this is not a product page)
 const organizationSchema = {
   "@context": "https://schema.org",
@@ -79,20 +55,6 @@ const organizationSchema = {
     "email": "wholesale@purrify.ca",
     "areaServed": ["CA", "US"]
   }
-};
-
-// FAQ Schema
-const faqSchema = {
-  "@context": "https://schema.org",
-  "@type": "FAQPage",
-  "mainEntity": retailerFaqs.map(faq => ({
-    "@type": "Question",
-    "name": faq.question,
-    "acceptedAnswer": {
-      "@type": "Answer",
-      "text": faq.answer
-    }
-  }))
 };
 
 // Breadcrumb schema
@@ -126,7 +88,6 @@ export default function RetailersPage() {
             '@context': 'https://schema.org',
             '@graph': [
               stripContext(organizationSchema),
-              stripContext(faqSchema),
               stripContext(breadcrumbSchema),
             ],
           }),

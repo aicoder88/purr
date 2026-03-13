@@ -83,13 +83,18 @@ export async function WhyPurrify() {
     return "";
   };
 
-  const cards = CARD_CONFIG.map((card) => ({
-    icon: card.icon,
-    image: getLearnPagePreviewImage(card.href)?.image || card.image,
-    href: `${localePrefix}${card.href}`,
-    title: read(card.titleKeys),
-    description: read(card.descriptionKeys),
-  })).filter((card) => card.title && card.description);
+  const cards = CARD_CONFIG.map((card) => {
+    const preview = getLearnPagePreviewImage(card.href);
+
+    return {
+      preview,
+      icon: card.icon,
+      image: preview?.image || card.image,
+      href: `${localePrefix}${card.href}`,
+      title: read(card.titleKeys),
+      description: read(card.descriptionKeys),
+    };
+  }).filter((card) => card.title && card.description);
 
   return (
     <section id="why-purrify" className="py-14 md:py-16 bg-gray-50 dark:bg-gray-900">
@@ -121,7 +126,7 @@ export async function WhyPurrify() {
                   <div className="relative aspect-[4/3] w-full overflow-hidden">
                     <Image
                       src={card.image}
-                      alt=""
+                      alt={card.preview?.alt || card.title}
                       fill
                       sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 400px"
                       className="object-cover transition-transform duration-300 group-hover:scale-[1.02]"

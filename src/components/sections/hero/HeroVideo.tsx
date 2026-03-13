@@ -6,10 +6,10 @@ import { useCallback, useEffect, useRef, useState } from "react";
 
 interface HeroVideoProps {
   playLabel: string;
-  posterAlt?: string;
+  logoAlt: string;
 }
 
-export const HeroVideo = ({ playLabel }: HeroVideoProps) => {
+export const HeroVideo = ({ playLabel, logoAlt }: HeroVideoProps) => {
   const desktopWebmSrc = "/videos/purrify-activated-carbon-litter-additive-demo.webm";
   const desktopSrc = "/videos/purrify-activated-carbon-litter-additive-demo.mp4";
   const posterSrc = "/optimized/marketing/purrify-demo-poster.webp";
@@ -104,7 +104,7 @@ export const HeroVideo = ({ playLabel }: HeroVideoProps) => {
           <div className="flex flex-col items-center gap-4 rounded-[2rem] border border-white/60 bg-white/70 px-8 py-6 shadow-lg backdrop-blur-sm dark:border-gray-200/10 dark:bg-gray-900/60">
             <Image
               src={logoSrc}
-              alt=""
+              alt={logoAlt}
               width={164}
               height={52}
               priority

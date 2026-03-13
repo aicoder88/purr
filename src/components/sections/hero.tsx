@@ -1,5 +1,5 @@
 import { Container } from "@/components/ui/container";
-import { getTranslations } from "next-intl/server";
+import { getLocale, getTranslations } from "next-intl/server";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { getPaymentLink } from "@/lib/payment-links";
@@ -36,8 +36,18 @@ function TrustBadgeIcon({ className = "" }: { className?: string }) {
 const CTA_BUTTON_CLASSES =
   "w-full sm:w-auto px-8 py-5 bg-brand-red-600 hover:bg-brand-red-700 text-white dark:text-gray-100 font-semibold text-base sm:text-lg rounded-full shadow-sm transition-all duration-200 min-h-[56px] flex items-center justify-center gap-2";
 
+const heroUiCopy = {
+  en: {
+    logoAlt: "Purrify logo",
+  },
+  fr: {
+    logoAlt: "Logo Purrify",
+  },
+} as const;
+
 export async function Hero() {
   const t = await getTranslations();
+  const locale = await getLocale();
   const headline = t.has("hero.headline") ? t("hero.headline") : t("hero.eliminateCatOdors");
   const supportingCopy = t.has("hero.simplified.valueProposition")
     ? t("hero.simplified.valueProposition")
@@ -54,6 +64,7 @@ export async function Hero() {
     : t("hero.buttons.shopNow");
   const secondaryCta = t.has("hero.buttons.learnMore") ? t("hero.buttons.learnMore") : "";
   const checkoutUrl = getPaymentLink("trialSingle") || "#";
+  const logoAlt = locale === "fr" ? heroUiCopy.fr.logoAlt : heroUiCopy.en.logoAlt;
 
   return (
     <section className="relative w-full overflow-x-clip border-b border-stone-200/70 bg-[radial-gradient(circle_at_top_left,#fff9ec_0%,#ffffff_58%)] pb-12 pt-16 transition-colors duration-300 md:pb-16 md:pt-20 dark:border-gray-800 dark:bg-[radial-gradient(circle_at_top_left,#1f2937_0%,#030712_64%)]">
@@ -108,7 +119,7 @@ export async function Hero() {
             </div>
           </div>
           <div className="relative order-last h-full items-center justify-center lg:order-none lg:flex lg:justify-end">
-            <HeroVideo playLabel={t("hero.ariaLabels.playVideo")} />
+            <HeroVideo playLabel={t("hero.ariaLabels.playVideo")} logoAlt={logoAlt} />
           </div>
         </div>
       </Container>

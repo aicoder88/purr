@@ -44,7 +44,7 @@ export default function HowToNeutralizeAmmoniaPageClient() {
     },
   ];
 
-  // Enhanced FAQ questions for RelatedQuestions component (adds FAQPage schema)
+  // Enhanced FAQ questions for the on-page RelatedQuestions accordion
   const faqQuestions = [
     {
       question: 'Why does my litter box smell like ammonia even after cleaning?',

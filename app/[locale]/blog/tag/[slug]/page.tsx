@@ -10,7 +10,6 @@ import {
 import { defaultLocale, isValidLocale, locales } from '@/i18n/config';
 import { SITE_NAME, SITE_URL } from '@/lib/constants';
 import {
-  getTaxonomyFaq,
   getTaxonomyTerm,
 } from '@/translations/blog-taxonomy';
 
@@ -125,7 +124,6 @@ export default async function LocalizedTagHubPage({ params }: TagHubPageProps) {
   }
 
   const term = getTaxonomyTerm(locale, 'tag', slug as CanonicalTagSlug);
-  const faq = getTaxonomyFaq(locale, 'tag', slug as CanonicalTagSlug, hub.posts.length);
   const collectionSchema = {
     '@context': 'https://schema.org',
     '@type': 'CollectionPage',
@@ -145,28 +143,11 @@ export default async function LocalizedTagHubPage({ params }: TagHubPageProps) {
     })),
   };
 
-  const faqSchema = {
-    '@context': 'https://schema.org',
-    '@type': 'FAQPage',
-    mainEntity: faq.map((item) => ({
-      '@type': 'Question',
-      name: item.question,
-      acceptedAnswer: {
-        '@type': 'Answer',
-        text: item.answer,
-      },
-    })),
-  };
-
   return (
     <>
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(collectionSchema) }}
-      />
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
       />
       <TaxonomyHubPage locale={locale} hub={hub} />
     </>

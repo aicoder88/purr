@@ -4,7 +4,6 @@ import { Truck, Clock, MapPin, Package, Globe, AlertCircle, CheckCircle2, Rotate
 import { Container } from '@/components/ui/container';
 import { Button } from '@/components/ui/button';
 import { CONTACT_INFO, SITE_NAME } from '@/lib/constants';
-import { stripContext } from '@/lib/seo-utils';
 import {
   createBreadcrumbSchema,
   createIndexedWebPageSchema,
@@ -75,20 +74,6 @@ const faqs = [
   }
 ];
 
-// FAQPage schema for Shipping
-const faqSchema = {
-  '@context': 'https://schema.org',
-  '@type': 'FAQPage',
-  mainEntity: faqs.map((faq) => ({
-    '@type': 'Question',
-    name: faq.question,
-    acceptedAnswer: {
-      '@type': 'Answer',
-      text: faq.answer,
-    },
-  })),
-};
-
 const webPageSchema = createIndexedWebPageSchema({
   locale: 'en',
   path: '/support/shipping/',
@@ -111,7 +96,6 @@ export default function ShippingPage() {
           __html: serializeSchemaGraph(
             webPageSchema,
             breadcrumbSchema,
-            stripContext(faqSchema) as Record<string, unknown>,
           ),
         }}
       />

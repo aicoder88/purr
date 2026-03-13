@@ -19,7 +19,7 @@ export interface SEOConfig {
   title: string;
   description: string;
   targetKeyword?: string;
-  schemaType?: 'product' | 'article' | 'faq' | 'location' | 'organization' | 'howto' | 'claimReview' | 'comparison';
+  schemaType?: 'product' | 'article' | 'location' | 'organization' | 'howto' | 'claimReview' | 'comparison';
   schemaData?: Record<string, unknown>;
   image?: string;
   keywords?: string[];
@@ -399,21 +399,6 @@ function generateSchema(
 
       return articleSchema;
     }
-
-    case 'faq':
-      return {
-        ...baseSchema,
-        '@type': 'FAQPage',
-        inLanguage: schemaLanguage,
-        mainEntity: data.questions.map((q: { question: string; answer: string }) => ({
-          '@type': 'Question',
-          name: q.question,
-          acceptedAnswer: {
-            '@type': 'Answer',
-            text: q.answer,
-          },
-        })),
-      };
 
     case 'location':
       return {

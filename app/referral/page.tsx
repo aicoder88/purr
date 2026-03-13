@@ -118,25 +118,8 @@ export default async function ReferralPage() {
     },
   ];
 
-  const faqSchema = {
-    '@context': 'https://schema.org',
-    '@type': 'FAQPage',
-    mainEntity: faqs.map((item) => ({
-      '@type': 'Question',
-      name: item.question,
-      acceptedAnswer: {
-        '@type': 'Answer',
-        text: item.answer,
-      },
-    })),
-  };
-
   return (
     <>
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
-      />
       <main className="min-h-screen bg-[radial-gradient(circle_at_top,_rgba(255,49,49,0.08),_transparent_35%),linear-gradient(180deg,#fffaf7_0%,#ffffff_42%,#f8fafc_100%)] py-12 dark:bg-gray-950">
         <Container>
           <div className="mx-auto max-w-6xl space-y-10">

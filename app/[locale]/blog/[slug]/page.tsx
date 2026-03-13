@@ -11,7 +11,7 @@ import { sampleBlogPosts, getBlogPostContent, type BlogPost as DataBlogPost } fr
 import { SITE_NAME, SITE_URL } from '@/lib/constants';
 import { locales, isValidLocale, defaultLocale, type Locale } from '@/i18n/config';
 import { generateArticlePageSchema, stripContext } from '@/lib/seo-utils';
-import { optimizeMetaTitle } from '@/lib/seo/meta-optimizer';
+import { optimizeMetaDescription, optimizeMetaTitle } from '@/lib/seo/meta-optimizer';
 import { ArrowLeft } from 'lucide-react';
 import { sanitizeHTML } from '@/lib/security/sanitize';
 import { localizeInternalHrefAttributes } from '@/lib/i18n/locale-path';
@@ -179,7 +179,7 @@ export async function generateMetadata({ params }: BlogPostPageProps): Promise<M
   }
 
   const metaTitle = buildDistinctMetaTitle(post);
-  const metaDescription = post.seoDescription || post.excerpt;
+  const metaDescription = optimizeMetaDescription(post.seoDescription || post.excerpt).description;
   const metaImageUrl = post.image.startsWith('http') ? post.image : `${SITE_URL}${post.image}`;
 
   // Each locale should have its own self-referencing canonical URL
@@ -505,28 +505,6 @@ export default async function LocalizedBlogPostPage({ params }: BlogPostPageProp
     }
 
     schemas.push(howToSchema);
-  }
-
-  // Add FAQ schema if present
-  if (post.faq && post.faq.length > 0) {
-    const faqSchema = {
-      '@context': 'https://schema.org',
-      '@type': 'FAQPage',
-      mainEntity: post.faq
-        .filter((item) => item.question && item.answerHtml) // Filter out incomplete FAQ items
-        .map((item) => ({
-          '@type': 'Question',
-          name: item.question,
-          acceptedAnswer: {
-            '@type': 'Answer',
-            text: item.answerHtml,
-          },
-        })),
-    };
-    // Only add FAQ schema if there are valid questions after filtering
-    if (faqSchema.mainEntity.length > 0) {
-      schemas.push(faqSchema);
-    }
   }
 
   // Format date based on locale

@@ -6,7 +6,6 @@ import { useCurrency } from '@/lib/currency-context';
 import { getSEOMeta } from '@/translations/seo-meta';
 import Image from 'next/image';
 import { Check, Star, Lock } from 'lucide-react';
-import { generateFAQSchema } from '@/lib/seo-utils';
 import { getProductPrice, formatProductPrice } from '@/lib/pricing';
 import { getPaymentLink } from '@/lib/payment-links';
 import { ecommerceEvents } from '@/lib/gtm-events';
@@ -128,11 +127,7 @@ export default function TrialSizePageContent({ locale }: TrialSizePageContentPro
           dangerouslySetInnerHTML={{
             __html: JSON.stringify({
               "@context": "https://schema.org",
-              "@graph": [
-                schema,
-                // FAQ Schema for product page
-                generateFAQSchema(locale),
-              ],
+              "@graph": [schema],
             }),
           }}
         />

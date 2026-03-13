@@ -168,36 +168,17 @@ test.describe('SEO Schema Rendering', () => {
       expect(publisher.logo).toBeDefined();
     });
 
-    test('should render multiple schemas on blog page with FAQ', async ({ page }) => {
+    test('should not render FAQ schema on blog posts', async ({ page }) => {
       await page.goto('/blog/most-powerful-odor-absorber');
       await page.waitForLoadState('domcontentloaded');
 
       const schemas = await extractSchemas(page);
 
-      // Should have both article and FAQ schemas
       const articleSchema = schemas.find(schema => schema['@type'] === 'Article');
       const faqSchema = schemas.find(schema => schema['@type'] === 'FAQPage');
 
       expect(articleSchema).toBeDefined();
-      expect(faqSchema).toBeDefined();
-      if (!faqSchema) {
-        throw new Error('FAQ schema not found');
-      }
-
-      // Validate FAQ structure
-      expect(faqSchema.mainEntity).toBeDefined();
-      expect(Array.isArray(faqSchema.mainEntity)).toBe(true);
-      const mainEntity = Array.isArray(faqSchema.mainEntity) ? faqSchema.mainEntity : [];
-      expect(mainEntity.length).toBeGreaterThan(0);
-
-      // Validate FAQ question structure
-      const firstQuestion = asJsonLd(mainEntity[0]);
-      const acceptedAnswer = asJsonLd(firstQuestion.acceptedAnswer);
-      expect(firstQuestion['@type']).toBe('Question');
-      expect(firstQuestion.name).toBeTruthy();
-      expect(firstQuestion.acceptedAnswer).toBeDefined();
-      expect(acceptedAnswer['@type']).toBe('Answer');
-      expect(acceptedAnswer.text).toBeTruthy();
+      expect(faqSchema).toBeUndefined();
     });
   });
 

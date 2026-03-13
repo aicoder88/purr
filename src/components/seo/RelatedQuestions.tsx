@@ -1,8 +1,9 @@
 /**
  * RelatedQuestions Component
  *
- * FAQ-style accordion component with FAQPage schema markup.
- * Optimized for "People Also Ask" rich snippets and AI citation.
+ * FAQ-style accordion component for visible on-page questions.
+ * Shared schema output is intentionally disabled so mixed-intent pages
+ * do not emit FAQPage markup by default.
  *
  * Usage:
  * <RelatedQuestions
@@ -14,7 +15,7 @@
  * />
  */
 
-import { useState, useMemo } from 'react';
+import { useState } from 'react';
 
 export interface Question {
   question: string;
@@ -30,7 +31,7 @@ export interface RelatedQuestionsProps {
   allowMultiple?: boolean;
   /** Initially expanded question indices */
   defaultOpen?: number[];
-  /** Include FAQPage schema */
+  /** Deprecated: shared FAQPage schema output is disabled */
   includeSchema?: boolean;
   /** Custom className */
   className?: string;
@@ -41,7 +42,6 @@ export function RelatedQuestions({
   questions,
   allowMultiple = true,
   defaultOpen = [0],
-  includeSchema = false,
   className = '',
 }: RelatedQuestionsProps) {
   const [openItems, setOpenItems] = useState<Set<number>>(new Set(defaultOpen));
@@ -61,35 +61,12 @@ export function RelatedQuestions({
     });
   };
 
-  // Generate FAQPage schema
-  const schema = useMemo(() => {
-    return {
-      '@context': 'https://schema.org',
-      '@type': 'FAQPage',
-      mainEntity: questions.map((q) => ({
-        '@type': 'Question',
-        name: q.question,
-        acceptedAnswer: {
-          '@type': 'Answer',
-          text: q.answer,
-        },
-      })),
-    };
-  }, [questions]);
-
   if (!questions || questions.length === 0) {
     return null;
   }
 
   return (
     <>
-      {includeSchema && (
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
-        />
-      )}
-
       <section className={`related-questions ${className}`}>
         {title && (
           <h2 className="text-2xl font-bold text-gray-900 dark:text-gray-50 mb-6">

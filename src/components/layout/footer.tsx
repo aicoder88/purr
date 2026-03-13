@@ -442,6 +442,22 @@ export async function Footer() {
                 </li>
                 <li>
                   <Link prefetch={false}
+                    href="/case-studies/"
+                    className={footerLinkClass}
+                  >
+                    {t('footerNav.caseStudies')}
+                  </Link>
+                </li>
+                <li>
+                  <Link prefetch={false}
+                    href="/viral/"
+                    className={footerLinkClass}
+                  >
+                    {t('footerNav.viral')}
+                  </Link>
+                </li>
+                <li>
+                  <Link prefetch={false}
                     href={`${localePrefix}/retailers/`}
                     className={footerLinkClass}
                   >

@@ -159,20 +159,6 @@ export default function ContactPage() {
     ],
   });
 
-  // Build FAQ schema manually for the contact page FAQs
-  const faqSchema = {
-    '@context': 'https://schema.org',
-    '@type': 'FAQPage',
-    mainEntity: translations.faqs.map((faq) => ({
-      '@type': 'Question',
-      name: faq.question,
-      acceptedAnswer: {
-        '@type': 'Answer',
-        text: faq.answer,
-      },
-    })),
-  };
-
   const breadcrumbSchema = {
     '@context': 'https://schema.org',
     '@type': 'BreadcrumbList',
@@ -184,7 +170,7 @@ export default function ContactPage() {
     })),
   };
 
-  const allSchemas = [schema, faqSchema, breadcrumbSchema, ...additionalSchemas].filter(Boolean);
+  const allSchemas = [schema, breadcrumbSchema, ...additionalSchemas].filter(Boolean);
 
   return (
     <>

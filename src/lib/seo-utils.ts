@@ -717,10 +717,7 @@ export const generateHomepageSchema = (localeInput: string, currency: string = '
             }
           }
         }))
-      },
-
-      // FAQ Schema for homepage FAQ section
-      stripContext(generateFAQSchema(locale))
+      }
     ]
   };
 };
