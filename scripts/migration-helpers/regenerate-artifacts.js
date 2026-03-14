@@ -246,7 +246,7 @@ function regenerateSitemap() {
   // Sitemap is typically generated at build time
   // Just note that a rebuild may be needed
   console.log('   ℹ Sitemap is generated at build time');
-  console.log('   Tip: Run "npm run build" to regenerate sitemap with new image paths');
+  console.log('   Tip: Run "pnpm run build" to regenerate sitemap with new image paths');
   
   return true;
 }

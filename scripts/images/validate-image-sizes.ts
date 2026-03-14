@@ -6,7 +6,7 @@
  * to prevent performance issues and oversized downloads.
  *
  * Usage:
- *   npm run validate-images
+ *   pnpm run validate-images
  *   npx ts-node scripts/validate-image-sizes.ts
  */
 
@@ -264,7 +264,7 @@ async function main() {
   }
 
   console.log('💡 To resize all images automatically:');
-  console.log('   npm run optimize-images:enhanced\n');
+  console.log('   pnpm run optimize-images:enhanced\n');
 
   if (fixMode) {
     console.log(`🔧 ${dryRun ? 'Would resize' : 'Resizing'} ${issues.length} image(s)...\n`);
