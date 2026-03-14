@@ -155,12 +155,13 @@ export default function TrialSizePageContent({ locale }: TrialSizePageContentPro
 
           <Container className="relative z-10 pt-20 pb-16 md:pt-32 md:pb-24 max-w-4xl mx-auto text-center">
             <h1 className="text-4xl md:text-6xl font-black text-gray-900 dark:text-white mb-8 tracking-tight leading-tight font-serif">
-              The Litter Box Problem<br />Every Cat Owner Has.<br />
+              The Free Trial Cat Litter Deodorizer<br />For the Litter Box Problem<br />
               <span className="text-gray-500 dark:text-gray-400">And Almost Nobody Talks About.</span>
             </h1>
 
             <div className="prose prose-lg md:prose-xl dark:prose-invert mx-auto text-gray-800 dark:text-gray-200 mb-12">
               <p className="font-medium">You love your cat completely.<br />The smell? That&apos;s a different story.</p>
+              <p>If you&apos;re searching for a free trial cat litter deodorizer, start with the problem that matters most: ammonia, not fragrance.</p>
               <p>Not because you&apos;re not clean. Not because you don&apos;t try.<br />
                 It&apos;s because the ammonia in cat urine is invisible, relentless, and almost impossible to eliminate with anything currently on the market.</p>
 

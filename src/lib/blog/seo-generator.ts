@@ -1,5 +1,7 @@
 import type { BlogPost, FullSEOMetadata } from '@/types/blog';
 
+const SUPPORTED_HREFLANG_LOCALES = new Set(['en', 'fr']);
+
 export class SEOGenerator {
   private baseUrl: string;
 
@@ -72,11 +74,17 @@ export class SEOGenerator {
     const tags: Array<{ locale: string; url: string }> = [];
 
     // Add current post
-    const currentUrl = `${this.baseUrl}/${post.locale === 'en' ? '' : post.locale + '/'}blog/${post.slug}`;
-    tags.push({ locale: post.locale, url: currentUrl });
+    if (SUPPORTED_HREFLANG_LOCALES.has(post.locale)) {
+      const currentUrl = `${this.baseUrl}/${post.locale === 'en' ? '' : post.locale + '/'}blog/${post.slug}`;
+      tags.push({ locale: post.locale, url: currentUrl });
+    }
 
     // Add translations
     Object.entries(post.translations).forEach(([locale, slug]) => {
+      if (!SUPPORTED_HREFLANG_LOCALES.has(locale) || !slug) {
+        return;
+      }
+
       const url = `${this.baseUrl}/${locale === 'en' ? '' : locale + '/'}blog/${slug}`;
       tags.push({ locale, url });
     });

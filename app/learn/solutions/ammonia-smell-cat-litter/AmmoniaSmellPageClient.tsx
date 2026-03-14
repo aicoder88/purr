@@ -2,14 +2,17 @@
 
 import Link from 'next/link';
 import Image from 'next/image';
+import { useLocale } from 'next-intl';
 import { RelatedSolutions } from '@/components/learn/RelatedSolutions';
 import { RelatedContent } from '@/components/seo/RelatedContent';
 import { HowToSection } from '@/components/seo/HowToSection';
 import { AIQuotableBlock } from '@/components/seo/AIQuotableBlock';
 import { RelatedQuestions } from '@/components/seo/RelatedQuestions';
+import { localizePath } from '@/lib/i18n/locale-path';
 import { LEARN_PAGE_PREVIEW_IMAGES } from '@/lib/learn/page-preview-images';
 
 export default function AmmoniaSmellPageClient() {
+  const locale = useLocale() as 'en' | 'fr';
   const canonicalUrl = 'https://www.purrify.ca/learn/solutions/ammonia-smell-cat-litter/';
 
   // Ammonia smell solution images
@@ -78,11 +81,12 @@ export default function AmmoniaSmellPageClient() {
       <section className="py-16 px-4">
         <div className="max-w-4xl mx-auto text-center">
           <h1 className="text-4xl md:text-6xl font-heading font-bold mb-6 text-gray-900 dark:text-gray-100">
-            Ammonia and Cat Pee Smell? Here&apos;s Exactly Why It Happens
+            Cat Litter Smells Like Ammonia? Here&apos;s Why It Happens
           </h1>
           <p className="text-xl text-gray-700 dark:text-gray-200 mb-4 max-w-2xl mx-auto">
             If cat pee smell in the litter box turns sharp, chemical, and eye-watering, you&apos;re smelling ammonia.
-            Your cat isn&apos;t doing anything wrong — it&apos;s pure chemistry, and once you understand it, the fix becomes obvious.
+            Your cat isn&apos;t doing anything wrong. This is a chemistry and maintenance problem, and once you
+            understand what ammonia means around cats, the fix becomes much more straightforward.
           </p>
         </div>
       </section>
@@ -140,6 +144,36 @@ export default function AmmoniaSmellPageClient() {
               Sprinkling baking soda in the litter box is like trying to put out a fire with more fire.
               It masks the smell briefly, but the ammonia is still there.
             </p>
+          </div>
+
+          <div className="grid md:grid-cols-3 gap-6">
+            <div className="bg-white/80 dark:bg-gray-800/80 backdrop-blur-lg rounded-xl p-6 shadow-lg border border-electric-indigo/10 dark:border-electric-indigo/20">
+              <h3 className="font-heading text-lg font-semibold mb-3 text-gray-900 dark:text-gray-100">
+                What &quot;ammonia in cats&quot; usually means
+              </h3>
+              <p className="text-gray-700 dark:text-gray-200">
+                Most people searching for ammonia in cats are actually dealing with ammonia around cats: litter boxes,
+                enclosed rooms, poor airflow, and waste that sat too long between scoops.
+              </p>
+            </div>
+            <div className="bg-white/80 dark:bg-gray-800/80 backdrop-blur-lg rounded-xl p-6 shadow-lg border border-electric-indigo/10 dark:border-electric-indigo/20">
+              <h3 className="font-heading text-lg font-semibold mb-3 text-gray-900 dark:text-gray-100">
+                When it becomes a health concern
+              </h3>
+              <p className="text-gray-700 dark:text-gray-200">
+                Strong ammonia can irritate eyes, throats, and airways. Kittens, seniors, and cats with respiratory
+                sensitivity have less margin for error, especially in tight spaces.
+              </p>
+            </div>
+            <div className="bg-white/80 dark:bg-gray-800/80 backdrop-blur-lg rounded-xl p-6 shadow-lg border border-electric-indigo/10 dark:border-electric-indigo/20">
+              <h3 className="font-heading text-lg font-semibold mb-3 text-gray-900 dark:text-gray-100">
+                What to do next
+              </h3>
+              <p className="text-gray-700 dark:text-gray-200">
+                Deep-clean the box, improve airflow, scoop faster, and use a material that traps ammonia instead of
+                trying to perfume over it.
+              </p>
+            </div>
           </div>
         </div>
       </section>
@@ -253,6 +287,17 @@ export default function AmmoniaSmellPageClient() {
             <p className="text-lg text-gray-600 dark:text-gray-300">
               See how cat owners build a fresher litter routine without changing litter brands.
             </p>
+            <p className="text-base text-gray-600 dark:text-gray-300 mt-4">
+              If you want the health side explained in more detail, see our{' '}
+              <Link href={localizePath('/learn/cat-litter-ammonia-health-risks', locale)} className="font-semibold text-electric-indigo underline">
+                ammonia health risks guide
+              </Link>
+              . If you want the chemistry first, start with the{' '}
+              <Link href={localizePath('/learn/ammonia-science', locale)} className="font-semibold text-electric-indigo underline">
+                ammonia science explainer
+              </Link>
+              .
+            </p>
           </div>
 
           <div className="grid md:grid-cols-2 gap-8 mb-12">
@@ -300,13 +345,13 @@ export default function AmmoniaSmellPageClient() {
 
           <div className="text-center">
             <Link
-              href="/products/"
+              href={localizePath('/products', locale)}
               className="inline-block bg-gradient-to-r from-electric-indigo to-deep-coral text-white dark:text-gray-100 font-bold py-4 px-8 rounded-lg hover:from-electric-indigo-600 hover:to-deep-coral-600 hover:scale-105 transition-all duration-300 text-lg mr-4 shadow-lg"
             >
               Shop Purrify Now
             </Link>
             <Link
-              href="/learn/how-it-works/"
+              href={localizePath('/learn/how-it-works', locale)}
               className="inline-block bg-gray-200 dark:bg-gray-600 text-gray-800 dark:text-gray-200 font-bold py-4 px-8 rounded-lg hover:bg-gray-300 dark:hover:bg-gray-500 transition-all text-lg"
             >
               Learn More
@@ -323,7 +368,7 @@ export default function AmmoniaSmellPageClient() {
           </h2>
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
             <Link
-              href="/learn/ammonia-science/"
+              href={localizePath('/learn/ammonia-science', locale)}
               className="bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-xl p-6 hover:shadow-lg hover:border-[#FF3131] dark:hover:border-[#FF5050] transition-all group"
             >
               <div className="text-3xl mb-3">🔬</div>
@@ -335,7 +380,7 @@ export default function AmmoniaSmellPageClient() {
               </p>
             </Link>
             <Link
-              href="/learn/cat-litter-ammonia-health-risks/"
+              href={localizePath('/learn/cat-litter-ammonia-health-risks', locale)}
               className="bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-xl p-6 hover:shadow-lg hover:border-[#FF3131] dark:hover:border-[#FF5050] transition-all group"
             >
               <div className="text-3xl mb-3">⚠️</div>
@@ -347,7 +392,7 @@ export default function AmmoniaSmellPageClient() {
               </p>
             </Link>
             <Link
-              href="/blog/how-to-neutralize-ammonia-cat-litter"
+              href={localizePath('/blog/how-to-neutralize-ammonia-cat-litter', locale)}
               className="bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-xl p-6 hover:shadow-lg hover:border-[#FF3131] dark:hover:border-[#FF5050] transition-all group"
             >
               <div className="text-3xl mb-3">✅</div>
@@ -359,7 +404,7 @@ export default function AmmoniaSmellPageClient() {
               </p>
             </Link>
             <Link
-              href="/blog/activated-carbon-vs-baking-soda-comparison"
+              href={localizePath('/blog/activated-carbon-vs-baking-soda-comparison', locale)}
               className="bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-xl p-6 hover:shadow-lg hover:border-[#FF3131] dark:hover:border-[#FF5050] transition-all group"
             >
               <div className="text-3xl mb-3">⚖️</div>

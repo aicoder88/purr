@@ -83,11 +83,11 @@ export default function ApartmentCatSmellPageClient() {
               className="w-full h-auto rounded-lg shadow-lg mb-8"
             />
             <h1 className="text-4xl md:text-6xl font-heading font-bold mb-6 text-gray-900 dark:text-gray-100">
-              Best Litter for Apartments with No Ventilation
+              Apartment Cat Smell Solution for Small Spaces
             </h1>
             <p className="text-xl text-gray-700 dark:text-gray-200 mb-8 max-w-3xl mx-auto">
-              Living in an apartment with no windows near the litter box? These 5 proven solutions eliminate cat odors
-              in studios and small spaces—even without proper ventilation.
+              Living in an apartment with no windows near the litter box? This apartment cat smell solution helps you
+              control litter box odor in studios, condos, and other tight layouts, even when ventilation is poor.
             </p>
           </div>
 
@@ -133,6 +133,38 @@ export default function ApartmentCatSmellPageClient() {
               >
                 Try Purrify Risk-Free
               </Link>
+            </div>
+          </div>
+
+          <div className="bg-white/80 dark:bg-gray-800/80 backdrop-blur-lg rounded-2xl p-8 shadow-lg border border-electric-indigo/10 dark:border-electric-indigo/20 max-w-5xl mx-auto mb-16">
+            <h2 className="text-3xl font-heading font-bold mb-6 text-gray-900 dark:text-gray-100 text-center">
+              Why Apartment Litter Odor Feels Worse Than House Odor
+            </h2>
+            <div className="space-y-4 text-lg text-gray-700 dark:text-gray-200">
+              <p>
+                In a small apartment, there is less air volume to dilute fresh ammonia. That means a box that feels
+                manageable in a detached home can smell intense in a bathroom, hallway closet, or bedroom corner.
+              </p>
+              <p>
+                The goal is not just to cover up odor. A stronger apartment cat smell solution lowers the amount of
+                ammonia released in the first place, speeds up your cleanup rhythm, and gives odor molecules fewer
+                chances to spread through shared living space.
+              </p>
+              <p>
+                If your litter box smell already has that sharp chemical edge, read{' '}
+                <Link href={localizePath('/learn/solutions/ammonia-smell-cat-litter', locale)} className="font-semibold text-electric-indigo underline">
+                  why cat litter starts smelling like ammonia
+                </Link>
+                . If you want to compare how fast different litter routines get expensive, use the{' '}
+                <Link href={localizePath('/tools/cat-litter-calculator', locale)} className="font-semibold text-electric-indigo underline">
+                  cat litter calculator
+                </Link>
+                . For everyday maintenance questions, the{' '}
+                <Link href={localizePath('/learn/faq', locale)} className="font-semibold text-electric-indigo underline">
+                  odor-control FAQ
+                </Link>
+                {' '}is a good next stop.
+              </p>
             </div>
           </div>
 
@@ -284,7 +316,7 @@ export default function ApartmentCatSmellPageClient() {
                 Start Your Trial
               </Link>
               <Link
-                href="/learn/how-it-works/"
+                href={localizePath('/learn/how-it-works', locale)}
                 className="text-orange-600 dark:text-orange-400 hover:text-orange-800 dark:hover:text-orange-300 font-semibold underline"
               >
                 Learn How It Works

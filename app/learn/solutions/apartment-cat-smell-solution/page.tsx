@@ -6,8 +6,8 @@ import { LEARN_PAGE_PREVIEW_IMAGES } from '@/lib/learn/page-preview-images';
 import ApartmentCatSmellPageClient from './ApartmentCatSmellPageClient';
 import { stripContext } from '@/lib/seo-utils';
 
-const pageTitle = `Cat in a 400 Sq Ft Apartment? How to Eliminate Litter Smell Completely | ${SITE_NAME}`;
-const pageDescription = 'No windows near your litter box. No ventilation. Roommates complaining. Here are 5 solutions that work in small apartments—guests will never know you have a cat.';
+const pageTitle = `Apartment Cat Smell Solution for Small Spaces | ${SITE_NAME}`;
+const pageDescription = 'Apartment cat smell solution for studios, condos, and low-ventilation homes: stop litter box odor with smarter placement, faster scooping, and activated carbon.';
 const canonicalUrl = 'https://www.purrify.ca/learn/solutions/apartment-cat-smell-solution/';
 const heroImage = `https://www.purrify.ca${LEARN_PAGE_PREVIEW_IMAGES['/learn/solutions/apartment-cat-smell-solution'].image}`;
 

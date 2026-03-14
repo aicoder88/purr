@@ -4,10 +4,22 @@ import { ContentStore } from "./content-store";
 import { CANONICAL_CATEGORY_SLUGS, CANONICAL_TAG_SLUGS, buildTaxonomyHubData } from "./taxonomy";
 import type {} from "@/types/blog";
 
+const SUPPORTED_BLOG_LOCALES = ["en", "fr"] as const;
+type SupportedBlogLocale = typeof SUPPORTED_BLOG_LOCALES[number];
+
+const BLOG_HREFLANG_MAP: Record<SupportedBlogLocale, string> = {
+  en: "en-CA",
+  fr: "fr-CA",
+};
+
+function isSupportedBlogLocale(locale: string): locale is SupportedBlogLocale {
+  return SUPPORTED_BLOG_LOCALES.includes(locale as SupportedBlogLocale);
+}
+
 export class SitemapGenerator {
   private store: ContentStore;
   private baseUrl: string;
-  private locales = ["en", "fr"];
+  private locales = [...SUPPORTED_BLOG_LOCALES];
 
   constructor() {
     this.store = new ContentStore();
@@ -19,6 +31,10 @@ export class SitemapGenerator {
     return locale === "en" ? "/blog" : `/${locale}/blog`;
   }
 
+  private getBlogUrl(locale: SupportedBlogLocale, slug: string): string {
+    return `${this.baseUrl}${this.getBlogBasePath(locale)}/${slug}`;
+  }
+
   async generateBlogSitemap(): Promise<string> {
     let xml = '<?xml version="1.0" encoding="UTF-8"?>\n';
     xml += '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" ';
@@ -28,19 +44,34 @@ export class SitemapGenerator {
       const posts = await this.store.getAllPosts(locale, false);
 
       for (const post of posts) {
-        const url = `${this.baseUrl}${this.getBlogBasePath(locale)}/${post.slug}`;
+        const url = this.getBlogUrl(locale, post.slug);
         xml += `  <url>\n`;
         xml += `    <loc>${url}</loc>\n`;
         xml += `    <lastmod>${post.modifiedDate}</lastmod>\n`;
         xml += `    <changefreq>weekly</changefreq>\n`;
         xml += `    <priority>0.8</priority>\n`;
 
-        // Add hreflang links for translations
-        if (post.translations && Object.keys(post.translations).length > 0) {
-          for (const [lang, slug] of Object.entries(post.translations)) {
-            const altUrl = `${this.baseUrl}${this.getBlogBasePath(lang)}/${slug}`;
-            xml += `    <xhtml:link rel="alternate" hreflang="${lang}" href="${altUrl}" />\n`;
+        const alternates = new Map<string, string>();
+        alternates.set(BLOG_HREFLANG_MAP[locale], url);
+
+        for (const [translationLocale, translationSlug] of Object.entries(post.translations ?? {})) {
+          if (!isSupportedBlogLocale(translationLocale) || !translationSlug) {
+            continue;
           }
+
+          alternates.set(
+            BLOG_HREFLANG_MAP[translationLocale],
+            this.getBlogUrl(translationLocale, translationSlug),
+          );
+        }
+
+        const defaultSlug = locale === "en" ? post.slug : post.translations?.en;
+        if (defaultSlug) {
+          alternates.set("x-default", this.getBlogUrl("en", defaultSlug));
+        }
+
+        for (const [hrefLang, alternateUrl] of alternates) {
+          xml += `    <xhtml:link rel="alternate" hreflang="${hrefLang}" href="${alternateUrl}" />\n`;
         }
 
         xml += `  </url>\n`;

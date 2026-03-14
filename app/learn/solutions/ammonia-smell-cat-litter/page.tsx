@@ -6,15 +6,15 @@ import { stripContext } from '@/lib/seo-utils';
 import { LEARN_PAGE_PREVIEW_IMAGES } from '@/lib/learn/page-preview-images';
 import AmmoniaSmellPageClient from './AmmoniaSmellPageClient';
 
-const pageTitle = `Ammonia and Cat Pee Smell: Why Cat Litter Smells Like Ammonia | ${SITE_NAME}`;
-const pageDescription = "Ammonia and cat pee smell come from bacteria breaking down urea in the litter box. Baking soda and ammonia are both alkaline, so they do not neutralize each other. Here's what actually works.";
+const pageTitle = `Cat Litter Smells Like Ammonia? Causes, Risks, and Fixes | ${SITE_NAME}`;
+const pageDescription = 'Cat litter smells like ammonia when bacteria turn cat urine into ammonia gas. Learn what it means for cats and humans, what not to mix, and what actually helps.';
 const canonicalUrl = 'https://www.purrify.ca/learn/solutions/ammonia-smell-cat-litter/';
 const heroImage = `https://www.purrify.ca${LEARN_PAGE_PREVIEW_IMAGES['/learn/solutions/ammonia-smell-cat-litter'].image}`;
 
 export const metadata: Metadata = {
   title: pageTitle,
   description: pageDescription,
-  keywords: ['cat litter smells like ammonia', 'ammonia smell cat litter', 'cat litter ammonia smell', 'ammonia from cat litter', 'how to neutralize ammonia in cat litter', 'best cat litter for ammonia smell', 'ammonia and cat pee', 'cat pee smells like ammonia'],
+  keywords: ['cat litter smells like ammonia', 'ammonia smell cat litter', 'cat litter ammonia smell', 'ammonia from cat litter', 'how to neutralize ammonia in cat litter', 'best cat litter for ammonia smell', 'ammonia and cat pee', 'cat pee smells like ammonia', 'ammonia in cats', 'ammonia around cats'],
   alternates: {
     canonical: 'https://www.purrify.ca/learn/solutions/ammonia-smell-cat-litter/',
     languages: {

@@ -2,7 +2,7 @@ import type { Metadata, Viewport } from 'next';
 import { Inter } from 'next/font/google';
 import { getLocale, setRequestLocale } from 'next-intl/server';
 import '../src/index.css';
-import { defaultLocale, isValidLocale, Locale } from '@/i18n/config';
+import { defaultLocale, isValidLocale, locales, Locale } from '@/i18n/config';
 import { AppLayout } from '@/components/layout/AppLayout';
 import { Providers } from './providers';
 import { SITE_NAME, SITE_DESCRIPTION, SITE_URL } from '@/lib/constants';
@@ -26,6 +26,19 @@ const HTML_LANG_MAP: Record<string, string> = {
   fr: 'fr-CA',
   en: 'en-CA',
 };
+
+function buildRootLanguageAlternates(baseUrl: string): Record<string, string> {
+  const localeEntries = locales.map((locale) => {
+    const hrefLang = HTML_LANG_MAP[locale] ?? 'en-CA';
+    const href = locale === defaultLocale ? `${baseUrl}/` : `${baseUrl}/${locale}/`;
+    return [hrefLang, href] as const;
+  });
+
+  return Object.fromEntries([
+    ...localeEntries,
+    ['x-default', `${baseUrl}/`],
+  ]) as Record<string, string>;
+}
 
 const DEFAULT_GTM_ID = 'GTM-T8WZ5D7R';
 
@@ -61,16 +74,10 @@ export async function generateMetadata(): Promise<Metadata> {
 
   // Build language alternates for hreflang
   // Maps language-region codes to their corresponding URLs
-  const languages: Record<string, string> = {
-    'en-CA': `${baseUrl}/`,
-    'fr-CA': `${baseUrl}/fr/`,
-    'x-default': `${baseUrl}/`,
-  };
-
   const alternates = {
     // Note: Individual pages should define their own canonical URLs
     // This is a fallback - child pages should override via their own metadata
-    languages: languages as Record<string, string>,
+    languages: buildRootLanguageAlternates(baseUrl),
   };
 
   return {
